@@ -19,8 +19,8 @@ app.whenReady().then(() => {
         }
     });
 
-    mainWindow.loadFile('index.html');
-
+    mainWindow.loadFile(path.join(__dirname, 'index.html'));
+    
     // Cargar apps desde apps.json
     fs.readFile('apps.json', 'utf8', (err, data) => {
         if (!err) {

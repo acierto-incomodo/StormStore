@@ -2,6 +2,7 @@
     {
         "name": "StormPanel App",
         "exePath": "AppData\\Local\\Programs\\StormPanel App\\StormPanel App.exe",
+        "versionCommand": "--version",
         "downloadUrl": "https://github.com/acierto-incomodo/StormPanel-App/releases/download/v1.0.0/StormPanel-App-Setup-1.0.0.exe"
     }
 ]

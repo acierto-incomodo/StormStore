@@ -1,17 +1,36 @@
 {
   "name": "stormstore",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder build --win"
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win"
   },
   "build": {
     "appId": "com.stormgamesstudios.stormstore",
     "productName": "StormStore",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
     "win": {
-      "target": "nsis"
+      "target": [
+        "nsis"
+      ],
+      "signtoolOptions": {
+        "publisherName": "StormGamesStudios"
+      }
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "StormStore",
+      "perMachine": true,
+      "uninstallDisplayName": "StormStore",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
   },
   "repository": {
