@@ -1,10 +1,18 @@
 {
   "name": "stormstore",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron .",
+    "build": "electron-builder build --win"
+  },
+  "build": {
+    "appId": "com.stormgamesstudios.stormstore",
+    "productName": "StormStore",
+    "win": {
+      "target": "nsis"
+    }
   },
   "repository": {
     "type": "git",
@@ -21,6 +29,7 @@
     "electron-builder": "^25.1.8"
   },
   "dependencies": {
-    "electron-updater": "^6.3.9"
+    "electron-updater": "^6.3.9",
+    "sudo-prompt": "^9.2.1"
   }
 }
