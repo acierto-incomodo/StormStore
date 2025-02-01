@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -25,7 +25,7 @@
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
+      "allowToChangeInstallationDirectory": false,
       "shortcutName": "StormStore",
       "perMachine": true,
       "uninstallDisplayName": "StormStore",

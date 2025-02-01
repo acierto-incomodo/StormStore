@@ -9,18 +9,22 @@ const { downloadInstaller } = require('./utils/downloader');
 let mainWindow;
 let apps = [];
 
-app.whenReady().then(() => {
+app.on("ready", () => {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        webPreferences: {
+        minWidth: 800,
+        minHeight: 600,
+        webPreferences: { 
             nodeIntegration: true,
             contextIsolation: false,
+            enableRemoteModule: true
         }
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'index.html'));
-    
+    mainWindow.loadFile("index.html"); // Cargar index.html al iniciar
+    mainWindow.maximize(); // Maximizar la ventana
+
     // Cargar apps desde apps.json
     fs.readFile('apps.json', 'utf8', (err, data) => {
         if (!err) {
