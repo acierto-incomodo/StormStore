@@ -16,9 +16,9 @@ app.on("ready", () => {
         minWidth: 800,
         minHeight: 600,
         webPreferences: { 
-            nodeIntegration: true,
+            nodeIntegration: false,
             contextIsolation: false,
-            enableRemoteModule: true
+            enableRemoteModule: false
         }
     });
 
