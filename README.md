@@ -9,9 +9,9 @@
 
 ## Program list:
 
-- CardinalAI MultiModel APP (cardinal-ai-dualmodel-app)
+CardinalAI MultiModel APP (cardinal-ai-dualmodel-app)
 
-    curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install.sh | sudo bash
+    sudo apt install cardinal-ai-dualmodel-app
 
   
 
