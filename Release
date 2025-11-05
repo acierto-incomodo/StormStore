@@ -1,0 +1,7 @@
+Origin: StormGamesStudios
+Label: StormGamesStudios Repo
+Suite: stable
+Codename: stable
+Architectures: amd64
+Components: main
+Description: Repositorio oficial de CardinalAI MultiModel App
