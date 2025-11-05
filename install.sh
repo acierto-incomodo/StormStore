@@ -27,8 +27,8 @@ fi
 echo "📦 Updating package list..."
 apt update -y
 
-# Install StormStore
-echo "🚀 Installing StormStore..."
-apt install -y stormstore
+# Install Cardinal AI Dual Model App
+echo "🚀 Installing Cardinal AI Dual Model App..."
+apt install -y cardinal-ai-dualmodel-app
 
-echo "✅ Installation complete. You can open StormStore from your app menu or by running 'stormstore'."
+echo "✅ Installation complete."
