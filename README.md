@@ -13,6 +13,10 @@ CardinalAI MultiModel APP (cardinal-ai-dualmodel-app)
 
     sudo apt install cardinal-ai-dualmodel-app
 
+WhatsApp Web (whatsapp-web)
+
+    sudo apt install whatsapp-web
+
   
 
 <br>
