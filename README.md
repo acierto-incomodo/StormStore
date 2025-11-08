@@ -35,6 +35,12 @@ sudo apt install whatsapp-web
 
   
 
+
+PairDrop APP (pairdrop)
+
+  
+
+sudo apt install pairdrop
   
 
 <br>
