@@ -14,6 +14,12 @@
 
     curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install.sh | sudo bash
 
+
+## Install repo on the sistem and all packages
+
+
+    curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
+
 ## Program list:
 
 CardinalAI MultiModel APP (cardinal-ai-dualmodel-app)

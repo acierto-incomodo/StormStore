@@ -27,4 +27,24 @@ fi
 echo "📦 Updating package list..."
 apt update -y
 
+# Install Cardinal AI Dual Model App
+echo "🚀 Installing Cardinal AI Dual Model App..."
+apt install -y cardinal-ai-dualmodel-app
+
+# Install WhatsApp Web
+echo "🚀 Installing WhatsApp Web..."
+apt install -y whatsapp-web
+
+# Install PairDrop APP
+echo "🚀 Installing PairDrop APP..."
+apt install -y pairdrop
+
+# Install MyJonCraft SGS Config Transfer
+echo "🚀 Installing MyJonCraft SGS Config Transfer..."
+apt install -y data-exporter
+
+# Install MultiAI
+echo "🚀 Installing MultiAI..."
+apt install -y multiai
+
 echo "✅ Installation complete."
