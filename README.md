@@ -48,6 +48,15 @@ MyJonCraft SGS Config Transfer (data-exporter)
 
   
 
+  
+  
+
+MultiAI (multiai)
+
+    sudo apt install multiai
+
+  
+
 <br>
 
   
