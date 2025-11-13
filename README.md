@@ -20,6 +20,16 @@
 
     curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
 
+
+## Remove repo on the sistem
+
+
+    curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/remove.sh | sudo bash
+
+Only remove de repository, not the packages.
+
+
+
 ## Program list:
 
 CardinalAI MultiModel APP (cardinal-ai-dualmodel-app)
