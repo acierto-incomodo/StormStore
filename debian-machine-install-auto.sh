@@ -178,6 +178,43 @@ systemctl daemon-reexec
 systemctl restart getty@tty1
 
 # ========================
+# 11️⃣ Instalando StormPack
+# ========================
+curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
+
+
+# ========================
+# 12️⃣ Servicio systemd para actualizar al reinicio
+# ========================
+echo "Creando servicio para actualizar el sistema automáticamente al reinicio..."
+
+cat > /usr/local/sbin/auto-update.sh <<EOL
+#!/bin/bash
+apt update
+apt upgrade -y
+EOL
+
+chmod +x /usr/local/sbin/auto-update.sh
+
+cat > /etc/systemd/system/auto-update.service <<EOL
+[Unit]
+Description=Actualizar sistema automáticamente al reinicio
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/auto-update.sh
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+systemctl daemon-reload
+systemctl enable auto-update.service
+echo "Servicio auto-update creado y habilitado."
+
+
+# ========================
 # 11️⃣ btop ya instalado en dependencias
 # ========================
 echo "¡Setup completo! Docker, MCSManager, Node.js, Java, Python, SSH, puertos, autologin y btop listos."
