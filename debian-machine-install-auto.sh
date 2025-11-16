@@ -50,10 +50,10 @@ echo "Instalando Java 21..."
 apt install -y openjdk-21-jdk
 
 # ========================
-# 6️⃣ Instalar Python 3.14
+# 6️⃣ Instalar Python 3
 # ========================
-echo "Instalando Python 3.14..."
-apt install -y python3.14 python3.14-venv python3.14-dev
+echo "Instalando Python 3..."
+apt-get install -y python3 python3-venv python3-dev python3-pip
 
 # ========================
 # 7️⃣ Configurar SSH con dos puertos
