@@ -18,7 +18,7 @@ apt update && apt upgrade -y
 # 2️⃣ Instalar dependencias básicas
 # ========================
 echo "Instalando dependencias básicas..."
-apt install -y curl wget git lsb-release ca-certificates gnupg btop
+apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop
 
 # ========================
 # 3️⃣ Instalar Docker

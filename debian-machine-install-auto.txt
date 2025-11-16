@@ -1,0 +1,3 @@
+wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/debian-machine-install-auto.sh
+chmod +x debian-machine-install-auto.sh
+sudo ./debian-machine-install-auto.sh
