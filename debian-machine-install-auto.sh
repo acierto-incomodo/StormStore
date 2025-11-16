@@ -165,19 +165,6 @@ echo "config.json configurado con httpIp 0.0.0.0 y puerto 23333."
 
 
 # ========================
-# 🔟 Autologin en tty1
-# ========================
-echo "Configurando autologin en tty1..."
-mkdir -p /etc/systemd/system/getty@tty1.service.d
-tee /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null <<EOL
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --autologin $USER --noclear %I \$TERM
-EOL
-systemctl daemon-reexec
-systemctl restart getty@tty1
-
-# ========================
 # 11️⃣ Instalando StormPack
 # ========================
 curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
@@ -233,4 +220,19 @@ echo "Reiniciando ahora..."
 sleep 1
 echo "Bienvenido a Cardinal System"
 sleep 1
+
+# ========================
+# 🔟 Autologin en tty1
+# ========================
+echo "Configurando autologin en tty1..."
+mkdir -p /etc/systemd/system/getty@tty1.service.d
+tee /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null <<EOL
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --autologin $USER --noclear %I \$TERM
+EOL
+systemctl daemon-reexec
+systemctl restart getty@tty1
+
+
 reboot
