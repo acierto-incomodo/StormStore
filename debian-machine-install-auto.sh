@@ -121,6 +121,49 @@ cd /home/$USER/mcsmanager
 docker compose up -d
 
 # ========================
+# 12️⃣ Configurar MCSManager config.json
+# ========================
+CONFIG_PATH="/home/$USER/mcsmanager/web/data/SystemConfig/config.json"
+echo "Configurando config.json de MCSManager..."
+
+mkdir -p "$(dirname "$CONFIG_PATH")"
+
+cat > "$CONFIG_PATH" <<EOL
+{
+    "httpPort": 23333,
+    "httpIp": "0.0.0.0",
+    "prefix": "",
+    "reverseProxyMode": false,
+    "dataPort": 23334,
+    "forwardType": 1,
+    "crossDomain": false,
+    "gzip": false,
+    "maxCompress": 1,
+    "maxDownload": 10,
+    "zipType": 1,
+    "totpDriftToleranceSteps": 0,
+    "loginCheckIp": true,
+    "loginInfo": "",
+    "canFileManager": true,
+    "allowUsePreset": false,
+    "language": "en_us",
+    "presetPackAddr": "https://script.mcsmanager.com/market.json",
+    "redisUrl": "",
+    "allowChangeCmd": false,
+    "businessMode": false,
+    "businessId": "",
+    "panelId": "c8e0b8d9-44e3-40fe-8ec8-970a39f03d2d",
+    "registerCode": "",
+    "ssl": false,
+    "sslPemPath": "",
+    "sslKeyPath": ""
+}
+EOL
+
+echo "config.json configurado con httpIp 0.0.0.0 y puerto 23333."
+
+
+# ========================
 # 🔟 Autologin en tty1
 # ========================
 echo "Configurando autologin en tty1..."
@@ -137,3 +180,16 @@ systemctl restart getty@tty1
 # 11️⃣ btop ya instalado en dependencias
 # ========================
 echo "¡Setup completo! Docker, MCSManager, Node.js, Java, Python, SSH, puertos, autologin y btop listos."
+echo "By StormGamesStudios"
+
+
+# ========================
+# 🔁 Reinicio con cuenta atrás de 10 segundos
+# ========================
+echo "El sistema se reiniciará en 10 segundos..."
+for i in {10..1}; do
+    echo "$i..."
+    sleep 1
+done
+echo "Reiniciando ahora..."
+reboot
