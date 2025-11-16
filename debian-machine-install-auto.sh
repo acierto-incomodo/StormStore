@@ -221,6 +221,18 @@ sleep 1
 echo "Bienvenido a Cardinal System"
 sleep 1
 
+
+# ========================
+# 🔹 Evitar suspensión al cerrar la tapa
+# ========================
+echo "Configurando el sistema para que no se suspenda al cerrar la tapa..."
+sed -i '/^HandleLidSwitch=/d' /etc/systemd/logind.conf
+sed -i '/^HandleLidSwitchDocked=/d' /etc/systemd/logind.conf
+echo -e "HandleLidSwitch=ignore\nHandleLidSwitchDocked=ignore" >> /etc/systemd/logind.conf
+systemctl restart systemd-logind
+echo "Configuración de tapa completada: el sistema no se suspenderá al cerrarla."
+
+
 # ========================
 # 🔟 Autologin en tty1
 # ========================
