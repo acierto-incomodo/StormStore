@@ -193,4 +193,7 @@ for i in {10..1}; do
     sleep 1
 done
 echo "Reiniciando ahora..."
+sleep 1
+echo "Bienvenido a Cardinal System"
+sleep 1
 reboot
