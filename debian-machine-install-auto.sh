@@ -118,6 +118,7 @@ services:
 EOL
 
 cd /home/$USER/mcsmanager
+docker compose pull
 docker compose up -d
 
 # ========================
