@@ -56,6 +56,12 @@ echo "Instalando Python 3..."
 apt-get install -y python3 python3-venv python3-dev python3-pip
 
 # ========================
+# 6️⃣ Instalar UFW
+# ========================
+echo "Instalando UFW..."
+apt-get install -y ufw
+
+# ========================
 # 7️⃣ Configurar SSH con dos puertos
 # ========================
 echo "Configurando SSH en los puertos 22 y 1234..."
