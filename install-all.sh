@@ -45,6 +45,10 @@ apt install -y data-exporter
 
 # Install MultiAI
 echo "🚀 Installing MultiAI..."
-apt install -y multiai
+apt install -y multiai 
+
+# Install TheShooter
+echo "🚀 Installing TheShooter..."
+apt install -y  theshooterlauncher
 
 echo "✅ Installation complete."
