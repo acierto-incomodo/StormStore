@@ -51,4 +51,8 @@ apt install -y multiai
 echo "🚀 Installing TheShooter..."
 apt install -y  theshooterlauncher
 
+# Install TheShooter
+echo "🚀 Installing KartsMultiplayer..."
+apt install -y  kartsmultiplayerlauncher
+
 echo "✅ Installation complete."
