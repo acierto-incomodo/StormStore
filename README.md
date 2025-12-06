@@ -76,6 +76,12 @@ MultiAI (multiai)
 TheShooter (theshooterlauncher)
 
     sudo apt install theshooterlauncher
+  
+  
+
+KartsMultiplayer (kartsmultiplayerlauncher)
+
+    sudo apt install kartsmultiplayerlauncher
 
   
 
