@@ -4,9 +4,9 @@ import requests
 import os
 
 # 1. Configuración de Repositorio
-GITHUB_BASE_URL = "https://raw.githubusercontent.com/TuUsuario/stormstore-repo/main"
+GITHUB_BASE_URL = "https://raw.githubusercontent.com/acierto-incomodo/StormStore/main"
 INDICES = {
-    "deb": f"{GITHUB_BASE_URL}/deb/index_deb.json",
+    "deb": f"{GITHUB_BASE_URL}/debs/index_deb.json",
     "snap": f"{GITHUB_BASE_URL}/snap/index_snap.json"
 }
 
