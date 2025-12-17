@@ -26,7 +26,15 @@
 
     curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/remove.sh | sudo bash
 
-Only remove de repository, not the packages.
+Only remove the repository, not the packages.
+
+
+## Remove repo on the sistem and packages
+
+
+    curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/remove-all.sh | sudo bash
+
+Only the repository and the packages.
 
 
 
