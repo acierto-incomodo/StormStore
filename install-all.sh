@@ -38,11 +38,17 @@ fi
 
 # Add the repo if it doesn’t already exist
 print_info "Adding StormStore APT repository..."
-if [ ! -f "$LIST_FILE" ]; then
-  echo "deb [trusted=yes] $REPO_URL ./" | tee "$LIST_FILE" > /dev/null
-  print_success "Repository added successfully."
-else
+if [ -f "$LIST_FILE" ]; then
   print_info "Repository already exists."
+else
+  # Check if the repository URL is reachable before adding it
+  if curl --head --silent --fail "$REPO_URL" >/dev/null; then
+    echo "deb [trusted=yes] $REPO_URL ./" | tee "$LIST_FILE" > /dev/null
+    print_success "Repository added successfully."
+  else
+    print_error "StormStore repository not available. Cannot install applications."
+    exit 1
+  fi
 fi
 
 # Update package list
