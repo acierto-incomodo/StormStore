@@ -1,92 +1,129 @@
 #!/bin/bash
 set -e
 
-# =========================================
-# Script de setup completo para Debian Trixie
-# =========================================
+# Colores para la salida
+C_RESET='\033[0m'
+C_RED='\033[0;31m'
+C_GREEN='\033[0;32m'
+C_YELLOW='\033[0;33m'
+C_BLUE='\033[0;34m'
+C_CYAN='\033[0;36m'
+
+print_header() {
+    printf "\n${C_CYAN}=====================================================${C_RESET}\n"
+    printf "${C_CYAN} %-50s ${C_RESET}\n" "$1"
+    printf "${C_CYAN}=====================================================${C_RESET}\n"
+}
+
+print_success() {
+    printf "${C_GREEN}[✔] ¡Hecho! %s${C_RESET}\n" "$1"
+}
+
+print_info() {
+    printf "${C_YELLOW}[i] %s${C_RESET}\n" "$1"
+}
+
+# Banner de bienvenida
+printf "${C_BLUE}"
+cat << "EOF"
+  ____              _ _             _   ____            _                 
+ / ___|__ _ _ __ __| (_)_ __   __ _| | / ___| _   _ ___| |_ ___ _ __ ___  
+| |   / _` | '__/ _` | | '_ \ / _` | | \___ \| | | / __| __/ _ \ '_ ` _ \ 
+| |__| (_| | | | (_| | | | | | (_| | |  ___) | |_| \__ \ ||  __/ | | | | |
+ \____\__,_|_| _\__,_|_|_|_|_|\__,_|_| |____/ \__, |___/\__\___|_| |_| |_|
+|_ _|_ __  ___| |_ __ _| | | ___ _ __         |___/                       
+ | || '_ \/ __| __/ _` | | |/ _ \ '__|                                    
+ | || | | \__ \ || (_| | | |  __/ |                                       
+|___|_| |_|___/\__\__,_|_|_|\___|_|                                       
+EOF
+printf "${C_RESET}By StormGamesStudios\n\n"
+print_info "Iniciando el script de configuración automática para Debian Trixie."
+print_info "Este script se ejecutará como root y configurará todo el entorno."
+sleep 3
 
 # Usuario
 USER="aitor"
 
-# ========================
-# 1️⃣ Actualizar sistema
-# ========================
-echo "Actualizando sistema..."
+print_header "1️⃣  Actualizando el sistema"
+print_info "Actualizando la lista de paquetes y actualizando los paquetes instalados..."
 apt update && apt upgrade -y
+print_success "Sistema actualizado correctamente."
 
-# ========================
-# 2️⃣ Instalar dependencias básicas
-# ========================
-echo "Instalando dependencias básicas..."
-apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop
+print_header "2️⃣  Instalando dependencias básicas"
+print_info "Instalando: sudo, curl, wget, git, btop, zsh y otras utilidades..."
+apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop zsh
+print_success "Dependencias básicas instaladas."
 
-# ========================
-# 3️⃣ Instalar Docker
-# ========================
-echo "Instalando Docker..."
+print_header "3️⃣  Instalando Docker"
+print_info "Descargando el script oficial de instalación de Docker..."
 curl -fsSL https://get.docker.com -o get-docker.sh
+print_info "Ejecutando el script de instalación..."
 sh get-docker.sh
+rm get-docker.sh
+
+print_info "Añadiendo al usuario '$USER' al grupo 'docker' para permitir el uso sin sudo."
+usermod -aG docker $USER
+
+print_info "Habilitando y arrancando el servicio de Docker..."
 systemctl enable docker
 systemctl start docker
+print_success "Docker instalado y configurado."
 
-# ========================
-# 4️⃣ Instalar Node.js 22 y 20
-# ========================
-echo "Instalando Node.js 22..."
+print_header "4️⃣  Instalando Node.js (v22 y v20)"
+print_info "Configurando el repositorio de NodeSource para Node.js 22..."
 curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+print_info "Instalando Node.js 22 desde apt..."
 apt install -y nodejs
 
-echo "Instalando Node.js 20 (via nvm)..."
+print_info "Instalando nvm (Node Version Manager) para gestionar múltiples versiones..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.6/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "/root/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install 20
 nvm install 22
 
-# ========================
-# 5️⃣ Instalar Java 21
-# ========================
-echo "Instalando Java 21..."
+print_success "Node.js 22 (sistema) y Node.js 20/22 (nvm) instalados."
+
+print_header "5️⃣  Instalando Java 21"
+print_info "Instalando OpenJDK 21..."
 apt install -y openjdk-21-jdk
+print_success "Java 21 instalado."
 
-# ========================
-# 6️⃣ Instalar Python 3
-# ========================
-echo "Instalando Python 3..."
+print_header "6️⃣  Instalando Python 3"
+print_info "Instalando Python 3 y herramientas relacionadas (pip, venv)..."
 apt-get install -y python3 python3-venv python3-dev python3-pip
+print_success "Python 3 instalado."
 
-# ========================
-# 6️⃣ Instalar UFW
-# ========================
-echo "Instalando UFW..."
+print_header "7️⃣  Instalando y Configurando UFW (Firewall)"
+print_info "Instalando UFW (Uncomplicated Firewall)..."
 apt-get install -y ufw
 
-# ========================
-# 7️⃣ Configurar SSH con dos puertos
-# ========================
-echo "Configurando SSH en los puertos 22 y 1234..."
+print_header "8️⃣  Configurando SSH en dos puertos"
+print_info "Modificando la configuración de SSH para escuchar en los puertos 22 y 1234..."
 sed -i '/^Port /d' /etc/ssh/sshd_config
 echo -e "Port 22\nPort 1234" >> /etc/ssh/sshd_config
+print_info "Reiniciando el servicio SSH para aplicar los cambios..."
 systemctl restart ssh
+print_success "SSH configurado en puertos 22 y 1234."
 
-# ========================
-# 8️⃣ Abrir puertos en UFW
-# ========================
 PORTS=(22 1234 23333 24444 3000 3001 24454 25565 25566 16384 8123 4000 4001 2223)
-echo "Configurando UFW..."
+print_info "Reiniciando UFW a su configuración por defecto..."
 ufw --force reset
+print_info "Configurando reglas por defecto: denegar entrantes, permitir salientes."
 ufw default allow outgoing
 ufw default deny incoming
+print_info "Abriendo los puertos necesarios..."
 for p in "${PORTS[@]}"; do
+    printf "    - Abriendo puerto ${C_YELLOW}%s${C_RESET} (TCP/UDP)\n" "$p"
     ufw allow $p/tcp
     ufw allow $p/udp
 done
+print_info "Activando el firewall UFW..."
 ufw enable
+print_success "Firewall UFW configurado y activado."
 
-# ========================
-# 9️⃣ Instalar MCSManager con Docker
-# ========================
-echo "Instalando MCSManager..."
+print_header "9️⃣  Instalando MCSManager con Docker"
+print_info "Creando directorios para MCSManager en /home/$USER/mcsmanager..."
 mkdir -p /home/$USER/mcsmanager/{web,daemon/data/InstanceData,daemon/logs,web/logs,web/data}
 
 cat > /home/$USER/mcsmanager/docker-compose.yml <<EOL
@@ -117,15 +154,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 EOL
 
+print_info "Navegando al directorio de MCSManager..."
 cd /home/$USER/mcsmanager
+print_info "Descargando las imágenes de Docker más recientes para MCSManager..."
 docker compose pull
+print_info "Iniciando los contenedores de MCSManager en segundo plano..."
 docker compose up -d
+print_success "MCSManager instalado y en ejecución."
 
-# ========================
-# 12️⃣ Configurar MCSManager config.json
-# ========================
+print_header "🔟 Configurando MCSManager (config.json)"
 CONFIG_PATH="/home/$USER/mcsmanager/web/data/SystemConfig/config.json"
-echo "Configurando config.json de MCSManager..."
 
 mkdir -p "$(dirname "$CONFIG_PATH")"
 
@@ -161,19 +199,16 @@ cat > "$CONFIG_PATH" <<EOL
 }
 EOL
 
-echo "config.json configurado con httpIp 0.0.0.0 y puerto 23333."
+print_success "config.json de MCSManager creado con la configuración por defecto."
 
-
-# ========================
-# 11️⃣ Instalando StormPack
-# ========================
+print_header "1️⃣1️⃣ Instalando Repositorio StormStore y Apps"
+print_info "Añadiendo el repositorio APT de StormStore e instalando aplicaciones..."
+print_info "  - CardinalAI, WhatsApp Web, PairDrop, MultiAI, TheShooter, KartsMultiplayer y más."
 curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
+print_success "Repositorio y aplicaciones de StormStore instalados."
 
-
-# ========================
-# 12️⃣ Servicio systemd para actualizar al reinicio
-# ========================
-echo "Creando servicio para actualizar el sistema automáticamente al reinicio..."
+print_header "1️⃣2️⃣ Creando servicio de auto-actualización"
+print_info "Creando un script y un servicio systemd para actualizar el sistema en cada reinicio."
 
 cat > /usr/local/sbin/auto-update.sh <<EOL
 #!/bin/bash
@@ -198,53 +233,58 @@ EOL
 
 systemctl daemon-reload
 systemctl enable auto-update.service
-echo "Servicio auto-update creado y habilitado."
+print_success "Servicio 'auto-update.service' creado y habilitado."
 
+print_header "1️⃣3️⃣ Instalando y configurando Fail2Ban"
+print_info "Instalando Fail2Ban para proteger contra ataques de fuerza bruta..."
+apt install -y fail2ban
 
-# ========================
-# 11️⃣ btop ya instalado en dependencias
-# ========================
-echo "¡Setup completo! Docker, MCSManager, Node.js, Java, Python, SSH, puertos, autologin y btop listos."
-echo "By StormGamesStudios"
+cat > /etc/fail2ban/jail.local <<EOL
+[DEFAULT]
+bantime = 1h
+findtime = 10m
+maxretry = 5
 
+[sshd]
+enabled = true
+port = 22,1234
+EOL
 
-# ========================
-# 🔁 Reinicio con cuenta atrás de 10 segundos
-# ========================
-echo "El sistema se reiniciará en 10 segundos..."
-for i in {10..1}; do
-    echo "$i..."
-    sleep 1
-done
-echo "Reiniciando ahora..."
-sleep 1
-echo "Bienvenido a Cardinal System"
-sleep 1
+print_info "Habilitando y reiniciando el servicio Fail2Ban..."
+systemctl enable fail2ban
+systemctl restart fail2ban
+print_success "Fail2Ban configurado para proteger los puertos SSH 22 y 1234."
 
+print_header "1️⃣4️⃣ Instalando Oh My Zsh para el usuario '$USER'"
+print_info "Instalando Oh My Zsh de forma no interactiva..."
+sudo -u $USER sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+print_info "Cambiando la shell por defecto del usuario '$USER' a Zsh..."
+chsh -s $(which zsh) $USER
+print_success "Oh My Zsh instalado y configurado como shell por defecto."
 
-# ========================
-# 🔹 Evitar suspensión al cerrar la tapa
-# ========================
-echo "Configurando el sistema para que no se suspenda al cerrar la tapa..."
+print_header "1️⃣5️⃣ Configurando comportamiento de la tapa del portátil"
+print_info "Modificando logind.conf para ignorar el cierre de la tapa..."
 sed -i '/^HandleLidSwitch=/d' /etc/systemd/logind.conf
 sed -i '/^HandleLidSwitchDocked=/d' /etc/systemd/logind.conf
 echo -e "HandleLidSwitch=ignore\nHandleLidSwitchDocked=ignore" >> /etc/systemd/logind.conf
 systemctl restart systemd-logind
-echo "Configuración de tapa completada: el sistema no se suspenderá al cerrarla."
+print_success "El sistema ya no se suspenderá al cerrar la tapa."
 
+print_header "🎉 ¡INSTALACIÓN COMPLETA! 🎉"
+print_success "El sistema está listo y configurado."
+print_info "Componentes instalados: Docker, MCSManager, Node.js, Java, Python, SSH, UFW, Fail2Ban, Oh My Zsh, btop."
+printf "${C_CYAN}By StormGamesStudios${C_RESET}\n"
 
-# ========================
-# 🔟 Autologin en tty1
-# ========================
-echo "Configurando autologin en tty1..."
-mkdir -p /etc/systemd/system/getty@tty1.service.d
-tee /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null <<EOL
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --autologin $USER --noclear %I \$TERM
-EOL
-systemctl daemon-reexec
-systemctl restart getty@tty1
-
+print_header "🔁 Reinicio del sistema"
+print_info "El sistema se reiniciará para aplicar todos los cambios."
+echo ""
+for i in {10..1}; do
+    printf "\r${C_YELLOW}Reiniciando en %2d segundos... (Presiona Ctrl+C para cancelar)${C_RESET}" "$i"
+    sleep 1
+done
+echo -e "\nReiniciando ahora..."
+sleep 1
+echo "Bienvenido a Cardinal System..."
+sleep 1
 
 reboot
