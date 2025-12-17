@@ -32,6 +32,9 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
+# StormGamesStudios APT repository file
+LIST_FILE="/etc/apt/sources.list.d/stormgamesstudios.list"
+
 # List of all packages to uninstall
 PACKAGES=(
     "cardinal-ai-dualmodel-app"
@@ -56,3 +59,16 @@ for pkg in "${PACKAGES[@]}"; do
 done
 
 print_success "All specified applications have been uninstalled."
+
+print_info "Removing StormStore APT repository..."
+if [ -f "$LIST_FILE" ]; then
+  rm -f "$LIST_FILE"
+  print_success "Repository file removed successfully."
+else
+  print_info "Repository file does not exist."
+fi
+
+print_info "Updating package list to reflect removal..."
+apt update -y
+
+print_success "Removal complete."
