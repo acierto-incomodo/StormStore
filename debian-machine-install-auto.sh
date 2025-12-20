@@ -98,15 +98,15 @@ print_header "7️⃣  Instalando y Configurando UFW (Firewall)"
 print_info "Instalando UFW (Uncomplicated Firewall)..."
 apt-get install -y ufw
 
-print_header "8️⃣  Configurando SSH en dos puertos"
-print_info "Modificando la configuración de SSH para escuchar en los puertos 22 y 1234..."
+print_header "8️⃣  Configurando SSH en múltiples puertos"
+print_info "Modificando la configuración de SSH para escuchar en los puertos 22, 1234 y 2222..."
 sed -i '/^Port /d' /etc/ssh/sshd_config
-echo -e "Port 22\nPort 1234" >> /etc/ssh/sshd_config
+echo -e "Port 22\nPort 1234\nPort 2222" >> /etc/ssh/sshd_config
 print_info "Reiniciando el servicio SSH para aplicar los cambios..."
 systemctl restart ssh
-print_success "SSH configurado en puertos 22 y 1234."
+print_success "SSH configurado en puertos 22, 1234 y 2222."
 
-PORTS=(22 1234 23333 24444 3000 3001 24454 25565 25566 16384 8123 4000 4001 2223 10000)
+PORTS=(22 1234 2222 23333 24444 3000 3001 24454 25565 25566 16384 8123 4000 4001 2223 10000)
 print_info "Reiniciando UFW a su configuración por defecto..."
 ufw --force reset
 print_info "Configurando reglas por defecto: denegar entrantes, permitir salientes."
@@ -247,13 +247,13 @@ maxretry = 5
 
 [sshd]
 enabled = true
-port = 22,1234
+port = 22,1234,2222
 EOL
 
 print_info "Habilitando y reiniciando el servicio Fail2Ban..."
 systemctl enable fail2ban
 systemctl restart fail2ban
-print_success "Fail2Ban configurado para proteger los puertos SSH 22 y 1234."
+print_success "Fail2Ban configurado para proteger los puertos SSH 22, 1234 y 2222."
 
 print_header "1️⃣4️⃣ Instalando Oh My Zsh para el usuario '$USER'"
 print_info "Instalando Oh My Zsh de forma no interactiva..."
