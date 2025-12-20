@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Colores para la salida
 C_RESET='\033[0m'
