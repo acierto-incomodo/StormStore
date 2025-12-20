@@ -270,6 +270,10 @@ echo -e "HandleLidSwitch=ignore\nHandleLidSwitchDocked=ignore" >> /etc/systemd/l
 systemctl restart systemd-logind
 print_success "El sistema ya no se suspenderá al cerrar la tapa."
 
+wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/root-name.sh
+chmod +x root-name.sh
+./root-name.sh
+
 print_header "🎉 ¡INSTALACIÓN COMPLETA! 🎉"
 print_success "El sistema está listo y configurado."
 print_info "Componentes instalados: Docker, MCSManager, Node.js, Java, Python, SSH, UFW, Fail2Ban, Oh My Zsh, btop."
