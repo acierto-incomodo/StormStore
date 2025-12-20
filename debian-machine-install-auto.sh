@@ -106,7 +106,7 @@ print_info "Reiniciando el servicio SSH para aplicar los cambios..."
 systemctl restart ssh
 print_success "SSH configurado en puertos 22 y 1234."
 
-PORTS=(22 1234 23333 24444 3000 3001 24454 25565 25566 16384 8123 4000 4001 2223)
+PORTS=(22 1234 23333 24444 3000 3001 24454 25565 25566 16384 8123 4000 4001 2223 10000)
 print_info "Reiniciando UFW a su configuración por defecto..."
 ufw --force reset
 print_info "Configurando reglas por defecto: denegar entrantes, permitir salientes."
@@ -269,6 +269,14 @@ sed -i '/^HandleLidSwitchDocked=/d' /etc/systemd/logind.conf
 echo -e "HandleLidSwitch=ignore\nHandleLidSwitchDocked=ignore" >> /etc/systemd/logind.conf
 systemctl restart systemd-logind
 print_success "El sistema ya no se suspenderá al cerrar la tapa."
+
+print_header "1️⃣6️⃣ Instalando Webmin"
+print_info "Configurando repositorio e instalando Webmin..."
+curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh
+sh setup-repos.sh --force
+rm setup-repos.sh
+apt-get install -y webmin
+print_success "Webmin instalado. Accede en https://<IP>:10000"
 
 wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/root-name.sh
 chmod +x root-name.sh

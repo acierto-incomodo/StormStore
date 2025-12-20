@@ -97,3 +97,5 @@ echo "Bienvenido a Cardinal System..."
 sleep 1
 
 print_info "Fin de la demostración de mensajes."
+
+reboot
