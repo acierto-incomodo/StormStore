@@ -23,10 +23,18 @@ print_info() {
     printf "${C_YELLOW}[i] %s${C_RESET}\n" "$1"
 }
 
-print_header "1️⃣6️⃣ Configurando Prompt de Root"
-print_info "Configurando el prompt (PS1) en /root/.bashrc..."
-cat >> /root/.bashrc << 'EOF'
+print_header "Actualizando Script de Instalación"
 
-export PS1="\[\033[01;34m\][Cardinal System] \[\033[00m\]- \[\033[01;32m\]\u@\h:\w\$ \[\033[00m\]"
-EOF
-print_success "Prompt de root configurado."
+print_info "Eliminando versión anterior..."
+rm -f ./debian-machine-install-auto.sh
+
+print_info "Descargando la última versión..."
+wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/debian-machine-install-auto.sh
+
+print_info "Dando permisos de ejecución..."
+chmod +x debian-machine-install-auto.sh
+
+print_success "Script actualizado correctamente."
+
+print_header "Ejecutando Script de Instalación"
+./debian-machine-install-auto.sh
