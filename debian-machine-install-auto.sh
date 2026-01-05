@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.3)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.4)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -183,11 +183,12 @@ docker compose up -d
 print_success "MCSManager instalado y en ejecución."
 
 print_header "🔟 Configurando MCSManager (config.json)"
-CONFIG_PATH="/home/$USER/mcsmanager/web/data/SystemConfig/config.json"
+CONFIG_PATH_WEB="/home/$USER/mcsmanager/web/data/SystemConfig/config.json"
+CONFIG_PATH_PANEL="/home/$USER/mcsmanager/daemon/data/Config/global.json"
 
-mkdir -p "$(dirname "$CONFIG_PATH")"
+mkdir -p "$(dirname "$CONFIG_PATH_WEB")"
 
-cat > "$CONFIG_PATH" <<EOL
+cat > "$CONFIG_PATH_WEB" <<EOL
 {
     "httpPort": 23333,
     "httpIp": "0.0.0.0",
