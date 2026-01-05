@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.6)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.8)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -183,6 +183,25 @@ print_info "Iniciando los contenedores de MCSManager en segundo plano..."
 docker compose up -d
 print_success "MCSManager instalado y en ejecución."
 
+print_info "Creando servicio systemd para reiniciar MCSManager al arranque..."
+cat > /etc/systemd/system/mcsmanager-restart.service <<EOL
+[Unit]
+Description=Reiniciar contenedores MCSManager al arranque
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/docker restart mcsmanager-daemon-1 mcsmanager-web-1
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+systemctl daemon-reload
+systemctl enable mcsmanager-restart.service
+print_success "Servicio 'mcsmanager-restart.service' creado y habilitado."
+
 print_header "🔟 Configurando MCSManager (config.json)"
 CONFIG_PATH_WEB="/home/$USER/mcsmanager/web/data/SystemConfig/config.json"
 CONFIG_PATH_PANEL="/home/$USER/mcsmanager/daemon/data/Config/global.json"
@@ -318,9 +337,13 @@ rm setup-repos.sh
 apt-get install -y webmin
 print_success "Webmin instalado. Accede en https://<IP>:10000"
 
-wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/root-name.sh
-chmod +x root-name.sh
-./root-name.sh
+print_header "1️⃣6️⃣ Configurando Prompt de Root"
+print_info "Configurando el prompt (PS1) en /root/.bashrc..."
+cat >> /root/.bashrc << 'EOF'
+
+export PS1="\[\033[01;34m\][Cardinal System] \[\033[00m\]- \[\033[01;32m\]\u@\h:\w\$ \[\033[00m\]"
+EOF
+print_success "Prompt de root configurado."
 
 print_header "1️⃣7️⃣  Recargando actualización del sistema"
 print_info "Actualizando la lista de paquetes, actualizando los paquetes instalados e eliminando extras innecesarios..."
