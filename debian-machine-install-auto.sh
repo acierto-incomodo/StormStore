@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.5)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.6)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -137,6 +137,7 @@ for p in "${PORTS[@]}"; do
     printf "    - Abriendo puerto ${C_YELLOW}%s${C_RESET} (TCP/UDP)\n" "$p"
     ufw allow $p/tcp
     ufw allow $p/udp
+    sudo ufw allow in on tailscale0 to any port $p
 done
 print_info "Activando el firewall UFW..."
 ufw enable
