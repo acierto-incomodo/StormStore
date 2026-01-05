@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.1)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.2)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -193,7 +193,7 @@ cat > "$CONFIG_PATH" <<EOL
     "httpIp": "0.0.0.0",
     "prefix": "",
     "reverseProxyMode": false,
-    "dataPort": 23334,
+    "dataPort": 23333,
     "forwardType": 1,
     "crossDomain": false,
     "gzip": false,
