@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.0)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.1)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -274,6 +274,24 @@ print_info "Habilitando y reiniciando el servicio Fail2Ban..."
 systemctl enable fail2ban
 systemctl restart fail2ban
 print_success "Fail2Ban configurado para proteger los puertos SSH 22, 1234 y 2222."
+
+print_header "1️⃣4️⃣ Instalando Ngrok"
+print_info "Añadiendo el repositorio de Ngrok e instalando ngrok..."
+curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+  | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+  && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
+  | sudo tee /etc/apt/sources.list.d/ngrok.list \
+  && sudo apt update \
+  && sudo apt install -y ngrok
+print_success "Ngrok instalado."
+
+print_info "Eliminando carpetas de Oh My Zsh antiguas si existen..."
+for d in "/home/aito/.oh-my-zsh" "/home/$USER/.oh-my-zsh"; do
+    if [ -d "$d" ]; then
+        rm -rf "$d"
+        print_success "Eliminado $d"
+    fi
+done
 
 print_header "1️⃣4️⃣ Instalando Oh My Zsh para el usuario '$USER'"
 print_info "Instalando Oh My Zsh de forma no interactiva..."
