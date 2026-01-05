@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.4)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.5)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -188,37 +188,37 @@ CONFIG_PATH_PANEL="/home/$USER/mcsmanager/daemon/data/Config/global.json"
 
 mkdir -p "$(dirname "$CONFIG_PATH_WEB")"
 
-cat > "$CONFIG_PATH_WEB" <<EOL
-{
-    "httpPort": 23333,
-    "httpIp": "0.0.0.0",
-    "prefix": "",
-    "reverseProxyMode": false,
-    "dataPort": 23333,
-    "forwardType": 1,
-    "crossDomain": false,
-    "gzip": false,
-    "maxCompress": 1,
-    "maxDownload": 10,
-    "zipType": 1,
-    "totpDriftToleranceSteps": 0,
-    "loginCheckIp": true,
-    "loginInfo": "",
-    "canFileManager": true,
-    "allowUsePreset": false,
-    "language": "en_us",
-    "presetPackAddr": "https://script.mcsmanager.com/market.json",
-    "redisUrl": "",
-    "allowChangeCmd": false,
-    "businessMode": false,
-    "businessId": "",
-    "panelId": "c8e0b8d9-44e3-40fe-8ec8-970a39f03d2d",
-    "registerCode": "",
-    "ssl": false,
-    "sslPemPath": "",
-    "sslKeyPath": ""
-}
-EOL
+# cat > "$CONFIG_PATH_WEB" <<EOL
+# {
+#   "httpPort": 23333,
+#     "httpIp": "0.0.0.0",
+#     "prefix": "",
+#     "reverseProxyMode": false,
+#     "dataPort": 23333,
+#     "forwardType": 1,
+#     "crossDomain": false,
+#     "gzip": false,
+#    "maxCompress": 1,
+#    "maxDownload": 10,
+#    "zipType": 1,
+#    "totpDriftToleranceSteps": 0,
+#    "loginCheckIp": true,
+#    "loginInfo": "",
+#    "canFileManager": true,
+#    "allowUsePreset": false,
+#    "language": "en_us",
+#    "presetPackAddr": "https://script.mcsmanager.com/market.json",
+#    "redisUrl": "",
+#    "allowChangeCmd": false,
+#    "businessMode": false,
+#    "businessId": "",
+#    "panelId": "c8e0b8d9-44e3-40fe-8ec8-970a39f03d2d",
+#    "registerCode": "",
+#    "ssl": false,
+#    "sslPemPath": "",
+#    "sslKeyPath": ""
+#}
+#EOL
 
 print_success "config.json de MCSManager creado con la configuración por defecto."
 
