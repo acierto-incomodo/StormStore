@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.8)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.9)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -192,7 +192,7 @@ Requires=docker.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/docker restart mcsmanager-daemon-1 mcsmanager-web-1
+ExecStart=/usr/bin/docker stop mcsmanager-daemon-1 mcsmanager-web-1
 
 [Install]
 WantedBy=multi-user.target
