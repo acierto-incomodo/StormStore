@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.10)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.11)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -349,6 +349,11 @@ print_header "1️⃣7️⃣  Recargando actualización del sistema"
 print_info "Actualizando la lista de paquetes, actualizando los paquetes instalados e eliminando extras innecesarios..."
 apt update && apt upgrade -y && apt autoremove -y
 print_success "Sistema actualizado correctamente."
+
+print_header "Finalizando la instalación"
+print_success "Descargando el script del menú rapido..."
+wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
+chmod +x menu.sh
 
 print_header "🎉 ¡INSTALACIÓN COMPLETA! 🎉"
 print_success "El sistema está listo y configurado."
