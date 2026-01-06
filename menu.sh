@@ -34,7 +34,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}                           By StormGamesStudios v(1.0.0)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.1)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -42,12 +42,13 @@ print_option "1" "Instalar Todo"
 print_option "2" "Actualizar Sistema (Update Debian)"
 print_option "3" "Eliminar StormStore"
 print_option "4" "Instalar MCSManager"
-print_option "5" "Salir"
+print_option "5" "Instalar PairDrop Server"
+print_option "6" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-5]: " option
+read -p "Selecciona una opción [1-6]: " option
 
 case $option in
     1)
@@ -84,11 +85,30 @@ case $option in
         ./install-mcsmanager.sh
         ;;
     5)
+        print_header "💧 Instalando PairDrop Server..."
+        rm -f ./install-pairdrop.sh
+        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-pairdrop.sh
+        chmod +x install-pairdrop.sh
+        ./install-pairdrop.sh
+        ;;
+    6)
+        echo "Saliendo..."
+        exit 0
+        ;;
+    make)
+        print_header "🚧 Iniciando Script de Construcción..."
+        chmod +x make.sh
+        ./make.sh
         echo "Saliendo..."
         exit 0
         ;;
     *)
         printf "${C_RED}[✖] Opción inválida.${C_RESET}\n"
-        exit 1
+        for i in {5..1}; do
+            printf "\r${C_YELLOW}Reintentando en%2d segundos... (Presiona Ctrl+C para cancelar)${C_RESET}" "$i"
+            sleep 1
+        done
+        chmod +x menu.sh
+        ./menu.sh
         ;;
 esac

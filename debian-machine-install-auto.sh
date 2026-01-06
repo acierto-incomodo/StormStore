@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.9)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.10)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -359,7 +359,7 @@ print_header "🔁 Reinicio del sistema"
 print_info "El sistema se reiniciará para aplicar todos los cambios."
 echo ""
 for i in {10..1}; do
-    printf "\r${C_YELLOW}Reiniciando en %2d segundos... (Presiona Ctrl+C para cancelar)${C_RESET}" "$i"
+    printf "\r${C_YELLOW}Reiniciando en%2d segundos... (Presiona Ctrl+C para cancelar)${C_RESET}" "$i"
     sleep 1
 done
 echo -e "\nReiniciando ahora..."
