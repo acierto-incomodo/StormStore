@@ -61,7 +61,7 @@ Requires=docker.service
 Restart=always
 ExecStart=/usr/bin/docker run \
   --name pairdrop \
-  -p 127.0.0.1:3000:3000 \
+  -p 3000:3000 \
   -e PUID=1000 \
   -e PGID=1000 \
   lscr.io/linuxserver/pairdrop
