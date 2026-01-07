@@ -354,6 +354,8 @@ print_header "Finalizando la instalación"
 print_success "Descargando el script del menú rapido..."
 wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
 chmod +x menu.sh
+wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh -O /root/menu.sh
+chmod +x /root/menu.sh
 
 print_header "🎉 ¡INSTALACIÓN COMPLETA! 🎉"
 print_success "El sistema está listo y configurado."
