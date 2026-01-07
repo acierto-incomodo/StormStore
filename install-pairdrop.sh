@@ -45,15 +45,37 @@ if docker ps -a --format '{{.Names}}' | grep -q "^pairdrop$"; then
     docker rm pairdrop >/dev/null 2>&1 || true
 fi
 
-print_info "Descargando e iniciando contenedor PairDrop..."
+print_info "Descargando imagen de PairDrop..."
+docker pull lscr.io/linuxserver/pairdrop
 
-# Ejecutar el contenedor con reinicio automático
-docker run -d --restart=unless-stopped --name=pairdrop -p 127.0.0.1:3000:3000 lscr.io/linuxserver/pairdrop
+print_info "Creando servicio systemd para PairDrop..."
 
-if [ $? -eq 0 ]; then
-    print_success "PairDrop instalado y ejecutándose correctamente."
+# Crear archivo de servicio
+cat > /etc/systemd/system/pairdrop.service <<EOF
+[Unit]
+Description=PairDrop Docker Container
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker stop pairdrop
+ExecStartPre=-/usr/bin/docker rm pairdrop
+ExecStart=/usr/bin/docker run --rm --name pairdrop -p 127.0.0.1:3000:3000 lscr.io/linuxserver/pairdrop
+ExecStop=/usr/bin/docker stop pairdrop
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+print_info "Habilitando y arrancando servicio..."
+systemctl daemon-reload
+systemctl enable --now pairdrop
+
+if systemctl is-active --quiet pairdrop; then
+    print_success "PairDrop instalado y ejecutándose correctamente (Systemd)."
     print_info "Accede a través de: http://127.0.0.1:3000"
 else
-    print_error "Fallo al iniciar el contenedor Docker."
+    print_error "Fallo al iniciar el servicio systemd."
     exit 1
 fi
