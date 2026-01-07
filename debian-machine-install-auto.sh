@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.14)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.15)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -180,7 +180,7 @@ cd /home/$USER/mcsmanager
 print_info "Descargando las imágenes de Docker más recientes para MCSManager..."
 docker compose pull
 print_info "Iniciando los contenedores de MCSManager en segundo plano..."
-docker compose up -d
+# docker compose up -d
 print_success "MCSManager instalado y en ejecución."
 
 print_info "Creando servicio systemd para reiniciar MCSManager al arranque..."
