@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.11)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.12)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -51,7 +51,7 @@ print_success "Sistema actualizado correctamente."
 
 print_header "2️⃣  Instalando dependencias básicas"
 print_info "Instalando: sudo, curl, wget, git, btop, zsh y otras utilidades..."
-apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop zsh
+apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop zsh net-tools glances ncdu duf micro iperf3 tmpreaper tcpdump doggo resolvconf
 print_success "Dependencias básicas instaladas."
 
 print_header "3️⃣  Instalando Docker"
@@ -352,8 +352,10 @@ print_success "Sistema actualizado correctamente."
 
 print_header "Finalizando la instalación"
 print_success "Descargando el script del menú rapido..."
+rm -f menu.sh
 wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
 chmod +x menu.sh
+rm -f /root/menu.sh
 wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh -O /root/menu.sh
 chmod +x /root/menu.sh
 
