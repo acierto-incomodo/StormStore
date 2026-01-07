@@ -36,7 +36,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.12)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.13)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -51,7 +51,7 @@ print_success "Sistema actualizado correctamente."
 
 print_header "2️⃣  Instalando dependencias básicas"
 print_info "Instalando: sudo, curl, wget, git, btop, zsh y otras utilidades..."
-apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop zsh net-tools glances ncdu duf micro iperf3 tmpreaper tcpdump doggo resolvconf
+apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop zsh net-tools glances ncdu duf micro iperf3 tmpreaper tcpdump resolvconf
 print_success "Dependencias básicas instaladas."
 
 print_header "3️⃣  Instalando Docker"
