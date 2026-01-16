@@ -101,7 +101,6 @@ case $option in
         systemctl enable playit
         systemctl start playit
         echo "Playit instalado correctamente."
-        playit
         ;;
     7)
         echo "Saliendo..."
