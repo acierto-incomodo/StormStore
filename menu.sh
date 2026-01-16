@@ -43,12 +43,13 @@ print_option "2" "Actualizar Sistema (Update Debian)"
 print_option "3" "Eliminar StormStore"
 print_option "4" "Instalar MCSManager"
 print_option "5" "Instalar PairDrop Server"
-print_option "6" "Salir"
+print_option "6" "Instalar Playit (APT)"
+print_option "7" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-6]: " option
+read -p "Selecciona una opción [1-7]: " option
 
 case $option in
     1)
@@ -92,6 +93,17 @@ case $option in
         ./install-pairdrop.sh
         ;;
     6)
+        print_header "🌍 Instalando Playit..."
+        curl -SsL https://playit-cloud.github.io/ppa/key.gpg | gpg --dearmor | tee /etc/apt/trusted.gpg.d/playit.gpg >/dev/null
+        echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | tee /etc/apt/sources.list.d/playit-cloud.list
+        apt update
+        apt install -y playit
+        systemctl enable playit
+        systemctl start playit
+        echo "Playit instalado correctamente."
+        playit
+        ;;
+    7)
         echo "Saliendo..."
         exit 0
         ;;

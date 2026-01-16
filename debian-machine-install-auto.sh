@@ -95,12 +95,6 @@ apt-get install -y python3 python3-venv python3-dev python3-pip
 print_success "Python 3 instalado."
 
 print_header "7️⃣  Instalando Playit"
-print_info "Agregando el repositorio de Playit y instalando Playit..."
-curl -SsL https://playit-cloud.github.io/ppa/key.gpg | gpg --dearmor | tee /etc/apt/trusted.gpg.d/playit.gpg >/dev/null
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | tee /etc/apt/sources.list.d/playit-cloud.list
-apt update
-apt install -y playit
-print_success "Playit instalado."
 print_info "Habilitando y arrancando servicio Playit..."
 systemctl enable playit
 systemctl start playit
