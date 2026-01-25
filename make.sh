@@ -28,11 +28,13 @@ print_header "Building and Publishing Repository"
 
 print_info "Cleaning up old build artifacts..."
 rm -rf Packages.gz
+rm -rf Packages
 
 sleep 1
 
 print_info "Generating APT package index (Packages.gz)..."
-dpkg-scanpackages ./debs /dev/null | gzip -9c > Packages.gz
+dpkg-scanpackages ./debs /dev/null > Packages
+gzip -9c Packages > Packages.gz
 
 print_success "Packages.gz generated successfully."
 
