@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.0.0 Release",
+  "version": "1.0.0",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",

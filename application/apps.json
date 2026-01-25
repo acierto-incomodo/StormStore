@@ -1,5 +1,16 @@
 [
   {
+    "id": "stormlibraryv2",
+    "name": "StormLibraryV2",
+    "description": "Lanzador de juegos",
+    "category": "Utilidades",
+    "icon": "../assets/apps/stormlibraryv2.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/StormGamesLauncher/StormLibraryV2/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe"
+  },
+  {
     "id": "the-shooter",
     "name": "The Shooter",
     "description": "Juego de disparos en primera persona",

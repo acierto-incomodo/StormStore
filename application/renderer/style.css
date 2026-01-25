@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Quantico';
-  src: url('../assets/fonts/Quantico-Regular.ttf');
+  font-family: "Quantico";
+  src: url("../assets/fonts/Quantico/Quantico-Regular.ttf");
 }
 
 * {
@@ -110,7 +110,7 @@ button {
 }
 
 .sidebar-footer .studio {
-  font-family: 'Quantico', sans-serif;
+  font-family: "Quantico", sans-serif;
   font-size: 18px;
   opacity: 0.7;
   text-align: center;
@@ -190,4 +190,81 @@ button {
   font-size: 16px;
   margin-top: 10px;
   color: #aaa;
+}
+
+/* Estilos personalizados para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e; /* Color del fondo de la barra (coincide con el fondo de la app) */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444; /* Color de la parte móvil */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3daee9; /* Color al pasar el ratón por encima (azul del tema) */
+}
+
+/* Botones (flechas) de la barra de desplazamiento */
+::-webkit-scrollbar-button:single-button {
+  background-color: #1e1e1e;
+  display: block;
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Flecha arriba */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  height: 12px;
+  width: 10px;
+  /* SVG de flecha hacia arriba codificado */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23aaaaaa'%3E%3Cpath d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
+}
+
+/* Flecha abajo */
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  height: 12px;
+  width: 10px;
+  /* SVG de flecha hacia abajo codificado */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23aaaaaa'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
+}
+
+/* Efecto hover en las flechas */
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover,
+::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+  background-color: #2a2a2a;
+}
+
+/* Estilos para licencias desplegables */
+.license-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.license-header .arrow {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.license-header.active .arrow {
+  transform: rotate(180deg);
+}
+
+.license-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
 }

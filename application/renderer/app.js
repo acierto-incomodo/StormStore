@@ -89,7 +89,7 @@ function renderApps(category) {
 load();
 
 // Footer links
-document.querySelectorAll(".sidebar-footer button").forEach((btn) => {
+document.querySelectorAll(".sidebar-footer button[data-link]").forEach((btn) => {
   btn.addEventListener("click", () => {
     const url = btn.getAttribute("data-link");
     window.open(url);
@@ -100,8 +100,8 @@ document.querySelectorAll(".sidebar-footer button").forEach((btn) => {
 function updateInternetStatus() {
   const overlay = document.getElementById("no-internet-overlay");
   fetch("https://www.google.com", { mode: "no-cors" })
-    .then(() => overlay.style.display = "none")
-    .catch(() => overlay.style.display = "flex");
+    .then(() => (overlay.style.display = "none"))
+    .catch(() => (overlay.style.display = "flex"));
 }
 
 updateInternetStatus();

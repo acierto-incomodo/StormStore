@@ -9,8 +9,8 @@ const apps = require("./apps.json");
 // Crear ventana principal
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1200,
-    height: 800,
+    width: 1210,
+    height: 650,
     backgroundColor: "#1e1e1e",
     icon: path.join(__dirname, "./assets/app.ico"),
     webPreferences: {
@@ -31,7 +31,7 @@ function createWindow() {
 /* 📁 Carpeta de descargas */
 function getDownloadDir() {
   const base = app.getPath("appData");
-  const dir = path.join(base, "StormGamesStudios", "StormStore");
+  const dir = path.join(base, "StormGamesStudios", "StormStore", "downloads");
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   return dir;
 }
@@ -41,7 +41,9 @@ ipcMain.handle("get-apps", () => {
   return apps.map((appItem) => ({
     ...appItem,
     installed: appItem.paths.some((p) => {
-      const resolvedPath = path.normalize(p.replace(/%appdata%/gi, app.getPath("appData")));
+      const resolvedPath = path.normalize(
+        p.replace(/%appdata%/gi, app.getPath("appData")),
+      );
       return fs.existsSync(resolvedPath);
     }),
   }));
@@ -65,7 +67,9 @@ ipcMain.handle("install-app", (e, appData) => {
 });
 
 ipcMain.handle("open-app", (e, exePath) => {
-  const resolvedPath = path.normalize(exePath.replace(/%appdata%/gi, app.getPath("appData")));
+  const resolvedPath = path.normalize(
+    exePath.replace(/%appdata%/gi, app.getPath("appData")),
+  );
   exec(`"${resolvedPath}"`);
 });
 
