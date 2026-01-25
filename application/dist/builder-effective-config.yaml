@@ -1,0 +1,10 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.stormgamesstudios.stormstore
+productName: StormStore
+win:
+  target: nsis
+  icon: assets/app.ico
+files: []
+electronVersion: 40.0.0

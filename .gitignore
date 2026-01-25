@@ -1,3 +1,4 @@
 
 /venv
 /application/node_modules
+/application/dist/win-unpacked
