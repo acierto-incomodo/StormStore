@@ -1,0 +1,13 @@
+[
+    {
+    "id": "multiai",
+    "name": "MultiAI",
+    "description": "MultiAI es una aplicación que integra múltiples modelos de inteligencia artificial para ofrecer respuestas rápidas y precisas a tus consultas.",
+    "category": "Utilidades",
+    "icon": "../assets/apps/multiai.png",
+    "paths": [
+      "unknown"
+    ],
+    "download": "unknown"
+  }
+]
