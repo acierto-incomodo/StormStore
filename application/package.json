@@ -1,0 +1,26 @@
+{
+  "name": "stormstore",
+  "version": "1.0.0 Release",
+  "description": "Tienda de aplicaciones de StormGamesStudios",
+  "author": "StormGamesStudios",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.stormgamesstudios.stormstore",
+    "productName": "StormStore",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/app.ico"
+    }
+  },
+  "devDependencies": {
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0"
+  }
+}

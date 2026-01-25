@@ -1,0 +1,134 @@
+[
+  {
+    "id": "the-shooter",
+    "name": "The Shooter",
+    "description": "Juego de disparos en primera persona",
+    "category": "Juegos",
+    "icon": "../assets/apps/the-shooter.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe"
+  },
+  {
+    "id": "karts-multiplayer",
+    "name": "Karts Multiplayer",
+    "description": "Divertido juego de carreras de karts multijugador online con amigos y potenciadores.",
+    "category": "Juegos",
+    "icon": "../assets/apps/karts-multiplayer.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/KartsMultiplayer/releases/latest/download/Karts_Multiplayer_Launcher_Installer.exe"
+  },
+  {
+    "id": "REPO",
+    "name": "R.E.P.O.",
+    "description": "Juego cooperativo de terror y acción. Explora zonas peligrosas y recupera objetos valiosos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/REPO.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/R.E.P.O. Launcher.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/sgs-blog-disccussions/releases/latest/download/REPO_Launcher_Installer.exe"
+  },
+  {
+    "id": "lethal-company",
+    "name": "Lethal Company",
+    "description": "Terror cooperativo. Explora instalaciones abandonadas, recolecta chatarra y sobrevive a criaturas peligrosas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/lethal-company.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/Lethal Company - Launcher.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/LethalCompany_Launcher_Installer.exe"
+  },
+  {
+    "id": "mage-arena",
+    "name": "Mage Arena",
+    "description": "Arena de magos. Compite en combates mágicos usando hechizos y habilidades únicas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/mage-arena.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/MageArena_Launcher_Installer.exe"
+  },
+  {
+    "id": "backseat-drivers",
+    "name": "Backseat Drivers",
+    "description": "Juego de carreras en pistas desafiantes con vehículos de características únicas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/backseat-drivers.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/backseat_drivers/releases/latest/download/BackseatDrivers_Launcher_Installer.exe"
+  },
+  {
+    "id": "content-warning",
+    "name": "Content Warning",
+    "description": "Terror cooperativo. Graba vídeos de criaturas peligrosas con amigos para conseguir visitas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/content-warning.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/content_warning/releases/latest/download/ContentWarning_Launcher_Installer.exe"
+  },
+  {
+    "id": "hollow-knight-silksong",
+    "name": "Hollow Knight: Silksong",
+    "description": "Metroidvania de acción y exploración. Controla a Hornet en un reino lleno de secretos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/hollow-knight-silksong.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/HollowKnightSilksong_Launcher_Installer.exe"
+  },
+  {
+    "id": "FNAF1",
+    "name": "Five Nights at Freddy's 1",
+    "description": "Sobrevive cinco noches como guardia de seguridad vigilando animatrónicos asesinos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/FNAF1.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/FNAF1/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/fnaf_1/releases/latest/download/FNAF1_Launcher_Installer.exe"
+  },
+  {
+    "id": "FNAF2",
+    "name": "Five Nights at Freddy's 2",
+    "description": "Precuela con más animatrónicos. Usa una máscara y linterna para sobrevivir.",
+    "category": "Juegos",
+    "icon": "../assets/apps/FNAF2.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/FNAF2/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/fnaf_2/releases/latest/download/FNAF2_Launcher_Installer.exe"
+  },
+  {
+    "id": "FNAF3",
+    "name": "Five Nights at Freddy's 3",
+    "description": "Sobrevive en una atracción de terror manteniendo los sistemas y evitando a Springtrap.",
+    "category": "Juegos",
+    "icon": "../assets/apps/FNAF3.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/FNAF3/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/fnaf_3/releases/latest/download/FNAF3_Launcher_Installer.exe"
+  },
+  {
+    "id": "FNAF4",
+    "name": "Five Nights at Freddy's 4",
+    "description": "Sobrevive a pesadillas en tu casa usando solo una linterna y tu oído.",
+    "category": "Juegos",
+    "icon": "../assets/apps/FNAF4.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/FNAF4/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/FNAF4_Launcher_Installer.exe"
+  }
+]

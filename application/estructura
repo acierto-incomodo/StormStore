@@ -1,0 +1,14 @@
+StormStore/
+├─ main.js
+├─ preload.js
+├─ package.json
+├─ apps.json
+├─ assets/
+│  ├─ app.ico
+│  └─ apps/
+│     ├─ firefox.png
+│     └─ vlc.png
+└─ renderer/
+   ├─ index.html
+   ├─ style.css
+   └─ app.js
