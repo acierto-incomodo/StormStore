@@ -5,10 +5,15 @@ StormStore/
 ├─ apps.json
 ├─ assets/
 │  ├─ app.ico
+│  ├─ app.png
+│  └─ extra-files/
+│  └─ fonts/
+│  └─ icons/
 │  └─ apps/
-│     ├─ firefox.png
-│     └─ vlc.png
+│     └─ *.png
 └─ renderer/
    ├─ index.html
+   ├─ licencias.html
+   ├─ no-internet.html
    ├─ style.css
    └─ app.js
