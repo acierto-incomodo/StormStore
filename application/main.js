@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 
 const apps = require("./apps.json");
 
@@ -21,10 +21,10 @@ function createWindow() {
 
   win.loadFile("renderer/index.html");
 
-  // Interceptar solicitudes de nueva ventana (window.open) y abrirlas en el navegador
+  // Abrir enlaces externos en navegador
   win.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url);
-    return { action: "deny" }; // Evita que Electron cree su propia ventana
+    return { action: "deny" };
   });
 }
 
@@ -36,19 +36,20 @@ function getDownloadDir() {
   return dir;
 }
 
-// API para renderer
+// Obtener apps
 ipcMain.handle("get-apps", () => {
   return apps.map((appItem) => ({
     ...appItem,
     installed: appItem.paths.some((p) => {
       const resolvedPath = path.normalize(
-        p.replace(/%appdata%/gi, app.getPath("appData")),
+        p.replace(/%appdata%/gi, app.getPath("appData"))
       );
       return fs.existsSync(resolvedPath);
     }),
   }));
 });
 
+// Instalar app
 ipcMain.handle("install-app", (e, appData) => {
   const downloadDir = getDownloadDir();
   const filePath = path.join(downloadDir, `${appData.id}.exe`);
@@ -56,9 +57,18 @@ ipcMain.handle("install-app", (e, appData) => {
 
   https.get(appData.download, (res) => {
     res.pipe(file);
+
     file.on("finish", () => {
       file.close();
-      exec(`"${filePath}"`);
+
+      // Ejecutar instalador
+      if (process.platform === "win32") {
+        exec(`"${filePath}"`);
+      } else {
+        shell.openPath(filePath);
+      }
+
+      // Borrar instalador tras 10s
       setTimeout(() => {
         if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
       }, 10000);
@@ -66,15 +76,27 @@ ipcMain.handle("install-app", (e, appData) => {
   });
 });
 
+// 🔥 ABRIR APP CORRECTAMENTE
 ipcMain.handle("open-app", async (event, exePath) => {
   try {
-    const appDir = path.dirname(exePath);
+    if (!fs.existsSync(exePath)) {
+      throw new Error("El ejecutable no existe");
+    }
 
-    spawn(exePath, [], {
-      cwd: appDir,      // 🔥 CLAVE: carpeta del programa
-      detached: true,
-      stdio: "ignore",
-    }).unref();
+    // 🪟 Windows
+    if (process.platform === "win32") {
+      const appDir = path.dirname(exePath);
+
+      spawn(exePath, [], {
+        cwd: appDir,        // 👈 CLAVE
+        detached: true,
+        stdio: "ignore",
+      }).unref();
+    } 
+    // 🐧 Linux / 🍎 macOS
+    else {
+      await shell.openPath(exePath);
+    }
 
     return true;
   } catch (err) {
@@ -83,10 +105,10 @@ ipcMain.handle("open-app", async (event, exePath) => {
   }
 });
 
-// Nueva API: obtener versión de la app
+// Versión de la app
 ipcMain.handle("get-app-version", () => {
   return app.getVersion();
 });
 
-// Crear ventana al iniciar
+// Crear ventana
 app.whenReady().then(createWindow);
