@@ -1,96 +1,69 @@
-const { app, BrowserWindow, ipcMain, shell } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
-const https = require("https");
 const { spawn } = require("child_process");
 
-const apps = require("./apps.json");
+let mainWindow;
 
-function resolvePath(p) {
-  return p.replace(/%appdata%/gi, app.getPath("appData"));
+// 🔒 SOLO WINDOWS
+if (process.platform !== "win32") {
+  app.quit();
 }
 
-// 🚪 Ventana principal
-function createWindow() {
-  if (process.platform !== "win32") {
-    console.error("StormStore solo funciona en Windows");
-    app.quit();
-    return;
-  }
+// =======================
+// 🧠 UTILIDADES
+// =======================
 
-  const win = new BrowserWindow({
-    width: 1210,
-    height: 650,
-    backgroundColor: "#1e1e1e",
-    icon: path.join(__dirname, "./assets/app.ico"),
+function resolvePath(p) {
+  return path.normalize(
+    p.replace(/%appdata%/gi, app.getPath("appData"))
+  );
+}
+
+// =======================
+// 🪟 CREAR VENTANA
+// =======================
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 700,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      contextIsolation: true,
     },
   });
 
-  win.loadFile("renderer/index.html");
-
-  win.webContents.setWindowOpenHandler(({ url }) => {
-    shell.openExternal(url);
-    return { action: "deny" };
-  });
+  mainWindow.loadFile("index.html");
 }
 
-/* 📁 Descargas */
-function getDownloadDir() {
-  const dir = path.join(
-    app.getPath("appData"),
-    "StormGamesStudios",
-    "StormStore",
-    "downloads"
-  );
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  return dir;
-}
+// =======================
+// 🚀 APP READY
+// =======================
 
-// 📦 Apps
-ipcMain.handle("get-apps", () => {
-  return apps.map((appItem) => {
-    const resolvedPaths = appItem.paths.map(resolvePath);
-    return {
-      ...appItem,
-      installed: resolvedPaths.some((p) => fs.existsSync(p)),
-      resolvedPaths,
-    };
-  });
+app.whenReady().then(createWindow);
+
+app.on("window-all-closed", () => {
+  if (process.platform === "win32") app.quit();
 });
 
-// ⬇️ Instalar
-ipcMain.handle("install-app", (_, appData) => {
-  const filePath = path.join(getDownloadDir(), `${appData.id}.exe`);
-  const file = fs.createWriteStream(filePath);
+// =======================
+// 📦 IPC
+// =======================
 
-  https.get(appData.download, (res) => {
-    res.pipe(file);
-    file.on("finish", () => {
-      file.close();
-
-      // abrir instalador
-      spawn("cmd.exe", ["/c", "start", "", `"${filePath}"`], {
-        detached: true,
-        stdio: "ignore",
-      }).unref();
-
-      // borrar luego
-      setTimeout(() => {
-        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-      }, 10000);
-    });
-  });
+// 📋 Obtener lista de apps
+ipcMain.handle("get-apps", async () => {
+  const appsPath = path.join(__dirname, "apps.json");
+  return JSON.parse(fs.readFileSync(appsPath, "utf8"));
 });
 
-// ▶️ ABRIR APP (UPDATER / LAUNCHER)
+// ▶️ Abrir app (launcher / updater)
 ipcMain.handle("open-app", async (_, exePath) => {
   const resolved = resolvePath(exePath);
 
+  console.log("Ruta final:", resolved);
+
   if (!fs.existsSync(resolved)) {
-    throw new Error("Ejecutable no encontrado: " + resolved);
+    throw new Error("El ejecutable no existe");
   }
 
   spawn("cmd.exe", ["/c", "start", "", `"${resolved}"`], {
@@ -101,5 +74,17 @@ ipcMain.handle("open-app", async (_, exePath) => {
   return true;
 });
 
-// 🪟 Ready
-app.whenReady().then(createWindow);
+// ⬇️ Instalar app (descarga externa)
+ipcMain.handle("install-app", async (_, url) => {
+  spawn("cmd.exe", ["/c", "start", "", url], {
+    detached: true,
+    stdio: "ignore",
+  }).unref();
+
+  return true;
+});
+
+// 🏷️ OBTENER VERSIÓN DE LA APP (package.json)
+ipcMain.handle("get-version", () => {
+  return app.getVersion();
+});
