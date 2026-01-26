@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
-const { exec } = require("child_process");
+const { spawn } = require("child_process");
 
 const apps = require("./apps.json");
 
@@ -66,11 +66,21 @@ ipcMain.handle("install-app", (e, appData) => {
   });
 });
 
-ipcMain.handle("open-app", (e, exePath) => {
-  const resolvedPath = path.normalize(
-    exePath.replace(/%appdata%/gi, app.getPath("appData")),
-  );
-  exec(`"${resolvedPath}"`);
+ipcMain.handle("open-app", async (event, exePath) => {
+  try {
+    const appDir = path.dirname(exePath);
+
+    spawn(exePath, [], {
+      cwd: appDir,      // 🔥 CLAVE: carpeta del programa
+      detached: true,
+      stdio: "ignore",
+    }).unref();
+
+    return true;
+  } catch (err) {
+    console.error("Error al abrir app:", err);
+    return false;
+  }
 });
 
 // Nueva API: obtener versión de la app
