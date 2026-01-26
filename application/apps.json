@@ -6,7 +6,7 @@
     "category": "Utilidades",
     "icon": "../assets/apps/stormlibraryv2.png",
     "paths": [
-      "%appdata%/StormGamesStudios/StormGamesLauncher/StormLibraryV2/installer_updater.exe"
+      "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe"
   },
@@ -17,7 +17,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/the-shooter.png",
     "paths": [
-      "%appdata%\\StormGamesStudios\\NewGameDir\\TheShooterLauncher_New\\installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe"
   },
@@ -141,5 +141,16 @@
       "%appdata%/StormGamesStudios/NewGameDir/FNAF4/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/FNAF4_Launcher_Installer.exe"
+  },
+  {
+    "id": "StormLauncher",
+    "name": "StormLauncher: HMCL Edition",
+    "description": "Minecraft launcher.",
+    "category": "Juegos",
+    "icon": "../assets/apps/stormlauncher.png",
+    "paths": [
+      "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.12.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe"
   }
 ]
