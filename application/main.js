@@ -2,12 +2,22 @@ const { app, BrowserWindow, ipcMain, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
-const { spawn, exec } = require("child_process");
+const { spawn } = require("child_process");
 
 const apps = require("./apps.json");
 
-// Crear ventana principal
+function resolvePath(p) {
+  return p.replace(/%appdata%/gi, app.getPath("appData"));
+}
+
+// 🚪 Ventana principal
 function createWindow() {
+  if (process.platform !== "win32") {
+    console.error("StormStore solo funciona en Windows");
+    app.quit();
+    return;
+  }
+
   const win = new BrowserWindow({
     width: 1210,
     height: 650,
@@ -21,54 +31,53 @@ function createWindow() {
 
   win.loadFile("renderer/index.html");
 
-  // Abrir enlaces externos en navegador
   win.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url);
     return { action: "deny" };
   });
 }
 
-/* 📁 Carpeta de descargas */
+/* 📁 Descargas */
 function getDownloadDir() {
-  const base = app.getPath("appData");
-  const dir = path.join(base, "StormGamesStudios", "StormStore", "downloads");
+  const dir = path.join(
+    app.getPath("appData"),
+    "StormGamesStudios",
+    "StormStore",
+    "downloads"
+  );
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   return dir;
 }
 
-// Obtener apps
+// 📦 Apps
 ipcMain.handle("get-apps", () => {
-  return apps.map((appItem) => ({
-    ...appItem,
-    installed: appItem.paths.some((p) => {
-      const resolvedPath = path.normalize(
-        p.replace(/%appdata%/gi, app.getPath("appData"))
-      );
-      return fs.existsSync(resolvedPath);
-    }),
-  }));
+  return apps.map((appItem) => {
+    const resolvedPaths = appItem.paths.map(resolvePath);
+    return {
+      ...appItem,
+      installed: resolvedPaths.some((p) => fs.existsSync(p)),
+      resolvedPaths,
+    };
+  });
 });
 
-// Instalar app
-ipcMain.handle("install-app", (e, appData) => {
-  const downloadDir = getDownloadDir();
-  const filePath = path.join(downloadDir, `${appData.id}.exe`);
+// ⬇️ Instalar
+ipcMain.handle("install-app", (_, appData) => {
+  const filePath = path.join(getDownloadDir(), `${appData.id}.exe`);
   const file = fs.createWriteStream(filePath);
 
   https.get(appData.download, (res) => {
     res.pipe(file);
-
     file.on("finish", () => {
       file.close();
 
-      // Ejecutar instalador
-      if (process.platform === "win32") {
-        exec(`"${filePath}"`);
-      } else {
-        shell.openPath(filePath);
-      }
+      // abrir instalador
+      spawn("cmd.exe", ["/c", "start", "", `"${filePath}"`], {
+        detached: true,
+        stdio: "ignore",
+      }).unref();
 
-      // Borrar instalador tras 10s
+      // borrar luego
       setTimeout(() => {
         if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
       }, 10000);
@@ -76,39 +85,21 @@ ipcMain.handle("install-app", (e, appData) => {
   });
 });
 
-// 🔥 ABRIR APP CORRECTAMENTE
-ipcMain.handle("open-app", async (event, exePath) => {
-  try {
-    if (!fs.existsSync(exePath)) {
-      throw new Error("El ejecutable no existe");
-    }
+// ▶️ ABRIR APP (UPDATER / LAUNCHER)
+ipcMain.handle("open-app", async (_, exePath) => {
+  const resolved = resolvePath(exePath);
 
-    // 🪟 Windows
-    if (process.platform === "win32") {
-      const appDir = path.dirname(exePath);
-
-      spawn(exePath, [], {
-        cwd: appDir,        // 👈 CLAVE
-        detached: true,
-        stdio: "ignore",
-      }).unref();
-    } 
-    // 🐧 Linux / 🍎 macOS
-    else {
-      await shell.openPath(exePath);
-    }
-
-    return true;
-  } catch (err) {
-    console.error("Error al abrir app:", err);
-    return false;
+  if (!fs.existsSync(resolved)) {
+    throw new Error("Ejecutable no encontrado: " + resolved);
   }
+
+  spawn("cmd.exe", ["/c", "start", "", `"${resolved}"`], {
+    detached: true,
+    stdio: "ignore",
+  }).unref();
+
+  return true;
 });
 
-// Versión de la app
-ipcMain.handle("get-app-version", () => {
-  return app.getVersion();
-});
-
-// Crear ventana
+// 🪟 Ready
 app.whenReady().then(createWindow);
