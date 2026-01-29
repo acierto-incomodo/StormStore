@@ -81,7 +81,13 @@ button {
   padding: 8px;
   cursor: pointer;
   font-weight: bold;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
+
+button:active {
+  transform: scale(0.96);
+}
+
 
 .version {
   font-size: 12px;

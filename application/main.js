@@ -76,23 +76,63 @@ ipcMain.handle("get-apps", () => {
 });
 
 ipcMain.handle("install-app", async (_, appData) => {
-  const downloadDir = getDownloadDir();
-  const filePath = path.join(downloadDir, `${appData.id}.exe`);
-  const file = fs.createWriteStream(filePath);
+  return new Promise((resolve, reject) => {
+    try {
+      const downloadDir = getDownloadDir();
+      const filePath = path.join(downloadDir, `${appData.id}.exe`);
 
-  https.get(appData.download, (res) => {
-    res.pipe(file);
-    file.on("finish", () => {
-      file.close();
+      function download(url) {
+        const file = fs.createWriteStream(filePath);
 
-      exec(`"${filePath}"`, () => {
-        setTimeout(() => {
+        https.get(url, (res) => {
+          // 🔁 Redirecciones (GitHub)
+          if (res.statusCode === 302 || res.statusCode === 301) {
+            file.close();
+            fs.unlinkSync(filePath);
+            return download(res.headers.location);
+          }
+
+          if (res.statusCode !== 200) {
+            file.close();
+            fs.unlinkSync(filePath);
+            return reject(new Error("Error descargando el archivo"));
+          }
+
+          res.pipe(file);
+
+          file.on("finish", () => {
+            file.close(() => {
+              // ▶ Ejecutar instalador
+              exec(`"${filePath}"`, (err) => {
+                if (err) {
+                  console.error("Error ejecutando instalador:", err);
+                  return reject(err);
+                }
+
+                // 🧹 Borrar instalador después de 10s
+                setTimeout(() => {
+                  if (fs.existsSync(filePath)) {
+                    fs.unlinkSync(filePath);
+                  }
+                }, 10000);
+
+                resolve(true);
+              });
+            });
+          });
+        }).on("error", (err) => {
           if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-        }, 10000);
-      });
-    });
+          reject(err);
+        });
+      }
+
+      download(appData.download);
+    } catch (err) {
+      reject(err);
+    }
   });
 });
+
 
 ipcMain.handle("open-app", async (_, exePath) => {
   try {
