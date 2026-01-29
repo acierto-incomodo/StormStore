@@ -81,13 +81,14 @@ button {
   padding: 8px;
   cursor: pointer;
   font-weight: bold;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
 }
 
 button:active {
   transform: scale(0.96);
 }
-
 
 .version {
   font-size: 12px;
@@ -273,4 +274,31 @@ button:active {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
+}
+
+#install-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.85);
+  z-index: 10000;
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.install-box {
+  background: #2a2a2a;
+  padding: 24px 32px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+}
+
+.install-box img {
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
 }

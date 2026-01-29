@@ -53,30 +53,64 @@ function renderApps(category) {
       const btn = document.createElement("button");
 
       if (app.installed) {
-        btn.textContent = "Abrir";
-        btn.onclick = () => window.api.openApp(app.paths[0]);
+        const openBtn = document.createElement("button");
+        openBtn.textContent = "Abrir";
+        openBtn.onclick = () => window.api.openApp(app.paths[0]);
+
+        card.append(icon, name, desc, openBtn);
+
+        if (app.uninstall) {
+          const uninstallBtn = document.createElement("button");
+          uninstallBtn.textContent = "Desinstalar";
+          uninstallBtn.style.background = "#d9534f";
+
+          uninstallBtn.onclick = async () => {
+            const overlay = document.getElementById("install-overlay");
+            overlay.style.display = "flex";
+
+            await window.api.uninstallApp(app.uninstall);
+
+            overlay.style.display = "none";
+            load(); // refresca lista
+          };
+
+          card.append(uninstallBtn);
+        }
+
+        appsContainer.appendChild(card);
+        return;
       } else {
         btn.textContent = "Instalar";
         btn.onclick = async () => {
+          const overlay = document.getElementById("install-overlay");
+
           btn.disabled = true;
+          overlay.style.display = "flex";
+
           btn.innerHTML = `<span class="button-loading">
-                              <img src="../assets/icons/loading.svg" alt="Cargando">
-                              Descargando...
-                           </span>`;
+    <img src="../assets/icons/loading.svg">
+    Instalando...
+  </span>`;
 
-          await window.api.installApp(app);
+          try {
+            await window.api.installApp(app);
+          } catch (e) {
+            console.error(e);
+          }
 
-          // Actualizar botón
+          overlay.style.display = "none";
+
           const installedApps = await window.api.getApps();
           const updatedApp = installedApps.find((a) => a.id === app.id);
+
           if (updatedApp?.installed) {
-            btn.disabled = false;
             btn.textContent = "Abrir";
             btn.onclick = () => window.api.openApp(updatedApp.paths[0]);
           } else {
-            btn.disabled = false;
             btn.textContent = "Instalar";
           }
+
+          btn.disabled = false;
         };
       }
 
@@ -89,12 +123,14 @@ function renderApps(category) {
 load();
 
 // Footer links
-document.querySelectorAll(".sidebar-footer button[data-link]").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const url = btn.getAttribute("data-link");
-    window.open(url);
+document
+  .querySelectorAll(".sidebar-footer button[data-link]")
+  .forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const url = btn.getAttribute("data-link");
+      window.open(url);
+    });
   });
-});
 
 // Overlay internet
 function updateInternetStatus() {
