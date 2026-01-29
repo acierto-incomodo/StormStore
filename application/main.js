@@ -38,9 +38,7 @@ function createWindow() {
 // Utilidades
 // -----------------------------
 function resolveWindowsPath(p) {
-  return path.normalize(
-    p.replace(/%appdata%/gi, app.getPath("appData"))
-  );
+  return path.normalize(p.replace(/%appdata%/gi, app.getPath("appData")));
 }
 
 function getDownloadDir() {
@@ -48,7 +46,7 @@ function getDownloadDir() {
     app.getPath("appData"),
     "StormGamesStudios",
     "StormStore",
-    "downloads"
+    "downloads",
   );
 
   if (!fs.existsSync(dir)) {
@@ -84,46 +82,48 @@ ipcMain.handle("install-app", async (_, appData) => {
       function download(url) {
         const file = fs.createWriteStream(filePath);
 
-        https.get(url, (res) => {
-          // 🔁 Redirecciones (GitHub)
-          if (res.statusCode === 302 || res.statusCode === 301) {
-            file.close();
-            fs.unlinkSync(filePath);
-            return download(res.headers.location);
-          }
+        https
+          .get(url, (res) => {
+            // 🔁 Redirecciones (GitHub)
+            if (res.statusCode === 302 || res.statusCode === 301) {
+              file.close();
+              fs.unlinkSync(filePath);
+              return download(res.headers.location);
+            }
 
-          if (res.statusCode !== 200) {
-            file.close();
-            fs.unlinkSync(filePath);
-            return reject(new Error("Error descargando el archivo"));
-          }
+            if (res.statusCode !== 200) {
+              file.close();
+              fs.unlinkSync(filePath);
+              return reject(new Error("Error descargando el archivo"));
+            }
 
-          res.pipe(file);
+            res.pipe(file);
 
-          file.on("finish", () => {
-            file.close(() => {
-              // ▶ Ejecutar instalador
-              exec(`"${filePath}"`, (err) => {
-                if (err) {
-                  console.error("Error ejecutando instalador:", err);
-                  return reject(err);
-                }
-
-                // 🧹 Borrar instalador después de 10s
-                setTimeout(() => {
-                  if (fs.existsSync(filePath)) {
-                    fs.unlinkSync(filePath);
+            file.on("finish", () => {
+              file.close(() => {
+                // ▶ Ejecutar instalador
+                exec(`"${filePath}"`, (err) => {
+                  if (err) {
+                    console.error("Error ejecutando instalador:", err);
+                    return reject(err);
                   }
-                }, 10000);
 
-                resolve(true);
+                  // 🧹 Borrar instalador después de 10s
+                  setTimeout(() => {
+                    if (fs.existsSync(filePath)) {
+                      fs.unlinkSync(filePath);
+                    }
+                  }, 10000);
+
+                  resolve(true);
+                });
               });
             });
+          })
+          .on("error", (err) => {
+            if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+            reject(err);
           });
-        }).on("error", (err) => {
-          if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-          reject(err);
-        });
       }
 
       download(appData.download);
@@ -132,7 +132,6 @@ ipcMain.handle("install-app", async (_, appData) => {
     }
   });
 });
-
 
 ipcMain.handle("open-app", async (_, exePath) => {
   try {
@@ -147,13 +146,29 @@ ipcMain.handle("open-app", async (_, exePath) => {
     spawn(`"${resolvedExe}"`, {
       cwd: appDir,
       detached: true,
-      shell: true,      // 🔥 CLAVE EN WINDOWS
+      shell: true, // 🔥 CLAVE EN WINDOWS
       stdio: "ignore",
     }).unref();
 
     return true;
   } catch (err) {
     console.error("Error al abrir app:", err.message);
+    return false;
+  }
+});
+
+ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
+  try {
+    const resolved = resolveWindowsPath(uninstallPath);
+
+    if (!fs.existsSync(resolved)) {
+      throw new Error("Desinstalador no encontrado");
+    }
+
+    exec(`"${resolved}"`);
+    return true;
+  } catch (err) {
+    console.error("Error al desinstalar:", err.message);
     return false;
   }
 });

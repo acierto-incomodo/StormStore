@@ -5,4 +5,5 @@ contextBridge.exposeInMainWorld("api", {
   installApp: (app) => ipcRenderer.invoke("install-app", app),
   openApp: (path) => ipcRenderer.invoke("open-app", path),
   getAppVersion: () => ipcRenderer.invoke("get-app-version"), // nueva función para versión
+  uninstallApp: (path) => ipcRenderer.invoke("uninstall-app", path),
 });
