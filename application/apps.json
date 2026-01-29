@@ -8,7 +8,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
   },
   {
     "id": "the-shooter",
@@ -19,7 +20,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe"
+    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
   },
   {
     "id": "karts-multiplayer",
@@ -30,7 +32,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/KartsMultiplayer/releases/latest/download/Karts_Multiplayer_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/KartsMultiplayer/releases/latest/download/Karts_Multiplayer_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/installer_updater.exe"
   },
   {
     "id": "REPO",
@@ -41,7 +44,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/R.E.P.O. Launcher.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/sgs-blog-disccussions/releases/latest/download/REPO_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/sgs-blog-disccussions/releases/latest/download/REPO_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "lethal-company",
@@ -52,7 +56,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/Lethal Company - Launcher.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/LethalCompany_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/LethalCompany_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "mage-arena",
@@ -63,7 +68,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/MageArena_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/MageArena_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "backseat-drivers",
@@ -74,7 +80,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/backseat_drivers/releases/latest/download/BackseatDrivers_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/backseat_drivers/releases/latest/download/BackseatDrivers_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "content-warning",
@@ -85,7 +92,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/content_warning/releases/latest/download/ContentWarning_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/content_warning/releases/latest/download/ContentWarning_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "hollow-knight-silksong",
@@ -96,7 +104,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/HollowKnightSilksong_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/HollowKnightSilksong_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "FNAF1",
@@ -107,7 +116,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/FNAF1/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/fnaf_1/releases/latest/download/FNAF1_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/fnaf_1/releases/latest/download/FNAF1_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "FNAF2",
@@ -118,7 +128,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/FNAF2/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/fnaf_2/releases/latest/download/FNAF2_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/fnaf_2/releases/latest/download/FNAF2_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "FNAF3",
@@ -129,7 +140,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/FNAF3/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/fnaf_3/releases/latest/download/FNAF3_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/fnaf_3/releases/latest/download/FNAF3_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "FNAF4",
@@ -140,7 +152,8 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/FNAF4/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/FNAF4_Launcher_Installer.exe"
+    "download": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/FNAF4_Launcher_Installer.exe",
+    "uninstall": ""
   },
   {
     "id": "StormLauncher",
@@ -148,7 +161,10 @@
     "description": "Minecraft launcher.",
     "category": "Juegos",
     "icon": "../assets/apps/stormlauncher.png",
-    "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.12.exe"],
-    "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe"
+    "paths": [
+      "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.12.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
+    "uninstall": ""
   }
 ]
