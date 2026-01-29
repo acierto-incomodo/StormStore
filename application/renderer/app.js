@@ -50,71 +50,64 @@ function renderApps(category) {
       const desc = document.createElement("p");
       desc.textContent = app.description;
 
-      const btn = document.createElement("button");
+      const actions = document.createElement("div");
+      actions.style.display = "flex";
+      actions.style.gap = "8px";
+      actions.style.marginTop = "auto";
 
       if (app.installed) {
+        // ABRIR
         const openBtn = document.createElement("button");
         openBtn.textContent = "Abrir";
         openBtn.onclick = () => window.api.openApp(app.paths[0]);
+        actions.appendChild(openBtn);
 
-        card.append(icon, name, desc, openBtn);
-
+        // DESINSTALAR
         if (app.uninstall) {
           const uninstallBtn = document.createElement("button");
           uninstallBtn.textContent = "Desinstalar";
           uninstallBtn.style.background = "#d9534f";
 
-          uninstallBtn.onclick = async () => {
+          uninstallBtn.onclick = async (e) => {
+            e.stopPropagation(); // 🔥 CLAVE
             const overlay = document.getElementById("install-overlay");
             overlay.style.display = "flex";
 
             await window.api.uninstallApp(app.uninstall);
 
             overlay.style.display = "none";
-            load(); // refresca lista
+            await load();
           };
 
-          card.append(uninstallBtn);
+          actions.appendChild(uninstallBtn);
         }
-
-        appsContainer.appendChild(card);
-        return;
       } else {
-        btn.textContent = "Instalar";
-        btn.onclick = async () => {
-          const overlay = document.getElementById("install-overlay");
+        // INSTALAR
+        const installBtn = document.createElement("button");
+        installBtn.textContent = "Instalar";
 
-          btn.disabled = true;
+        installBtn.onclick = async () => {
+          const overlay = document.getElementById("install-overlay");
+          installBtn.disabled = true;
           overlay.style.display = "flex";
 
-          btn.innerHTML = `<span class="button-loading">
-    <img src="../assets/icons/loading.svg">
-    Instalando...
-  </span>`;
+          installBtn.innerHTML = `
+            <span class="button-loading">
+              <img src="../assets/icons/loading.svg">
+              Instalando...
+            </span>
+          `;
 
-          try {
-            await window.api.installApp(app);
-          } catch (e) {
-            console.error(e);
-          }
+          await window.api.installApp(app);
 
           overlay.style.display = "none";
-
-          const installedApps = await window.api.getApps();
-          const updatedApp = installedApps.find((a) => a.id === app.id);
-
-          if (updatedApp?.installed) {
-            btn.textContent = "Abrir";
-            btn.onclick = () => window.api.openApp(updatedApp.paths[0]);
-          } else {
-            btn.textContent = "Instalar";
-          }
-
-          btn.disabled = false;
+          await load();
         };
+
+        actions.appendChild(installBtn);
       }
 
-      card.append(icon, name, desc, btn);
+      card.append(icon, name, desc, actions);
       appsContainer.appendChild(card);
     });
 }
