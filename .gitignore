@@ -2,3 +2,6 @@
 /venv
 /application/node_modules
 /application/dist/win-unpacked
+/application/dist
+/application/dist
+application/dist/builder-debug.yml
