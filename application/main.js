@@ -7,9 +7,9 @@ const { spawn, exec } = require("child_process");
 const apps = require("./apps.json");
 
 // ❌ StormStore SOLO WINDOWS
-if (process.platform !== "win32") {
-  app.quit();
-}
+//if (process.platform !== "win32") {
+//  app.quit();
+//}
 
 // -----------------------------
 // Ventana principal

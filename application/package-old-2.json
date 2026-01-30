@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.0.12",
+  "version": "1.0.11",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -20,7 +20,7 @@
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": false,
+      "allowToChangeInstallationDirectory": true,
       "include": "build/installer.nsh"
     }
   },
