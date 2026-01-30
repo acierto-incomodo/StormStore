@@ -87,7 +87,10 @@ nsis:
       !insertmacro MUI_LANGUAGE "Vietnamese"
     !macroend
 
-    !include "C:\Users\mapsp\AppData\Local\Temp\t-ynZuUt\2-messages.nsh"
+    !addincludedir "C:\Users\mapsp\Documents\GitHub\StormStore\application\build"
+    !include "C:\Users\mapsp\Documents\GitHub\StormStore\application\build\installer.nsh"
+    !include "C:\Users\mapsp\AppData\Local\Temp\t-9GO1Io\3-messages.nsh"
+    !include "C:\Users\mapsp\AppData\Local\Temp\t-9GO1Io\2-messages.nsh"
     !addplugindir /x86-unicode "C:\Users\mapsp\AppData\Local\electron-builder\Cache\nsis\nsis-resources-3.4.1-nsis-resources-3.4.1\plugins\x86-unicode"
 
     Var newStartMenuLink

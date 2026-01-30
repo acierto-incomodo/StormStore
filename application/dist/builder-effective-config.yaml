@@ -6,5 +6,9 @@ productName: StormStore
 win:
   target: nsis
   icon: assets/app.ico
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: false
+  include: build/installer.nsh
 files: []
 electronVersion: 40.0.0
