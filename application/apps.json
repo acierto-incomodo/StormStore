@@ -166,5 +166,29 @@
     ],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe"
+  },
+  {
+    "id": "ambidextro",
+    "name": "Ambidextro",
+    "description": "Pon a prueba tu coordinación y habilidad en este desafiante juego.",
+    "category": "Juegos",
+    "icon": "../assets/apps/ambidextro.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/Ambidextro_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/unins000.exe"
+  },
+  {
+    "id": "buckshot-roulette",
+    "name": "Buckshot Roulette",
+    "description": "Juego de terror de mesa. Juega a la ruleta rusa con una escopeta de calibre 12.",
+    "category": "Juegos",
+    "icon": "../assets/apps/buckshot_roulette.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/buckshot_roulette/releases/latest/download/BuckshotRoulette_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe"
   }
 ]
