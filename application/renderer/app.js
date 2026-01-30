@@ -21,7 +21,10 @@ async function load() {
 
 // Renderizar categorías
 function renderCategories() {
-  const cats = ["Todas", ...new Set(allApps.map((a) => a.category))];
+  const allCats = allApps.flatMap((a) =>
+    Array.isArray(a.category) ? a.category : [a.category],
+  );
+  const cats = ["Todas", ...new Set(allCats)];
   cats.forEach((cat) => {
     const li = document.createElement("li");
     li.textContent = cat;
@@ -36,7 +39,11 @@ function renderApps(category) {
   appsContainer.innerHTML = "";
 
   allApps
-    .filter((a) => category === "Todas" || a.category === category)
+    .filter((a) => {
+      if (category === "Todas") return true;
+      if (Array.isArray(a.category)) return a.category.includes(category);
+      return a.category === category;
+    })
     .forEach((app) => {
       const card = document.createElement("div");
       card.className = "card";

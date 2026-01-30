@@ -159,7 +159,10 @@
     "id": "StormLauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Minecraft launcher.",
-    "category": "Juegos",
+    "category": [
+      "Juegos",
+      "Utilidades"
+    ],
     "icon": "../assets/apps/stormlauncher.png",
     "paths": [
       "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.12.exe"
