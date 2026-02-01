@@ -12,9 +12,9 @@ let mainWindow;
 let updateInfo = null;
 
 // ❌ StormStore SOLO WINDOWS
-//if (process.platform !== "win32") {
-//  app.quit();
-//}
+if (process.platform !== "win32") {
+  app.quit();
+}
 
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
