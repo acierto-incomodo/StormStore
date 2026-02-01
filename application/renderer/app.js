@@ -2,8 +2,11 @@ const appsContainer = document.getElementById("apps");
 const catContainer = document.getElementById("categories");
 const title = document.getElementById("current-category");
 const versionElem = document.getElementById("app-version");
+const searchInput = document.getElementById("search");
 
 let allApps = [];
+let currentCategory = "Todas";
+let currentSearch = "";
 
 // Mostrar versión automáticamente
 if (versionElem) {
@@ -16,7 +19,8 @@ if (versionElem) {
 async function load() {
   allApps = await window.api.getApps();
   renderCategories();
-  renderApps("Todas");
+  if (searchInput) searchInput.value = currentSearch;
+  renderApps(currentCategory);
 }
 
 // Renderizar categorías
@@ -35,14 +39,25 @@ function renderCategories() {
 
 // Renderizar apps
 function renderApps(category) {
-  title.textContent = category;
+  if (category) currentCategory = category;
+  title.textContent = currentCategory;
   appsContainer.innerHTML = "";
 
   allApps
     .filter((a) => {
-      if (category === "Todas") return true;
-      if (Array.isArray(a.category)) return a.category.includes(category);
-      return a.category === category;
+      // Filtrado por categoría
+      if (currentCategory !== "Todas") {
+        if (Array.isArray(a.category)) {
+          if (!a.category.includes(currentCategory)) return false;
+        } else if (a.category !== currentCategory) return false;
+      }
+
+      // Filtrado por búsqueda
+      if (!currentSearch) return true;
+      const q = currentSearch.toLowerCase();
+      const name = (a.name || "").toLowerCase();
+      const desc = (a.description || "").toLowerCase();
+      return name.includes(q) || desc.includes(q);
     })
     .forEach((app) => {
       const card = document.createElement("div");
@@ -121,6 +136,14 @@ function renderApps(category) {
 
 // Inicializar
 load();
+
+// Filtrado desde la barra de búsqueda
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    currentSearch = e.target.value || "";
+    renderApps(currentCategory);
+  });
+}
 
 // Footer links
 document

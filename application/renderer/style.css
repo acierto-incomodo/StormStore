@@ -51,6 +51,51 @@ main {
   overflow-y: auto;
 }
 
+/* Cabecera principal: título + búsqueda */
+.main-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.search-wrapper {
+  margin-left: auto;
+}
+
+#search {
+  background: #171717;
+  border: 1px solid #2e2e2e;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  width: 300px;
+  max-width: 100%;
+  outline: none;
+}
+
+#search::placeholder {
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  #search {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 220px);
