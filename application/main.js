@@ -259,8 +259,25 @@ ipcMain.handle("install-update", () => {
 // -----------------------------
 // Inicio
 // -----------------------------
-app.whenReady().then(createWindow);
+// =====================================
+// INSTANCIA ÚNICA
+// Evita que se puedan abrir múltiples instancias/ventanas de la app
+// Si otra instancia se inicia, traemos la ventana principal al frente.
+const gotLock = app.requestSingleInstanceLock();
 
-app.on("window-all-closed", () => {
-  if (process.platform === "win32") app.quit();
-});
+if (!gotLock) {
+  app.quit();
+} else {
+  app.on("second-instance", (event, argv, workingDirectory) => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }
+  });
+
+  app.whenReady().then(createWindow);
+
+  app.on("window-all-closed", () => {
+    if (process.platform === "win32") app.quit();
+  });
+}
