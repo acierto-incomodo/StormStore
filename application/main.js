@@ -19,7 +19,7 @@ if (process.platform !== "win32") {
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.checkForUpdatesAndNotify();
+autoUpdater.checkForUpdates();
 
 autoUpdater.on("update-available", (info) => {
   updateInfo = info;
@@ -35,9 +35,7 @@ autoUpdater.on("update-not-available", () => {
 });
 
 autoUpdater.on("update-downloaded", () => {
-  if (mainWindow) {
-    mainWindow.webContents.send("update-downloaded");
-  }
+  autoUpdater.quitAndInstall(false, true);
 });
 
 autoUpdater.on("error", (err) => {
@@ -63,6 +61,8 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
+
+      autoHideMenuBar: true,
     },
   });
 

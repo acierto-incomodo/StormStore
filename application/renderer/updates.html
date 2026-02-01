@@ -1,209 +1,211 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Actualizaciones - StormStore</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="../assets/app.png" />
-  </head>
 
-  <body>
-    <aside class="sidebar">
-      <div class="sidebar-top">
-        <h2>StormStore</h2>
-        <p class="version" id="app-version"></p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actualizaciones - StormStore</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="../assets/app.png" />
+</head>
 
-        <button id="back-to-apps" class="back-button">
-          ← Volver a aplicaciones
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <h2>StormStore</h2>
+      <p class="version" id="app-version"></p>
+
+      <button id="back-to-apps" class="back-button">
+        ← Volver a aplicaciones
+      </button>
+
+      <ul id="categories"></ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <p class="studio">StormGamesStudios</p>
+    </div>
+  </aside>
+
+  <main>
+    <div class="updates-container">
+      <h1>Actualizaciones</h1>
+
+      <div class="update-section">
+        <h2>Versión actual</h2>
+        <p class="current-version" id="current-version">Cargando...</p>
+      </div>
+
+      <div class="update-section">
+        <h2>Buscar actualizaciones</h2>
+        <button id="check-updates-btn" class="primary-btn">
+          Buscar actualizaciones
         </button>
-
-        <ul id="categories"></ul>
+        <p id="check-status" class="status-message"></p>
       </div>
 
-      <div class="sidebar-footer">
-        <p class="studio">StormGamesStudios</p>
-      </div>
-    </aside>
-
-    <main>
-      <div class="updates-container">
-        <h1>Actualizaciones</h1>
-
-        <div class="update-section">
-          <h2>Versión actual</h2>
-          <p class="current-version" id="current-version">Cargando...</p>
+      <div id="update-info-section" class="update-section" style="display: none;">
+        <h2>Actualización disponible</h2>
+        <div class="update-details">
+          <p><strong>Nueva versión:</strong> <span id="new-version">-</span></p>
+          <p><strong>Versión actual:</strong> <span id="old-version">-</span></p>
+          <p><strong>Fecha de lanzamiento:</strong> <span id="release-date">-</span></p>
+          <p><strong>Descripción:</strong></p>
+          <p id="release-notes" class="release-notes">-</p>
         </div>
-
-        <div class="update-section">
-          <h2>Buscar actualizaciones</h2>
-          <button id="check-updates-btn" class="primary-btn">
-            Buscar actualizaciones
-          </button>
-          <p id="check-status" class="status-message"></p>
+        <div class="button-group">
+          <button id="download-btn" class="primary-btn">Descargar actualización</button>
+          <button id="later-btn" class="secondary-btn">Más tarde</button>
         </div>
-
-        <div id="update-info-section" class="update-section" style="display: none;">
-          <h2>Actualización disponible</h2>
-          <div class="update-details">
-            <p><strong>Nueva versión:</strong> <span id="new-version">-</span></p>
-            <p><strong>Versión actual:</strong> <span id="old-version">-</span></p>
-            <p><strong>Fecha de lanzamiento:</strong> <span id="release-date">-</span></p>
-            <p><strong>Descripción:</strong></p>
-            <p id="release-notes" class="release-notes">-</p>
+        <div id="download-progress" style="display: none; margin-top: 20px;">
+          <p id="progress-text">Descargando...</p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
           </div>
-          <div class="button-group">
-            <button id="download-btn" class="primary-btn">Descargar actualización</button>
-            <button id="later-btn" class="secondary-btn">Más tarde</button>
-          </div>
-          <div id="download-progress" style="display: none; margin-top: 20px;">
-            <p id="progress-text">Descargando...</p>
-            <div class="progress-bar">
-              <div class="progress-fill" id="progress-fill"></div>
-            </div>
-          </div>
-        </div>
-
-        <div id="no-update-section" class="update-section" style="display: none;">
-          <h2>Estás actualizado</h2>
-          <p>Ya tienes la versión más reciente de StormStore instalada.</p>
-        </div>
-
-        <div id="update-ready-section" class="update-section" style="display: none;">
-          <h2>Actualización lista para instalar</h2>
-          <p>La actualización ha sido descargada correctamente.</p>
-          <button id="install-btn" class="primary-btn">Instalar y reiniciar ahora</button>
-        </div>
-
-        <div id="error-section" class="update-section" style="display: none;">
-          <h2>Error</h2>
-          <p id="error-message" class="error-message">-</p>
-          <button id="retry-btn" class="secondary-btn">Reintentar</button>
         </div>
       </div>
-    </main>
 
-    <script>
-      // Esperar a que el DOM esté completamente cargado
-      document.addEventListener("DOMContentLoaded", function() {
-        // Cargar versión actual
-        loadCurrentVersion();
+      <div id="no-update-section" class="update-section" style="display: none;">
+        <h2>Estás actualizado</h2>
+        <p>Ya tienes la versión más reciente de StormStore instalada.</p>
+      </div>
 
-        // Volver a aplicaciones
-        const backBtn = document.getElementById("back-to-apps");
-        if (backBtn) {
-          backBtn.addEventListener("click", function(e) {
-            e.preventDefault();
-            window.location.href = "index.html";
-          });
-        } else {
-          console.error("No se encontró el botón back-to-apps");
+      <div id="update-ready-section" class="update-section" style="display: none;">
+        <h2>Actualización lista para instalar</h2>
+        <p>La actualización ha sido descargada correctamente.</p>
+        <button id="install-btn" class="primary-btn">Instalar y reiniciar ahora</button>
+      </div>
+
+      <div id="error-section" class="update-section" style="display: none;">
+        <h2>Error</h2>
+        <p id="error-message" class="error-message">-</p>
+        <button id="retry-btn" class="secondary-btn">Reintentar</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Esperar a que el DOM esté completamente cargado
+    document.addEventListener("DOMContentLoaded", function () {
+      // Cargar versión actual
+      loadCurrentVersion();
+
+      // Volver a aplicaciones
+      const backBtn = document.getElementById("back-to-apps");
+      if (backBtn) {
+        backBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.location.href = "index.html";
+        });
+      } else {
+        console.error("No se encontró el botón back-to-apps");
+      }
+
+      // Buscar actualizaciones
+      document.getElementById("check-updates-btn").addEventListener("click", async () => {
+        document.getElementById("check-status").textContent = "Buscando actualizaciones...";
+        document.getElementById("check-updates-btn").disabled = true;
+
+        try {
+          const result = await window.api.checkForUpdates();
+
+          if (result && result.updateInfo) {
+            showUpdateAvailable(result.updateInfo);
+          } else {
+            showNoUpdate();
+          }
+        } catch (err) {
+          showError(`Error al buscar actualizaciones: ${err.message}`);
+        } finally {
+          document.getElementById("check-status").textContent = "";
+          document.getElementById("check-updates-btn").disabled = false;
         }
-
-        // Buscar actualizaciones
-        document.getElementById("check-updates-btn").addEventListener("click", async () => {
-          document.getElementById("check-status").textContent = "Buscando actualizaciones...";
-          document.getElementById("check-updates-btn").disabled = true;
-
-          try {
-            const result = await window.api.checkForUpdates();
-            
-            if (result && result.updateInfo) {
-              showUpdateAvailable(result.updateInfo);
-            } else {
-              showNoUpdate();
-            }
-          } catch (err) {
-            showError(`Error al buscar actualizaciones: ${err.message}`);
-          } finally {
-            document.getElementById("check-status").textContent = "";
-            document.getElementById("check-updates-btn").disabled = false;
-          }
-        });
-
-        // Descargar actualización
-        document.getElementById("download-btn").addEventListener("click", async () => {
-          document.getElementById("download-progress").style.display = "block";
-          document.getElementById("download-btn").disabled = true;
-
-          try {
-            await window.api.downloadUpdate();
-          } catch (err) {
-            showError(`Error descargando actualización: ${err.message}`);
-          }
-        });
-
-        // Botón "Más tarde"
-        document.getElementById("later-btn").addEventListener("click", () => {
-          document.getElementById("update-info-section").style.display = "none";
-        });
-
-        // Instalar actualización
-        document.getElementById("install-btn").addEventListener("click", () => {
-          window.api.installUpdate();
-        });
-
-        // Reintentar
-        document.getElementById("retry-btn").addEventListener("click", () => {
-          document.getElementById("check-updates-btn").click();
-        });
-
-        // Escuchar eventos desde el main process
-        window.api.onUpdateAvailable((_, info) => {
-          showUpdateAvailable(info);
-        });
-
-        window.api.onUpdateNotAvailable(() => {
-          showNoUpdate();
-        });
-
-        window.api.onUpdateDownloaded(() => {
-          document.getElementById("download-progress").style.display = "none";
-          document.getElementById("update-info-section").style.display = "none";
-          document.getElementById("update-ready-section").style.display = "block";
-        });
-
-        window.api.onUpdateError((_, message) => {
-          showError(`Error: ${message}`);
-        });
       });
 
-      // Cargar versión actual
-      async function loadCurrentVersion() {
-        const version = await window.api.getAppVersion();
-        document.getElementById("app-version").textContent = `v${version}`;
-        document.getElementById("current-version").textContent = `v${version}`;
-      }
+      // Descargar actualización
+      document.getElementById("download-btn").addEventListener("click", async () => {
+        document.getElementById("download-progress").style.display = "block";
+        document.getElementById("download-btn").disabled = true;
 
-      function showUpdateAvailable(info) {
-        document.getElementById("update-info-section").style.display = "block";
-        document.getElementById("no-update-section").style.display = "none";
-        document.getElementById("error-section").style.display = "none";
-
-        document.getElementById("new-version").textContent = info.version || "Desconocida";
-        const currentVersion = document.getElementById("app-version").textContent.slice(1);
-        document.getElementById("old-version").textContent = currentVersion;
-        
-        if (info.releaseDate) {
-          const date = new Date(info.releaseDate);
-          document.getElementById("release-date").textContent = date.toLocaleDateString("es-ES");
+        try {
+          await window.api.downloadUpdate();
+        } catch (err) {
+          showError(`Error descargando actualización: ${err.message}`);
         }
+      });
 
-        document.getElementById("release-notes").textContent = info.releaseNotes || "Sin descripción disponible";
-      }
-
-      function showNoUpdate() {
+      // Botón "Más tarde"
+      document.getElementById("later-btn").addEventListener("click", () => {
         document.getElementById("update-info-section").style.display = "none";
-        document.getElementById("no-update-section").style.display = "block";
-        document.getElementById("error-section").style.display = "none";
+      });
+
+      // Instalar actualización
+      document.getElementById("install-btn").addEventListener("click", () => {
+        window.api.installUpdate();
+      });
+
+      // Reintentar
+      document.getElementById("retry-btn").addEventListener("click", () => {
+        document.getElementById("check-updates-btn").click();
+      });
+
+      // Escuchar eventos desde el main process
+      window.api.onUpdateAvailable((_, info) => {
+        showUpdateAvailable(info);
+      });
+
+      window.api.onUpdateNotAvailable(() => {
+        showNoUpdate();
+      });
+
+      window.api.onUpdateDownloaded(() => {
+        document.getElementById("download-progress").style.display = "none";
+        document.getElementById("update-info-section").style.display = "none";
+        document.getElementById("update-ready-section").style.display = "block";
+      });
+
+      window.api.onUpdateError((_, message) => {
+        showError(`Error: ${message}`);
+      });
+    });
+
+    // Cargar versión actual
+    async function loadCurrentVersion() {
+      const version = await window.api.getAppVersion();
+      document.getElementById("app-version").textContent = `v${version}`;
+      document.getElementById("current-version").textContent = `v${version}`;
+    }
+
+    function showUpdateAvailable(info) {
+      document.getElementById("update-info-section").style.display = "block";
+      document.getElementById("no-update-section").style.display = "none";
+      document.getElementById("error-section").style.display = "none";
+
+      document.getElementById("new-version").textContent = info.version || "Desconocida";
+      const currentVersion = document.getElementById("app-version").textContent.slice(1);
+      document.getElementById("old-version").textContent = currentVersion;
+
+      if (info.releaseDate) {
+        const date = new Date(info.releaseDate);
+        document.getElementById("release-date").textContent = date.toLocaleDateString("es-ES");
       }
 
-      function showError(message) {
-        document.getElementById("update-info-section").style.display = "none";
-        document.getElementById("no-update-section").style.display = "none";
-        document.getElementById("error-section").style.display = "block";
-        document.getElementById("error-message").textContent = message;
-      }
-    </script>
-  </body>
+      document.getElementById("release-notes").textContent = info.releaseNotes || "Sin descripción disponible";
+    }
+
+    function showNoUpdate() {
+      document.getElementById("update-info-section").style.display = "none";
+      document.getElementById("no-update-section").style.display = "block";
+      document.getElementById("error-section").style.display = "none";
+    }
+
+    function showError(message) {
+      document.getElementById("update-info-section").style.display = "none";
+      document.getElementById("no-update-section").style.display = "none";
+      document.getElementById("error-section").style.display = "block";
+      document.getElementById("error-message").textContent = message;
+    }
+  </script>
+</body>
+
 </html>

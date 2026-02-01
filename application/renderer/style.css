@@ -147,15 +147,18 @@ button:active {
   min-height: 100vh;
 
   display: flex;
-  flex-direction: column; /* sidebar en columna */
+  flex-direction: column;
+  /* sidebar en columna */
 }
 
 .sidebar-top {
-  flex: 1; /* toma todo el espacio disponible */
+  flex: 1;
+  /* toma todo el espacio disponible */
 }
 
 .sidebar-footer {
-  margin-top: auto; /* empuja el footer al fondo */
+  margin-top: auto;
+  /* empuja el footer al fondo */
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -201,6 +204,7 @@ button:active {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -233,7 +237,8 @@ button:active {
   align-items: center;
   font-size: 24px;
   z-index: 9999;
-  display: none; /* oculto por defecto */
+  display: none;
+  /* oculto por defecto */
   text-align: center;
   padding: 20px;
 }
@@ -246,20 +251,25 @@ button:active {
 
 /* Estilos personalizados para la barra de desplazamiento */
 ::-webkit-scrollbar {
-  width: 10px; /* Ancho de la barra */
+  width: 10px;
+  /* Ancho de la barra */
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e1e; /* Color del fondo de la barra (coincide con el fondo de la app) */
+  background: #1e1e1e;
+  /* Color del fondo de la barra (coincide con el fondo de la app) */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #444; /* Color de la parte móvil */
-  border-radius: 5px; /* Bordes redondeados */
+  background: #444;
+  /* Color de la parte móvil */
+  border-radius: 5px;
+  /* Bordes redondeados */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3daee9; /* Color al pasar el ratón por encima (azul del tema) */
+  background: #3daee9;
+  /* Color al pasar el ratón por encima (azul del tema) */
 }
 
 /* Botones (flechas) de la barra de desplazamiento */
@@ -347,6 +357,7 @@ button:active {
   height: 24px;
   animation: spin 1s linear infinite;
 }
+
 /* =====================================
    ESTILOS PARA PÁGINA DE ACTUALIZACIONES
    ===================================== */
