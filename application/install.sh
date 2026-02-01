@@ -1,1 +1,2 @@
-npm install --save-dev electron electron-builder
+echo "Instalando..."
+npm i

@@ -1,2 +1,5 @@
-npm remove electron electron-builder
-npm install --save-dev electron electron-builder
+echo "Reinstalando..."
+rm -rf node_modules/
+rm -rf dist/
+rm -f package-lock.json
+npm i

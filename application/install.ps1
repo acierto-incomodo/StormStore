@@ -1,1 +1,1 @@
-npm install --save-dev electron electron-builder
+npm i

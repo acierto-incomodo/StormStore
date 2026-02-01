@@ -3,13 +3,53 @@ const path = require("path");
 const fs = require("fs");
 const https = require("https");
 const { spawn, exec } = require("child_process");
+const { autoUpdater } = require("electron-updater");
 
 const apps = require("./apps.json");
+
+// Variables globales
+let mainWindow;
+let updateInfo = null;
 
 // ❌ StormStore SOLO WINDOWS
 //if (process.platform !== "win32") {
 //  app.quit();
 //}
+
+// =====================================
+// CONFIGURACIÓN DE ACTUALIZACIONES
+// =====================================
+autoUpdater.checkForUpdatesAndNotify();
+
+autoUpdater.on("update-available", (info) => {
+  updateInfo = info;
+  if (mainWindow) {
+    mainWindow.webContents.send("update-available", info);
+  }
+});
+
+autoUpdater.on("update-not-available", () => {
+  if (mainWindow) {
+    mainWindow.webContents.send("update-not-available");
+  }
+});
+
+autoUpdater.on("update-downloaded", () => {
+  if (mainWindow) {
+    mainWindow.webContents.send("update-downloaded");
+  }
+});
+
+autoUpdater.on("error", (err) => {
+  console.error("Error en autoUpdater:", err);
+  if (mainWindow) {
+    mainWindow.webContents.send("update-error", err.message);
+  }
+});
+
+// =====================================
+// FIN CONFIGURACIÓN ACTUALIZACIONES
+// =====================================
 
 // -----------------------------
 // Ventana principal
@@ -26,6 +66,7 @@ function createWindow() {
     },
   });
 
+  mainWindow = win;
   win.loadFile(path.join(__dirname, "renderer/index.html"));
 
   win.webContents.setWindowOpenHandler(({ url }) => {
@@ -179,6 +220,41 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
 ipcMain.handle("get-app-version", () => {
   return app.getVersion();
 });
+
+// =====================================
+// MANEJO DE ACTUALIZACIONES
+// =====================================
+ipcMain.handle("check-for-updates", async () => {
+  try {
+    const result = await autoUpdater.checkForUpdates();
+    return result;
+  } catch (err) {
+    console.error("Error checking for updates:", err);
+    throw err;
+  }
+});
+
+ipcMain.handle("get-update-info", () => {
+  return updateInfo;
+});
+
+ipcMain.handle("download-update", async () => {
+  try {
+    await autoUpdater.downloadUpdate();
+    return true;
+  } catch (err) {
+    console.error("Error downloading update:", err);
+    throw err;
+  }
+});
+
+ipcMain.handle("install-update", () => {
+  autoUpdater.quitAndInstall();
+});
+
+// =====================================
+// FIN MANEJO DE ACTUALIZACIONES
+// =====================================
 
 // -----------------------------
 // Inicio

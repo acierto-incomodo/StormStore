@@ -46,6 +46,9 @@
           <button data-link="https://www.curseforge.com/members/creper1125463">
             <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
           </button>
+          <button id="open-updates">
+            <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+          </button>
           <button id="open-licenses">
             <img src="../assets/icons/license.svg" alt="Licencias" />
           </button>
@@ -60,6 +63,11 @@
 
     <script src="app.js"></script>
     <script>
+      // Abrir la página de actualizaciones
+      document.getElementById("open-updates").addEventListener("click", () => {
+        window.location.href = "updates.html";
+      });
+
       // Abrir la página de licencias en la misma ventana
       document.getElementById("open-licenses").addEventListener("click", () => {
         window.location.href = "licencias.html";
