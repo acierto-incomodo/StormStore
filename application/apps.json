@@ -193,5 +193,20 @@
     ],
     "download": "https://github.com/acierto-incomodo/buckshot_roulette/releases/latest/download/BuckshotRoulette_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe"
+  },
+  {
+    "id": "MultiAI",
+    "name": "MultiAI",
+    "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
+    "category": [
+      "Inteligencia Artificial",
+      "Utilidades"
+    ],
+    "icon": "../assets/apps/multiAI.png",
+    "paths": [
+      ""
+    ],
+    "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
+    "uninstall": ""
   }
 ]
