@@ -64,6 +64,7 @@ PACKAGES=(
     "multiai"
     "theshooterlauncher"
     "kartsmultiplayerlauncher"
+    "cardinal-ai"
 )
 
 print_info "Installing all StormStore applications..."
