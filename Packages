@@ -1,15 +1,15 @@
 Package: cardinal-ai
-Version: 1.0.0
+Version: 1.0.1
 Architecture: amd64
 Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
 Installed-Size: 297018
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils
 Recommends: libappindicator3-1
-Filename: ./debs/CardinalAI-1.0.0-amd64.deb
-Size: 91713324
-MD5sum: 97ae4370b271eead88de94c1b0f42739
-SHA1: c923d24c33206a103c7e0ace52afd6c455676e66
-SHA256: 14adad88ab4bc7b1bf0a2224e6bb7ccbd1f363fb10b7848fff509238b4969545
+Filename: ./debs/CardinalAI-1.0.1-amd64.deb
+Size: 91713612
+MD5sum: 825dfbf777c4dfaeaee7e2c8e1c48810
+SHA1: 17649899997486be9e7bc3de5b8f3147d3d5a29b
+SHA256: 1453f80b2f30dd6b649e83dd58b2d11485f65699fb0a1eb441c08582f7559445
 Section: default
 Priority: optional
 Homepage: https://github.com/acierto-incomodo/cardinal-ai-dualmodel-app
