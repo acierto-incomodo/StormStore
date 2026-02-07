@@ -172,7 +172,7 @@ EOL
 print_info "Navegando al directorio de MCSManager..."
 cd /home/$USER/mcsmanager
 print_info "Descargando las imágenes de Docker más recientes para MCSManager..."
-docker compose pull
+#tre docker compose pull
 print_info "Iniciando los contenedores de MCSManager en segundo plano..."
 # docker compose up -d
 print_success "MCSManager instalado y en ejecución."
