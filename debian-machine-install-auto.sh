@@ -54,20 +54,20 @@ print_info "Instalando: sudo, curl, wget, git, btop, zsh y otras utilidades..."
 apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop zsh net-tools glances ncdu duf micro tmpreaper tcpdump resolvconf
 print_success "Dependencias básicas instaladas."
 
-print_header "3️⃣  Instalando Docker"
-print_info "Descargando el script oficial de instalación de Docker..."
-curl -fsSL https://get.docker.com -o get-docker.sh
-print_info "Ejecutando el script de instalación..."
-sh get-docker.sh
-rm get-docker.sh
+# print_header "3️⃣  Instalando Docker"
+# print_info "Descargando el script oficial de instalación de Docker..."
+# curl -fsSL https://get.docker.com -o get-docker.sh
+# print_info "Ejecutando el script de instalación..."
+# sh get-docker.sh
+# rm get-docker.sh
 
-print_info "Añadiendo al usuario '$USER' al grupo 'docker' para permitir el uso sin sudo."
-usermod -aG docker $USER
+# print_info "Añadiendo al usuario '$USER' al grupo 'docker' para permitir el uso sin sudo."
+# usermod -aG docker $USER
 
-print_info "Habilitando y arrancando el servicio de Docker..."
-systemctl enable docker
-systemctl start docker
-print_success "Docker instalado y configurado."
+# print_info "Habilitando y arrancando el servicio de Docker..."
+# systemctl enable docker
+# systemctl start docker
+# print_success "Docker instalado y configurado."
 
 print_header "4️⃣  Instalando Node.js (v22 y v20)"
 print_info "Configurando el repositorio de NodeSource para Node.js 22..."
