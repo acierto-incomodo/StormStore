@@ -41,7 +41,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.9)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.10)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -54,7 +54,7 @@ print_option "6" "Instalar Playit (APT)"
 print_option "7" "Instalar Dependencias Extra"
 print_option "reboot" "Reiniciar Sistema"
 print_option "poweroff" "Apagar Sistema"
-priunt_option "update" "Actualizar Sistema (Full Upgrade)"
+print_option "update" "Actualizar Sistema (Full Upgrade)"
 print_option "exit" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
