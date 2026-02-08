@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+#!/usr/bin/env bash
+
+# Re-ejecutar el script con sudo si no es root
+if [ "$EUID" -ne 0 ]; then
+exec sudo "$0" "$@"
+fi
+
 # Colores para la salida
 C_RESET='\033[0m'
 C_RED='\033[0;31m'
@@ -36,7 +43,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.18)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.19)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -137,104 +144,104 @@ print_info "Activando el firewall UFW..."
 ufw enable
 print_success "Firewall UFW configurado y activado."
 
-print_header "9️⃣  Instalando MCSManager con Docker"
-print_info "Creando directorios para MCSManager en /home/$USER/mcsmanager..."
-mkdir -p /home/$USER/mcsmanager/{web,daemon/data/InstanceData,daemon/logs,web/logs,web/data}
+# print_header "9️⃣  Instalando MCSManager con Docker"
+# print_info "Creando directorios para MCSManager en /home/$USER/mcsmanager..."
+# mkdir -p /home/$USER/mcsmanager/{web,daemon/data/InstanceData,daemon/logs,web/logs,web/data}
 
-cat > /home/$USER/mcsmanager/docker-compose.yml <<EOL
-version: "3"
+# cat > /home/$USER/mcsmanager/docker-compose.yml <<EOL
+# version: "3"
+#
+# services:
+#   web:
+#     image: githubyumao/mcsmanager-web:latest
+#     restart: unless-stopped
+#     ports:
+#       - "23333:23333"
+#     volumes:
+#       - /etc/localtime:/etc/localtime:ro
+#       - /home/$USER/mcsmanager/web/data:/opt/mcsmanager/web/data
+#       - /home/$USER/mcsmanager/web/logs:/opt/mcsmanager/web/logs
+#
+#   daemon:
+#     image: githubyumao/mcsmanager-daemon:latest
+#     restart: unless-stopped
+#     ports:
+#       - "24444:24444"
+#     environment:
+#       - MCSM_DOCKER_WORKSPACE_PATH=/home/$USER/mcsmanager/daemon/data/InstanceData
+#     volumes:
+#       - /etc/localtime:/etc/localtime:ro
+#       - /home/$USER/mcsmanager/daemon/data:/opt/mcsmanager/daemon/data
+#       - /home/$USER/mcsmanager/daemon/logs:/opt/mcsmanager/daemon/logs
+#       - /var/run/docker.sock:/var/run/docker.sock
+# EOL
 
-services:
-  web:
-    image: githubyumao/mcsmanager-web:latest
-    restart: unless-stopped
-    ports:
-      - "23333:23333"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /home/$USER/mcsmanager/web/data:/opt/mcsmanager/web/data
-      - /home/$USER/mcsmanager/web/logs:/opt/mcsmanager/web/logs
+# print_info "Navegando al directorio de MCSManager..."
+# cd /home/$USER/mcsmanager
+# print_info "Descargando las imágenes de Docker más recientes para MCSManager..."
+# #tre docker compose pull
+# print_info "Iniciando los contenedores de MCSManager en segundo plano..."
+# # docker compose up -d
+# print_success "MCSManager instalado y en ejecución."
 
-  daemon:
-    image: githubyumao/mcsmanager-daemon:latest
-    restart: unless-stopped
-    ports:
-      - "24444:24444"
-    environment:
-      - MCSM_DOCKER_WORKSPACE_PATH=/home/$USER/mcsmanager/daemon/data/InstanceData
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /home/$USER/mcsmanager/daemon/data:/opt/mcsmanager/daemon/data
-      - /home/$USER/mcsmanager/daemon/logs:/opt/mcsmanager/daemon/logs
-      - /var/run/docker.sock:/var/run/docker.sock
-EOL
+# print_info "Creando servicio systemd para reiniciar MCSManager al arranque..."
+# cat > /etc/systemd/system/mcsmanager-restart.service <<EOL
+# [Unit]
+# Description=Reiniciar contenedores MCSManager al arranque
+# After=docker.service
+# Requires=docker.service
+#
+# [Service]
+# Type=oneshot
+# ExecStart=/usr/bin/docker stop mcsmanager-daemon-1 mcsmanager-web-1
+#
+# [Install]
+# WantedBy=multi-user.target
+# EOL
 
-print_info "Navegando al directorio de MCSManager..."
-cd /home/$USER/mcsmanager
-print_info "Descargando las imágenes de Docker más recientes para MCSManager..."
-#tre docker compose pull
-print_info "Iniciando los contenedores de MCSManager en segundo plano..."
-# docker compose up -d
-print_success "MCSManager instalado y en ejecución."
+# systemctl daemon-reload
+# systemctl enable mcsmanager-restart.service
+# print_success "Servicio 'mcsmanager-restart.service' creado y habilitado."
 
-print_info "Creando servicio systemd para reiniciar MCSManager al arranque..."
-cat > /etc/systemd/system/mcsmanager-restart.service <<EOL
-[Unit]
-Description=Reiniciar contenedores MCSManager al arranque
-After=docker.service
-Requires=docker.service
+# print_header "🔟 Configurando MCSManager (config.json)"
+# CONFIG_PATH_WEB="/home/$USER/mcsmanager/web/data/SystemConfig/config.json"
+# CONFIG_PATH_PANEL="/home/$USER/mcsmanager/daemon/data/Config/global.json"
 
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/docker stop mcsmanager-daemon-1 mcsmanager-web-1
+# mkdir -p "$(dirname "$CONFIG_PATH_WEB")"
 
-[Install]
-WantedBy=multi-user.target
-EOL
+# # cat > "$CONFIG_PATH_WEB" <<EOL
+# # {
+# #   "httpPort": 23333,
+# #     "httpIp": "0.0.0.0",
+# #     "prefix": "",
+# #     "reverseProxyMode": false,
+# #     "dataPort": 23333,
+# #     "forwardType": 1,
+# #     "crossDomain": false,
+# #     "gzip": false,
+# #    "maxCompress": 1,
+# #    "maxDownload": 10,
+# #    "zipType": 1,
+# #    "totpDriftToleranceSteps": 0,
+# #    "loginCheckIp": true,
+# #    "loginInfo": "",
+# #    "canFileManager": true,
+# #    "allowUsePreset": false,
+# #    "language": "en_us",
+# #    "presetPackAddr": "https://script.mcsmanager.com/market.json",
+# #    "redisUrl": "",
+# #    "allowChangeCmd": false,
+# #    "businessMode": false,
+# #    "businessId": "",
+# #    "panelId": "c8e0b8d9-44e3-40fe-8ec8-970a39f03d2d",
+# #    "registerCode": "",
+# #    "ssl": false,
+# #    "sslPemPath": "",
+# #    "sslKeyPath": ""
+# #}
+# #EOL
 
-systemctl daemon-reload
-systemctl enable mcsmanager-restart.service
-print_success "Servicio 'mcsmanager-restart.service' creado y habilitado."
-
-print_header "🔟 Configurando MCSManager (config.json)"
-CONFIG_PATH_WEB="/home/$USER/mcsmanager/web/data/SystemConfig/config.json"
-CONFIG_PATH_PANEL="/home/$USER/mcsmanager/daemon/data/Config/global.json"
-
-mkdir -p "$(dirname "$CONFIG_PATH_WEB")"
-
-# cat > "$CONFIG_PATH_WEB" <<EOL
-# {
-#   "httpPort": 23333,
-#     "httpIp": "0.0.0.0",
-#     "prefix": "",
-#     "reverseProxyMode": false,
-#     "dataPort": 23333,
-#     "forwardType": 1,
-#     "crossDomain": false,
-#     "gzip": false,
-#    "maxCompress": 1,
-#    "maxDownload": 10,
-#    "zipType": 1,
-#    "totpDriftToleranceSteps": 0,
-#    "loginCheckIp": true,
-#    "loginInfo": "",
-#    "canFileManager": true,
-#    "allowUsePreset": false,
-#    "language": "en_us",
-#    "presetPackAddr": "https://script.mcsmanager.com/market.json",
-#    "redisUrl": "",
-#    "allowChangeCmd": false,
-#    "businessMode": false,
-#    "businessId": "",
-#    "panelId": "c8e0b8d9-44e3-40fe-8ec8-970a39f03d2d",
-#    "registerCode": "",
-#    "ssl": false,
-#    "sslPemPath": "",
-#    "sslKeyPath": ""
-#}
-#EOL
-
-print_success "config.json de MCSManager creado con la configuración por defecto."
+# print_success "config.json de MCSManager creado con la configuración por defecto."
 
 print_header "1️⃣1️⃣ Instalando Repositorio StormStore y Apps"
 print_info "Añadiendo el repositorio APT de StormStore e instalando aplicaciones..."

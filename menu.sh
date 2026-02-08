@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#!/usr/bin/env bash
+
+# Re-ejecutar el script con sudo si no es root
+if [ "$EUID" -ne 0 ]; then
+exec sudo "$0" "$@"
+fi
+
 # Colores para la salida
 C_RESET='\033[0m'
 C_RED='\033[0;31m'
@@ -124,6 +131,11 @@ case $option in
         apt autoremove -y
 
         echo "✅ Todo listo"
+
+        print_header "Actualizando Menu..."
+        rm -f ./menu.sh
+        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
+        chmod +x menu.sh
         ;;
     8)
         echo "Saliendo..."
