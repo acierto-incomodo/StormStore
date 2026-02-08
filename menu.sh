@@ -41,7 +41,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.8)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.9)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -53,12 +53,12 @@ print_option "5" "Instalar PairDrop Server"
 print_option "6" "Instalar Playit (APT)"
 print_option "7" "Actualizar Sistema"
 print_option "8" "Instalar Dependencias Extra"
-print_option "9" "Salir"
+print_option "exit" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-9]: " option
+read -p "Selecciona una opción [1-8 & exit]: " option
 
 case $option in
     1)
@@ -170,7 +170,7 @@ case $option in
             ./dependencias-extra.sh
         fi
         ;;
-    9)
+    exit)
         echo "Saliendo..."
         exit 0
         ;;
