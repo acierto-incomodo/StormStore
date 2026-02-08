@@ -41,7 +41,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.5)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.6)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -63,14 +63,14 @@ read -p "Selecciona una opción [1-9]: " option
 case $option in
     1)
         print_header "🚀 Iniciando Instalación..."
-        if [ -f "./debian-machine-install-auto.sh" ]; then
-            ./debian-machine-install-auto.sh
+        if [ -f "./debian-machine-install-auto-2.sh" ]; then
+            ./debian-machine-install-auto-2.sh
         else
-            printf "${C_RED}[✖] No se encontró el archivo debian-machine-install-auto.sh en este directorio.${C_RESET}\n"
+            printf "${C_RED}[✖] No se encontró el archivo debian-machine-install-auto-2.sh en este directorio.${C_RESET}\n"
             printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
-            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/debian-machine-install-auto.sh
-            chmod +x debian-machine-install-auto.sh
-            ./debian-machine-install-auto.sh
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/debian-machine-install-auto-2.sh
+            chmod +x debian-machine-install-auto-2.sh
+            ./debian-machine-install-auto-2.sh
         fi
         ;;
     2)
