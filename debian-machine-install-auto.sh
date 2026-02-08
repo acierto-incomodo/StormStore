@@ -43,7 +43,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.20)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.21)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -91,10 +91,10 @@ nvm install 22
 
 print_success "Node.js 22 (sistema) y Node.js 20/22 (nvm) instalados."
 
-print_header "5️⃣  Instalando Java 21"
-print_info "Instalando OpenJDK 21..."
-apt install -y openjdk-21-jdk
-print_success "Java 21 instalado."
+print_header "5️⃣  Instalando Java (8, 17 y 21)"
+print_info "Instalando OpenJDK 8, 17 y 21..."
+apt install -y openjdk-8-jdk openjdk-17-jdk openjdk-21-jdk
+print_success "Java 8, 17 y 21 instalados."
 
 print_header "6️⃣  Instalando Python 3"
 print_info "Instalando Python 3 y herramientas relacionadas (pip, venv)..."

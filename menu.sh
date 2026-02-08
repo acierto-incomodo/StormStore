@@ -41,7 +41,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.3)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.4)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -52,20 +52,26 @@ print_option "4" "Instalar MCSManager"
 print_option "5" "Instalar PairDrop Server"
 print_option "6" "Instalar Playit (APT)"
 print_option "7" "Actualizar Sistema"
+print_option "9" "Instalar Dependencias Extra"
 print_option "8" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-8]: " option
+read -p "Selecciona una opción [1-9]: " option
 
 case $option in
     1)
         print_header "🚀 Iniciando Instalación..."
-        rm -f ./debian-machine-install-auto.sh
-        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/debian-machine-install-auto.sh
-        chmod +x debian-machine-install-auto.sh
-        ./debian-machine-install-auto.sh
+        if [ -f "./debian-machine-install-auto.sh" ]; then
+            ./debian-machine-install-auto.sh
+        else
+            printf "${C_RED}[✖] No se encontró el archivo debian-machine-install-auto.sh en este directorio.${C_RESET}\n"
+            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/debian-machine-install-auto.sh
+            chmod +x debian-machine-install-auto.sh
+            ./debian-machine-install-auto.sh
+        fi
         ;;
     2)
         print_header "🔄 Actualizando Sistema Modo Debian..."
@@ -81,24 +87,39 @@ case $option in
         ;;
     3)
         print_header "Eliminando StormStore..."
-        rm -f ./remove-all.sh
-        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/remove-all.sh
-        chmod +x remove-all.sh
-        ./remove-all.sh
+        if [ -f "./remove-all.sh" ]; then
+            ./remove-all.sh
+        else
+            printf "${C_RED}[✖] No se encontró el archivo remove-all.sh en este directorio.${C_RESET}\n"
+            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/remove-all.sh
+            chmod +x remove-all.sh
+            ./remove-all.sh
+        fi
         ;;
     4)
         print_header "🎮 Instalando MCSManager..."
-        rm -f ./install-mcsmanager.sh
-        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-mcsmanager.sh
-        chmod +x install-mcsmanager.sh
-        ./install-mcsmanager.sh
+        if [ -f "./install-mcsmanager.sh" ]; then
+            ./install-mcsmanager.sh
+        else
+            printf "${C_RED}[✖] No se encontró el archivo install-mcsmanager.sh en este directorio.${C_RESET}\n"
+            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-mcsmanager.sh
+            chmod +x install-mcsmanager.sh
+            ./install-mcsmanager.sh
+        fi
         ;;
     5)
         print_header "💧 Instalando PairDrop Server..."
-        rm -f ./install-pairdrop.sh
-        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-pairdrop.sh
-        chmod +x install-pairdrop.sh
-        ./install-pairdrop.sh
+        if [ -f "./install-pairdrop.sh" ]; then
+            ./install-pairdrop.sh
+        else
+            printf "${C_RED}[✖] No se encontró el archivo install-pairdrop.sh en este directorio.${C_RESET}\n"
+            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-pairdrop.sh
+            chmod +x install-pairdrop.sh
+            ./install-pairdrop.sh
+        fi
         ;;
     6)
         print_header "🌍 Instalando Playit..."
@@ -138,6 +159,18 @@ case $option in
         chmod +x menu.sh
         ;;
     8)
+        print_header "🔄 Instalando dependencias extra..."
+        if [ -f "./dependencias-extra.sh" ]; then
+            ./dependencias-extra.sh
+        else
+            printf "${C_RED}[✖] No se encontró el archivo dependencias-extra.sh en este directorio.${C_RESET}\n"
+            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/dependencias-extra.sh
+            chmod +x dependencias-extra.sh
+            ./dependencias-extra.sh
+        fi
+        ;;
+    9)
         echo "Saliendo..."
         exit 0
         ;;
