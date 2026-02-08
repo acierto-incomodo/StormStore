@@ -41,7 +41,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.4)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.5)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""

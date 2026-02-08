@@ -43,7 +43,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios (v1.0.21)\n\n"
+printf "${C_RESET}By StormGamesStudios (v1.0.22)\n\n"
 print_info "Iniciando el script de configuración automática para Debian Trixie."
 print_info "Este script se ejecutará como root y configurará todo el entorno."
 sleep 3
@@ -249,33 +249,33 @@ print_info "  - CardinalAI, WhatsApp Web, PairDrop, MultiAI, TheShooter, KartsMu
 curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
 print_success "Repositorio y aplicaciones de StormStore instalados."
 
-print_header "1️⃣2️⃣ Creando servicio de auto-actualización"
-print_info "Creando un script y un servicio systemd para actualizar el sistema en cada reinicio."
+# print_header "1️⃣2️⃣ Creando servicio de auto-actualización"
+# print_info "Creando un script y un servicio systemd para actualizar el sistema en cada reinicio."
 
-cat > /usr/local/sbin/auto-update.sh <<EOL
-#!/bin/bash
-apt update
-apt upgrade -y
-EOL
+# cat > /usr/local/sbin/auto-update.sh <<EOL
+# #!/bin/bash
+# apt update
+# apt upgrade -y
+# EOL
 
-chmod +x /usr/local/sbin/auto-update.sh
+# chmod +x /usr/local/sbin/auto-update.sh
 
-cat > /etc/systemd/system/auto-update.service <<EOL
-[Unit]
-Description=Actualizar sistema automáticamente al reinicio
-After=network.target
+# cat > /etc/systemd/system/auto-update.service <<EOL
+# [Unit]
+# Description=Actualizar sistema automáticamente al reinicio
+# After=network.target
 
-[Service]
-Type=oneshot
-ExecStart=/usr/local/sbin/auto-update.sh
+# [Service]
+# Type=oneshot
+# ExecStart=/usr/local/sbin/auto-update.sh
 
-[Install]
-WantedBy=multi-user.target
-EOL
+# [Install]
+# WantedBy=multi-user.target
+# EOL
 
-systemctl daemon-reload
-systemctl enable auto-update.service
-print_success "Servicio 'auto-update.service' creado y habilitado."
+# systemctl daemon-reload
+# systemctl enable auto-update.service
+# print_success "Servicio 'auto-update.service' creado y habilitado."
 
 print_header "1️⃣3️⃣ Instalando y configurando Fail2Ban"
 print_info "Instalando Fail2Ban para proteger contra ataques de fuerza bruta..."
