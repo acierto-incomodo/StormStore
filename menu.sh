@@ -34,7 +34,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.1)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.2)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -44,12 +44,13 @@ print_option "3" "Eliminar StormStore"
 print_option "4" "Instalar MCSManager"
 print_option "5" "Instalar PairDrop Server"
 print_option "6" "Instalar Playit (APT)"
-print_option "7" "Salir"
+print_option "7" "Actualizar Sistema"
+print_option "8" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-7]: " option
+read -p "Selecciona una opción [1-8]: " option
 
 case $option in
     1)
@@ -60,7 +61,7 @@ case $option in
         ./debian-machine-install-auto.sh
         ;;
     2)
-        print_header "🔄 Actualizando Sistema..."
+        print_header "🔄 Actualizando Sistema Modo Debian..."
         if [ -f "./update-debian.sh" ]; then
             ./update-debian.sh
         else
@@ -103,6 +104,28 @@ case $option in
         echo "Playit instalado correctamente."
         ;;
     7)
+        #!/usr/bin/env bash
+
+        # Re-ejecutar el script con sudo si no es root
+        if [ "$EUID" -ne 0 ]; then
+        exec sudo "$0" "$@"
+        fi
+
+        echo "🧹 Limpiando caché de APT..."
+        apt clean
+
+        echo "🔄 Actualizando lista de paquetes..."
+        apt update
+
+        echo "⬆️ Actualizando el sistema (full-upgrade)..."
+        apt full-upgrade -y
+
+        echo "🗑️ Eliminando paquetes innecesarios..."
+        apt autoremove -y
+
+        echo "✅ Todo listo"
+        ;;
+    8)
         echo "Saliendo..."
         exit 0
         ;;
