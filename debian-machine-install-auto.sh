@@ -61,20 +61,20 @@ print_info "Instalando: sudo, curl, wget, git, btop, zsh y otras utilidades..."
 apt install -y sudo curl wget git lsb-release ca-certificates gnupg btop zsh net-tools glances ncdu duf micro tmpreaper tcpdump resolvconf
 print_success "Dependencias básicas instaladas."
 
-# print_header "3️⃣  Instalando Docker"
-# print_info "Descargando el script oficial de instalación de Docker..."
-# curl -fsSL https://get.docker.com -o get-docker.sh
-# print_info "Ejecutando el script de instalación..."
-# sh get-docker.sh
-# rm get-docker.sh
+print_header "3️⃣  Instalando Docker"
+print_info "Descargando el script oficial de instalación de Docker..."
+curl -fsSL https://get.docker.com -o get-docker.sh
+print_info "Ejecutando el script de instalación..."
+sh get-docker.sh
+rm get-docker.sh
 
-# print_info "Añadiendo al usuario '$USER' al grupo 'docker' para permitir el uso sin sudo."
-# usermod -aG docker $USER
+print_info "Añadiendo al usuario '$USER' al grupo 'docker' para permitir el uso sin sudo."
+usermod -aG docker $USER
 
-# print_info "Habilitando y arrancando el servicio de Docker..."
-# systemctl enable docker
-# systemctl start docker
-# print_success "Docker instalado y configurado."
+print_info "Habilitando y arrancando el servicio de Docker..."
+systemctl enable docker
+systemctl start docker
+print_success "Docker instalado y configurado."
 
 print_header "4️⃣  Instalando Node.js (v22 y v20)"
 print_info "Configurando el repositorio de NodeSource para Node.js 22..."
@@ -297,30 +297,30 @@ systemctl enable fail2ban
 systemctl restart fail2ban
 print_success "Fail2Ban configurado para proteger los puertos SSH 22, 1234 y 2222."
 
-# print_header "1️⃣4️⃣ Instalando Ngrok"
-# print_info "Añadiendo el repositorio de Ngrok e instalando ngrok..."
-# curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
-#   | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
-#   && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
-#   | sudo tee /etc/apt/sources.list.d/ngrok.list \
-#   && sudo apt update \
-#   && sudo apt install -y ngrok
-# print_success "Ngrok instalado."
+print_header "1️⃣4️⃣ Instalando Ngrok"
+print_info "Añadiendo el repositorio de Ngrok e instalando ngrok..."
+curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+  | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+  && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
+  | sudo tee /etc/apt/sources.list.d/ngrok.list \
+  && sudo apt update \
+  && sudo apt install -y ngrok
+print_success "Ngrok instalado."
 
-# print_info "Eliminando carpetas de Oh My Zsh antiguas si existen..."
-# for d in "/home/aito/.oh-my-zsh" "/home/$USER/.oh-my-zsh"; do
-#     if [ -d "$d" ]; then
-#         rm -rf "$d"
-#         print_success "Eliminado $d"
-#     fi
-# done
+print_info "Eliminando carpetas de Oh My Zsh antiguas si existen..."
+for d in "/home/aito/.oh-my-zsh" "/home/$USER/.oh-my-zsh"; do
+    if [ -d "$d" ]; then
+        rm -rf "$d"
+        print_success "Eliminado $d"
+    fi
+done
 
-# print_header "1️⃣4️⃣ Instalando Oh My Zsh para el usuario '$USER'"
-# print_info "Instalando Oh My Zsh de forma no interactiva..."
-# sudo -u $USER sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
-# print_info "Cambiando la shell por defecto del usuario '$USER' a Zsh..."
-# chsh -s $(which zsh) $USER
-# print_success "Oh My Zsh instalado y configurado como shell por defecto."
+print_header "1️⃣4️⃣ Instalando Oh My Zsh para el usuario '$USER'"
+print_info "Instalando Oh My Zsh de forma no interactiva..."
+sudo -u $USER sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+print_info "Cambiando la shell por defecto del usuario '$USER' a Zsh..."
+chsh -s $(which zsh) $USER
+print_success "Oh My Zsh instalado y configurado como shell por defecto."
 
 print_header "1️⃣5️⃣ Configurando comportamiento de la tapa del portátil"
 print_info "Modificando logind.conf para ignorar el cierre de la tapa..."
@@ -352,13 +352,13 @@ apt update && apt upgrade -y && apt autoremove -y
 print_success "Sistema actualizado correctamente."
 
 print_header "Finalizando la instalación"
-# print_success "Descargando el script del menú rapido..."
-# rm -f menu.sh
-# wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
-# chmod +x menu.sh
-# rm -f /root/menu.sh
-# wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh -O /root/menu.sh
-# chmod +x /root/menu.sh
+print_success "Descargando el script del menú rapido..."
+rm -f menu.sh
+wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
+chmod +x menu.sh
+rm -f /root/menu.sh
+wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh -O /root/menu.sh
+chmod +x /root/menu.sh
 
 print_header "🎉 ¡INSTALACIÓN COMPLETA! 🎉"
 print_success "El sistema está listo y configurado."
