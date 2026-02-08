@@ -41,7 +41,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.7)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.0.8)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -52,8 +52,8 @@ print_option "4" "Instalar MCSManager"
 print_option "5" "Instalar PairDrop Server"
 print_option "6" "Instalar Playit (APT)"
 print_option "7" "Actualizar Sistema"
-print_option "9" "Instalar Dependencias Extra"
-print_option "8" "Salir"
+print_option "8" "Instalar Dependencias Extra"
+print_option "9" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
