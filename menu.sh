@@ -51,14 +51,16 @@ print_option "3" "Eliminar StormStore"
 print_option "4" "Instalar MCSManager"
 print_option "5" "Instalar PairDrop Server"
 print_option "6" "Instalar Playit (APT)"
-print_option "7" "Actualizar Sistema"
-print_option "8" "Instalar Dependencias Extra"
+print_option "7" "Instalar Dependencias Extra"
+print_option "reboot" "Reiniciar Sistema"
+print_option "poweroff" "Apagar Sistema"
+priunt_option "update" "Actualizar Sistema (Full Upgrade)"
 print_option "exit" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-8 & exit]: " option
+read -p "Selecciona una opción [1-7 + extra]: " option
 
 case $option in
     1)
@@ -132,6 +134,26 @@ case $option in
         echo "Playit instalado correctamente."
         ;;
     7)
+        print_header "🔄 Instalando dependencias extra..."
+        if [ -f "./dependencias-extra.sh" ]; then
+            ./dependencias-extra.sh
+        else
+            printf "${C_RED}[✖] No se encontró el archivo dependencias-extra.sh en este directorio.${C_RESET}\n"
+            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/dependencias-extra.sh
+            chmod +x dependencias-extra.sh
+            ./dependencias-extra.sh
+        fi
+        ;;
+    reboot)
+        print_header "🔄 Reiniciando el sistema..."
+        reboot
+        ;;
+    poweroff)
+        print_header "🛑 Apagando el sistema..."
+        poweroff
+        ;;
+    update)
         #!/usr/bin/env bash
 
         # Re-ejecutar el script con sudo si no es root
@@ -158,18 +180,6 @@ case $option in
         wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
         chmod +x menu.sh
         ./menu.sh
-        ;;
-    8)
-        print_header "🔄 Instalando dependencias extra..."
-        if [ -f "./dependencias-extra.sh" ]; then
-            ./dependencias-extra.sh
-        else
-            printf "${C_RED}[✖] No se encontró el archivo dependencias-extra.sh en este directorio.${C_RESET}\n"
-            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
-            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/dependencias-extra.sh
-            chmod +x dependencias-extra.sh
-            ./dependencias-extra.sh
-        fi
         ;;
     exit)
         echo "Saliendo..."
