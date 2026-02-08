@@ -157,6 +157,7 @@ case $option in
         rm -f ./menu.sh
         wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
         chmod +x menu.sh
+        ./menu.sh
         ;;
     8)
         print_header "🔄 Instalando dependencias extra..."
