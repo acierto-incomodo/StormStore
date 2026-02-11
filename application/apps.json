@@ -195,18 +195,32 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe"
   },
   {
-    "id": "MultiAI",
+    "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
     "category": [
       "Inteligencia Artificial",
       "Utilidades"
     ],
-    "icon": "../assets/apps/multiAI.png",
+    "icon": "../assets/apps/multiai.png",
     "paths": [
-      ""
+      "%localappdata%/Programs/multiai/MultiAI.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
-    "uninstall": ""
+    "download": "https://github.com/acierto-incomodo/MultiAI/releases/download/v1.2.3/MultiAI-Setup-1.2.3.exe",
+    "uninstall": "%localappdata%/Programs/multiai/Uninstall MultiAI.exe"
+  },
+  {
+    "id": "doom",
+    "name": "DOOM Classic",
+    "description": "Es un juego de puzles donde controlas dos personajes al mismo tiempo, uno con cada mitad del teclado o mando. El reto está en coordinar ambos movimientos para resolver niveles. Es simple en gráficos, pero muy exigente para la concentración y la coordinación.",
+    "category": [
+      "Juegos"
+    ],
+    "icon": "../assets/apps/doom.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/DOOM/releases/latest/download/DOOM_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe"
   }
 ]
