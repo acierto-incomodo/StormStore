@@ -19,12 +19,13 @@ if (versionElem) {
 async function load() {
   allApps = await window.api.getApps();
   renderCategories();
-  if (searchInput) searchInput.value = currentSearch;
+  if (searchInput && searchInput.value !== currentSearch) searchInput.value = currentSearch;
   renderApps(currentCategory);
 }
 
 // Renderizar categorías
 function renderCategories() {
+  catContainer.innerHTML = "";
   const allCats = allApps.flatMap((a) =>
     Array.isArray(a.category) ? a.category : [a.category],
   );
@@ -136,6 +137,7 @@ function renderApps(category) {
 
 // Inicializar
 load();
+setInterval(load, 3000);
 
 // Filtrado desde la barra de búsqueda
 if (searchInput) {
