@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/usr/bin/env bash
-
 # Re-ejecutar el script con sudo si no es root
 if [ "$EUID" -ne 0 ]; then
 exec sudo "$0" "$@"
@@ -154,13 +152,6 @@ case $option in
         poweroff
         ;;
     update)
-        #!/usr/bin/env bash
-
-        # Re-ejecutar el script con sudo si no es root
-        if [ "$EUID" -ne 0 ]; then
-        exec sudo "$0" "$@"
-        fi
-
         echo "🧹 Limpiando caché de APT..."
         apt clean
 
@@ -188,7 +179,12 @@ case $option in
     make)
         print_header "🚧 Iniciando Script de Construcción..."
         chmod +x make.sh
-        ./make.sh
+        if [ -n "$SUDO_USER" ]; then
+            # Run as the original user to avoid permission issues in .git
+            sudo -u "$SUDO_USER" ./make.sh
+        else
+            ./make.sh
+        fi
         echo "Saliendo..."
         exit 0
         ;;

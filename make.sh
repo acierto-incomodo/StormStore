@@ -24,6 +24,12 @@ print_error() {
     printf "${C_RED}[✖] Error: %s${C_RESET}\n" "$1"
 }
 
+# Check for required dependencies
+if ! command -v dpkg-scanpackages &> /dev/null; then
+    print_error "dpkg-scanpackages is not installed. Please install 'dpkg-dev'."
+    exit 1
+fi
+
 print_header "Building and Publishing Repository"
 
 print_info "Cleaning up old build artifacts..."
