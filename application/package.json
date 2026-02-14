@@ -28,7 +28,10 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": false,
       "include": "build/installer.nsh"
-    }
+    },
+    "extraResources": [
+      "assets/extraFiles/**"
+    ]
   },
   "devDependencies": {
     "electron": "^40.0.0",

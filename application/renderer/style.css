@@ -128,6 +128,15 @@ main {
   border-radius: 8px;
 }
 
+.card p {
+  height: 140px;
+  overflow-y: auto;
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.4;
+}
+
 button {
   margin-top: auto;
   background: #3daee9;

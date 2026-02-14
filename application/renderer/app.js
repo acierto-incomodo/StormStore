@@ -116,7 +116,7 @@ function renderApps(category) {
 
           installBtn.innerHTML = `
             <span class="button-loading">
-              <img src="../assets/icons/loading.svg">
+              <img src="../assets/icons/loading-new.svg">
               Instalando...
             </span>
           `;
