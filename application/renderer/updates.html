@@ -59,6 +59,7 @@
         </div>
         <div id="download-progress" style="display: none; margin-top: 20px;">
           <p id="progress-text">Descargando...</p>
+          <p id="progress-details" style="margin-bottom: 10px; font-size: 0.9em; opacity: 0.8; line-height: 1.4;"></p>
           <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
           </div>
@@ -156,6 +157,21 @@
 
       window.api.onUpdateNotAvailable(() => {
         showNoUpdate();
+      });
+
+      window.api.onDownloadProgress((_, progressObj) => {
+        const percent = Math.round(progressObj.percent);
+        const speed = (progressObj.bytesPerSecond / 1024 / 1024).toFixed(2);
+        const transferred = (progressObj.transferred / 1024 / 1024).toFixed(2);
+        const total = (progressObj.total / 1024 / 1024).toFixed(2);
+
+        document.getElementById("download-progress").style.display = "block";
+        document.getElementById("progress-text").textContent = `Descargando... (${percent}%)`;
+        document.getElementById("progress-details").innerHTML = `
+          Velocidad: ${speed} MB/s <br>
+          (${transferred} de ${total} MB)
+        `;
+        document.getElementById("progress-fill").style.width = `${percent}%`;
       });
 
       window.api.onUpdateDownloaded(() => {
