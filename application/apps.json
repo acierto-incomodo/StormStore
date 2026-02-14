@@ -165,7 +165,7 @@
     ],
     "icon": "../assets/apps/stormlauncher.png",
     "paths": [
-      "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.12.exe"
+      "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.11.exe"
     ],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe"
