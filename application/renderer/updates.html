@@ -55,7 +55,6 @@
         </div>
         <div class="button-group">
           <button id="download-btn" class="primary-btn">Descargar actualización</button>
-          <button id="later-btn" class="secondary-btn">Más tarde</button>
         </div>
         <div id="download-progress" style="display: none; margin-top: 20px;">
           <p id="progress-text">Descargando...</p>
@@ -129,11 +128,6 @@
         } catch (err) {
           showError(`Error descargando actualización: ${err.message}`);
         }
-      });
-
-      // Botón "Más tarde"
-      document.getElementById("later-btn").addEventListener("click", () => {
-        document.getElementById("update-info-section").style.display = "none";
       });
 
       // Instalar actualización
