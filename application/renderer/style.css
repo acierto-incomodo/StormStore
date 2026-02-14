@@ -66,17 +66,27 @@ main {
 
 .search-wrapper {
   margin-left: auto;
+  position: relative;
 }
 
 #search {
   background: #171717;
   border: 1px solid #2e2e2e;
   color: #fff;
-  padding: 8px 12px;
+  padding: 8px 12px 8px 38px;
   border-radius: 8px;
   width: 300px;
   max-width: 100%;
   outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
 }
 
 #search::placeholder {
