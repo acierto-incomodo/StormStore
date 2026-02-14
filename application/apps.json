@@ -228,5 +228,19 @@
     ],
     "download": "https://github.com/acierto-incomodo/DOOM/releases/latest/download/DOOM_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe"
+  },
+  {
+    "id": "pairdrop",
+    "name": "PairDrop",
+    "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
+    "category": [
+      "Utilidades"
+    ],
+    "icon": "../assets/apps/pairdrop.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe"
   }
 ]

@@ -17,13 +17,13 @@ body {
   margin: 0;
   display: flex;
   min-height: 100vh;
-  background: #1e1e1e;
+  background: transparent;
   color: #fff;
 }
 
 .sidebar {
   width: 220px;
-  background: #151515;
+  background: rgba(21, 21, 21, 0.5);
   padding: 20px;
   min-height: 100vh;
   position: sticky;
@@ -70,7 +70,7 @@ main {
 }
 
 #search {
-  background: #171717;
+  background: rgba(23, 23, 23, 0.2);
   border: 1px solid #2e2e2e;
   color: #fff;
   padding: 8px 12px 8px 38px;
@@ -108,12 +108,13 @@ main {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 220px);
+  grid-template-columns: repeat(auto-fit, 220px);
   gap: 20px;
+  justify-content: center;
 }
 
 .card {
-  background: #2a2a2a;
+  background: rgba(42, 42, 42, 0.6);
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -128,6 +129,11 @@ main {
   border-radius: 8px;
 }
 
+.card h3 {
+  text-align: center;
+  margin: 0;
+}
+
 .card p {
   height: 140px;
   overflow-y: auto;
@@ -135,11 +141,20 @@ main {
   font-size: 14px;
   color: #ccc;
   line-height: 1.4;
+  text-align: justify;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  justify-content: center;
 }
 
 button {
   margin-top: auto;
-  background: #3daee9;
+  background: #FDD835;
+  color: #000;
   border: none;
   border-radius: 8px;
   padding: 8px;
@@ -161,7 +176,7 @@ button:active {
 
 .sidebar {
   width: 220px;
-  background: #151515;
+  background: rgba(0, 0, 0, 0.2);
   padding: 20px;
   min-height: 100vh;
 
@@ -275,7 +290,7 @@ button:active {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e1e1e;
+  background: transparent;
   /* Color del fondo de la barra (coincide con el fondo de la app) */
 }
 
@@ -287,7 +302,7 @@ button:active {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3daee9;
+  background: #FDD835;
   /* Color al pasar el ratón por encima (azul del tema) */
 }
 
@@ -362,7 +377,7 @@ button:active {
 }
 
 .install-box {
-  background: #2a2a2a;
+  background: rgba(42, 42, 42, 0.9);
   padding: 24px 32px;
   border-radius: 12px;
   display: flex;
@@ -393,29 +408,29 @@ button:active {
 }
 
 .update-section {
-  background: #2a2a2a;
+  background: rgba(42, 42, 42, 0.6);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  border-left: 4px solid #3daee9;
+  border-left: 4px solid #FDD835;
 }
 
 .update-section h2 {
   margin-top: 0;
   margin-bottom: 15px;
-  color: #3daee9;
+  color: #FDD835;
   font-size: 18px;
 }
 
 .current-version {
   font-size: 18px;
   font-weight: bold;
-  color: #3daee9;
+  color: #FDD835;
   margin: 0;
 }
 
 .update-details {
-  background: #1e1e1e;
+  background: rgba(30, 30, 30, 0.5);
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -427,11 +442,11 @@ button:active {
 }
 
 .update-details strong {
-  color: #3daee9;
+  color: #FDD835;
 }
 
 .release-notes {
-  background: #151515;
+  background: rgba(21, 21, 21, 0.5);
   padding: 10px;
   border-radius: 6px;
   max-height: 200px;
@@ -447,7 +462,8 @@ button:active {
 }
 
 .primary-btn {
-  background: #3daee9;
+  background: #FDD835;
+  color: #000;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
@@ -459,7 +475,7 @@ button:active {
 }
 
 .primary-btn:hover {
-  background: #2a9cd9;
+  background: #FBC02D;
   transform: translateY(-2px);
 }
 
@@ -495,7 +511,7 @@ button:active {
 }
 
 .status-message {
-  color: #3daee9;
+  color: #FDD835;
   font-size: 14px;
   margin-top: 10px;
 }
@@ -518,7 +534,7 @@ button:active {
 }
 
 .progress-fill {
-  background: linear-gradient(90deg, #3daee9, #5bc0de);
+  background: linear-gradient(90deg, #FDD835, #FFEE58);
   height: 100%;
   width: 0%;
   transition: width 0.3s ease;
@@ -526,12 +542,12 @@ button:active {
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: #fff;
+  color: #000;
   font-weight: bold;
 }
 
 #progress-text {
-  color: #3daee9;
+  color: #FDD835;
   margin: 0 0 10px 0;
   font-size: 14px;
 }

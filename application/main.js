@@ -19,13 +19,18 @@ if (process.platform !== "win32") {
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.autoDownload = false;
 autoUpdater.checkForUpdates();
 
 autoUpdater.on("update-available", (info) => {
   updateInfo = info;
   if (mainWindow) {
-    mainWindow.webContents.send("update-available", info);
+    // Forzar la redirección a la página de actualizaciones
+    mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
+    // Una vez que la página se carga, le enviamos la información de la actualización
+    // para que la muestre.
+    mainWindow.webContents.once("did-finish-load", () => {
+      mainWindow.webContents.send("update-available", info);
+    });
   }
 });
 
@@ -35,13 +40,8 @@ autoUpdater.on("update-not-available", () => {
   }
 });
 
-autoUpdater.on("download-progress", (progressObj) => {
-  if (mainWindow) {
-    mainWindow.webContents.send("download-progress", progressObj);
-  }
-});
-
 autoUpdater.on("update-downloaded", () => {
+  // Ya no se instala automáticamente. Solo notifica a la página de actualizaciones.
   if (mainWindow) {
     mainWindow.webContents.send("update-downloaded");
   }
@@ -67,18 +67,20 @@ function createWindow() {
     height: 650,
     minWidth: 1226,
     minHeight: 650,
-    backgroundColor: "#1e1e1e",
+    backgroundColor: "#00000000",
+    backgroundMaterial: "mica",
+    autoHideMenuBar: true,
     icon: path.join(__dirname, "assets/app.ico"),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
-
-      autoHideMenuBar: true,
     },
   });
 
   mainWindow = win;
   win.loadFile(path.join(__dirname, "renderer/index.html"));
+
+  win.maximize();
 
   win.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url);

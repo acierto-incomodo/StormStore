@@ -97,9 +97,7 @@ function renderApps(category) {
       desc.textContent = app.description;
 
       const actions = document.createElement("div");
-      actions.style.display = "flex";
-      actions.style.gap = "8px";
-      actions.style.marginTop = "auto";
+      actions.className = "card-actions";
 
       if (app.installed) {
         // ABRIR
@@ -140,6 +138,11 @@ function renderApps(category) {
               updateBtn.textContent = "Actualizar";
               updateBtn.style.background = "#f0ad4e"; // Color naranja para diferenciar
               updateBtn.title = `Versión actual: ${result.localVersion || "?"} -> Nueva: ${result.remoteVersion}`;
+              
+              // Desactivado temporalmente
+              updateBtn.disabled = true;
+              updateBtn.style.opacity = "0.5";
+              updateBtn.style.cursor = "not-allowed";
 
               updateBtn.onclick = async () => {
                 const overlay = document.getElementById("install-overlay");
