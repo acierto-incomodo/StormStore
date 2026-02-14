@@ -115,6 +115,25 @@ ipcMain.handle("get-apps", () => {
 });
 
 ipcMain.handle("install-app", async (_, appData) => {
+  // ---------------------------------------------------------
+  // 1. Pre-instalación (Ej: Runtimes .NET, VC++, etc.)
+  // ---------------------------------------------------------
+  if (appData.preInstall && Array.isArray(appData.preInstall)) {
+    for (const item of appData.preInstall) {
+      // Resolvemos la ruta relativa (asumiendo base en renderer como los iconos: ../assets/...)
+      const prePath = path.join(__dirname, "renderer", item.path);
+
+      if (fs.existsSync(prePath)) {
+        await new Promise((resolvePre, rejectPre) => {
+          exec(`"${prePath}" ${item.args || ""}`, (err) => {
+            if (err) rejectPre(new Error(`Error en pre-instalación (${item.path}): ${err.message}`));
+            else resolvePre();
+          });
+        });
+      }
+    }
+  }
+
   return new Promise((resolve, reject) => {
     try {
       const downloadDir = getDownloadDir();
@@ -157,6 +176,7 @@ ipcMain.handle("install-app", async (_, appData) => {
                   }, 10000);
 
                   resolve(true);
+                  app.quit();
                 });
               });
             });
@@ -191,6 +211,7 @@ ipcMain.handle("open-app", async (_, exePath) => {
       stdio: "ignore",
     }).unref();
 
+    app.quit();
     return true;
   } catch (err) {
     console.error("Error al abrir app:", err.message);

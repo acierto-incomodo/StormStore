@@ -8,6 +8,12 @@
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
     ],
+    "preInstall": [
+      {
+        "path": "../assets/extraFiles/aspnetcore-runtime-8.0.23-win-x64.exe",
+        "args": "/install /quiet /norestart"
+      }
+    ],
     "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe"
   },
@@ -204,10 +210,10 @@
     ],
     "icon": "../assets/apps/multiai.png",
     "paths": [
-      "%localappdata%/Programs/multiai/MultiAI.exe"
+      "%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/MultiAI/releases/download/v1.2.3/MultiAI-Setup-1.2.3.exe",
-    "uninstall": "%localappdata%/Programs/multiai/Uninstall MultiAI.exe"
+    "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-Setup.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe"
   },
   {
     "id": "doom",
