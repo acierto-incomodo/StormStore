@@ -19,7 +19,6 @@ if (process.platform !== "win32") {
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.autoDownload = false; // Desactivamos la descarga automática
 autoUpdater.checkForUpdates();
 
 autoUpdater.on("update-available", (info) => {
