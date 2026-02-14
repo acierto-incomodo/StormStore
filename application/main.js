@@ -54,8 +54,10 @@ autoUpdater.on("error", (err) => {
 // -----------------------------
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1210,
+    width: 1226,
     height: 650,
+    minWidth: 1226,
+    minHeight: 650,
     backgroundColor: "#1e1e1e",
     icon: path.join(__dirname, "assets/app.ico"),
     webPreferences: {
