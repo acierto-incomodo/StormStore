@@ -15,4 +15,5 @@ contextBridge.exposeInMainWorld("api", {
   onDownloadProgress: (callback) => ipcRenderer.on("download-progress", callback),
   onUpdateDownloaded: (callback) => ipcRenderer.on("update-downloaded", callback),
   onUpdateError: (callback) => ipcRenderer.on("update-error", callback),
+  checkAppUpdate: (appId, downloadUrl) => ipcRenderer.invoke("check-app-update", appId, downloadUrl),
 });

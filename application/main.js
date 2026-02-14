@@ -109,6 +109,57 @@ function getDownloadDir() {
 }
 
 // -----------------------------
+// Gestión de Versiones Instaladas
+// -----------------------------
+const installedVersionsFile = path.join(app.getPath("userData"), "installed_versions.json");
+
+function getInstalledVersions() {
+  if (!fs.existsSync(installedVersionsFile)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(installedVersionsFile, "utf8"));
+  } catch {
+    return {};
+  }
+}
+
+function saveInstalledVersion(appId, version) {
+  const versions = getInstalledVersions();
+  versions[appId] = version;
+  fs.writeFileSync(installedVersionsFile, JSON.stringify(versions, null, 2));
+}
+
+function getRepoFromUrl(url) {
+  if (!url) return null;
+  const match = url.match(/github\.com\/([^/]+)\/([^/]+)/);
+  if (match) return { owner: match[1], repo: match[2] };
+  return null;
+}
+
+function fetchLatestTag(owner, repo) {
+  return new Promise((resolve) => {
+    const options = {
+      hostname: 'api.github.com',
+      path: `/repos/${owner}/${repo}/releases/latest`,
+      headers: { 'User-Agent': 'StormStore-App' }
+    };
+    https.get(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        if (res.statusCode === 200) {
+          try {
+            const json = JSON.parse(data);
+            resolve(json.tag_name);
+          } catch (e) { resolve(null); }
+        } else {
+          resolve(null);
+        }
+      });
+    }).on('error', () => resolve(null));
+  });
+}
+
+// -----------------------------
 // IPC
 // -----------------------------
 ipcMain.handle("get-apps", () => {
@@ -126,6 +177,14 @@ ipcMain.handle("get-apps", () => {
 });
 
 ipcMain.handle("install-app", async (_, appData) => {
+  // 0. Intentar obtener la versión remota antes de instalar
+  let versionToInstall = null;
+  const repoInfo = getRepoFromUrl(appData.download);
+  if (repoInfo) {
+    // Obtenemos el tag (ej: "v1.2.0")
+    versionToInstall = await fetchLatestTag(repoInfo.owner, repoInfo.repo);
+  }
+
   // ---------------------------------------------------------
   // 1. Pre-instalación (Ej: Runtimes .NET, VC++, etc.)
   // ---------------------------------------------------------
@@ -186,6 +245,10 @@ ipcMain.handle("install-app", async (_, appData) => {
                     }
                   }, 10000);
 
+                  // ✅ Guardamos la versión instalada
+                  if (versionToInstall) {
+                    saveInstalledVersion(appData.id, versionToInstall);
+                  }
                   resolve(true);
                   app.quit();
                 });
@@ -244,6 +307,20 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
     console.error("Error al desinstalar:", err.message);
     return false;
   }
+});
+
+ipcMain.handle("check-app-update", async (_, appId, downloadUrl) => {
+  const localVersion = getInstalledVersions()[appId];
+  const repoInfo = getRepoFromUrl(downloadUrl);
+
+  if (!repoInfo) return { hasUpdate: false };
+
+  const remoteVersion = await fetchLatestTag(repoInfo.owner, repoInfo.repo);
+  
+  // Si no tenemos versión local (instalación antigua) o son diferentes, hay actualización
+  const hasUpdate = remoteVersion && (localVersion !== remoteVersion);
+  
+  return { hasUpdate, localVersion, remoteVersion };
 });
 
 // -----------------------------

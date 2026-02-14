@@ -103,24 +103,21 @@
       }
 
       // Buscar actualizaciones
-      document.getElementById("check-updates-btn").addEventListener("click", async () => {
-        document.getElementById("check-status").textContent = "Buscando actualizaciones...";
-        document.getElementById("check-updates-btn").disabled = true;
+      document.getElementById("check-updates-btn").addEventListener("click", () => {
+        const statusEl = document.getElementById("check-status");
+        const checkBtn = document.getElementById("check-updates-btn");
 
-        try {
-          const result = await window.api.checkForUpdates();
+        statusEl.textContent = "Buscando actualizaciones...";
+        checkBtn.disabled = true;
 
-          if (result && result.updateInfo) {
-            showUpdateAvailable(result.updateInfo);
-          } else {
-            showNoUpdate();
-          }
-        } catch (err) {
-          showError(`Error al buscar actualizaciones: ${err.message}`);
-        } finally {
-          document.getElementById("check-status").textContent = "";
-          document.getElementById("check-updates-btn").disabled = false;
-        }
+        // Ocultar los resultados anteriores para una UI más limpia
+        document.getElementById("update-info-section").style.display = "none";
+        document.getElementById("no-update-section").style.display = "none";
+        document.getElementById("error-section").style.display = "none";
+
+        // Disparamos la comprobación. Los 'listeners' de eventos (onUpdateAvailable, etc.)
+        // se encargarán de mostrar el resultado correcto.
+        window.api.checkForUpdates();
       });
 
       // Descargar actualización
@@ -152,11 +149,13 @@
 
       // Escuchar eventos desde el main process
       window.api.onUpdateAvailable((_, info) => {
+        resetCheckUI();
         showUpdateAvailable(info);
       });
 
       window.api.onUpdateNotAvailable(() => {
         showNoUpdate();
+        resetCheckUI();
       });
 
       window.api.onDownloadProgress((_, progressObj) => {
@@ -181,6 +180,7 @@
       });
 
       window.api.onUpdateError((_, message) => {
+        resetCheckUI();
         showError(`Error: ${message}`);
       });
     });
@@ -190,6 +190,11 @@
       const version = await window.api.getAppVersion();
       document.getElementById("app-version").textContent = `v${version}`;
       document.getElementById("current-version").textContent = `v${version}`;
+    }
+
+    function resetCheckUI() {
+      document.getElementById("check-status").textContent = "";
+      document.getElementById("check-updates-btn").disabled = false;
     }
 
     function showUpdateAvailable(info) {
