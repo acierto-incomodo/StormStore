@@ -24,8 +24,10 @@
 
   <aside class="sidebar">
     <div class="sidebar-top">
-      <h2>StormStore</h2>
-      <p class="version" id="app-version"></p>
+      <div class="brand-container">
+        <h2>StormStore</h2>
+        <p class="version" id="app-version"></p>
+      </div>
 
       <ul id="categories"></ul>
     </div>
@@ -53,18 +55,25 @@
     </div>
   </aside>
 
-  <main>
+  <main class="dashboard-layout">
     <div class="main-header">
-      <h1 id="current-category">Todas</h1>
-      <button id="refresh-btn" style="background: transparent; border: none; color: #888; cursor: pointer; margin-left: 10px; padding: 4px; display: flex; align-items: center; justify-content: center;" title="Recargar lista">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-      </button>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h1 id="current-category">Todas</h1>
+        <button id="refresh-btn" style="background: transparent; border: none; color: #888; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center;" title="Recargar lista">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        </button>
+      </div>
       <div class="search-wrapper">
         <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
         <input id="search" type="search" placeholder="Buscar aplicaciones..." />
+      </div>
+      <div class="window-controls">
+        <button class="control-btn" id="min-btn">─</button>
+        <button class="control-btn" id="max-btn">◻</button>
+        <button class="control-btn close" id="close-btn">✕</button>
       </div>
     </div>
 

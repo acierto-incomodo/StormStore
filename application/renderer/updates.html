@@ -12,8 +12,10 @@
 <body>
   <aside class="sidebar">
     <div class="sidebar-top">
-      <h2>StormStore</h2>
-      <p class="version" id="app-version"></p>
+      <div class="brand-container">
+        <h2>StormStore</h2>
+        <p class="version" id="app-version"></p>
+      </div>
 
       <button id="back-to-apps" class="back-button">
         ← Volver a aplicaciones
@@ -27,10 +29,16 @@
     </div>
   </aside>
 
-  <main>
-    <div class="updates-container">
+  <main class="dashboard-layout">
+    <div class="main-header">
       <h1>Actualizaciones</h1>
-
+      <div class="window-controls">
+        <button class="control-btn" id="min-btn">─</button>
+        <button class="control-btn" id="max-btn">◻</button>
+        <button class="control-btn close" id="close-btn">✕</button>
+      </div>
+    </div>
+    <div class="updates-container">
       <div class="update-section">
         <h2>Versión actual</h2>
         <p class="current-version" id="current-version">Cargando...</p>
@@ -167,6 +175,22 @@
         resetCheckUI();
         showError(`Error: ${message}`);
       });
+
+      // Controles de ventana
+      document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
+      document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
+
+      const maxBtn = document.getElementById("max-btn");
+      if (maxBtn) {
+        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+
+        window.api.isMaximized().then((isMax) => {
+          if (isMax) maxBtn.textContent = "❐";
+        });
+
+        window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+        window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
+      }
     });
 
     // Cargar versión actual

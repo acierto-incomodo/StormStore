@@ -19,6 +19,7 @@ if (process.platform !== "win32") {
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
+autoUpdater.autoDownload = false;
 autoUpdater.checkForUpdates();
 
 autoUpdater.on("update-available", (info) => {
@@ -68,6 +69,7 @@ function createWindow() {
     minWidth: 1226,
     minHeight: 650,
     backgroundColor: "#00000000",
+    frame: false,
     backgroundMaterial: "mica",
     autoHideMenuBar: true,
     icon: path.join(__dirname, "assets/app.ico"),
@@ -81,6 +83,14 @@ function createWindow() {
   win.loadFile(path.join(__dirname, "renderer/index.html"));
 
   win.maximize();
+
+  win.on("maximize", () => {
+    win.webContents.send("window-maximized");
+  });
+
+  win.on("unmaximize", () => {
+    win.webContents.send("window-restored");
+  });
 
   win.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url);
@@ -111,57 +121,6 @@ function getDownloadDir() {
 }
 
 // -----------------------------
-// Gestión de Versiones Instaladas
-// -----------------------------
-const installedVersionsFile = path.join(app.getPath("userData"), "installed_versions.json");
-
-function getInstalledVersions() {
-  if (!fs.existsSync(installedVersionsFile)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(installedVersionsFile, "utf8"));
-  } catch {
-    return {};
-  }
-}
-
-function saveInstalledVersion(appId, version) {
-  const versions = getInstalledVersions();
-  versions[appId] = version;
-  fs.writeFileSync(installedVersionsFile, JSON.stringify(versions, null, 2));
-}
-
-function getRepoFromUrl(url) {
-  if (!url) return null;
-  const match = url.match(/github\.com\/([^/]+)\/([^/]+)/);
-  if (match) return { owner: match[1], repo: match[2] };
-  return null;
-}
-
-function fetchLatestTag(owner, repo) {
-  return new Promise((resolve) => {
-    const options = {
-      hostname: 'api.github.com',
-      path: `/repos/${owner}/${repo}/releases/latest`,
-      headers: { 'User-Agent': 'StormStore-App' }
-    };
-    https.get(options, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        if (res.statusCode === 200) {
-          try {
-            const json = JSON.parse(data);
-            resolve(json.tag_name);
-          } catch (e) { resolve(null); }
-        } else {
-          resolve(null);
-        }
-      });
-    }).on('error', () => resolve(null));
-  });
-}
-
-// -----------------------------
 // IPC
 // -----------------------------
 ipcMain.handle("get-apps", () => {
@@ -179,14 +138,6 @@ ipcMain.handle("get-apps", () => {
 });
 
 ipcMain.handle("install-app", async (_, appData) => {
-  // 0. Intentar obtener la versión remota antes de instalar
-  let versionToInstall = null;
-  const repoInfo = getRepoFromUrl(appData.download);
-  if (repoInfo) {
-    // Obtenemos el tag (ej: "v1.2.0")
-    versionToInstall = await fetchLatestTag(repoInfo.owner, repoInfo.repo);
-  }
-
   // ---------------------------------------------------------
   // 1. Pre-instalación (Ej: Runtimes .NET, VC++, etc.)
   // ---------------------------------------------------------
@@ -247,12 +198,7 @@ ipcMain.handle("install-app", async (_, appData) => {
                     }
                   }, 10000);
 
-                  // ✅ Guardamos la versión instalada
-                  if (versionToInstall) {
-                    saveInstalledVersion(appData.id, versionToInstall);
-                  }
                   resolve(true);
-                  app.quit();
                 });
               });
             });
@@ -295,6 +241,13 @@ ipcMain.handle("open-app", async (_, exePath) => {
   }
 });
 
+ipcMain.handle("open-app-location", async (_, exePath) => {
+  const resolved = resolveWindowsPath(exePath);
+  if (fs.existsSync(resolved)) {
+    shell.showItemInFolder(resolved);
+  }
+});
+
 ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
   try {
     const resolved = resolveWindowsPath(uninstallPath);
@@ -309,20 +262,6 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
     console.error("Error al desinstalar:", err.message);
     return false;
   }
-});
-
-ipcMain.handle("check-app-update", async (_, appId, downloadUrl) => {
-  const localVersion = getInstalledVersions()[appId];
-  const repoInfo = getRepoFromUrl(downloadUrl);
-
-  if (!repoInfo) return { hasUpdate: false };
-
-  const remoteVersion = await fetchLatestTag(repoInfo.owner, repoInfo.repo);
-  
-  // Si no tenemos versión local (instalación antigua) o son diferentes, hay actualización
-  const hasUpdate = remoteVersion && (localVersion !== remoteVersion);
-  
-  return { hasUpdate, localVersion, remoteVersion };
 });
 
 // -----------------------------
@@ -362,6 +301,17 @@ ipcMain.handle("download-update", async () => {
 ipcMain.handle("install-update", () => {
   autoUpdater.quitAndInstall();
 });
+
+// -----------------------------
+// Controles de Ventana (Custom)
+// -----------------------------
+ipcMain.on("window-minimize", () => mainWindow?.minimize());
+ipcMain.on("window-maximize", () => {
+  if (mainWindow?.isMaximized()) mainWindow.unmaximize();
+  else mainWindow?.maximize();
+});
+ipcMain.on("window-close", () => mainWindow?.close());
+ipcMain.handle("is-maximized", () => mainWindow?.isMaximized());
 
 // =====================================
 // FIN MANEJO DE ACTUALIZACIONES

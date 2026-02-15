@@ -8,6 +8,8 @@ const refreshBtn = document.getElementById("refresh-btn");
 let allApps = [];
 let currentCategory = "Todas";
 let currentSearch = "";
+const installingApps = new Set();
+const uninstallingApps = new Set();
 
 // Mostrar versión automáticamente
 if (versionElem) {
@@ -100,85 +102,116 @@ function renderApps(category) {
       actions.className = "card-actions";
 
       if (app.installed) {
+        const isUninstalling = uninstallingApps.has(app.id);
+
+        actions.style.flexDirection = "column";
+
+        const topRow = document.createElement("div");
+        topRow.style.display = "flex";
+        topRow.style.gap = "8px";
+        topRow.style.width = "100%";
+
         // ABRIR
         const openBtn = document.createElement("button");
         openBtn.textContent = "Abrir";
+        openBtn.style.flex = "1";
         openBtn.onclick = () => window.api.openApp(app.paths[0]);
-        actions.appendChild(openBtn);
+        if (isUninstalling) openBtn.disabled = true;
+        topRow.appendChild(openBtn);
+
+        // UBICACIÓN
+        const locBtn = document.createElement("button");
+        locBtn.textContent = "Ubicación";
+        locBtn.style.background = "#2196F3";
+        locBtn.style.color = "#fff";
+        locBtn.style.width = "100%";
+        locBtn.onclick = () => window.api.openAppLocation(app.paths[0]);
+        if (isUninstalling) locBtn.disabled = true;
 
         // DESINSTALAR
         if (app.uninstall) {
           const uninstallBtn = document.createElement("button");
-          uninstallBtn.textContent = "Desinstalar";
           uninstallBtn.style.background = "#d9534f";
+          uninstallBtn.style.flex = "1";
 
-          uninstallBtn.onclick = async (e) => {
-            e.stopPropagation(); // 🔥 CLAVE
-            const overlay = document.getElementById("install-overlay");
-            overlay.style.display = "flex";
+          if (isUninstalling) {
+            uninstallBtn.disabled = true;
+            uninstallBtn.innerHTML = `
+            <span class="button-loading">
+              <img src="../assets/icons/loading-new.svg">
+              Desinstalando...
+            </span>
+          `;
+          } else {
+            uninstallBtn.textContent = "Desinstalar";
+            uninstallBtn.onclick = async (e) => {
+              e.stopPropagation();
+              uninstallingApps.add(app.id);
 
-            await window.api.uninstallApp(app.uninstall);
+              uninstallBtn.disabled = true;
+              openBtn.disabled = true;
+              locBtn.disabled = true;
+              uninstallBtn.innerHTML = `
+            <span class="button-loading">
+              <img src="../assets/icons/loading-new.svg">
+              Desinstalando...
+            </span>
+          `;
 
-            overlay.style.display = "none";
-            await load();
-          };
-
-          actions.appendChild(uninstallBtn);
-        }
-
-        // ACTUALIZAR (Verificación asíncrona)
-        if (app.download && app.download.includes("github.com")) {
-          const updateContainer = document.createElement("div");
-          // Lo añadimos oculto o vacío inicialmente
-          actions.appendChild(updateContainer);
-
-          window.api.checkAppUpdate(app.id, app.download).then((result) => {
-            if (result && result.hasUpdate) {
-              const updateBtn = document.createElement("button");
-              updateBtn.textContent = "Actualizar";
-              updateBtn.style.background = "#f0ad4e"; // Color naranja para diferenciar
-              updateBtn.title = `Versión actual: ${result.localVersion || "?"} -> Nueva: ${result.remoteVersion}`;
-              
-              // Desactivado temporalmente
-              updateBtn.disabled = true;
-              updateBtn.style.opacity = "0.5";
-              updateBtn.style.cursor = "not-allowed";
-
-              updateBtn.onclick = async () => {
-                const overlay = document.getElementById("install-overlay");
-                updateBtn.disabled = true;
-                overlay.style.display = "flex";
-                // Reutilizamos la lógica de instalar, ya que descarga el último instalador
-                await window.api.installApp(app);
-                overlay.style.display = "none";
+              try {
+                await window.api.uninstallApp(app.uninstall);
+              } catch (error) {
+                console.error("Error desinstalando:", error);
+              } finally {
+                uninstallingApps.delete(app.id);
                 await load();
-              };
+              }
+            };
+          }
 
-              updateContainer.appendChild(updateBtn);
-            }
-          });
+          topRow.appendChild(uninstallBtn);
         }
+
+        actions.appendChild(topRow);
+        actions.appendChild(locBtn);
       } else {
         // INSTALAR
         const installBtn = document.createElement("button");
-        installBtn.textContent = "Instalar";
+        installBtn.style.width = "100%";
 
-        installBtn.onclick = async () => {
-          const overlay = document.getElementById("install-overlay");
+        if (installingApps.has(app.id)) {
           installBtn.disabled = true;
-          overlay.style.display = "flex";
-
           installBtn.innerHTML = `
             <span class="button-loading">
               <img src="../assets/icons/loading-new.svg">
               Instalando...
             </span>
           `;
+        } else {
+          installBtn.textContent = "Instalar";
+          installBtn.onclick = async () => {
+            installingApps.add(app.id);
+            // Actualizar botón visualmente
+            installBtn.disabled = true;
+            installBtn.innerHTML = `
+            <span class="button-loading">
+              <img src="../assets/icons/loading-new.svg">
+              Instalando...
+            </span>
+          `;
 
-          await window.api.installApp(app);
-
-          overlay.style.display = "none";
-          await load();
+            try {
+              await window.api.installApp(app);
+              installingApps.delete(app.id);
+              await load();
+            } catch (error) {
+              console.error("Instalación cancelada o fallida:", error);
+              installingApps.delete(app.id);
+              // Revertir estado del botón
+              installBtn.disabled = false;
+              installBtn.textContent = "Instalar";
+            }
+          };
         };
 
         actions.appendChild(installBtn);
@@ -225,3 +258,20 @@ function updateInternetStatus() {
 
 updateInternetStatus();
 setInterval(updateInternetStatus, 5000);
+
+// Controles de ventana
+document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
+document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
+
+const maxBtn = document.getElementById("max-btn");
+if (maxBtn) {
+  maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+
+  // Estado inicial
+  window.api.isMaximized().then((isMax) => {
+    if (isMax) maxBtn.textContent = "❐";
+  });
+
+  window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+  window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
+}

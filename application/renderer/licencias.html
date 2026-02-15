@@ -4,31 +4,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Licencias de Software de Terceros</title>
+  <title>Licencias de Software de Terceros - StormStore</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="../assets/app.png" />
 </head>
 
 <body>
-  <main style="padding: 2rem; color: #fff; max-width: 900px; margin: auto">
-    <a href="index.html" style="
-          color: #FDD835;
-          text-decoration: none;
-          margin-bottom: 2rem;
-          display: inline-block;
-          font-weight: bold;
-        ">&larr; Volver</a>
-    <h1>Licencias de Software de Terceros</h1>
-    <p style="margin-bottom: 2rem; text-align: justify;">
-      La aplicación StormStore utiliza el siguiente software de código
-      abierto. Agradecemos a los desarrolladores por su trabajo.
-    </p>
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="brand-container">
+        <h2>StormStore</h2>
+        <p class="version" id="app-version"></p>
+      </div>
 
-    <div class="license-list">
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <button id="back-to-apps" class="back-button">
+        ← Volver a aplicaciones
+      </button>
+
+      <ul id="categories"></ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <p class="studio">StormGamesStudios</p>
+    </div>
+  </aside>
+
+  <main class="dashboard-layout">
+    <div class="main-header">
+      <h1>Licencias</h1>
+      <div class="window-controls">
+        <button class="control-btn" id="min-btn">─</button>
+        <button class="control-btn" id="max-btn">◻</button>
+        <button class="control-btn close" id="close-btn">✕</button>
+      </div>
+    </div>
+    <div class="updates-container">
+      <p style="margin-bottom: 2rem; text-align: justify;">
+        La aplicación StormStore utiliza el siguiente software de código
+        abierto. Agradecemos a los desarrolladores por su trabajo.
+      </p>
+
+      <div class="license-list">
+        <div class="license-item">
         <div class="license-header">
           <h2>Electron</h2>
           <span class="arrow"></span>
@@ -36,14 +53,7 @@
         <div class="license-body">
           <p><strong>Licencia:</strong> MIT License</p>
           <p>Copyright (c) 2013-2020 GitHub Inc.</p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -65,11 +75,7 @@ SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <div class="license-item">
         <div class="license-header">
           <h2>dotenv</h2>
           <span class="arrow"></span>
@@ -77,14 +83,7 @@ SOFTWARE.
         <div class="license-body">
           <p><strong>Licencia:</strong> BSD-2-Clause License</p>
           <p>Copyright (c) 2015, Scott Motte</p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
 
@@ -109,11 +108,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </div>
       </div>
 
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <div class="license-item">
         <div class="license-header">
           <h2>Quantico Font</h2>
           <span class="arrow"></span>
@@ -121,14 +116,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <div class="license-body">
           <p><strong>Licencia:</strong> SIL Open Font License, Version 1.1</p>
           <p>Copyright (c) 2011, Matthew Desmond</p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 Copyright (c) 2011, Matthew Desmond (http://www.madtype.com | mattdesmond@gmail.com),with Reserved Font Name Quantico.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
@@ -226,11 +214,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <div class="license-item">
         <div class="license-header">
           <h2>Iconos de SVG Repo</h2>
           <span class="arrow"></span>
@@ -243,14 +227,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
               style="color: #FDD835; text-decoration: underline">svgrepo.com</a>, que publica vectores bajo licencias
             libres.
           </p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 Usted es libre de:
 * Descargar y editar los vectores.
 * Usar los vectores para fines personales y comerciales.
@@ -263,11 +240,7 @@ Usted NO tiene permitido:
         </div>
       </div>
 
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <div class="license-item">
         <div class="license-header">
           <h2>MIT License (Licencia MIT)</h2>
           <span class="arrow"></span>
@@ -277,14 +250,7 @@ Usted NO tiene permitido:
             Esta es una de las licencias de software libre más comunes,
             utilizada por varios componentes de esta aplicación.
           </p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -306,11 +272,7 @@ SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <div class="license-item">
         <div class="license-header">
           <h2>electron-builder</h2>
           <span class="arrow"></span>
@@ -318,14 +280,7 @@ SOFTWARE.
         <div class="license-body">
           <p><strong>Licencia:</strong> MIT License</p>
           <p>Copyright (c) 2015-present, Vladimir Krivosheev</p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -347,11 +302,7 @@ SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <div class="license-item">
         <div class="license-header">
           <h2>Node.js</h2>
           <span class="arrow"></span>
@@ -365,14 +316,7 @@ SOFTWARE.
             <a href="https://github.com/nodejs/node/blob/main/LICENSE" target="_blank" rel="noopener"
               style="color: #FDD835; text-decoration: underline">repositorio de Node.js</a>.
           </p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
 deal in the Software without restriction, including without limitation the
@@ -394,11 +338,7 @@ IN THE SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item" style="
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-          ">
+      <div class="license-item">
         <div class="license-header">
           <h2>npm CLI</h2>
           <span class="arrow"></span>
@@ -406,14 +346,7 @@ IN THE SOFTWARE.
         <div class="license-body">
           <p><strong>Licencia:</strong> Artistic License 2.0</p>
           <p>Copyright (c) 2010, npm, Inc.</p>
-          <pre style="
-                white-space: pre-wrap;
-                background-color: #2a2a2a;
-                padding: 1rem;
-                border-radius: 5px;
-                font-family: monospace;
-                margin-top: 1rem;
-              ">
+          <pre>
 The Artistic License 2.0
 
 Copyright (c) 2000-2006, The Perl Foundation.
@@ -515,19 +448,48 @@ THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND WIT
 
       <!-- Puedes añadir más licencias aquí -->
     </div>
+    </div>
   </main>
 
   <script>
-    document.querySelectorAll(".license-header").forEach((header) => {
-      header.addEventListener("click", (event) => {
-        header.classList.toggle("active");
-        const licenseBody = header.nextElementSibling;
-        if (licenseBody.style.maxHeight) {
-          licenseBody.style.maxHeight = null;
-        } else {
-          licenseBody.style.maxHeight = licenseBody.scrollHeight + "px";
-        }
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Cargar versión
+      const version = await window.api.getAppVersion();
+      document.getElementById("app-version").textContent = `v${version}`;
+
+      // Botón volver
+      document.getElementById("back-to-apps").addEventListener("click", () => {
+        window.location.href = "index.html";
       });
+
+      // Acordeón
+      document.querySelectorAll(".license-header").forEach((header) => {
+        header.addEventListener("click", (event) => {
+          header.classList.toggle("active");
+          const licenseBody = header.nextElementSibling;
+          if (licenseBody.style.maxHeight) {
+            licenseBody.style.maxHeight = null;
+          } else {
+            licenseBody.style.maxHeight = licenseBody.scrollHeight + "px";
+          }
+        });
+      });
+
+      // Controles de ventana
+      document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
+      document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
+
+      const maxBtn = document.getElementById("max-btn");
+      if (maxBtn) {
+        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+
+        window.api.isMaximized().then((isMax) => {
+          if (isMax) maxBtn.textContent = "❐";
+        });
+
+        window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+        window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
+      }
     });
   </script>
 </body>
