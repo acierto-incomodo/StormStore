@@ -151,7 +151,9 @@ main.dashboard-layout {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 480px;
+  height: 520px;
+  min-height: 520px;
+  max-height: 520px;
 }
 
 .card img {
@@ -167,7 +169,6 @@ main.dashboard-layout {
 }
 
 .card p {
-  height: 140px;
   overflow-y: auto;
   margin: 0;
   font-size: 14px;
