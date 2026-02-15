@@ -59,11 +59,10 @@
           <p><strong>Versión actual:</strong> <span id="old-version">-</span></p>
           <p><strong>Fecha de lanzamiento:</strong> <span id="release-date">-</span></p>
           <p><strong>Descripción:</strong></p>
-          <p id="release-notes" class="release-notes">-</p>
+          <div id="release-notes" class="release-notes">-</div>
         </div>
         <div class="button-group">
           <button id="download-btn" class="primary-btn">Descargar actualización</button>
-          <button id="later-btn" class="secondary-btn">Más tarde</button>
         </div>
         <div id="download-progress" style="display: none; margin-top: 20px;">
           <p id="progress-text">Descargando...</p>
@@ -139,11 +138,6 @@
         }
       });
 
-      // Botón "Más tarde"
-      document.getElementById("later-btn").addEventListener("click", () => {
-        document.getElementById("update-info-section").style.display = "none";
-      });
-
       // Instalar actualización
       document.getElementById("install-btn").addEventListener("click", () => {
         window.api.installUpdate();
@@ -163,6 +157,16 @@
       window.api.onUpdateNotAvailable(() => {
         showNoUpdate();
         resetCheckUI();
+      });
+
+      window.api.onDownloadProgress((_, progressObj) => {
+        const percent = progressObj.percent.toFixed(1);
+        const transferred = (progressObj.transferred / 1024 / 1024).toFixed(2);
+        const total = (progressObj.total / 1024 / 1024).toFixed(2);
+        const speed = (progressObj.bytesPerSecond / 1024 / 1024).toFixed(2);
+
+        document.getElementById("progress-fill").style.width = percent + "%";
+        document.getElementById("progress-text").textContent = `Descargando: ${percent}% (${transferred} MB / ${total} MB) - ${speed} MB/s`;
       });
 
       window.api.onUpdateDownloaded(() => {
@@ -225,7 +229,16 @@
         document.getElementById("release-date").textContent = date.toLocaleDateString("es-ES");
       }
 
-      document.getElementById("release-notes").textContent = info.releaseNotes || "Sin descripción disponible";
+      document.getElementById("release-notes").innerHTML = info.releaseNotes || "Sin descripción disponible";
+
+      // Abrir enlaces en el navegador externo
+      const links = document.getElementById("release-notes").querySelectorAll("a");
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.open(link.href, "_blank");
+        });
+      });
     }
 
     function showNoUpdate() {

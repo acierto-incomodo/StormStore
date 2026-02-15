@@ -20,6 +20,7 @@ if (process.platform !== "win32") {
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
 autoUpdater.autoDownload = false;
+autoUpdater.allowDowngrade = true;
 autoUpdater.checkForUpdates();
 
 autoUpdater.on("update-available", (info) => {
@@ -38,6 +39,12 @@ autoUpdater.on("update-available", (info) => {
 autoUpdater.on("update-not-available", () => {
   if (mainWindow) {
     mainWindow.webContents.send("update-not-available");
+  }
+});
+
+autoUpdater.on("download-progress", (progressObj) => {
+  if (mainWindow) {
+    mainWindow.webContents.send("download-progress", progressObj);
   }
 });
 

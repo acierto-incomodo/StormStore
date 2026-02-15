@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalles de la Aplicación</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="../assets/app.png" />
+</head>
+
+<body>
+  <div id="install-overlay">
+    <div class="install-box">
+      <img src="../assets/icons/loading-new.svg" alt="Cargando" />
+      <p>Instalando aplicación…</p>
+    </div>
+  </div>
+
+  <div id="no-internet-overlay">
+    <h1>No hay conexión a Internet</h1>
+    <p>Revisa tu conexión y espera...</p>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="brand-container">
+        <h2>StormStore</h2>
+        <p class="version" id="app-version"></p>
+      </div>
+
+      <button id="back-btn" class="back-button">← Volver a aplicaciones</button>
+
+      <ul id="categories"></ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <p class="studio">StormGamesStudios</p>
+    </div>
+  </aside>
+
+  <main class="dashboard-layout">
+    <div class="main-header">
+      <h1 id="header-title">Cargando...</h1>
+      <div class="window-controls">
+        <button class="control-btn" id="min-btn">─</button>
+        <button class="control-btn" id="max-btn">◻</button>
+        <button class="control-btn close" id="close-btn">✕</button>
+      </div>
+    </div>
+
+    <div class="updates-container">
+      <div id="app-detail-container" style="display: flex; gap: 40px; align-items: flex-start;">
+        <!-- El contenido se inyectará aquí -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const appId = params.get("id");
+    const container = document.getElementById("app-detail-container");
+    const headerTitle = document.getElementById("header-title");
+    const versionElem = document.getElementById("app-version");
+    let isInstalling = false;
+    let isUninstalling = false;
+
+    // Mostrar versión
+    if (versionElem) {
+      window.api.getAppVersion().then((v) => {
+        versionElem.textContent = "v" + v;
+      });
+    }
+
+    // Botón Volver
+    document.getElementById("back-btn").addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+
+    // Controles de ventana
+    document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
+    document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
+    const maxBtn = document.getElementById("max-btn");
+    if (maxBtn) {
+      maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+      window.api.isMaximized().then((isMax) => { if (isMax) maxBtn.textContent = "❐"; });
+      window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+      window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
+    }
+
+    // Cargar datos
+    async function loadApp() {
+      const apps = await window.api.getApps();
+      const app = apps.find(a => a.id === appId);
+
+      if (!app) {
+        headerTitle.textContent = "Aplicación no encontrada";
+        container.innerHTML = "<p>No se pudo encontrar la información de la aplicación.</p>";
+        return;
+      }
+
+      headerTitle.textContent = app.name;
+      renderDetails(app);
+    }
+
+    function renderDetails(app) {
+      container.innerHTML = "";
+
+      // Imagen grande
+      const img = document.createElement("img");
+      img.src = app.icon;
+      img.style.width = "200px";
+      img.style.height = "200px";
+      img.style.borderRadius = "16px";
+      img.style.objectFit = "cover";
+      img.style.boxShadow = "0 4px 12px rgba(0,0,0,0.5)";
+
+      // Info container
+      const infoDiv = document.createElement("div");
+      infoDiv.style.flex = "1";
+      infoDiv.style.display = "flex";
+      infoDiv.style.flexDirection = "column";
+      infoDiv.style.gap = "16px";
+
+      const desc = document.createElement("p");
+      desc.textContent = app.description;
+      desc.style.fontSize = "16px";
+      desc.style.lineHeight = "1.6";
+      desc.style.color = "#ddd";
+
+      const actionsDiv = document.createElement("div");
+      actionsDiv.style.display = "flex";
+      actionsDiv.style.gap = "12px";
+      actionsDiv.style.marginTop = "20px";
+
+      if (app.installed) {
+        // Botón Abrir
+        const openBtn = document.createElement("button");
+        openBtn.textContent = "Abrir";
+        openBtn.className = "primary-btn"; // Usando clase de style.css si existe o fallback
+        openBtn.style.padding = "12px 24px";
+        openBtn.style.flex = "1";
+        openBtn.onclick = () => window.api.openApp(app.paths[0]);
+        
+        // Botón Ubicación
+        const locBtn = document.createElement("button");
+        locBtn.textContent = "Ubicación";
+        locBtn.style.background = "#2196F3";
+        locBtn.style.color = "#000";
+        locBtn.style.padding = "12px 24px";
+        locBtn.style.flex = "1";
+        locBtn.onclick = () => window.api.openAppLocation(app.paths[0]);
+
+        // Botón Desinstalar
+        const uninstallBtn = document.createElement("button");
+        uninstallBtn.textContent = isUninstalling ? "Desinstalando..." : "Desinstalar";
+        uninstallBtn.style.background = "#d9534f";
+        uninstallBtn.style.color = "#000";
+        uninstallBtn.style.padding = "12px 24px";
+        uninstallBtn.style.flex = "1";
+        uninstallBtn.disabled = isUninstalling;
+        
+        if (app.uninstall) {
+            uninstallBtn.onclick = async () => {
+                isUninstalling = true;
+                renderDetails(app); // Re-render para actualizar estado visual
+                try {
+                    await window.api.uninstallApp(app.uninstall);
+                } catch (e) { console.error(e); }
+                isUninstalling = false;
+                loadApp(); // Recargar estado
+            };
+            actionsDiv.append(openBtn, locBtn, uninstallBtn);
+        } else {
+            actionsDiv.append(openBtn, locBtn);
+        }
+
+      } else {
+        // Botón Instalar
+        const installBtn = document.createElement("button");
+        installBtn.textContent = isInstalling ? "Instalando..." : "Instalar";
+        installBtn.style.padding = "12px 24px";
+        installBtn.style.fontSize = "16px";
+        installBtn.style.flex = "1";
+        installBtn.disabled = isInstalling;
+        installBtn.onclick = async () => {
+            isInstalling = true;
+            renderDetails(app);
+            try { await window.api.installApp(app); } catch (e) { console.error(e); }
+            isInstalling = false;
+            loadApp();
+        };
+        actionsDiv.appendChild(installBtn);
+      }
+
+      infoDiv.append(desc, actionsDiv);
+      container.append(img, infoDiv);
+    }
+
+    loadApp();
+  </script>
+</body>
+</html>

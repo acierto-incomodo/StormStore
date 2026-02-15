@@ -91,6 +91,10 @@ function renderApps(category) {
 
       const icon = document.createElement("img");
       icon.src = app.icon;
+      icon.style.cursor = "pointer";
+      icon.onclick = () => {
+        window.location.href = `app.html?id=${app.id}`;
+      };
 
       const name = document.createElement("h3");
       name.textContent = app.name;
@@ -123,7 +127,7 @@ function renderApps(category) {
         const locBtn = document.createElement("button");
         locBtn.textContent = "Ubicación";
         locBtn.style.background = "#2196F3";
-        locBtn.style.color = "#fff";
+        locBtn.style.color = "#000";
         locBtn.style.width = "100%";
         locBtn.onclick = () => window.api.openAppLocation(app.paths[0]);
         if (isUninstalling) locBtn.disabled = true;
