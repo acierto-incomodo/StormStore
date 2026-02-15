@@ -1,81 +1,15 @@
 [
   {
-    "id": "stormlibraryv2",
-    "name": "StormLibraryV2",
-    "description": "Lanzador de juegos",
-    "category": "Utilidades",
-    "icon": "../assets/apps/stormlibraryv2.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
-    ],
-    "preInstall": [
-      {
-        "path": "assets/extraFiles/aspnetcore-runtime-8.0.23-win-x64.exe",
-        "args": "/install /quiet /norestart"
-      }
-    ],
-    "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe"
-  },
-  {
-    "id": "the-shooter",
-    "name": "The Shooter",
-    "description": "The Shooter es un juego multijugador en primera persona de tipo deathmatch, ambientado en un entorno tipo almacén. Los jugadores compiten entre sí disparando con varias armas (pistola, rifle automático y escopeta), recogiendo armas o recargas y salud en puntos repartidos por el mapa. Cada vez que un jugador muere, reaparece tras poco tiempo; al final de la partida, gana quien tenga más bajas.",
+    "id": "ambidextro",
+    "name": "Ambidextro",
+    "description": "Juego de acción/táctica donde controlas a personajes que luchan usando dos armas al mismo tiempo. El enfoque está en combos, precisión y velocidad para derrotar a enemigos en combates dinámicos.",
     "category": "Juegos",
-    "icon": "../assets/apps/the-shooter.png",
+    "icon": "../assets/apps/ambidextro.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe"
-  },
-  {
-    "id": "karts-multiplayer",
-    "name": "Karts Multiplayer",
-    "description": "Un juego divertido para jugar con amigos. Corre con karts en diferentes pistas, recoge potenciadores y lanza objetos a tus oponentes para ganar la carrera. ¡Compite en línea y demuestra quién es el mejor piloto de karts!",
-    "category": "Juegos",
-    "icon": "../assets/apps/karts-multiplayer.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/installer_updater.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/KartsMultiplayer/releases/latest/download/Karts_Multiplayer_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/unins000.exe"
-  },
-  {
-    "id": "repo",
-    "name": "R.E.P.O.",
-    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
-    "category": "Juegos",
-    "icon": "../assets/apps/REPO.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/R.E.P.O. Launcher.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/sgs-blog-disccussions/releases/latest/download/REPO_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/unins000.exe"
-  },
-  {
-    "id": "lethal-company",
-    "name": "Lethal Company",
-    "description": "Juego cooperativo donde un grupo de jugadores entra en instalaciones misteriosas para recoger recursos y cumplir cuotas, todo mientras criaturas hostiles los persiguen. Se destaca por su atmósfera tensa y momentos caóticos con amigos. (Típico juego del género “terror + extracción” viral en Steam).",
-    "category": "Juegos",
-    "icon": "../assets/apps/lethal-company.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/Lethal Company - Launcher.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/LethalCompany_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/unins000.exe"
-  },
-  {
-    "id": "mage-arena",
-    "name": "Mage Arena",
-    "description": "Arena de combate mágico en la que controlas a un mago y luchas contra otros jugadores o enemigos, usando hechizos, estrategias y habilidades especiales para sobrevivir y ganar el duelo.",
-    "category": "Juegos",
-    "icon": "../assets/apps/mage-arena.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/installer_updater.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/MageArena_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/unins000.exe"
+    "download": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/Ambidextro_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/unins000.exe"
   },
   {
     "id": "backseat-drivers",
@@ -90,6 +24,18 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/unins000.exe"
   },
   {
+    "id": "buckshot_roulette",
+    "name": "Buckshot Roulette",
+    "description": "Juego de terror/estrategia inspirado en la ruleta rusa donde te enfrentas a un “dealer” en rondas usando una escopeta cargada parcialmente. Debes decidir cuándo disparar y cuándo usar objetos únicos para sobrevivir mientras la IA te desafía.",
+    "category": "Juegos",
+    "icon": "../assets/apps/buckshot_roulette.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/buckshot_roulette/releases/latest/download/BuckshotRoulette_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe"
+  },
+  {
     "id": "content-warning",
     "name": "Content Warning",
     "description": "Juego cooperativo en el que tú y tus amigos grabáis vídeos en lugares aterradores para convertiros en estrellas virales mientras intentáis sobrevivir a criaturas y resolver situaciones tensas.",
@@ -102,16 +48,18 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/unins000.exe"
   },
   {
-    "id": "hollow-knight-silksong",
-    "name": "Hollow Knight: Silksong",
-    "description": "Secuela de Hollow Knight en la que controlas a Hornet, explorando un reino nuevo lleno de enemigos, habilidades y secretos. Es un juego de acción y aventura tipo metroidvania, con combate preciso y mundos extensos por descubrir.",
-    "category": "Juegos",
-    "icon": "../assets/apps/hollow-knight-silksong.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/installer_updater.exe"
+    "id": "doom",
+    "name": "DOOM Classic",
+    "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",
+    "category": [
+      "Juegos"
     ],
-    "download": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/HollowKnightSilksong_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/unins000.exe"
+    "icon": "../assets/apps/doom.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/DOOM/releases/latest/download/DOOM_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe"
   },
   {
     "id": "fnaf1",
@@ -162,43 +110,52 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/unins000.exe"
   },
   {
-    "id": "StormLauncher",
-    "name": "StormLauncher: HMCL Edition",
-    "description": "Minecraft launcher.",
-    "category": [
-      "Juegos",
-      "Utilidades"
-    ],
-    "icon": "../assets/apps/stormlauncher.png",
+    "id": "hollow-knight-silksong",
+    "name": "Hollow Knight: Silksong",
+    "description": "Secuela de Hollow Knight en la que controlas a Hornet, explorando un reino nuevo lleno de enemigos, habilidades y secretos. Es un juego de acción y aventura tipo metroidvania, con combate preciso y mundos extensos por descubrir.",
+    "category": "Juegos",
+    "icon": "../assets/apps/hollow-knight-silksong.png",
     "paths": [
-      "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.11.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
-    "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe"
+    "download": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/HollowKnightSilksong_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/unins000.exe"
   },
   {
-    "id": "ambidextro",
-    "name": "Ambidextro",
-    "description": "Juego de acción/táctica donde controlas a personajes que luchan usando dos armas al mismo tiempo. El enfoque está en combos, precisión y velocidad para derrotar a enemigos en combates dinámicos.",
+    "id": "karts-multiplayer",
+    "name": "Karts Multiplayer",
+    "description": "Un juego divertido para jugar con amigos. Corre con karts en diferentes pistas, recoge potenciadores y lanza objetos a tus oponentes para ganar la carrera. ¡Compite en línea y demuestra quién es el mejor piloto de karts!",
     "category": "Juegos",
-    "icon": "../assets/apps/ambidextro.png",
+    "icon": "../assets/apps/karts-multiplayer.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/Ambidextro_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/unins000.exe"
+    "download": "https://github.com/acierto-incomodo/KartsMultiplayer/releases/latest/download/Karts_Multiplayer_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/unins000.exe"
   },
   {
-    "id": "buckshot_roulette",
-    "name": "Buckshot Roulette",
-    "description": "Juego de terror/estrategia inspirado en la ruleta rusa donde te enfrentas a un “dealer” en rondas usando una escopeta cargada parcialmente. Debes decidir cuándo disparar y cuándo usar objetos únicos para sobrevivir mientras la IA te desafía.",
+    "id": "lethal-company",
+    "name": "Lethal Company",
+    "description": "Juego cooperativo donde un grupo de jugadores entra en instalaciones misteriosas para recoger recursos y cumplir cuotas, todo mientras criaturas hostiles los persiguen. Se destaca por su atmósfera tensa y momentos caóticos con amigos. (Típico juego del género “terror + extracción” viral en Steam).",
     "category": "Juegos",
-    "icon": "../assets/apps/buckshot_roulette.png",
+    "icon": "../assets/apps/lethal-company.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/Lethal Company - Launcher.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/buckshot_roulette/releases/latest/download/BuckshotRoulette_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe"
+    "download": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/LethalCompany_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/unins000.exe"
+  },
+  {
+    "id": "mage-arena",
+    "name": "Mage Arena",
+    "description": "Arena de combate mágico en la que controlas a un mago y luchas contra otros jugadores o enemigos, usando hechizos, estrategias y habilidades especiales para sobrevivir y ganar el duelo.",
+    "category": "Juegos",
+    "icon": "../assets/apps/mage-arena.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/MageArena_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/unins000.exe"
   },
   {
     "id": "multiai",
@@ -216,20 +173,6 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe"
   },
   {
-    "id": "doom",
-    "name": "DOOM Classic",
-    "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",
-    "category": [
-      "Juegos"
-    ],
-    "icon": "../assets/apps/doom.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/DOOM/releases/latest/download/DOOM_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe"
-  },
-  {
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
@@ -244,6 +187,18 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe"
   },
   {
+    "id": "repo",
+    "name": "R.E.P.O.",
+    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/REPO.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/R.E.P.O. Launcher.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/sgs-blog-disccussions/releases/latest/download/REPO_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/unins000.exe"
+  },
+  {
     "id": "scamline",
     "name": "Scam Line",
     "description": "Scam Line es un juego multijugador de engaño social para 4–8 personas en el que todos compiten en desafíos psicológicos y de comunicación para ser el último en pie. En cada partida, los jugadores están en habitaciones separadas y solo pueden hablar mediante un teléfono móvil antiguo dentro del juego. Debes negociar, formar alianzas o engañar a los demás para avanzar en distintos mini‑retos, como identificar quién es distinto o jugar al Dilema del Prisionero. La clave está en leer a los otros jugadores y usar la comunicación limitada a tu favor: puedes cooperar o mentir, pero al final solo uno puede ganar.",
@@ -256,5 +211,50 @@
     ],
     "download": "https://github.com/acierto-incomodo/ScamLine/releases/latest/download/ScamLine_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/unins000.exe"
+  },
+  {
+    "id": "StormLauncher",
+    "name": "StormLauncher: HMCL Edition",
+    "description": "Minecraft launcher.",
+    "category": [
+      "Juegos",
+      "Utilidades"
+    ],
+    "icon": "../assets/apps/stormlauncher.png",
+    "paths": [
+      "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.11.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
+    "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe"
+  },
+  {
+    "id": "stormlibraryv2",
+    "name": "StormLibraryV2",
+    "description": "Lanzador de juegos",
+    "category": "Utilidades",
+    "icon": "../assets/apps/stormlibraryv2.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
+    ],
+    "preInstall": [
+      {
+        "path": "assets/extraFiles/aspnetcore-runtime-8.0.23-win-x64.exe",
+        "args": "/install /quiet /norestart"
+      }
+    ],
+    "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe"
+  },
+  {
+    "id": "the-shooter",
+    "name": "The Shooter",
+    "description": "The Shooter es un juego multijugador en primera persona de tipo deathmatch, ambientado en un entorno tipo almacén. Los jugadores compiten entre sí disparando con varias armas (pistola, rifle automático y escopeta), recogiendo armas o recargas y salud en puntos repartidos por el mapa. Cada vez que un jugador muere, reaparece tras poco tiempo; al final de la partida, gana quien tenga más bajas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/the-shooter.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe"
   }
 ]
