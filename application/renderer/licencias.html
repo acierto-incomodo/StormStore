@@ -26,6 +26,27 @@
 
     <div class="sidebar-footer">
       <p class="studio">StormGamesStudios</p>
+
+      <div class="footer-icons">
+        <button data-link="https://github.com/acierto-incomodo">
+          <img src="../assets/icons/github.svg" alt="GitHub" />
+        </button>
+        <button data-link="https://stormgamesstudios.vercel.app/">
+          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
+        </button>
+        <button data-link="https://www.curseforge.com/members/creper1125463">
+          <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
+        </button>
+        <button id="open-updates">
+          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+        </button>
+        <button id="open-licenses">
+          <img src="../assets/icons/license.svg" alt="Licencias" />
+        </button>
+        <button id="open-info">
+          <img src="../assets/icons/info.svg" alt="Información" />
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -45,7 +66,7 @@
       </p>
 
       <div class="license-list">
-        <div class="license-item">
+        <div class="license-item animate-enter" style="animation-delay: 0.05s;">
         <div class="license-header">
           <h2>Electron</h2>
           <span class="arrow"></span>
@@ -75,7 +96,7 @@ SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item">
+      <div class="license-item animate-enter" style="animation-delay: 0.1s;">
         <div class="license-header">
           <h2>dotenv</h2>
           <span class="arrow"></span>
@@ -108,7 +129,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </div>
       </div>
 
-      <div class="license-item">
+      <div class="license-item animate-enter" style="animation-delay: 0.15s;">
         <div class="license-header">
           <h2>Quantico Font</h2>
           <span class="arrow"></span>
@@ -214,7 +235,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item">
+      <div class="license-item animate-enter" style="animation-delay: 0.2s;">
         <div class="license-header">
           <h2>Iconos de SVG Repo</h2>
           <span class="arrow"></span>
@@ -224,7 +245,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <p>
             Los iconos de la aplicación se obtuvieron de
             <a href="https://www.svgrepo.com" target="_blank" rel="noopener"
-              style="color: #FDD835; text-decoration: underline">svgrepo.com</a>, que publica vectores bajo licencias
+              style="color: var(--md-sys-color-primary); text-decoration: underline">svgrepo.com</a>, que publica vectores bajo licencias
             libres.
           </p>
           <pre>
@@ -240,7 +261,7 @@ Usted NO tiene permitido:
         </div>
       </div>
 
-      <div class="license-item">
+      <div class="license-item animate-enter" style="animation-delay: 0.25s;">
         <div class="license-header">
           <h2>MIT License (Licencia MIT)</h2>
           <span class="arrow"></span>
@@ -272,7 +293,7 @@ SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item">
+      <div class="license-item animate-enter" style="animation-delay: 0.3s;">
         <div class="license-header">
           <h2>electron-builder</h2>
           <span class="arrow"></span>
@@ -302,7 +323,7 @@ SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item">
+      <div class="license-item animate-enter" style="animation-delay: 0.35s;">
         <div class="license-header">
           <h2>Node.js</h2>
           <span class="arrow"></span>
@@ -314,7 +335,7 @@ SOFTWARE.
             Node.js también contiene software de terceros. La información
             completa sobre las licencias se puede encontrar en el
             <a href="https://github.com/nodejs/node/blob/main/LICENSE" target="_blank" rel="noopener"
-              style="color: #FDD835; text-decoration: underline">repositorio de Node.js</a>.
+              style="color: var(--md-sys-color-primary); text-decoration: underline">repositorio de Node.js</a>.
           </p>
           <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -338,7 +359,7 @@ IN THE SOFTWARE.
         </div>
       </div>
 
-      <div class="license-item">
+      <div class="license-item animate-enter" style="animation-delay: 0.4s;">
         <div class="license-header">
           <h2>npm CLI</h2>
           <span class="arrow"></span>
@@ -460,6 +481,23 @@ THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND WIT
       // Botón volver
       document.getElementById("back-to-apps").addEventListener("click", () => {
         window.location.href = "index.html";
+      });
+
+      // Footer links
+      document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const url = btn.getAttribute("data-link");
+          window.open(url);
+        });
+      });
+      document.getElementById("open-updates")?.addEventListener("click", () => {
+        window.location.href = "updates.html";
+      });
+      document.getElementById("open-licenses")?.addEventListener("click", () => {
+        window.location.href = "licencias.html";
+      });
+      document.getElementById("open-info")?.addEventListener("click", () => {
+        window.location.href = "info.html";
       });
 
       // Acordeón

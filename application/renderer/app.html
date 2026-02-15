@@ -36,6 +36,27 @@
 
     <div class="sidebar-footer">
       <p class="studio">StormGamesStudios</p>
+
+      <div class="footer-icons">
+        <button data-link="https://github.com/acierto-incomodo">
+          <img src="../assets/icons/github.svg" alt="GitHub" />
+        </button>
+        <button data-link="https://stormgamesstudios.vercel.app/">
+          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
+        </button>
+        <button data-link="https://www.curseforge.com/members/creper1125463">
+          <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
+        </button>
+        <button id="open-updates">
+          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+        </button>
+        <button id="open-licenses">
+          <img src="../assets/icons/license.svg" alt="Licencias" />
+        </button>
+        <button id="open-info">
+          <img src="../assets/icons/info.svg" alt="Información" />
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -50,7 +71,7 @@
     </div>
 
     <div class="updates-container">
-      <div id="app-detail-container" style="display: flex; gap: 40px; align-items: flex-start;">
+      <div id="app-detail-container" class="animate-enter" style="display: flex; gap: 40px; align-items: flex-start;">
         <!-- El contenido se inyectará aquí -->
       </div>
     </div>
@@ -75,6 +96,23 @@
     // Botón Volver
     document.getElementById("back-btn").addEventListener("click", () => {
       window.location.href = "index.html";
+    });
+
+    // Footer links
+    document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const url = btn.getAttribute("data-link");
+        window.open(url);
+      });
+    });
+    document.getElementById("open-updates")?.addEventListener("click", () => {
+      window.location.href = "updates.html";
+    });
+    document.getElementById("open-licenses")?.addEventListener("click", () => {
+      window.location.href = "licencias.html";
+    });
+    document.getElementById("open-info")?.addEventListener("click", () => {
+      window.location.href = "info.html";
     });
 
     // Controles de ventana
@@ -137,7 +175,7 @@
         // Botón Abrir
         const openBtn = document.createElement("button");
         openBtn.textContent = "Abrir";
-        openBtn.className = "primary-btn"; // Usando clase de style.css si existe o fallback
+        openBtn.className = "md-btn md-btn-filled";
         openBtn.style.padding = "12px 24px";
         openBtn.style.flex = "1";
         openBtn.onclick = () => window.api.openApp(app.paths[0]);
@@ -145,8 +183,7 @@
         // Botón Ubicación
         const locBtn = document.createElement("button");
         locBtn.textContent = "Ubicación";
-        locBtn.style.background = "#2196F3";
-        locBtn.style.color = "#000";
+        locBtn.className = "md-btn md-btn-tonal";
         locBtn.style.padding = "12px 24px";
         locBtn.style.flex = "1";
         locBtn.onclick = () => window.api.openAppLocation(app.paths[0]);
@@ -154,8 +191,7 @@
         // Botón Desinstalar
         const uninstallBtn = document.createElement("button");
         uninstallBtn.textContent = isUninstalling ? "Desinstalando..." : "Desinstalar";
-        uninstallBtn.style.background = "#d9534f";
-        uninstallBtn.style.color = "#000";
+        uninstallBtn.className = "md-btn md-btn-danger";
         uninstallBtn.style.padding = "12px 24px";
         uninstallBtn.style.flex = "1";
         uninstallBtn.disabled = isUninstalling;
@@ -179,6 +215,7 @@
         // Botón Instalar
         const installBtn = document.createElement("button");
         installBtn.textContent = isInstalling ? "Instalando..." : "Instalar";
+        installBtn.className = "md-btn md-btn-filled";
         installBtn.style.padding = "12px 24px";
         installBtn.style.fontSize = "16px";
         installBtn.style.flex = "1";

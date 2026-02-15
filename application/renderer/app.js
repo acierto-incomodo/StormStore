@@ -22,12 +22,13 @@ if (versionElem) {
 async function load(force = false) {
   if (force && refreshBtn) {
     refreshBtn.disabled = true;
-    refreshBtn.style.opacity = "0.5";
-    const icon = refreshBtn.querySelector("svg");
-    if (icon) icon.style.animation = "spin 1s linear infinite";
+    refreshBtn.classList.add("spinning");
   }
   try {
-    const newApps = await window.api.getApps();
+    const [newApps] = await Promise.all([
+      window.api.getApps(),
+      force ? new Promise((r) => setTimeout(r, 1000)) : Promise.resolve(),
+    ]);
 
     // Solo actualizamos si forzamos (botón) o si los datos han cambiado (ej. instalación detectada en disco)
     const hasChanged = force || JSON.stringify(newApps) !== JSON.stringify(allApps);
@@ -41,9 +42,7 @@ async function load(force = false) {
   } finally {
     if (force && refreshBtn) {
       refreshBtn.disabled = false;
-      refreshBtn.style.opacity = "1";
-      const icon = refreshBtn.querySelector("svg");
-      if (icon) icon.style.animation = "none";
+      refreshBtn.classList.remove("spinning");
     }
   }
 }
@@ -85,9 +84,10 @@ function renderApps(category) {
       const desc = (a.description || "").toLowerCase();
       return name.includes(q) || desc.includes(q);
     })
-    .forEach((app) => {
+    .forEach((app, index) => {
       const card = document.createElement("div");
       card.className = "card";
+      card.style.animationDelay = `${index * 50}ms`; // Staggered animation
 
       const icon = document.createElement("img");
       icon.src = app.icon;
@@ -118,6 +118,7 @@ function renderApps(category) {
         // ABRIR
         const openBtn = document.createElement("button");
         openBtn.textContent = "Abrir";
+        openBtn.className = "md-btn md-btn-filled";
         openBtn.style.flex = "1";
         openBtn.onclick = () => window.api.openApp(app.paths[0]);
         if (isUninstalling) openBtn.disabled = true;
@@ -126,8 +127,7 @@ function renderApps(category) {
         // UBICACIÓN
         const locBtn = document.createElement("button");
         locBtn.textContent = "Ubicación";
-        locBtn.style.background = "#2196F3";
-        locBtn.style.color = "#000";
+        locBtn.className = "md-btn md-btn-tonal";
         locBtn.style.width = "100%";
         locBtn.onclick = () => window.api.openAppLocation(app.paths[0]);
         if (isUninstalling) locBtn.disabled = true;
@@ -135,7 +135,7 @@ function renderApps(category) {
         // DESINSTALAR
         if (app.uninstall) {
           const uninstallBtn = document.createElement("button");
-          uninstallBtn.style.background = "#d9534f";
+          uninstallBtn.className = "md-btn md-btn-danger";
           uninstallBtn.style.flex = "1";
 
           if (isUninstalling) {
@@ -181,6 +181,7 @@ function renderApps(category) {
       } else {
         // INSTALAR
         const installBtn = document.createElement("button");
+        installBtn.className = "md-btn md-btn-filled";
         installBtn.style.width = "100%";
 
         if (installingApps.has(app.id)) {

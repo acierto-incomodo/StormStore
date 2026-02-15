@@ -26,6 +26,27 @@
 
     <div class="sidebar-footer">
       <p class="studio">StormGamesStudios</p>
+
+      <div class="footer-icons">
+        <button data-link="https://github.com/acierto-incomodo">
+          <img src="../assets/icons/github.svg" alt="GitHub" />
+        </button>
+        <button data-link="https://stormgamesstudios.vercel.app/">
+          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
+        </button>
+        <button data-link="https://www.curseforge.com/members/creper1125463">
+          <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
+        </button>
+        <button id="open-updates">
+          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+        </button>
+        <button id="open-licenses">
+          <img src="../assets/icons/license.svg" alt="Licencias" />
+        </button>
+        <button id="open-info">
+          <img src="../assets/icons/info.svg" alt="Información" />
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -44,25 +65,37 @@
         <p class="current-version" id="current-version">Cargando...</p>
       </div>
 
-      <div class="update-section">
+      <div class="update-section animate-enter" style="animation-delay: 0.1s;">
         <h2>Buscar actualizaciones</h2>
-        <button id="check-updates-btn" class="primary-btn">
+        <button id="check-updates-btn" class="md-btn md-btn-filled">
           Buscar actualizaciones
         </button>
         <p id="check-status" class="status-message"></p>
       </div>
 
-      <div id="update-info-section" class="update-section" style="display: none;">
+      <div id="update-info-section" class="update-section animate-enter" style="display: none; animation-delay: 0.2s;">
         <h2>Actualización disponible</h2>
-        <div class="update-details">
-          <p><strong>Nueva versión:</strong> <span id="new-version">-</span></p>
-          <p><strong>Versión actual:</strong> <span id="old-version">-</span></p>
-          <p><strong>Fecha de lanzamiento:</strong> <span id="release-date">-</span></p>
-          <p><strong>Descripción:</strong></p>
-          <div id="release-notes" class="release-notes">-</div>
+        
+        <div class="version-grid">
+          <div class="v-col">
+            <span class="v-label">Actual</span>
+            <span class="v-val" id="old-version">-</span>
+          </div>
+          <div class="v-arrow">➜</div>
+          <div class="v-col">
+            <span class="v-label">Nueva</span>
+            <span class="v-val highlight" id="new-version">-</span>
+          </div>
         </div>
+
+        <p style="margin-top: 0; color: var(--md-sys-color-on-surface-variant);">
+          Lanzamiento: <span id="release-date" style="color: var(--md-sys-color-on-surface);">-</span>
+        </p>
+
+        <div id="release-notes" class="release-notes">-</div>
+
         <div class="button-group">
-          <button id="download-btn" class="primary-btn">Descargar actualización</button>
+          <button id="download-btn" class="md-btn md-btn-filled">Descargar actualización</button>
         </div>
         <div id="download-progress" style="display: none; margin-top: 20px;">
           <p id="progress-text">Descargando...</p>
@@ -80,13 +113,13 @@
       <div id="update-ready-section" class="update-section" style="display: none;">
         <h2>Actualización lista para instalar</h2>
         <p>La actualización ha sido descargada correctamente.</p>
-        <button id="install-btn" class="primary-btn">Instalar y reiniciar ahora</button>
+        <button id="install-btn" class="md-btn md-btn-filled">Instalar y reiniciar ahora</button>
       </div>
 
       <div id="error-section" class="update-section" style="display: none;">
         <h2>Error</h2>
         <p id="error-message" class="error-message">-</p>
-        <button id="retry-btn" class="secondary-btn">Reintentar</button>
+        <button id="retry-btn" class="md-btn md-btn-tonal">Reintentar</button>
       </div>
     </div>
   </main>
@@ -107,6 +140,23 @@
       } else {
         console.error("No se encontró el botón back-to-apps");
       }
+
+      // Footer links
+      document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const url = btn.getAttribute("data-link");
+          window.open(url);
+        });
+      });
+      document.getElementById("open-updates")?.addEventListener("click", () => {
+        window.location.href = "updates.html";
+      });
+      document.getElementById("open-licenses")?.addEventListener("click", () => {
+        window.location.href = "licencias.html";
+      });
+      document.getElementById("open-info")?.addEventListener("click", () => {
+        window.location.href = "info.html";
+      });
 
       // Buscar actualizaciones
       document.getElementById("check-updates-btn").addEventListener("click", () => {
@@ -214,6 +264,12 @@
       const backBtn = document.getElementById("back-to-apps");
       if (backBtn) {
         backBtn.style.display = "none";
+      }
+
+      // Ocultar footer icons
+      const footerIcons = document.querySelector(".footer-icons");
+      if (footerIcons) {
+        footerIcons.style.display = "none";
       }
 
       document.getElementById("update-info-section").style.display = "block";

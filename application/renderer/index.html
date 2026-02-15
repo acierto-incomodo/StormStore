@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StormStore</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../assets/app.png" />
 </head>
 
@@ -40,7 +41,7 @@
           <img src="../assets/icons/github.svg" alt="GitHub" />
         </button>
         <button data-link="https://stormgamesstudios.vercel.app/">
-          <img src="../assets/icons/web.svg" alt="Web" style="filter: brightness(0)" />
+          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
         </button>
         <button data-link="https://www.curseforge.com/members/creper1125463">
           <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
@@ -51,6 +52,9 @@
         <button id="open-licenses">
           <img src="../assets/icons/license.svg" alt="Licencias" />
         </button>
+        <button id="open-info">
+          <img src="../assets/icons/info.svg" alt="Información" />
+        </button>
       </div>
     </div>
   </aside>
@@ -59,7 +63,7 @@
     <div class="main-header">
       <div style="display: flex; align-items: center; gap: 10px;">
         <h1 id="current-category">Todas</h1>
-        <button id="refresh-btn" style="background: transparent; border: none; color: #888; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center;" title="Recargar lista">
+        <button id="refresh-btn" title="Recargar lista">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
         </button>
       </div>
@@ -90,6 +94,11 @@
     // Abrir la página de licencias en la misma ventana
     document.getElementById("open-licenses").addEventListener("click", () => {
       window.location.href = "licencias.html";
+    });
+
+    // Abrir la página de información
+    document.getElementById("open-info").addEventListener("click", () => {
+      window.location.href = "info.html";
     });
   </script>
 </body>
