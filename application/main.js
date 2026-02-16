@@ -223,8 +223,12 @@ ipcMain.handle("install-app", async (_, appData) => {
   });
 });
 
-ipcMain.handle("open-app", async (_, exePath) => {
+ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
   try {
+    if (requiresSteam) {
+      exec("start steam://");
+    }
+
     const resolvedExe = resolveWindowsPath(exePath);
 
     if (!fs.existsSync(resolvedExe)) {

@@ -145,13 +145,30 @@
       container.innerHTML = "";
 
       // Imagen grande
+      const imgContainer = document.createElement("div");
+      imgContainer.style.position = "relative";
+      imgContainer.style.width = "200px";
+      imgContainer.style.height = "200px";
+      imgContainer.style.flexShrink = "0";
+
       const img = document.createElement("img");
       img.src = app.icon;
-      img.style.width = "200px";
-      img.style.height = "200px";
+      img.className = "app-icon";
+      img.style.width = "100%";
+      img.style.height = "100%";
       img.style.borderRadius = "16px";
       img.style.objectFit = "cover";
       img.style.boxShadow = "0 4px 12px rgba(0,0,0,0.5)";
+
+      const wifiBadge = document.createElement("img");
+      wifiBadge.src = "../assets/icons/sin-wifi.svg";
+      wifiBadge.className = "wifi-badge";
+
+      if (app.wifi === "si") {
+        imgContainer.classList.add("requires-wifi");
+      }
+
+      imgContainer.append(img, wifiBadge);
 
       // Info container
       const infoDiv = document.createElement("div");
@@ -171,6 +188,10 @@
       actionsDiv.style.gap = "12px";
       actionsDiv.style.marginTop = "20px";
 
+      if (app.wifi === "si") {
+        actionsDiv.classList.add("requires-wifi");
+      }
+
       if (app.installed) {
         // Botón Abrir
         const openBtn = document.createElement("button");
@@ -178,7 +199,7 @@
         openBtn.className = "md-btn md-btn-filled";
         openBtn.style.padding = "12px 24px";
         openBtn.style.flex = "1";
-        openBtn.onclick = () => window.api.openApp(app.paths[0]);
+        openBtn.onclick = () => window.api.openApp(app.paths[0], app.steam === "si");
         
         // Botón Ubicación
         const locBtn = document.createElement("button");
@@ -230,9 +251,38 @@
         actionsDiv.appendChild(installBtn);
       }
 
-      infoDiv.append(desc, actionsDiv);
-      container.append(img, infoDiv);
+      infoDiv.append(desc);
+
+      // Requisito de Steam
+      if (app.steam === "si") {
+        const steamReq = document.createElement("p");
+        steamReq.innerHTML = `<strong>Requisito:</strong> Se necesita tener Steam iniciado.`;
+        steamReq.style.color = "var(--md-sys-color-primary)";
+        steamReq.style.background = "rgba(0,0,0,0.2)";
+        steamReq.style.padding = "12px";
+        steamReq.style.borderRadius = "var(--md-sys-shape-corner-medium)";
+        steamReq.style.marginTop = "10px";
+        infoDiv.appendChild(steamReq);
+      }
+
+      infoDiv.append(actionsDiv);
+      container.append(imgContainer, infoDiv);
     }
+
+    function updateInternetStatus() {
+      const overlay = document.getElementById("no-internet-overlay");
+      fetch("https://www.google.com", { mode: "no-cors" })
+        .then(() => {
+          if (overlay) overlay.style.display = "none";
+          document.body.classList.remove("offline");
+        })
+        .catch(() => {
+          if (overlay) overlay.style.display = "none";
+          document.body.classList.add("offline");
+        });
+    }
+    updateInternetStatus();
+    setInterval(updateInternetStatus, 1000);
 
     loadApp();
   </script>

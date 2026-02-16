@@ -3,7 +3,7 @@ const { contextBridge, ipcRenderer } = require("electron");
 contextBridge.exposeInMainWorld("api", {
   getApps: () => ipcRenderer.invoke("get-apps"),
   installApp: (app) => ipcRenderer.invoke("install-app", app),
-  openApp: (path) => ipcRenderer.invoke("open-app", path),
+  openApp: (path, requiresSteam) => ipcRenderer.invoke("open-app", path, requiresSteam),
   openAppLocation: (path) => ipcRenderer.invoke("open-app-location", path),
   getAppVersion: () => ipcRenderer.invoke("get-app-version"),
   uninstallApp: (path) => ipcRenderer.invoke("uninstall-app", path),

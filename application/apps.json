@@ -9,7 +9,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/Ambidextro_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/unins000.exe",
+    "steam": "no",
+    "wifi": "no"
   },
   {
     "id": "backseat-drivers",
@@ -21,7 +23,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/backseat_drivers/releases/latest/download/BackseatDrivers_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/unins000.exe",
+    "steam": "si",
+    "wifi": "si"
   },
   {
     "id": "buckshot_roulette",
@@ -33,7 +37,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/buckshot_roulette/releases/latest/download/BuckshotRoulette_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe",
+    "steam": "si",
+    "wifi": "no"
   },
   {
     "id": "content-warning",
@@ -45,7 +51,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/content_warning/releases/latest/download/ContentWarning_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/unins000.exe",
+    "steam": "si",
+    "wifi": "no"
   },
   {
     "id": "doom",
@@ -59,7 +67,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/DOOM/releases/latest/download/DOOM_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe",
+    "steam": "no",
+    "wifi": "no"
   },
   {
     "id": "fnaf1",
@@ -71,7 +81,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/FNAF1/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/fnaf_1/releases/latest/download/FNAF1_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/unins000.exe",
+    "steam": "no",
+    "wifi": "no"
   },
   {
     "id": "fnaf2",
@@ -83,7 +95,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/FNAF2/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/fnaf_2/releases/latest/download/FNAF2_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/unins000.exe",
+    "steam": "no",
+    "wifi": "no"
   },
   {
     "id": "fnaf3",
@@ -95,7 +109,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/FNAF3/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/fnaf_3/releases/latest/download/FNAF3_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/unins000.exe",
+    "steam": "no",
+    "wifi": "no"
   },
   {
     "id": "fnaf4",
@@ -107,7 +123,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/FNAF4/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/FNAF4_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/unins000.exe",
+    "steam": "no",
+    "wifi": "no"
   },
   {
     "id": "hollow-knight-silksong",
@@ -119,7 +137,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/HollowKnightSilksong_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/unins000.exe",
+    "steam": "si",
+    "wifi": "no"
   },
   {
     "id": "karts-multiplayer",
@@ -131,7 +151,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/KartsMultiplayer/releases/latest/download/Karts_Multiplayer_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/unins000.exe",
+    "steam": "no",
+    "wifi": "si"
   },
   {
     "id": "lethal-company",
@@ -143,7 +165,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/Lethal Company - Launcher.exe"
     ],
     "download": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/LethalCompany_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/unins000.exe",
+    "steam": "si",
+    "wifi": "no"
   },
   {
     "id": "mage-arena",
@@ -155,7 +179,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/MageArena_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/unins000.exe",
+    "steam": "si",
+    "wifi": "si"
   },
   {
     "id": "multiai",
@@ -170,7 +196,9 @@
       "%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"
     ],
     "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-Setup.exe",
-    "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe"
+    "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
+    "steam": "no",
+    "wifi": "si"
   },
   {
     "id": "pairdrop",
@@ -184,7 +212,9 @@
       "%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"
     ],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
-    "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe"
+    "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe",
+    "steam": "no",
+    "wifi": "si"
   },
   {
     "id": "repo",
@@ -196,7 +226,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/R.E.P.O. Launcher.exe"
     ],
     "download": "https://github.com/acierto-incomodo/sgs-blog-disccussions/releases/latest/download/REPO_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/unins000.exe",
+    "steam": "si",
+    "wifi": "no"
   },
   {
     "id": "scamline",
@@ -210,7 +242,9 @@
       "%appdata%/StormGamesStudios/NewGameDir/ScamLine/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/ScamLine/releases/latest/download/ScamLine_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/unins000.exe",
+    "steam": "si",
+    "wifi": "si"
   },
   {
     "id": "StormLauncher",
@@ -225,7 +259,9 @@
       "%appdata%/StormLauncher_HMCL-Edition/HMCL-3.6.11.exe"
     ],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
-    "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe"
+    "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe",
+    "steam": "no",
+    "wifi": "no"
   },
   {
     "id": "stormlibraryv2",
@@ -243,7 +279,9 @@
       }
     ],
     "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe",
+    "steam": "no",
+    "wifi": "si"
   },
   {
     "id": "the-shooter",
@@ -255,6 +293,8 @@
       "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe"
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe",
+    "steam": "no",
+    "wifi": "si"
   }
 ]

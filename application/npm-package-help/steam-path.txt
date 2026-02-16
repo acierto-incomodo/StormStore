@@ -1,0 +1,2 @@
+npm install steam-path
+https://classic.yarnpkg.com/en/package/steam-path

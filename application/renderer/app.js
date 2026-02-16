@@ -89,12 +89,33 @@ function renderApps(category) {
       card.className = "card";
       card.style.animationDelay = `${index * 50}ms`; // Staggered animation
 
-      const icon = document.createElement("img");
-      icon.src = app.icon;
-      icon.style.cursor = "pointer";
-      icon.onclick = () => {
+      if (app.wifi === "si") {
+        card.classList.add("requires-wifi");
+      }
+
+      const imgContainer = document.createElement("div");
+      imgContainer.className = "img-container";
+      imgContainer.style.cursor = "pointer";
+      imgContainer.onclick = () => {
         window.location.href = `app.html?id=${app.id}`;
       };
+
+      const icon = document.createElement("img");
+      icon.src = app.icon;
+      icon.className = "app-icon";
+      imgContainer.appendChild(icon);
+
+      if (app.steam === "si") {
+        const steamBadge = document.createElement("img");
+        steamBadge.src = "../assets/icons/steam.svg";
+        steamBadge.className = "steam-badge";
+        imgContainer.appendChild(steamBadge);
+      }
+
+      const wifiBadge = document.createElement("img");
+      wifiBadge.src = "../assets/icons/sin-wifi.svg";
+      wifiBadge.className = "wifi-badge";
+      imgContainer.appendChild(wifiBadge);
 
       const name = document.createElement("h3");
       name.textContent = app.name;
@@ -120,7 +141,7 @@ function renderApps(category) {
         openBtn.textContent = "Abrir";
         openBtn.className = "md-btn md-btn-filled";
         openBtn.style.flex = "1";
-        openBtn.onclick = () => window.api.openApp(app.paths[0]);
+        openBtn.onclick = () => window.api.openApp(app.paths[0], app.steam === "si");
         if (isUninstalling) openBtn.disabled = true;
         topRow.appendChild(openBtn);
 
@@ -222,7 +243,7 @@ function renderApps(category) {
         actions.appendChild(installBtn);
       }
 
-      card.append(icon, name, desc, actions);
+      card.append(imgContainer, name, desc, actions);
       appsContainer.appendChild(card);
     });
 }
@@ -257,12 +278,18 @@ document
 function updateInternetStatus() {
   const overlay = document.getElementById("no-internet-overlay");
   fetch("https://www.google.com", { mode: "no-cors" })
-    .then(() => (overlay.style.display = "none"))
-    .catch(() => (overlay.style.display = "flex"));
+    .then(() => {
+      if (overlay) overlay.style.display = "none";
+      document.body.classList.remove("offline");
+    })
+    .catch(() => {
+      if (overlay) overlay.style.display = "none"; // Ocultamos el overlay completo para mostrar los iconos oscuros
+      document.body.classList.add("offline");
+    });
 }
 
 updateInternetStatus();
-setInterval(updateInternetStatus, 5000);
+setInterval(updateInternetStatus, 1000);
 
 // Controles de ventana
 document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());

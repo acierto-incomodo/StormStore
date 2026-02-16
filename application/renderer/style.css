@@ -218,12 +218,70 @@ main.dashboard-layout {
   background: var(--md-sys-color-surface-container-high);
 }
 
-.card img {
+.app-icon {
+  transition: filter 0.5s ease;
+}
+
+.card .app-icon {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: var(--md-sys-shape-corner-medium);
   margin-bottom: 8px;
+}
+
+/* Contenedor de imagen para overlays */
+.img-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Badge de Steam */
+.steam-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Badge de Sin Wifi */
+.wifi-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+/* Estado Offline */
+body.offline .requires-wifi .app-icon {
+  filter: brightness(0.3) grayscale(1);
+}
+
+body.offline .requires-wifi .wifi-badge {
+  opacity: 1;
+}
+
+/* Desactivar botones si requiere wifi y estamos offline */
+body.offline .card.requires-wifi button,
+body.offline .requires-wifi button {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .card h3 {
