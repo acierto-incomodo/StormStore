@@ -4,6 +4,7 @@ const fs = require("fs");
 const https = require("https");
 const { spawn, exec } = require("child_process");
 const { autoUpdater } = require("electron-updater");
+const SteamPath = require("steam-path");
 
 const apps = require("./apps.json");
 
@@ -72,9 +73,9 @@ autoUpdater.on("error", (err) => {
 function createWindow() {
   const win = new BrowserWindow({
     width: 1226,
-    height: 650,
+    height: 750,
     minWidth: 1226,
-    minHeight: 650,
+    minHeight: 750,
     backgroundColor: "#00000000",
     frame: false,
     backgroundMaterial: "mica",
@@ -142,6 +143,151 @@ ipcMain.handle("get-apps", () => {
       installed,
     };
   });
+});
+
+ipcMain.handle("get-steam-games", async () => {
+  try {
+    let steamPath = null;
+    
+    // 1. Intentar con librería steam-path
+    try {
+      steamPath = await SteamPath.getSteamPath();
+    } catch (e) {
+      console.log("steam-path failed, trying registry...");
+    }
+
+    // 2. Intentar registro de Windows (HKCU)
+    if (!steamPath) {
+      try {
+        const { stdout } = await new Promise((resolve, reject) => {
+          exec('reg query "HKCU\\Software\\Valve\\Steam" /v SteamPath', (err, stdout) => {
+            if (err) reject(err);
+            else resolve({ stdout });
+          });
+        });
+        
+        // Parsear salida: ... SteamPath    REG_SZ    C:/Program Files (x86)/Steam
+        const match = stdout.match(/SteamPath\s+REG_SZ\s+(.+)/i);
+        if (match && match[1]) {
+          steamPath = match[1].trim();
+        }
+      } catch (e) {
+        console.log("Registry query failed:", e);
+      }
+    }
+
+    // 3. Fallback manual
+    if (!steamPath) {
+      const possible = [
+        "C:\\Program Files (x86)\\Steam",
+        "C:\\Program Files\\Steam",
+        "D:\\Steam",
+        "E:\\Steam"
+      ];
+      for (const p of possible) {
+        if (fs.existsSync(p)) {
+          steamPath = p;
+          break;
+        }
+      }
+    }
+
+    if (!steamPath) {
+      console.log("Steam path not found");
+      return [];
+    }
+
+    // Normalizar path (Steam en registro usa /)
+    steamPath = path.normalize(steamPath);
+    console.log("Steam Path detected:", steamPath);
+
+    // Usar Set para evitar duplicados
+    const libraries = new Set();
+    // Añadir librería por defecto
+    if (fs.existsSync(path.join(steamPath, "steamapps"))) {
+        libraries.add(path.join(steamPath, "steamapps"));
+    }
+
+    const vdfPath = path.join(steamPath, "steamapps", "libraryfolders.vdf");
+    
+    if (fs.existsSync(vdfPath)) {
+      try {
+        const vdfContent = fs.readFileSync(vdfPath, "utf8");
+        // Regex para capturar el valor de "path"
+        const pathRegex = /"path"\s+"([^"]+)"/g;
+        let match;
+        while ((match = pathRegex.exec(vdfContent)) !== null) {
+          let libPath = match[1];
+          // Corregir escapes de backslash dobles a simples
+          libPath = libPath.replace(/\\\\/g, "\\"); 
+          // Normalizar
+          libPath = path.normalize(libPath);
+          
+          const steamAppsPath = path.join(libPath, "steamapps");
+          if (fs.existsSync(steamAppsPath)) {
+             libraries.add(steamAppsPath);
+          }
+        }
+      } catch (e) {
+        console.error("Error reading libraryfolders.vdf:", e);
+      }
+    }
+
+    const games = [];
+    const seenAppIds = new Set();
+
+    for (const lib of libraries) {
+      console.log("Scanning library:", lib);
+      if (!fs.existsSync(lib)) continue;
+      
+      try {
+      const files = fs.readdirSync(lib);
+      for (const file of files) {
+        if (file.startsWith("appmanifest_") && file.endsWith(".acf")) {
+          try {
+            const content = fs.readFileSync(path.join(lib, file), "utf8");
+            const nameMatch = content.match(/"name"\s+"([^"]+)"/);
+            const appIdMatch = content.match(/"appid"\s+"(\d+)"/);
+            const installDirMatch = content.match(/"installdir"\s+"([^"]+)"/);
+            
+            if (nameMatch && appIdMatch) {
+              const name = nameMatch[1];
+              const appId = appIdMatch[1];
+              const installDir = installDirMatch ? installDirMatch[1] : null;
+              
+              // Filtrar "Steamworks Common Redistributables" (228980)
+              if (appId === "228980") continue;
+
+              if (!seenAppIds.has(appId)) {
+                seenAppIds.add(appId);
+                games.push({
+                  id: `steam-${appId}`,
+                  name: name,
+                  description: "Juego de Steam",
+                  category: "Steam",
+                  icon: `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`,
+                  paths: [`steam://rungameid/${appId}`],
+                  installPath: installDir ? path.join(lib, "common", installDir) : null,
+                  installed: true,
+                  steam: "si",
+                  wifi: "no"
+                });
+              }
+            }
+          } catch (e) { console.error(e); }
+        }
+      }
+      } catch (e) {
+        console.error("Error reading library directory:", lib, e);
+      }
+    }
+    
+    console.log(`Found ${games.length} Steam games`);
+    return games;
+  } catch (error) {
+    console.error("Error getting steam games:", error);
+    return [];
+  }
 });
 
 ipcMain.handle("install-app", async (_, appData) => {
@@ -225,6 +371,11 @@ ipcMain.handle("install-app", async (_, appData) => {
 
 ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
   try {
+    if (exePath.startsWith("steam://")) {
+      exec(`start "" "${exePath}"`);
+      return true;
+    }
+
     if (requiresSteam) {
       exec("start steam://");
     }
@@ -253,9 +404,15 @@ ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
 });
 
 ipcMain.handle("open-app-location", async (_, exePath) => {
+  if (!exePath) return;
   const resolved = resolveWindowsPath(exePath);
   if (fs.existsSync(resolved)) {
-    shell.showItemInFolder(resolved);
+    const stat = fs.statSync(resolved);
+    if (stat.isDirectory()) {
+      shell.openPath(resolved);
+    } else {
+      shell.showItemInFolder(resolved);
+    }
   }
 });
 

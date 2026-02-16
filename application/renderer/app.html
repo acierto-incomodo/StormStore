@@ -47,6 +47,9 @@
         <button data-link="https://www.curseforge.com/members/creper1125463">
           <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
         </button>
+        <button id="open-steam">
+          <img src="../assets/icons/steam.svg" alt="Steam" />
+        </button>
         <button id="open-updates">
           <img src="../assets/icons/update.svg" alt="Actualizaciones" />
         </button>
@@ -86,6 +89,21 @@
     let isInstalling = false;
     let isUninstalling = false;
 
+    function showToast(message) {
+      let toast = document.getElementById("toast-notification");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast-notification";
+        toast.className = "toast-notification";
+        document.body.appendChild(toast);
+      }
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+
     // Mostrar versión
     if (versionElem) {
       window.api.getAppVersion().then((v) => {
@@ -104,6 +122,9 @@
         const url = btn.getAttribute("data-link");
         window.open(url);
       });
+    });
+    document.getElementById("open-steam")?.addEventListener("click", () => {
+      window.location.href = "steam.html";
     });
     document.getElementById("open-updates")?.addEventListener("click", () => {
       window.location.href = "updates.html";
@@ -129,7 +150,12 @@
     // Cargar datos
     async function loadApp() {
       const apps = await window.api.getApps();
-      const app = apps.find(a => a.id === appId);
+      let app = apps.find(a => a.id === appId);
+
+      if (!app) {
+        const steamApps = await window.api.getSteamGames();
+        app = steamApps.find(a => a.id === appId);
+      }
 
       if (!app) {
         headerTitle.textContent = "Aplicación no encontrada";
@@ -204,10 +230,26 @@
         // Botón Ubicación
         const locBtn = document.createElement("button");
         locBtn.textContent = "Ubicación";
-        locBtn.className = "md-btn md-btn-tonal";
+        locBtn.className = "md-btn md-btn-blue";
         locBtn.style.padding = "12px 24px";
         locBtn.style.flex = "1";
-        locBtn.onclick = () => window.api.openAppLocation(app.paths[0]);
+        locBtn.onclick = () => {
+          window.api.openAppLocation(app.installPath || app.paths[0]);
+          showToast("Abriendo ubicación...");
+        };
+
+        // Botón Share (si aplica)
+        let shareBtn = null;
+        if (app["share-compatibility"] === "si") {
+          shareBtn = document.createElement("button");
+          shareBtn.className = "md-btn md-btn-tonal";
+          shareBtn.style.padding = "12px";
+          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 24px; height: 24px;">';
+          shareBtn.onclick = () => {
+             navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
+             showToast("Enlace copiado al portapapeles");
+          };
+        }
 
         // Botón Desinstalar
         const uninstallBtn = document.createElement("button");
@@ -220,6 +262,7 @@
         if (app.uninstall) {
             uninstallBtn.onclick = async () => {
                 isUninstalling = true;
+                showToast("Desinstalando aplicación...");
                 renderDetails(app); // Re-render para actualizar estado visual
                 try {
                     await window.api.uninstallApp(app.uninstall);
@@ -227,9 +270,14 @@
                 isUninstalling = false;
                 loadApp(); // Recargar estado
             };
-            actionsDiv.append(openBtn, locBtn, uninstallBtn);
+            if (!isUninstalling) {
+              actionsDiv.append(openBtn, locBtn);
+              if (shareBtn) actionsDiv.append(shareBtn);
+            }
+            actionsDiv.append(uninstallBtn);
         } else {
             actionsDiv.append(openBtn, locBtn);
+            if (shareBtn) actionsDiv.append(shareBtn);
         }
 
       } else {
@@ -243,12 +291,25 @@
         installBtn.disabled = isInstalling;
         installBtn.onclick = async () => {
             isInstalling = true;
+            showToast("Iniciando instalación...");
             renderDetails(app);
             try { await window.api.installApp(app); } catch (e) { console.error(e); }
             isInstalling = false;
             loadApp();
         };
         actionsDiv.appendChild(installBtn);
+
+        if (app["share-compatibility"] === "si") {
+          const shareBtn = document.createElement("button");
+          shareBtn.className = "md-btn md-btn-tonal";
+          shareBtn.style.padding = "12px";
+          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 24px; height: 24px;">';
+          shareBtn.onclick = () => {
+             navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
+             showToast("Enlace copiado al portapapeles");
+          };
+          actionsDiv.appendChild(shareBtn);
+        }
       }
 
       infoDiv.append(desc);

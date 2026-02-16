@@ -59,7 +59,7 @@
         <button class="control-btn close" id="close-btn">✕</button>
       </div>
     </div>
-    <div class="updates-container">
+    <div class="updates-container updates-flex-layout">
       <div class="update-section">
         <h2>Versión actual</h2>
         <p class="current-version" id="current-version">Cargando...</p>
@@ -272,7 +272,7 @@
         footerIcons.style.display = "none";
       }
 
-      document.getElementById("update-info-section").style.display = "block";
+      document.getElementById("update-info-section").style.display = "flex";
       document.getElementById("no-update-section").style.display = "none";
       document.getElementById("error-section").style.display = "none";
 

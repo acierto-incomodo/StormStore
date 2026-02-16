@@ -11,6 +11,21 @@ let currentSearch = "";
 const installingApps = new Set();
 const uninstallingApps = new Set();
 
+function showToast(message) {
+  let toast = document.getElementById("toast-notification");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast-notification";
+    toast.className = "toast-notification";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
 // Mostrar versión automáticamente
 if (versionElem) {
   window.api.getAppVersion().then((v) => {
@@ -128,8 +143,7 @@ function renderApps(category) {
 
       if (app.installed) {
         const isUninstalling = uninstallingApps.has(app.id);
-
-        actions.style.flexDirection = "column";
+        let shareBtn = null;
 
         const topRow = document.createElement("div");
         topRow.style.display = "flex";
@@ -142,16 +156,8 @@ function renderApps(category) {
         openBtn.className = "md-btn md-btn-filled";
         openBtn.style.flex = "1";
         openBtn.onclick = () => window.api.openApp(app.paths[0], app.steam === "si");
-        if (isUninstalling) openBtn.disabled = true;
+        if (isUninstalling) openBtn.style.display = "none";
         topRow.appendChild(openBtn);
-
-        // UBICACIÓN
-        const locBtn = document.createElement("button");
-        locBtn.textContent = "Ubicación";
-        locBtn.className = "md-btn md-btn-tonal";
-        locBtn.style.width = "100%";
-        locBtn.onclick = () => window.api.openAppLocation(app.paths[0]);
-        if (isUninstalling) locBtn.disabled = true;
 
         // DESINSTALAR
         if (app.uninstall) {
@@ -171,11 +177,13 @@ function renderApps(category) {
             uninstallBtn.textContent = "Desinstalar";
             uninstallBtn.onclick = async (e) => {
               e.stopPropagation();
+              showToast("Desinstalando aplicación...");
               uninstallingApps.add(app.id);
 
               uninstallBtn.disabled = true;
-              openBtn.disabled = true;
-              locBtn.disabled = true;
+              openBtn.style.display = "none";
+              locBtn.style.display = "none";
+              if (shareBtn) shareBtn.style.display = "none";
               uninstallBtn.innerHTML = `
             <span class="button-loading">
               <img src="../assets/icons/loading-new.svg">
@@ -198,12 +206,48 @@ function renderApps(category) {
         }
 
         actions.appendChild(topRow);
-        actions.appendChild(locBtn);
+
+        // UBICACIÓN + SHARE
+        const bottomRow = document.createElement("div");
+        bottomRow.style.display = "flex";
+        bottomRow.style.gap = "8px";
+        bottomRow.style.width = "100%";
+
+        const locBtn = document.createElement("button");
+        locBtn.textContent = "Ubicación";
+        locBtn.className = "md-btn md-btn-blue";
+        locBtn.style.flex = "1";
+        locBtn.onclick = () => {
+          window.api.openAppLocation(app.installPath || app.paths[0]);
+          showToast("Abriendo ubicación...");
+        };
+        if (isUninstalling) locBtn.style.display = "none";
+        bottomRow.appendChild(locBtn);
+
+        if (app["share-compatibility"] === "si") {
+          shareBtn = document.createElement("button");
+          shareBtn.className = "md-btn md-btn-tonal";
+          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
+          shareBtn.onclick = (e) => {
+            e.stopPropagation();
+            navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
+            showToast("Enlace copiado al portapapeles");
+          };
+          if (isUninstalling) shareBtn.style.display = "none";
+          bottomRow.appendChild(shareBtn);
+        }
+
+        actions.appendChild(bottomRow);
       } else {
-        // INSTALAR
+        // INSTALAR + SHARE
+        const installRow = document.createElement("div");
+        installRow.style.display = "flex";
+        installRow.style.gap = "8px";
+        installRow.style.width = "100%";
+
         const installBtn = document.createElement("button");
         installBtn.className = "md-btn md-btn-filled";
-        installBtn.style.width = "100%";
+        installBtn.style.flex = "1";
 
         if (installingApps.has(app.id)) {
           installBtn.disabled = true;
@@ -216,6 +260,7 @@ function renderApps(category) {
         } else {
           installBtn.textContent = "Instalar";
           installBtn.onclick = async () => {
+            showToast("Iniciando instalación...");
             installingApps.add(app.id);
             // Actualizar botón visualmente
             installBtn.disabled = true;
@@ -240,7 +285,21 @@ function renderApps(category) {
           };
         };
 
-        actions.appendChild(installBtn);
+        installRow.appendChild(installBtn);
+
+        if (app["share-compatibility"] === "si") {
+          const shareBtn = document.createElement("button");
+          shareBtn.className = "md-btn md-btn-tonal";
+          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
+          shareBtn.onclick = (e) => {
+            e.stopPropagation();
+            navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
+            showToast("Enlace copiado al portapapeles");
+          };
+          installRow.appendChild(shareBtn);
+        }
+
+        actions.appendChild(installRow);
       }
 
       card.append(imgContainer, name, desc, actions);

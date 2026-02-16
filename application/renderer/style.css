@@ -48,14 +48,14 @@ body {
   display: flex;
   height: 100vh;
   overflow: hidden;
-  background: var(--md-sys-color-background);
+  background: transparent;
   color: var(--md-sys-color-on-surface);
   padding-top: 0;
 }
 
 .sidebar {
   width: 260px;
-  background: var(--md-sys-color-surface);
+  background: rgba(30, 30, 30, 0.5);
   padding: 20px;
   height: 100vh;
   position: sticky;
@@ -174,7 +174,7 @@ main.dashboard-layout {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, 260px);
   gap: 24px;
   justify-content: center;
   align-content: start;
@@ -203,7 +203,6 @@ main.dashboard-layout {
   flex-direction: column;
   gap: 12px;
   height: 600px;
-  min-height: 600px;
   max-height: 600px;
   transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -308,7 +307,9 @@ body.offline .requires-wifi button {
   display: flex;
   gap: 8px;
   margin-top: auto;
-  justify-content: center;
+  justify-content: center; /* Centra el contenido verticalmente */
+  flex-direction: column; /* Apila los botones verticalmente */
+  min-height: 84px; /* Reserva espacio para hasta 2 filas de botones */
 }
 
 /* --- BOTONES MATERIAL DESIGN 3 --- */
@@ -353,6 +354,17 @@ body.offline .requires-wifi button {
 
 .md-btn-tonal:hover {
   filter: brightness(1.1);
+}
+
+/* Blue Button (Location) */
+.md-btn-blue {
+  background: #42A5F5;
+  color: #000000;
+}
+
+.md-btn-blue:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 /* Danger Button (Uninstall) */
@@ -458,6 +470,125 @@ body.offline .requires-wifi button {
   width: 16px;
   height: 16px;
   animation: spin 1s linear infinite;
+}
+
+/* =====================================
+   SELECTOR DE FUENTE (SOURCE SELECTOR)
+   ===================================== */
+
+.source-selector-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: 12px 16px;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.source-selector-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.source-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.source-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.source-modal {
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.source-modal-overlay.active .source-modal {
+  transform: scale(1);
+}
+
+.source-modal h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--md-sys-color-on-surface);
+}
+
+.source-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.source-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  border: 1px solid transparent;
+}
+
+.source-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.source-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.source-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.source-item span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+}
+
+.source-item small {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 2px;
 }
 
 #no-internet-overlay {
@@ -694,6 +825,12 @@ body.offline .requires-wifi button {
   flex: 1;
 }
 
+.updates-container.updates-flex-layout {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .updates-container h1 {
   font-size: 32px;
   margin-bottom: 30px;
@@ -742,10 +879,18 @@ body.offline .requires-wifi button {
   background: rgba(0, 0, 0, 0.3);
   padding: 10px;
   border-radius: var(--md-sys-shape-corner-medium);
-  max-height: 200px;
+  max-height: none;
   overflow-y: auto;
   font-size: 14px;
   color: var(--md-sys-color-on-surface-variant);
+  flex: 1;
+}
+
+#update-info-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 
 .version-grid {
@@ -856,4 +1001,28 @@ body.offline .requires-wifi button {
 
 .animate-enter {
   animation: slideUpFade 0.5s cubic-bezier(0.2, 0, 0, 1) backwards;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(50, 50, 50, 0.95);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }

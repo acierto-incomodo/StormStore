@@ -4,20 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StormStore</title>
+  <title>StormStore - Steam</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../assets/app.png" />
 </head>
 
 <body>
-  <div id="install-overlay">
-    <div class="install-box">
-      <img src="../assets/icons/loading-new.svg" alt="Cargando" />
-      <p>Instalando aplicación…</p>
-    </div>
-  </div>
-
   <div id="no-internet-overlay">
     <h1>No hay conexión a Internet</h1>
     <p>Revisa tu conexión y espera...</p>
@@ -51,9 +44,6 @@
         <button data-link="https://www.curseforge.com/members/creper1125463">
           <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
         </button>
-        <button id="open-steam">
-          <img src="../assets/icons/steam.svg" alt="Steam" />
-        </button>
         <button id="open-updates">
           <img src="../assets/icons/update.svg" alt="Actualizaciones" />
         </button>
@@ -70,7 +60,7 @@
   <main class="dashboard-layout">
     <div class="main-header">
       <div style="display: flex; align-items: center; gap: 10px;">
-        <h1 id="current-category">Todas</h1>
+        <h1 id="current-category">Juegos de Steam</h1>
         <button id="refresh-btn" title="Recargar lista">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
         </button>
@@ -80,7 +70,7 @@
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input id="search" type="search" placeholder="Buscar aplicaciones..." />
+        <input id="search" type="search" placeholder="Buscar juegos de Steam..." />
       </div>
       <div class="window-controls">
         <button class="control-btn" id="min-btn">─</button>
@@ -116,13 +106,8 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="steam.js"></script>
   <script>
-    // Abrir la página de Steam
-    document.getElementById("open-steam").addEventListener("click", () => {
-      window.location.href = "steam.html";
-    });
-
     // Abrir la página de actualizaciones
     document.getElementById("open-updates").addEventListener("click", () => {
       window.location.href = "updates.html";
