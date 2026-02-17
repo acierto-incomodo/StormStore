@@ -1,0 +1,1 @@
+git diff v{version}...main > cambios.patch
