@@ -27,4 +27,5 @@ contextBridge.exposeInMainWorld("api", {
   isMaximized: () => ipcRenderer.invoke("is-maximized"),
   onWindowMaximized: (callback) => ipcRenderer.on("window-maximized", callback),
   onWindowRestored: (callback) => ipcRenderer.on("window-restored", callback),
+  quitApp: () => ipcRenderer.send("app-quit"),
 });

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda del Mando - Big Picture</title>
+    <link rel="stylesheet" href="bigpicture.css">
+    <link rel="stylesheet" href="bigpicture-controller-tutorial.css">
+</head>
+<body>
+    <div id="background"></div>
+
+    <main id="content-container">
+        <div class="tutorial-modal">
+            <h1>Ayuda del Mando</h1>
+            <p>Estos son los controles principales para navegar en el modo Big Picture.</p>
+            
+            <div class="controls-list">
+                <!-- Navegación General -->
+                <div class="control-item">
+                    <div class="control-icons">
+                        <img src="../assets/gamepad/xbox/Xbox_Left_stick.svg" alt="Joystick Izquierdo">
+                        <img src="../assets/gamepad/playstation/PlayStation_Directional_button.svg" alt="Cruceta">
+                    </div>
+                    <div class="control-desc">
+                        <strong>Navegar</strong>
+                        <span>Mover selección en la cuadrícula y menús.</span>
+                    </div>
+                </div>
+
+                <!-- Aceptar / Iniciar -->
+                <div class="control-item">
+                    <div class="control-icons">
+                        <img src="../assets/gamepad/xbox/XboxA.svg" alt="Botón A">
+                        <span>/</span>
+                        <img src="../assets/gamepad/playstation/PlayStation_button_X.svg" alt="Botón Cruz">
+                    </div>
+                    <div class="control-desc">
+                        <strong>Aceptar / Iniciar</strong>
+                        <span>Inicia el juego seleccionado o confirma una opción.</span>
+                    </div>
+                </div>
+
+                <!-- Atrás / Menú -->
+                <div class="control-item">
+                    <div class="control-icons">
+                        <img src="../assets/gamepad/xbox/XboxB.svg" alt="Botón B">
+                        <span>/</span>
+                        <img src="../assets/gamepad/playstation/PlayStation_button_C.svg" alt="Botón Círculo">
+                    </div>
+                    <div class="control-desc">
+                        <strong>Atrás / Abrir Menú</strong>
+                        <span>Abre el menú principal o vuelve atrás en los menús.</span>
+                    </div>
+                </div>
+
+                <!-- Menú Home -->
+                <div class="control-item">
+                    <div class="control-icons">
+                        <img src="../assets/gamepad/playstation/Xbox_Logo.svg" alt="Botón Home Xbox">
+                        <img src="../assets/gamepad/playstation/Xbox_Menu_button.svg" alt="Botón Home Xbox">
+                        <span>/</span>
+                        <img src="../assets/gamepad/playstation/PlayStation_button_Home.svg" alt="Botón Home PS">
+                        <img src="../assets/gamepad/playstation/PlayStation_4_Options_button.svg" alt="Botón Home PS">
+                    </div>
+                    <div class="control-desc">
+                        <strong>Menú Principal</strong>
+                        <span>Abre y cierra el menú principal.</span>
+                    </div>
+                </div>
+
+                 <!-- Ayuda -->
+                 <div class="control-item">
+                    <div class="control-icons">
+                        <img src="../assets/gamepad/xbox/Xbox_Share_button.svg" alt="Botón Share Xbox">
+                        <span>/</span>
+                        <img src="../assets/gamepad/playstation/PlayStation_4_Share_button.svg" alt="Botón Share PS">
+                    </div>
+                    <div class="control-desc">
+                        <strong>Ayuda</strong>
+                        <span>Muestra esta pantalla de ayuda.</span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="tutorial-back-btn">Volver</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backButton = document.getElementById('tutorial-back-btn');
+            const params = new URLSearchParams(window.location.search);
+            const isFirstTime = params.get('firstTime') === 'true';
+
+            backButton.addEventListener('click', () => {
+                if (isFirstTime) {
+                    localStorage.setItem('hasSeenBPTutorial', 'true');
+                }
+                window.location.href = 'bigpicture.html';
+            });
+
+            // --- Gamepad Support ---
+            let prevButtons = [];
+            backButton.classList.add('selected');
+            let waitingForInitialRelease = true; // Flag to wait for the user to release the button they used to get here.
+
+            function isNewPress(gp, buttonIndex) {
+                return gp.buttons[buttonIndex]?.pressed && !prevButtons[buttonIndex];
+            }
+
+            function gamepadLoop() {
+                const gp = navigator.getGamepads().find(g => g !== null);
+                if (gp) {
+                    // Check if any of the buttons that can close this page are currently held down.
+                    const isAnyRelevantButtonHeld = gp.buttons[0]?.pressed || // A
+                                                    gp.buttons[1]?.pressed || // B
+                                                    gp.buttons[6]?.pressed || // View
+                                                    gp.buttons[8]?.pressed || // Share
+                                                    gp.buttons[9]?.pressed || // Options
+                                                    gp.buttons[16]?.pressed || // Home
+                                                    gp.buttons[18]?.pressed;  // Xbox Share
+
+                    // If no relevant buttons are held, it's safe to start listening for new presses.
+                    if (waitingForInitialRelease && !isAnyRelevantButtonHeld) {
+                        waitingForInitialRelease = false;
+                    }
+
+                    // Only process button presses if the initial release has happened.
+                    if (!waitingForInitialRelease) {
+                        if (isNewPress(gp, 0) || isNewPress(gp, 1) || isNewPress(gp, 6) || isNewPress(gp, 8) || isNewPress(gp, 9) || isNewPress(gp, 16) || isNewPress(gp, 18)) {
+                            backButton.click();
+                        }
+                    }
+
+                    prevButtons = gp.buttons.map(b => b.pressed);
+                }
+                requestAnimationFrame(gamepadLoop);
+            }
+            requestAnimationFrame(gamepadLoop);
+        });
+    </script>
+</body>
+</html>

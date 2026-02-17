@@ -1,0 +1,105 @@
+/* This file styles updates.html for Big Picture mode */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --bp-bg-color: #0d1825;
+    --bp-text-color: #e5e5e5;
+    --bp-highlight-color: #FDD835;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body.big-picture-mode {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bp-bg-color);
+    color: var(--bp-text-color);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hide standard UI elements */
+body.big-picture-mode .sidebar,
+body.big-picture-mode .main-header {
+    display: none;
+}
+
+/* Main container styling */
+body.big-picture-mode .dashboard-layout {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+body.big-picture-mode .updates-container {
+    max-width: 800px;
+    margin: auto; /* Center the content */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+body.big-picture-mode .update-section {
+    background: rgba(20, 30, 45, 0.9);
+    border: none;
+    border-left: 4px solid var(--bp-highlight-color);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+body.big-picture-mode .update-section h2 {
+    font-size: 2rem;
+    color: var(--bp-highlight-color);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+body.big-picture-mode button.md-btn,
+body.big-picture-mode button.back-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    color: var(--bp-text-color);
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-align: center;
+    width: 100%;
+}
+
+body.big-picture-mode button.md-btn:hover,
+body.big-picture-mode button.back-button:hover,
+body.big-picture-mode button.md-btn.selected,
+body.big-picture-mode button.back-button.selected {
+    background: var(--bp-highlight-color);
+    border-color: var(--bp-highlight-color);
+    color: #000;
+}
+
+body.big-picture-mode #back-to-apps {
+    order: 99; /* Move back button to the end */
+}
+
+/* Footer for prompts */
+body.big-picture-mode #bp-footer-prompts {
+    padding: 15px 50px;
+    background: rgba(0,0,0,0.3);
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 1.2rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

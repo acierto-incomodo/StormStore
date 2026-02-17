@@ -54,6 +54,9 @@
     <div class="main-header">
       <h1>Licencias</h1>
       <div class="window-controls">
+        <button class="control-btn" id="open-big-picture" title="Big Picture">
+          <img src="../assets/icons/big-picture.svg" alt="Big Picture" style="width: 20px; height: 20px;" />
+        </button>
         <button class="control-btn" id="min-btn">─</button>
         <button class="control-btn" id="max-btn">◻</button>
         <button class="control-btn close" id="close-btn">✕</button>
@@ -492,6 +495,9 @@ THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND WIT
       });
       document.getElementById("open-updates")?.addEventListener("click", () => {
         window.location.href = "updates.html";
+      });
+      document.getElementById("open-big-picture")?.addEventListener("click", () => {
+        window.api.openBigPicture();
       });
       document.getElementById("open-licenses")?.addEventListener("click", () => {
         window.location.href = "licencias.html";

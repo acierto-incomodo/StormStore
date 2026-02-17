@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = -1;
     let lastInputTime = 0;
     const DEBOUNCE_MS = 150;
+    // New state for single button press
+    let prevButtons = [];
 
     function getVisibleInteractiveElements() {
         const selectors = [
@@ -39,6 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const gp = navigator.getGamepads().find(g => g !== null);
 
         if (gp) {
+            // Function to check for a new button press
+            const isNewPress = (buttonIndex) => {
+                return gp.buttons[buttonIndex]?.pressed && !prevButtons[buttonIndex];
+            };
+
             const now = Date.now();
             if (now - lastInputTime > DEBOUNCE_MS) {
                 let actionTaken = false;
@@ -62,16 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (gp.buttons[13]?.pressed || axisY > 0.5) { // D-Pad Down
                     updateSelection(currentIndex + 1);
                     actionTaken = true;
-                } else if (gp.buttons[0]?.pressed) { // A button
-                    interactiveElements[currentIndex]?.click();
-                    actionTaken = true;
-                } else if (gp.buttons[1]?.pressed) { // B button
-                    document.getElementById('back-to-apps')?.click();
-                    actionTaken = true;
                 }
 
                 if (actionTaken) lastInputTime = now;
             }
+
+            // Button presses - check for single press
+            if (isNewPress(0)) { // A button
+                interactiveElements[currentIndex]?.click();
+            } else if (isNewPress(1)) { // B button
+                document.getElementById('back-to-apps')?.click();
+            }
+
+            // Update previous button state
+            prevButtons = gp.buttons.map(b => b.pressed);
         }
         requestAnimationFrame(gamepadLoop);
     }

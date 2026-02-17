@@ -103,7 +103,7 @@ main.dashboard-layout {
   gap: 16px;
   background: transparent;
   margin: 0;
-  padding: 0 0 20px 20px;
+  padding: 0 0 0 20px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   flex-shrink: 0;
   -webkit-app-region: drag; /* Permite arrastrar desde la cabecera */
@@ -511,6 +511,11 @@ body.offline .requires-wifi button {
 /* #open-info usa un SVG blanco por defecto, necesita un filtro diferente para verse gris claro en el footer */
 #open-info img {
   filter: brightness(0.8);
+}
+
+/* #open-big-picture usa un SVG negro, necesita un filtro para verse blanco */
+#open-big-picture img {
+  filter: invert(1);
 }
 
 .sidebar-footer .footer-icons button:hover {
@@ -1100,4 +1105,65 @@ body.offline .requires-wifi button {
 .toast-notification.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* --- Controller Tutorial Page --- */
+.tutorial-container {
+  background: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 30px;
+  border-left: 4px solid var(--md-sys-color-primary);
+}
+
+.controls-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.control-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--md-sys-shape-corner-medium);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.control-icons img {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.control-icons span {
+    font-size: 1.5rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.control-desc {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-desc strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--md-sys-color-on-surface);
+}
+
+.control-desc span {
+    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface-variant);
 }

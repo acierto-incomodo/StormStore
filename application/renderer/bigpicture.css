@@ -3,7 +3,7 @@
 :root {
     --bp-bg-color: #0d1825;
     --bp-text-color: #e5e5e5;
-    --bp-highlight-color: #4a90e2;
+    --bp-highlight-color: #FDD835;
     --bp-card-bg: rgba(255, 255, 255, 0.05);
     --bp-card-bg-hover: rgba(255, 255, 255, 0.1);
 }
@@ -23,6 +23,7 @@ body {
     width: 100vw;
     display: flex;
     flex-direction: column;
+    cursor: none;
 }
 
 #background {
@@ -139,12 +140,78 @@ body {
     opacity: 1;
 }
 
+.bp-req-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50px;
+  height: 32px;
+  width: 32px; /* Starts as a circle */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align icon to the left */
+  padding: 4px;
+  overflow: hidden;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  z-index: 2;
+  pointer-events: none; /* So it doesn't interfere with card selection */
+}
+
+.bp-req-badge img {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.bp-req-badge span {
+  white-space: nowrap;
+  opacity: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 6px;
+  margin-right: 12px;
+  transition: opacity 0.2s ease;
+}
+
+/* If the icon for WiFi is right after Steam's, push it down */
+.bp-req-badge.steam-req + .bp-req-badge.wifi-req {
+  top: 46px; /* 10px (top) + 32px (height) + 4px (gap) */
+}
+
+/* Show text when card is selected */
+.game-card.selected .bp-req-badge {
+  width: auto; /* Expand to content width */
+  pointer-events: auto; /* Allow seeing tooltip if any */
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.game-card.selected .bp-req-badge span {
+  opacity: 1;
+  transition-delay: 0.1s; /* Wait for container to start expanding */
+}
+
 #footer-prompts {
     padding: 15px 50px;
     background: rgba(0,0,0,0.3);
     flex-shrink: 0;
     text-align: right;
     font-size: 1.2rem;
+}
+
+/* Styles for gamepad prompts in footer */
+#footer-prompts span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.prompt-icon {
+    height: 22px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 1px;
 }
 
 /* --- Modal de Menú --- */
@@ -215,6 +282,7 @@ body {
 
 .bp-modal-actions button:hover,
 .bp-modal-actions button.selected {
-    background: rgba(74, 144, 226, 0.3);
+    background: var(--bp-highlight-color);
     border-color: var(--bp-highlight-color);
+    color: #000;
 }

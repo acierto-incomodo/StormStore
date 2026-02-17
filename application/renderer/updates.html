@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Actualizaciones - StormStore</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="updates-bigpicture.css" />
   <link rel="icon" type="image/png" href="../assets/app.png" />
 </head>
 
@@ -54,6 +55,9 @@
     <div class="main-header">
       <h1>Actualizaciones</h1>
       <div class="window-controls">
+        <button class="control-btn" id="open-big-picture" title="Big Picture">
+          <img src="../assets/icons/big-picture.svg" alt="Big Picture" style="width: 20px; height: 20px;" />
+        </button>
         <button class="control-btn" id="min-btn">─</button>
         <button class="control-btn" id="max-btn">◻</button>
         <button class="control-btn close" id="close-btn">✕</button>
@@ -122,11 +126,21 @@
         <button id="retry-btn" class="md-btn md-btn-tonal">Reintentar</button>
       </div>
     </div>
+
+    <footer id="bp-footer-prompts"></footer>
   </main>
 
   <script>
     // Esperar a que el DOM esté completamente cargado
     document.addEventListener("DOMContentLoaded", function () {
+      const params = new URLSearchParams(window.location.search);
+      const isBigPicture = params.get('source') === 'bigpicture';
+
+      if (isBigPicture) {
+        document.body.classList.add('big-picture-mode');
+        document.getElementById('bp-footer-prompts').innerHTML = '<span>(A)</span> Seleccionar &nbsp;&nbsp; <span>(B)</span> Volver';
+      }
+
       // Cargar versión actual
       loadCurrentVersion();
 
@@ -135,7 +149,11 @@
       if (backBtn) {
         backBtn.addEventListener("click", function (e) {
           e.preventDefault();
-          window.location.href = "index.html";
+          if (isBigPicture) {
+            window.location.href = "bigpicture.html";
+          } else {
+            window.location.href = "index.html";
+          }
         });
       } else {
         console.error("No se encontró el botón back-to-apps");
@@ -150,6 +168,9 @@
       });
       document.getElementById("open-updates")?.addEventListener("click", () => {
         window.location.href = "updates.html";
+      });
+      document.getElementById("open-big-picture")?.addEventListener("click", () => {
+        window.api.openBigPicture();
       });
       document.getElementById("open-licenses")?.addEventListener("click", () => {
         window.location.href = "licencias.html";
@@ -260,16 +281,13 @@
     }
 
     function showUpdateAvailable(info) {
-      // Ocultar el botón de volver para forzar la actualización
-      const backBtn = document.getElementById("back-to-apps");
-      if (backBtn) {
-        backBtn.style.display = "none";
-      }
-
-      // Ocultar footer icons
-      const footerIcons = document.querySelector(".footer-icons");
-      if (footerIcons) {
-        footerIcons.style.display = "none";
+      const isBigPicture = document.body.classList.contains('big-picture-mode');
+      // En modo normal, ocultar el botón de volver y los iconos del footer para forzar la actualización
+      if (!isBigPicture) {
+        const backBtn = document.getElementById("back-to-apps");
+        if (backBtn) backBtn.style.display = "none";
+        const footerIcons = document.querySelector(".footer-icons");
+        if (footerIcons) footerIcons.style.display = "none";
       }
 
       document.getElementById("update-info-section").style.display = "flex";
@@ -310,7 +328,13 @@
       document.getElementById("error-message").textContent = message;
     }
   </script>
-  <script src="updates-gamepad.js"></script>
+  <script>
+    // Cargar el script del gamepad solo si estamos en modo Big Picture
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('source') === 'bigpicture') {
+      document.write('<script src="updates-gamepad.js"><\/script>');
+    }
+  </script>
   <script src="gamepad-global.js"></script>
 </body>
 

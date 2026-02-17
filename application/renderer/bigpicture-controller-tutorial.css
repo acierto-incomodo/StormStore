@@ -1,0 +1,104 @@
+/* This file styles bigpicture-controller-tutorial.html */
+
+.tutorial-modal {
+    background: rgba(20, 30, 45, 0.95);
+    border: 1px solid var(--bp-highlight-color);
+    border-radius: 24px;
+    padding: 40px;
+    width: 800px;
+    max-width: 90%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    color: var(--bp-text-color);
+}
+
+.tutorial-modal h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--bp-highlight-color);
+    text-shadow: 0 0 10px var(--bp-highlight-color);
+}
+
+.tutorial-modal p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--bp-text-color);
+    margin: 0;
+}
+
+.controls-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.control-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.control-icons img {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.control-icons span {
+    font-size: 1.5rem;
+    color: #888;
+}
+
+.control-desc {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-desc strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.control-desc span {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+#tutorial-back-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    color: var(--bp-text-color);
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-align: center;
+    margin-top: 20px;
+    align-self: center;
+    width: 200px;
+}
+
+#tutorial-back-btn:hover, #tutorial-back-btn.selected {
+    background: var(--bp-highlight-color);
+    border-color: var(--bp-highlight-color);
+    color: #000;
+}

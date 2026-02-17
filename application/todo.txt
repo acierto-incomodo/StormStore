@@ -1,0 +1,1 @@
+agregar pagina de cambios de las actualizaciones una vez y que sea automatica con la version del propio programa y con la descripcion de github

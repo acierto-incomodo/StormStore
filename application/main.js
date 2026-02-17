@@ -89,7 +89,9 @@ function createWindow() {
   });
 
   mainWindow = win;
-  win.loadFile(path.join(__dirname, "renderer/index.html"));
+
+  const startInBigPicture = process.argv.includes('--bigpicture');
+  win.loadFile(path.join(__dirname, startInBigPicture ? "renderer/bigpicture.html" : "renderer/index.html"));
 
   win.maximize();
 
@@ -520,6 +522,10 @@ ipcMain.on("window-maximize", () => {
 });
 ipcMain.on("window-close", () => mainWindow?.close());
 ipcMain.handle("is-maximized", () => mainWindow?.isMaximized());
+
+ipcMain.on("app-quit", () => {
+  app.quit();
+});
 
 // =====================================
 // FIN MANEJO DE ACTUALIZACIONES

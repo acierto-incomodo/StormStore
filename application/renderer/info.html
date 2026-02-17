@@ -55,6 +55,9 @@
     <div class="main-header">
       <h1>Información</h1>
       <div class="window-controls">
+        <button class="control-btn" id="open-big-picture" title="Big Picture">
+          <img src="../assets/icons/big-picture.svg" alt="Big Picture" style="width: 20px; height: 20px;" />
+        </button>
         <button class="control-btn" id="min-btn">─</button>
         <button class="control-btn" id="max-btn">◻</button>
         <button class="control-btn close" id="close-btn">✕</button>
@@ -96,6 +99,9 @@
             <button id="btn-updates" class="md-btn md-btn-tonal" style="justify-content: flex-start;">
                 <img src="../assets/icons/update.svg" width="20" height="20" style="filter: invert(1); margin-right: 10px;"> Buscar Actualizaciones
             </button>
+            <button id="btn-controller-tutorial" class="md-btn md-btn-tonal" style="justify-content: flex-start;" title="Ver los controles para el modo Big Picture">
+                <img src="../assets/icons/controller.svg" width="20" height="20" style="filter: invert(1); margin-right: 10px;"> Ayuda del Mando
+            </button>
         </div>
       </div>
     </div>
@@ -112,6 +118,7 @@
       document.getElementById("back-to-apps").addEventListener("click", () => window.location.href = "index.html");
       document.getElementById("btn-licenses").addEventListener("click", () => window.location.href = "licencias.html");
       document.getElementById("btn-updates").addEventListener("click", () => window.location.href = "updates.html");
+      document.getElementById("btn-controller-tutorial").addEventListener("click", () => window.location.href = "controller-tutorial.html");
 
       // Footer links
       document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
@@ -122,6 +129,7 @@
       });
       document.getElementById("open-updates")?.addEventListener("click", () => window.location.href = "updates.html");
       document.getElementById("open-licenses")?.addEventListener("click", () => window.location.href = "licencias.html");
+      document.getElementById("open-big-picture")?.addEventListener("click", () => window.api.openBigPicture());
       document.getElementById("open-info")?.addEventListener("click", () => window.location.href = "info.html");
 
       // Controles de ventana
