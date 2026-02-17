@@ -1,0 +1,79 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let interactiveElements = [];
+    let currentIndex = -1;
+    let lastInputTime = 0;
+    const DEBOUNCE_MS = 150;
+
+    function getVisibleInteractiveElements() {
+        const selectors = [
+            '#back-to-apps',
+            '#check-updates-btn',
+            '#download-btn',
+            '#install-btn',
+            '#retry-btn'
+        ];
+        const elements = [];
+        selectors.forEach(selector => {
+            const el = document.querySelector(selector);
+            // Check if element exists and is visible (its offsetParent is not null)
+            if (el && el.offsetParent !== null) {
+                elements.push(el);
+            }
+        });
+        return elements;
+    }
+
+    function updateSelection(newIndex) {
+        interactiveElements[currentIndex]?.classList.remove('selected');
+        
+        if (newIndex < 0) newIndex = interactiveElements.length - 1;
+        if (newIndex >= interactiveElements.length) newIndex = 0;
+
+        currentIndex = newIndex;
+        const selectedEl = interactiveElements[currentIndex];
+        selectedEl?.classList.add('selected');
+        selectedEl?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    }
+
+    function gamepadLoop() {
+        const gp = navigator.getGamepads().find(g => g !== null);
+
+        if (gp) {
+            const now = Date.now();
+            if (now - lastInputTime > DEBOUNCE_MS) {
+                let actionTaken = false;
+
+                const currentElements = getVisibleInteractiveElements();
+                if (currentElements.map(e => e.id).join() !== interactiveElements.map(e => e.id).join()) {
+                    interactiveElements = currentElements;
+                    updateSelection(0);
+                }
+
+                if (interactiveElements.length === 0) {
+                    requestAnimationFrame(gamepadLoop);
+                    return;
+                }
+
+                const axisY = gp.axes[1];
+
+                if (gp.buttons[12]?.pressed || axisY < -0.5) { // D-Pad Up
+                    updateSelection(currentIndex - 1);
+                    actionTaken = true;
+                } else if (gp.buttons[13]?.pressed || axisY > 0.5) { // D-Pad Down
+                    updateSelection(currentIndex + 1);
+                    actionTaken = true;
+                } else if (gp.buttons[0]?.pressed) { // A button
+                    interactiveElements[currentIndex]?.click();
+                    actionTaken = true;
+                } else if (gp.buttons[1]?.pressed) { // B button
+                    document.getElementById('back-to-apps')?.click();
+                    actionTaken = true;
+                }
+
+                if (actionTaken) lastInputTime = now;
+            }
+        }
+        requestAnimationFrame(gamepadLoop);
+    }
+    requestAnimationFrame(gamepadLoop);
+});

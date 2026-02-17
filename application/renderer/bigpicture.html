@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StormStore - Big Picture</title>
+    <link rel="stylesheet" href="bigpicture.css">
+</head>
+<body>
+
+    <div id="background"></div>
+
+    <header id="header">
+        <h1 id="game-title">Selecciona un juego</h1>
+    </header>
+
+    <main id="content-container">
+        <div id="category-selector">
+            <!-- Category cards will be injected here -->
+        </div>
+        <div id="grid-container" style="display: none;">
+            <!-- Game cards will be injected here -->
+        </div>
+    </main>
+
+    <footer id="footer-prompts"></footer>
+
+    <div id="bp-menu-overlay" class="bp-modal-overlay">
+        <div class="bp-modal">
+            <h2>Menú</h2>
+            <div class="bp-modal-actions">
+                <button id="bp-menu-back">Volver a los juegos</button>
+                <button id="bp-menu-change-category">Cambiar de Categoría</button>
+                <button id="bp-menu-exit">Salir de Big Picture</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="bigpicture.js"></script>
+</body>
+</html>

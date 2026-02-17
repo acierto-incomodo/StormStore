@@ -1072,6 +1072,12 @@ body.offline .requires-wifi button {
   animation: slideUpFade 0.5s cubic-bezier(0.2, 0, 0, 1) backwards;
 }
 
+.updates-container .md-btn.selected,
+.updates-container .back-button.selected {
+    outline: 2px solid var(--md-sys-color-primary);
+    box-shadow: 0 0 15px var(--md-sys-color-primary);
+}
+
 /* Toast Notification */
 .toast-notification {
   position: fixed;

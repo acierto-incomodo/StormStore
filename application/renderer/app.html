@@ -53,6 +53,9 @@
         <button id="open-licenses">
           <img src="../assets/icons/license.svg" alt="Licencias" />
         </button>
+        <button id="open-big-picture">
+          <img src="../assets/icons/big-picture.svg" alt="Big Picture" />
+        </button>
         <button id="open-info">
           <img src="../assets/icons/info.svg" alt="Información" />
         </button>
@@ -129,6 +132,9 @@
     });
     document.getElementById("open-licenses")?.addEventListener("click", () => {
       window.location.href = "licencias.html";
+    });
+    document.getElementById("open-big-picture")?.addEventListener("click", () => {
+      window.api.openBigPicture();
     });
     document.getElementById("open-info")?.addEventListener("click", () => {
       window.location.href = "info.html";
@@ -414,5 +420,6 @@
 
     loadApp();
   </script>
+  <script src="gamepad-global.js"></script>
 </body>
 </html>

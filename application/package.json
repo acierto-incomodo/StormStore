@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -25,7 +25,7 @@
       "icon": "assets/app.ico"
     },
     "nsis": {
-      "oneClick": false,
+      "oneClick": true,
       "allowToChangeInstallationDirectory": false,
       "include": "build/installer.nsh"
     },
@@ -41,6 +41,7 @@
     "@equal-games/game-scanner": "^1.0.3",
     "@material/web": "^2.4.1",
     "electron-updater": "^6.7.3",
+    "extract-zip": "^2.0.1",
     "steam-path": "^1.0.2"
   }
 }

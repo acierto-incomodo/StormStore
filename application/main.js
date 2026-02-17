@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, shell } = require("electron");
+const { app, BrowserWindow, ipcMain, shell, session } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
@@ -460,6 +460,18 @@ ipcMain.handle("check-trailer-exists", (_, id) => {
   return fs.existsSync(trailerPath);
 });
 
+ipcMain.handle("open-big-picture", () => {
+  if (mainWindow) {
+    mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
+  }
+});
+
+ipcMain.handle("open-main-view", () => {
+  if (mainWindow) {
+    mainWindow.loadFile(path.join(__dirname, "renderer/index.html"));
+  }
+});
+
 // -----------------------------
 // Versión de StormStore
 // -----------------------------
@@ -532,7 +544,17 @@ if (!gotLock) {
     }
   });
 
-  app.whenReady().then(createWindow);
+  app.whenReady().then(() => {
+    // Permisos para WebHID
+    session.defaultSession.setDevicePermissionHandler((details) => {
+      if (details.deviceType === 'hid' && details.origin === 'file://') {
+        return true;
+      }
+      return false;
+    });
+
+    createWindow();
+  });
 
   app.on("window-all-closed", () => {
     if (process.platform === "win32") app.quit();

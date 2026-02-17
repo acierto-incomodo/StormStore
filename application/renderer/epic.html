@@ -50,6 +50,9 @@
         <button id="open-licenses">
           <img src="../assets/icons/license.svg" alt="Licencias" />
         </button>
+        <button id="open-big-picture">
+          <img src="../assets/icons/big-picture.svg" alt="Big Picture" />
+        </button>
         <button id="open-info">
           <img src="../assets/icons/info.svg" alt="Información" />
         </button>
@@ -114,9 +117,11 @@
   </div>
 
   <script src="epic.js"></script>
+  <script src="gamepad-global.js"></script>
   <script>
     // ... (Scripts comunes de navegación y modal)
     document.getElementById("open-updates").addEventListener("click", () => window.location.href = "updates.html");
+    document.getElementById("open-big-picture")?.addEventListener("click", () => window.api.openBigPicture());
     document.getElementById("open-licenses").addEventListener("click", () => window.location.href = "licencias.html");
     document.getElementById("open-info").addEventListener("click", () => window.location.href = "info.html");
     
