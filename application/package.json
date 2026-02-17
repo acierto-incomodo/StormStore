@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -38,6 +38,7 @@
     "electron-builder": "^26.4.0"
   },
   "dependencies": {
+    "@equal-games/game-scanner": "^1.0.3",
     "@material/web": "^2.4.1",
     "electron-updater": "^6.7.3",
     "steam-path": "^1.0.2"

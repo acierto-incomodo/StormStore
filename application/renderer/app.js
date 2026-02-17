@@ -11,6 +11,10 @@ let currentSearch = "";
 const installingApps = new Set();
 const uninstallingApps = new Set();
 
+function playSound(soundFile) {
+  new Audio(`../assets/sounds/${soundFile}`).play();
+}
+
 function showToast(message) {
   let toast = document.getElementById("toast-notification");
   if (!toast) {
@@ -120,17 +124,44 @@ function renderApps(category) {
       icon.className = "app-icon";
       imgContainer.appendChild(icon);
 
+      // --- Badges de Requisitos ---
       if (app.steam === "si") {
-        const steamBadge = document.createElement("img");
-        steamBadge.src = "../assets/icons/steam.svg";
-        steamBadge.className = "steam-badge";
+        const steamBadge = document.createElement("div");
+        steamBadge.className = "req-badge steam-req-badge";
+        
+        const steamIcon = document.createElement("img");
+        steamIcon.src = "../assets/icons/steam.svg";
+        
+        const steamText = document.createElement("span");
+        steamText.textContent = "Steam";
+        
+        steamBadge.append(steamIcon, steamText);
         imgContainer.appendChild(steamBadge);
+      }
+
+      if (app.wifi === "si") {
+        const wifiBadge = document.createElement("div");
+        wifiBadge.className = "req-badge wifi-req-badge";
+        
+        const wifiIcon = document.createElement("img");
+        wifiIcon.src = "../assets/icons/wifi.svg";
+        
+        const wifiText = document.createElement("span");
+        wifiText.textContent = "WiFi";
+        
+        wifiBadge.append(wifiIcon, wifiText);
+        imgContainer.appendChild(wifiBadge);
       }
 
       const wifiBadge = document.createElement("img");
       wifiBadge.src = "../assets/icons/sin-wifi.svg";
       wifiBadge.className = "wifi-badge";
       imgContainer.appendChild(wifiBadge);
+
+      const infoBadge = document.createElement("img");
+      infoBadge.src = "../assets/icons/info.svg";
+      infoBadge.className = "info-badge";
+      imgContainer.appendChild(infoBadge);
 
       const name = document.createElement("h3");
       name.textContent = app.name;
@@ -193,6 +224,7 @@ function renderApps(category) {
 
               try {
                 await window.api.uninstallApp(app.uninstall);
+                playSound("finish.mp3");
               } catch (error) {
                 console.error("Error desinstalando:", error);
               } finally {
@@ -218,6 +250,7 @@ function renderApps(category) {
         locBtn.className = "md-btn md-btn-blue";
         locBtn.style.flex = "1";
         locBtn.onclick = () => {
+          playSound("others.mp3");
           window.api.openAppLocation(app.installPath || app.paths[0]);
           showToast("Abriendo ubicación...");
         };
@@ -230,6 +263,7 @@ function renderApps(category) {
           shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
           shareBtn.onclick = (e) => {
             e.stopPropagation();
+            playSound("others.mp3");
             navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
             showToast("Enlace copiado al portapapeles");
           };
@@ -260,6 +294,7 @@ function renderApps(category) {
         } else {
           installBtn.textContent = "Instalar";
           installBtn.onclick = async () => {
+            playSound("others.mp3");
             showToast("Iniciando instalación...");
             installingApps.add(app.id);
             // Actualizar botón visualmente
@@ -273,6 +308,7 @@ function renderApps(category) {
 
             try {
               await window.api.installApp(app);
+              playSound("finish.mp3");
               installingApps.delete(app.id);
               await load();
             } catch (error) {
@@ -293,6 +329,7 @@ function renderApps(category) {
           shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
           shareBtn.onclick = (e) => {
             e.stopPropagation();
+            playSound("others.mp3");
             navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
             showToast("Enlace copiado al portapapeles");
           };

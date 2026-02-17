@@ -69,10 +69,24 @@ function renderApps() {
       icon.onerror = () => { icon.src = "../assets/icons/steam.svg"; icon.style.padding = "20px"; icon.style.background = "#171a21"; };
       imgContainer.appendChild(icon);
 
-      const steamBadge = document.createElement("img");
-      steamBadge.src = "../assets/icons/steam.svg";
-      steamBadge.className = "steam-badge";
-      imgContainer.appendChild(steamBadge);
+      if (app.wifi === "si") {
+        const wifiBadge = document.createElement("div");
+        wifiBadge.className = "req-badge wifi-req-badge";
+        
+        const wifiIcon = document.createElement("img");
+        wifiIcon.src = "../assets/icons/wifi.svg";
+        
+        const wifiText = document.createElement("span");
+        wifiText.textContent = "WiFi";
+        
+        wifiBadge.append(wifiIcon, wifiText);
+        imgContainer.appendChild(wifiBadge);
+      }
+
+      const infoBadge = document.createElement("img");
+      infoBadge.src = "../assets/icons/info.svg";
+      infoBadge.className = "info-badge";
+      imgContainer.appendChild(infoBadge);
 
       const name = document.createElement("h3");
       name.textContent = app.name;

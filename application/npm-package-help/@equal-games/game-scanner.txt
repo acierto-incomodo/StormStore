@@ -1,0 +1,2 @@
+npm install @equal-games/game-scanner
+https://www.npmjs.com/package/%40equal-games/game-scanner

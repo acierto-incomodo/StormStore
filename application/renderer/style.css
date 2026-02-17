@@ -235,17 +235,49 @@ main.dashboard-layout {
   width: 100%;
 }
 
-/* Badge de Steam */
-.steam-badge {
+/* Badge de Requisito (Steam, Wifi) */
+.req-badge {
   position: absolute;
   top: 8px;
   left: 8px;
-  width: 32px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50px;
   height: 32px;
-  background: #ffffff;
+  width: 32px; /* Starts as a circle */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align icon to the left */
   padding: 4px;
-  border-radius: 50%;
+  overflow: hidden;
+  transition: width 0.3s ease;
   z-index: 2;
+  cursor: default;
+}
+
+.req-badge img {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.req-badge span {
+  white-space: nowrap;
+  opacity: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 6px;
+  margin-right: 12px;
+  transition: opacity 0.2s ease;
+}
+
+.req-badge:hover {
+  width: auto; /* Expand to content width */
+}
+
+.req-badge:hover span {
+  opacity: 1;
+  transition-delay: 0.1s; /* Espera a que el contenedor empiece a expandirse */
 }
 
 /* Badge de Sin Wifi */
@@ -266,6 +298,28 @@ main.dashboard-layout {
   box-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
+/* Si el icono de WiFi está justo después del de Steam, lo empuja hacia abajo */
+.steam-req-badge + .wifi-req-badge {
+  top: 44px; /* 8px (top) + 32px (height) + 4px (gap) */
+}
+
+/* Badge de Info para hacer clic */
+.info-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 16px;
+  border-radius: 50%;
+}
+
 /* Estado Offline */
 body.offline .requires-wifi .app-icon {
   filter: brightness(0.3) grayscale(1);
@@ -273,6 +327,16 @@ body.offline .requires-wifi .app-icon {
 
 body.offline .requires-wifi .wifi-badge {
   opacity: 1;
+}
+
+/* Mostrar icono de info al hacer hover, si no estamos offline */
+.card .img-container:hover .info-badge {
+  opacity: 1;
+}
+
+/* Ocultar icono de info si estamos offline y el juego requiere wifi (para que se vea el de wifi) */
+body.offline .requires-wifi .img-container .info-badge {
+  opacity: 0;
 }
 
 /* Desactivar botones si requiere wifi y estamos offline */
@@ -442,6 +506,11 @@ body.offline .requires-wifi button {
   width: 20px;
   height: 20px;
   filter: invert(0.8); /* Hacer iconos gris claro */
+}
+
+/* #open-info usa un SVG blanco por defecto, necesita un filtro diferente para verse gris claro en el footer */
+#open-info img {
+  filter: brightness(0.8);
 }
 
 .sidebar-footer .footer-icons button:hover {

@@ -5,6 +5,7 @@ const https = require("https");
 const { spawn, exec } = require("child_process");
 const { autoUpdater } = require("electron-updater");
 const SteamPath = require("steam-path");
+const gameScanner = require("@equal-games/game-scanner");
 
 const apps = require("./apps.json");
 
@@ -290,6 +291,28 @@ ipcMain.handle("get-steam-games", async () => {
   }
 });
 
+ipcMain.handle("get-epic-games", async () => {
+  try {
+    const games = gameScanner.epic ? gameScanner.epic.games() : [];
+
+    return games.map((game) => ({
+      id: `epic-${game.id}`,
+      name: game.name,
+      description: "Juego de Epic Games",
+      category: "Epic Games",
+      icon: "../assets/icons/epic-games.svg",
+      paths: [`com.epicgames.launcher://apps/${game.id}?action=launch&silent=true`],
+      installPath: game.path,
+      installed: true,
+      epic: "si",
+      wifi: "no",
+    }));
+  } catch (error) {
+    console.error("Error getting epic games:", error);
+    return [];
+  }
+});
+
 ipcMain.handle("install-app", async (_, appData) => {
   // ---------------------------------------------------------
   // 1. Pre-instalación (Ej: Runtimes .NET, VC++, etc.)
@@ -371,7 +394,7 @@ ipcMain.handle("install-app", async (_, appData) => {
 
 ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
   try {
-    if (exePath.startsWith("steam://")) {
+    if (exePath.startsWith("steam://") || exePath.startsWith("com.epicgames.launcher://")) {
       exec(`start "" "${exePath}"`);
       return true;
     }
@@ -430,6 +453,11 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
     console.error("Error al desinstalar:", err.message);
     return false;
   }
+});
+
+ipcMain.handle("check-trailer-exists", (_, id) => {
+  const trailerPath = path.join(__dirname, "assets", "trailers", `${id}.mp4`);
+  return fs.existsSync(trailerPath);
 });
 
 // -----------------------------

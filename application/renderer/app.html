@@ -86,6 +86,10 @@
     let isInstalling = false;
     let isUninstalling = false;
 
+    function playSound(soundFile) {
+      new Audio(`../assets/sounds/${soundFile}`).play();
+    }
+
     function showToast(message) {
       let toast = document.getElementById("toast-notification");
       if (!toast) {
@@ -110,7 +114,7 @@
 
     // Botón Volver
     document.getElementById("back-btn").addEventListener("click", () => {
-      window.location.href = "index.html";
+      window.history.back();
     });
 
     // Footer links
@@ -149,6 +153,11 @@
       if (!app) {
         const steamApps = await window.api.getSteamGames();
         app = steamApps.find(a => a.id === appId);
+      }
+
+      if (!app) {
+        const epicGames = await window.api.getEpicGames();
+        app = epicGames.find(a => a.id === appId);
       }
 
       if (!app) {
@@ -228,6 +237,7 @@
         locBtn.style.padding = "12px 24px";
         locBtn.style.flex = "1";
         locBtn.onclick = () => {
+          playSound("others.mp3");
           window.api.openAppLocation(app.installPath || app.paths[0]);
           showToast("Abriendo ubicación...");
         };
@@ -237,9 +247,11 @@
         if (app["share-compatibility"] === "si") {
           shareBtn = document.createElement("button");
           shareBtn.className = "md-btn md-btn-tonal";
-          shareBtn.style.padding = "12px";
-          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 24px; height: 24px;">';
+          shareBtn.style.padding = "12px 16px";
+          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
+          shareBtn.style.marginLeft = "auto";
           shareBtn.onclick = () => {
+             playSound("others.mp3");
              navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
              showToast("Enlace copiado al portapapeles");
           };
@@ -260,15 +272,17 @@
                 renderDetails(app); // Re-render para actualizar estado visual
                 try {
                     await window.api.uninstallApp(app.uninstall);
+                    playSound("finish.mp3");
                 } catch (e) { console.error(e); }
                 isUninstalling = false;
                 loadApp(); // Recargar estado
             };
             if (!isUninstalling) {
-              actionsDiv.append(openBtn, locBtn);
+              actionsDiv.append(openBtn, locBtn, uninstallBtn);
               if (shareBtn) actionsDiv.append(shareBtn);
+            } else {
+              actionsDiv.append(uninstallBtn);
             }
-            actionsDiv.append(uninstallBtn);
         } else {
             actionsDiv.append(openBtn, locBtn);
             if (shareBtn) actionsDiv.append(shareBtn);
@@ -285,9 +299,13 @@
         installBtn.disabled = isInstalling;
         installBtn.onclick = async () => {
             isInstalling = true;
+            playSound("others.mp3");
             showToast("Iniciando instalación...");
             renderDetails(app);
-            try { await window.api.installApp(app); } catch (e) { console.error(e); }
+            try { 
+              await window.api.installApp(app);
+              playSound("finish.mp3");
+            } catch (e) { console.error(e); }
             isInstalling = false;
             loadApp();
         };
@@ -296,9 +314,11 @@
         if (app["share-compatibility"] === "si") {
           const shareBtn = document.createElement("button");
           shareBtn.className = "md-btn md-btn-tonal";
-          shareBtn.style.padding = "12px";
-          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 24px; height: 24px;">';
+          shareBtn.style.padding = "12px 16px";
+          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
+          shareBtn.style.marginLeft = "auto";
           shareBtn.onclick = () => {
+             playSound("others.mp3");
              navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
              showToast("Enlace copiado al portapapeles");
           };
@@ -308,19 +328,72 @@
 
       infoDiv.append(desc);
 
-      // Requisito de Steam
+      // --- Requisitos ---
+      const requirementsContainer = document.createElement("div");
+      requirementsContainer.style.display = "flex";
+      requirementsContainer.style.flexDirection = "column";
+      requirementsContainer.style.gap = "4px"; // Espacio reducido entre requisitos
+      requirementsContainer.style.marginTop = "10px";
+
+      const createRequirement = (text, iconSrc) => {
+        const p = document.createElement("p");
+        p.style.color = "var(--md-sys-color-primary)";
+        p.style.background = "rgba(0,0,0,0.2)";
+        p.style.padding = "12px";
+        p.style.borderRadius = "var(--md-sys-shape-corner-medium)";
+        p.style.display = "flex";
+        p.style.alignItems = "center";
+        p.style.gap = "10px";
+
+        const icon = document.createElement("img");
+        icon.src = iconSrc;
+        icon.style.width = "24px";
+        icon.style.height = "24px";
+
+        const textSpan = document.createElement("span");
+        textSpan.innerHTML = `<strong>Requisito:</strong> ${text}`;
+        
+        p.append(icon, textSpan);
+        return p;
+      };
+
       if (app.steam === "si") {
-        const steamReq = document.createElement("p");
-        steamReq.innerHTML = `<strong>Requisito:</strong> Se necesita tener Steam iniciado.`;
-        steamReq.style.color = "var(--md-sys-color-primary)";
-        steamReq.style.background = "rgba(0,0,0,0.2)";
-        steamReq.style.padding = "12px";
-        steamReq.style.borderRadius = "var(--md-sys-shape-corner-medium)";
-        steamReq.style.marginTop = "10px";
-        infoDiv.appendChild(steamReq);
+        requirementsContainer.appendChild(createRequirement("Se necesita tener Steam iniciado.", "../assets/icons/steam.svg"));
+      }
+
+      if (app.wifi === "si") {
+        requirementsContainer.appendChild(createRequirement("Se necesita conexión a Internet.", "../assets/icons/wifi.svg"));
+      }
+
+      if (requirementsContainer.hasChildNodes()) {
+        infoDiv.appendChild(requirementsContainer);
       }
 
       infoDiv.append(actionsDiv);
+
+      // Trailer
+      const trailerContainer = document.createElement("div");
+      trailerContainer.style.marginTop = "20px";
+      trailerContainer.style.width = "100%";
+
+      window.api.checkTrailerExists(app.id).then((exists) => {
+        if (exists) {
+          const video = document.createElement("video");
+          video.controls = true;
+          video.style.width = "100%";
+          video.style.borderRadius = "12px";
+          video.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+          
+          const source = document.createElement("source");
+          source.src = `../assets/trailers/${app.id}.mp4`;
+          source.type = "video/mp4";
+          
+          video.appendChild(source);
+          trailerContainer.appendChild(video);
+        }
+      });
+      infoDiv.appendChild(trailerContainer);
+
       container.append(imgContainer, infoDiv);
     }
 

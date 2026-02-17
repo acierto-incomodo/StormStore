@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StormStore - Epic Games</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../assets/app.png" />
+</head>
+
+<body>
+  <div id="no-internet-overlay">
+    <h1>No hay conexión a Internet</h1>
+    <p>Revisa tu conexión y espera...</p>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="brand-container">
+        <h2>StormStore</h2>
+        <p class="version" id="app-version"></p>
+      </div>
+
+      <button id="change-source-btn" class="source-selector-btn">
+        <span>Cambiar Fuente</span>
+        <span>▼</span>
+      </button>
+
+      <ul id="categories"></ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <p class="studio">StormGamesStudios</p>
+
+      <div class="footer-icons">
+        <button data-link="https://github.com/acierto-incomodo">
+          <img src="../assets/icons/github.svg" alt="GitHub" />
+        </button>
+        <button data-link="https://stormgamesstudios.vercel.app/">
+          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
+        </button>
+        <button data-link="https://www.curseforge.com/members/creper1125463">
+          <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
+        </button>
+        <button id="open-updates">
+          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+        </button>
+        <button id="open-licenses">
+          <img src="../assets/icons/license.svg" alt="Licencias" />
+        </button>
+        <button id="open-info">
+          <img src="../assets/icons/info.svg" alt="Información" />
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="dashboard-layout">
+    <div class="main-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h1 id="current-category">Epic Games</h1>
+        <button id="refresh-btn" title="Recargar lista">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        </button>
+      </div>
+      <div class="search-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="search" type="search" placeholder="Buscar juegos de Epic..." />
+      </div>
+      <div class="window-controls">
+        <button class="control-btn" id="min-btn">─</button>
+        <button class="control-btn" id="max-btn">◻</button>
+        <button class="control-btn close" id="close-btn">✕</button>
+      </div>
+    </div>
+
+    <div id="apps" class="grid"></div>
+  </main>
+
+  <!-- Modal de Selección de Fuente -->
+  <div id="source-modal-overlay" class="source-modal-overlay">
+    <div class="source-modal">
+      <h2>Seleccionar Fuente</h2>
+      <div class="source-list">
+        <div class="source-item" onclick="window.location.href='index.html'">
+          <img src="../assets/app.png" alt="StormStore">
+          <div>
+            <span>StormStore</span>
+            <small>Proveedor de aplicaciones de StormGamesStudios</small>
+          </div>
+        </div>
+        <div class="source-item" onclick="window.location.href='steam.html'">
+          <img src="../assets/icons/steam.svg" alt="Steam">
+          <div>
+            <span>Steam</span>
+            <small>Juegos de tu biblioteca de Steam</small>
+          </div>
+        </div>
+        <div class="source-item" onclick="window.location.href='epic.html'">
+          <img src="../assets/icons/epic-games.svg" alt="Epic Games">
+          <div>
+            <span>Epic Games</span>
+            <small>Juegos de tu biblioteca de Epic</small>
+          </div>
+        </div>
+      </div>
+      <button class="md-btn md-btn-tonal" style="margin-top: 20px; align-self: flex-end;" onclick="document.getElementById('source-modal-overlay').classList.remove('active')">Cancelar</button>
+    </div>
+  </div>
+
+  <script src="epic.js"></script>
+  <script>
+    // ... (Scripts comunes de navegación y modal)
+    document.getElementById("open-updates").addEventListener("click", () => window.location.href = "updates.html");
+    document.getElementById("open-licenses").addEventListener("click", () => window.location.href = "licencias.html");
+    document.getElementById("open-info").addEventListener("click", () => window.location.href = "info.html");
+    
+    const sourceBtn = document.getElementById("change-source-btn");
+    const sourceModal = document.getElementById("source-modal-overlay");
+    if (sourceBtn && sourceModal) {
+      sourceBtn.addEventListener("click", () => sourceModal.classList.add("active"));
+      sourceModal.addEventListener("click", (e) => { if (e.target === sourceModal) sourceModal.classList.remove("active"); });
+    }
+  </script>
+</body>
+</html>
