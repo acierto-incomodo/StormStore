@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, shell, session } = require("electron");
+const { app, BrowserWindow, ipcMain, shell, session, nativeTheme } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
@@ -551,6 +551,8 @@ if (!gotLock) {
   });
 
   app.whenReady().then(() => {
+    // Forzar el tema oscuro para toda la aplicación
+    nativeTheme.themeSource = 'dark';
     // Permisos para WebHID
     session.defaultSession.setDevicePermissionHandler((details) => {
       if (details.deviceType === 'hid' && details.origin === 'file://') {
