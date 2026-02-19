@@ -1,5 +1,19 @@
 [
   {
+    "id": "stormstore",
+    "name": "StormStore",
+    "description": "La aplicación principal de StormGamesStudios para gestionar tus juegos favoritos.",
+    "category": "Aplicaciones",
+    "icon": "../assets/apps/stormstore.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/StormStore/StormStore.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/stormstore/releases/latest/download/StormStore_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no"
+  },{
     "id": "ambidextro",
     "name": "Ambidextro",
     "description": "Juego de acción/táctica donde controlas a personajes que luchan usando dos armas al mismo tiempo. El enfoque está en combos, precisión y velocidad para derrotar a enemigos en combates dinámicos.",

@@ -93,7 +93,11 @@ function createWindow() {
   const startInBigPicture = process.argv.includes('--bigpicture');
   win.loadFile(path.join(__dirname, startInBigPicture ? "renderer/bigpicture.html" : "renderer/index.html"));
 
-  win.maximize();
+  if (startInBigPicture) {
+    win.setFullScreen(true);
+  } else {
+    win.maximize();
+  }
 
   win.on("maximize", () => {
     win.webContents.send("window-maximized");
@@ -458,29 +462,20 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
 });
 
 ipcMain.handle("check-trailer-exists", (_, id) => {
-  const trailerPath = path.join(__dirname, "assets", "trailers", `${id}.mp4`);
+  const trailerPath = path.join(__dirname, "assets", "media", "trailers", `${id}.mp4`);
   return fs.existsSync(trailerPath);
 });
 
 ipcMain.handle("open-big-picture", () => {
-  // Si hay una actualización pendiente, no permitir entrar a Big Picture.
-  if (updateInfo) {
-    console.log("Actualización pendiente. El modo Big Picture está deshabilitado.");
-    // Opcional: traer la ventana al frente si está minimizada.
-    if (mainWindow && mainWindow.isMinimized()) {
-      mainWindow.restore();
-    }
-    mainWindow?.focus();
-    return;
-  }
-
   if (mainWindow) {
+    mainWindow.setFullScreen(true);
     mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
   }
 });
 
 ipcMain.handle("open-main-view", () => {
   if (mainWindow) {
+    mainWindow.setFullScreen(false);
     mainWindow.loadFile(path.join(__dirname, "renderer/index.html"));
   }
 });

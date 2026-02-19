@@ -12,7 +12,7 @@ const installingApps = new Set();
 const uninstallingApps = new Set();
 
 function playSound(soundFile) {
-  new Audio(`../assets/sounds/${soundFile}`).play();
+  new Audio(`../assets/media/sounds/${soundFile}`).play();
 }
 
 function showToast(message) {

@@ -93,7 +93,7 @@
     let isUninstalling = false;
 
     function playSound(soundFile) {
-      new Audio(`../assets/sounds/${soundFile}`).play();
+      new Audio(`../assets/media/sounds/${soundFile}`).play();
     }
 
     function showToast(message) {
@@ -394,7 +394,7 @@
           video.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
           
           const source = document.createElement("source");
-          source.src = `../assets/trailers/${app.id}.mp4`;
+          source.src = `../assets/media/trailers/${app.id}.mp4`;
           source.type = "video/mp4";
           
           video.appendChild(source);
