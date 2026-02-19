@@ -266,6 +266,16 @@
         window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
         window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
       }
+
+      // Soporte para tecla Escape en modo normal y Big Picture
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const backBtn = document.getElementById("back-to-apps");
+          if (backBtn) {
+            backBtn.click();
+          }
+        }
+      });
     });
 
     // Cargar versión actual

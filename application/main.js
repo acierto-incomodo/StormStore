@@ -463,6 +463,17 @@ ipcMain.handle("check-trailer-exists", (_, id) => {
 });
 
 ipcMain.handle("open-big-picture", () => {
+  // Si hay una actualización pendiente, no permitir entrar a Big Picture.
+  if (updateInfo) {
+    console.log("Actualización pendiente. El modo Big Picture está deshabilitado.");
+    // Opcional: traer la ventana al frente si está minimizada.
+    if (mainWindow && mainWindow.isMinimized()) {
+      mainWindow.restore();
+    }
+    mainWindow?.focus();
+    return;
+  }
+
   if (mainWindow) {
     mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
   }
