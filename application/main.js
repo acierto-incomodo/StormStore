@@ -90,7 +90,7 @@ function createWindow() {
 
   mainWindow = win;
 
-  const startInBigPicture = process.argv.includes('--bigpicture');
+  const startInBigPicture = process.argv.includes('--StormVortex');
   win.loadFile(path.join(__dirname, startInBigPicture ? "renderer/bigpicture.html" : "renderer/index.html"));
 
   if (startInBigPicture) {

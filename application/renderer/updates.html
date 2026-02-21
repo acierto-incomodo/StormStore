@@ -140,9 +140,38 @@
         document.body.classList.add('big-picture-mode');
         document.getElementById('bp-footer-prompts').innerHTML = '<span>(A)</span> Seleccionar &nbsp;&nbsp; <span>(B)</span> Volver';
 
+        // Mover el botón de volver al contenedor principal para que sea visible en Big Picture
+        const backBtn = document.getElementById("back-to-apps");
+        const container = document.querySelector(".updates-container");
+        if (backBtn && container) {
+            container.appendChild(backBtn);
+        }
+
+        // Soporte para teclado en Big Picture
         document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') {
-            window.location.href = "bigpicture.html";
+          if (e.key === 'Escape' || e.key === 'Backspace') {
+            window.location.href = "bigpicture.html?openMenu=true";
+            return;
+          }
+
+          const interactive = Array.from(document.querySelectorAll('button, input')).filter(el => el.offsetParent !== null);
+          const current = document.activeElement;
+          let idx = interactive.indexOf(current);
+          
+          if (idx === -1 && interactive.length > 0) idx = 0;
+
+          if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+             const next = interactive[(idx + 1) % interactive.length];
+             next?.focus();
+             interactive.forEach(el => el.classList.remove('selected'));
+             next?.classList.add('selected');
+          } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+             const prev = interactive[(idx - 1 + interactive.length) % interactive.length];
+             prev?.focus();
+             interactive.forEach(el => el.classList.remove('selected'));
+             prev?.classList.add('selected');
+          } else if (e.key === 'Enter') {
+              current.click();
           }
         });
       }
@@ -156,7 +185,7 @@
         backBtn.addEventListener("click", function (e) {
           e.preventDefault();
           if (isBigPicture) {
-            window.location.href = "bigpicture.html";
+            window.location.href = "bigpicture.html?openMenu=true";
           } else {
             window.location.href = "index.html";
           }

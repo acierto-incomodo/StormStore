@@ -97,7 +97,7 @@
                 if (isFirstTime) {
                     localStorage.setItem('hasSeenBPTutorial', 'true');
                 }
-                window.location.href = 'bigpicture.html';
+                window.location.href = 'bigpicture.html?openMenu=true';
             });
 
             // --- Gamepad Support ---
@@ -138,6 +138,13 @@
                 requestAnimationFrame(gamepadLoop);
             }
             requestAnimationFrame(gamepadLoop);
+
+            // --- Keyboard Support ---
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === 'Escape' || e.key === 'Backspace') {
+                    backButton.click();
+                }
+            });
         });
     </script>
 </body>

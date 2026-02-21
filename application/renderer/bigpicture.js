@@ -100,6 +100,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Show first category by default
         currentCategory = categories[0];
         showGameGrid(currentCategory);
+
+        // Check if we need to open menu immediately (e.g. returning from sub-pages)
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('openMenu') === 'true') {
+            openMenu();
+        }
     }
 
     function showGameGrid(category) {

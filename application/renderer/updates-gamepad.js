@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getVisibleInteractiveElements() {
         const selectors = [
-            '#back-to-apps',
-            '#check-updates-btn',
+            '#check-updates-btn', // Prioridad al botón de buscar actualizaciones
             '#download-btn',
             '#install-btn',
-            '#retry-btn'
+            '#retry-btn',
+            '#back-to-apps'
         ];
         const elements = [];
         selectors.forEach(selector => {
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Button presses - check for single press
             if (isNewPress(0)) { // A button
                 interactiveElements[currentIndex]?.click();
-            } else if (isNewPress(1)) { // B button
-                document.getElementById('back-to-apps')?.click();
+            } else if (isNewPress(1) || isNewPress(16) || isNewPress(9)) { // B button, Home, Options
+                window.location.href = "bigpicture.html?openMenu=true";
             }
 
             // Update previous button state
