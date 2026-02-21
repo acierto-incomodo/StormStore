@@ -1,0 +1,1 @@
+curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/setup-neon.sh | bash
