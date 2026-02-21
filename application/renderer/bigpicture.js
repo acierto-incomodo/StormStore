@@ -106,6 +106,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (params.get('openMenu') === 'true') {
             openMenu();
         }
+
+        window.api.setDiscordActivity({
+            details: "Modo StormVortex",
+            state: "Seleccionando juego"
+        });
     }
 
     function showGameGrid(category) {

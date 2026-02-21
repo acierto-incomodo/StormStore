@@ -173,6 +173,12 @@
       }
 
       headerTitle.textContent = app.name;
+
+      window.api.setDiscordActivity({
+        details: "Viendo " + app.name,
+        state: "En la tienda"
+      });
+
       renderDetails(app);
     }
 

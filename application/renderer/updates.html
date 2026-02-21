@@ -136,6 +136,11 @@
       const params = new URLSearchParams(window.location.search);
       const isBigPicture = params.get('source') === 'bigpicture';
 
+      window.api.setDiscordActivity({
+        details: "Buscando actualizaciones",
+        state: "Sistema"
+      });
+
       if (isBigPicture) {
         document.body.classList.add('big-picture-mode');
         document.getElementById('bp-footer-prompts').innerHTML = '<span>(A)</span> Seleccionar &nbsp;&nbsp; <span>(B)</span> Volver';

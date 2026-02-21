@@ -6,6 +6,11 @@ const refreshBtn = document.getElementById("refresh-btn");
 let allApps = [];
 let currentSearch = "";
 
+window.api.setDiscordActivity({
+  details: "Explorando Steam",
+  state: "Biblioteca"
+});
+
 // Mostrar versión automáticamente
 if (versionElem) {
   window.api.getAppVersion().then((v) => {

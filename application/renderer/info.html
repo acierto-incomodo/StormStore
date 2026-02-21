@@ -114,6 +114,11 @@
       document.getElementById("app-version").textContent = `v${version}`;
       document.getElementById("info-version").textContent = `Versión ${version}`;
 
+      window.api.setDiscordActivity({
+        details: "Viendo Información",
+        state: "Sistema"
+      });
+
       // Navegación
       document.getElementById("back-to-apps").addEventListener("click", () => window.location.href = "index.html");
       document.getElementById("btn-licenses").addEventListener("click", () => window.location.href = "licencias.html");

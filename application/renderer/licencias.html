@@ -481,6 +481,11 @@ THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND WIT
       const version = await window.api.getAppVersion();
       document.getElementById("app-version").textContent = `v${version}`;
 
+      window.api.setDiscordActivity({
+        details: "Viendo Licencias",
+        state: "Sistema"
+      });
+
       // Botón volver
       document.getElementById("back-to-apps").addEventListener("click", () => {
         window.location.href = "index.html";

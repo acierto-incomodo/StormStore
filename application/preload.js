@@ -28,4 +28,5 @@ contextBridge.exposeInMainWorld("api", {
   onWindowMaximized: (callback) => ipcRenderer.on("window-maximized", callback),
   onWindowRestored: (callback) => ipcRenderer.on("window-restored", callback),
   quitApp: () => ipcRenderer.send("app-quit"),
+  setDiscordActivity: (activity) => ipcRenderer.send("set-discord-activity", activity),
 });

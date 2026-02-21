@@ -11,6 +11,12 @@ let currentSearch = "";
 const installingApps = new Set();
 const uninstallingApps = new Set();
 
+// Discord RPC
+window.api.setDiscordActivity({
+  details: "Explorando aplicaciones",
+  state: "Navegando"
+});
+
 function playSound(soundFile) {
   new Audio(`../assets/media/sounds/${soundFile}`).play();
 }

@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -30,6 +30,17 @@
       "allowToChangeInstallationDirectory": false,
       "include": "build/v3-installer.nsh"
     },
+    "files": [
+      "package.json",
+      "main.js",
+      "preload.js",
+      "apps.json",
+      "UPDATE.md",
+      "Changes.txt",
+      "renderer/**/*",
+      "assets/**/*",
+      "!assets/extraFiles/**/*"
+    ],
     "extraResources": [
       "assets/extraFiles/**"
     ]
@@ -41,6 +52,7 @@
   "dependencies": {
     "@equal-games/game-scanner": "^1.1.4",
     "@material/web": "^2.4.1",
+    "discord-rpc": "^4.0.1",
     "electron-updater": "^6.8.3",
     "extract-zip": "^2.0.1",
     "steam-path": "^1.0.2"

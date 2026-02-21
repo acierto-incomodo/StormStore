@@ -6,12 +6,61 @@ const { spawn, exec } = require("child_process");
 const { autoUpdater } = require("electron-updater");
 const SteamPath = require("steam-path");
 const gameScanner = require("@equal-games/game-scanner");
+const DiscordRPC = require("discord-rpc");
 
 const apps = require("./apps.json");
 
 // Variables globales
 let mainWindow;
 let updateInfo = null;
+
+// =====================================
+// DISCORD RPC
+// =====================================
+const clientId = '1474762522048331787'; // ⚠️ REEMPLAZAR CON TU CLIENT ID REAL DE DISCORD
+
+let rpc;
+try {
+  DiscordRPC.register(clientId);
+  rpc = new DiscordRPC.Client({ transport: 'ipc' });
+} catch (e) {
+  // Si falla la inicialización (ej. módulo corrupto), no detenemos la app
+  console.log("Discord RPC no pudo iniciarse:", e);
+}
+
+const startTimestamp = Date.now();
+
+let rpcActivity = {
+  details: 'Explorando aplicaciones',
+  state: 'Navegando',
+  largeImageKey: 'stormstore',
+  largeImageText: 'StormStore'
+};
+
+async function setActivity() {
+  if (!rpc || !mainWindow) return;
+
+  try {
+    rpc.setActivity({
+      ...rpcActivity,
+      startTimestamp,
+      instance: false,
+    }).catch(() => {}); // Ignoramos errores si Discord se cierra de repente
+  } catch (e) {
+    // Ignoramos errores síncronos
+  }
+}
+
+if (rpc) {
+  rpc.on('ready', () => {
+    setActivity();
+    setInterval(() => setActivity(), 15e3);
+  });
+
+  rpc.login({ clientId }).catch(() => {
+    // Discord no está abierto o no instalado. Ignoramos el error silenciosamente.
+  });
+}
 
 // ❌ StormStore SOLO WINDOWS
 if (process.platform !== "win32") {
@@ -470,6 +519,7 @@ ipcMain.handle("open-big-picture", () => {
   if (mainWindow) {
     mainWindow.setFullScreen(true);
     mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
+    setActivity();
   }
 });
 
@@ -477,6 +527,7 @@ ipcMain.handle("open-main-view", () => {
   if (mainWindow) {
     mainWindow.setFullScreen(false);
     mainWindow.loadFile(path.join(__dirname, "renderer/index.html"));
+    setActivity();
   }
 });
 
@@ -531,6 +582,11 @@ ipcMain.handle("is-maximized", () => mainWindow?.isMaximized());
 
 ipcMain.on("app-quit", () => {
   app.quit();
+});
+
+ipcMain.on("set-discord-activity", (event, activity) => {
+  rpcActivity = { ...rpcActivity, ...activity };
+  setActivity();
 });
 
 // =====================================

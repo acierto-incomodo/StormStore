@@ -1,0 +1,2 @@
+npm install discord-rpc
+https://www.npmjs.com/package/discord-rpc
