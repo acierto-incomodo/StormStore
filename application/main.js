@@ -30,12 +30,16 @@ try {
 
 const startTimestamp = Date.now();
 
-let rpcActivity = {
+const defaultRpcActivity = {
   details: 'Explorando aplicaciones',
   state: 'Navegando',
   largeImageKey: 'stormstore',
-  largeImageText: 'StormStore'
+  largeImageText: 'StormStore',
+  smallImageKey: undefined,
+  smallImageText: undefined,
 };
+
+let rpcActivity = { ...defaultRpcActivity };
 
 async function setActivity() {
   if (!rpc || !mainWindow) return;
@@ -54,7 +58,7 @@ async function setActivity() {
 if (rpc) {
   rpc.on('ready', () => {
     setActivity();
-    setInterval(() => setActivity(), 15e3);
+    setInterval(() => setActivity(), 1000);
   });
 
   rpc.login({ clientId }).catch(() => {
@@ -585,7 +589,8 @@ ipcMain.on("app-quit", () => {
 });
 
 ipcMain.on("set-discord-activity", (event, activity) => {
-  rpcActivity = { ...rpcActivity, ...activity };
+  // Reset to default and then merge the new activity to avoid stale data
+  rpcActivity = { ...defaultRpcActivity, ...activity };
   setActivity();
 });
 

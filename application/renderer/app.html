@@ -174,10 +174,25 @@
 
       headerTitle.textContent = app.name;
 
-      window.api.setDiscordActivity({
+      let rpcData = {
         details: "Viendo " + app.name,
-        state: "En la tienda"
-      });
+        state: app.description,
+        smallImageKey: 'stormstore',
+        smallImageText: 'StormStore',
+      };
+
+      if (app.id.startsWith('steam-')) {
+        rpcData.largeImageKey = 'steam';
+        rpcData.largeImageText = 'Juego de Steam';
+      } else if (app.id.startsWith('epic-')) {
+        rpcData.largeImageKey = 'epic';
+        rpcData.largeImageText = 'Juego de Epic Games';
+      } else {
+        // It's a StormStore app
+        rpcData.largeImageKey = app.id;
+        rpcData.largeImageText = app.name;
+      }
+      window.api.setDiscordActivity(rpcData);
 
       renderDetails(app);
     }

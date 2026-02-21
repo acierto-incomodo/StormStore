@@ -131,15 +131,15 @@
   </main>
 
   <script>
+    window.api.setDiscordActivity({
+      details: "Buscando actualizaciones",
+      state: "Sistema"
+    });
+
     // Esperar a que el DOM esté completamente cargado
     document.addEventListener("DOMContentLoaded", function () {
       const params = new URLSearchParams(window.location.search);
       const isBigPicture = params.get('source') === 'bigpicture';
-
-      window.api.setDiscordActivity({
-        details: "Buscando actualizaciones",
-        state: "Sistema"
-      });
 
       if (isBigPicture) {
         document.body.classList.add('big-picture-mode');
