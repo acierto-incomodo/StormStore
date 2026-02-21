@@ -88,7 +88,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "fnaf1",
@@ -275,7 +275,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "StormLauncher",

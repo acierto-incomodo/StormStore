@@ -20,11 +20,17 @@ Write-Host "Último release encontrado: $latestTag"
 git checkout main
 git pull
 
-# Generar diff solo para la carpeta application
-Write-Host "Generando diff de 'application' en $diffFile..."
-git diff $latestTag..main -- application > $diffFile
+# Generar diff solo para la carpeta application desde el último tag hasta HEAD
+Write-Host "Generando diff de 'application' desde $latestTag hasta HEAD..."
+git diff $latestTag HEAD -- application > $diffFile 2>$null
 
-Write-Host "`n¡Listo! El archivo con los cambios se ha guardado en:`n$diffFile"
+# Comprobar si hay contenido
+if ((Get-Content $diffFile | Measure-Object -Line).Lines -eq 0) {
+    Add-Content $diffFile "No hay cambios en 'application' desde el release $latestTag."
+    Write-Host "No se encontraron cambios nuevos en 'application'."
+} else {
+    Write-Host "`n¡Listo! El archivo con los cambios se ha guardado en:`n$diffFile"
+}
 
 # Volver al directorio original
 Pop-Location
