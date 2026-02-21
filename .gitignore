@@ -8,3 +8,4 @@ application/dist/builder-debug.yml
 application/dist/builder-debug.yml
 application/package-lock.json
 /debs
+application/.env

@@ -22,26 +22,35 @@
       "repo": "StormStore"
     },
     "win": {
-      "target": "nsis",
-      "icon": "assets/app.ico"
+      "target": [
+        "nsis",
+        "appx"
+      ],
+      "icon": "assets/app.ico",
+      "cscLink": "C:\\Users\\melio\\Documents\\GitHub\\Certificados\\StormStore\\StormStore.pfx",
+      "cscKeyPassword": "${env.CERTIFICATE_PASSWORD}"
     },
     "nsis": {
       "oneClick": true,
       "allowToChangeInstallationDirectory": false,
       "include": "build/installer.nsh"
     },
+    "appx": {
+      "publisher": "CN=StormGamesStudios",
+      "publisherDisplayName": "StormGamesStudios"
+    },
     "extraResources": [
       "assets/extraFiles/**"
     ]
   },
   "devDependencies": {
-    "electron": "^40.6.0",
-    "electron-builder": "^26.8.1"
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0"
   },
   "dependencies": {
-    "@equal-games/game-scanner": "^1.1.4",
+    "@equal-games/game-scanner": "^1.0.3",
     "@material/web": "^2.4.1",
-    "electron-updater": "^6.8.3",
+    "electron-updater": "^6.7.3",
     "extract-zip": "^2.0.1",
     "steam-path": "^1.0.2"
   }

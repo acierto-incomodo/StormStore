@@ -1,6 +1,6 @@
 1) Agregar pagina de cambios de las actualizaciones una vez y que sea automatica con la version del propio programa y con la descripcion de github
 2) Nuevos trailers
 3) Nuevos sonidos
-4) Sonidos para el modo BigPicture
+4) Sonidos para el modo StormVortex
 5) Sistema de actualizaciones
 6) Iniciar automaticamente un .exe a parte para que actualize el programa al iniciar Windows
