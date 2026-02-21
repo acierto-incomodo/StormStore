@@ -20,13 +20,13 @@ let updateInfo = null;
 const clientId = '1474762522048331787'; // ⚠️ REEMPLAZAR CON TU CLIENT ID REAL DE DISCORD
 
 let rpc;
-try {
-  DiscordRPC.register(clientId);
-  rpc = new DiscordRPC.Client({ transport: 'ipc' });
-} catch (e) {
-  // Si falla la inicialización (ej. módulo corrupto), no detenemos la app
-  console.log("Discord RPC no pudo iniciarse:", e);
-}
+// try {
+//   DiscordRPC.register(clientId);
+//   rpc = new DiscordRPC.Client({ transport: 'ipc' });
+// } catch (e) {
+//   // Si falla la inicialización (ej. módulo corrupto), no detenemos la app
+//   console.log("Discord RPC no pudo iniciarse:", e);
+// }
 
 const startTimestamp = Date.now();
 
@@ -55,16 +55,16 @@ async function setActivity() {
   }
 }
 
-if (rpc) {
-  rpc.on('ready', () => {
-    setActivity();
-    setInterval(() => setActivity(), 1000);
-  });
+// if (rpc) {
+//   rpc.on('ready', () => {
+//     setActivity();
+//     setInterval(() => setActivity(), 1000);
+//   });
 
-  rpc.login({ clientId }).catch(() => {
-    // Discord no está abierto o no instalado. Ignoramos el error silenciosamente.
-  });
-}
+//   rpc.login({ clientId }).catch(() => {
+//     // Discord no está abierto o no instalado. Ignoramos el error silenciosamente.
+//   });
+// }
 
 // ❌ StormStore SOLO WINDOWS
 if (process.platform !== "win32") {

@@ -278,7 +278,7 @@
     "share-compatibility": "si"
   },
   {
-    "id": "StormLauncher",
+    "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Minecraft launcher.",
     "category": [
@@ -312,6 +312,23 @@
     ],
     "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "no"
+  },
+  {
+    "id": "stormpanel-app",
+    "name": "StormPanel APP",
+    "description": "StormPanel APP es una aplicación de panel de control para StormGamesStudios.",
+    "category": [
+      "Utilidades"
+    ],
+    "icon": "../assets/apps/stormpanel-app.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/StormPanel APP/StormPanel APP.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/StormPanel-APP/releases/latest/download/StormPanel-APP-Setup.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/StormPanel APP/Uninstall StormPanel APP.exe",
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "no"
