@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -28,7 +28,8 @@
     "nsis": {
       "oneClick": true,
       "allowToChangeInstallationDirectory": false,
-      "include": "build/v3-installer.nsh"
+      "include": "build/v3-installer.nsh",
+      "differentialPackage": true
     },
     "files": [
       "package.json",
