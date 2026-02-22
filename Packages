@@ -74,17 +74,17 @@ Description: Launcher de Karts Multiplayer
  Un launcher para descargar y actualizar Karts Multiplayer automáticamente.
 
 Package: multiai
-Version: 1.2.9
+Version: 1.2.10
 Architecture: amd64
 Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
-Installed-Size: 315146
+Installed-Size: 315327
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils
 Recommends: libappindicator3-1
-Filename: ./debs/multiai_1.2.9_amd64.deb
-Size: 104361460
-MD5sum: 4176e5da74b144f7e887b0dfe7663544
-SHA1: 8ec063dce7bf1983cc43eb45e7719ba220c50df5
-SHA256: af56a1a9b59276812d44bd22442d6221fd24cb39252e587dd0417ced031fe70a
+Filename: ./debs/multiai_1.2.10_amd64.deb
+Size: 104536952
+MD5sum: bae488ca33819aba262a6617cb3f76d1
+SHA1: 81fc8dde632edf6e8b98d9f84d77b846bfd0d55d
+SHA256: a0f8e944791b16de43a583f6ce06b588af7857beb14850c9ee5d4cf4575aaf34
 Section: default
 Priority: optional
 Homepage: https://github.com/acierto-incomodo/MultiAI
