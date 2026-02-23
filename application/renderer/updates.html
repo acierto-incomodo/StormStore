@@ -283,7 +283,14 @@
       window.api.onUpdateDownloaded(() => {
         document.getElementById("download-progress").style.display = "none";
         document.getElementById("update-info-section").style.display = "none";
-        document.getElementById("update-ready-section").style.display = "block";
+        
+        const readySection = document.getElementById("update-ready-section");
+        readySection.style.display = "block";
+        readySection.querySelector("h2").textContent = "Instalando actualización...";
+        readySection.querySelector("p").textContent = "La aplicación se cerrará para instalar la actualización.";
+        document.getElementById("install-btn").style.display = "none";
+
+        window.api.installUpdate();
       });
 
       window.api.onUpdateError((_, message) => {

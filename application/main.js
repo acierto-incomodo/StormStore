@@ -78,9 +78,16 @@ autoUpdater.autoDownload = false;
 autoUpdater.allowDowngrade = true;
 autoUpdater.checkForUpdates();
 
+autoUpdater.on("checking-for-update", () => {
+  if (mainWindow) {
+    mainWindow.setProgressBar(2); // Indeterminate
+  }
+});
+
 autoUpdater.on("update-available", (info) => {
   updateInfo = info;
   if (mainWindow) {
+    mainWindow.setProgressBar(-1);
     // Forzar la redirección a la página de actualizaciones
     mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
     // Una vez que la página se carga, le enviamos la información de la actualización
@@ -93,12 +100,14 @@ autoUpdater.on("update-available", (info) => {
 
 autoUpdater.on("update-not-available", () => {
   if (mainWindow) {
+    mainWindow.setProgressBar(-1);
     mainWindow.webContents.send("update-not-available");
   }
 });
 
 autoUpdater.on("download-progress", (progressObj) => {
   if (mainWindow) {
+    mainWindow.setProgressBar(progressObj.percent / 100);
     mainWindow.webContents.send("download-progress", progressObj);
   }
 });
@@ -106,6 +115,7 @@ autoUpdater.on("download-progress", (progressObj) => {
 autoUpdater.on("update-downloaded", () => {
   // Ya no se instala automáticamente. Solo notifica a la página de actualizaciones.
   if (mainWindow) {
+    mainWindow.setProgressBar(-1);
     mainWindow.webContents.send("update-downloaded");
   }
 });
@@ -113,6 +123,7 @@ autoUpdater.on("update-downloaded", () => {
 autoUpdater.on("error", (err) => {
   console.error("Error en autoUpdater:", err);
   if (mainWindow) {
+    mainWindow.setProgressBar(-1);
     mainWindow.webContents.send("update-error", err.message);
   }
 });
