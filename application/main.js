@@ -184,6 +184,48 @@ function resolveWindowsPath(p) {
   return path.normalize(p.replace(/%appdata%/gi, app.getPath("appData")));
 }
 
+function findExecutable(p) {
+  const resolved = resolveWindowsPath(p);
+  if (!resolved.includes("*")) {
+    return fs.existsSync(resolved) ? resolved : null;
+  }
+
+  const dir = path.dirname(resolved);
+  const pattern = path.basename(resolved);
+  
+  if (!fs.existsSync(dir)) return null;
+
+  try {
+    const files = fs.readdirSync(dir);
+    // Escape regex characters except *
+    const regexString = "^" + pattern.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*') + "$";
+    const regex = new RegExp(regexString, 'i');
+    
+    const matches = files.filter(f => regex.test(f));
+    
+    if (matches.length === 0) return null;
+    
+    // Lógica específica para HMCL: preferir cualquier otro sobre la versión base 3.6.11
+    if (pattern.toUpperCase().startsWith("HMCL-")) {
+        const specific = "HMCL-3.6.11.exe";
+        const others = matches.filter(f => f.toUpperCase() !== specific.toUpperCase());
+        if (others.length > 0) {
+            // Ordenar descendente para coger la versión más nueva si hay varias
+            others.sort((a, b) => b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }));
+            return path.join(dir, others[0]);
+        }
+    }
+
+    // Default sort for wildcards: descending (newest usually)
+    matches.sort((a, b) => b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }));
+    return path.join(dir, matches[0]);
+
+  } catch (e) {
+    console.error("Error finding executable for wildcard:", p, e);
+    return null;
+  }
+}
+
 function getDownloadDir() {
   const dir = path.join(
     app.getPath("appData"),
@@ -205,8 +247,7 @@ function getDownloadDir() {
 ipcMain.handle("get-apps", () => {
   return apps.map((appItem) => {
     const installed = appItem.paths.some((p) => {
-      const resolved = resolveWindowsPath(p);
-      return fs.existsSync(resolved);
+      return findExecutable(p) !== null;
     });
 
     return {
@@ -473,9 +514,9 @@ ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
       exec("start steam://");
     }
 
-    const resolvedExe = resolveWindowsPath(exePath);
+    const resolvedExe = findExecutable(exePath);
 
-    if (!fs.existsSync(resolvedExe)) {
+    if (!resolvedExe) {
       throw new Error("El ejecutable no existe");
     }
 
@@ -498,14 +539,18 @@ ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
 
 ipcMain.handle("open-app-location", async (_, exePath) => {
   if (!exePath) return;
-  const resolved = resolveWindowsPath(exePath);
-  if (fs.existsSync(resolved)) {
-    const stat = fs.statSync(resolved);
-    if (stat.isDirectory()) {
-      shell.openPath(resolved);
-    } else {
+  
+  let resolved = findExecutable(exePath);
+  
+  if (resolved) {
       shell.showItemInFolder(resolved);
-    }
+  } else {
+      // Fallback: try to open the directory if the path contains wildcards or just doesn't exist as file
+      const rawPath = resolveWindowsPath(exePath);
+      const dir = path.dirname(rawPath);
+      if (fs.existsSync(dir)) {
+          shell.openPath(dir);
+      }
   }
 });
 
