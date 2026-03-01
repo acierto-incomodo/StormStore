@@ -197,7 +197,7 @@ function renderApps(category) {
         topRow.appendChild(openBtn);
 
         // DESINSTALAR
-        if (app.uninstall) {
+        if (app.uninstall && app.uninstallExists) {
           const uninstallBtn = document.createElement("button");
           uninstallBtn.className = "md-btn md-btn-danger";
           uninstallBtn.style.flex = "1";
@@ -241,6 +241,39 @@ function renderApps(category) {
           }
 
           topRow.appendChild(uninstallBtn);
+        } else if (app.steam !== "si" && app.epic !== "si") {
+          // Botón Eliminar Completamente (si no hay desinstalador)
+          const deleteBtn = document.createElement("button");
+          deleteBtn.className = "md-btn md-btn-danger";
+          deleteBtn.style.flex = "1";
+
+          if (isUninstalling) {
+            deleteBtn.disabled = true;
+            deleteBtn.innerHTML = `
+            <span class="button-loading">
+              <img src="../assets/icons/loading-new.svg">
+              Eliminando...
+            </span>`;
+          } else {
+            deleteBtn.textContent = "Eliminar";
+            deleteBtn.onclick = async (e) => {
+              e.stopPropagation();
+              if (!confirm("¿Eliminar carpeta de la aplicación?")) return;
+              
+              showToast("Eliminando archivos...");
+              uninstallingApps.add(app.id);
+              // Forzar re-render para mostrar estado loading
+              renderApps(currentCategory);
+
+              try {
+                await window.api.deleteAppFolder(app.paths[0]);
+                playSound("finish.mp3");
+              } catch (error) { console.error(error); }
+              uninstallingApps.delete(app.id);
+              await load();
+            };
+          }
+          topRow.appendChild(deleteBtn);
         }
 
         actions.appendChild(topRow);

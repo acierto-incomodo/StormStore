@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld("api", {
   openAppLocation: (path) => ipcRenderer.invoke("open-app-location", path),
   getAppVersion: () => ipcRenderer.invoke("get-app-version"),
   uninstallApp: (path) => ipcRenderer.invoke("uninstall-app", path),
+  deleteAppFolder: (path) => ipcRenderer.invoke("delete-app-folder", path),
   checkTrailerExists: (id) => ipcRenderer.invoke("check-trailer-exists", id),
   checkForUpdates: () => ipcRenderer.invoke("check-for-updates"),
   getUpdateInfo: () => ipcRenderer.invoke("get-update-info"),

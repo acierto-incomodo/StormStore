@@ -250,9 +250,16 @@ ipcMain.handle("get-apps", () => {
       return findExecutable(p) !== null;
     });
 
+    let uninstallExists = false;
+    if (appItem.uninstall) {
+      const resolvedUninstall = resolveWindowsPath(appItem.uninstall);
+      uninstallExists = fs.existsSync(resolvedUninstall);
+    }
+
     return {
       ...appItem,
       installed,
+      uninstallExists,
     };
   });
 });
@@ -551,6 +558,29 @@ ipcMain.handle("open-app-location", async (_, exePath) => {
       if (fs.existsSync(dir)) {
           shell.openPath(dir);
       }
+  }
+});
+
+ipcMain.handle("delete-app-folder", async (_, exePath) => {
+  try {
+    const resolvedExe = findExecutable(exePath);
+    let folderPath;
+
+    if (resolvedExe) {
+      folderPath = path.dirname(resolvedExe);
+    } else {
+      const raw = resolveWindowsPath(exePath);
+      folderPath = path.dirname(raw);
+    }
+
+    if (folderPath && fs.existsSync(folderPath)) {
+      fs.rmSync(folderPath, { recursive: true, force: true });
+      return true;
+    }
+    return false;
+  } catch (err) {
+    console.error("Error deleting app folder:", err);
+    throw err;
   }
 });
 

@@ -80,6 +80,17 @@
     </div>
   </main>
 
+  <div id="delete-confirm-overlay" class="source-modal-overlay">
+    <div class="source-modal">
+      <h2>Eliminar aplicación</h2>
+      <p>¿Estás seguro de que quieres eliminar completamente esta aplicación? Esta acción borrará la carpeta de instalación.</p>
+      <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+        <button id="cancel-delete-btn" class="md-btn md-btn-tonal">Cancelar</button>
+        <button id="confirm-delete-btn" class="md-btn md-btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const appId = params.get("id");
@@ -286,13 +297,13 @@
 
         // Botón Desinstalar
         const uninstallBtn = document.createElement("button");
-        uninstallBtn.textContent = isUninstalling ? "Desinstalando..." : "Desinstalar";
         uninstallBtn.className = "md-btn md-btn-danger";
         uninstallBtn.style.padding = "12px 24px";
         uninstallBtn.style.flex = "1";
         uninstallBtn.disabled = isUninstalling;
         
-        if (app.uninstall) {
+        if (app.uninstall && app.uninstallExists) {
+            uninstallBtn.textContent = isUninstalling ? "Desinstalando..." : "Desinstalar";
             uninstallBtn.onclick = async () => {
                 isUninstalling = true;
                 showToast("Desinstalando aplicación...");
@@ -310,6 +321,42 @@
             } else {
               actionsDiv.append(uninstallBtn);
             }
+        } else if (app.installed && app.steam !== "si" && app.epic !== "si") {
+            // Si está instalado pero no hay desinstalador (o no existe), ofrecemos borrar carpeta
+            uninstallBtn.textContent = isUninstalling ? "Eliminando..." : "Eliminar completamente";
+            
+            uninstallBtn.onclick = () => {
+                const overlay = document.getElementById('delete-confirm-overlay');
+                const confirmBtn = document.getElementById('confirm-delete-btn');
+                const cancelBtn = document.getElementById('cancel-delete-btn');
+                
+                overlay.classList.add('active');
+                
+                const closeOverlay = () => {
+                    overlay.classList.remove('active');
+                    confirmBtn.onclick = null;
+                    cancelBtn.onclick = null;
+                    overlay.onclick = null;
+                };
+
+                confirmBtn.onclick = async () => {
+                    closeOverlay();
+                    isUninstalling = true;
+                    showToast("Eliminando archivos...");
+                    renderDetails(app);
+                    try {
+                        await window.api.deleteAppFolder(app.paths[0]);
+                        playSound("finish.mp3");
+                    } catch (e) { console.error(e); }
+                    isUninstalling = false;
+                    loadApp();
+                };
+                
+                cancelBtn.onclick = closeOverlay;
+                overlay.onclick = (e) => { if (e.target === overlay) closeOverlay(); };
+            };
+            
+            actionsDiv.append(uninstallBtn);
         } else {
             actionsDiv.append(openBtn, locBtn);
             if (shareBtn) actionsDiv.append(shareBtn);
