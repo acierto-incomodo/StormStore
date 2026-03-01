@@ -211,6 +211,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "modpack-installer",
+    "name": "Modpack Installer",
+    "description": "Instalador de modpacks para Minecraft.",
+    "category": "Juegos",
+    "icon": "../assets/apps/modpack-installer.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/Modpack Installer/Modpack Installer.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/modpack-installer/releases/latest/download/Modpack-Installer-Setup.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/Modpack Installer/Uninstall Modpack Installer.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "no"
+  },
+  {
     "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
@@ -280,7 +295,7 @@
   {
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
-    "description": "Minecraft launcher.",
+    "description": "Custom Minecraft Launcher.",
     "category": [
       "Juegos",
       "Utilidades"

@@ -287,10 +287,12 @@
         const readySection = document.getElementById("update-ready-section");
         readySection.style.display = "block";
         readySection.querySelector("h2").textContent = "Instalando actualización...";
-        readySection.querySelector("p").textContent = "La aplicación se cerrará para instalar la actualización.";
+        readySection.querySelector("p").textContent = "La aplicación se reiniciará automáticamente en unos segundos...";
         document.getElementById("install-btn").style.display = "none";
 
-        window.api.installUpdate();
+        setTimeout(() => {
+          window.api.installUpdate();
+        }, 3000);
       });
 
       window.api.onUpdateError((_, message) => {

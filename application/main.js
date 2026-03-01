@@ -113,9 +113,11 @@ autoUpdater.on("download-progress", (progressObj) => {
 });
 
 autoUpdater.on("update-downloaded", () => {
-  // Ya no se instala automáticamente. Solo notifica a la página de actualizaciones.
   if (mainWindow) {
-    mainWindow.setProgressBar(-1);
+    mainWindow.setProgressBar(1, { mode: "normal" });
+    setTimeout(() => {
+      if (mainWindow) mainWindow.setProgressBar(-1);
+    }, 3000);
     mainWindow.webContents.send("update-downloaded");
   }
 });
@@ -123,7 +125,14 @@ autoUpdater.on("update-downloaded", () => {
 autoUpdater.on("error", (err) => {
   console.error("Error en autoUpdater:", err);
   if (mainWindow) {
-    mainWindow.setProgressBar(-1);
+    mainWindow.setProgressBar(1, { mode: "error" });
+    mainWindow.flashFrame(true);
+    setTimeout(() => {
+      if (mainWindow) {
+        mainWindow.setProgressBar(-1);
+        mainWindow.flashFrame(false);
+      }
+    }, 3000);
     mainWindow.webContents.send("update-error", err.message);
   }
 });
@@ -471,17 +480,52 @@ ipcMain.handle("install-app", async (_, appData) => {
             if (res.statusCode !== 200) {
               file.close();
               fs.unlinkSync(filePath);
+              if (mainWindow) {
+                mainWindow.setProgressBar(1, { mode: "error" });
+                mainWindow.flashFrame(true);
+                setTimeout(() => {
+                  if (mainWindow) {
+                    mainWindow.setProgressBar(-1);
+                    mainWindow.flashFrame(false);
+                  }
+                }, 3000);
+              }
               return reject(new Error("Error descargando el archivo"));
             }
+
+            const totalLength = parseInt(res.headers["content-length"], 10);
+            let downloaded = 0;
+
+            if (mainWindow) {
+              mainWindow.setProgressBar(0, { mode: "normal" });
+            }
+
+            res.on("data", (chunk) => {
+              downloaded += chunk.length;
+              if (mainWindow && !isNaN(totalLength) && totalLength > 0) {
+                mainWindow.setProgressBar(downloaded / totalLength);
+              }
+            });
 
             res.pipe(file);
 
             file.on("finish", () => {
               file.close(() => {
+                if (mainWindow) mainWindow.setProgressBar(2); // Indeterminate during install
                 // ▶ Ejecutar instalador
                 exec(`"${filePath}"`, (err) => {
                   if (err) {
                     console.error("Error ejecutando instalador:", err);
+                    if (mainWindow) {
+                      mainWindow.setProgressBar(1, { mode: "error" });
+                      mainWindow.flashFrame(true);
+                      setTimeout(() => {
+                        if (mainWindow) {
+                          mainWindow.setProgressBar(-1);
+                          mainWindow.flashFrame(false);
+                        }
+                      }, 3000);
+                    }
                     return reject(err);
                   }
 
@@ -492,6 +536,13 @@ ipcMain.handle("install-app", async (_, appData) => {
                     }
                   }, 10000);
 
+                  if (mainWindow) {
+                    mainWindow.setProgressBar(1, { mode: "normal" });
+                    setTimeout(() => {
+                      if (mainWindow) mainWindow.setProgressBar(-1);
+                    }, 3000);
+                  }
+
                   resolve(true);
                 });
               });
@@ -499,6 +550,16 @@ ipcMain.handle("install-app", async (_, appData) => {
           })
           .on("error", (err) => {
             if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+            if (mainWindow) {
+              mainWindow.setProgressBar(1, { mode: "error" });
+              mainWindow.flashFrame(true);
+              setTimeout(() => {
+                if (mainWindow) {
+                  mainWindow.setProgressBar(-1);
+                  mainWindow.flashFrame(false);
+                }
+              }, 3000);
+            }
             reject(err);
           });
       }
