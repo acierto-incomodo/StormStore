@@ -465,6 +465,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadLink = document.getElementById('download-link');
     const closeViewerBtn = document.querySelector('.close-viewer');
 
+    // --- CONFIGURACIÓN DE RUTAS ---
+    // Usamos un CDN (jsDelivr) para acceder a los archivos del repositorio
+    // con las cabeceras correctas y evitar problemas en GitHub Pages.
+    const GITHUB_USER = 'acierto-incomodo';
+    const REPO_NAME = 'StormStore';
+    const BRANCH = 'main';
+    const FILE_BASE_URL = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${REPO_NAME}@${BRANCH}/`;
+
     // Función para obtener el icono basado en el tipo de archivo
     function getIconClass(type) {
         switch (type) {
@@ -484,6 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const name in data) {
             const item = data[name];
             const currentPath = path ? `${path}/${name}` : name;
+            const fileUrl = `${FILE_BASE_URL}${currentPath}`;
             const li = document.createElement('li');
 
             const isFolder = item.type === 'folder';
@@ -496,8 +505,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${name}
                     </span>
                     <div class="node-actions">
-                        <button class="action-btn copy-link-btn" data-path="${currentPath}">Copiar Enlace</button>
-                        <a href="../${currentPath}" target="_blank" class="action-btn">Ver Crudo</a>
+                        <button class="action-btn copy-link-btn" data-url="${fileUrl}">Copiar Enlace</button>
+                        <a href="${fileUrl}" target="_blank" class="action-btn">Ver Crudo</a>
                         ${!isFolder ? `<button class="action-btn view-btn" data-path="${currentPath}" data-type="${item.type}">Previsualizar</button>` : ''}
                     </div>
                 </div>
@@ -525,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
         viewerAudio.style.display = 'none';
         viewerInfo.style.display = 'none';
 
-        const fullUrl = `../${path}`;
+        const fullUrl = `${FILE_BASE_URL}${path}`;
 
         if (type === 'image') {
             viewerImage.src = fullUrl;
@@ -571,9 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Botón de copiar enlace
         if (target.classList.contains('copy-link-btn')) {
-            const path = target.dataset.path;
-            const pageUrl = window.location.href.split('/docs/')[0];
-            const fileUrl = `${pageUrl}/${path}`;
+            const fileUrl = target.dataset.url;
             
             navigator.clipboard.writeText(fileUrl).then(() => {
                 const originalText = target.textContent;
