@@ -1,4 +1,11 @@
-const { app, BrowserWindow, ipcMain, shell, session, nativeTheme } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  shell,
+  session,
+  nativeTheme,
+} = require("electron");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
@@ -17,7 +24,7 @@ let updateInfo = null;
 // =====================================
 // DISCORD RPC
 // =====================================
-const clientId = '1474762522048331787'; // ⚠️ REEMPLAZAR CON TU CLIENT ID REAL DE DISCORD
+const clientId = "1474762522048331787"; // ⚠️ REEMPLAZAR CON TU CLIENT ID REAL DE DISCORD
 
 let rpc;
 // try {
@@ -31,10 +38,10 @@ let rpc;
 const startTimestamp = Date.now();
 
 const defaultRpcActivity = {
-  details: 'Explorando aplicaciones',
-  state: 'Navegando',
-  largeImageKey: 'stormstore',
-  largeImageText: 'StormStore',
+  details: "Explorando aplicaciones",
+  state: "Navegando",
+  largeImageKey: "stormstore",
+  largeImageText: "StormStore",
   smallImageKey: undefined,
   smallImageText: undefined,
 };
@@ -45,11 +52,13 @@ async function setActivity() {
   if (!rpc || !mainWindow) return;
 
   try {
-    rpc.setActivity({
-      ...rpcActivity,
-      startTimestamp,
-      instance: false,
-    }).catch(() => {}); // Ignoramos errores si Discord se cierra de repente
+    rpc
+      .setActivity({
+        ...rpcActivity,
+        startTimestamp,
+        instance: false,
+      })
+      .catch(() => {}); // Ignoramos errores si Discord se cierra de repente
   } catch (e) {
     // Ignoramos errores síncronos
   }
@@ -163,8 +172,13 @@ function createWindow() {
 
   mainWindow = win;
 
-  const startInBigPicture = process.argv.includes('--StormVortex');
-  win.loadFile(path.join(__dirname, startInBigPicture ? "renderer/bigpicture.html" : "renderer/index.html"));
+  const startInBigPicture = process.argv.includes("--StormVortex");
+  win.loadFile(
+    path.join(
+      __dirname,
+      startInBigPicture ? "renderer/bigpicture.html" : "renderer/index.html",
+    ),
+  );
 
   if (startInBigPicture) {
     win.setFullScreen(true);
@@ -201,34 +215,42 @@ function findExecutable(p) {
 
   const dir = path.dirname(resolved);
   const pattern = path.basename(resolved);
-  
+
   if (!fs.existsSync(dir)) return null;
 
   try {
     const files = fs.readdirSync(dir);
     // Escape regex characters except *
-    const regexString = "^" + pattern.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*') + "$";
-    const regex = new RegExp(regexString, 'i');
-    
-    const matches = files.filter(f => regex.test(f));
-    
+    const regexString =
+      "^" +
+      pattern.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*") +
+      "$";
+    const regex = new RegExp(regexString, "i");
+
+    const matches = files.filter((f) => regex.test(f));
+
     if (matches.length === 0) return null;
-    
+
     // Lógica específica para HMCL: preferir cualquier otro sobre la versión base 3.6.11
     if (pattern.toUpperCase().startsWith("HMCL-")) {
-        const specific = "HMCL-3.6.11.exe";
-        const others = matches.filter(f => f.toUpperCase() !== specific.toUpperCase());
-        if (others.length > 0) {
-            // Ordenar descendente para coger la versión más nueva si hay varias
-            others.sort((a, b) => b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }));
-            return path.join(dir, others[0]);
-        }
+      const specific = "HMCL-3.6.11.exe";
+      const others = matches.filter(
+        (f) => f.toUpperCase() !== specific.toUpperCase(),
+      );
+      if (others.length > 0) {
+        // Ordenar descendente para coger la versión más nueva si hay varias
+        others.sort((a, b) =>
+          b.localeCompare(a, undefined, { numeric: true, sensitivity: "base" }),
+        );
+        return path.join(dir, others[0]);
+      }
     }
 
     // Default sort for wildcards: descending (newest usually)
-    matches.sort((a, b) => b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }));
+    matches.sort((a, b) =>
+      b.localeCompare(a, undefined, { numeric: true, sensitivity: "base" }),
+    );
     return path.join(dir, matches[0]);
-
   } catch (e) {
     console.error("Error finding executable for wildcard:", p, e);
     return null;
@@ -276,7 +298,7 @@ ipcMain.handle("get-apps", () => {
 ipcMain.handle("get-steam-games", async () => {
   try {
     let steamPath = null;
-    
+
     // 1. Intentar con librería steam-path
     try {
       steamPath = await SteamPath.getSteamPath();
@@ -288,12 +310,15 @@ ipcMain.handle("get-steam-games", async () => {
     if (!steamPath) {
       try {
         const { stdout } = await new Promise((resolve, reject) => {
-          exec('reg query "HKCU\\Software\\Valve\\Steam" /v SteamPath', (err, stdout) => {
-            if (err) reject(err);
-            else resolve({ stdout });
-          });
+          exec(
+            'reg query "HKCU\\Software\\Valve\\Steam" /v SteamPath',
+            (err, stdout) => {
+              if (err) reject(err);
+              else resolve({ stdout });
+            },
+          );
         });
-        
+
         // Parsear salida: ... SteamPath    REG_SZ    C:/Program Files (x86)/Steam
         const match = stdout.match(/SteamPath\s+REG_SZ\s+(.+)/i);
         if (match && match[1]) {
@@ -310,7 +335,7 @@ ipcMain.handle("get-steam-games", async () => {
         "C:\\Program Files (x86)\\Steam",
         "C:\\Program Files\\Steam",
         "D:\\Steam",
-        "E:\\Steam"
+        "E:\\Steam",
       ];
       for (const p of possible) {
         if (fs.existsSync(p)) {
@@ -333,11 +358,11 @@ ipcMain.handle("get-steam-games", async () => {
     const libraries = new Set();
     // Añadir librería por defecto
     if (fs.existsSync(path.join(steamPath, "steamapps"))) {
-        libraries.add(path.join(steamPath, "steamapps"));
+      libraries.add(path.join(steamPath, "steamapps"));
     }
 
     const vdfPath = path.join(steamPath, "steamapps", "libraryfolders.vdf");
-    
+
     if (fs.existsSync(vdfPath)) {
       try {
         const vdfContent = fs.readFileSync(vdfPath, "utf8");
@@ -347,13 +372,13 @@ ipcMain.handle("get-steam-games", async () => {
         while ((match = pathRegex.exec(vdfContent)) !== null) {
           let libPath = match[1];
           // Corregir escapes de backslash dobles a simples
-          libPath = libPath.replace(/\\\\/g, "\\"); 
+          libPath = libPath.replace(/\\\\/g, "\\");
           // Normalizar
           libPath = path.normalize(libPath);
-          
+
           const steamAppsPath = path.join(libPath, "steamapps");
           if (fs.existsSync(steamAppsPath)) {
-             libraries.add(steamAppsPath);
+            libraries.add(steamAppsPath);
           }
         }
       } catch (e) {
@@ -367,49 +392,53 @@ ipcMain.handle("get-steam-games", async () => {
     for (const lib of libraries) {
       console.log("Scanning library:", lib);
       if (!fs.existsSync(lib)) continue;
-      
-      try {
-      const files = fs.readdirSync(lib);
-      for (const file of files) {
-        if (file.startsWith("appmanifest_") && file.endsWith(".acf")) {
-          try {
-            const content = fs.readFileSync(path.join(lib, file), "utf8");
-            const nameMatch = content.match(/"name"\s+"([^"]+)"/);
-            const appIdMatch = content.match(/"appid"\s+"(\d+)"/);
-            const installDirMatch = content.match(/"installdir"\s+"([^"]+)"/);
-            
-            if (nameMatch && appIdMatch) {
-              const name = nameMatch[1];
-              const appId = appIdMatch[1];
-              const installDir = installDirMatch ? installDirMatch[1] : null;
-              
-              // Filtrar "Steamworks Common Redistributables" (228980)
-              if (appId === "228980") continue;
 
-              if (!seenAppIds.has(appId)) {
-                seenAppIds.add(appId);
-                games.push({
-                  id: `steam-${appId}`,
-                  name: name,
-                  description: "Juego de Steam",
-                  category: "Steam",
-                  icon: `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`,
-                  paths: [`steam://rungameid/${appId}`],
-                  installPath: installDir ? path.join(lib, "common", installDir) : null,
-                  installed: true,
-                  steam: "si",
-                  wifi: "no"
-                });
+      try {
+        const files = fs.readdirSync(lib);
+        for (const file of files) {
+          if (file.startsWith("appmanifest_") && file.endsWith(".acf")) {
+            try {
+              const content = fs.readFileSync(path.join(lib, file), "utf8");
+              const nameMatch = content.match(/"name"\s+"([^"]+)"/);
+              const appIdMatch = content.match(/"appid"\s+"(\d+)"/);
+              const installDirMatch = content.match(/"installdir"\s+"([^"]+)"/);
+
+              if (nameMatch && appIdMatch) {
+                const name = nameMatch[1];
+                const appId = appIdMatch[1];
+                const installDir = installDirMatch ? installDirMatch[1] : null;
+
+                // Filtrar "Steamworks Common Redistributables" (228980)
+                if (appId === "228980") continue;
+
+                if (!seenAppIds.has(appId)) {
+                  seenAppIds.add(appId);
+                  games.push({
+                    id: `steam-${appId}`,
+                    name: name,
+                    description: "Juego de Steam",
+                    category: "Steam",
+                    icon: `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`,
+                    paths: [`steam://rungameid/${appId}`],
+                    installPath: installDir
+                      ? path.join(lib, "common", installDir)
+                      : null,
+                    installed: true,
+                    steam: "si",
+                    wifi: "no",
+                  });
+                }
               }
+            } catch (e) {
+              console.error(e);
             }
-          } catch (e) { console.error(e); }
+          }
         }
-      }
       } catch (e) {
         console.error("Error reading library directory:", lib, e);
       }
     }
-    
+
     console.log(`Found ${games.length} Steam games`);
     return games;
   } catch (error) {
@@ -428,7 +457,9 @@ ipcMain.handle("get-epic-games", async () => {
       description: "Juego de Epic Games",
       category: "Epic Games",
       icon: "../assets/icons/epic-games.svg",
-      paths: [`com.epicgames.launcher://apps/${game.id}?action=launch&silent=true`],
+      paths: [
+        `com.epicgames.launcher://apps/${game.id}?action=launch&silent=true`,
+      ],
       installPath: game.path,
       installed: true,
       epic: "si",
@@ -452,7 +483,12 @@ ipcMain.handle("install-app", async (_, appData) => {
       if (fs.existsSync(prePath)) {
         await new Promise((resolvePre, rejectPre) => {
           exec(`"${prePath}" ${item.args || ""}`, (err) => {
-            if (err) rejectPre(new Error(`Error en pre-instalación (${item.path}): ${err.message}`));
+            if (err)
+              rejectPre(
+                new Error(
+                  `Error en pre-instalación (${item.path}): ${err.message}`,
+                ),
+              );
             else resolvePre();
           });
         });
@@ -573,7 +609,10 @@ ipcMain.handle("install-app", async (_, appData) => {
 
 ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
   try {
-    if (exePath.startsWith("steam://") || exePath.startsWith("com.epicgames.launcher://")) {
+    if (
+      exePath.startsWith("steam://") ||
+      exePath.startsWith("com.epicgames.launcher://")
+    ) {
       exec(`start "" "${exePath}"`);
       return true;
     }
@@ -607,18 +646,18 @@ ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
 
 ipcMain.handle("open-app-location", async (_, exePath) => {
   if (!exePath) return;
-  
+
   let resolved = findExecutable(exePath);
-  
+
   if (resolved) {
-      shell.showItemInFolder(resolved);
+    shell.showItemInFolder(resolved);
   } else {
-      // Fallback: try to open the directory if the path contains wildcards or just doesn't exist as file
-      const rawPath = resolveWindowsPath(exePath);
-      const dir = path.dirname(rawPath);
-      if (fs.existsSync(dir)) {
-          shell.openPath(dir);
-      }
+    // Fallback: try to open the directory if the path contains wildcards or just doesn't exist as file
+    const rawPath = resolveWindowsPath(exePath);
+    const dir = path.dirname(rawPath);
+    if (fs.existsSync(dir)) {
+      shell.openPath(dir);
+    }
   }
 });
 
@@ -659,11 +698,6 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
     console.error("Error al desinstalar:", err.message);
     return false;
   }
-});
-
-ipcMain.handle("check-trailer-exists", (_, id) => {
-  const trailerPath = path.join(__dirname, "assets", "media", "trailers", `${id}.mp4`);
-  return fs.existsSync(trailerPath);
 });
 
 ipcMain.handle("open-big-picture", () => {
@@ -766,10 +800,10 @@ if (!gotLock) {
 
   app.whenReady().then(() => {
     // Forzar el tema oscuro para toda la aplicación
-    nativeTheme.themeSource = 'dark';
+    nativeTheme.themeSource = "dark";
     // Permisos para WebHID
     session.defaultSession.setDevicePermissionHandler((details) => {
-      if (details.deviceType === 'hid' && details.origin === 'file://') {
+      if (details.deviceType === "hid" && details.origin === "file://") {
         return true;
       }
       return false;

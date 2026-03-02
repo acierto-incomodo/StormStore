@@ -5,7 +5,8 @@ contextBridge.exposeInMainWorld("api", {
   installApp: (app) => ipcRenderer.invoke("install-app", app),
   getSteamGames: () => ipcRenderer.invoke("get-steam-games"),
   getEpicGames: () => ipcRenderer.invoke("get-epic-games"),
-  openApp: (path, requiresSteam) => ipcRenderer.invoke("open-app", path, requiresSteam),
+  openApp: (path, requiresSteam) =>
+    ipcRenderer.invoke("open-app", path, requiresSteam),
   openAppLocation: (path) => ipcRenderer.invoke("open-app-location", path),
   getAppVersion: () => ipcRenderer.invoke("get-app-version"),
   uninstallApp: (path) => ipcRenderer.invoke("uninstall-app", path),
@@ -16,9 +17,12 @@ contextBridge.exposeInMainWorld("api", {
   downloadUpdate: () => ipcRenderer.invoke("download-update"),
   installUpdate: () => ipcRenderer.invoke("install-update"),
   onUpdateAvailable: (callback) => ipcRenderer.on("update-available", callback),
-  onUpdateNotAvailable: (callback) => ipcRenderer.on("update-not-available", callback),
-  onDownloadProgress: (callback) => ipcRenderer.on("download-progress", callback),
-  onUpdateDownloaded: (callback) => ipcRenderer.on("update-downloaded", callback),
+  onUpdateNotAvailable: (callback) =>
+    ipcRenderer.on("update-not-available", callback),
+  onDownloadProgress: (callback) =>
+    ipcRenderer.on("download-progress", callback),
+  onUpdateDownloaded: (callback) =>
+    ipcRenderer.on("update-downloaded", callback),
   onUpdateError: (callback) => ipcRenderer.on("update-error", callback),
   openBigPicture: () => ipcRenderer.invoke("open-big-picture"),
   openMainView: () => ipcRenderer.invoke("open-main-view"),
@@ -29,5 +33,6 @@ contextBridge.exposeInMainWorld("api", {
   onWindowMaximized: (callback) => ipcRenderer.on("window-maximized", callback),
   onWindowRestored: (callback) => ipcRenderer.on("window-restored", callback),
   quitApp: () => ipcRenderer.send("app-quit"),
-  setDiscordActivity: (activity) => ipcRenderer.send("set-discord-activity", activity),
+  setDiscordActivity: (activity) =>
+    ipcRenderer.send("set-discord-activity", activity),
 });

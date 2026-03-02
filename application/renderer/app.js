@@ -14,7 +14,7 @@ const uninstallingApps = new Set();
 // Discord RPC
 window.api.setDiscordActivity({
   details: "Explorando aplicaciones",
-  state: "Navegando"
+  state: "Navegando",
 });
 
 function playSound(soundFile) {
@@ -56,12 +56,14 @@ async function load(force = false) {
     ]);
 
     // Solo actualizamos si forzamos (botón) o si los datos han cambiado (ej. instalación detectada en disco)
-    const hasChanged = force || JSON.stringify(newApps) !== JSON.stringify(allApps);
+    const hasChanged =
+      force || JSON.stringify(newApps) !== JSON.stringify(allApps);
 
     if (hasChanged) {
       allApps = newApps;
       renderCategories();
-      if (searchInput && searchInput.value !== currentSearch) searchInput.value = currentSearch;
+      if (searchInput && searchInput.value !== currentSearch)
+        searchInput.value = currentSearch;
       renderApps(currentCategory);
     }
   } finally {
@@ -134,13 +136,13 @@ function renderApps(category) {
       if (app.steam === "si") {
         const steamBadge = document.createElement("div");
         steamBadge.className = "req-badge steam-req-badge";
-        
+
         const steamIcon = document.createElement("img");
         steamIcon.src = "../assets/icons/steam.svg";
-        
+
         const steamText = document.createElement("span");
         steamText.textContent = "Steam";
-        
+
         steamBadge.append(steamIcon, steamText);
         imgContainer.appendChild(steamBadge);
       }
@@ -148,13 +150,13 @@ function renderApps(category) {
       if (app.wifi === "si") {
         const wifiBadge = document.createElement("div");
         wifiBadge.className = "req-badge wifi-req-badge";
-        
+
         const wifiIcon = document.createElement("img");
         wifiIcon.src = "../assets/icons/wifi.svg";
-        
+
         const wifiText = document.createElement("span");
         wifiText.textContent = "WiFi";
-        
+
         wifiBadge.append(wifiIcon, wifiText);
         imgContainer.appendChild(wifiBadge);
       }
@@ -192,7 +194,8 @@ function renderApps(category) {
         openBtn.textContent = "Abrir";
         openBtn.className = "md-btn md-btn-filled";
         openBtn.style.flex = "1";
-        openBtn.onclick = () => window.api.openApp(app.paths[0], app.steam === "si");
+        openBtn.onclick = () =>
+          window.api.openApp(app.paths[0], app.steam === "si");
         if (isUninstalling) openBtn.style.display = "none";
         topRow.appendChild(openBtn);
 
@@ -259,7 +262,7 @@ function renderApps(category) {
             deleteBtn.onclick = async (e) => {
               e.stopPropagation();
               if (!confirm("¿Eliminar carpeta de la aplicación?")) return;
-              
+
               showToast("Eliminando archivos...");
               uninstallingApps.add(app.id);
               // Forzar re-render para mostrar estado loading
@@ -268,7 +271,9 @@ function renderApps(category) {
               try {
                 await window.api.deleteAppFolder(app.paths[0]);
                 playSound("finish.mp3");
-              } catch (error) { console.error(error); }
+              } catch (error) {
+                console.error(error);
+              }
               uninstallingApps.delete(app.id);
               await load();
             };
@@ -299,11 +304,14 @@ function renderApps(category) {
         if (app["share-compatibility"] === "si") {
           shareBtn = document.createElement("button");
           shareBtn.className = "md-btn md-btn-tonal";
-          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
+          shareBtn.innerHTML =
+            '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
           shareBtn.onclick = (e) => {
             e.stopPropagation();
             playSound("others.mp3");
-            navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
+            navigator.clipboard.writeText(
+              `Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`,
+            );
             showToast("Enlace copiado al portapapeles");
           };
           if (isUninstalling) shareBtn.style.display = "none";
@@ -358,18 +366,21 @@ function renderApps(category) {
               installBtn.textContent = "Instalar";
             }
           };
-        };
+        }
 
         installRow.appendChild(installBtn);
 
         if (app["share-compatibility"] === "si") {
           const shareBtn = document.createElement("button");
           shareBtn.className = "md-btn md-btn-tonal";
-          shareBtn.innerHTML = '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
+          shareBtn.innerHTML =
+            '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
           shareBtn.onclick = (e) => {
             e.stopPropagation();
             playSound("others.mp3");
-            navigator.clipboard.writeText(`Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`);
+            navigator.clipboard.writeText(
+              `Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`,
+            );
             showToast("Enlace copiado al portapapeles");
           };
           installRow.appendChild(shareBtn);
@@ -427,8 +438,12 @@ updateInternetStatus();
 setInterval(updateInternetStatus, 1000);
 
 // Controles de ventana
-document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
-document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
+document
+  .getElementById("min-btn")
+  ?.addEventListener("click", () => window.api.minimizeWindow());
+document
+  .getElementById("close-btn")
+  ?.addEventListener("click", () => window.api.closeWindow());
 
 const maxBtn = document.getElementById("max-btn");
 if (maxBtn) {

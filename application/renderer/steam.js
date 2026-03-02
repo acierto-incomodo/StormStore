@@ -8,7 +8,7 @@ let currentSearch = "";
 
 window.api.setDiscordActivity({
   details: "Explorando Steam",
-  state: "Biblioteca"
+  state: "Biblioteca",
 });
 
 // Mostrar versión automáticamente
@@ -51,68 +51,73 @@ function renderApps() {
   });
 
   if (filtered.length === 0) {
-    appsContainer.innerHTML = "<p>No se encontraron juegos de Steam instalados.</p>";
+    appsContainer.innerHTML =
+      "<p>No se encontraron juegos de Steam instalados.</p>";
     return;
   }
 
   filtered.forEach((app, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.style.animationDelay = `${index * 50}ms`;
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.animationDelay = `${index * 50}ms`;
 
-      const imgContainer = document.createElement("div");
-      imgContainer.className = "img-container";
-      imgContainer.style.cursor = "pointer";
-      imgContainer.onclick = () => {
-        window.location.href = `app.html?id=${app.id}`;
-      };
+    const imgContainer = document.createElement("div");
+    imgContainer.className = "img-container";
+    imgContainer.style.cursor = "pointer";
+    imgContainer.onclick = () => {
+      window.location.href = `app.html?id=${app.id}`;
+    };
 
-      const icon = document.createElement("img");
-      icon.src = app.icon;
-      icon.className = "app-icon";
-      // Fallback si la imagen no carga
-      icon.onerror = () => { icon.src = "../assets/icons/steam.svg"; icon.style.padding = "20px"; icon.style.background = "#171a21"; };
-      imgContainer.appendChild(icon);
+    const icon = document.createElement("img");
+    icon.src = app.icon;
+    icon.className = "app-icon";
+    // Fallback si la imagen no carga
+    icon.onerror = () => {
+      icon.src = "../assets/icons/steam.svg";
+      icon.style.padding = "20px";
+      icon.style.background = "#171a21";
+    };
+    imgContainer.appendChild(icon);
 
-      if (app.wifi === "si") {
-        const wifiBadge = document.createElement("div");
-        wifiBadge.className = "req-badge wifi-req-badge";
-        
-        const wifiIcon = document.createElement("img");
-        wifiIcon.src = "../assets/icons/wifi.svg";
-        
-        const wifiText = document.createElement("span");
-        wifiText.textContent = "WiFi";
-        
-        wifiBadge.append(wifiIcon, wifiText);
-        imgContainer.appendChild(wifiBadge);
-      }
+    if (app.wifi === "si") {
+      const wifiBadge = document.createElement("div");
+      wifiBadge.className = "req-badge wifi-req-badge";
 
-      const infoBadge = document.createElement("img");
-      infoBadge.src = "../assets/icons/info.svg";
-      infoBadge.className = "info-badge";
-      imgContainer.appendChild(infoBadge);
+      const wifiIcon = document.createElement("img");
+      wifiIcon.src = "../assets/icons/wifi.svg";
 
-      const name = document.createElement("h3");
-      name.textContent = app.name;
+      const wifiText = document.createElement("span");
+      wifiText.textContent = "WiFi";
 
-      const desc = document.createElement("p");
-      desc.textContent = app.description;
+      wifiBadge.append(wifiIcon, wifiText);
+      imgContainer.appendChild(wifiBadge);
+    }
 
-      const actions = document.createElement("div");
-      actions.className = "card-actions";
+    const infoBadge = document.createElement("img");
+    infoBadge.src = "../assets/icons/info.svg";
+    infoBadge.className = "info-badge";
+    imgContainer.appendChild(infoBadge);
 
-      const openBtn = document.createElement("button");
-      openBtn.textContent = "Jugar";
-      openBtn.className = "md-btn md-btn-filled";
-      openBtn.style.width = "100%";
-      openBtn.onclick = () => window.api.openApp(app.paths[0], false);
-      
-      actions.appendChild(openBtn);
+    const name = document.createElement("h3");
+    name.textContent = app.name;
 
-      card.append(imgContainer, name, desc, actions);
-      appsContainer.appendChild(card);
-    });
+    const desc = document.createElement("p");
+    desc.textContent = app.description;
+
+    const actions = document.createElement("div");
+    actions.className = "card-actions";
+
+    const openBtn = document.createElement("button");
+    openBtn.textContent = "Jugar";
+    openBtn.className = "md-btn md-btn-filled";
+    openBtn.style.width = "100%";
+    openBtn.onclick = () => window.api.openApp(app.paths[0], false);
+
+    actions.appendChild(openBtn);
+
+    card.append(imgContainer, name, desc, actions);
+    appsContainer.appendChild(card);
+  });
 }
 
 // Inicializar
@@ -141,8 +146,12 @@ document
   });
 
 // Controles de ventana
-document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
-document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
+document
+  .getElementById("min-btn")
+  ?.addEventListener("click", () => window.api.minimizeWindow());
+document
+  .getElementById("close-btn")
+  ?.addEventListener("click", () => window.api.closeWindow());
 
 const maxBtn = document.getElementById("max-btn");
 if (maxBtn) {

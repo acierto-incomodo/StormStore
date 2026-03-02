@@ -1,83 +1,93 @@
 <!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Licencias de Software de Terceros - StormStore</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="../assets/app.png" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Licencias de Software de Terceros - StormStore</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="../assets/app.png" />
-</head>
-
-<body>
-  <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="brand-container">
-        <h2>StormStore</h2>
-        <p class="version" id="app-version"></p>
-      </div>
-
-      <button id="back-to-apps" class="back-button">
-        ← Volver a aplicaciones
-      </button>
-
-      <ul id="categories"></ul>
-    </div>
-
-    <div class="sidebar-footer">
-      <p class="studio">StormGamesStudios</p>
-
-      <div class="footer-icons">
-        <button data-link="https://github.com/acierto-incomodo">
-          <img src="../assets/icons/github.svg" alt="GitHub" />
-        </button>
-        <button data-link="https://stormgamesstudios.vercel.app/">
-          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
-        </button>
-        <button data-link="https://www.curseforge.com/members/creper1125463">
-          <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
-        </button>
-        <button id="open-updates">
-          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
-        </button>
-        <button id="open-licenses">
-          <img src="../assets/icons/license.svg" alt="Licencias" />
-        </button>
-        <button id="open-info">
-          <img src="../assets/icons/info.svg" alt="Información" />
-        </button>
-      </div>
-    </div>
-  </aside>
-
-  <main class="dashboard-layout">
-    <div class="main-header">
-      <h1>Licencias</h1>
-      <div class="window-controls">
-        <button class="control-btn" id="open-big-picture" title="StormVortex">
-          <img src="../assets/icons/stormvortex.svg" alt="StormVortex" style="width: 20px; height: 20px;" />
-        </button>
-        <button class="control-btn" id="min-btn">─</button>
-        <button class="control-btn" id="max-btn">◻</button>
-        <button class="control-btn close" id="close-btn">✕</button>
-      </div>
-    </div>
-    <div class="updates-container">
-      <p style="margin-bottom: 2rem; text-align: justify;">
-        La aplicación StormStore utiliza el siguiente software de código
-        abierto. Agradecemos a los desarrolladores por su trabajo.
-      </p>
-
-      <div class="license-list">
-        <div class="license-item animate-enter" style="animation-delay: 0.05s;">
-        <div class="license-header">
-          <h2>Electron</h2>
-          <span class="arrow"></span>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand-container">
+          <h2>StormStore</h2>
+          <p class="version" id="app-version"></p>
         </div>
-        <div class="license-body">
-          <p><strong>Licencia:</strong> MIT License</p>
-          <p>Copyright (c) 2013-2020 GitHub Inc.</p>
-          <pre>
+
+        <button id="back-to-apps" class="back-button">
+          ← Volver a aplicaciones
+        </button>
+
+        <ul id="categories"></ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <p class="studio">StormGamesStudios</p>
+
+        <div class="footer-icons">
+          <button data-link="https://github.com/acierto-incomodo">
+            <img src="../assets/icons/github.svg" alt="GitHub" />
+          </button>
+          <button data-link="https://stormgamesstudios.vercel.app/">
+            <img
+              src="../assets/icons/web.svg"
+              alt="Web"
+              style="filter: invert(1)"
+            />
+          </button>
+          <button data-link="https://www.curseforge.com/members/creper1125463">
+            <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
+          </button>
+          <button id="open-updates">
+            <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+          </button>
+          <button id="open-licenses">
+            <img src="../assets/icons/license.svg" alt="Licencias" />
+          </button>
+          <button id="open-info">
+            <img src="../assets/icons/info.svg" alt="Información" />
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="dashboard-layout">
+      <div class="main-header">
+        <h1>Licencias</h1>
+        <div class="window-controls">
+          <button class="control-btn" id="open-big-picture" title="StormVortex">
+            <img
+              src="../assets/icons/stormvortex.svg"
+              alt="StormVortex"
+              style="width: 20px; height: 20px"
+            />
+          </button>
+          <button class="control-btn" id="min-btn">─</button>
+          <button class="control-btn" id="max-btn">◻</button>
+          <button class="control-btn close" id="close-btn">✕</button>
+        </div>
+      </div>
+      <div class="updates-container">
+        <p style="margin-bottom: 2rem; text-align: justify">
+          La aplicación StormStore utiliza el siguiente software de código
+          abierto. Agradecemos a los desarrolladores por su trabajo.
+        </p>
+
+        <div class="license-list">
+          <div
+            class="license-item animate-enter"
+            style="animation-delay: 0.05s"
+          >
+            <div class="license-header">
+              <h2>Electron</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p><strong>Licencia:</strong> MIT License</p>
+              <p>Copyright (c) 2013-2020 GitHub Inc.</p>
+              <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -95,19 +105,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-                </pre>
-        </div>
-      </div>
+                </pre
+              >
+            </div>
+          </div>
 
-      <div class="license-item animate-enter" style="animation-delay: 0.1s;">
-        <div class="license-header">
-          <h2>dotenv</h2>
-          <span class="arrow"></span>
-        </div>
-        <div class="license-body">
-          <p><strong>Licencia:</strong> BSD-2-Clause License</p>
-          <p>Copyright (c) 2015, Scott Motte</p>
-          <pre>
+          <div class="license-item animate-enter" style="animation-delay: 0.1s">
+            <div class="license-header">
+              <h2>dotenv</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p><strong>Licencia:</strong> BSD-2-Clause License</p>
+              <p>Copyright (c) 2015, Scott Motte</p>
+              <pre>
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
 
@@ -128,19 +139,25 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT, (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-                </pre>
-        </div>
-      </div>
+                </pre
+              >
+            </div>
+          </div>
 
-      <div class="license-item animate-enter" style="animation-delay: 0.15s;">
-        <div class="license-header">
-          <h2>Quantico Font</h2>
-          <span class="arrow"></span>
-        </div>
-        <div class="license-body">
-          <p><strong>Licencia:</strong> SIL Open Font License, Version 1.1</p>
-          <p>Copyright (c) 2011, Matthew Desmond</p>
-          <pre>
+          <div
+            class="license-item animate-enter"
+            style="animation-delay: 0.15s"
+          >
+            <div class="license-header">
+              <h2>Quantico Font</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p>
+                <strong>Licencia:</strong> SIL Open Font License, Version 1.1
+              </p>
+              <p>Copyright (c) 2011, Matthew Desmond</p>
+              <pre>
 Copyright (c) 2011, Matthew Desmond (http://www.madtype.com | mattdesmond@gmail.com),with Reserved Font Name Quantico.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
@@ -234,24 +251,32 @@ INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
-                </pre>
-        </div>
-      </div>
+                </pre
+              >
+            </div>
+          </div>
 
-      <div class="license-item animate-enter" style="animation-delay: 0.2s;">
-        <div class="license-header">
-          <h2>Iconos de SVG Repo</h2>
-          <span class="arrow"></span>
-        </div>
-        <div class="license-body">
-          <p><strong>Licencia:</strong> Licencia de SVG Repo</p>
-          <p>
-            Los iconos de la aplicación se obtuvieron de
-            <a href="https://www.svgrepo.com" target="_blank" rel="noopener"
-              style="color: var(--md-sys-color-primary); text-decoration: underline">svgrepo.com</a>, que publica vectores bajo licencias
-            libres.
-          </p>
-          <pre>
+          <div class="license-item animate-enter" style="animation-delay: 0.2s">
+            <div class="license-header">
+              <h2>Iconos de SVG Repo</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p><strong>Licencia:</strong> Licencia de SVG Repo</p>
+              <p>
+                Los iconos de la aplicación se obtuvieron de
+                <a
+                  href="https://www.svgrepo.com"
+                  target="_blank"
+                  rel="noopener"
+                  style="
+                    color: var(--md-sys-color-primary);
+                    text-decoration: underline;
+                  "
+                  >svgrepo.com</a
+                >, que publica vectores bajo licencias libres.
+              </p>
+              <pre>
 Usted es libre de:
 * Descargar y editar los vectores.
 * Usar los vectores para fines personales y comerciales.
@@ -260,21 +285,25 @@ Usted es libre de:
 Usted NO tiene permitido:
 * Revender o redistribuir los vectores en otras plataformas tal cual.
 * Compilar vectores de SVG Repo para replicar un servicio similar o de la competencia.
-                </pre>
-        </div>
-      </div>
+                </pre
+              >
+            </div>
+          </div>
 
-      <div class="license-item animate-enter" style="animation-delay: 0.25s;">
-        <div class="license-header">
-          <h2>MIT License (Licencia MIT)</h2>
-          <span class="arrow"></span>
-        </div>
-        <div class="license-body">
-          <p>
-            Esta es una de las licencias de software libre más comunes,
-            utilizada por varios componentes de esta aplicación.
-          </p>
-          <pre>
+          <div
+            class="license-item animate-enter"
+            style="animation-delay: 0.25s"
+          >
+            <div class="license-header">
+              <h2>MIT License (Licencia MIT)</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p>
+                Esta es una de las licencias de software libre más comunes,
+                utilizada por varios componentes de esta aplicación.
+              </p>
+              <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -292,19 +321,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-                </pre>
-        </div>
-      </div>
+                </pre
+              >
+            </div>
+          </div>
 
-      <div class="license-item animate-enter" style="animation-delay: 0.3s;">
-        <div class="license-header">
-          <h2>electron-builder</h2>
-          <span class="arrow"></span>
-        </div>
-        <div class="license-body">
-          <p><strong>Licencia:</strong> MIT License</p>
-          <p>Copyright (c) 2015-present, Vladimir Krivosheev</p>
-          <pre>
+          <div class="license-item animate-enter" style="animation-delay: 0.3s">
+            <div class="license-header">
+              <h2>electron-builder</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p><strong>Licencia:</strong> MIT License</p>
+              <p>Copyright (c) 2015-present, Vladimir Krivosheev</p>
+              <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -322,25 +352,37 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-                </pre>
-        </div>
-      </div>
+                </pre
+              >
+            </div>
+          </div>
 
-      <div class="license-item animate-enter" style="animation-delay: 0.35s;">
-        <div class="license-header">
-          <h2>Node.js</h2>
-          <span class="arrow"></span>
-        </div>
-        <div class="license-body">
-          <p><strong>Licencia:</strong> MIT License</p>
-          <p>Copyright Node.js contributors. All rights reserved.</p>
-          <p style="font-size: 0.9em; opacity: 0.8">
-            Node.js también contiene software de terceros. La información
-            completa sobre las licencias se puede encontrar en el
-            <a href="https://github.com/nodejs/node/blob/main/LICENSE" target="_blank" rel="noopener"
-              style="color: var(--md-sys-color-primary); text-decoration: underline">repositorio de Node.js</a>.
-          </p>
-          <pre>
+          <div
+            class="license-item animate-enter"
+            style="animation-delay: 0.35s"
+          >
+            <div class="license-header">
+              <h2>Node.js</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p><strong>Licencia:</strong> MIT License</p>
+              <p>Copyright Node.js contributors. All rights reserved.</p>
+              <p style="font-size: 0.9em; opacity: 0.8">
+                Node.js también contiene software de terceros. La información
+                completa sobre las licencias se puede encontrar en el
+                <a
+                  href="https://github.com/nodejs/node/blob/main/LICENSE"
+                  target="_blank"
+                  rel="noopener"
+                  style="
+                    color: var(--md-sys-color-primary);
+                    text-decoration: underline;
+                  "
+                  >repositorio de Node.js</a
+                >.
+              </p>
+              <pre>
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
 deal in the Software without restriction, including without limitation the
@@ -358,19 +400,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
-                </pre>
-        </div>
-      </div>
+                </pre
+              >
+            </div>
+          </div>
 
-      <div class="license-item animate-enter" style="animation-delay: 0.4s;">
-        <div class="license-header">
-          <h2>npm CLI</h2>
-          <span class="arrow"></span>
-        </div>
-        <div class="license-body">
-          <p><strong>Licencia:</strong> Artistic License 2.0</p>
-          <p>Copyright (c) 2010, npm, Inc.</p>
-          <pre>
+          <div class="license-item animate-enter" style="animation-delay: 0.4s">
+            <div class="license-header">
+              <h2>npm CLI</h2>
+              <span class="arrow"></span>
+            </div>
+            <div class="license-body">
+              <p><strong>Licencia:</strong> Artistic License 2.0</p>
+              <p>Copyright (c) 2010, npm, Inc.</p>
+              <pre>
 The Artistic License 2.0
 
 Copyright (c) 2000-2006, The Perl Foundation.
@@ -466,82 +509,96 @@ Aggregation from Other Sources
 Disclaimer of Warranty
 
 THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES. THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-                </pre>
+                </pre
+              >
+            </div>
+          </div>
+
+          <!-- Puedes añadir más licencias aquí -->
         </div>
       </div>
+    </main>
 
-      <!-- Puedes añadir más licencias aquí -->
-    </div>
-    </div>
-  </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        // Cargar versión
+        const version = await window.api.getAppVersion();
+        document.getElementById("app-version").textContent = `v${version}`;
 
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      // Cargar versión
-      const version = await window.api.getAppVersion();
-      document.getElementById("app-version").textContent = `v${version}`;
-
-      window.api.setDiscordActivity({
-        details: "Viendo Licencias",
-        state: "Sistema"
-      });
-
-      // Botón volver
-      document.getElementById("back-to-apps").addEventListener("click", () => {
-        window.location.href = "index.html";
-      });
-
-      // Footer links
-      document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const url = btn.getAttribute("data-link");
-          window.open(url);
-        });
-      });
-      document.getElementById("open-updates")?.addEventListener("click", () => {
-        window.location.href = "updates.html";
-      });
-      document.getElementById("open-big-picture")?.addEventListener("click", () => {
-        window.api.openBigPicture();
-      });
-      document.getElementById("open-licenses")?.addEventListener("click", () => {
-        window.location.href = "licencias.html";
-      });
-      document.getElementById("open-info")?.addEventListener("click", () => {
-        window.location.href = "info.html";
-      });
-
-      // Acordeón
-      document.querySelectorAll(".license-header").forEach((header) => {
-        header.addEventListener("click", (event) => {
-          header.classList.toggle("active");
-          const licenseBody = header.nextElementSibling;
-          if (licenseBody.style.maxHeight) {
-            licenseBody.style.maxHeight = null;
-          } else {
-            licenseBody.style.maxHeight = licenseBody.scrollHeight + "px";
-          }
-        });
-      });
-
-      // Controles de ventana
-      document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
-      document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
-
-      const maxBtn = document.getElementById("max-btn");
-      if (maxBtn) {
-        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
-
-        window.api.isMaximized().then((isMax) => {
-          if (isMax) maxBtn.textContent = "❐";
+        window.api.setDiscordActivity({
+          details: "Viendo Licencias",
+          state: "Sistema",
         });
 
-        window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
-        window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
-      }
-    });
-  </script>
-  <script src="gamepad-global.js"></script>
-</body>
+        // Botón volver
+        document
+          .getElementById("back-to-apps")
+          .addEventListener("click", () => {
+            window.location.href = "index.html";
+          });
 
+        // Footer links
+        document
+          .querySelectorAll(".footer-icons button[data-link]")
+          .forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const url = btn.getAttribute("data-link");
+              window.open(url);
+            });
+          });
+        document
+          .getElementById("open-updates")
+          ?.addEventListener("click", () => {
+            window.location.href = "updates.html";
+          });
+        document
+          .getElementById("open-big-picture")
+          ?.addEventListener("click", () => {
+            window.api.openBigPicture();
+          });
+        document
+          .getElementById("open-licenses")
+          ?.addEventListener("click", () => {
+            window.location.href = "licencias.html";
+          });
+        document.getElementById("open-info")?.addEventListener("click", () => {
+          window.location.href = "info.html";
+        });
+
+        // Acordeón
+        document.querySelectorAll(".license-header").forEach((header) => {
+          header.addEventListener("click", (event) => {
+            header.classList.toggle("active");
+            const licenseBody = header.nextElementSibling;
+            if (licenseBody.style.maxHeight) {
+              licenseBody.style.maxHeight = null;
+            } else {
+              licenseBody.style.maxHeight = licenseBody.scrollHeight + "px";
+            }
+          });
+        });
+
+        // Controles de ventana
+        document
+          .getElementById("min-btn")
+          ?.addEventListener("click", () => window.api.minimizeWindow());
+        document
+          .getElementById("close-btn")
+          ?.addEventListener("click", () => window.api.closeWindow());
+
+        const maxBtn = document.getElementById("max-btn");
+        if (maxBtn) {
+          maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+
+          window.api.isMaximized().then((isMax) => {
+            if (isMax) maxBtn.textContent = "❐";
+          });
+
+          window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+          window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
+        }
+      });
+    </script>
+    <script src="gamepad-global.js"></script>
+  </body>
 </html>

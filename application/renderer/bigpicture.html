@@ -1,41 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StormStore - StormVortex</title>
-    <link rel="stylesheet" href="bigpicture.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="bigpicture.css" />
+  </head>
+  <body>
     <div id="background"></div>
 
     <header id="header">
-        <h1 id="game-title">Selecciona un juego</h1>
+      <h1 id="game-title">Selecciona un juego</h1>
     </header>
 
     <main id="content-container">
-        <div id="grid-container">
-            <!-- Game cards will be injected here -->
-        </div>
+      <div id="grid-container">
+        <!-- Game cards will be injected here -->
+      </div>
     </main>
 
     <footer id="footer-prompts"></footer>
 
     <div id="bp-menu-overlay" class="bp-modal-overlay">
-        <div class="bp-modal">
-            <h2>Menú</h2>
-            <div class="bp-modal-actions">
-                <button id="bp-menu-back">Volver a los juegos</button>
-                <hr id="bp-menu-separator" style="border-color: rgba(255,255,255,0.1); border-style: solid; margin: 5px 0;">
-                <button id="bp-menu-tutorial">Ayuda del Mando</button>
-                <button id="bp-menu-updates">Actualizaciones</button>
-                <button id="bp-menu-exit">Salir de StormVortex</button>
-                <button id="bp-menu-quit-app">Cerrar StormStore</button>
-            </div>
+      <div class="bp-modal">
+        <h2>Menú</h2>
+        <div class="bp-modal-actions">
+          <button id="bp-menu-back">Volver a los juegos</button>
+          <hr
+            id="bp-menu-separator"
+            style="
+              border-color: rgba(255, 255, 255, 0.1);
+              border-style: solid;
+              margin: 5px 0;
+            "
+          />
+          <button id="bp-menu-tutorial">Ayuda del Mando</button>
+          <button id="bp-menu-updates">Actualizaciones</button>
+          <button id="bp-menu-exit">Salir de StormVortex</button>
+          <button id="bp-menu-quit-app">Cerrar StormStore</button>
         </div>
+      </div>
     </div>
 
     <script src="bigpicture.js"></script>
-</body>
+  </body>
 </html>

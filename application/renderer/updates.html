@@ -1,390 +1,456 @@
 <!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actualizaciones - StormStore</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="updates-bigpicture.css" />
+    <link rel="icon" type="image/png" href="../assets/app.png" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Actualizaciones - StormStore</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="updates-bigpicture.css" />
-  <link rel="icon" type="image/png" href="../assets/app.png" />
-</head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand-container">
+          <h2>StormStore</h2>
+          <p class="version" id="app-version"></p>
+        </div>
 
-<body>
-  <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="brand-container">
-        <h2>StormStore</h2>
-        <p class="version" id="app-version"></p>
+        <button id="back-to-apps" class="back-button">
+          ← Volver a aplicaciones
+        </button>
+
+        <ul id="categories"></ul>
       </div>
 
-      <button id="back-to-apps" class="back-button">
-        ← Volver a aplicaciones
-      </button>
+      <div class="sidebar-footer">
+        <p class="studio">StormGamesStudios</p>
 
-      <ul id="categories"></ul>
-    </div>
-
-    <div class="sidebar-footer">
-      <p class="studio">StormGamesStudios</p>
-
-      <div class="footer-icons">
-        <button data-link="https://github.com/acierto-incomodo">
-          <img src="../assets/icons/github.svg" alt="GitHub" />
-        </button>
-        <button data-link="https://stormgamesstudios.vercel.app/">
-          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
-        </button>
-        <button data-link="https://www.curseforge.com/members/creper1125463">
-          <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
-        </button>
-        <button id="open-updates">
-          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
-        </button>
-        <button id="open-licenses">
-          <img src="../assets/icons/license.svg" alt="Licencias" />
-        </button>
-        <button id="open-info">
-          <img src="../assets/icons/info.svg" alt="Información" />
-        </button>
+        <div class="footer-icons">
+          <button data-link="https://github.com/acierto-incomodo">
+            <img src="../assets/icons/github.svg" alt="GitHub" />
+          </button>
+          <button data-link="https://stormgamesstudios.vercel.app/">
+            <img
+              src="../assets/icons/web.svg"
+              alt="Web"
+              style="filter: invert(1)"
+            />
+          </button>
+          <button data-link="https://www.curseforge.com/members/creper1125463">
+            <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
+          </button>
+          <button id="open-updates">
+            <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+          </button>
+          <button id="open-licenses">
+            <img src="../assets/icons/license.svg" alt="Licencias" />
+          </button>
+          <button id="open-info">
+            <img src="../assets/icons/info.svg" alt="Información" />
+          </button>
+        </div>
       </div>
-    </div>
-  </aside>
+    </aside>
 
-  <main class="dashboard-layout">
-    <div class="main-header">
-      <h1>Actualizaciones</h1>
-      <div class="window-controls">
-        <button class="control-btn" id="open-big-picture" title="StormVortex">
-          <img src="../assets/icons/stormvortex.svg" alt="StormVortex" style="width: 20px; height: 20px;" />
-        </button>
-        <button class="control-btn" id="min-btn">─</button>
-        <button class="control-btn" id="max-btn">◻</button>
-        <button class="control-btn close" id="close-btn">✕</button>
+    <main class="dashboard-layout">
+      <div class="main-header">
+        <h1>Actualizaciones</h1>
+        <div class="window-controls">
+          <button class="control-btn" id="open-big-picture" title="StormVortex">
+            <img
+              src="../assets/icons/stormvortex.svg"
+              alt="StormVortex"
+              style="width: 20px; height: 20px"
+            />
+          </button>
+          <button class="control-btn" id="min-btn">─</button>
+          <button class="control-btn" id="max-btn">◻</button>
+          <button class="control-btn close" id="close-btn">✕</button>
+        </div>
       </div>
-    </div>
-    <div class="updates-container updates-flex-layout">
-      <div class="update-section">
-        <h2>Versión actual</h2>
-        <p class="current-version" id="current-version">Cargando...</p>
-      </div>
+      <div class="updates-container updates-flex-layout">
+        <div class="update-section">
+          <h2>Versión actual</h2>
+          <p class="current-version" id="current-version">Cargando...</p>
+        </div>
 
-      <div class="update-section animate-enter" style="animation-delay: 0.1s;">
-        <h2>Buscar actualizaciones</h2>
-        <button id="check-updates-btn" class="md-btn md-btn-filled">
-          Buscar actualizaciones
-        </button>
-        <p id="check-status" class="status-message"></p>
-      </div>
+        <div class="update-section animate-enter" style="animation-delay: 0.1s">
+          <h2>Buscar actualizaciones</h2>
+          <button id="check-updates-btn" class="md-btn md-btn-filled">
+            Buscar actualizaciones
+          </button>
+          <p id="check-status" class="status-message"></p>
+        </div>
 
-      <div id="update-info-section" class="update-section animate-enter" style="display: none; animation-delay: 0.2s;">
-        <h2>Actualización disponible</h2>
-        
-        <div class="version-grid">
-          <div class="v-col">
-            <span class="v-label">Actual</span>
-            <span class="v-val" id="old-version">-</span>
+        <div
+          id="update-info-section"
+          class="update-section animate-enter"
+          style="display: none; animation-delay: 0.2s"
+        >
+          <h2>Actualización disponible</h2>
+
+          <div class="version-grid">
+            <div class="v-col">
+              <span class="v-label">Actual</span>
+              <span class="v-val" id="old-version">-</span>
+            </div>
+            <div class="v-arrow">➜</div>
+            <div class="v-col">
+              <span class="v-label">Nueva</span>
+              <span class="v-val highlight" id="new-version">-</span>
+            </div>
           </div>
-          <div class="v-arrow">➜</div>
-          <div class="v-col">
-            <span class="v-label">Nueva</span>
-            <span class="v-val highlight" id="new-version">-</span>
+
+          <p
+            style="margin-top: 0; color: var(--md-sys-color-on-surface-variant)"
+          >
+            Lanzamiento:
+            <span
+              id="release-date"
+              style="color: var(--md-sys-color-on-surface)"
+              >-</span
+            >
+          </p>
+
+          <div id="release-notes" class="release-notes">-</div>
+
+          <div class="button-group">
+            <button id="download-btn" class="md-btn md-btn-filled">
+              Descargar actualización
+            </button>
+          </div>
+          <div id="download-progress" style="display: none; margin-top: 20px">
+            <p id="progress-text">Descargando...</p>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
           </div>
         </div>
 
-        <p style="margin-top: 0; color: var(--md-sys-color-on-surface-variant);">
-          Lanzamiento: <span id="release-date" style="color: var(--md-sys-color-on-surface);">-</span>
-        </p>
-
-        <div id="release-notes" class="release-notes">-</div>
-
-        <div class="button-group">
-          <button id="download-btn" class="md-btn md-btn-filled">Descargar actualización</button>
+        <div
+          id="no-update-section"
+          class="update-section"
+          style="display: none"
+        >
+          <h2>Estás actualizado</h2>
+          <p>Ya tienes la versión más reciente de StormStore instalada.</p>
         </div>
-        <div id="download-progress" style="display: none; margin-top: 20px;">
-          <p id="progress-text">Descargando...</p>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
+
+        <div
+          id="update-ready-section"
+          class="update-section"
+          style="display: none"
+        >
+          <h2>Actualización lista para instalar</h2>
+          <p>La actualización ha sido descargada correctamente.</p>
+          <button id="install-btn" class="md-btn md-btn-filled">
+            Instalar y reiniciar ahora
+          </button>
+        </div>
+
+        <div id="error-section" class="update-section" style="display: none">
+          <h2>Error</h2>
+          <p id="error-message" class="error-message">-</p>
+          <button id="retry-btn" class="md-btn md-btn-tonal">Reintentar</button>
         </div>
       </div>
 
-      <div id="no-update-section" class="update-section" style="display: none;">
-        <h2>Estás actualizado</h2>
-        <p>Ya tienes la versión más reciente de StormStore instalada.</p>
-      </div>
+      <footer id="bp-footer-prompts"></footer>
+    </main>
 
-      <div id="update-ready-section" class="update-section" style="display: none;">
-        <h2>Actualización lista para instalar</h2>
-        <p>La actualización ha sido descargada correctamente.</p>
-        <button id="install-btn" class="md-btn md-btn-filled">Instalar y reiniciar ahora</button>
-      </div>
+    <script>
+      window.api.setDiscordActivity({
+        details: "Buscando actualizaciones",
+        state: "Sistema",
+      });
 
-      <div id="error-section" class="update-section" style="display: none;">
-        <h2>Error</h2>
-        <p id="error-message" class="error-message">-</p>
-        <button id="retry-btn" class="md-btn md-btn-tonal">Reintentar</button>
-      </div>
-    </div>
+      // Esperar a que el DOM esté completamente cargado
+      document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(window.location.search);
+        const isBigPicture = params.get("source") === "bigpicture";
 
-    <footer id="bp-footer-prompts"></footer>
-  </main>
+        if (isBigPicture) {
+          document.body.classList.add("big-picture-mode");
+          document.getElementById("bp-footer-prompts").innerHTML =
+            "<span>(A)</span> Seleccionar &nbsp;&nbsp; <span>(B)</span> Volver";
 
-  <script>
-    window.api.setDiscordActivity({
-      details: "Buscando actualizaciones",
-      state: "Sistema"
-    });
-
-    // Esperar a que el DOM esté completamente cargado
-    document.addEventListener("DOMContentLoaded", function () {
-      const params = new URLSearchParams(window.location.search);
-      const isBigPicture = params.get('source') === 'bigpicture';
-
-      if (isBigPicture) {
-        document.body.classList.add('big-picture-mode');
-        document.getElementById('bp-footer-prompts').innerHTML = '<span>(A)</span> Seleccionar &nbsp;&nbsp; <span>(B)</span> Volver';
-
-        // Mover el botón de volver al contenedor principal para que sea visible en Big Picture
-        const backBtn = document.getElementById("back-to-apps");
-        const container = document.querySelector(".updates-container");
-        if (backBtn && container) {
+          // Mover el botón de volver al contenedor principal para que sea visible en Big Picture
+          const backBtn = document.getElementById("back-to-apps");
+          const container = document.querySelector(".updates-container");
+          if (backBtn && container) {
             container.appendChild(backBtn);
+          }
+
+          // Soporte para teclado en Big Picture
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" || e.key === "Backspace") {
+              window.location.href = "bigpicture.html?openMenu=true";
+              return;
+            }
+
+            const interactive = Array.from(
+              document.querySelectorAll("button, input"),
+            ).filter((el) => el.offsetParent !== null);
+            const current = document.activeElement;
+            let idx = interactive.indexOf(current);
+
+            if (idx === -1 && interactive.length > 0) idx = 0;
+
+            if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+              const next = interactive[(idx + 1) % interactive.length];
+              next?.focus();
+              interactive.forEach((el) => el.classList.remove("selected"));
+              next?.classList.add("selected");
+            } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+              const prev =
+                interactive[
+                  (idx - 1 + interactive.length) % interactive.length
+                ];
+              prev?.focus();
+              interactive.forEach((el) => el.classList.remove("selected"));
+              prev?.classList.add("selected");
+            } else if (e.key === "Enter") {
+              current.click();
+            }
+          });
         }
 
-        // Soporte para teclado en Big Picture
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' || e.key === 'Backspace') {
-            window.location.href = "bigpicture.html?openMenu=true";
-            return;
-          }
+        // Cargar versión actual
+        loadCurrentVersion();
 
-          const interactive = Array.from(document.querySelectorAll('button, input')).filter(el => el.offsetParent !== null);
-          const current = document.activeElement;
-          let idx = interactive.indexOf(current);
-          
-          if (idx === -1 && interactive.length > 0) idx = 0;
+        // Volver a aplicaciones
+        const backBtn = document.getElementById("back-to-apps");
+        if (backBtn) {
+          backBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (isBigPicture) {
+              window.location.href = "bigpicture.html?openMenu=true";
+            } else {
+              window.location.href = "index.html";
+            }
+          });
+        } else {
+          console.error("No se encontró el botón back-to-apps");
+        }
 
-          if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-             const next = interactive[(idx + 1) % interactive.length];
-             next?.focus();
-             interactive.forEach(el => el.classList.remove('selected'));
-             next?.classList.add('selected');
-          } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-             const prev = interactive[(idx - 1 + interactive.length) % interactive.length];
-             prev?.focus();
-             interactive.forEach(el => el.classList.remove('selected'));
-             prev?.classList.add('selected');
-          } else if (e.key === 'Enter') {
-              current.click();
-          }
+        // Footer links
+        document
+          .querySelectorAll(".footer-icons button[data-link]")
+          .forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const url = btn.getAttribute("data-link");
+              window.open(url);
+            });
+          });
+        document
+          .getElementById("open-updates")
+          ?.addEventListener("click", () => {
+            window.location.href = "updates.html";
+          });
+        document
+          .getElementById("open-big-picture")
+          ?.addEventListener("click", () => {
+            window.api.openBigPicture();
+          });
+        document
+          .getElementById("open-licenses")
+          ?.addEventListener("click", () => {
+            window.location.href = "licencias.html";
+          });
+        document.getElementById("open-info")?.addEventListener("click", () => {
+          window.location.href = "info.html";
         });
-      }
+
+        // Buscar actualizaciones
+        document
+          .getElementById("check-updates-btn")
+          .addEventListener("click", () => {
+            const statusEl = document.getElementById("check-status");
+            const checkBtn = document.getElementById("check-updates-btn");
+
+            statusEl.textContent = "Buscando actualizaciones...";
+            checkBtn.disabled = true;
+
+            // Ocultar los resultados anteriores para una UI más limpia
+            document.getElementById("update-info-section").style.display =
+              "none";
+            document.getElementById("no-update-section").style.display = "none";
+            document.getElementById("error-section").style.display = "none";
+
+            // Disparamos la comprobación. Los 'listeners' de eventos (onUpdateAvailable, etc.)
+            // se encargarán de mostrar el resultado correcto.
+            window.api.checkForUpdates();
+          });
+
+        // Descargar actualización
+        document
+          .getElementById("download-btn")
+          .addEventListener("click", async () => {
+            document.getElementById("download-progress").style.display =
+              "block";
+            document.getElementById("download-btn").disabled = true;
+
+            try {
+              await window.api.downloadUpdate();
+            } catch (err) {
+              showError(`Error descargando actualización: ${err.message}`);
+            }
+          });
+
+        // Instalar actualización
+        document.getElementById("install-btn").addEventListener("click", () => {
+          window.api.installUpdate();
+        });
+
+        // Reintentar
+        document.getElementById("retry-btn").addEventListener("click", () => {
+          document.getElementById("check-updates-btn").click();
+        });
+
+        // Escuchar eventos desde el main process
+        window.api.onUpdateAvailable((_, info) => {
+          resetCheckUI();
+          showUpdateAvailable(info);
+        });
+
+        window.api.onUpdateNotAvailable(() => {
+          showNoUpdate();
+          resetCheckUI();
+        });
+
+        window.api.onDownloadProgress((_, progressObj) => {
+          const percent = progressObj.percent.toFixed(1);
+          const transferred = (progressObj.transferred / 1024 / 1024).toFixed(
+            2,
+          );
+          const total = (progressObj.total / 1024 / 1024).toFixed(2);
+          const speed = (progressObj.bytesPerSecond / 1024 / 1024).toFixed(2);
+
+          document.getElementById("progress-fill").style.width = percent + "%";
+          document.getElementById("progress-text").textContent =
+            `Descargando: ${percent}% (${transferred} MB / ${total} MB) - ${speed} MB/s`;
+        });
+
+        window.api.onUpdateDownloaded(() => {
+          document.getElementById("download-progress").style.display = "none";
+          document.getElementById("update-info-section").style.display = "none";
+
+          const readySection = document.getElementById("update-ready-section");
+          readySection.style.display = "block";
+          readySection.querySelector("h2").textContent =
+            "Instalando actualización...";
+          readySection.querySelector("p").textContent =
+            "La aplicación se reiniciará automáticamente en unos segundos...";
+          document.getElementById("install-btn").style.display = "none";
+
+          setTimeout(() => {
+            window.api.installUpdate();
+          }, 3000);
+        });
+
+        window.api.onUpdateError((_, message) => {
+          resetCheckUI();
+          showError(`Error: ${message}`);
+        });
+
+        // Controles de ventana
+        document
+          .getElementById("min-btn")
+          ?.addEventListener("click", () => window.api.minimizeWindow());
+        document
+          .getElementById("close-btn")
+          ?.addEventListener("click", () => window.api.closeWindow());
+
+        const maxBtn = document.getElementById("max-btn");
+        if (maxBtn) {
+          maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+
+          window.api.isMaximized().then((isMax) => {
+            if (isMax) maxBtn.textContent = "❐";
+          });
+
+          window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+          window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
+        }
+      });
 
       // Cargar versión actual
-      loadCurrentVersion();
-
-      // Volver a aplicaciones
-      const backBtn = document.getElementById("back-to-apps");
-      if (backBtn) {
-        backBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          if (isBigPicture) {
-            window.location.href = "bigpicture.html?openMenu=true";
-          } else {
-            window.location.href = "index.html";
-          }
-        });
-      } else {
-        console.error("No se encontró el botón back-to-apps");
+      async function loadCurrentVersion() {
+        const version = await window.api.getAppVersion();
+        document.getElementById("app-version").textContent = `v${version}`;
+        document.getElementById("current-version").textContent = `v${version}`;
       }
 
-      // Footer links
-      document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const url = btn.getAttribute("data-link");
-          window.open(url);
-        });
-      });
-      document.getElementById("open-updates")?.addEventListener("click", () => {
-        window.location.href = "updates.html";
-      });
-      document.getElementById("open-big-picture")?.addEventListener("click", () => {
-        window.api.openBigPicture();
-      });
-      document.getElementById("open-licenses")?.addEventListener("click", () => {
-        window.location.href = "licencias.html";
-      });
-      document.getElementById("open-info")?.addEventListener("click", () => {
-        window.location.href = "info.html";
-      });
+      function resetCheckUI() {
+        document.getElementById("check-status").textContent = "";
+        document.getElementById("check-updates-btn").disabled = false;
+      }
 
-      // Buscar actualizaciones
-      document.getElementById("check-updates-btn").addEventListener("click", () => {
-        const statusEl = document.getElementById("check-status");
-        const checkBtn = document.getElementById("check-updates-btn");
+      function showUpdateAvailable(info) {
+        const isBigPicture =
+          document.body.classList.contains("big-picture-mode");
+        // En modo normal, ocultar el botón de volver y los iconos del footer para forzar la actualización
+        if (!isBigPicture) {
+          const backBtn = document.getElementById("back-to-apps");
+          if (backBtn) backBtn.style.display = "none";
+          const footerIcons = document.querySelector(".footer-icons");
+          if (footerIcons) footerIcons.style.display = "none";
+        }
 
-        statusEl.textContent = "Buscando actualizaciones...";
-        checkBtn.disabled = true;
-
-        // Ocultar los resultados anteriores para una UI más limpia
-        document.getElementById("update-info-section").style.display = "none";
+        document.getElementById("update-info-section").style.display = "flex";
         document.getElementById("no-update-section").style.display = "none";
         document.getElementById("error-section").style.display = "none";
 
-        // Disparamos la comprobación. Los 'listeners' de eventos (onUpdateAvailable, etc.)
-        // se encargarán de mostrar el resultado correcto.
-        window.api.checkForUpdates();
-      });
+        document.getElementById("new-version").textContent =
+          info.version || "Desconocida";
+        const currentVersion = document
+          .getElementById("app-version")
+          .textContent.slice(1);
+        document.getElementById("old-version").textContent = currentVersion;
 
-      // Descargar actualización
-      document.getElementById("download-btn").addEventListener("click", async () => {
-        document.getElementById("download-progress").style.display = "block";
-        document.getElementById("download-btn").disabled = true;
-
-        try {
-          await window.api.downloadUpdate();
-        } catch (err) {
-          showError(`Error descargando actualización: ${err.message}`);
+        if (info.releaseDate) {
+          const date = new Date(info.releaseDate);
+          document.getElementById("release-date").textContent =
+            date.toLocaleDateString("es-ES");
         }
-      });
 
-      // Instalar actualización
-      document.getElementById("install-btn").addEventListener("click", () => {
-        window.api.installUpdate();
-      });
+        document.getElementById("release-notes").innerHTML =
+          info.releaseNotes || "Sin descripción disponible";
 
-      // Reintentar
-      document.getElementById("retry-btn").addEventListener("click", () => {
-        document.getElementById("check-updates-btn").click();
-      });
+        // Abrir enlaces en el navegador externo
+        const links = document
+          .getElementById("release-notes")
+          .querySelectorAll("a");
+        links.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.open(link.href, "_blank");
+          });
+        });
+      }
 
-      // Escuchar eventos desde el main process
-      window.api.onUpdateAvailable((_, info) => {
-        resetCheckUI();
-        showUpdateAvailable(info);
-      });
-
-      window.api.onUpdateNotAvailable(() => {
-        showNoUpdate();
-        resetCheckUI();
-      });
-
-      window.api.onDownloadProgress((_, progressObj) => {
-        const percent = progressObj.percent.toFixed(1);
-        const transferred = (progressObj.transferred / 1024 / 1024).toFixed(2);
-        const total = (progressObj.total / 1024 / 1024).toFixed(2);
-        const speed = (progressObj.bytesPerSecond / 1024 / 1024).toFixed(2);
-
-        document.getElementById("progress-fill").style.width = percent + "%";
-        document.getElementById("progress-text").textContent = `Descargando: ${percent}% (${transferred} MB / ${total} MB) - ${speed} MB/s`;
-      });
-
-      window.api.onUpdateDownloaded(() => {
-        document.getElementById("download-progress").style.display = "none";
+      function showNoUpdate() {
         document.getElementById("update-info-section").style.display = "none";
-        
-        const readySection = document.getElementById("update-ready-section");
-        readySection.style.display = "block";
-        readySection.querySelector("h2").textContent = "Instalando actualización...";
-        readySection.querySelector("p").textContent = "La aplicación se reiniciará automáticamente en unos segundos...";
-        document.getElementById("install-btn").style.display = "none";
-
-        setTimeout(() => {
-          window.api.installUpdate();
-        }, 3000);
-      });
-
-      window.api.onUpdateError((_, message) => {
-        resetCheckUI();
-        showError(`Error: ${message}`);
-      });
-
-      // Controles de ventana
-      document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
-      document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
-
-      const maxBtn = document.getElementById("max-btn");
-      if (maxBtn) {
-        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
-
-        window.api.isMaximized().then((isMax) => {
-          if (isMax) maxBtn.textContent = "❐";
-        });
-
-        window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
-        window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
-      }
-    });
-
-    // Cargar versión actual
-    async function loadCurrentVersion() {
-      const version = await window.api.getAppVersion();
-      document.getElementById("app-version").textContent = `v${version}`;
-      document.getElementById("current-version").textContent = `v${version}`;
-    }
-
-    function resetCheckUI() {
-      document.getElementById("check-status").textContent = "";
-      document.getElementById("check-updates-btn").disabled = false;
-    }
-
-    function showUpdateAvailable(info) {
-      const isBigPicture = document.body.classList.contains('big-picture-mode');
-      // En modo normal, ocultar el botón de volver y los iconos del footer para forzar la actualización
-      if (!isBigPicture) {
-        const backBtn = document.getElementById("back-to-apps");
-        if (backBtn) backBtn.style.display = "none";
-        const footerIcons = document.querySelector(".footer-icons");
-        if (footerIcons) footerIcons.style.display = "none";
+        document.getElementById("no-update-section").style.display = "block";
+        document.getElementById("error-section").style.display = "none";
       }
 
-      document.getElementById("update-info-section").style.display = "flex";
-      document.getElementById("no-update-section").style.display = "none";
-      document.getElementById("error-section").style.display = "none";
-
-      document.getElementById("new-version").textContent = info.version || "Desconocida";
-      const currentVersion = document.getElementById("app-version").textContent.slice(1);
-      document.getElementById("old-version").textContent = currentVersion;
-
-      if (info.releaseDate) {
-        const date = new Date(info.releaseDate);
-        document.getElementById("release-date").textContent = date.toLocaleDateString("es-ES");
+      function showError(message) {
+        document.getElementById("update-info-section").style.display = "none";
+        document.getElementById("no-update-section").style.display = "none";
+        document.getElementById("error-section").style.display = "block";
+        document.getElementById("error-message").textContent = message;
       }
-
-      document.getElementById("release-notes").innerHTML = info.releaseNotes || "Sin descripción disponible";
-
-      // Abrir enlaces en el navegador externo
-      const links = document.getElementById("release-notes").querySelectorAll("a");
-      links.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          window.open(link.href, "_blank");
-        });
-      });
-    }
-
-    function showNoUpdate() {
-      document.getElementById("update-info-section").style.display = "none";
-      document.getElementById("no-update-section").style.display = "block";
-      document.getElementById("error-section").style.display = "none";
-    }
-
-    function showError(message) {
-      document.getElementById("update-info-section").style.display = "none";
-      document.getElementById("no-update-section").style.display = "none";
-      document.getElementById("error-section").style.display = "block";
-      document.getElementById("error-message").textContent = message;
-    }
-  </script>
-  <script>
-    // Cargar el script del gamepad solo si estamos en modo Big Picture
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('source') === 'bigpicture') {
-      document.write('<script src="updates-gamepad.js"><\/script>');
-    }
-  </script>
-  <script src="gamepad-global.js"></script>
-</body>
-
+    </script>
+    <script>
+      // Cargar el script del gamepad solo si estamos en modo Big Picture
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("source") === "bigpicture") {
+        document.write('<script src="updates-gamepad.js"><\/script>');
+      }
+    </script>
+    <script src="gamepad-global.js"></script>
+  </body>
 </html>

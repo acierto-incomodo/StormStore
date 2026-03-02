@@ -5,15 +5,14 @@
     "description": "La aplicación principal de StormGamesStudios para gestionar tus juegos favoritos.",
     "category": "Aplicaciones",
     "icon": "../assets/apps/stormstore.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/StormStore/StormStore.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/StormStore/StormStore.exe"],
     "download": "https://github.com/acierto-incomodo/stormstore/releases/latest/download/StormStore_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no"
-  },{
+  },
+  {
     "id": "ambidextro",
     "name": "Ambidextro",
     "description": "Juego de acción/táctica donde controlas a personajes que luchan usando dos armas al mismo tiempo. El enfoque está en combos, precisión y velocidad para derrotar a enemigos en combates dinámicos.",
@@ -77,9 +76,7 @@
     "id": "doom",
     "name": "DOOM Classic",
     "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",
-    "category": [
-      "Juegos"
-    ],
+    "category": ["Juegos"],
     "icon": "../assets/apps/doom.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
@@ -229,14 +226,9 @@
     "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
-    "category": [
-      "Inteligencia Artificial",
-      "Utilidades"
-    ],
+    "category": ["Inteligencia Artificial", "Utilidades"],
     "icon": "../assets/apps/multiai.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"],
     "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
     "steam": "no",
@@ -247,13 +239,9 @@
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
-    "category": [
-      "Utilidades"
-    ],
+    "category": ["Utilidades"],
     "icon": "../assets/apps/pairdrop.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe",
     "steam": "no",
@@ -279,9 +267,7 @@
     "id": "scamline",
     "name": "Scam Line",
     "description": "Scam Line es un juego multijugador de engaño social para 4–8 personas en el que todos compiten en desafíos psicológicos y de comunicación para ser el último en pie. En cada partida, los jugadores están en habitaciones separadas y solo pueden hablar mediante un teléfono móvil antiguo dentro del juego. Debes negociar, formar alianzas o engañar a los demás para avanzar en distintos mini‑retos, como identificar quién es distinto o jugar al Dilema del Prisionero. La clave está en leer a los otros jugadores y usar la comunicación limitada a tu favor: puedes cooperar o mentir, pero al final solo uno puede ganar.",
-    "category": [
-      "Juegos"
-    ],
+    "category": ["Juegos"],
     "icon": "../assets/apps/ScamLine.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ScamLine/installer_updater.exe"
@@ -296,14 +282,9 @@
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
-    "category": [
-      "Juegos",
-      "Utilidades"
-    ],
+    "category": ["Juegos", "Utilidades"],
     "icon": "../assets/apps/stormlauncher.png",
-    "paths": [
-      "%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"
-    ],
+    "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe",
     "steam": "no",
@@ -335,9 +316,7 @@
     "id": "stormpanel-app",
     "name": "StormPanel APP",
     "description": "StormPanel APP es una aplicación de panel de control para StormGamesStudios.",
-    "category": [
-      "Utilidades"
-    ],
+    "category": ["Utilidades"],
     "icon": "../assets/apps/stormpanel-app.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormPanel APP/StormPanel APP.exe"

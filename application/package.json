@@ -42,7 +42,8 @@
       "Changes.txt",
       "renderer/**/*",
       "assets/**/*",
-      "!assets/extraFiles/**/*"
+      "!assets/extraFiles/**/*",
+      "!assets/media/trailers/**/*"
     ],
     "extraResources": [
       "assets/extraFiles/**"
