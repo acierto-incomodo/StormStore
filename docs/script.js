@@ -4,457 +4,464 @@ document.addEventListener("DOMContentLoaded", () => {
   // esto podría ser generado por un script.
   // Las rutas son relativas a la raíz del repositorio.
   const fileStructure = {
-    application: {
-      type: "folder",
-      children: {
-        assets: {
-          type: "folder",
-          children: {
-            "app.ico": {
-              type: "default",
-            },
-            "app.png": {
-              type: "image",
-            },
-            apps: {
-              type: "folder",
-              children: {
-                "FNAF1.png": {
-                  type: "image",
-                },
-                "FNAF2.png": {
-                  type: "image",
-                },
-                "FNAF3.png": {
-                  type: "image",
-                },
-                "FNAF4.png": {
-                  type: "image",
-                },
-                "REPO.png": {
-                  type: "image",
-                },
-                "ScamLine.png": {
-                  type: "image",
-                },
-                "ambidextro.png": {
-                  type: "image",
-                },
-                "backseat-drivers.png": {
-                  type: "image",
-                },
-                "buckshot_roulette.png": {
-                  type: "image",
-                },
-                "content-warning.png": {
-                  type: "image",
-                },
-                "doom.png": {
-                  type: "image",
-                },
-                "hollow-knight-silksong.png": {
-                  type: "image",
-                },
-                "karts-multiplayer.png": {
-                  type: "image",
-                },
-                "lethal-company.png": {
-                  type: "image",
-                },
-                "mage-arena.png": {
-                  type: "image",
-                },
-                "modpack-installer.png": {
-                  type: "image",
-                },
-                "multiai.png": {
-                  type: "image",
-                },
-                "pairdrop.png": {
-                  type: "image",
-                },
-                "stormlauncher.png": {
-                  type: "image",
-                },
-                "stormlibraryv2.png": {
-                  type: "image",
-                },
-                "stormpanel-app.png": {
-                  type: "image",
-                },
-                "stormstore.png": {
-                  type: "image",
-                },
-                "the-shooter.png": {
-                  type: "image",
-                },
-              },
-            },
-            "apps-new-quality": {
-              type: "folder",
-              children: {
-                "FNAF2.png": {
-                  type: "image",
-                },
-                "FNAF3.png": {
-                  type: "image",
-                },
-                "REPO.png": {
-                  type: "image",
-                },
-                "ScamLine.png": {
-                  type: "image",
-                },
-                "backseat-drivers.png": {
-                  type: "image",
-                },
-                "buckshot_roulette.png": {
-                  type: "image",
-                },
-                "content-warning.png": {
-                  type: "image",
-                },
-                "karts-multiplayer.png": {
-                  type: "image",
-                },
-                "lethal-company.png": {
-                  type: "image",
-                },
-                "mage-arena.png": {
-                  type: "image",
-                },
-                "pairdrop.png": {
-                  type: "image",
-                },
-                "stormlauncher.png": {
-                  type: "image",
-                },
-                "stormstore.png": {
-                  type: "image",
-                },
-              },
-            },
-            "apps-original": {
-              type: "folder",
-              children: {
-                "REPO.png": {
-                  type: "image",
-                },
-                "pairdrop.png": {
-                  type: "image",
-                },
-                "stormlauncher.png": {
-                  type: "image",
-                },
-              },
-            },
-            extraFiles: {
-              type: "folder",
-              children: {
-                "aspnetcore-runtime-8.0.23-win-x64.exe": {
-                  type: "default",
-                },
-              },
-            },
-            fonts: {
-              type: "folder",
-              children: {
-                Quantico: {
-                  type: "folder",
-                  children: {
-                    "OFL.txt": {
-                      type: "default",
+    "application": {
+        "type": "folder",
+        "children": {
+            "assets": {
+                "type": "folder",
+                "children": {
+                    "app.ico": {
+                        "type": "default"
                     },
-                    "Quantico-Bold.ttf": {
-                      type: "font",
+                    "app.png": {
+                        "type": "image"
                     },
-                    "Quantico-BoldItalic.ttf": {
-                      type: "font",
+                    "apps": {
+                        "type": "folder",
+                        "children": {
+                            "FNAF1.png": {
+                                "type": "image"
+                            },
+                            "FNAF2.png": {
+                                "type": "image"
+                            },
+                            "FNAF3.png": {
+                                "type": "image"
+                            },
+                            "FNAF4.png": {
+                                "type": "image"
+                            },
+                            "REPO.png": {
+                                "type": "image"
+                            },
+                            "ScamLine.png": {
+                                "type": "image"
+                            },
+                            "ambidextro.png": {
+                                "type": "image"
+                            },
+                            "backseat-drivers.png": {
+                                "type": "image"
+                            },
+                            "buckshot_roulette.png": {
+                                "type": "image"
+                            },
+                            "content-warning.png": {
+                                "type": "image"
+                            },
+                            "doom.png": {
+                                "type": "image"
+                            },
+                            "hollow-knight-silksong.png": {
+                                "type": "image"
+                            },
+                            "karts-multiplayer.png": {
+                                "type": "image"
+                            },
+                            "lethal-company.png": {
+                                "type": "image"
+                            },
+                            "mage-arena.png": {
+                                "type": "image"
+                            },
+                            "modpack-installer.png": {
+                                "type": "image"
+                            },
+                            "multiai.png": {
+                                "type": "image"
+                            },
+                            "pairdrop.png": {
+                                "type": "image"
+                            },
+                            "stormlauncher.png": {
+                                "type": "image"
+                            },
+                            "stormlibraryv2.png": {
+                                "type": "image"
+                            },
+                            "stormpanel-app.png": {
+                                "type": "image"
+                            },
+                            "stormstore.png": {
+                                "type": "image"
+                            },
+                            "the-shooter.png": {
+                                "type": "image"
+                            }
+                        }
                     },
-                    "Quantico-Italic.ttf": {
-                      type: "font",
+                    "apps-new-quality": {
+                        "type": "folder",
+                        "children": {
+                            "FNAF2.png": {
+                                "type": "image"
+                            },
+                            "FNAF3.png": {
+                                "type": "image"
+                            },
+                            "REPO.png": {
+                                "type": "image"
+                            },
+                            "ScamLine.png": {
+                                "type": "image"
+                            },
+                            "backseat-drivers.png": {
+                                "type": "image"
+                            },
+                            "buckshot_roulette.png": {
+                                "type": "image"
+                            },
+                            "content-warning.png": {
+                                "type": "image"
+                            },
+                            "karts-multiplayer.png": {
+                                "type": "image"
+                            },
+                            "lethal-company.png": {
+                                "type": "image"
+                            },
+                            "mage-arena.png": {
+                                "type": "image"
+                            },
+                            "pairdrop.png": {
+                                "type": "image"
+                            },
+                            "stormlauncher.png": {
+                                "type": "image"
+                            },
+                            "stormstore.png": {
+                                "type": "image"
+                            }
+                        }
                     },
-                    "Quantico-Regular.ttf": {
-                      type: "font",
+                    "apps-original": {
+                        "type": "folder",
+                        "children": {
+                            "REPO.png": {
+                                "type": "image"
+                            },
+                            "pairdrop.png": {
+                                "type": "image"
+                            },
+                            "stormlauncher.png": {
+                                "type": "image"
+                            }
+                        }
                     },
-                    zip: {
-                      type: "folder",
-                      children: {
-                        "Quantico.zip": {
-                          type: "default",
-                        },
-                      },
+                    "apps-to-make": {
+                        "type": "folder",
+                        "children": {}
                     },
-                  },
-                },
-              },
-            },
-            gamepad: {
-              type: "folder",
-              children: {
-                playstation: {
-                  type: "folder",
-                  children: {
-                    "PlayStation_4_Options_button.svg": {
-                      type: "image",
+                    "extraFiles": {
+                        "type": "folder",
+                        "children": {
+                            "aspnetcore-runtime-8.0.23-win-x64.exe": {
+                                "type": "default"
+                            }
+                        }
                     },
-                    "PlayStation_4_Share_button.svg": {
-                      type: "image",
+                    "fonts": {
+                        "type": "folder",
+                        "children": {
+                            "Quantico": {
+                                "type": "folder",
+                                "children": {
+                                    "OFL.txt": {
+                                        "type": "default"
+                                    },
+                                    "Quantico-Bold.ttf": {
+                                        "type": "font"
+                                    },
+                                    "Quantico-BoldItalic.ttf": {
+                                        "type": "font"
+                                    },
+                                    "Quantico-Italic.ttf": {
+                                        "type": "font"
+                                    },
+                                    "Quantico-Regular.ttf": {
+                                        "type": "font"
+                                    },
+                                    "zip": {
+                                        "type": "folder",
+                                        "children": {
+                                            "Quantico.zip": {
+                                                "type": "default"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
-                    "PlayStation_Directional_button.svg": {
-                      type: "image",
+                    "gamepad": {
+                        "type": "folder",
+                        "children": {
+                            "playstation": {
+                                "type": "folder",
+                                "children": {
+                                    "PlayStation_4_Options_button.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_4_Share_button.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_Directional_button.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_Portable_button_Down.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_Portable_button_Left.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_Portable_button_Right.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_Portable_button_Up.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_button_C.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_button_Home.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_button_S.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_button_T.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_button_X.svg": {
+                                        "type": "image"
+                                    },
+                                    "PlayStation_button_analog_L.svg": {
+                                        "type": "image"
+                                    }
+                                }
+                            },
+                            "xbox": {
+                                "type": "folder",
+                                "children": {
+                                    "XboxA.svg": {
+                                        "type": "image"
+                                    },
+                                    "XboxB.svg": {
+                                        "type": "image"
+                                    },
+                                    "XboxX.svg": {
+                                        "type": "image"
+                                    },
+                                    "XboxY.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Left_stick.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Logo.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Menu_button.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Portable_button_Down.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Portable_button_Left.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Portable_button_Right.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Portable_button_Up.svg": {
+                                        "type": "image"
+                                    },
+                                    "Xbox_Share_button.svg": {
+                                        "type": "image"
+                                    }
+                                }
+                            }
+                        }
                     },
-                    "PlayStation_Portable_button_Down.svg": {
-                      type: "image",
+                    "icons": {
+                        "type": "folder",
+                        "children": {
+                            "big-picture.svg": {
+                                "type": "image"
+                            },
+                            "close-window.svg": {
+                                "type": "image"
+                            },
+                            "controller.svg": {
+                                "type": "image"
+                            },
+                            "curseforge.svg": {
+                                "type": "image"
+                            },
+                            "epic-games.svg": {
+                                "type": "image"
+                            },
+                            "github.svg": {
+                                "type": "image"
+                            },
+                            "info.svg": {
+                                "type": "image"
+                            },
+                            "license.svg": {
+                                "type": "image"
+                            },
+                            "loading-new.svg": {
+                                "type": "image"
+                            },
+                            "loading.svg": {
+                                "type": "image"
+                            },
+                            "maximize-window.svg": {
+                                "type": "image"
+                            },
+                            "minimize-window.svg": {
+                                "type": "image"
+                            },
+                            "share.svg": {
+                                "type": "image"
+                            },
+                            "sin-wifi.svg": {
+                                "type": "image"
+                            },
+                            "steam.svg": {
+                                "type": "image"
+                            },
+                            "stormvortex.svg": {
+                                "type": "image"
+                            },
+                            "update-old.svg": {
+                                "type": "image"
+                            },
+                            "update.svg": {
+                                "type": "image"
+                            },
+                            "web.svg": {
+                                "type": "image"
+                            },
+                            "wifi.svg": {
+                                "type": "image"
+                            },
+                            "windowed-window.svg": {
+                                "type": "image"
+                            }
+                        }
                     },
-                    "PlayStation_Portable_button_Left.svg": {
-                      type: "image",
+                    "icons-old": {
+                        "type": "folder",
+                        "children": {
+                            "epic-games.svg": {
+                                "type": "image"
+                            },
+                            "steam.svg": {
+                                "type": "image"
+                            }
+                        }
                     },
-                    "PlayStation_Portable_button_Right.svg": {
-                      type: "image",
-                    },
-                    "PlayStation_Portable_button_Up.svg": {
-                      type: "image",
-                    },
-                    "PlayStation_button_C.svg": {
-                      type: "image",
-                    },
-                    "PlayStation_button_Home.svg": {
-                      type: "image",
-                    },
-                    "PlayStation_button_S.svg": {
-                      type: "image",
-                    },
-                    "PlayStation_button_T.svg": {
-                      type: "image",
-                    },
-                    "PlayStation_button_X.svg": {
-                      type: "image",
-                    },
-                    "PlayStation_button_analog_L.svg": {
-                      type: "image",
-                    },
-                  },
-                },
-                xbox: {
-                  type: "folder",
-                  children: {
-                    "XboxA.svg": {
-                      type: "image",
-                    },
-                    "XboxB.svg": {
-                      type: "image",
-                    },
-                    "XboxX.svg": {
-                      type: "image",
-                    },
-                    "XboxY.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Left_stick.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Logo.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Menu_button.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Portable_button_Down.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Portable_button_Left.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Portable_button_Right.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Portable_button_Up.svg": {
-                      type: "image",
-                    },
-                    "Xbox_Share_button.svg": {
-                      type: "image",
-                    },
-                  },
-                },
-              },
-            },
-            icons: {
-              type: "folder",
-              children: {
-                "big-picture.svg": {
-                  type: "image",
-                },
-                "close-window.svg": {
-                  type: "image",
-                },
-                "controller.svg": {
-                  type: "image",
-                },
-                "curseforge.svg": {
-                  type: "image",
-                },
-                "epic-games.svg": {
-                  type: "image",
-                },
-                "github.svg": {
-                  type: "image",
-                },
-                "info.svg": {
-                  type: "image",
-                },
-                "license.svg": {
-                  type: "image",
-                },
-                "loading-new.svg": {
-                  type: "image",
-                },
-                "loading.svg": {
-                  type: "image",
-                },
-                "maximize-window.svg": {
-                  type: "image",
-                },
-                "minimize-window.svg": {
-                  type: "image",
-                },
-                "share.svg": {
-                  type: "image",
-                },
-                "sin-wifi.svg": {
-                  type: "image",
-                },
-                "steam.svg": {
-                  type: "image",
-                },
-                "stormvortex.svg": {
-                  type: "image",
-                },
-                "update-old.svg": {
-                  type: "image",
-                },
-                "update.svg": {
-                  type: "image",
-                },
-                "web.svg": {
-                  type: "image",
-                },
-                "wifi.svg": {
-                  type: "image",
-                },
-                "windowed-window.svg": {
-                  type: "image",
-                },
-              },
-            },
-            "icons-old": {
-              type: "folder",
-              children: {
-                "epic-games.svg": {
-                  type: "image",
-                },
-                "steam.svg": {
-                  type: "image",
-                },
-              },
-            },
-            media: {
-              type: "folder",
-              children: {
-                sounds: {
-                  type: "folder",
-                  children: {
-                    "finish.mp3": {
-                      type: "audio",
-                    },
-                    "others.mp3": {
-                      type: "audio",
-                    },
-                  },
-                },
-                trailers: {
-                  type: "folder",
-                  children: {
-                    "ambidextro.mp4": {
-                      type: "video",
-                    },
-                    "backseat-drivers.mp4": {
-                      type: "video",
-                    },
-                    "buckshot_roulette.mp4": {
-                      type: "video",
-                    },
-                    "content-warning.mp4": {
-                      type: "video",
-                    },
-                    "doom.mp4": {
-                      type: "video",
-                    },
-                    "fnaf1.mp4": {
-                      type: "video",
-                    },
-                    "fnaf2.mp4": {
-                      type: "video",
-                    },
-                    "fnaf3.mp4": {
-                      type: "video",
-                    },
-                    "fnaf4.mp4": {
-                      type: "video",
-                    },
-                    "hollow-knight-silksong.mp4": {
-                      type: "video",
-                    },
-                    "lethal-company.mp4": {
-                      type: "video",
-                    },
-                    "mage-arena.mp4": {
-                      type: "video",
-                    },
-                    "repo.mp4": {
-                      type: "video",
-                    },
-                    "scamline.mp4": {
-                      type: "video",
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
+                    "media": {
+                        "type": "folder",
+                        "children": {
+                            "sounds": {
+                                "type": "folder",
+                                "children": {
+                                    "finish.mp3": {
+                                        "type": "audio"
+                                    },
+                                    "others.mp3": {
+                                        "type": "audio"
+                                    }
+                                }
+                            },
+                            "trailers": {
+                                "type": "folder",
+                                "children": {
+                                    "ambidextro.mp4": {
+                                        "type": "video"
+                                    },
+                                    "backseat-drivers.mp4": {
+                                        "type": "video"
+                                    },
+                                    "buckshot_roulette.mp4": {
+                                        "type": "video"
+                                    },
+                                    "content-warning.mp4": {
+                                        "type": "video"
+                                    },
+                                    "doom.mp4": {
+                                        "type": "video"
+                                    },
+                                    "fnaf1.mp4": {
+                                        "type": "video"
+                                    },
+                                    "fnaf2.mp4": {
+                                        "type": "video"
+                                    },
+                                    "fnaf3.mp4": {
+                                        "type": "video"
+                                    },
+                                    "fnaf4.mp4": {
+                                        "type": "video"
+                                    },
+                                    "hollow-knight-silksong.mp4": {
+                                        "type": "video"
+                                    },
+                                    "lethal-company.mp4": {
+                                        "type": "video"
+                                    },
+                                    "mage-arena.mp4": {
+                                        "type": "video"
+                                    },
+                                    "repo.mp4": {
+                                        "type": "video"
+                                    },
+                                    "scamline.mp4": {
+                                        "type": "video"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
-    debs: {
-      type: "folder",
-      children: {
-        "CardinalAI-1.0.3-amd64.deb": {
-          type: "deb",
-        },
-        "cardinal-ai-dualmodel-app.deb": {
-          type: "deb",
-        },
-        "data-exporter.deb": {
-          type: "deb",
-        },
-        "kartsmultiplayerlauncher_deb.deb": {
-          type: "deb",
-        },
-        "multiai_1.2.10_amd64.deb": {
-          type: "deb",
-        },
-        "pairdrop.deb": {
-          type: "deb",
-        },
-        "theshooterlauncher_deb.deb": {
-          type: "deb",
-        },
-        "whatsapp-web.deb": {
-          type: "deb",
-        },
-      },
-    },
-  };
+    "debs": {
+        "type": "folder",
+        "children": {
+            "CardinalAI-1.0.3-amd64.deb": {
+                "type": "deb"
+            },
+            "Clase-Web-Setup.deb": {
+                "type": "deb"
+            },
+            "cardinal-ai-dualmodel-app.deb": {
+                "type": "deb"
+            },
+            "data-exporter.deb": {
+                "type": "deb"
+            },
+            "kartsmultiplayerlauncher_deb.deb": {
+                "type": "deb"
+            },
+            "multiai_1.2.10_amd64.deb": {
+                "type": "deb"
+            },
+            "pairdrop.deb": {
+                "type": "deb"
+            },
+            "theshooterlauncher_deb.deb": {
+                "type": "deb"
+            },
+            "whatsapp-web.deb": {
+                "type": "deb"
+            }
+        }
+    }
+};
 
   const fileTreeContainer = document.getElementById("file-tree");
   const mediaViewer = document.getElementById("media-viewer");
