@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>StormStore Files System</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>StormStore Files System</h1>
-            <h2>Documentación</h2>
-            <h2>Imagenes</h2>
-            <h2>Videos</h2>
-            <h2>Instaladores</h2>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StormStore - Explorador de Archivos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Explorador de Archivos de StormStore</h1>
+        <p>Navega por los directorios de recursos del proyecto. Haz clic en las carpetas para expandirlas.</p>
+        
+        <div id="file-tree">
+            <!-- El árbol de archivos se generará aquí con JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal para el visualizador de medios -->
+    <div id="media-viewer" class="media-viewer-overlay" style="display: none;">
+        <span class="close-viewer">&times;</span>
+        <div class="viewer-content">
+            <img id="viewer-image" src="" alt="Vista previa de imagen">
+            <video id="viewer-video" controls src=""></video>
+            <audio id="viewer-audio" controls src=""></audio>
+            <div id="viewer-info">
+                <p>No se puede previsualizar este tipo de archivo.</p>
+                <a href="#" id="download-link" class="download-button" download>Descargar Archivo</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
