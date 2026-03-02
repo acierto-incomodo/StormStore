@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.14",
+  "version": "1.2.15",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -28,7 +28,9 @@
     "nsis": {
       "oneClick": true,
       "allowToChangeInstallationDirectory": false,
-      "include": "build/v3-installer.nsh",
+      "createStartMenuShortcut": true,
+      "createDesktopShortcut": true,
+      "include": "build/v2-installer.nsh",
       "differentialPackage": true
     },
     "files": [
