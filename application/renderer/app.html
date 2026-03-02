@@ -541,6 +541,9 @@
             .then((res) => {
               if (res.ok) {
                 const video = document.createElement("video");
+                video.autoplay = true;
+                video.muted = true;
+                video.loop = true;
                 video.controls = true;
                 video.style.width = "100%";
                 video.style.borderRadius = "12px";
