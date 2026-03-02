@@ -38,6 +38,26 @@ Description: Aplicación de IA multi-modelo
 License: FREEWARE
 Vendor: StormGamesStudios
 
+Package: clase-web
+Version: 1.0.1
+Architecture: amd64
+Maintainer: acierto-incomodo <meliodas.aitor@gmail.com>
+Installed-Size: 272568
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/Clase-Web-Setup.deb
+Size: 80567094
+MD5sum: 0f9d552ec88d2bd0f856d1e3e3f534f2
+SHA1: 3713eb7521ee1d016ec9675a7f87d6bf8c326b40
+SHA256: e1dfb22a0133796d769d7a962f40dd2f2054cd762046cbf5afeaaa98c325bf7c
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/clase-web#readme
+Description:
+  Visor de escritorio para el contenido de clase-web.
+License: ISC
+Vendor: acierto-incomodo <meliodas.aitor@gmail.com>
+
 Package: data-exporter
 Version: 1.0.3
 Architecture: amd64
