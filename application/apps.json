@@ -208,6 +208,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "miside-zero",
+    "name": "MiSide Zero",
+    "description": "La demo de MiSide Zero es una pequeña versión jugable de un proyecto hecho por fans que sirve como precuela del juego original MiSide. En ella te pones en la piel de Zero, un personaje rubio que explora el mundo de MiSide aproximadamente un año antes de los eventos principales.",
+    "category": "Juegos",
+    "icon": "../assets/apps/miside-zero.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/miside-zero/releases/latest/download/MiSideZero_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no"
+  },
+  {
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
