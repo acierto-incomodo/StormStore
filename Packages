@@ -39,17 +39,17 @@ License: FREEWARE
 Vendor: StormGamesStudios
 
 Package: clase-web
-Version: 1.0.2
+Version: 1.0.3
 Architecture: amd64
 Maintainer: acierto-incomodo <meliodas.aitor@gmail.com>
-Installed-Size: 302538
+Installed-Size: 302540
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Filename: ./debs/Clase-Web-Setup.deb
-Size: 97507880
-MD5sum: a7872431935c3e045e67c291acfb749f
-SHA1: 318cf4dfb66ec3acbbb8a2dd7c5d13d66915d7ba
-SHA256: a7a89a01a63c37ab1d11468ccbe973600d9a6ceacfe44ea9faf92102d142b473
+Size: 97508028
+MD5sum: 9930a9ab8a8f11c75f80905f0922eb7e
+SHA1: 531f10fa92866846ffd5ef7ee6bbafc5daa07e3c
+SHA256: fecac5ff325746f3a3e3ed906254656340b328821c88d2f90123d617a7b9c4db
 Section: default
 Priority: optional
 Homepage: https://github.com/acierto-incomodo/clase-web#readme
