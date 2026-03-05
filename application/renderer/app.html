@@ -153,6 +153,10 @@
         });
       }
 
+      window.api.onShowToast((_event, message) => {
+        showToast(message);
+      });
+
       // Botón Volver
       document.getElementById("back-btn").addEventListener("click", () => {
         window.history.back();

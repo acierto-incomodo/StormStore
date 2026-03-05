@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.17",
+  "version": "1.2.18",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -21,6 +21,12 @@
       "owner": "acierto-incomodo",
       "repo": "StormStore"
     },
+    "protocols": [
+      {
+        "name": "StormStore",
+        "schemes": ["stormstore"]
+      }
+    ],
     "win": {
       "target": "nsis",
       "icon": "assets/app.ico"

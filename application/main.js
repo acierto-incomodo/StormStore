@@ -5,6 +5,7 @@ const {
   shell,
   session,
   nativeTheme,
+  dialog,
 } = require("electron");
 const path = require("path");
 const fs = require("fs");
@@ -78,6 +79,15 @@ async function setActivity() {
 // ❌ StormStore SOLO WINDOWS
 if (process.platform !== "win32") {
   app.quit();
+}
+
+// Registrar protocolo stormstore://
+if (process.defaultApp) {
+  if (process.argv.length >= 2) {
+    app.setAsDefaultProtocolClient('stormstore', process.execPath, [path.resolve(process.argv[1])])
+  }
+} else {
+  app.setAsDefaultProtocolClient('stormstore')
 }
 
 // =====================================
@@ -270,6 +280,63 @@ function getDownloadDir() {
   }
 
   return dir;
+}
+
+async function runApp(exePath, requiresSteam) {
+  try {
+    if (
+      exePath.startsWith("steam://") ||
+      exePath.startsWith("com.epicgames.launcher://")
+    ) {
+      exec(`start "" "${exePath}"`);
+      return true;
+    }
+
+    if (requiresSteam) {
+      exec("start steam://");
+    }
+
+    const resolvedExe = findExecutable(exePath);
+
+    if (!resolvedExe) {
+      throw new Error("El ejecutable no existe");
+    }
+
+    const appDir = path.dirname(resolvedExe);
+
+    spawn(`"${resolvedExe}"`, {
+      cwd: appDir,
+      detached: true,
+      shell: true, // 🔥 CLAVE EN WINDOWS
+      stdio: "ignore",
+    }).unref();
+
+    app.quit();
+    return true;
+  } catch (err) {
+    console.error("Error al abrir app:", err.message);
+    return false;
+  }
+}
+
+function handleProtocolUrl(url) {
+  if (!url || !mainWindow) return;
+  const prefix = "stormstore://run/";
+  if (url.startsWith(prefix)) {
+    const id = url.substring(prefix.length).replace(/\/$/, "");
+    const appItem = apps.find((a) => a.id === id);
+
+    if (appItem) {
+      const installed = appItem.paths.some((p) => findExecutable(p) !== null);
+      if (installed) {
+        runApp(appItem.paths[0], appItem.steam === "si");
+      } else {
+        mainWindow.webContents.send('show-toast', `La aplicación '${appItem.name}' no está instalada.`);
+      }
+    } else {
+      mainWindow.webContents.send('show-toast', `Programa no encontrado con ID: ${id}`);
+    }
+  }
 }
 
 // -----------------------------
@@ -608,40 +675,7 @@ ipcMain.handle("install-app", async (_, appData) => {
 });
 
 ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
-  try {
-    if (
-      exePath.startsWith("steam://") ||
-      exePath.startsWith("com.epicgames.launcher://")
-    ) {
-      exec(`start "" "${exePath}"`);
-      return true;
-    }
-
-    if (requiresSteam) {
-      exec("start steam://");
-    }
-
-    const resolvedExe = findExecutable(exePath);
-
-    if (!resolvedExe) {
-      throw new Error("El ejecutable no existe");
-    }
-
-    const appDir = path.dirname(resolvedExe);
-
-    spawn(`"${resolvedExe}"`, {
-      cwd: appDir,
-      detached: true,
-      shell: true, // 🔥 CLAVE EN WINDOWS
-      stdio: "ignore",
-    }).unref();
-
-    app.quit();
-    return true;
-  } catch (err) {
-    console.error("Error al abrir app:", err.message);
-    return false;
-  }
+  return await runApp(exePath, requiresSteam);
 });
 
 ipcMain.handle("open-app-location", async (_, exePath) => {
@@ -796,6 +830,8 @@ if (!gotLock) {
       if (mainWindow.isMinimized()) mainWindow.restore();
       mainWindow.focus();
     }
+    const url = argv.find((arg) => arg.startsWith("stormstore://"));
+    if (url) handleProtocolUrl(url);
   });
 
   app.whenReady().then(() => {
@@ -810,6 +846,8 @@ if (!gotLock) {
     });
 
     createWindow();
+    const url = process.argv.find((arg) => arg.startsWith("stormstore://"));
+    if (url) handleProtocolUrl(url);
   });
 
   app.on("window-all-closed", () => {

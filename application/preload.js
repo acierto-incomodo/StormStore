@@ -24,6 +24,7 @@ contextBridge.exposeInMainWorld("api", {
   onUpdateDownloaded: (callback) =>
     ipcRenderer.on("update-downloaded", callback),
   onUpdateError: (callback) => ipcRenderer.on("update-error", callback),
+  onShowToast: (callback) => ipcRenderer.on("show-toast", callback),
   openBigPicture: () => ipcRenderer.invoke("open-big-picture"),
   openMainView: () => ipcRenderer.invoke("open-main-view"),
   minimizeWindow: () => ipcRenderer.send("window-minimize"),

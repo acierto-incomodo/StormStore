@@ -394,6 +394,10 @@ function renderApps(category) {
     });
 }
 
+window.api.onShowToast((_event, message) => {
+  showToast(message);
+});
+
 // Inicializar
 load(true); // Carga inicial forzada
 setInterval(() => load(false), 3000); // Comprobación silenciosa cada 3s
