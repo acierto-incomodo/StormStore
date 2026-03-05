@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.18",
+  "version": "1.2.19",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -49,7 +49,12 @@
       "renderer/**/*",
       "assets/**/*",
       "!assets/extraFiles/**/*",
-      "!assets/media/trailers/**/*"
+      "!assets/media/trailers/**/*",
+      "!assets/apps-4096x4096/**/*",
+      "!assets/apps-new-quality/**/*",
+      "!assets/apps-old/**/*",
+      "!assets/apps-original/**/*",
+      "!assets/apps-to-make/**/*"
     ],
     "extraResources": [
       "assets/extraFiles/**"
