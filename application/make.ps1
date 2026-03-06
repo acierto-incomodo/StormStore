@@ -19,3 +19,7 @@ if ($exeFile) {
     Copy-Item -Path $exeFile.FullName -Destination (Join-Path $exeFile.DirectoryName "StormStore-Setup.exe") -Force
     Write-Host "Se ha creado una copia: StormStore-Setup.exe"
 }
+
+# Actualizar archivos para la documentación
+Write-Host "Ejecutando script para actualizar archivos de la documentación..."
+.\updateFiles.ps1
