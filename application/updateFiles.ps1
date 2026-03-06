@@ -3,7 +3,8 @@
 # Definir rutas
 $scriptDir = $PSScriptRoot
 $rootDir = Resolve-Path -Path (Join-Path $scriptDir "..")
-$destDir = Join-Path $rootDir "docs/files"
+$destDir = Join-Path $rootDir "docs/assets"
+$destAssetsDir = Join-Path $rootDir "docs/assets/apps"
 
 $sourceJson = Join-Path $scriptDir "apps.json"
 $sourceAssets = Join-Path $scriptDir "assets/apps"
@@ -17,12 +18,19 @@ if (Test-Path $destDir) {
 }
 New-Item -Path $destDir -ItemType Directory -Force | Out-Null
 
+# Limpiar directorio de assets
+Write-Host "Limpiando directorio de assets: $destAssetsDir"
+if (Test-Path $destAssetsDir) {
+    Remove-Item -Path $destAssetsDir -Recurse -Force
+}
+New-Item -Path $destAssetsDir -ItemType Directory -Force | Out-Null
+
 # 2. Copiar apps.json
 Write-Host "Copiando 'application/apps.json'..."
 Copy-Item -Path $sourceJson -Destination $destDir
 
 # 3. Copiar la carpeta assets/apps
 Write-Host "Copiando contenido de 'application/assets/apps'..."
-Copy-Item -Path (Join-Path $sourceAssets "*") -Destination $destDir -Recurse
+Copy-Item -Path (Join-Path $sourceAssets "*") -Destination $destAssetsDir -Recurse
 
-Write-Host "✅ Archivos de documentación actualizados en 'docs/files'."
+Write-Host "✅ Archivos de documentación actualizados en 'docs/files' y 'docs/assets/apps'."

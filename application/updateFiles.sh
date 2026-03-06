@@ -25,7 +25,8 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 SOURCE_JSON="$SCRIPT_DIR/apps.json"
 SOURCE_ASSETS="$SCRIPT_DIR/assets/apps"
-DEST_DIR="$ROOT_DIR/docs/files"
+DEST_DIR="$ROOT_DIR/docs/assets"
+DEST_ASSETS_DIR="$ROOT_DIR/docs/assets/apps"
 
 print_header "Actualizando archivos para la documentación"
 
@@ -34,12 +35,16 @@ print_info "Limpiando directorio de destino: $DEST_DIR"
 rm -rf "$DEST_DIR"
 mkdir -p "$DEST_DIR"
 
+print_info "Limpiando directorio de assets: $DEST_ASSETS_DIR"
+rm -rf "$DEST_ASSETS_DIR"
+mkdir -p "$DEST_ASSETS_DIR"
+
 # 2. Copiar apps.json
 print_info "Copiando 'application/apps.json'..."
 cp "$SOURCE_JSON" "$DEST_DIR/"
 
 # 3. Copiar la carpeta assets/apps
 print_info "Copiando contenido de 'application/assets/apps'..."
-cp -r "$SOURCE_ASSETS/." "$DEST_DIR/"
+cp -r "$SOURCE_ASSETS/." "$DEST_ASSETS_DIR/"
 
-print_success "Archivos de documentación actualizados en 'docs/files'."
+print_success "Archivos de documentación actualizados en 'docs/files' y 'docs/assets/apps'."
