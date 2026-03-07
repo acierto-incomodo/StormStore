@@ -148,6 +148,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "fusion-arena",
+    "name": "Fusion Arena",
+    "description": "Fusion Arena es un juego multijugador en primera persona de tipo deathmatch, ambientado en un entorno tipo almacén. Los jugadores compiten entre sí disparando con varias armas (pistola, rifle automático y escopeta), recogiendo armas o recargas y salud en puntos repartidos por el mapa. Cada vez que un jugador muere, reaparece tras poco tiempo; al final de la partida, gana quien tenga más bajas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/fusion-arena.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/Fusion_Arena_Launcher_Installer_New.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "si"
+  },
+  {
     "id": "hollow-knight-silksong",
     "name": "Hollow Knight: Silksong",
     "description": "Secuela de Hollow Knight en la que controlas a Hornet, explorando un reino nuevo lleno de enemigos, habilidades y secretos. Es un juego de acción y aventura tipo metroidvania, con combate preciso y mundos extensos por descubrir.",
@@ -341,20 +356,5 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "no"
-  },
-  {
-    "id": "the-shooter",
-    "name": "The Shooter",
-    "description": "The Shooter es un juego multijugador en primera persona de tipo deathmatch, ambientado en un entorno tipo almacén. Los jugadores compiten entre sí disparando con varias armas (pistola, rifle automático y escopeta), recogiendo armas o recargas y salud en puntos repartidos por el mapa. Cada vez que un jugador muere, reaparece tras poco tiempo; al final de la partida, gana quien tenga más bajas.",
-    "category": "Juegos",
-    "icon": "../assets/apps/the-shooter.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/The_Shooter_Launcher_Installer_New.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe",
-    "steam": "no",
-    "wifi": "si",
-    "share-compatibility": "si"
   }
 ]

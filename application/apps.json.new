@@ -1,13 +1,17 @@
 [
-    {
-    "id": "multiai",
-    "name": "MultiAI",
-    "description": "MultiAI es una aplicación que integra múltiples modelos de inteligencia artificial para ofrecer respuestas rápidas y precisas a tus consultas.",
-    "category": "Utilidades",
-    "icon": "../assets/apps/multiai.png",
+  {
+    "id": "clase-web",
+    "name": "Clase Web",
+    "description": "Aplicación para estudios.",
+    "category": ["Clase", "Utilidades"],
+    "icon": "../assets/apps/clase-web.png",
     "paths": [
-      "unknown"
+      "%appdata%/StormGamesStudios/Programs/ClaseWEB/Clase Web.exe"
     ],
-    "download": "unknown"
+    "download": "https://github.com/acierto-incomodo/clase-web/releases/latest/download/Clase-Web-Setup.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ClaseWEB/Uninstall Clase Web.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "no"
   }
 ]
