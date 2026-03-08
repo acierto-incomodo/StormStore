@@ -156,7 +156,7 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/Fusion_Arena_Launcher_Installer_New.exe",
+    "download": "https://github.com/acierto-incomodo/The-Shooter-Launcher/releases/latest/download/Fusion_Arena_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe",
     "steam": "no",
     "wifi": "si",
