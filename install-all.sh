@@ -62,7 +62,7 @@ PACKAGES=(
     "pairdrop"
     "data-exporter"
     "multiai"
-    "theshooterlauncher"
+    "fusionarenalauncher"
     "kartsmultiplayerlauncher"
     "cardinal-ai"
 )

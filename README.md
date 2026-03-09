@@ -37,7 +37,7 @@ Una vez instalado el repositorio, puedes instalar las siguientes aplicaciones me
 | **PairDrop** | `sudo apt install pairdrop` | Transferencia de archivos local P2P. |
 | **MyJonCraft Config** | `sudo apt install data-exporter` | Herramienta de transferencia de configuración SGS. |
 | **MultiAI** | `sudo apt install multiai` | Interfaz para múltiples modelos de IA. |
-| **The Shooter** | `sudo apt install theshooterlauncher` | Launcher del juego FPS multijugador. |
+| **Fusion Arena** | `sudo apt install fusionarenalauncher` | Launcher del juego FPS multijugador. |
 | **Karts Multiplayer** | `sudo apt install kartsmultiplayerlauncher` | Launcher del juego de carreras. |
 
 ## 🎮 Catálogo de Juegos y Apps (Windows)
@@ -58,7 +58,7 @@ Esta sección contiene software **exclusivo para Windows**. Para acceder a este 
 *   **Mage Arena**: Combate PvP de magos.
 *   **R.E.P.O.**: Juego cooperativo de extracción y terror.
 *   **Scam Line**: Juego multijugador de engaño social.
-*   **The Shooter**: Deathmatch FPS en almacenes.
+*   **Fusion Arena**: Deathmatch FPS en almacenes.
 *   **Karts Multiplayer**: Carreras de karts con amigos.
 
 ### Utilidades
