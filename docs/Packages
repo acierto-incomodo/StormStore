@@ -1,0 +1,170 @@
+Package: cardinal-ai
+Version: 1.0.3
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 297018
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils
+Recommends: libappindicator3-1
+Filename: ./debs/CardinalAI-1.0.3-amd64.deb
+Size: 91713980
+MD5sum: 0019145aea93994310eae7f8b24b4df5
+SHA1: 332d892fe3e9f070241500263ed2b91127795dea
+SHA256: 0f33faa688030b58b52b756308d6f4e5fde166c467dc495b847e2019cf0b738a
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/cardinal-ai-dualmodel-app
+Description: Aplicación de asistente de IA
+  Centro de asistente de la inteligencia artificial CardinalAI
+License: MIT
+Vendor: StormGamesStudios
+
+Package: cardinal-ai-dualmodel-app
+Version: 1.128.1452
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 240732
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/cardinal-ai-dualmodel-app.deb
+Size: 67997076
+MD5sum: 38d1b89d963250b62f05aab85c4b8f68
+SHA1: ab4a7c09a0625a3662eeec066bae5499b5148400
+SHA256: 2053596e94b5fdbc9df0b13035d598f7fbd2e845fc59bd50e4efc85b959b91b5
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/cardinal-ai-dualmodel-app
+Description: Aplicación de IA multi-modelo
+  CardinalAI MultiModel App permite interactuar con múltiples modelos de IA desarrollados por StormGamesStudios desde una interfaz unificada y moderna.
+License: FREEWARE
+Vendor: StormGamesStudios
+
+Package: clase-web
+Version: 1.0.3
+Architecture: amd64
+Maintainer: acierto-incomodo <meliodas.aitor@gmail.com>
+Installed-Size: 302540
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/Clase-Web-Setup.deb
+Size: 97508028
+MD5sum: 9930a9ab8a8f11c75f80905f0922eb7e
+SHA1: 531f10fa92866846ffd5ef7ee6bbafc5daa07e3c
+SHA256: fecac5ff325746f3a3e3ed906254656340b328821c88d2f90123d617a7b9c4db
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/clase-web#readme
+Description:
+  Visor de escritorio para el contenido de clase-web.
+License: ISC
+Vendor: acierto-incomodo <meliodas.aitor@gmail.com>
+
+Package: data-exporter
+Version: 1.0.3
+Architecture: amd64
+Maintainer: StormGamesStudios
+Installed-Size: 290324
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/data-exporter.deb
+Size: 79644256
+MD5sum: 1becb687c8ffdaf2f9f73f78b6f403e3
+SHA1: 83c25334692cfae67d000b4715d46d61ac2bc505
+SHA256: c29e6f7873e127be465b36db03bb66716f8dd0158ee6447cd23d1f0a3728c5c5
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/Data-Exporter
+Description: Herramienta para transferir configuraciones de MyJonCraft SGS
+  Programa para transferir configuraciones de MyJonCraft SGS entre instalaciones.
+License: ISC
+Vendor: StormGamesStudios
+
+Package: fusionarenalauncher
+Version: 1.1.0
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Depends: python3
+Filename: ./debs/fusionarenalauncher_deb.deb
+Size: 82146010
+MD5sum: fe8654bacda1de1203b412f9cee8a403
+SHA1: 1c3d082e4361996ad322c7144ea65ba781c2261b
+SHA256: 2bcc965d14b1cc6d2d7afb4ec0434054b6762a89636c82ba702dddc620801e56
+Section: games
+Priority: optional
+Description: Launcher de Fusion Arena
+ Un launcher para descargar y actualizar Fusion Arena automáticamente.
+
+Package: kartsmultiplayerlauncher
+Version: 1.0.1
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Depends: python3
+Filename: ./debs/kartsmultiplayerlauncher_deb.deb
+Size: 70132968
+MD5sum: 938140f8f814fc6f15828a2ab2a777fc
+SHA1: 91690c333160d138079a8ca13f1e2f9c7cff4c5c
+SHA256: fde893bc6e467f82e440a921901f2a843528cccdb6764e60b8d0a462b582bb1d
+Section: games
+Priority: optional
+Description: Launcher de Karts Multiplayer
+ Un launcher para descargar y actualizar Karts Multiplayer automáticamente.
+
+Package: multiai
+Version: 1.2.11
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 315327
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils
+Recommends: libappindicator3-1
+Filename: ./debs/multiai_1.2.11_amd64.deb
+Size: 104537028
+MD5sum: 41cc62f87227da767859fe492da2a5ef
+SHA1: a3129f0f78296b57238994849b5ac9f79954d0bf
+SHA256: 6891d8739c638285f9b37d923d0fc2319ed15e3302d5eb4d27c460fc35f13632
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/MultiAI
+Description: Aplicación de asistentes de IA
+  Centro de asistentes de inteligencia artificial
+License: MIT
+Vendor: StormGamesStudios
+
+Package: pairdrop
+Version: 1.2.2
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 291715
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/pairdrop.deb
+Size: 79891358
+MD5sum: f78c56ef5c0fc6734b70cc21e55436a2
+SHA1: d58487975756767837b9fa247822e1ddc4050a12
+SHA256: 1ac1a842f73e5417c8ab139e1aec42d2d1914cdc963f494a388e35e1b5627e87
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/PairDrop
+Description: Cliente no oficial de PairDrop APP
+  Aplicación ligera basada en Electron que abre PairDrop APP y guarda tus datos de sesión localmente.
+License: ISC
+Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
+
+Package: whatsapp-web
+Version: 1.1.2
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 291778
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/whatsapp-web.deb
+Size: 80099780
+MD5sum: 1176183cf93637cc1671d11c2f8aceca
+SHA1: 0bc221c19d6bc71e0bb70ac019374b13a7b51571
+SHA256: 902081634fd5f5c6c5b1f7f30041069dfd4d11381d58643fa977cfdc0cb1d226
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/WhatsApp-Web
+Description: Cliente no oficial de WhatsApp Web
+  Aplicación ligera basada en Electron que abre WhatsApp Web y guarda tus datos de sesión localmente.
+License: MIT
+Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
+
