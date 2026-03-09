@@ -78,6 +78,21 @@ Description: Herramienta para transferir configuraciones de MyJonCraft SGS
 License: ISC
 Vendor: StormGamesStudios
 
+Package: fusionarenalauncher
+Version: 1.1.0
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Depends: python3
+Filename: ./debs/fusionarenalauncher_deb.deb
+Size: 82146010
+MD5sum: fe8654bacda1de1203b412f9cee8a403
+SHA1: 1c3d082e4361996ad322c7144ea65ba781c2261b
+SHA256: 2bcc965d14b1cc6d2d7afb4ec0434054b6762a89636c82ba702dddc620801e56
+Section: games
+Priority: optional
+Description: Launcher de Fusion Arena
+ Un launcher para descargar y actualizar Fusion Arena automáticamente.
+
 Package: kartsmultiplayerlauncher
 Version: 1.0.1
 Architecture: amd64
@@ -132,21 +147,6 @@ Description: Cliente no oficial de PairDrop APP
   Aplicación ligera basada en Electron que abre PairDrop APP y guarda tus datos de sesión localmente.
 License: ISC
 Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
-
-Package: theshooterlauncher
-Version: 1.0.9
-Architecture: amd64
-Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
-Depends: python3
-Filename: ./debs/theshooterlauncher_deb.deb
-Size: 71520028
-MD5sum: 7bf116bb4f98eba43bc30b07553548fd
-SHA1: 177826a6b4145a894299028f4dbf819f9acdac21
-SHA256: 83af0f0909c7fb5d734d222ca67610b848baaa17316faf8fe3d781dfa397f5af
-Section: games
-Priority: optional
-Description: Launcher de The Shooter
- Un launcher para descargar y actualizar The Shooter automáticamente.
 
 Package: whatsapp-web
 Version: 1.1.2
