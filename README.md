@@ -86,3 +86,4 @@ curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/re
 <br>
 
 Copyright © StormGamesStudios 2025
+echo "deb https://acierto-incomodo.github.io/StormStore stable main" | sudo tee /etc/apt/sources.list.d/stormstore.list
