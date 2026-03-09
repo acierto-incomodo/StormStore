@@ -52,7 +52,8 @@ git push
 print_success "Repository updated and published successfully!"
 print_info "Repository URL: https://github.com/acierto-incomodo/StormStore"
 
-print_info "Copying Packages and Packages.gz to docs/..."
+print_info "Copying Packages, Packages.gz, and debs folder to docs/..."
 cp Packages docs/
 cp Packages.gz docs/
-print_success "Files copied to docs/."
+cp -r debs docs/
+print_success "Files and folder copied to docs/."
