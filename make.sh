@@ -44,6 +44,12 @@ gzip -9c Packages > Packages.gz
 
 print_success "Packages.gz generated successfully."
 
+print_info "Copying Packages, Packages.gz, and debs folder to docs/..."
+cp Packages docs/
+cp Packages.gz docs/
+cp -r debs docs/
+print_success "Files and folder copied to docs/."
+
 print_info "Committing and pushing changes to GitHub..."
 git add .
 git commit -m "Update repository"
@@ -51,9 +57,3 @@ git push
 
 print_success "Repository updated and published successfully!"
 print_info "Repository URL: https://github.com/acierto-incomodo/StormStore"
-
-print_info "Copying Packages, Packages.gz, and debs folder to docs/..."
-cp Packages docs/
-cp Packages.gz docs/
-cp -r debs docs/
-print_success "Files and folder copied to docs/."
