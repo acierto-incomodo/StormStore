@@ -148,6 +148,25 @@ Description: Cliente no oficial de PairDrop APP
 License: ISC
 Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
 
+Package: stormstore-linux
+Version: 1.0.1
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 296804
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/StormStore-Linux.deb
+Size: 91381920
+MD5sum: e6c46551a4690296924920736a408fa0
+SHA1: ea27b635e298777a12dead5ba35adc072c125e9b
+SHA256: fa810e24396a1777c7b8fea1fe8b956feed9e68df281f64bfc27398cde524bac
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/stormstore-linux
+Description:
+  StormStore Linux
+Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
+
 Package: whatsapp-web
 Version: 1.1.2
 Architecture: amd64
