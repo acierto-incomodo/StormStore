@@ -1,0 +1,6 @@
+# Install dos2unix if you don't have it
+sudo apt update
+sudo apt install dos2unix
+
+# Convert the line endings of your script
+dos2unix ./*.sh
