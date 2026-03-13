@@ -7,6 +7,7 @@
 ## 📥 Instalación (Linux)
 
 ### Instalar Repositorio
+
 Para añadir el repositorio a tu sistema:
 
 ```bash
@@ -14,6 +15,7 @@ curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/in
 ```
 
 ### Instalar Repositorio y Todo el Software
+
 Para instalar el repositorio y descargar automáticamente todos los paquetes disponibles:
 
 ```bash
@@ -21,7 +23,9 @@ curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/in
 ```
 
 ## 🛠️ Menú de Gestión
+
 El proyecto incluye un script de menú (`menu.sh`) para facilitar tareas administrativas como:
+
 - Actualizar el sistema (Modo Debian o Full Upgrade).
 - Instalar servidores y herramientas (MCSManager, PairDrop Server, Playit).
 - Gestionar la instalación de StormStore.
@@ -30,15 +34,15 @@ El proyecto incluye un script de menú (`menu.sh`) para facilitar tareas adminis
 
 Una vez instalado el repositorio, puedes instalar las siguientes aplicaciones mediante `apt`:
 
-| Aplicación | Comando de Instalación | Descripción |
-| :--- | :--- | :--- |
-| **CardinalAI MultiModel** | `sudo apt install cardinal-ai-dualmodel-app` | Aplicación de IA multimodal. |
-| **WhatsApp Web** | `sudo apt install whatsapp-web` | Cliente de escritorio para WhatsApp Web. |
-| **PairDrop** | `sudo apt install pairdrop` | Transferencia de archivos local P2P. |
-| **MyJonCraft Config** | `sudo apt install data-exporter` | Herramienta de transferencia de configuración SGS. |
-| **MultiAI** | `sudo apt install multiai` | Interfaz para múltiples modelos de IA. |
-| **Fusion Arena** | `sudo apt install fusionarenalauncher` | Launcher del juego FPS multijugador. |
-| **Karts Multiplayer** | `sudo apt install kartsmultiplayerlauncher` | Launcher del juego de carreras. |
+| Aplicación                | Comando de Instalación                       | Descripción                                        |
+| :------------------------ | :------------------------------------------- | :------------------------------------------------- |
+| **CardinalAI MultiModel** | `sudo apt install cardinal-ai-dualmodel-app` | Aplicación de IA multimodal.                       |
+| **WhatsApp Web**          | `sudo apt install whatsapp-web`              | Cliente de escritorio para WhatsApp Web.           |
+| **PairDrop**              | `sudo apt install pairdrop`                  | Transferencia de archivos local P2P.               |
+| **MyJonCraft Config**     | `sudo apt install data-exporter`             | Herramienta de transferencia de configuración SGS. |
+| **MultiAI**               | `sudo apt install multiai`                   | Interfaz para múltiples modelos de IA.             |
+| **Fusion Arena**          | `sudo apt install fusionarenalauncher`       | Launcher del juego FPS multijugador.               |
+| **Karts Multiplayer**     | `sudo apt install kartsmultiplayerlauncher`  | Launcher del juego de carreras.                    |
 
 ## 🎮 Catálogo de Juegos y Apps (Windows)
 
@@ -47,29 +51,32 @@ Esta sección contiene software **exclusivo para Windows**. Para acceder a este 
 📥 **Descargar StormStore-Setup.exe**
 
 ### Juegos
-*   **Ambidextro**: Acción táctica con control de armas duales.
-*   **Backseat Drivers**: Carreras competitivas con uso de objetos.
-*   **Buckshot Roulette**: Estrategia y terror en una mesa de juego mortal.
-*   **Content Warning**: Terror cooperativo enfocado en grabar videos virales.
-*   **DOOM Classic**: El legendario FPS.
-*   **Five Nights at Freddy's (1, 2, 3, 4)**: La saga completa de terror animatrónico.
-*   **Hollow Knight: Silksong**: Aventura de acción y plataformas (Metroidvania).
-*   **Lethal Company**: Terror cooperativo de recolección en lunas abandonadas.
-*   **Mage Arena**: Combate PvP de magos.
-*   **R.E.P.O.**: Juego cooperativo de extracción y terror.
-*   **Scam Line**: Juego multijugador de engaño social.
-*   **Fusion Arena**: Deathmatch FPS en almacenes.
-*   **Karts Multiplayer**: Carreras de karts con amigos.
+
+- **Ambidextro**: Acción táctica con control de armas duales.
+- **Backseat Drivers**: Carreras competitivas con uso de objetos.
+- **Buckshot Roulette**: Estrategia y terror en una mesa de juego mortal.
+- **Content Warning**: Terror cooperativo enfocado en grabar videos virales.
+- **DOOM Classic**: El legendario FPS.
+- **Five Nights at Freddy's (1, 2, 3, 4)**: La saga completa de terror animatrónico.
+- **Hollow Knight: Silksong**: Aventura de acción y plataformas (Metroidvania).
+- **Lethal Company**: Terror cooperativo de recolección en lunas abandonadas.
+- **Mage Arena**: Combate PvP de magos.
+- **R.E.P.O.**: Juego cooperativo de extracción y terror.
+- **Scam Line**: Juego multijugador de engaño social.
+- **Fusion Arena**: Deathmatch FPS en almacenes.
+- **Karts Multiplayer**: Carreras de karts con amigos.
 
 ### Utilidades
-*   **StormLauncher (HMCL Edition)**: Launcher avanzado para Minecraft.
-*   **StormLibraryV2**: Gestor de biblioteca de juegos de StormGamesStudios.
-*   **MultiAI**: Herramienta de productividad con IA.
-*   **PairDrop**: Compartición de archivos sencilla.
+
+- **StormLauncher (HMCL Edition)**: Launcher avanzado para Minecraft.
+- **StormLibraryV2**: Gestor de biblioteca de juegos de StormGamesStudios.
+- **MultiAI**: Herramienta de productividad con IA.
+- **PairDrop**: Compartición de archivos sencilla.
 
 ## ��️ Desinstalación
 
 ### Eliminar Repositorio
+
 Elimina solo la configuración del repositorio del sistema:
 
 ```bash
@@ -77,6 +84,7 @@ curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/re
 ```
 
 ### Eliminar Todo
+
 Elimina el repositorio y todos los paquetes instalados:
 
 ```bash

@@ -33,7 +33,8 @@ if (Test-Path $certPath) {
         Write-Error "ERROR: La contraseña en .env no es válida para el certificado en $certPath"
         exit 1
     }
-} else {
+}
+else {
     Write-Error "ERROR: No se encuentra el certificado en $certPath"
     exit 1
 }

@@ -285,10 +285,10 @@
     "category": "Juegos",
     "icon": "../assets/apps/REPO.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/R.E.P.O. Launcher.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/repo-game/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/sgs-blog-disccussions/releases/latest/download/REPO_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/REPO_Launcher/unins000.exe",
+    "download": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/REPO_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game/unins000.exe",
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si"

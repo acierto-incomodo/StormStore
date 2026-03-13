@@ -28,7 +28,8 @@ git diff $latestTag HEAD -- application > $diffFile 2>$null
 if ((Get-Content $diffFile | Measure-Object -Line).Lines -eq 0) {
     Add-Content $diffFile "No hay cambios en 'application' desde el release $latestTag."
     Write-Host "No se encontraron cambios nuevos en 'application'."
-} else {
+}
+else {
     Write-Host "`n¡Listo! El archivo con los cambios se ha guardado en:`n$diffFile"
 }
 

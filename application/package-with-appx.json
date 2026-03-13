@@ -22,10 +22,7 @@
       "repo": "StormStore"
     },
     "win": {
-      "target": [
-        "nsis",
-        "appx"
-      ],
+      "target": ["nsis", "appx"],
       "icon": "assets/app.ico",
       "cscLink": "C:\\Users\\melio\\Documents\\GitHub\\Certificados\\StormStore\\StormStore.pfx",
       "cscKeyPassword": "${env.CERTIFICATE_PASSWORD}"
@@ -39,9 +36,7 @@
       "publisher": "CN=StormGamesStudios",
       "publisherDisplayName": "StormGamesStudios"
     },
-    "extraResources": [
-      "assets/extraFiles/**"
-    ]
+    "extraResources": ["assets/extraFiles/**"]
   },
   "devDependencies": {
     "electron": "^40.0.0",

@@ -84,10 +84,12 @@ if (process.platform !== "win32") {
 // Registrar protocolo stormstore://
 if (process.defaultApp) {
   if (process.argv.length >= 2) {
-    app.setAsDefaultProtocolClient('stormstore', process.execPath, [path.resolve(process.argv[1])])
+    app.setAsDefaultProtocolClient("stormstore", process.execPath, [
+      path.resolve(process.argv[1]),
+    ]);
   }
 } else {
-  app.setAsDefaultProtocolClient('stormstore')
+  app.setAsDefaultProtocolClient("stormstore");
 }
 
 // =====================================
@@ -331,10 +333,16 @@ function handleProtocolUrl(url) {
       if (installed) {
         runApp(appItem.paths[0], appItem.steam === "si");
       } else {
-        mainWindow.webContents.send('show-toast', `La aplicación '${appItem.name}' no está instalada.`);
+        mainWindow.webContents.send(
+          "show-toast",
+          `La aplicación '${appItem.name}' no está instalada.`,
+        );
       }
     } else {
-      mainWindow.webContents.send('show-toast', `Programa no encontrado con ID: ${id}`);
+      mainWindow.webContents.send(
+        "show-toast",
+        `Programa no encontrado con ID: ${id}`,
+      );
     }
   }
 }
