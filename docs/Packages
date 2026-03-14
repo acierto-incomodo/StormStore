@@ -78,6 +78,26 @@ Description: Herramienta para transferir configuraciones de MyJonCraft SGS
 License: ISC
 Vendor: StormGamesStudios
 
+Package: dev-hub
+Version: 1.0.2
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 305078
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/dev-hub_1.0.2_amd64.deb
+Size: 94051060
+MD5sum: 744069ac11b64d2a0f05a47d4cafc9f4
+SHA1: 7de8d1a5ee6b80892637ec026c4069826df4c3e1
+SHA256: 4cd7790be8e042dc160e2db547fb3e0a4ced3da751ad39849e0a8adcfd9996a1
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/dev-hub
+Description:
+  Development dashboard hub
+License: ISC
+Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
+
 Package: fusionarenalauncher
 Version: 1.1.0
 Architecture: amd64
