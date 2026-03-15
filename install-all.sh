@@ -58,13 +58,16 @@ apt update -y
 # List of all packages to install
 PACKAGES=(
     "cardinal-ai-dualmodel-app"
-    "whatsapp-web"
-    "pairdrop"
+    "cardinal-ai"
+    "clase-web"
     "data-exporter"
-    "multiai"
+    "dev-hub"
     "fusionarenalauncher"
     "kartsmultiplayerlauncher"
-    "cardinal-ai"
+    "multiai"
+    "pairdrop"
+    "stormstore-linux"
+    "whatsapp-web"
 )
 
 print_info "Installing all StormStore applications..."
