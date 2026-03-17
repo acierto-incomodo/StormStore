@@ -169,17 +169,17 @@ License: ISC
 Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
 
 Package: stormstore-linux
-Version: 1.0.1
+Version: 1.1.0
 Architecture: amd64
 Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
-Installed-Size: 296804
+Installed-Size: 296870
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Filename: ./debs/StormStore-Linux.deb
-Size: 91381920
-MD5sum: e6c46551a4690296924920736a408fa0
-SHA1: ea27b635e298777a12dead5ba35adc072c125e9b
-SHA256: fa810e24396a1777c7b8fea1fe8b956feed9e68df281f64bfc27398cde524bac
+Size: 91447576
+MD5sum: 7c85c2da6806b86fe25643d0f6f0d165
+SHA1: c535483d6df62debb16ab31f9e788991e55bc6f0
+SHA256: fd31330759bcfef37e350cc830c61eb274edcac34e94c764a46d90e757f8ac72
 Section: default
 Priority: optional
 Homepage: https://github.com/acierto-incomodo/stormstore-linux
