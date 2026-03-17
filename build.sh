@@ -43,3 +43,9 @@ dpkg-scanpackages ./debs /dev/null > Packages
 gzip -9c Packages > Packages.gz
 
 print_success "Packages.gz generated successfully."
+
+print_info "Copying Packages, Packages.gz, and debs folder to docs/..."
+cp Packages docs/
+cp Packages.gz docs/
+cp -r debs docs/
+print_success "Files and folder copied to docs/."

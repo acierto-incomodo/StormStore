@@ -38,6 +38,26 @@ Description: Aplicación de IA multi-modelo
 License: FREEWARE
 Vendor: StormGamesStudios
 
+Package: cardinal-ai-local
+Version: 1.0.1
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 304305
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/CardinalAI-Local-Setup.deb
+Size: 93204472
+MD5sum: b45ba8b7358040332956a3e9919a2ef5
+SHA1: e368292f3070e407dbadc71f625bbe9b79e8689d
+SHA256: f00c4f7da959a36229cc4c0ffa4c50658c88774fab64bbb86ab4b4afe9f03c5e
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/CardinalAI_WinAgent#readme
+Description:
+  Cliente local de IA con diseño Cardinal para LM Studio
+License: MIT
+Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
+
 Package: clase-web
 Version: 1.0.3
 Architecture: amd64
@@ -169,17 +189,17 @@ License: ISC
 Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
 
 Package: stormstore-linux
-Version: 1.0.2
+Version: 1.1.1
 Architecture: amd64
 Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
-Installed-Size: 322868
+Installed-Size: 296870
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Filename: ./debs/StormStore-Linux.deb
-Size: 117904804
-MD5sum: e805649ceeb9b9924529f50c452489c7
-SHA1: ad9120ee25ea46659e7ed037178d99e3dfa1f5f0
-SHA256: 47386c9d8761b0a81184478309b276389a09cb6555422a9bbb820363b8118a9a
+Size: 91447068
+MD5sum: 1e4f3392145d639182b9c08a90e59ba5
+SHA1: d8f5b264f6d0d28ba9645fa89cc435e4a0208dce
+SHA256: 86522c11388b35a419d6402b999c63079d80fd814c1c87baac7b7f2caa4e7cad
 Section: default
 Priority: optional
 Homepage: https://github.com/acierto-incomodo/stormstore-linux
