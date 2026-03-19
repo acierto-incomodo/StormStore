@@ -243,11 +243,11 @@ print_success "Firewall UFW configurado y activado."
 
 # print_success "config.json de MCSManager creado con la configuración por defecto."
 
-print_header "1️⃣1️⃣ Instalando Repositorio StormStore y Apps"
-print_info "Añadiendo el repositorio APT de StormStore e instalando aplicaciones..."
-print_info "  - CardinalAI, WhatsApp Web, PairDrop, MultiAI, TheShooter, KartsMultiplayer y más."
-curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
-print_success "Repositorio y aplicaciones de StormStore instalados."
+# print_header "1️⃣1️⃣ Instalando Repositorio StormStore y Apps"
+# print_info "Añadiendo el repositorio APT de StormStore e instalando aplicaciones..."
+# print_info "  - CardinalAI, WhatsApp Web, PairDrop, MultiAI, TheShooter, KartsMultiplayer y más."
+# curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
+# print_success "Repositorio y aplicaciones de StormStore instalados."
 
 # print_header "1️⃣2️⃣ Creando servicio de auto-actualización"
 # print_info "Creando un script y un servicio systemd para actualizar el sistema en cada reinicio."

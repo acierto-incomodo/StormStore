@@ -50,6 +50,7 @@ print_option "4" "Instalar MCSManager"
 print_option "5" "Instalar PairDrop Server"
 print_option "6" "Instalar Playit (APT)"
 print_option "7" "Instalar Dependencias Extra"
+print_option "8" "Actualizar Menu"
 print_option "reboot" "Reiniciar Sistema"
 print_option "poweroff" "Apagar Sistema"
 print_option "update" "Actualizar Sistema (Full Upgrade)"
@@ -58,7 +59,7 @@ echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-7 + extra]: " option
+read -p "Selecciona una opción [1-8 + extra]: " option
 
 case $option in
     1)
@@ -142,6 +143,14 @@ case $option in
             chmod +x dependencias-extra.sh
             ./dependencias-extra.sh
         fi
+        ;;
+    8)
+        print_header "🔄 Actualizando Menu..."
+        rm -f ./menu.sh
+        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
+        chmod +x menu.sh
+        ./menu.sh
+        echo "Menu actualizado correctamente."
         ;;
     reboot)
         print_header "🔄 Reiniciando el sistema..."

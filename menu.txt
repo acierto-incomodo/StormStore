@@ -1,0 +1,5 @@
+su -
+rm ./menu.sh
+wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
+chmod +x menu.sh
+./menu.sh
