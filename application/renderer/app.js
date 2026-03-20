@@ -283,7 +283,46 @@ function renderApps(category) {
 
         actions.appendChild(topRow);
 
-        // UBICACIÓN + SHARE
+        // SHARE + WEB (Fila intermedia)
+        const middleRow = document.createElement("div");
+        middleRow.style.display = "flex";
+        middleRow.style.gap = "8px";
+        middleRow.style.width = "100%";
+
+        if (app["share-compatibility"] === "si") {
+          shareBtn = document.createElement("button");
+          shareBtn.className = "md-btn md-btn-tonal";
+          shareBtn.style.flex = "1";
+          shareBtn.innerHTML =
+            '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
+          shareBtn.onclick = (e) => {
+            e.stopPropagation();
+            playSound("others.mp3");
+            navigator.clipboard.writeText(
+              `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
+            );
+            showToast("Enlace copiado al portapapeles");
+          };
+          if (isUninstalling) shareBtn.style.display = "none";
+          middleRow.appendChild(shareBtn);
+        }
+
+        const webBtn = document.createElement("button");
+        webBtn.className = "md-btn md-btn-tonal";
+        webBtn.style.flex = "1";
+        webBtn.innerHTML =
+          '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
+        webBtn.onclick = (e) => {
+          e.stopPropagation();
+          playSound("others.mp3");
+          window.open(`https://stormstore.vercel.app/app/${app.id}`);
+        };
+        if (isUninstalling) webBtn.style.display = "none";
+        middleRow.appendChild(webBtn);
+
+        if (middleRow.hasChildNodes()) actions.appendChild(middleRow);
+
+        // UBICACIÓN (Fila inferior)
         const bottomRow = document.createElement("div");
         bottomRow.style.display = "flex";
         bottomRow.style.gap = "8px";
@@ -300,23 +339,6 @@ function renderApps(category) {
         };
         if (isUninstalling) locBtn.style.display = "none";
         bottomRow.appendChild(locBtn);
-
-        if (app["share-compatibility"] === "si") {
-          shareBtn = document.createElement("button");
-          shareBtn.className = "md-btn md-btn-tonal";
-          shareBtn.innerHTML =
-            '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
-          shareBtn.onclick = (e) => {
-            e.stopPropagation();
-            playSound("others.mp3");
-            navigator.clipboard.writeText(
-              `Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`,
-            );
-            showToast("Enlace copiado al portapapeles");
-          };
-          if (isUninstalling) shareBtn.style.display = "none";
-          bottomRow.appendChild(shareBtn);
-        }
 
         actions.appendChild(bottomRow);
       } else {
@@ -373,18 +395,30 @@ function renderApps(category) {
         if (app["share-compatibility"] === "si") {
           const shareBtn = document.createElement("button");
           shareBtn.className = "md-btn md-btn-tonal";
+          shareBtn.style.padding = "10px 12px";
           shareBtn.innerHTML =
             '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
           shareBtn.onclick = (e) => {
             e.stopPropagation();
             playSound("others.mp3");
             navigator.clipboard.writeText(
-              `Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`,
+              `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
             );
             showToast("Enlace copiado al portapapeles");
           };
           installRow.appendChild(shareBtn);
         }
+
+        const webBtn = document.createElement("button");
+        webBtn.className = "md-btn md-btn-tonal";
+        webBtn.style.padding = "10px 12px";
+        webBtn.innerHTML = '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
+        webBtn.onclick = (e) => {
+          e.stopPropagation();
+          playSound("others.mp3");
+          window.open(`https://stormstore.vercel.app/app/${app.id}`);
+        };
+        installRow.appendChild(webBtn);
 
         actions.appendChild(installRow);
       }

@@ -95,7 +95,7 @@ if (process.defaultApp) {
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.autoDownload = false;
+autoUpdater.autoDownload = true;
 autoUpdater.allowDowngrade = true;
 autoUpdater.checkForUpdates();
 
@@ -335,8 +335,16 @@ function handleProtocolUrl(url) {
       } else {
         mainWindow.webContents.send(
           "show-toast",
-          `La aplicación '${appItem.name}' no está instalada.`,
+          `La aplicación '${appItem.name}' no está instalada. Iniciando instalación...`,
         );
+        installAppLogic(appItem)
+          .then(() => {
+            mainWindow.webContents.send("show-toast", `Instalación de '${appItem.name}' completada.`);
+          })
+          .catch((err) => {
+            console.error(err);
+            mainWindow.webContents.send("show-toast", `Error instalando '${appItem.name}'.`);
+          });
       }
     } else {
       mainWindow.webContents.send(
@@ -546,10 +554,8 @@ ipcMain.handle("get-epic-games", async () => {
   }
 });
 
-ipcMain.handle("install-app", async (_, appData) => {
-  // ---------------------------------------------------------
+async function installAppLogic(appData) {
   // 1. Pre-instalación (Ej: Runtimes .NET, VC++, etc.)
-  // ---------------------------------------------------------
   if (appData.preInstall && Array.isArray(appData.preInstall)) {
     for (const item of appData.preInstall) {
       // Resolvemos la ruta relativa (asumiendo base en renderer como los iconos: ../assets/...)
@@ -680,6 +686,10 @@ ipcMain.handle("install-app", async (_, appData) => {
       reject(err);
     }
   });
+}
+
+ipcMain.handle("install-app", async (_, appData) => {
+  return await installAppLogic(appData);
 });
 
 ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {

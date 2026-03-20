@@ -337,10 +337,24 @@
             shareBtn.onclick = () => {
               playSound("others.mp3");
               navigator.clipboard.writeText(
-                `Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`,
+                `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
               );
               showToast("Enlace copiado al portapapeles");
             };
+          }
+
+          // Botón Web
+          const webBtn = document.createElement("button");
+          webBtn.className = "md-btn md-btn-tonal";
+          webBtn.style.padding = "12px 16px";
+          webBtn.innerHTML =
+            '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
+          webBtn.onclick = () => {
+            playSound("others.mp3");
+            window.open(`https://stormstore.vercel.app/app/${app.id}`);
+          };
+          if (app["share-compatibility"] !== "si") {
+            webBtn.style.marginLeft = "auto";
           }
 
           // Botón Desinstalar
@@ -370,6 +384,7 @@
             if (!isUninstalling) {
               actionsDiv.append(openBtn, locBtn, uninstallBtn);
               if (shareBtn) actionsDiv.append(shareBtn);
+              actionsDiv.append(webBtn);
             } else {
               actionsDiv.append(uninstallBtn);
             }
@@ -454,12 +469,26 @@
             shareBtn.onclick = () => {
               playSound("others.mp3");
               navigator.clipboard.writeText(
-                `Juega conmigo a https://stormgamesstudios.vercel.app/juegos/juegos-url/${app.id}/play`,
+                `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
               );
               showToast("Enlace copiado al portapapeles");
             };
             actionsDiv.appendChild(shareBtn);
           }
+
+          const webBtn = document.createElement("button");
+          webBtn.className = "md-btn md-btn-tonal";
+          webBtn.style.padding = "12px 16px";
+          webBtn.innerHTML =
+            '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
+          webBtn.onclick = () => {
+            playSound("others.mp3");
+            window.open(`https://stormstore.vercel.app/app/${app.id}`);
+          };
+          if (app["share-compatibility"] !== "si") {
+            webBtn.style.marginLeft = "auto";
+          }
+          actionsDiv.appendChild(webBtn);
         }
 
         infoDiv.append(desc);
@@ -522,7 +551,7 @@
         trailerContainer.style.marginTop = "20px";
         trailerContainer.style.width = "100%";
 
-        const trailerUrl = `https://cdn.jsdelivr.net/gh/acierto-incomodo/StormStore@main/application/assets/media/trailers/${app.id}.mp4`;
+        const trailerUrl = `https://acierto-incomodo.github.io/StormStore/assets/trailers/${app.id}.mp4`;
 
         if (!navigator.onLine) {
           trailerContainer.style.height = "200px";

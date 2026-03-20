@@ -10,7 +10,7 @@
     "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "ambidextro",
@@ -235,7 +235,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "modpack-installer",
@@ -250,7 +250,7 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/Modpack Installer/Uninstall Modpack Installer.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "multiai",
@@ -263,20 +263,35 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
-    "category": ["Utilidades"],
+    "category": "Utilidades",
     "icon": "../assets/apps/pairdrop.png",
     "paths": ["%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
+  },
+  {
+    "id": "panicore",
+    "name": "Panicore",
+    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/panicore.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Panicore/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/panicore/releases/latest/download/Panicore_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Panicore/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
+    "share-compatibility": "si"
   },
   {
     "id": "repo",
@@ -319,7 +334,7 @@
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "stormlibraryv2",
@@ -340,7 +355,7 @@
     "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   },
   {
     "id": "stormpanel-app",
@@ -355,6 +370,6 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/StormPanel APP/Uninstall StormPanel APP.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "no"
+    "share-compatibility": "si"
   }
 ]
