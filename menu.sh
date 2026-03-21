@@ -39,7 +39,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.0.10)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.1.0)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -51,6 +51,7 @@ print_option "5" "Instalar PairDrop Server"
 print_option "6" "Instalar Playit (APT)"
 print_option "7" "Instalar Dependencias Extra"
 print_option "8" "Actualizar Menu"
+print_option "9" "Instalar Gitea (Git Server Local)"
 print_option "reboot" "Reiniciar Sistema"
 print_option "poweroff" "Apagar Sistema"
 print_option "update" "Actualizar Sistema (Full Upgrade)"
@@ -59,7 +60,7 @@ echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-8 + extra]: " option
+read -p "Selecciona una opción [1-9 + extra]: " option
 
 case $option in
     1)
@@ -151,6 +152,18 @@ case $option in
         chmod +x menu.sh
         ./menu.sh
         echo "Menu actualizado correctamente."
+        ;;
+    9)
+        print_header "🎮 Instalando Gitea (Git Server Local)..."
+        if [ -f "./install-gitea.sh" ]; then
+            ./install-gitea.sh
+        else
+            printf "${C_RED}[✖] No se encontró el archivo install-gitea.sh en este directorio.${C_RESET}\n"
+            printf "${C_YELLOW}[i] Intentando descargarlo...${C_RESET}\n"
+            wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-gitea.sh
+            chmod +x install-gitea.sh
+            ./install-gitea.sh
+        fi
         ;;
     reboot)
         print_header "🔄 Reiniciando el sistema..."
