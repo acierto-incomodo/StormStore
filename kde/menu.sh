@@ -37,7 +37,7 @@ cat << "EOF"
  | . \| |__| |  __|  | |  | |  __/ | | | |_| |
  |_|\_\_____/|___|   |_|  |_|\___|_| |_|\__,_|
 
- v1.0.1 - By StormGamesStudios
+ v1.0.2 - By StormGamesStudios
 EOF
 printf "${C_RESET}By StormGamesStudios\n\n"
 
@@ -66,7 +66,6 @@ case $option in
       chmod +x "$INSTALL_DIR/install-kde.sh"
       bash "$INSTALL_DIR/install-kde.sh"
     fi
-    exec "$INSTALL_DIR/menu"
     ;;
   2)
     print_header "Ejecutando system-update..."
