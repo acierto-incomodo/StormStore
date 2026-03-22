@@ -1,0 +1,1 @@
+curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/kde/kde-full-installer.sh | sudo bash
