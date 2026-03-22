@@ -2,11 +2,9 @@
 
 set -e
 
-# exigir sudo
+# Re-ejecutar el script con sudo si no es root
 if [ "$EUID" -ne 0 ]; then
-  echo "Ejecuta este script con:"
-  echo "sudo ./install-kde.sh"
-  exit 1
+  exec sudo "$0" "$@"
 fi
 
 USER_HOME=$(eval echo ~${SUDO_USER})
