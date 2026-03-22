@@ -109,6 +109,10 @@ echo "Instalando Tailscale..."
 
 curl -fsSL https://tailscale.com/install.sh | sh
 
+echo "Instalando snap mc-installer..."
+
+snap install mc-installer
+
 echo "Instalando utilidades KDE..."
 
 apt install -y \
