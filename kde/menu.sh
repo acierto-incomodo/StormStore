@@ -37,7 +37,7 @@ cat << "EOF"
  | . \| |__| |  __|  | |  | |  __/ | | | |_| |
  |_|\_\_____/|___|   |_|  |_|\___|_| |_|\__,_|
 
- v1.0.4 - By StormGamesStudios
+ v1.0.5 - By StormGamesStudios
 EOF
 printf "${C_RESET}By StormGamesStudios\n\n"
 
