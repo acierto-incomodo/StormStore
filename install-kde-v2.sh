@@ -5,7 +5,7 @@ set -e
 # Comprobar si se ejecuta con sudo
 if [ "$EUID" -ne 0 ]; then
   echo "Este script debe ejecutarse con sudo."
-  echo "Usa: sudo ./install.sh"
+  echo "Usa: sudo ./install-kde-v2.sh"
   exit 1
 fi
 

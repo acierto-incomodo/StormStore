@@ -5,7 +5,7 @@ set -e
 # exigir sudo
 if [ "$EUID" -ne 0 ]; then
   echo "Ejecuta este script con:"
-  echo "sudo ./install.sh"
+  echo "sudo ./install-kde.sh"
   exit 1
 fi
 
@@ -180,6 +180,17 @@ rm pear.deb
 echo "Instalando StormStore..."
 
 curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | bash
+
+echo "Instalando Tesseract OCR (extracción de texto en capturas de pantalla)..."
+
+apt install -y \
+  tesseract-ocr \
+  tesseract-ocr-eng \
+  tesseract-ocr-spa \
+  tesseract-ocr-eus
+
+echo "  -> Idiomas instalados: inglés, español, euskera"
+echo "  -> Reinicia Spectacle para que aparezca el botón de extracción de texto"
 
 echo "=============================="
 echo " Instalación completada"

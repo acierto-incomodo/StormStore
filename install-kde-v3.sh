@@ -5,7 +5,7 @@ set -e
 # exigir sudo
 if [ "$EUID" -ne 0 ]; then
   echo "Ejecuta este script con:"
-  echo "sudo ./install.sh"
+  echo "sudo ./install-kde-v3.sh"
   exit 1
 fi
 
