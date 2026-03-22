@@ -37,7 +37,7 @@ cat << "EOF"
  | . \| |__| |  __|  | |  | |  __/ | | | |_| |
  |_|\_\_____/|___|   |_|  |_|\___|_| |_|\__,_|
 
- v1.0.2 - By StormGamesStudios
+ v1.0.3 - By StormGamesStudios
 EOF
 printf "${C_RESET}By StormGamesStudios\n\n"
 
@@ -48,6 +48,7 @@ print_option "2" "Ejecutar system-update"
 print_option "3" "Ejecutar theme-installer-kde.sh"
 print_option "4" "Instalar Vencord"
 print_option "5" "Actualizar menú"
+print_option "6" "Activar Tailscale"
 print_option "exit" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
@@ -58,37 +59,28 @@ read -p "Selecciona una opción: " option
 case $option in
   1)
     print_header "Ejecutando install-kde.sh..."
-    if [ -f "$INSTALL_DIR/install-kde.sh" ]; then
-      bash "$INSTALL_DIR/install-kde.sh"
-    else
-      printf "${C_YELLOW}[i] Descargando install-kde.sh...${C_RESET}\n"
-      wget -q --show-progress "$BASE_URL/install-kde.sh" -O "$INSTALL_DIR/install-kde.sh"
-      chmod +x "$INSTALL_DIR/install-kde.sh"
-      bash "$INSTALL_DIR/install-kde.sh"
-    fi
+    rm -f "$INSTALL_DIR/install-kde.sh"
+    printf "${C_YELLOW}[i] Descargando install-kde.sh...${C_RESET}\n"
+    wget -q --show-progress "$BASE_URL/install-kde.sh" -O "$INSTALL_DIR/install-kde.sh"
+    chmod +x "$INSTALL_DIR/install-kde.sh"
+    bash "$INSTALL_DIR/install-kde.sh"
     ;;
   2)
     print_header "Ejecutando system-update..."
-    if [ -f "$INSTALL_DIR/system-update" ]; then
-      bash "$INSTALL_DIR/system-update"
-    else
-      printf "${C_YELLOW}[i] Descargando system-update...${C_RESET}\n"
-      wget -q --show-progress "$BASE_URL/system-update.sh" -O "$INSTALL_DIR/system-update"
-      chmod +x "$INSTALL_DIR/system-update"
-      bash "$INSTALL_DIR/system-update"
-    fi
+    rm -f "$INSTALL_DIR/system-update"
+    printf "${C_YELLOW}[i] Descargando system-update...${C_RESET}\n"
+    wget -q --show-progress "$BASE_URL/system-update.sh" -O "$INSTALL_DIR/system-update"
+    chmod +x "$INSTALL_DIR/system-update"
+    bash "$INSTALL_DIR/system-update"
     exec "$INSTALL_DIR/menu"
     ;;
   3)
     print_header "Ejecutando theme-installer-kde.sh..."
-    if [ -f "$INSTALL_DIR/theme-installer-kde.sh" ]; then
-      bash "$INSTALL_DIR/theme-installer-kde.sh"
-    else
-      printf "${C_YELLOW}[i] Descargando theme-installer-kde.sh...${C_RESET}\n"
-      wget -q --show-progress "$BASE_URL/theme-installer-kde.sh" -O "$INSTALL_DIR/theme-installer-kde.sh"
-      chmod +x "$INSTALL_DIR/theme-installer-kde.sh"
-      bash "$INSTALL_DIR/theme-installer-kde.sh"
-    fi
+    rm -f "$INSTALL_DIR/theme-installer-kde.sh"
+    printf "${C_YELLOW}[i] Descargando theme-installer-kde.sh...${C_RESET}\n"
+    wget -q --show-progress "$BASE_URL/theme-installer-kde.sh" -O "$INSTALL_DIR/theme-installer-kde.sh"
+    chmod +x "$INSTALL_DIR/theme-installer-kde.sh"
+    bash "$INSTALL_DIR/theme-installer-kde.sh"
     exec "$INSTALL_DIR/menu"
     ;;
   4)
@@ -105,6 +97,12 @@ case $option in
     wget -q --show-progress "$BASE_URL/system-update.sh" -O "$INSTALL_DIR/system-update"
     chmod +x "$INSTALL_DIR/system-update"
     printf "${C_GREEN}[✔] Menú y system-update actualizados.${C_RESET}\n"
+    exec "$INSTALL_DIR/menu"
+    ;;
+  6)
+    print_header "Activando Tailscale..."
+    tailscale up
+    printf "${C_GREEN}[✔] Tailscale activado.${C_RESET}\n"
     exec "$INSTALL_DIR/menu"
     ;;
   exit)
