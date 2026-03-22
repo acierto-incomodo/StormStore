@@ -17,7 +17,7 @@ echo " KDE Neon Developer Bootstrap "
 echo "=============================="
 
 echo "Actualizando sistema..."
-apt update .y
+apt update -y
 apt full-upgrade -y
 
 echo "Instalando herramientas básicas..."
