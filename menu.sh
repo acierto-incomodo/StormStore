@@ -87,6 +87,7 @@ case $option in
             chmod +x update-debian.sh
             ./update-debian.sh
         fi
+        ./menu.sh
         ;;
     3)
         print_header "Eliminando StormStore..."
@@ -99,6 +100,7 @@ case $option in
             chmod +x remove-all.sh
             ./remove-all.sh
         fi
+        ./menu.sh
         ;;
     4)
         print_header "🎮 Instalando MCSManager..."
@@ -111,6 +113,7 @@ case $option in
             chmod +x install-mcsmanager.sh
             ./install-mcsmanager.sh
         fi
+        ./menu.sh
         ;;
     5)
         print_header "💧 Instalando PairDrop Server..."
@@ -123,6 +126,7 @@ case $option in
             chmod +x install-pairdrop.sh
             ./install-pairdrop.sh
         fi
+        ./menu.sh
         ;;
     6)
         print_header "🌍 Instalando Playit..."
@@ -133,6 +137,7 @@ case $option in
         systemctl enable playit
         systemctl start playit
         echo "Playit instalado correctamente."
+        ./menu.sh
         ;;
     7)
         print_header "🔄 Instalando dependencias extra..."
@@ -145,14 +150,15 @@ case $option in
             chmod +x dependencias-extra.sh
             ./dependencias-extra.sh
         fi
+        ./menu.sh
         ;;
     8)
         print_header "🔄 Actualizando Menu..."
         rm -f ./menu.sh
         wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
         chmod +x menu.sh
-        ./menu.sh
         echo "Menu actualizado correctamente."
+        ./menu.sh
         ;;
     9)
         print_header "🎮 Instalando Gitea (Git Server Local)..."
@@ -165,6 +171,7 @@ case $option in
             chmod +x install-gitea.sh
             ./install-gitea.sh
         fi
+        ./menu.sh
         ;;
     10)
         print_header "Activando Tailscale..."
@@ -172,10 +179,12 @@ case $option in
         printf "${C_GREEN}[✔] Tailscale activado.${C_RESET}\n"
         exec "$INSTALL_DIR/menu"
         ;;
+        ./menu.sh
     11)
         print_header "Activando SSH en Tailscale..."
         tailscale set --ssh
         printf "${C_GREEN}[✔] Tailscale SSH activado.${C_RESET}\n"
+        ./menu.sh
         ;;
     reboot)
         print_header "🔄 Reiniciando el sistema..."
