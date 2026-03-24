@@ -39,7 +39,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.1.2)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.2.0)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -61,7 +61,7 @@ echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-9 + extra]: " option
+read -p "Selecciona una opción [1-10 + extra]: " option
 
 case $option in
     1)
