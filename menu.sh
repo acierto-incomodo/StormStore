@@ -39,7 +39,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.2.0)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.2.1)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -53,6 +53,7 @@ print_option "7" "Instalar Dependencias Extra"
 print_option "8" "Actualizar Menu"
 print_option "9" "Instalar Gitea (Git Server Local)"
 print_option "10" "Activar Tailscale"
+print_option "11" "Activar SSH en Tailscale"
 print_option "reboot" "Reiniciar Sistema"
 print_option "poweroff" "Apagar Sistema"
 print_option "update" "Actualizar Sistema (Full Upgrade)"
@@ -61,7 +62,7 @@ echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
 echo ""
 
-read -p "Selecciona una opción [1-10 + extra]: " option
+read -p "Selecciona una opción [1-11 + extra]: " option
 
 case $option in
     1)
@@ -177,7 +178,6 @@ case $option in
         print_header "Activando Tailscale..."
         tailscale up
         printf "${C_GREEN}[✔] Tailscale activado.${C_RESET}\n"
-        exec "$INSTALL_DIR/menu"
         ;;
         ./menu.sh
     11)
