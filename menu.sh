@@ -39,7 +39,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.2.1)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.2.2)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -178,8 +178,8 @@ case $option in
         print_header "Activando Tailscale..."
         tailscale up
         printf "${C_GREEN}[✔] Tailscale activado.${C_RESET}\n"
-        ;;
         ./menu.sh
+        ;;
     11)
         print_header "Activando SSH en Tailscale..."
         tailscale set --ssh
