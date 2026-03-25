@@ -39,7 +39,7 @@ cat << "EOF"
  | || | | \__ \ || (_| | | |  __/ |                                       
 |___|_| |_|___/\__\__,_|_|_|\___|_|                                       
 EOF
-printf "${C_RESET}By StormGamesStudios v(1.2.2)\n\n"
+printf "${C_RESET}By StormGamesStudios v(1.2.3)\n\n"
 
 print_header "MENÚ PRINCIPAL"
 echo ""
@@ -156,7 +156,7 @@ case $option in
     8)
         print_header "🔄 Actualizando Menu..."
         rm -f ./menu.sh
-        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
+        wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
         chmod +x menu.sh
         echo "Menu actualizado correctamente."
         ./menu.sh
@@ -211,7 +211,7 @@ case $option in
 
         print_header "Actualizando Menu..."
         rm -f ./menu.sh
-        wget -q --show-progress https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
+        wget https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/menu.sh
         chmod +x menu.sh
         ./menu.sh
         ;;
