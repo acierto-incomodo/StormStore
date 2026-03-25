@@ -37,7 +37,7 @@ cat << "EOF"
  | . \| |__| |  __|  | |  | |  __/ | | | |_| |
  |_|\_\_____/|___|   |_|  |_|\___|_| |_|\__,_|
 
- v1.0.6 - By StormGamesStudios
+ v1.0.7 - By StormGamesStudios
 EOF
 printf "${C_RESET}By StormGamesStudios\n\n"
 
@@ -49,6 +49,7 @@ print_option "3" "Ejecutar theme-installer-kde.sh"
 print_option "4" "Instalar Vencord"
 print_option "5" "Actualizar menú"
 print_option "6" "Activar Tailscale"
+print_option "7" "Actualizar NPM Global"
 print_option "exit" "Salir"
 echo ""
 printf "${C_CYAN}=====================================================${C_RESET}\n"
@@ -103,6 +104,12 @@ case $option in
     print_header "Activando Tailscale..."
     tailscale up
     printf "${C_GREEN}[✔] Tailscale activado.${C_RESET}\n"
+    exec "$INSTALL_DIR/menu"
+    ;;
+  7)
+    print_header "Actualizando NPM Global..."
+    sudo npm update -g
+    printf "${C_GREEN}[✔] NPM Global actualizado.${C_RESET}\n"
     exec "$INSTALL_DIR/menu"
     ;;
   exit)
