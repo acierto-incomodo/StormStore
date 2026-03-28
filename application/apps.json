@@ -294,6 +294,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "peak",
+    "name": "PEAK",
+    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/peak.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/PEAK/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/peak/releases/latest/download/PEAK_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PEAK/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
+    "share-compatibility": "si"
+  },
+  {
     "id": "repo",
     "name": "R.E.P.O.",
     "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
