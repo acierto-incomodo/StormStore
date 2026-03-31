@@ -517,7 +517,7 @@ body.offline .requires-wifi button {
 }
 
 /* #open-info usa un SVG blanco por defecto, necesita un filtro diferente para verse gris claro en el footer */
-#open-info img {
+#open-info img, #open-settings img {
   filter: brightness(0.8);
 }
 

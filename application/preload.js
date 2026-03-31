@@ -36,4 +36,7 @@ contextBridge.exposeInMainWorld("api", {
   quitApp: () => ipcRenderer.send("app-quit"),
   setDiscordActivity: (activity) =>
     ipcRenderer.send("set-discord-activity", activity),
+  getSettings: () => ipcRenderer.invoke("get-settings"),
+  saveSettings: (settings) => ipcRenderer.send("save-settings", settings),
+  launchApp: () => ipcRenderer.send("launch-app"),
 });

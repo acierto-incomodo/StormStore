@@ -67,6 +67,9 @@
           <button id="open-info">
             <img src="../assets/icons/info.svg" alt="Información" />
           </button>
+          <button id="open-settings">
+            <img src="../assets/icons/settings.svg" alt="Ajustes" />
+          </button>
         </div>
       </div>
     </aside>
@@ -204,6 +207,11 @@
       // Abrir la página de información
       document.getElementById("open-info").addEventListener("click", () => {
         window.location.href = "info.html";
+      });
+
+      // Abrir la página de ajustes
+      document.getElementById("open-settings").addEventListener("click", () => {
+        window.location.href = "settings.html";
       });
 
       // Lógica del Modal de Fuentes

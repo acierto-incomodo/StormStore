@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.2.25",
+  "version": "1.3.0",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -56,7 +56,8 @@
       "!assets/apps-new-quality/**/*",
       "!assets/apps-old/**/*",
       "!assets/apps-original/**/*",
-      "!assets/apps-to-make/**/*"
+      "!assets/apps-to-make/**/*",
+      "settings.json"
     ],
     "extraResources": [
       "assets/extraFiles/**"

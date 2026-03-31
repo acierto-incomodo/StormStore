@@ -6,6 +6,8 @@ const {
   session,
   nativeTheme,
   dialog,
+  Tray,
+  Menu,
 } = require("electron");
 const path = require("path");
 const fs = require("fs");
@@ -20,6 +22,8 @@ const apps = require("./apps.json");
 
 // Variables globales
 let mainWindow;
+let updaterWindow;
+let tray;
 let updateInfo = null;
 
 // =====================================
@@ -165,7 +169,39 @@ autoUpdater.on("error", (err) => {
 // -----------------------------
 // Ventana principal
 // -----------------------------
-function createWindow() {
+function createUpdaterWindow() {
+  updaterWindow = new BrowserWindow({
+    width: 300,
+    height: 400,
+    frame: false,
+    resizable: false,
+    transparent: true,
+    alwaysOnTop: true,
+    center: true,
+    icon: path.join(__dirname, "assets/app.ico"),
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      contextIsolation: true,
+    },
+  });
+
+  updaterWindow.loadFile(path.join(__dirname, "renderer/updater.html"));
+}
+
+function createTray() {
+  if (tray) return;
+  tray = new Tray(path.join(__dirname, "assets/app.ico"));
+  const contextMenu = Menu.buildFromTemplate([
+    { label: "Abrir StormStore", click: () => { if (mainWindow) mainWindow.show(); } },
+    { type: "separator" },
+    { label: "Salir", click: () => app.quit() },
+  ]);
+  tray.setToolTip("StormStore");
+  tray.setContextMenu(contextMenu);
+  tray.on("double-click", () => { if (mainWindow) mainWindow.show(); });
+}
+
+function createWindow(show = true) {
   const win = new BrowserWindow({
     width: 1226,
     height: 750,
@@ -174,6 +210,7 @@ function createWindow() {
     backgroundColor: "#00000000",
     frame: false,
     backgroundMaterial: "mica",
+    show: show,
     autoHideMenuBar: true,
     icon: path.join(__dirname, "assets/app.ico"),
     webPreferences: {
@@ -193,10 +230,18 @@ function createWindow() {
   );
 
   if (startInBigPicture) {
-    win.setFullScreen(true);
-  } else {
+    if (show) win.setFullScreen(true);
+  } else if (show) {
     win.maximize();
   }
+
+  win.on("close", (event) => {
+    // Si hay Tray, minimizamos a la bandeja en lugar de cerrar
+    if (tray) {
+      event.preventDefault();
+      win.hide();
+    }
+  });
 
   win.on("maximize", () => {
     win.webContents.send("window-maximized");
@@ -210,6 +255,21 @@ function createWindow() {
     shell.openExternal(url);
     return { action: "deny" };
   });
+}
+
+// -----------------------------
+// Ajustes
+// -----------------------------
+function loadSettings() {
+  const settingsPath = path.join(app.getPath("userData"), "settings.json");
+  try {
+    if (fs.existsSync(settingsPath)) {
+      return JSON.parse(fs.readFileSync(settingsPath, "utf-8"));
+    }
+  } catch (e) {
+    console.error("Error al cargar ajustes:", e);
+  }
+  return { auto_updates: true, start_with_windows: true, start_minimized: true };
 }
 
 // -----------------------------
@@ -827,6 +887,35 @@ ipcMain.on("set-discord-activity", (event, activity) => {
   setActivity();
 });
 
+ipcMain.handle("get-settings", () => {
+  return loadSettings();
+});
+
+ipcMain.on("save-settings", (event, settings) => {
+  const settingsPath = path.join(app.getPath("userData"), "settings.json");
+  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
+  
+  // Configurar inicio con Windows
+  app.setLoginItemSettings({
+    openAtLogin: settings.start_with_windows,
+    path: app.getPath("exe"),
+    args: ["--startup"]
+  });
+});
+
+ipcMain.on("launch-app", () => {
+  if (updaterWindow) {
+    updaterWindow.close();
+    updaterWindow = null;
+  }
+  
+  const settings = loadSettings();
+  const isStartup = process.argv.includes("--startup");
+  const shouldShow = !(settings.start_minimized && isStartup);
+  
+  createWindow(shouldShow);
+});
+
 // =====================================
 // FIN MANEJO DE ACTUALIZACIONES
 // =====================================
@@ -853,8 +942,12 @@ if (!gotLock) {
   });
 
   app.whenReady().then(() => {
+    const settings = loadSettings();
+    const isStartup = process.argv.includes("--startup");
+
     // Forzar el tema oscuro para toda la aplicación
     nativeTheme.themeSource = "dark";
+    
     // Permisos para WebHID
     session.defaultSession.setDevicePermissionHandler((details) => {
       if (details.deviceType === "hid" && details.origin === "file://") {
@@ -863,7 +956,15 @@ if (!gotLock) {
       return false;
     });
 
-    createWindow();
+    createTray();
+
+    if (settings.auto_updates && isStartup) {
+      createUpdaterWindow();
+    } else {
+      const shouldShow = !(settings.start_minimized && isStartup);
+      createWindow(shouldShow);
+    }
+
     const url = process.argv.find((arg) => arg.startsWith("stormstore://"));
     if (url) handleProtocolUrl(url);
   });

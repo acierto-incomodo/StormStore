@@ -3,4 +3,4 @@
 3) Nuevos sonidos
 4) Sonidos para el modo StormVortex
 5) Sistema de actualizaciones
-6) Iniciar automaticamente un .exe a parte para que actualize el programa al iniciar Windows
+6) Iniciar automaticamente un .exe a parte para que actualize el programa al iniciar Windows (Interfaz de ajustes lista)
