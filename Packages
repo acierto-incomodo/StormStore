@@ -188,6 +188,24 @@ Description: Cliente no oficial de PairDrop APP
 License: ISC
 Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
 
+Package: stormpanel-app
+Version: 1.2.8
+Architecture: amd64
+Maintainer: StormGamesStudios <meliodas.aitor@gmail.com>
+Installed-Size: 296892
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Filename: ./debs/StormPanel-APP-Setup-1.2.8.deb
+Size: 91599920
+MD5sum: 76cdab255e316b64b09c1bcfdc331bf4
+SHA1: fdd04fd841c7b76b2ee57c0c17d6b332d44979a1
+SHA256: a98a9522b1d67ed54c382ff7463d40b524f394f7c956b5724877017754809495
+Section: default
+Priority: optional
+Homepage: https://github.com/acierto-incomodo/StormPanel-App#readme
+License: Apache-2.0
+Vendor: StormGamesStudios <meliodas.aitor@gmail.com>
+
 Package: stormstore-linux
 Version: 1.1.1
 Architecture: amd64
