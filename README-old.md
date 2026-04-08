@@ -11,7 +11,15 @@
 Para añadir el repositorio a tu sistema:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/stormstore-linux-apt/main/install-repo.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install.sh | sudo bash
+```
+
+### Instalar Repositorio y Todo el Software
+
+Para instalar el repositorio y descargar automáticamente todos los paquetes disponibles:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/install-all.sh | sudo bash
 ```
 
 ## 🛠️ Menú de Gestión
@@ -72,7 +80,15 @@ Esta sección contiene software **exclusivo para Windows**. Para acceder a este 
 Elimina solo la configuración del repositorio del sistema:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/stormstore-linux-apt/main/uninstall-repo.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/remove.sh | sudo bash
+```
+
+### Eliminar Todo
+
+Elimina el repositorio y todos los paquetes instalados:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/acierto-incomodo/StormStore/main/remove-all.sh | sudo bash
 ```
 
 <br>
