@@ -6,7 +6,7 @@
     "category": "Aplicaciones",
     "icon": "../assets/apps/stormstore.png",
     "paths": ["%appdata%/StormGamesStudios/StormStore/StormStore.exe"],
-    "download": "https://github.com/acierto-incomodo/stormstore/releases/latest/download/StormStore_Launcher_Installer.exe",
+    "download": "https://github.com/acierto-incomodo/StormStore/releases/latest/download/StormStore-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
     "steam": "no",
     "wifi": "no",
