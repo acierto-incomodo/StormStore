@@ -103,6 +103,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "fastfood",
+    "name": "Fast Food Simulator",
+    "description": "Fast Food Simulator es un juego de simulación donde gestionas tu propio restaurante de comida rápida. Tienes que tomar pedidos, cocinar, servir y mantener el local funcionando. Puedes jugar solo o con amigos, y el objetivo es trabajar rápido, organizarte bien y hacer crecer tu negocio mientras manejas el caos del restaurante.",
+    "category": "Juegos",
+    "icon": "../assets/apps/fastfood.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/fastfood/releases/latest/download/FastFood_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si"
+  },
+  {
     "id": "fnaf1",
     "name": "Five Nights at Freddy's 1",
     "description": "Primer juego, donde las noches son tensas y tienes que vigilar animatrónicos solo con cámaras y puertas.",
