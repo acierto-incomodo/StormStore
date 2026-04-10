@@ -43,21 +43,6 @@
     "share-compatibility": "si"
   },
   {
-    "id": "balatro",
-    "name": "Balatro",
-    "description": "Juego de cartas estratégico donde construyes manos para vencer a tus oponentes en combates intensos.",
-    "category": "Juegos",
-    "icon": "../assets/apps/BalatroGame.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/installer_updater.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/BalatroGame/releases/latest/download/Balatro_Launcher_Installer.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/unins000.exe",
-    "steam": "no",
-    "wifi": "no",
-    "share-compatibility": "si"
-  },
-  {
     "id": "buckshot_roulette",
     "name": "Buckshot Roulette",
     "description": "Juego de terror/estrategia inspirado en la ruleta rusa donde te enfrentas a un “dealer” en rondas usando una escopeta cargada parcialmente. Debes decidir cuándo disparar y cuándo usar objetos únicos para sobrevivir mientras la IA te desafía.",
