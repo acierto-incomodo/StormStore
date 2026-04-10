@@ -95,7 +95,7 @@ if (process.defaultApp) {
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.autoDownload = true;
+autoUpdater.autoDownload = false;
 autoUpdater.allowDowngrade = true;
 autoUpdater.checkForUpdates();
 

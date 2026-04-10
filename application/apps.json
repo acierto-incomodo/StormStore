@@ -3,7 +3,7 @@
     "id": "stormstore",
     "name": "StormStore",
     "description": "La aplicación principal de StormGamesStudios para gestionar tus juegos favoritos.",
-    "category": "Aplicaciones",
+    "category": ["Tiendas", "Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormstore.png",
     "paths": ["%appdata%/StormGamesStudios/StormStore/StormStore.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/latest/download/StormStore-Setup.exe",
@@ -40,6 +40,21 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/unins000.exe",
     "steam": "si",
     "wifi": "si",
+    "share-compatibility": "si"
+  },
+  {
+    "id": "balatro",
+    "name": "Balatro",
+    "description": "Juego de cartas estratégico donde construyes manos para vencer a tus oponentes en combates intensos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/BalatroGame.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/BalatroGame/releases/latest/download/Balatro_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
     "share-compatibility": "si"
   },
   {
@@ -163,6 +178,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "golfit",
+    "name": "Golf It!",
+    "description": "Golf It! es un juego de minigolf divertido donde puedes jugar solo o con amigos. Tiene mapas variados y un editor para crear tus propios niveles. Lo más destacado es el multijugador online y los mapas de la comunidad, que hacen cada partida diferente y caótica. Ideal para partidas rápidas y entretenidas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/golfit.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GolfItGame/releases/latest/download/GolfIt_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si"
+  },
+  {
     "id": "hollow-knight-silksong",
     "name": "Hollow Knight: Silksong",
     "description": "Secuela de Hollow Knight en la que controlas a Hornet, explorando un reino nuevo lleno de enemigos, habilidades y secretos. Es un juego de acción y aventura tipo metroidvania, con combate preciso y mundos extensos por descubrir.",
@@ -173,7 +203,7 @@
     ],
     "download": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/HollowKnightSilksong_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/unins000.exe",
-    "steam": "si",
+    "steam": "no",
     "wifi": "no",
     "share-compatibility": "si"
   },
@@ -241,7 +271,7 @@
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
-    "category": "Juegos",
+    "category": ["Utilidades", "Juegos", "Aplicaciones"],
     "icon": "../assets/apps/modpack-installer.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/Modpack Installer/Modpack Installer.exe"
@@ -256,7 +286,7 @@
     "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
-    "category": ["Inteligencia Artificial", "Utilidades"],
+    "category": ["Inteligencia Artificial", "Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/multiai.png",
     "paths": ["%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"],
     "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-Setup.exe",
@@ -269,7 +299,7 @@
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
-    "category": "Utilidades",
+    "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/pairdrop.png",
     "paths": ["%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
@@ -305,7 +335,7 @@
     "download": "https://github.com/acierto-incomodo/peak/releases/latest/download/PEAK_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PEAK/unins000.exe",
     "steam": "si",
-    "wifi": "si",
+    "wifi": "no",
     "share-compatibility": "si"
   },
   {
@@ -342,7 +372,7 @@
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
-    "category": ["Juegos", "Utilidades"],
+    "category": ["Juegos", "Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormlauncher.png",
     "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
@@ -355,7 +385,7 @@
     "id": "stormlibraryv2",
     "name": "StormLibraryV2",
     "description": "Lanzador de juegos",
-    "category": "Utilidades",
+    "category": ["Utilidades", "Aplicaciones", "Tiendas", "Juegos"],
     "icon": "../assets/apps/stormlibraryv2.png",
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
@@ -376,7 +406,7 @@
     "id": "stormpanel-app",
     "name": "StormPanel APP",
     "description": "StormPanel APP es una aplicación de panel de control para StormGamesStudios.",
-    "category": ["Utilidades"],
+    "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormpanel-app.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormPanel APP/StormPanel APP.exe"
@@ -385,6 +415,21 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/StormPanel APP/Uninstall StormPanel APP.exe",
     "steam": "no",
     "wifi": "si",
+    "share-compatibility": "si"
+  },
+  {
+    "id": "theforest",
+    "name": "The Forest",
+    "description": "Juego de supervivencia en el que debes luchar por quedarte con vida en un entorno hostil.",
+    "category": "Juegos",
+    "icon": "../assets/apps/theforest.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/TheForestGame/releases/latest/download/TheForest_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
     "share-compatibility": "si"
   }
 ]
