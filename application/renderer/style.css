@@ -219,9 +219,7 @@ main.dashboard-layout {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow:
-    0 10px 20px rgba(0, 0, 0, 0.19),
-    0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   background: var(--md-sys-color-surface-container-high);
 }
 
@@ -588,8 +586,7 @@ body.offline .requires-wifi button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.2);
   z-index: 2000;
   display: none;
   align-items: center;

@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const menuUpdatesButton = document.getElementById("bp-menu-updates");
   const menuQuitAppButton = document.getElementById("bp-menu-quit-app");
   const menuTutorialButton = document.getElementById("bp-menu-tutorial");
+  const introOverlay = document.getElementById("intro-overlay");
+  const introVideo = document.getElementById("intro-video");
 
   // State
   let currentView = "grid";
@@ -49,6 +51,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   // New state for single button press
   let prevButtons = [];
   let firstInputPoll = true;
+
+  function finishIntro() {
+    if (!introOverlay || introOverlay.classList.contains("hidden")) return;
+    introOverlay.classList.add("hidden");
+    setTimeout(() => { introOverlay.style.display = "none"; }, 800);
+  }
 
   // Icon Mapping
   const iconMap = {
@@ -355,6 +363,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // --- Keyboard Support ---
   function handleKeyboardInput(e) {
+    if (introOverlay && introOverlay.style.display !== "none") {
+      finishIntro();
+      e.preventDefault();
+      return;
+    }
     if (isMenuOpen) {
       switch (e.key) {
         case "ArrowUp":
@@ -475,7 +488,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       // Button presses - check for single press
-      if (isMenuOpen) {
+      if (introOverlay && introOverlay.style.display !== "none") {
+        if (isNewPress(0) || isNewPress(1) || isNewPress(9)) {
+          finishIntro();
+          actionTaken = true;
+        }
+      } else if (isMenuOpen) {
         if (isNewPress(0)) {
           menuItems[menuCurrentIndex].click();
           actionTaken = true;
@@ -527,6 +545,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   } else {
     loadAllGames();
     requestAnimationFrame(gamepadLoop);
+    if (introVideo) {
+      introVideo.play().catch(() => finishIntro());
+      introVideo.onended = finishIntro;
+    }
   }
 
   // --- Eventos de ratón, teclado y menú ---

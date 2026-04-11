@@ -46,4 +46,13 @@ Copy-Item -Path (Join-Path $sourceAssets "*") -Destination $destAssetsDir -Recur
 Write-Host "Copiando contenido de 'application/assets/media/trailers'..."
 Copy-Item -Path (Join-Path $sourceTrailers "*") -Destination $destTrailersDir -Recurse
 
+# 5. Copiar el instalador generado en setup a la carpeta dist principal
+Write-Host "Copiando 'StormStore-Setup.exe' a 'application/dist'..."
+$setupExeSource = Join-Path $scriptDir "setup\dist\StormStore-Setup.exe"
+$appDistDest = Join-Path $scriptDir "dist"
+if (Test-Path $setupExeSource) {
+    if (!(Test-Path $appDistDest)) { New-Item -ItemType Directory -Path $appDistDest -Force | Out-Null }
+    Copy-Item -Path $setupExeSource -Destination $appDistDest -Force
+}
+
 Write-Host "✅ Archivos de documentación actualizados en 'docs/assets'."

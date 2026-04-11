@@ -184,7 +184,8 @@ function createWindow() {
 
   mainWindow = win;
 
-  const startInBigPicture = process.argv.includes("--StormVortex");
+  const vortexFlags = ["--StormVortex", "--stormvortex", "--vortex", "--bigpicture", "--Vortex", "--BigPicture", "--Bigpicture"];
+  const startInBigPicture = process.argv.some(arg => vortexFlags.includes(arg));
   win.loadFile(
     path.join(
       __dirname,

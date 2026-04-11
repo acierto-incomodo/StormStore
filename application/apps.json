@@ -223,6 +223,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "hytale",
+    "name": "Hytale",
+    "description": "Hytale es un juego sandbox que mezcla construcción tipo bloques con aventura RPG. Puedes explorar mundos generados automáticamente, combatir enemigos y crear lo que quieras. También incluye herramientas para mods y servidores, por lo que combina creatividad, exploración y acción en un mismo juego.",
+    "category": "Juegos",
+    "icon": "../assets/apps/hytale.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/hytale/releases/latest/download/Hytale_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si"
+  },
+  {
     "id": "karts-multiplayer",
     "name": "Karts Multiplayer",
     "description": "Un juego divertido para jugar con amigos. Corre con karts en diferentes pistas, recoge potenciadores y lanza objetos a tus oponentes para ganar la carrera. ¡Compite en línea y demuestra quién es el mejor piloto de karts!",
@@ -354,6 +369,21 @@
     "share-compatibility": "si"
   },
   {
+    "id": "peopleplayground",
+    "name": "People Playground",
+    "description": "People Playground es un juego de simulación en el que puedes crear y controlar personajes para experimentar con situaciones sociales y emocionales.",
+    "category": "Juegos",
+    "icon": "../assets/apps/peopleplayground.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/PeoplePlaygroundGame/releases/latest/download/PeoplePlayground_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si"
+  },
+  {
     "id": "repo",
     "name": "R.E.P.O.",
     "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
@@ -381,6 +411,21 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/unins000.exe",
     "steam": "si",
     "wifi": "si",
+    "share-compatibility": "si"
+  },
+  {
+    "id": "schedule1",
+    "name": "Schedule I",
+    "description": "Schedule I es un juego indie en desarrollo centrado en construir y gestionar un negocio ilegal desde cero. Combina simulación, estrategia y mundo abierto, permitiendo expandirte, evitar a la policía y tomar decisiones que afectan tu progreso. Destaca por su enfoque crudo y libertad para jugar a tu manera.",
+    "category": "Juegos",
+    "icon": "../assets/apps/schedule1.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ScheduleIGame/releases/latest/download/ScheduleI_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
     "share-compatibility": "si"
   },
   {
