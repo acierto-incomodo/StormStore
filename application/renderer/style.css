@@ -519,8 +519,9 @@ body.offline .requires-wifi button {
   filter: brightness(0.8);
 }
 
-/* #open-big-picture usa un SVG negro, necesita un filtro para verse blanco */
-#open-big-picture img {
+/* Los iconos de la cabecera usan SVGs negros, necesitan un filtro para verse blancos */
+#open-big-picture img,
+#open-settings-header img {
   filter: invert(1);
 }
 

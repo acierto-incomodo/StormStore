@@ -259,7 +259,8 @@
     "category": "Juegos",
     "icon": "../assets/apps/lethal-company.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/Lethal Company - Launcher.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/Lethal Company - Launcher.exe",
+      "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/installer_updater.exe"
     ],
     "download": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/LethalCompany_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/unins000.exe",

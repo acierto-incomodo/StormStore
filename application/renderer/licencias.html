@@ -64,6 +64,13 @@
               style="width: 20px; height: 20px"
             />
           </button>
+          <button class="control-btn" id="open-settings-header" title="Ajustes">
+            <img
+              src="../assets/icons/settings.svg"
+              alt="Ajustes"
+              style="width: 20px; height: 20px"
+            />
+          </button>
           <button class="control-btn" id="min-btn">─</button>
           <button class="control-btn" id="max-btn">◻</button>
           <button class="control-btn close" id="close-btn">✕</button>
@@ -564,6 +571,11 @@ THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND WIT
         document.getElementById("open-info")?.addEventListener("click", () => {
           window.location.href = "info.html";
         });
+        document
+          .getElementById("open-settings-header")
+          ?.addEventListener("click", () => {
+            window.location.href = "settings.html";
+          });
 
         // Acordeón
         document.querySelectorAll(".license-header").forEach((header) => {

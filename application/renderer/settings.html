@@ -125,9 +125,11 @@
         <button id="open-info">
           <img src="../assets/icons/info.svg" alt="Información" />
         </button>
+        <!--
         <button id="open-settings">
           <img src="../assets/icons/settings.svg" alt="Ajustes" />
         </button>
+        -->
       </div>
     </div>
   </aside>
@@ -139,6 +141,13 @@
         <button class="control-btn" id="open-big-picture" title="StormVortex">
           <img src="../assets/icons/stormvortex.svg" alt="StormVortex" style="width: 20px; height: 20px" />
         </button>
+        <button class="control-btn" id="open-settings-header" title="Ajustes">
+          <img
+            src="../assets/icons/settings.svg"
+            alt="Ajustes"
+            style="width: 20px; height: 20px"
+          />
+        </button>
         <button class="control-btn" id="min-btn">─</button>
         <button class="control-btn" id="max-btn">◻</button>
         <button class="control-btn close" id="close-btn">✕</button>
@@ -146,6 +155,7 @@
     </header>
   
     <div class="settings-container">
+      <!--
       <div class="setting-item">
         <div class="setting-info">
           <h3>Actualizaciones automáticas</h3>
@@ -156,6 +166,7 @@
           <span class="slider"></span>
         </label>
       </div>
+      -->
 
       <div class="setting-item">
         <div class="setting-info">
@@ -211,6 +222,9 @@
       window.location.href = "info.html";
     });
     document.getElementById("open-settings")?.addEventListener("click", () => {
+      window.location.href = "settings.html";
+    });
+    document.getElementById("open-settings-header")?.addEventListener("click", () => {
       window.location.href = "settings.html";
     });
 

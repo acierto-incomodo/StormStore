@@ -125,6 +125,13 @@
               style="width: 20px; height: 20px"
             />
           </button>
+          <button class="control-btn" id="open-settings-header" title="Ajustes">
+            <img
+              src="../assets/icons/settings.svg"
+              alt="Ajustes"
+              style="width: 20px; height: 20px"
+            />
+          </button>
           <button class="control-btn" id="min-btn">─</button>
           <button class="control-btn" id="max-btn">◻</button>
           <button class="control-btn close" id="close-btn">✕</button>
@@ -204,6 +211,11 @@
       // Abrir la página de información
       document.getElementById("open-info").addEventListener("click", () => {
         window.location.href = "info.html";
+      });
+
+      // Abrir la página de ajustes
+      document.getElementById("open-settings-header").addEventListener("click", () => {
+        window.location.href = "settings.html";
       });
 
       // Lógica del Modal de Fuentes
