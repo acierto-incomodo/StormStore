@@ -758,6 +758,7 @@ ipcMain.handle("open-big-picture", () => {
     mainWindow.setFullScreen(true);
     mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
     setActivity();
+    mainWindow.focus();
   }
 });
 
@@ -766,6 +767,7 @@ ipcMain.handle("open-main-view", () => {
     mainWindow.setFullScreen(false);
     mainWindow.loadFile(path.join(__dirname, "renderer/index.html"));
     setActivity();
+    mainWindow.focus();
   }
 });
 
