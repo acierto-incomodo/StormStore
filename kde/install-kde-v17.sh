@@ -63,8 +63,7 @@ pnpm \
 yarn \
 npm-check-updates \
 vercel \
-v \
-@electron/asar
+v
 
 echo "Instalando Opera..."
 

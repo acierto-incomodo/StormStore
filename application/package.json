@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -65,7 +65,9 @@
       "!**/*.sh",
       "!package-*.json",
       "!hacer",
-      "!apps.json.*"
+      "!apps.json.*",
+      "!assets/apps/**/*",
+      "!assets/apps-size/**/*"
     ]
   },
   "devDependencies": {
