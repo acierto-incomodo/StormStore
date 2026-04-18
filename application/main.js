@@ -6,17 +6,25 @@ const {
   session,
   nativeTheme,
   dialog,
+  protocol,
+  net,
 } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
+const { pathToFileURL } = require("url");
 const { spawn, exec } = require("child_process");
 const { autoUpdater } = require("electron-updater");
 const SteamPath = require("steam-path");
 const gameScanner = require("@equal-games/game-scanner");
 const DiscordRPC = require("discord-rpc");
 
-const apps = require("./apps.json");
+let appsData = require("./apps.json");
+
+let ICONS_CACHE_DIR;
+let APPS_JSON_CACHE;
+const REMOTE_APPS_URL = "https://acierto-incomodo.github.io/StormStore/assets/apps.json";
+const REMOTE_ICONS_BASE = "https://acierto-incomodo.github.io/StormStore/assets/apps/";
 
 // Variables globales
 let mainWindow;
@@ -91,6 +99,18 @@ if (process.defaultApp) {
 } else {
   app.setAsDefaultProtocolClient("stormstore");
 }
+
+// Registro de esquema para iconos locales (necesario antes de app.ready)
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: "storm-asset",
+    privileges: {
+      secure: true,
+      standard: true,
+      supportFetchAPI: true,
+    },
+  },
+]);
 
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
@@ -327,7 +347,7 @@ function handleProtocolUrl(url) {
   const prefix = "stormstore://run/";
   if (url.startsWith(prefix)) {
     const id = url.substring(prefix.length).replace(/\/$/, "");
-    const appItem = apps.find((a) => a.id === id);
+    const appItem = appsData.find((a) => a.id === id);
 
     if (appItem) {
       const installed = appItem.paths.some((p) => findExecutable(p) !== null);
@@ -356,11 +376,81 @@ function handleProtocolUrl(url) {
   }
 }
 
+async function downloadFile(url, dest) {
+  return new Promise((resolve, reject) => {
+    const file = fs.createWriteStream(dest);
+    https
+      .get(url, (res) => {
+        if (res.statusCode !== 200) {
+          file.close();
+          fs.unlink(dest, () => {});
+          return reject();
+        }
+        res.pipe(file);
+        file.on("finish", () => {
+          file.close();
+          resolve();
+        });
+      })
+      .on("error", (err) => {
+        file.close();
+        fs.unlink(dest, () => {});
+        reject(err);
+      });
+  });
+}
+
+async function syncRemoteData() {
+  if (!fs.existsSync(ICONS_CACHE_DIR)) {
+    fs.mkdirSync(ICONS_CACHE_DIR, { recursive: true });
+  }
+
+  try {
+    const data = await new Promise((resolve, reject) => {
+      https
+        .get(REMOTE_APPS_URL, (res) => {
+          if (res.statusCode !== 200)
+            return reject(new Error("Error fetching apps.json"));
+          let body = "";
+          res.on("data", (chunk) => (body += chunk));
+          res.on("end", () => resolve(JSON.parse(body)));
+        })
+        .on("error", reject);
+    });
+
+    appsData = data;
+    fs.writeFileSync(APPS_JSON_CACHE, JSON.stringify(appsData, null, 2));
+
+    // Descargar iconos en segundo plano
+    for (const item of appsData) {
+      const fileName = path.basename(item.icon);
+      const localPath = path.join(ICONS_CACHE_DIR, fileName);
+      if (!fs.existsSync(localPath)) {
+        downloadFile(REMOTE_ICONS_BASE + fileName, localPath).catch(() => {});
+      }
+    }
+  } catch (err) {
+    console.error("Sync failed, using cache:", err.message);
+    if (fs.existsSync(APPS_JSON_CACHE)) {
+      appsData = JSON.parse(fs.readFileSync(APPS_JSON_CACHE, "utf8"));
+    }
+  }
+}
+
 // -----------------------------
 // IPC
 // -----------------------------
 ipcMain.handle("get-apps", () => {
-  return apps.map((appItem) => {
+  return appsData.map((appItem) => {
+    const fileName = path.basename(appItem.icon);
+    const localIconPath = path.join(ICONS_CACHE_DIR, fileName);
+
+    let iconUrl = appItem.icon;
+    // Si el icono existe localmente, usamos el protocolo personalizado
+    if (fs.existsSync(localIconPath)) {
+      iconUrl = `storm-asset://${fileName}`;
+    }
+
     const installed = appItem.paths.some((p) => {
       return findExecutable(p) !== null;
     });
@@ -858,6 +948,31 @@ if (!gotLock) {
   app.whenReady().then(() => {
     // Forzar el tema oscuro para toda la aplicación
     nativeTheme.themeSource = "dark";
+
+    const CACHE_DIR = path.join(
+      app.getPath("appData"),
+      "StormGamesStudios",
+      "StormStore",
+      "StormStoreCache"
+    );
+    ICONS_CACHE_DIR = path.join(CACHE_DIR, "icons");
+    APPS_JSON_CACHE = path.join(CACHE_DIR, "apps.json");
+
+    if (fs.existsSync(APPS_JSON_CACHE)) {
+      try {
+        appsData = JSON.parse(fs.readFileSync(APPS_JSON_CACHE, "utf8"));
+      } catch (e) {}
+    }
+
+    // Manejador del protocolo storm-asset://
+    protocol.handle("storm-asset", (request) => {
+      const fileName = request.url.replace("storm-asset://", "");
+      const filePath = path.join(ICONS_CACHE_DIR, fileName);
+      return net.fetch(pathToFileURL(filePath).toString());
+    });
+
+    syncRemoteData();
+
     // Permisos para WebHID
     session.defaultSession.setDevicePermissionHandler((details) => {
       if (details.deviceType === "hid" && details.origin === "file://") {

@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -72,7 +72,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^41.2.0",
+    "electron": "^41.2.1",
     "electron-builder": "^26.8.1"
   },
   "dependencies": {
