@@ -1099,6 +1099,7 @@ if (!gotLock) {
 } else {
   app.on("second-instance", (event, argv, workingDirectory) => {
     if (mainWindow) {
+      if (!mainWindow.isVisible()) mainWindow.show();
       if (mainWindow.isMinimized()) mainWindow.restore();
       mainWindow.focus();
     }
@@ -1109,6 +1110,28 @@ if (!gotLock) {
   app.whenReady().then(() => {
     // Forzar el tema oscuro para toda la aplicación
     nativeTheme.themeSource = "dark";
+
+    // Configurar tareas de la Jump List para Windows
+    if (process.platform === "win32") {
+      app.setUserTasks([
+        {
+          program: process.execPath,
+          arguments: "--StormVortex",
+          iconPath: path.join(__dirname, "assets/app.ico"),
+          iconIndex: 0,
+          title: "Modo StormVortex",
+          description: "Inicia StormStore directamente en modo Big Picture",
+        },
+        {
+          program: process.execPath,
+          arguments: "--start-minimized",
+          iconPath: path.join(__dirname, "assets/app.ico"),
+          iconIndex: 0,
+          title: "Iniciar en segundo plano",
+          description: "Abre la aplicación minimizada en la bandeja del sistema",
+        },
+      ]);
+    }
 
     const CACHE_DIR = path.join(
       app.getPath("appData"),
