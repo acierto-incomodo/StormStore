@@ -39,6 +39,57 @@ DEST_TRAILERS_DIR="$ROOT_DIR/docs/assets/trailers"
 
 print_header "Actualizando archivos para la documentación"
 
+# 0. Ejecutar run.py.bat desde la ubicación assets
+print_info "Ejecutando run.py.bat para procesar imágenes..."
+RUN_PY_BAT_PATH="$SCRIPT_DIR/assets/run.py.bat"
+
+if [ -f "$RUN_PY_BAT_PATH" ]; then
+    print_info "Ejecutando: $RUN_PY_BAT_PATH"
+    # Guardar directorio actual
+    CURRENT_DIR=$(pwd)
+    # Cambiar al directorio assets
+    cd "$SCRIPT_DIR/assets"
+    
+    # Ejecutar run.py.bat (en Linux/Mac可能需要使用wine o similar para .bat)
+    if command -v wine &> /dev/null; then
+        # Si hay wine instalado (para ejecutar .bat en Linux/Mac)
+        if wine "$RUN_PY_BAT_PATH" 2>/dev/null; then
+            print_success "run.py.bat ejecutado correctamente (via wine)"
+        else
+            print_error "Error al ejecutar run.py.bat con wine"
+        fi
+    elif command -v cmd.exe &> /dev/null; then
+        # Si estamos en WSL o similar con cmd.exe disponible
+        if cmd.exe /c "$RUN_PY_BAT_PATH" 2>/dev/null; then
+            print_success "run.py.bat ejecutado correctamente (via cmd.exe)"
+        else
+            print_error "Error al ejecutar run.py.bat con cmd.exe"
+        fi
+    else
+        # En Linux/Mac sin soporte para .bat, mostrar advertencia
+        print_error "No se puede ejecutar .bat en este sistema (falta wine o cmd.exe)"
+        print_info "Asegúrate de ejecutar manualmente: cd $SCRIPT_DIR/assets && ./run.py.bat"
+        
+        # Intentar ejecutar directamente el script Python si existe
+        TAMAÑO_IMAGENES_PY="$SCRIPT_DIR/assets/tamaño-imagenes.py"
+        if [ -f "$TAMAÑO_IMAGENES_PY" ]; then
+            print_info "Intentando ejecutar tamaño-imagenes.py directamente..."
+            if command -v python3 &> /dev/null; then
+                cd "$SCRIPT_DIR/assets"
+                python3 "$TAMAÑO_IMAGENES_PY"
+                print_success "tamaño-imagenes.py ejecutado correctamente"
+            else
+                print_error "Python3 no encontrado"
+            fi
+        fi
+    fi
+    
+    # Volver al directorio original
+    cd "$CURRENT_DIR"
+else
+    print_error "No se encontró run.py.bat en: $RUN_PY_BAT_PATH"
+fi
+
 # 1. Limpiar el directorio de destino
 print_info "Limpiando directorio de destino: $DEST_DIR"
 rm -rf "$DEST_DIR"
