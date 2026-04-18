@@ -309,6 +309,19 @@ main.dashboard-layout {
   top: 44px; /* 8px (top) + 32px (height) + 4px (gap) */
 }
 
+.steam-req-badge + .virus-req-badge,
+.wifi-req-badge + .virus-req-badge {
+  top: 44px;
+}
+
+.steam-req-badge + .wifi-req-badge + .virus-req-badge {
+  top: 80px;
+}
+
+.virus-req-badge img {
+  filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg) brightness(91%) contrast(101%);
+}
+
 /* Badge de Info para hacer clic */
 .info-badge {
   position: absolute;
@@ -1182,4 +1195,51 @@ body.offline .requires-wifi button {
 .control-desc span {
   font-size: 0.9rem;
   color: var(--md-sys-color-on-surface-variant);
+}
+
+/* --- Virus Alert Custom Overlay --- */
+.virus-alert-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 20000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.virus-alert-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.virus-alert-card {
+  background: var(--md-sys-color-surface-container-high);
+  border: 2px solid var(--md-sys-color-error);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 40px;
+  width: 480px;
+  max-width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  animation: slideUpFade 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.virus-alert-card h2 {
+  color: var(--md-sys-color-error);
+  margin: 0;
+  font-size: 24px;
+}
+
+.virus-alert-card p {
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.6;
+  margin: 0;
 }

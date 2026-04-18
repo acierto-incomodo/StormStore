@@ -190,6 +190,19 @@ body {
   top: 46px; /* 10px (top) + 32px (height) + 4px (gap) */
 }
 
+.bp-req-badge.steam-req + .bp-req-badge.virus-req,
+.bp-req-badge.wifi-req + .bp-req-badge.virus-req {
+  top: 46px;
+}
+
+.bp-req-badge.steam-req + .bp-req-badge.wifi-req + .bp-req-badge.virus-req {
+  top: 82px;
+}
+
+.bp-req-badge.virus-req img {
+  filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg) brightness(91%) contrast(101%);
+}
+
 /* Show text when card is selected */
 .game-card.selected .bp-req-badge {
   width: auto; /* Expand to content width */

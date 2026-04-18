@@ -9,3 +9,7 @@ application/dist/builder-debug.yml
 application/package-lock.json
 application/.env
 /application/setup/build/StormStore-Setup
+/application/setup/build/StormStore-Setup
+/application/setup/build
+*.spec
+*.exe

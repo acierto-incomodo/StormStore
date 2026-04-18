@@ -323,7 +323,7 @@
           openBtn.style.padding = "12px 24px";
           openBtn.style.flex = "1";
           openBtn.onclick = () =>
-            window.api.openApp(app.paths[0], app.steam === "si");
+            window.api.openApp(app.executablePath || app.paths[0], app.steam === "si");
 
           // Botón Ubicación
           const locBtn = document.createElement("button");
@@ -333,7 +333,7 @@
           locBtn.style.flex = "1";
           locBtn.onclick = () => {
             playSound("others.mp3");
-            window.api.openAppLocation(app.installPath || app.paths[0]);
+            window.api.openAppLocation(app.installPath || app.executablePath || app.paths[0]);
             showToast("Abriendo ubicación...");
           };
 
@@ -548,6 +548,15 @@
             createRequirement(
               "Se necesita conexión a Internet.",
               "../assets/icons/wifi.svg",
+            ),
+          );
+        }
+
+        if (app["virus-alert"] === "alert") {
+          requirementsContainer.appendChild(
+            createRequirement(
+              "Esta aplicación ha sido marcada como peligrosa.",
+              "../assets/icons/virus.svg",
             ),
           );
         }

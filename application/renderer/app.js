@@ -161,6 +161,20 @@ function renderApps(category) {
         imgContainer.appendChild(wifiBadge);
       }
 
+      if (app["virus-alert"] === "alert") {
+        const virusBadge = document.createElement("div");
+        virusBadge.className = "req-badge virus-req-badge";
+
+        const virusIcon = document.createElement("img");
+        virusIcon.src = "../assets/icons/virus.svg";
+
+        const virusText = document.createElement("span");
+        virusText.textContent = "Virus";
+
+        virusBadge.append(virusIcon, virusText);
+        imgContainer.appendChild(virusBadge);
+      }
+
       const wifiBadge = document.createElement("img");
       wifiBadge.src = "../assets/icons/sin-wifi.svg";
       wifiBadge.className = "wifi-badge";
@@ -195,7 +209,7 @@ function renderApps(category) {
         openBtn.className = "md-btn md-btn-filled";
         openBtn.style.flex = "1";
         openBtn.onclick = () =>
-          window.api.openApp(app.paths[0], app.steam === "si");
+          window.api.openApp(app.executablePath || app.paths[0], app.steam === "si");
         if (isUninstalling) openBtn.style.display = "none";
         topRow.appendChild(openBtn);
 
@@ -334,7 +348,7 @@ function renderApps(category) {
         locBtn.style.flex = "1";
         locBtn.onclick = () => {
           playSound("others.mp3");
-          window.api.openAppLocation(app.installPath || app.paths[0]);
+          window.api.openAppLocation(app.installPath || app.executablePath || app.paths[0]);
           showToast("Abriendo ubicación...");
         };
         if (isUninstalling) locBtn.style.display = "none";

@@ -13,6 +13,19 @@
   </head>
 
   <body>
+    <!-- Custom Virus Alert Overlay -->
+    <div id="virus-alert-overlay" class="virus-alert-overlay">
+      <div class="virus-alert-card">
+        <img src="../assets/icons/virus.svg" class="virus-alert-icon" style="filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg) brightness(91%) contrast(101%);">
+        <h2>¡Peligro detectado!</h2>
+        <p id="virus-alert-text">Es posible que este programa sea un virus y es peligroso continuar.</p>
+        <div style="display: flex; gap: 12px; width: 100%; margin-top: 10px;">
+          <button id="virus-cancel-btn" class="md-btn md-btn-tonal" style="flex: 1;">Cancelar</button>
+          <button id="virus-continue-btn" class="md-btn md-btn-danger" style="flex: 1;">Continuar bajo mi riesgo</button>
+        </div>
+      </div>
+    </div>
+
     <div id="install-overlay">
       <div class="install-box">
         <img src="../assets/icons/loading-new.svg" alt="Cargando" />
@@ -232,6 +245,27 @@
           }
         });
       }
+    </script>
+    <script>
+      // Lógica de la alerta de virus personalizada
+      window.api.onShowVirusAlert((_event, appName) => {
+        const overlay = document.getElementById("virus-alert-overlay");
+        const text = document.getElementById("virus-alert-text");
+        const cancelBtn = document.getElementById("virus-cancel-btn");
+        const continueBtn = document.getElementById("virus-continue-btn");
+
+        text.innerHTML = `La aplicación <strong>${appName}</strong> ha sido marcada con una alerta de seguridad.<br><br>Es posible que sea un virus. ¿Deseas continuar?`;
+        overlay.classList.add("active");
+
+        cancelBtn.onclick = () => {
+          overlay.classList.remove("active");
+          window.api.sendVirusAlertResponse(false);
+        };
+        continueBtn.onclick = () => {
+          overlay.classList.remove("active");
+          window.api.sendVirusAlertResponse(true);
+        };
+      });
     </script>
   </body>
 </html>

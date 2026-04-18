@@ -10,7 +10,8 @@
     "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "ambidextro",
@@ -25,7 +26,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "backseat-drivers",
@@ -40,7 +42,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "balatro",
@@ -55,7 +58,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "buckshot_roulette",
@@ -70,7 +74,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "content-warning",
@@ -85,7 +90,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "doom",
@@ -100,7 +106,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DOOM/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "fastfood",
@@ -115,7 +122,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "fnaf1",
@@ -130,7 +138,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "fnaf2",
@@ -145,7 +154,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "fnaf3",
@@ -160,7 +170,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "fnaf4",
@@ -175,7 +186,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "fusion-arena",
@@ -190,7 +202,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/unins000.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "golfit",
@@ -205,7 +218,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "hollow-knight-silksong",
@@ -220,7 +234,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "hytale",
@@ -235,7 +250,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "karts-multiplayer",
@@ -250,7 +266,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/unins000.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "lethal-company",
@@ -266,7 +283,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "mage-arena",
@@ -281,7 +299,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "miside-zero",
@@ -296,7 +315,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "modpack-installer",
@@ -311,7 +331,8 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/Modpack Installer/Uninstall Modpack Installer.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "multiai",
@@ -324,7 +345,8 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "pairdrop",
@@ -337,7 +359,8 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "panicore",
@@ -352,7 +375,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Panicore/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "alert"
   },
   {
     "id": "peak",
@@ -367,7 +391,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PEAK/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "peopleplayground",
@@ -382,7 +407,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "repo",
@@ -397,7 +423,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "scamline",
@@ -412,7 +439,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "schedule1",
@@ -427,7 +455,8 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "stormlauncher",
@@ -440,7 +469,8 @@
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "stormlibraryv2",
@@ -451,17 +481,12 @@
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
     ],
-    "preInstall": [
-      {
-        "path": "assets/extraFiles/aspnetcore-runtime-8.0.23-win-x64.exe",
-        "args": "/install /quiet /norestart"
-      }
-    ],
     "download": "https://github.com/acierto-incomodo/StormLibraryV2/releases/latest/download/StormLibraryV2_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormLibraryV2/unins000.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "stormpanel-app",
@@ -476,7 +501,8 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/StormPanel APP/Uninstall StormPanel APP.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "none"
   },
   {
     "id": "theforest",
@@ -491,6 +517,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si"
+    "share-compatibility": "si",
+    "virus-alert": "alert"
   }
 ]

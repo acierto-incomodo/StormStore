@@ -213,6 +213,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         card.appendChild(wifiBadge);
       }
 
+      if (game["virus-alert"] === "alert") {
+        const virusBadge = document.createElement("div");
+        virusBadge.className = "bp-req-badge virus-req";
+
+        const virusIcon = document.createElement("img");
+        virusIcon.src = "../assets/icons/virus.svg";
+
+        const virusText = document.createElement("span");
+        virusText.textContent = "Virus";
+
+        virusBadge.append(virusIcon, virusText);
+        card.appendChild(virusBadge);
+      }
+
       const titleOverlay = document.createElement("div");
       titleOverlay.className = "title-overlay";
       titleOverlay.textContent = game.name;
@@ -279,7 +293,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function launchGame() {
     const game = games[currentGridIndex];
     if (game) {
-      window.api.openApp(game.paths[0], game.steam === "si");
+      window.api.openApp(game.executablePath || game.paths[0], game.steam === "si");
     }
   }
 

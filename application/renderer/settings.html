@@ -181,6 +181,17 @@
 
       <div class="setting-item">
         <div class="setting-info">
+          <h3>Icono en la bandeja</h3>
+          <p>Mantener la aplicación abierta en la bandeja del sistema al cerrar o minimizar.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="show_tray">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-item">
+        <div class="setting-info">
           <h3>Iniciar minimizado</h3>
           <p>La aplicación se iniciará oculta en la bandeja del sistema.</p>
         </div>
@@ -244,7 +255,8 @@
     const controls = {
       auto_updates: document.getElementById('auto_updates'),
       start_with_windows: document.getElementById('start_with_windows'),
-      start_minimized: document.getElementById('start_minimized')
+      start_minimized: document.getElementById('start_minimized'),
+      show_tray: document.getElementById('show_tray')
     };
 
     // Carga inicial de ajustes
@@ -267,7 +279,8 @@
       const settings = {
         auto_updates: controls.auto_updates ? controls.auto_updates.checked : false,
         start_with_windows: controls.start_with_windows ? controls.start_with_windows.checked : false,
-        start_minimized: controls.start_minimized ? controls.start_minimized.checked : false
+        start_minimized: controls.start_minimized ? controls.start_minimized.checked : false,
+        show_tray: controls.show_tray ? controls.show_tray.checked : false
       };
 
       window.api.saveSettings(settings);

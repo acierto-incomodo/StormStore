@@ -1,5 +1,6 @@
 {
   "auto_updates": false,
   "start_with_windows": false,
-  "start_minimized": false
+  "start_minimized": false,
+  "show_tray": true
 }
