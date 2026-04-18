@@ -8,3 +8,4 @@ application/dist/builder-debug.yml
 application/dist/builder-debug.yml
 application/package-lock.json
 application/.env
+/application/setup/build/StormStore-Setup

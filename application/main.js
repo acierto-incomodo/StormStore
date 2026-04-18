@@ -23,6 +23,24 @@ let appsData = require("./apps.json");
 
 let ICONS_CACHE_DIR;
 let APPS_JSON_CACHE;
+const SETTINGS_PATH = path.join(
+  app.getPath("appData"),
+  "StormGamesStudios",
+  "StormStore",
+  "settings.json"
+);
+
+function getSettings() {
+  try {
+    if (fs.existsSync(SETTINGS_PATH)) {
+      return JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
+    }
+  } catch (e) {
+    console.error("Error leyendo ajustes:", e);
+  }
+  return { auto_updates: false, start_with_windows: false, start_minimized: false };
+}
+
 const REMOTE_APPS_URL = "https://acierto-incomodo.github.io/StormStore/assets/apps.json";
 const REMOTE_ICONS_BASE = "https://acierto-incomodo.github.io/StormStore/assets/apps/";
 
@@ -206,6 +224,8 @@ function createWindow() {
 
   const vortexFlags = ["--StormVortex", "--stormvortex", "--vortex", "--bigpicture", "--Vortex", "--BigPicture", "--Bigpicture"];
   const startInBigPicture = process.argv.some(arg => vortexFlags.includes(arg));
+  const settings = getSettings();
+
   win.loadFile(
     path.join(
       __dirname,
@@ -215,6 +235,8 @@ function createWindow() {
 
   if (startInBigPicture) {
     win.setFullScreen(true);
+  } else if (settings.start_minimized || process.argv.includes("--start-minimized")) {
+    win.minimize();
   } else {
     win.maximize();
   }
@@ -918,6 +940,25 @@ ipcMain.on("set-discord-activity", (event, activity) => {
   // Reset to default and then merge the new activity to avoid stale data
   rpcActivity = { ...defaultRpcActivity, ...activity };
   setActivity();
+});
+
+ipcMain.handle("get-settings", () => getSettings());
+
+ipcMain.on("save-settings", (event, settings) => {
+  try {
+    const dir = path.dirname(SETTINGS_PATH);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
+
+    // Aplicar configuración de inicio con Windows
+    app.setLoginItemSettings({
+      openAtLogin: settings.start_with_windows,
+      path: app.getPath("exe"),
+      args: settings.start_minimized ? ["--start-minimized"] : [],
+    });
+  } catch (e) {
+    console.error("Error guardando ajustes:", e);
+  }
 });
 
 // =====================================

@@ -265,9 +265,9 @@
     // Guardar ajustes
     function saveSettings() {
       const settings = {
-        auto_updates: controls.auto_updates.checked,
-        start_with_windows: controls.start_with_windows.checked,
-        start_minimized: controls.start_minimized.checked
+        auto_updates: controls.auto_updates ? controls.auto_updates.checked : false,
+        start_with_windows: controls.start_with_windows ? controls.start_with_windows.checked : false,
+        start_minimized: controls.start_minimized ? controls.start_minimized.checked : false
       };
 
       window.api.saveSettings(settings);
