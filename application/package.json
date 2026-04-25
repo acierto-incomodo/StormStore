@@ -42,6 +42,9 @@
       "include": "build/v2-installer.nsh",
       "differentialPackage": true
     },
+    "extraResources": [
+      "assets/extraFiles/7zr.exe"
+    ],
     "files": [
       "package.json",
       "main.js",
