@@ -88,6 +88,12 @@
       transform: translateX(20px);
       background-color: var(--md-sys-color-on-primary);
     }
+
+      #save-settings-btn {
+        align-self: flex-end;
+        margin-top: 20px;
+        min-width: 160px;
+      }
   </style>
 </head>
 <body>
@@ -200,18 +206,52 @@
           <span class="slider"></span>
         </label>
       </div>
+
+      <button id="save-settings-btn" class="md-btn md-btn-filled">Guardar Ajustes</button>
     </div>
   </main>
 
   <script>
+    let hasUnsavedChanges = false;
+
     // Cargar versión
     window.api.getAppVersion().then((v) => {
       document.getElementById("app-version").textContent = "v" + v;
     });
 
+    function showToast(message, duration = 3000) {
+      let toast = document.getElementById("toast-notification");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast-notification";
+        toast.className = "toast-notification";
+        document.body.appendChild(toast);
+      }
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, duration);
+    }
+
+    window.api.onShowToast((_event, message, duration) => {
+      showToast(message, duration);
+    });
+
+    function confirmNavigation(target) {
+      if (hasUnsavedChanges) {
+        if (!confirm("Tienes cambios sin guardar. ¿Deseas salir de todas formas?")) {
+          return;
+        }
+      }
+      if (typeof target === 'function') target();
+      else window.location.href = target;
+    }
+
     // Navegación
-    document.getElementById("back-btn").addEventListener("click", () => {
-      window.history.back();
+    document.getElementById("back-btn").addEventListener("click", (e) => {
+      e.preventDefault();
+      confirmNavigation(() => window.history.back());
     });
 
     document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
@@ -221,27 +261,38 @@
     });
 
     document.getElementById("open-updates")?.addEventListener("click", () => {
-      window.location.href = "updates.html";
+      e.preventDefault();
+      confirmNavigation("updates.html");
     });
     document.getElementById("open-licenses")?.addEventListener("click", () => {
-      window.location.href = "licencias.html";
+      e.preventDefault();
+      confirmNavigation("licencias.html");
     });
     document.getElementById("open-big-picture")?.addEventListener("click", () => {
-      window.api.openBigPicture();
+      e.preventDefault();
+      confirmNavigation(() => window.api.openBigPicture());
     });
     document.getElementById("open-info")?.addEventListener("click", () => {
-      window.location.href = "info.html";
-    });
-    document.getElementById("open-settings")?.addEventListener("click", () => {
-      window.location.href = "settings.html";
+      e.preventDefault();
+      confirmNavigation("info.html");
     });
     document.getElementById("open-settings-header")?.addEventListener("click", () => {
-      window.location.href = "settings.html";
+      e.preventDefault();
+      confirmNavigation("settings.html");
     });
 
     // Controles de ventana
     document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
-    document.getElementById("close-btn")?.addEventListener("click", () => window.api.closeWindow());
+    document.getElementById("close-btn")?.addEventListener("click", () => {
+      if (hasUnsavedChanges) {
+        if (confirm("Tienes cambios sin guardar en los ajustes. ¿Cerrar de todas formas?")) {
+          window.api.closeWindow();
+        }
+      } else {
+        window.api.closeWindow();
+      }
+    });
+
     const maxBtn = document.getElementById("max-btn");
     if (maxBtn) {
       maxBtn.addEventListener("click", () => window.api.maximizeWindow());
@@ -269,6 +320,7 @@
             controls[key].checked = settings[key];
           }
         });
+        hasUnsavedChanges = false;
       } catch (err) {
         console.error("No se pudo cargar settings.json:", err);
       }
@@ -284,11 +336,17 @@
       };
 
       window.api.saveSettings(settings);
+      hasUnsavedChanges = false;
+      showToast("Ajustes guardados correctamente");
     }
 
     Object.values(controls).forEach(input => {
-      input.addEventListener('change', saveSettings);
+      input.addEventListener('change', () => {
+        hasUnsavedChanges = true;
+      });
     });
+
+    document.getElementById('save-settings-btn').addEventListener('click', saveSettings);
 
     window.addEventListener('DOMContentLoaded', loadSettings);
   </script>

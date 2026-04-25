@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  function showToast(message) {
+  function showToast(message, duration = 3000) {
     let toast = document.getElementById("toast-notification");
     if (!toast) {
       toast = document.createElement("div");
@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     toast.classList.add("show");
     setTimeout(() => {
       toast.classList.remove("show");
-    }, 3000);
+    }, duration);
   }
-  window.api.onShowToast((_event, message) => {
-    showToast(message);
+  window.api.onShowToast((_event, message, duration) => {
+    showToast(message, duration);
   });
 
   // DOM Elements

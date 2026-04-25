@@ -21,7 +21,7 @@ function playSound(soundFile) {
   new Audio(`../assets/media/sounds/${soundFile}`).play();
 }
 
-function showToast(message) {
+function showToast(message, duration = 3000) {
   let toast = document.getElementById("toast-notification");
   if (!toast) {
     toast = document.createElement("div");
@@ -33,7 +33,7 @@ function showToast(message) {
   toast.classList.add("show");
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 3000);
+  }, duration);
 }
 
 // Mostrar versión automáticamente
@@ -442,8 +442,8 @@ function renderApps(category) {
     });
 }
 
-window.api.onShowToast((_event, message) => {
-  showToast(message);
+window.api.onShowToast((_event, message, duration) => {
+  showToast(message, duration);
 });
 
 // Inicializar

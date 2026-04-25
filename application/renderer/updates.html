@@ -177,7 +177,7 @@
         state: "Sistema",
       });
 
-      function showToast(message) {
+      function showToast(message, duration = 3000) {
         let toast = document.getElementById("toast-notification");
         if (!toast) {
           toast = document.createElement("div");
@@ -189,10 +189,10 @@
         toast.classList.add("show");
         setTimeout(() => {
           toast.classList.remove("show");
-        }, 3000);
+        }, duration);
       }
 
-      window.api.onShowToast((_event, message) => showToast(message));
+      window.api.onShowToast((_event, message, duration) => showToast(message, duration));
 
       // Esperar a que el DOM esté completamente cargado
       document.addEventListener("DOMContentLoaded", function () {

@@ -495,25 +495,33 @@ async function handleProtocolUrl(url) {
 
 async function downloadFile(url, dest) {
   return new Promise((resolve, reject) => {
-    const file = fs.createWriteStream(dest);
-    https
-      .get(url, (res) => {
-        if (res.statusCode !== 200) {
+    const download = (downloadUrl) => {
+      const file = fs.createWriteStream(dest);
+      https
+        .get(downloadUrl, (res) => {
+          if (res.statusCode === 301 || res.statusCode === 302) {
+            file.close();
+            fs.unlink(dest, () => {});
+            return download(res.headers.location);
+          }
+          if (res.statusCode !== 200) {
+            file.close();
+            fs.unlink(dest, () => {});
+            return reject(new Error(`Status ${res.statusCode}`));
+          }
+          res.pipe(file);
+          file.on("finish", () => {
+            file.close();
+            resolve();
+          });
+        })
+        .on("error", (err) => {
           file.close();
           fs.unlink(dest, () => {});
-          return reject();
-        }
-        res.pipe(file);
-        file.on("finish", () => {
-          file.close();
-          resolve();
+          reject(err);
         });
-      })
-      .on("error", (err) => {
-        file.close();
-        fs.unlink(dest, () => {});
-        reject(err);
-      });
+    };
+    download(url);
   });
 }
 
@@ -547,9 +555,6 @@ async function syncRemoteData() {
       req.end();
     });
 
-    // Detectar si el catálogo ha cambiado para evitar descargas innecesarias
-    const hasChanged = JSON.stringify(appsData) !== JSON.stringify(data);
-
     appsData = data;
     isOffline = false; // Sincronización exitosa = Estamos online
     fs.writeFileSync(APPS_JSON_CACHE, JSON.stringify(appsData, null, 2));
@@ -559,26 +564,24 @@ async function syncRemoteData() {
       mainWindow.webContents.send("show-toast", "Catálogo de aplicaciones sincronizado.");
     }
 
-    // Solo descargar nuevas imágenes si el apps.json cambió
-    if (hasChanged) {
-      for (const item of appsData) {
-        const fileName = path.basename(item.icon);
-        const prioritySize = "1024x1024";
-        
-        // 1. Descargar prioridad (1024x1024) primero y esperar (await)
-        const priorityPath = path.join(ICONS_CACHE_DIR, prioritySize, fileName);
-        if (!fs.existsSync(priorityPath)) {
-          await downloadFile(`${REMOTE_ICONS_BASE}${prioritySize}/${fileName}`, priorityPath).catch(() => {});
-        }
-
-        // 2. Descargar el resto de tamaños en segundo plano (sin await)
-        ICON_SIZES.filter(s => s !== prioritySize).forEach(size => {
-          const localPath = path.join(ICONS_CACHE_DIR, size, fileName);
-          if (!fs.existsSync(localPath)) {
-            downloadFile(`${REMOTE_ICONS_BASE}${size}/${fileName}`, localPath).catch(() => {});
-          }
-        });
+    // DESCARGA DE ICONOS: Siempre verificamos si faltan en la caché local
+    for (const item of appsData) {
+      const fileName = path.basename(item.icon);
+      const prioritySize = "1024x1024";
+      
+      // 1. Descargar prioridad (1024x1024) primero y esperar (await) para asegurar disponibilidad inmediata
+      const priorityPath = path.join(ICONS_CACHE_DIR, prioritySize, fileName);
+      if (!fs.existsSync(priorityPath)) {
+        await downloadFile(`${REMOTE_ICONS_BASE}${prioritySize}/${fileName}`, priorityPath).catch(() => {});
       }
+
+      // 2. Descargar el resto de tamaños en segundo plano para optimizar
+      ICON_SIZES.filter(s => s !== prioritySize).forEach(size => {
+        const localPath = path.join(ICONS_CACHE_DIR, size, fileName);
+        if (!fs.existsSync(localPath)) {
+          downloadFile(`${REMOTE_ICONS_BASE}${size}/${fileName}`, localPath).catch(() => {});
+        }
+      });
     }
   } catch (err) {
     console.error("Sync failed, using cache:", err.message);

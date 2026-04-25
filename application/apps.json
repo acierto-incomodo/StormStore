@@ -415,7 +415,7 @@
     "name": "R.E.P.O.",
     "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
     "category": "Juegos",
-    "icon": "../assets/apps/repo.png",
+    "icon": "../assets/apps/REPO-new.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/repo-game/installer_updater.exe"
     ],
