@@ -488,6 +488,23 @@
     "verified": "false"
   },
   {
+    "id": "sideeffects",
+    "name": "Side Effects",
+    "description": "Schedule I es un juego indie en desarrollo centrado en construir y gestionar un negocio ilegal desde cero. Combina simulación, estrategia y mundo abierto, permitiendo expandirte, evitar a la policía y tomar decisiones que afectan tu progreso. Destaca por su enfoque crudo y libertad para jugar a tu manera.",
+    "category": "Juegos",
+    "icon": "../assets/apps/sideeffects.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/SideEffects/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/ScheduleI_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
