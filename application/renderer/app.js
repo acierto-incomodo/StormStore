@@ -44,11 +44,27 @@ if (versionElem) {
   });
 }
 
+// Renderizar tarjetas vacías (Skeletons) mientras carga
+function renderSkeletons() {
+  appsContainer.innerHTML = "";
+  for (let i = 0; i < 8; i++) {
+    const skeleton = document.createElement("div");
+    skeleton.className = "card skeleton";
+    skeleton.innerHTML = `
+      <div class="img-container skeleton-box"></div>
+      <div class="skeleton-text title"></div>
+      <div class="skeleton-text body"></div>
+    `;
+    appsContainer.appendChild(skeleton);
+  }
+}
+
 // Cargar apps y renderizar
 async function load(force = false) {
   if (force && refreshBtn) {
     refreshBtn.disabled = true;
     refreshBtn.classList.add("spinning");
+    renderSkeletons();
   }
   try {
     const [newApps] = await Promise.all([
@@ -85,6 +101,7 @@ function renderCategories() {
   cats.forEach((cat) => {
     const li = document.createElement("li");
     li.textContent = cat;
+    if (cat === currentCategory) li.classList.add("active");
     li.onclick = () => renderApps(cat);
     catContainer.appendChild(li);
   });
@@ -92,378 +109,215 @@ function renderCategories() {
 
 // Renderizar apps
 function renderApps(category) {
-  if (category) currentCategory = category;
-  title.textContent = currentCategory;
-  appsContainer.innerHTML = "";
+  const updateDOM = () => {
+    if (category) currentCategory = category;
+    renderCategories();
+    title.textContent = currentCategory;
+    appsContainer.innerHTML = "";
 
-  allApps
-    .filter((a) => {
-      // Filtrado por categoría
-      if (currentCategory !== "Todas") {
-        if (Array.isArray(a.category)) {
-          if (!a.category.includes(currentCategory)) return false;
-        } else if (a.category !== currentCategory) return false;
-      }
+    allApps
+      .filter((a) => {
+        // Filtrado por categoría
+        if (currentCategory !== "Todas") {
+          if (Array.isArray(a.category)) {
+            if (!a.category.includes(currentCategory)) return false;
+          } else if (a.category !== currentCategory) return false;
+        }
 
-      // Filtrado por búsqueda
-      if (!currentSearch) return true;
-      const q = currentSearch.toLowerCase();
-      const name = (a.name || "").toLowerCase();
-      const desc = (a.description || "").toLowerCase();
-      return name.includes(q) || desc.includes(q);
-    })
-    .forEach((app, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.style.animationDelay = `${index * 50}ms`; // Staggered animation
+        // Filtrado por búsqueda
+        if (!currentSearch) return true;
+        const q = currentSearch.toLowerCase();
+        const name = (a.name || "").toLowerCase();
+        const desc = (a.description || "").toLowerCase();
+        return name.includes(q) || desc.includes(q);
+      })
+      .forEach((app, index) => appsContainer.appendChild(createAppCard(app, index)));
+  };
 
-      if (app.wifi === "si") {
-        card.classList.add("requires-wifi");
-      }
+  if (category && category !== currentCategory && document.startViewTransition) {
+    document.startViewTransition(updateDOM);
+  } else {
+    updateDOM();
+  }
+}
 
-      const imgContainer = document.createElement("div");
-      imgContainer.className = "img-container";
-      imgContainer.style.cursor = "pointer";
-      imgContainer.onclick = () => {
-        window.location.href = `app.html?id=${app.id}`;
+// Función auxiliar para crear la tarjeta de una app (Lógica extraída)
+function createAppCard(app, index) {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.style.animationDelay = `${index * 50}ms`;
+
+  if (app.wifi === "si") card.classList.add("requires-wifi");
+
+  const imgContainer = document.createElement("div");
+  imgContainer.className = "img-container";
+  imgContainer.style.cursor = "pointer";
+  imgContainer.onclick = () => (window.location.href = `app.html?id=${app.id}`);
+
+  const icon = document.createElement("img");
+  icon.src = app.icon;
+  icon.className = "app-icon";
+  icon.onerror = () => (icon.src = "../assets/icons/not-found.svg");
+  imgContainer.appendChild(icon);
+
+  // Badges
+  if (app.verified === "true") imgContainer.appendChild(createBadge("Verificado", "../assets/icons/verified.svg", "verified-req-badge"));
+  if (app.steam === "si") imgContainer.appendChild(createBadge("Steam", "../assets/icons/steam.svg", "steam-req-badge"));
+  if (app.wifi === "si") imgContainer.appendChild(createBadge("WiFi", "../assets/icons/wifi.svg", "wifi-req-badge"));
+  if (app["virus-alert"] === "alert") imgContainer.appendChild(createBadge("Virus", "../assets/icons/virus.svg", "virus-req-badge"));
+
+  const sinWifi = document.createElement("img");
+  sinWifi.src = "../assets/icons/sin-wifi.svg";
+  sinWifi.className = "wifi-badge";
+  imgContainer.appendChild(sinWifi);
+
+  const infoBadge = document.createElement("img");
+  infoBadge.src = "../assets/icons/info.svg";
+  infoBadge.className = "info-badge";
+  imgContainer.appendChild(infoBadge);
+
+  const name = document.createElement("h3");
+  name.textContent = app.name;
+
+  const desc = document.createElement("p");
+  desc.textContent = app.description;
+
+  const actions = document.createElement("div");
+  actions.className = "card-actions";
+
+  if (app.installed) {
+    const isUninstalling = uninstallingApps.has(app.id);
+    const topRow = document.createElement("div");
+    topRow.style.display = "flex";
+    topRow.style.gap = "8px";
+    topRow.style.width = "100%";
+
+    const openBtn = document.createElement("button");
+    openBtn.textContent = "Abrir";
+    openBtn.className = "md-btn md-btn-filled";
+    openBtn.style.flex = "1";
+    openBtn.onclick = () => window.api.openApp(app.executablePath || app.paths[0], app.steam === "si");
+    if (isUninstalling) openBtn.style.display = "none";
+    topRow.appendChild(openBtn);
+
+    const uninstallBtn = document.createElement("button");
+    uninstallBtn.className = "md-btn md-btn-danger";
+    uninstallBtn.style.flex = "1";
+
+    if (isUninstalling) {
+      uninstallBtn.disabled = true;
+      uninstallBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Trabajando...</span>`;
+    } else {
+      const hasUninstaller = app.uninstall && app.uninstallExists;
+      uninstallBtn.textContent = hasUninstaller ? "Desinstalar" : "Eliminar";
+      uninstallBtn.onclick = async (e) => {
+        e.stopPropagation();
+        if (!hasUninstaller && !confirm("¿Eliminar carpeta de la aplicación?")) return;
+        
+        uninstallingApps.add(app.id);
+        renderApps(currentCategory);
+        
+        try {
+          if (hasUninstaller) await window.api.uninstallApp(app.uninstall);
+          else await window.api.deleteAppFolder(app.paths[0]);
+          playSound("finish.mp3");
+        } catch (error) { console.error(error); }
+        finally { uninstallingApps.delete(app.id); await load(); }
       };
+    }
+    topRow.appendChild(uninstallBtn);
+    actions.appendChild(topRow);
 
-      const icon = document.createElement("img");
-      icon.src = app.icon;
-      icon.className = "app-icon";
-      icon.onerror = () => {
-        icon.src = "../assets/icons/not-found.svg";
+    // Botones secundarios
+    const middleRow = document.createElement("div");
+    middleRow.style.display = "flex";
+    middleRow.style.gap = "8px";
+    middleRow.style.width = "100%";
+
+    if (app["share-compatibility"] === "si") {
+      const shareBtn = createIconButton("../assets/icons/share.svg", () => {
+        playSound("others.mp3");
+        navigator.clipboard.writeText(`Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`);
+        showToast("Enlace copiado");
+      });
+      if (isUninstalling) shareBtn.style.display = "none";
+      middleRow.appendChild(shareBtn);
+    }
+
+    const webBtn = createIconButton("../assets/icons/web.svg", () => window.open(`https://stormstore.vercel.app/app/${app.id}`));
+    if (isUninstalling) webBtn.style.display = "none";
+    middleRow.appendChild(webBtn);
+    actions.appendChild(middleRow);
+
+    const locBtn = document.createElement("button");
+    locBtn.textContent = "Ubicación";
+    locBtn.className = "md-btn md-btn-blue";
+    locBtn.style.width = "100%";
+    locBtn.onclick = () => {
+      playSound("others.mp3");
+      window.api.openAppLocation(app.installPath || app.executablePath || app.paths[0]);
+      showToast("Abriendo ubicación...");
+    };
+    if (isUninstalling) locBtn.style.display = "none";
+    actions.appendChild(locBtn);
+  } else {
+    // Modo No Instalado
+    const installRow = document.createElement("div");
+    installRow.style.display = "flex";
+    installRow.style.gap = "8px";
+    installRow.style.width = "100%";
+
+    const installBtn = document.createElement("button");
+    installBtn.className = "md-btn md-btn-filled";
+    installBtn.style.flex = "1";
+
+    if (installingApps.has(app.id)) {
+      installBtn.disabled = true;
+      installBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Instalando...</span>`;
+    } else {
+      installBtn.textContent = "Instalar";
+      installBtn.onclick = async () => {
+        installingApps.add(app.id);
+        renderApps(currentCategory);
+        try {
+          await window.api.installApp(app);
+          playSound("finish.mp3");
+        } catch (e) { console.error(e); }
+        finally { installingApps.delete(app.id); await load(); }
       };
-      imgContainer.appendChild(icon);
+    }
+    installRow.appendChild(installBtn);
 
-      // --- Badges de Requisitos ---
-      if (app.verified === "true") {
-        const verifiedBadge = document.createElement("div");
-        verifiedBadge.className = "req-badge verified-req-badge";
+    if (app["share-compatibility"] === "si") {
+      installRow.appendChild(createIconButton("../assets/icons/share.svg", () => {
+        navigator.clipboard.writeText(`https://stormstore.vercel.app/app/${app.id}/run`);
+        showToast("Enlace copiado");
+      }));
+    }
+    installRow.appendChild(createIconButton("../assets/icons/web.svg", () => window.open(`https://stormstore.vercel.app/app/${app.id}`)));
+    actions.appendChild(installRow);
+  }
 
-        const verifiedIcon = document.createElement("img");
-        verifiedIcon.src = "../assets/icons/verified.svg";
+  card.append(imgContainer, name, desc, actions);
+  return card;
+}
 
-        const verifiedText = document.createElement("span");
-        verifiedText.textContent = "Verificado";
+// Funciones auxiliares de creación de UI
+function createBadge(text, iconSrc, className) {
+  const badge = document.createElement("div");
+  badge.className = `req-badge ${className}`;
+  badge.innerHTML = `<img src="${iconSrc}"><span>${text}</span>`;
+  return badge;
+}
 
-        verifiedBadge.append(verifiedIcon, verifiedText);
-        imgContainer.appendChild(verifiedBadge);
-      }
-
-      if (app.steam === "si") {
-        const steamBadge = document.createElement("div");
-        steamBadge.className = "req-badge steam-req-badge";
-
-        const steamIcon = document.createElement("img");
-        steamIcon.src = "../assets/icons/steam.svg";
-
-        const steamText = document.createElement("span");
-        steamText.textContent = "Steam";
-
-        steamBadge.append(steamIcon, steamText);
-        imgContainer.appendChild(steamBadge);
-      }
-
-      if (app.wifi === "si") {
-        const wifiBadge = document.createElement("div");
-        wifiBadge.className = "req-badge wifi-req-badge";
-
-        const wifiIcon = document.createElement("img");
-        wifiIcon.src = "../assets/icons/wifi.svg";
-
-        const wifiText = document.createElement("span");
-        wifiText.textContent = "WiFi";
-
-        wifiBadge.append(wifiIcon, wifiText);
-        imgContainer.appendChild(wifiBadge);
-      }
-
-      if (app["virus-alert"] === "alert") {
-        const virusBadge = document.createElement("div");
-        virusBadge.className = "req-badge virus-req-badge";
-
-        const virusIcon = document.createElement("img");
-        virusIcon.src = "../assets/icons/virus.svg";
-
-        const virusText = document.createElement("span");
-        virusText.textContent = "Virus";
-
-        virusBadge.append(virusIcon, virusText);
-        imgContainer.appendChild(virusBadge);
-      }
-
-      const wifiBadge = document.createElement("img");
-      wifiBadge.src = "../assets/icons/sin-wifi.svg";
-      wifiBadge.className = "wifi-badge";
-      imgContainer.appendChild(wifiBadge);
-
-      const infoBadge = document.createElement("img");
-      infoBadge.src = "../assets/icons/info.svg";
-      infoBadge.className = "info-badge";
-      imgContainer.appendChild(infoBadge);
-
-      const name = document.createElement("h3");
-      name.textContent = app.name;
-
-      const desc = document.createElement("p");
-      desc.textContent = app.description;
-
-      const actions = document.createElement("div");
-      actions.className = "card-actions";
-
-      if (app.installed) {
-        const isUninstalling = uninstallingApps.has(app.id);
-        let shareBtn = null;
-
-        const topRow = document.createElement("div");
-        topRow.style.display = "flex";
-        topRow.style.gap = "8px";
-        topRow.style.width = "100%";
-
-        // ABRIR
-        const openBtn = document.createElement("button");
-        openBtn.textContent = "Abrir";
-        openBtn.className = "md-btn md-btn-filled";
-        openBtn.style.flex = "1";
-        openBtn.onclick = () =>
-          window.api.openApp(
-            app.executablePath || app.paths[0],
-            app.steam === "si",
-          );
-        if (isUninstalling) openBtn.style.display = "none";
-        topRow.appendChild(openBtn);
-
-        // DESINSTALAR
-        if (app.uninstall && app.uninstallExists) {
-          const uninstallBtn = document.createElement("button");
-          uninstallBtn.className = "md-btn md-btn-danger";
-          uninstallBtn.style.flex = "1";
-
-          if (isUninstalling) {
-            uninstallBtn.disabled = true;
-            uninstallBtn.innerHTML = `
-            <span class="button-loading">
-              <img src="../assets/icons/loading-new.svg">
-              Desinstalando...
-            </span>
-          `;
-          } else {
-            uninstallBtn.textContent = "Desinstalar";
-            uninstallBtn.onclick = async (e) => {
-              e.stopPropagation();
-              showToast("Desinstalando aplicación...");
-              uninstallingApps.add(app.id);
-
-              uninstallBtn.disabled = true;
-              openBtn.style.display = "none";
-              locBtn.style.display = "none";
-              if (shareBtn) shareBtn.style.display = "none";
-              uninstallBtn.innerHTML = `
-            <span class="button-loading">
-              <img src="../assets/icons/loading-new.svg">
-              Desinstalando...
-            </span>
-          `;
-
-              try {
-                await window.api.uninstallApp(app.uninstall);
-                playSound("finish.mp3");
-              } catch (error) {
-                console.error("Error desinstalando:", error);
-              } finally {
-                uninstallingApps.delete(app.id);
-                await load();
-              }
-            };
-          }
-
-          topRow.appendChild(uninstallBtn);
-        } else if (app.steam !== "si" && app.epic !== "si") {
-          // Botón Eliminar Completamente (si no hay desinstalador)
-          const deleteBtn = document.createElement("button");
-          deleteBtn.className = "md-btn md-btn-danger";
-          deleteBtn.style.flex = "1";
-
-          if (isUninstalling) {
-            deleteBtn.disabled = true;
-            deleteBtn.innerHTML = `
-            <span class="button-loading">
-              <img src="../assets/icons/loading-new.svg">
-              Eliminando...
-            </span>`;
-          } else {
-            deleteBtn.textContent = "Eliminar";
-            deleteBtn.onclick = async (e) => {
-              e.stopPropagation();
-              if (!confirm("¿Eliminar carpeta de la aplicación?")) return;
-
-              showToast("Eliminando archivos...");
-              uninstallingApps.add(app.id);
-              // Forzar re-render para mostrar estado loading
-              renderApps(currentCategory);
-
-              try {
-                await window.api.deleteAppFolder(app.paths[0]);
-                playSound("finish.mp3");
-              } catch (error) {
-                console.error(error);
-              }
-              uninstallingApps.delete(app.id);
-              await load();
-            };
-          }
-          topRow.appendChild(deleteBtn);
-        }
-
-        actions.appendChild(topRow);
-
-        // SHARE + WEB (Fila intermedia)
-        const middleRow = document.createElement("div");
-        middleRow.style.display = "flex";
-        middleRow.style.gap = "8px";
-        middleRow.style.width = "100%";
-
-        if (app["share-compatibility"] === "si") {
-          shareBtn = document.createElement("button");
-          shareBtn.className = "md-btn md-btn-tonal";
-          shareBtn.style.flex = "1";
-          shareBtn.innerHTML =
-            '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
-          shareBtn.onclick = (e) => {
-            e.stopPropagation();
-            playSound("others.mp3");
-            navigator.clipboard.writeText(
-              `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
-            );
-            showToast("Enlace copiado al portapapeles");
-          };
-          if (isUninstalling) shareBtn.style.display = "none";
-          middleRow.appendChild(shareBtn);
-        }
-
-        const webBtn = document.createElement("button");
-        webBtn.className = "md-btn md-btn-tonal";
-        webBtn.style.flex = "1";
-        webBtn.innerHTML =
-          '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
-        webBtn.onclick = (e) => {
-          e.stopPropagation();
-          playSound("others.mp3");
-          window.open(`https://stormstore.vercel.app/app/${app.id}`);
-        };
-        if (isUninstalling) webBtn.style.display = "none";
-        middleRow.appendChild(webBtn);
-
-        if (middleRow.hasChildNodes()) actions.appendChild(middleRow);
-
-        // UBICACIÓN (Fila inferior)
-        const bottomRow = document.createElement("div");
-        bottomRow.style.display = "flex";
-        bottomRow.style.gap = "8px";
-        bottomRow.style.width = "100%";
-
-        const locBtn = document.createElement("button");
-        locBtn.textContent = "Ubicación";
-        locBtn.className = "md-btn md-btn-blue";
-        locBtn.style.flex = "1";
-        locBtn.onclick = () => {
-          playSound("others.mp3");
-          window.api.openAppLocation(
-            app.installPath || app.executablePath || app.paths[0],
-          );
-          showToast("Abriendo ubicación...");
-        };
-        if (isUninstalling) locBtn.style.display = "none";
-        bottomRow.appendChild(locBtn);
-
-        actions.appendChild(bottomRow);
-      } else {
-        // INSTALAR + SHARE
-        const installRow = document.createElement("div");
-        installRow.style.display = "flex";
-        installRow.style.gap = "8px";
-        installRow.style.width = "100%";
-
-        const installBtn = document.createElement("button");
-        installBtn.className = "md-btn md-btn-filled";
-        installBtn.style.flex = "1";
-
-        if (installingApps.has(app.id)) {
-          installBtn.disabled = true;
-          installBtn.innerHTML = `
-            <span class="button-loading">
-              <img src="../assets/icons/loading-new.svg">
-              Instalando...
-            </span>
-          `;
-        } else {
-          installBtn.textContent = "Instalar";
-          installBtn.onclick = async () => {
-            playSound("others.mp3");
-            showToast("Iniciando instalación...");
-            installingApps.add(app.id);
-            // Actualizar botón visualmente
-            installBtn.disabled = true;
-            installBtn.innerHTML = `
-            <span class="button-loading">
-              <img src="../assets/icons/loading-new.svg">
-              Instalando...
-            </span>
-          `;
-
-            try {
-              await window.api.installApp(app);
-              playSound("finish.mp3");
-              installingApps.delete(app.id);
-              await load();
-            } catch (error) {
-              console.error("Instalación cancelada o fallida:", error);
-              installingApps.delete(app.id);
-              // Revertir estado del botón
-              installBtn.disabled = false;
-              installBtn.textContent = "Instalar";
-            }
-          };
-        }
-
-        installRow.appendChild(installBtn);
-
-        if (app["share-compatibility"] === "si") {
-          const shareBtn = document.createElement("button");
-          shareBtn.className = "md-btn md-btn-tonal";
-          shareBtn.style.padding = "10px 12px";
-          shareBtn.innerHTML =
-            '<img src="../assets/icons/share.svg" alt="Share" style="width: 20px; height: 20px;">';
-          shareBtn.onclick = (e) => {
-            e.stopPropagation();
-            playSound("others.mp3");
-            navigator.clipboard.writeText(
-              `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
-            );
-            showToast("Enlace copiado al portapapeles");
-          };
-          installRow.appendChild(shareBtn);
-        }
-
-        const webBtn = document.createElement("button");
-        webBtn.className = "md-btn md-btn-tonal";
-        webBtn.style.padding = "10px 12px";
-        webBtn.innerHTML =
-          '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
-        webBtn.onclick = (e) => {
-          e.stopPropagation();
-          playSound("others.mp3");
-          window.open(`https://stormstore.vercel.app/app/${app.id}`);
-        };
-        installRow.appendChild(webBtn);
-
-        actions.appendChild(installRow);
-      }
-
-      card.append(imgContainer, name, desc, actions);
-      appsContainer.appendChild(card);
-    });
+function createIconButton(iconSrc, onClick) {
+  const btn = document.createElement("button");
+  btn.className = "md-btn md-btn-tonal";
+  btn.style.flex = "1";
+  btn.style.padding = "10px 12px";
+  btn.innerHTML = `<img src="${iconSrc}" style="width: 20px; height: 20px; filter: invert(1);">`;
+  btn.onclick = (e) => { e.stopPropagation(); onClick(); };
+  return btn;
 }
 
 window.api.onShowToast((_event, message, duration) => {

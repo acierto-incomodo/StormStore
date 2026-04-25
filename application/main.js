@@ -105,7 +105,29 @@ function createTray() {
   if (tray) return;
   tray = new Tray(path.join(__dirname, "assets/app.ico"));
   const contextMenu = Menu.buildFromTemplate([
-    { label: "Abrir StormStore", click: () => mainWindow.show() },
+    { label: "Abrir StormStore", click: () => {
+      mainWindow.show();
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }},
+    { label: "Modo StormVortex", click: () => {
+      mainWindow.show();
+      mainWindow.setFullScreen(true);
+      mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
+      setActivity();
+      mainWindow.focus();
+    }},
+    { label: "Buscar actualizaciones", click: () => {
+      mainWindow.show();
+      mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
+      autoUpdater.checkForUpdates();
+    }},
+    { type: "separator" },
+    { label: "Reiniciar StormStore", click: () => {
+      app.isQuiting = true;
+      app.relaunch();
+      app.exit(0);
+    }},
     { type: "separator" },
     {
       label: "Salir",
@@ -118,7 +140,13 @@ function createTray() {
   tray.setToolTip("StormStore");
   tray.setContextMenu(contextMenu);
   tray.on("click", () => {
-    mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show();
+    if (mainWindow.isVisible()) {
+      mainWindow.hide();
+    } else {
+      mainWindow.show();
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }
   });
 }
 
@@ -285,6 +313,7 @@ function createWindow() {
     minHeight: 750,
     backgroundColor: "#00000000",
     frame: false,
+    show: false,
     backgroundMaterial: "mica",
     autoHideMenuBar: true,
     icon: path.join(__dirname, "assets/app.ico"),
@@ -309,8 +338,7 @@ function createWindow() {
   const startInBigPicture = process.argv.some((arg) =>
     vortexFlags.includes(arg),
   );
-
-  const shouldShow = !settings.start_minimized || startInBigPicture;
+  const isSilentStart = (settings.start_minimized || process.argv.includes("--start-minimized")) && !startInBigPicture;
 
   win.loadFile(
     path.join(
@@ -319,20 +347,19 @@ function createWindow() {
     ),
   );
 
-  if (shouldShow) {
+  win.once("ready-to-show", () => {
     if (startInBigPicture) {
       win.setFullScreen(true);
-    } else if (
-      settings.start_minimized ||
-      process.argv.includes("--start-minimized")
-    ) {
-      win.minimize();
+      win.show();
+    } else if (isSilentStart) {
+      // Si es inicio silencioso, no llamamos a win.show(). 
+      // La ventana permanece oculta y solo el icono de la bandeja será visible.
+      console.log("StormStore: Iniciando en modo silencioso (solo bandeja).");
     } else {
       win.maximize();
+      win.show();
     }
-  } else {
-    win.hide();
-  }
+  });
 
   win.on("close", (event) => {
     const currentSettings = loadSettings();

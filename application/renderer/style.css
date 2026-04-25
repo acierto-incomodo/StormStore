@@ -78,15 +78,39 @@ body {
 }
 
 .sidebar li {
+  position: relative;
   padding: 8px;
   cursor: pointer;
   border-radius: var(--md-sys-shape-corner-full);
   padding: 12px 24px;
-  transition: background 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--md-sys-color-on-surface-variant);
+  font-weight: 500;
 }
 
 .sidebar li:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--md-sys-color-surface-container-high);
+  padding-left: 30px;
+  color: var(--md-sys-color-on-surface);
+}
+
+.sidebar li.active {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  padding-left: 32px;
+  view-transition-name: sidebar-active-item;
+}
+
+.sidebar li.active::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--md-sys-color-on-secondary-container);
+  border-radius: 50%;
 }
 
 main {
@@ -525,12 +549,39 @@ body.offline .requires-wifi button {
   transition: background 0.2s;
   width: 40px;
   height: 40px;
+  position: relative;
+}
+
+.sidebar-footer .footer-icons button.active {
+  background: var(--md-sys-color-primary);
+  view-transition-name: footer-active-item;
+}
+
+.sidebar-footer .footer-icons button.active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--md-sys-color-on-primary);
+  border-radius: 50%;
+}
+
+.sidebar-footer .footer-icons button.active img {
+  filter: invert(1) brightness(0) !important;
 }
 
 .sidebar-footer .footer-icons button img {
   width: 20px;
   height: 20px;
   filter: invert(0.8); /* Hacer iconos gris claro */
+  transition: filter 0.2s;
+}
+
+.sidebar-footer .footer-icons button:hover img {
+  filter: invert(1);
 }
 
 /* #open-info usa un SVG blanco por defecto, necesita un filtro diferente para verse gris claro en el footer */
@@ -542,6 +593,28 @@ body.offline .requires-wifi button {
 #open-big-picture img,
 #open-settings-header img {
   filter: invert(1);
+}
+
+.control-btn.active {
+  background: var(--md-sys-color-primary);
+  position: relative;
+  view-transition-name: header-active-item;
+}
+
+.control-btn.active img {
+  filter: invert(1) brightness(0) !important;
+}
+
+.control-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--md-sys-color-on-primary);
+  border-radius: 50%;
 }
 
 .sidebar-footer .footer-icons button:hover {
@@ -1248,4 +1321,51 @@ body.offline .requires-wifi button {
   color: var(--md-sys-color-on-surface-variant);
   line-height: 1.6;
   margin: 0;
+}
+
+/* --- Skeletons (Estados de carga) --- */
+.skeleton {
+  pointer-events: none;
+}
+
+.skeleton-box {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-sys-shape-corner-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-text {
+  background: var(--md-sys-color-surface-container-high);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-text.title {
+  height: 24px;
+  width: 60%;
+  margin: 8px auto;
+}
+
+.skeleton-text.body {
+  height: 60px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.skeleton-box::after,
+.skeleton-text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: skeleton-shimmer 1.5s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
 }
