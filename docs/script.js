@@ -4,1327 +4,1327 @@ document.addEventListener("DOMContentLoaded", () => {
   // esto podría ser generado por un script.
   // Las rutas son relativas a la raíz del repositorio.
   const fileStructure = {
-    "application": {
-        "type": "folder",
-        "children": {
-            "assets": {
-                "type": "folder",
-                "children": {
-                    "app.ico": {
-                        "type": "default"
+    application: {
+      type: "folder",
+      children: {
+        assets: {
+          type: "folder",
+          children: {
+            "app.ico": {
+              type: "default",
+            },
+            "app.png": {
+              type: "image",
+            },
+            apps: {
+              type: "folder",
+              children: {
+                "BalatroGame.png": {
+                  type: "image",
+                },
+                "FNAF1.png": {
+                  type: "image",
+                },
+                "FNAF2.png": {
+                  type: "image",
+                },
+                "FNAF3.png": {
+                  type: "image",
+                },
+                "FNAF4.png": {
+                  type: "image",
+                },
+                "ScamLine.png": {
+                  type: "image",
+                },
+                "ambidextro.png": {
+                  type: "image",
+                },
+                "backseat-drivers.png": {
+                  type: "image",
+                },
+                "buckshot_roulette.png": {
+                  type: "image",
+                },
+                "clase-web.png": {
+                  type: "image",
+                },
+                "content-warning.png": {
+                  type: "image",
+                },
+                "doom.png": {
+                  type: "image",
+                },
+                "fastfood.png": {
+                  type: "image",
+                },
+                "fusion-arena.png": {
+                  type: "image",
+                },
+                "golfit.png": {
+                  type: "image",
+                },
+                "hollow-knight-silksong.png": {
+                  type: "image",
+                },
+                "hytale.png": {
+                  type: "image",
+                },
+                "karts-multiplayer.png": {
+                  type: "image",
+                },
+                "lethal-company.png": {
+                  type: "image",
+                },
+                "mage-arena.png": {
+                  type: "image",
+                },
+                "miside-zero.png": {
+                  type: "image",
+                },
+                "modpack-installer.png": {
+                  type: "image",
+                },
+                "multiai.png": {
+                  type: "image",
+                },
+                "pairdrop.png": {
+                  type: "image",
+                },
+                "panicore.png": {
+                  type: "image",
+                },
+                "peak.png": {
+                  type: "image",
+                },
+                "peopleplayground.png": {
+                  type: "image",
+                },
+                "repo.png": {
+                  type: "image",
+                },
+                "schedule1.png": {
+                  type: "image",
+                },
+                "stormlauncher.png": {
+                  type: "image",
+                },
+                "stormlibraryv2.png": {
+                  type: "image",
+                },
+                "stormpanel-app.png": {
+                  type: "image",
+                },
+                "stormstore.png": {
+                  type: "image",
+                },
+                "the-shooter.png": {
+                  type: "image",
+                },
+                "theforest.png": {
+                  type: "image",
+                },
+                "theplanetcrafter.png": {
+                  type: "image",
+                },
+                "ultrakill.png": {
+                  type: "image",
+                },
+              },
+            },
+            "apps-4096x4096": {
+              type: "folder",
+              children: {
+                "FNAF1.png": {
+                  type: "image",
+                },
+                "FNAF2.png": {
+                  type: "image",
+                },
+                "FNAF3.png": {
+                  type: "image",
+                },
+                "FNAF4.png": {
+                  type: "image",
+                },
+                "REPO.png": {
+                  type: "image",
+                },
+                "ScamLine.png": {
+                  type: "image",
+                },
+                "ambidextro.png": {
+                  type: "image",
+                },
+                "backseat-drivers.png": {
+                  type: "image",
+                },
+                "buckshot_roulette.png": {
+                  type: "image",
+                },
+                "content-warning.png": {
+                  type: "image",
+                },
+                "doom.png": {
+                  type: "image",
+                },
+                "hollow-knight-silksong.png": {
+                  type: "image",
+                },
+                "karts-multiplayer.png": {
+                  type: "image",
+                },
+                "lethal-company.png": {
+                  type: "image",
+                },
+                "mage-arena.png": {
+                  type: "image",
+                },
+                "miside-zero.png": {
+                  type: "image",
+                },
+                "modpack-installer.png": {
+                  type: "image",
+                },
+                "multiai.png": {
+                  type: "image",
+                },
+                "pairdrop.png": {
+                  type: "image",
+                },
+                "stormlauncher.png": {
+                  type: "image",
+                },
+                "stormlibraryv2.png": {
+                  type: "image",
+                },
+                "stormpanel-app.png": {
+                  type: "image",
+                },
+                "stormstore.png": {
+                  type: "image",
+                },
+                "the-shooter.png": {
+                  type: "image",
+                },
+              },
+            },
+            "apps-new-quality": {
+              type: "folder",
+              children: {
+                "FNAF2.png": {
+                  type: "image",
+                },
+                "FNAF3.png": {
+                  type: "image",
+                },
+                "REPO.png": {
+                  type: "image",
+                },
+                "ScamLine.png": {
+                  type: "image",
+                },
+                "backseat-drivers.png": {
+                  type: "image",
+                },
+                "buckshot_roulette.png": {
+                  type: "image",
+                },
+                "content-warning.png": {
+                  type: "image",
+                },
+                "karts-multiplayer.png": {
+                  type: "image",
+                },
+                "lethal-company.png": {
+                  type: "image",
+                },
+                "mage-arena.png": {
+                  type: "image",
+                },
+                "pairdrop.png": {
+                  type: "image",
+                },
+                "stormlauncher.png": {
+                  type: "image",
+                },
+                "stormstore.png": {
+                  type: "image",
+                },
+              },
+            },
+            "apps-old": {
+              type: "folder",
+              children: {
+                "FNAF1.png": {
+                  type: "image",
+                },
+                "FNAF2.png": {
+                  type: "image",
+                },
+                "FNAF3.png": {
+                  type: "image",
+                },
+                "FNAF4.png": {
+                  type: "image",
+                },
+                "REPO-old.png": {
+                  type: "image",
+                },
+                "REPO.png": {
+                  type: "image",
+                },
+                "ScamLine.png": {
+                  type: "image",
+                },
+                "ambidextro.png": {
+                  type: "image",
+                },
+                "backseat-drivers.png": {
+                  type: "image",
+                },
+                "buckshot_roulette.png": {
+                  type: "image",
+                },
+                "content-warning.png": {
+                  type: "image",
+                },
+                "doom.png": {
+                  type: "image",
+                },
+                "hollow-knight-silksong.png": {
+                  type: "image",
+                },
+                "karts-multiplayer.png": {
+                  type: "image",
+                },
+                "lethal-company.png": {
+                  type: "image",
+                },
+                "mage-arena.png": {
+                  type: "image",
+                },
+                "miside-zero.png": {
+                  type: "image",
+                },
+                "modpack-installer.png": {
+                  type: "image",
+                },
+                "multiai.png": {
+                  type: "image",
+                },
+                "pairdrop.png": {
+                  type: "image",
+                },
+                "stormlauncher.png": {
+                  type: "image",
+                },
+                "stormlibraryv2.png": {
+                  type: "image",
+                },
+                "stormpanel-app.png": {
+                  type: "image",
+                },
+                "stormstore.png": {
+                  type: "image",
+                },
+                "the-shooter.png": {
+                  type: "image",
+                },
+              },
+            },
+            "apps-original": {
+              type: "folder",
+              children: {
+                "REPO.png": {
+                  type: "image",
+                },
+                "pairdrop.png": {
+                  type: "image",
+                },
+                "stormlauncher.png": {
+                  type: "image",
+                },
+              },
+            },
+            "apps-size": {
+              type: "folder",
+              children: {
+                "1024x1024": {
+                  type: "folder",
+                  children: {
+                    "BalatroGame.png": {
+                      type: "image",
                     },
-                    "app.png": {
-                        "type": "image"
+                    "FNAF1.png": {
+                      type: "image",
                     },
-                    "apps": {
-                        "type": "folder",
-                        "children": {
-                            "BalatroGame.png": {
-                                "type": "image"
-                            },
-                            "FNAF1.png": {
-                                "type": "image"
-                            },
-                            "FNAF2.png": {
-                                "type": "image"
-                            },
-                            "FNAF3.png": {
-                                "type": "image"
-                            },
-                            "FNAF4.png": {
-                                "type": "image"
-                            },
-                            "ScamLine.png": {
-                                "type": "image"
-                            },
-                            "ambidextro.png": {
-                                "type": "image"
-                            },
-                            "backseat-drivers.png": {
-                                "type": "image"
-                            },
-                            "buckshot_roulette.png": {
-                                "type": "image"
-                            },
-                            "clase-web.png": {
-                                "type": "image"
-                            },
-                            "content-warning.png": {
-                                "type": "image"
-                            },
-                            "doom.png": {
-                                "type": "image"
-                            },
-                            "fastfood.png": {
-                                "type": "image"
-                            },
-                            "fusion-arena.png": {
-                                "type": "image"
-                            },
-                            "golfit.png": {
-                                "type": "image"
-                            },
-                            "hollow-knight-silksong.png": {
-                                "type": "image"
-                            },
-                            "hytale.png": {
-                                "type": "image"
-                            },
-                            "karts-multiplayer.png": {
-                                "type": "image"
-                            },
-                            "lethal-company.png": {
-                                "type": "image"
-                            },
-                            "mage-arena.png": {
-                                "type": "image"
-                            },
-                            "miside-zero.png": {
-                                "type": "image"
-                            },
-                            "modpack-installer.png": {
-                                "type": "image"
-                            },
-                            "multiai.png": {
-                                "type": "image"
-                            },
-                            "pairdrop.png": {
-                                "type": "image"
-                            },
-                            "panicore.png": {
-                                "type": "image"
-                            },
-                            "peak.png": {
-                                "type": "image"
-                            },
-                            "peopleplayground.png": {
-                                "type": "image"
-                            },
-                            "repo.png": {
-                                "type": "image"
-                            },
-                            "schedule1.png": {
-                                "type": "image"
-                            },
-                            "stormlauncher.png": {
-                                "type": "image"
-                            },
-                            "stormlibraryv2.png": {
-                                "type": "image"
-                            },
-                            "stormpanel-app.png": {
-                                "type": "image"
-                            },
-                            "stormstore.png": {
-                                "type": "image"
-                            },
-                            "the-shooter.png": {
-                                "type": "image"
-                            },
-                            "theforest.png": {
-                                "type": "image"
-                            },
-                            "theplanetcrafter.png": {
-                                "type": "image"
-                            },
-                            "ultrakill.png": {
-                                "type": "image"
-                            }
-                        }
+                    "FNAF2.png": {
+                      type: "image",
                     },
-                    "apps-4096x4096": {
-                        "type": "folder",
-                        "children": {
-                            "FNAF1.png": {
-                                "type": "image"
-                            },
-                            "FNAF2.png": {
-                                "type": "image"
-                            },
-                            "FNAF3.png": {
-                                "type": "image"
-                            },
-                            "FNAF4.png": {
-                                "type": "image"
-                            },
-                            "REPO.png": {
-                                "type": "image"
-                            },
-                            "ScamLine.png": {
-                                "type": "image"
-                            },
-                            "ambidextro.png": {
-                                "type": "image"
-                            },
-                            "backseat-drivers.png": {
-                                "type": "image"
-                            },
-                            "buckshot_roulette.png": {
-                                "type": "image"
-                            },
-                            "content-warning.png": {
-                                "type": "image"
-                            },
-                            "doom.png": {
-                                "type": "image"
-                            },
-                            "hollow-knight-silksong.png": {
-                                "type": "image"
-                            },
-                            "karts-multiplayer.png": {
-                                "type": "image"
-                            },
-                            "lethal-company.png": {
-                                "type": "image"
-                            },
-                            "mage-arena.png": {
-                                "type": "image"
-                            },
-                            "miside-zero.png": {
-                                "type": "image"
-                            },
-                            "modpack-installer.png": {
-                                "type": "image"
-                            },
-                            "multiai.png": {
-                                "type": "image"
-                            },
-                            "pairdrop.png": {
-                                "type": "image"
-                            },
-                            "stormlauncher.png": {
-                                "type": "image"
-                            },
-                            "stormlibraryv2.png": {
-                                "type": "image"
-                            },
-                            "stormpanel-app.png": {
-                                "type": "image"
-                            },
-                            "stormstore.png": {
-                                "type": "image"
-                            },
-                            "the-shooter.png": {
-                                "type": "image"
-                            }
-                        }
+                    "FNAF3.png": {
+                      type: "image",
                     },
-                    "apps-new-quality": {
-                        "type": "folder",
-                        "children": {
-                            "FNAF2.png": {
-                                "type": "image"
-                            },
-                            "FNAF3.png": {
-                                "type": "image"
-                            },
-                            "REPO.png": {
-                                "type": "image"
-                            },
-                            "ScamLine.png": {
-                                "type": "image"
-                            },
-                            "backseat-drivers.png": {
-                                "type": "image"
-                            },
-                            "buckshot_roulette.png": {
-                                "type": "image"
-                            },
-                            "content-warning.png": {
-                                "type": "image"
-                            },
-                            "karts-multiplayer.png": {
-                                "type": "image"
-                            },
-                            "lethal-company.png": {
-                                "type": "image"
-                            },
-                            "mage-arena.png": {
-                                "type": "image"
-                            },
-                            "pairdrop.png": {
-                                "type": "image"
-                            },
-                            "stormlauncher.png": {
-                                "type": "image"
-                            },
-                            "stormstore.png": {
-                                "type": "image"
-                            }
-                        }
+                    "FNAF4.png": {
+                      type: "image",
                     },
-                    "apps-old": {
-                        "type": "folder",
-                        "children": {
-                            "FNAF1.png": {
-                                "type": "image"
-                            },
-                            "FNAF2.png": {
-                                "type": "image"
-                            },
-                            "FNAF3.png": {
-                                "type": "image"
-                            },
-                            "FNAF4.png": {
-                                "type": "image"
-                            },
-                            "REPO-old.png": {
-                                "type": "image"
-                            },
-                            "REPO.png": {
-                                "type": "image"
-                            },
-                            "ScamLine.png": {
-                                "type": "image"
-                            },
-                            "ambidextro.png": {
-                                "type": "image"
-                            },
-                            "backseat-drivers.png": {
-                                "type": "image"
-                            },
-                            "buckshot_roulette.png": {
-                                "type": "image"
-                            },
-                            "content-warning.png": {
-                                "type": "image"
-                            },
-                            "doom.png": {
-                                "type": "image"
-                            },
-                            "hollow-knight-silksong.png": {
-                                "type": "image"
-                            },
-                            "karts-multiplayer.png": {
-                                "type": "image"
-                            },
-                            "lethal-company.png": {
-                                "type": "image"
-                            },
-                            "mage-arena.png": {
-                                "type": "image"
-                            },
-                            "miside-zero.png": {
-                                "type": "image"
-                            },
-                            "modpack-installer.png": {
-                                "type": "image"
-                            },
-                            "multiai.png": {
-                                "type": "image"
-                            },
-                            "pairdrop.png": {
-                                "type": "image"
-                            },
-                            "stormlauncher.png": {
-                                "type": "image"
-                            },
-                            "stormlibraryv2.png": {
-                                "type": "image"
-                            },
-                            "stormpanel-app.png": {
-                                "type": "image"
-                            },
-                            "stormstore.png": {
-                                "type": "image"
-                            },
-                            "the-shooter.png": {
-                                "type": "image"
-                            }
-                        }
+                    "ScamLine.png": {
+                      type: "image",
                     },
-                    "apps-original": {
-                        "type": "folder",
-                        "children": {
-                            "REPO.png": {
-                                "type": "image"
-                            },
-                            "pairdrop.png": {
-                                "type": "image"
-                            },
-                            "stormlauncher.png": {
-                                "type": "image"
-                            }
-                        }
+                    "ambidextro.png": {
+                      type: "image",
                     },
-                    "apps-size": {
-                        "type": "folder",
-                        "children": {
-                            "1024x1024": {
-                                "type": "folder",
-                                "children": {
-                                    "BalatroGame.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF1.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF2.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF3.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF4.png": {
-                                        "type": "image"
-                                    },
-                                    "ScamLine.png": {
-                                        "type": "image"
-                                    },
-                                    "ambidextro.png": {
-                                        "type": "image"
-                                    },
-                                    "backseat-drivers.png": {
-                                        "type": "image"
-                                    },
-                                    "buckshot_roulette.png": {
-                                        "type": "image"
-                                    },
-                                    "clase-web.png": {
-                                        "type": "image"
-                                    },
-                                    "content-warning.png": {
-                                        "type": "image"
-                                    },
-                                    "doom.png": {
-                                        "type": "image"
-                                    },
-                                    "fastfood.png": {
-                                        "type": "image"
-                                    },
-                                    "fusion-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "golfit.png": {
-                                        "type": "image"
-                                    },
-                                    "hollow-knight-silksong.png": {
-                                        "type": "image"
-                                    },
-                                    "hytale.png": {
-                                        "type": "image"
-                                    },
-                                    "karts-multiplayer.png": {
-                                        "type": "image"
-                                    },
-                                    "lethal-company.png": {
-                                        "type": "image"
-                                    },
-                                    "mage-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "miside-zero.png": {
-                                        "type": "image"
-                                    },
-                                    "modpack-installer.png": {
-                                        "type": "image"
-                                    },
-                                    "multiai.png": {
-                                        "type": "image"
-                                    },
-                                    "pairdrop.png": {
-                                        "type": "image"
-                                    },
-                                    "panicore.png": {
-                                        "type": "image"
-                                    },
-                                    "peak.png": {
-                                        "type": "image"
-                                    },
-                                    "peopleplayground.png": {
-                                        "type": "image"
-                                    },
-                                    "repo.png": {
-                                        "type": "image"
-                                    },
-                                    "schedule1.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlauncher.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlibraryv2.png": {
-                                        "type": "image"
-                                    },
-                                    "stormpanel-app.png": {
-                                        "type": "image"
-                                    },
-                                    "stormstore.png": {
-                                        "type": "image"
-                                    },
-                                    "the-shooter.png": {
-                                        "type": "image"
-                                    },
-                                    "theforest.png": {
-                                        "type": "image"
-                                    },
-                                    "theplanetcrafter.png": {
-                                        "type": "image"
-                                    },
-                                    "ultrakill.png": {
-                                        "type": "image"
-                                    }
-                                }
-                            },
-                            "2048x2048": {
-                                "type": "folder",
-                                "children": {
-                                    "BalatroGame.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF1.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF2.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF3.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF4.png": {
-                                        "type": "image"
-                                    },
-                                    "ScamLine.png": {
-                                        "type": "image"
-                                    },
-                                    "ambidextro.png": {
-                                        "type": "image"
-                                    },
-                                    "backseat-drivers.png": {
-                                        "type": "image"
-                                    },
-                                    "buckshot_roulette.png": {
-                                        "type": "image"
-                                    },
-                                    "clase-web.png": {
-                                        "type": "image"
-                                    },
-                                    "content-warning.png": {
-                                        "type": "image"
-                                    },
-                                    "doom.png": {
-                                        "type": "image"
-                                    },
-                                    "fastfood.png": {
-                                        "type": "image"
-                                    },
-                                    "fusion-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "golfit.png": {
-                                        "type": "image"
-                                    },
-                                    "hollow-knight-silksong.png": {
-                                        "type": "image"
-                                    },
-                                    "hytale.png": {
-                                        "type": "image"
-                                    },
-                                    "karts-multiplayer.png": {
-                                        "type": "image"
-                                    },
-                                    "lethal-company.png": {
-                                        "type": "image"
-                                    },
-                                    "mage-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "miside-zero.png": {
-                                        "type": "image"
-                                    },
-                                    "modpack-installer.png": {
-                                        "type": "image"
-                                    },
-                                    "multiai.png": {
-                                        "type": "image"
-                                    },
-                                    "pairdrop.png": {
-                                        "type": "image"
-                                    },
-                                    "panicore.png": {
-                                        "type": "image"
-                                    },
-                                    "peak.png": {
-                                        "type": "image"
-                                    },
-                                    "peopleplayground.png": {
-                                        "type": "image"
-                                    },
-                                    "repo.png": {
-                                        "type": "image"
-                                    },
-                                    "schedule1.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlauncher.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlibraryv2.png": {
-                                        "type": "image"
-                                    },
-                                    "stormpanel-app.png": {
-                                        "type": "image"
-                                    },
-                                    "stormstore.png": {
-                                        "type": "image"
-                                    },
-                                    "the-shooter.png": {
-                                        "type": "image"
-                                    },
-                                    "theforest.png": {
-                                        "type": "image"
-                                    },
-                                    "theplanetcrafter.png": {
-                                        "type": "image"
-                                    },
-                                    "ultrakill.png": {
-                                        "type": "image"
-                                    }
-                                }
-                            },
-                            "256x256": {
-                                "type": "folder",
-                                "children": {
-                                    "BalatroGame.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF1.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF2.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF3.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF4.png": {
-                                        "type": "image"
-                                    },
-                                    "ScamLine.png": {
-                                        "type": "image"
-                                    },
-                                    "ambidextro.png": {
-                                        "type": "image"
-                                    },
-                                    "backseat-drivers.png": {
-                                        "type": "image"
-                                    },
-                                    "buckshot_roulette.png": {
-                                        "type": "image"
-                                    },
-                                    "clase-web.png": {
-                                        "type": "image"
-                                    },
-                                    "content-warning.png": {
-                                        "type": "image"
-                                    },
-                                    "doom.png": {
-                                        "type": "image"
-                                    },
-                                    "fastfood.png": {
-                                        "type": "image"
-                                    },
-                                    "fusion-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "golfit.png": {
-                                        "type": "image"
-                                    },
-                                    "hollow-knight-silksong.png": {
-                                        "type": "image"
-                                    },
-                                    "hytale.png": {
-                                        "type": "image"
-                                    },
-                                    "karts-multiplayer.png": {
-                                        "type": "image"
-                                    },
-                                    "lethal-company.png": {
-                                        "type": "image"
-                                    },
-                                    "mage-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "miside-zero.png": {
-                                        "type": "image"
-                                    },
-                                    "modpack-installer.png": {
-                                        "type": "image"
-                                    },
-                                    "multiai.png": {
-                                        "type": "image"
-                                    },
-                                    "pairdrop.png": {
-                                        "type": "image"
-                                    },
-                                    "panicore.png": {
-                                        "type": "image"
-                                    },
-                                    "peak.png": {
-                                        "type": "image"
-                                    },
-                                    "peopleplayground.png": {
-                                        "type": "image"
-                                    },
-                                    "repo.png": {
-                                        "type": "image"
-                                    },
-                                    "schedule1.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlauncher.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlibraryv2.png": {
-                                        "type": "image"
-                                    },
-                                    "stormpanel-app.png": {
-                                        "type": "image"
-                                    },
-                                    "stormstore.png": {
-                                        "type": "image"
-                                    },
-                                    "the-shooter.png": {
-                                        "type": "image"
-                                    },
-                                    "theforest.png": {
-                                        "type": "image"
-                                    },
-                                    "theplanetcrafter.png": {
-                                        "type": "image"
-                                    },
-                                    "ultrakill.png": {
-                                        "type": "image"
-                                    }
-                                }
-                            },
-                            "4096x4096": {
-                                "type": "folder",
-                                "children": {
-                                    "BalatroGame.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF1.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF2.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF3.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF4.png": {
-                                        "type": "image"
-                                    },
-                                    "ScamLine.png": {
-                                        "type": "image"
-                                    },
-                                    "ambidextro.png": {
-                                        "type": "image"
-                                    },
-                                    "backseat-drivers.png": {
-                                        "type": "image"
-                                    },
-                                    "buckshot_roulette.png": {
-                                        "type": "image"
-                                    },
-                                    "clase-web.png": {
-                                        "type": "image"
-                                    },
-                                    "content-warning.png": {
-                                        "type": "image"
-                                    },
-                                    "doom.png": {
-                                        "type": "image"
-                                    },
-                                    "fastfood.png": {
-                                        "type": "image"
-                                    },
-                                    "fusion-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "golfit.png": {
-                                        "type": "image"
-                                    },
-                                    "hollow-knight-silksong.png": {
-                                        "type": "image"
-                                    },
-                                    "hytale.png": {
-                                        "type": "image"
-                                    },
-                                    "karts-multiplayer.png": {
-                                        "type": "image"
-                                    },
-                                    "lethal-company.png": {
-                                        "type": "image"
-                                    },
-                                    "mage-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "miside-zero.png": {
-                                        "type": "image"
-                                    },
-                                    "modpack-installer.png": {
-                                        "type": "image"
-                                    },
-                                    "multiai.png": {
-                                        "type": "image"
-                                    },
-                                    "pairdrop.png": {
-                                        "type": "image"
-                                    },
-                                    "panicore.png": {
-                                        "type": "image"
-                                    },
-                                    "peak.png": {
-                                        "type": "image"
-                                    },
-                                    "peopleplayground.png": {
-                                        "type": "image"
-                                    },
-                                    "repo.png": {
-                                        "type": "image"
-                                    },
-                                    "schedule1.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlauncher.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlibraryv2.png": {
-                                        "type": "image"
-                                    },
-                                    "stormpanel-app.png": {
-                                        "type": "image"
-                                    },
-                                    "stormstore.png": {
-                                        "type": "image"
-                                    },
-                                    "the-shooter.png": {
-                                        "type": "image"
-                                    },
-                                    "theforest.png": {
-                                        "type": "image"
-                                    },
-                                    "theplanetcrafter.png": {
-                                        "type": "image"
-                                    },
-                                    "ultrakill.png": {
-                                        "type": "image"
-                                    }
-                                }
-                            },
-                            "512x512": {
-                                "type": "folder",
-                                "children": {
-                                    "BalatroGame.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF1.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF2.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF3.png": {
-                                        "type": "image"
-                                    },
-                                    "FNAF4.png": {
-                                        "type": "image"
-                                    },
-                                    "ScamLine.png": {
-                                        "type": "image"
-                                    },
-                                    "ambidextro.png": {
-                                        "type": "image"
-                                    },
-                                    "backseat-drivers.png": {
-                                        "type": "image"
-                                    },
-                                    "buckshot_roulette.png": {
-                                        "type": "image"
-                                    },
-                                    "clase-web.png": {
-                                        "type": "image"
-                                    },
-                                    "content-warning.png": {
-                                        "type": "image"
-                                    },
-                                    "doom.png": {
-                                        "type": "image"
-                                    },
-                                    "fastfood.png": {
-                                        "type": "image"
-                                    },
-                                    "fusion-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "golfit.png": {
-                                        "type": "image"
-                                    },
-                                    "hollow-knight-silksong.png": {
-                                        "type": "image"
-                                    },
-                                    "hytale.png": {
-                                        "type": "image"
-                                    },
-                                    "karts-multiplayer.png": {
-                                        "type": "image"
-                                    },
-                                    "lethal-company.png": {
-                                        "type": "image"
-                                    },
-                                    "mage-arena.png": {
-                                        "type": "image"
-                                    },
-                                    "miside-zero.png": {
-                                        "type": "image"
-                                    },
-                                    "modpack-installer.png": {
-                                        "type": "image"
-                                    },
-                                    "multiai.png": {
-                                        "type": "image"
-                                    },
-                                    "pairdrop.png": {
-                                        "type": "image"
-                                    },
-                                    "panicore.png": {
-                                        "type": "image"
-                                    },
-                                    "peak.png": {
-                                        "type": "image"
-                                    },
-                                    "peopleplayground.png": {
-                                        "type": "image"
-                                    },
-                                    "repo.png": {
-                                        "type": "image"
-                                    },
-                                    "schedule1.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlauncher.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlibraryv2.png": {
-                                        "type": "image"
-                                    },
-                                    "stormpanel-app.png": {
-                                        "type": "image"
-                                    },
-                                    "stormstore.png": {
-                                        "type": "image"
-                                    },
-                                    "the-shooter.png": {
-                                        "type": "image"
-                                    },
-                                    "theforest.png": {
-                                        "type": "image"
-                                    },
-                                    "theplanetcrafter.png": {
-                                        "type": "image"
-                                    },
-                                    "ultrakill.png": {
-                                        "type": "image"
-                                    }
-                                }
-                            }
-                        }
+                    "backseat-drivers.png": {
+                      type: "image",
                     },
-                    "apps-to-make": {
-                        "type": "folder",
-                        "children": {}
+                    "buckshot_roulette.png": {
+                      type: "image",
                     },
-                    "extraFiles": {
-                        "type": "folder",
-                        "children": {
-                            "aspnetcore-runtime-8.0.23-win-x64.exe": {
-                                "type": "default"
-                            }
-                        }
+                    "clase-web.png": {
+                      type: "image",
                     },
-                    "fonts": {
-                        "type": "folder",
-                        "children": {
-                            "Quantico": {
-                                "type": "folder",
-                                "children": {
-                                    "OFL.txt": {
-                                        "type": "default"
-                                    },
-                                    "Quantico-Bold.ttf": {
-                                        "type": "font"
-                                    },
-                                    "Quantico-BoldItalic.ttf": {
-                                        "type": "font"
-                                    },
-                                    "Quantico-Italic.ttf": {
-                                        "type": "font"
-                                    },
-                                    "Quantico-Regular.ttf": {
-                                        "type": "font"
-                                    },
-                                    "zip": {
-                                        "type": "folder",
-                                        "children": {
-                                            "Quantico.zip": {
-                                                "type": "default"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    "content-warning.png": {
+                      type: "image",
                     },
-                    "gamepad": {
-                        "type": "folder",
-                        "children": {
-                            "playstation": {
-                                "type": "folder",
-                                "children": {
-                                    "PlayStation_4_Options_button.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_4_Share_button.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_Directional_button.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_Portable_button_Down.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_Portable_button_Left.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_Portable_button_Right.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_Portable_button_Up.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_button_C.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_button_Home.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_button_S.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_button_T.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_button_X.svg": {
-                                        "type": "image"
-                                    },
-                                    "PlayStation_button_analog_L.svg": {
-                                        "type": "image"
-                                    }
-                                }
-                            },
-                            "xbox": {
-                                "type": "folder",
-                                "children": {
-                                    "XboxA.svg": {
-                                        "type": "image"
-                                    },
-                                    "XboxB.svg": {
-                                        "type": "image"
-                                    },
-                                    "XboxX.svg": {
-                                        "type": "image"
-                                    },
-                                    "XboxY.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Left_stick.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Logo.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Menu_button.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Portable_button_Down.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Portable_button_Left.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Portable_button_Right.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Portable_button_Up.svg": {
-                                        "type": "image"
-                                    },
-                                    "Xbox_Share_button.svg": {
-                                        "type": "image"
-                                    }
-                                }
-                            }
-                        }
+                    "doom.png": {
+                      type: "image",
                     },
-                    "icons": {
-                        "type": "folder",
-                        "children": {
-                            "big-picture.svg": {
-                                "type": "image"
-                            },
-                            "close-window.svg": {
-                                "type": "image"
-                            },
-                            "controller.svg": {
-                                "type": "image"
-                            },
-                            "curseforge.svg": {
-                                "type": "image"
-                            },
-                            "download.svg": {
-                                "type": "image"
-                            },
-                            "epic-games.svg": {
-                                "type": "image"
-                            },
-                            "github.svg": {
-                                "type": "image"
-                            },
-                            "info.svg": {
-                                "type": "image"
-                            },
-                            "license.svg": {
-                                "type": "image"
-                            },
-                            "loading-new.svg": {
-                                "type": "image"
-                            },
-                            "loading.svg": {
-                                "type": "image"
-                            },
-                            "maximize-window.svg": {
-                                "type": "image"
-                            },
-                            "minimize-window.svg": {
-                                "type": "image"
-                            },
-                            "settings.svg": {
-                                "type": "image"
-                            },
-                            "share.svg": {
-                                "type": "image"
-                            },
-                            "sin-wifi.svg": {
-                                "type": "image"
-                            },
-                            "steam.svg": {
-                                "type": "image"
-                            },
-                            "stormvortex.svg": {
-                                "type": "image"
-                            },
-                            "update-old.svg": {
-                                "type": "image"
-                            },
-                            "update.svg": {
-                                "type": "image"
-                            },
-                            "virus.svg": {
-                                "type": "image"
-                            },
-                            "web.svg": {
-                                "type": "image"
-                            },
-                            "wifi.svg": {
-                                "type": "image"
-                            },
-                            "windowed-window.svg": {
-                                "type": "image"
-                            }
-                        }
+                    "fastfood.png": {
+                      type: "image",
                     },
-                    "icons-old": {
-                        "type": "folder",
-                        "children": {
-                            "epic-games.svg": {
-                                "type": "image"
-                            },
-                            "steam.svg": {
-                                "type": "image"
-                            }
-                        }
+                    "fusion-arena.png": {
+                      type: "image",
                     },
-                    "imagenes.py": {
-                        "type": "default"
+                    "golfit.png": {
+                      type: "image",
                     },
-                    "media": {
-                        "type": "folder",
-                        "children": {
-                            "round": {
-                                "type": "folder",
-                                "children": {
-                                    "stormlibraryv2-1.png": {
-                                        "type": "image"
-                                    },
-                                    "stormlibraryv2-2.png": {
-                                        "type": "image"
-                                    }
-                                }
-                            },
-                            "sounds": {
-                                "type": "folder",
-                                "children": {
-                                    "finish.mp3": {
-                                        "type": "audio"
-                                    },
-                                    "others.mp3": {
-                                        "type": "audio"
-                                    }
-                                }
-                            },
-                            "stormvortex": {
-                                "type": "folder",
-                                "children": {
-                                    "StormVortex.mp4": {
-                                        "type": "video"
-                                    }
-                                }
-                            },
-                            "trailers": {
-                                "type": "folder",
-                                "children": {
-                                    "ambidextro.mp4": {
-                                        "type": "video"
-                                    },
-                                    "backseat-drivers.mp4": {
-                                        "type": "video"
-                                    },
-                                    "balatro.mp4": {
-                                        "type": "video"
-                                    },
-                                    "buckshot_roulette.mp4": {
-                                        "type": "video"
-                                    },
-                                    "content-warning.mp4": {
-                                        "type": "video"
-                                    },
-                                    "doom.mp4": {
-                                        "type": "video"
-                                    },
-                                    "fastfood.mp4": {
-                                        "type": "video"
-                                    },
-                                    "fnaf1.mp4": {
-                                        "type": "video"
-                                    },
-                                    "fnaf2.mp4": {
-                                        "type": "video"
-                                    },
-                                    "fnaf3.mp4": {
-                                        "type": "video"
-                                    },
-                                    "fnaf4.mp4": {
-                                        "type": "video"
-                                    },
-                                    "golfit.mp4": {
-                                        "type": "video"
-                                    },
-                                    "hollow-knight-silksong.mp4": {
-                                        "type": "video"
-                                    },
-                                    "hytale.mp4": {
-                                        "type": "video"
-                                    },
-                                    "lethal-company.mp4": {
-                                        "type": "video"
-                                    },
-                                    "mage-arena.mp4": {
-                                        "type": "video"
-                                    },
-                                    "panicore.mp4": {
-                                        "type": "video"
-                                    },
-                                    "peak.mp4": {
-                                        "type": "video"
-                                    },
-                                    "peopleplayground.mp4": {
-                                        "type": "video"
-                                    },
-                                    "repo.mp4": {
-                                        "type": "video"
-                                    },
-                                    "scamline.mp4": {
-                                        "type": "video"
-                                    },
-                                    "schedule1.mp4": {
-                                        "type": "video"
-                                    },
-                                    "theforest.mp4": {
-                                        "type": "video"
-                                    },
-                                    "theplanetcrafter.mp4": {
-                                        "type": "video"
-                                    },
-                                    "ultrakill.mp4": {
-                                        "type": "video"
-                                    }
-                                }
-                            }
-                        }
+                    "hollow-knight-silksong.png": {
+                      type: "image",
                     },
-                    "run.py.bat": {
-                        "type": "default"
-                    }
-                }
-            }
-        }
+                    "hytale.png": {
+                      type: "image",
+                    },
+                    "karts-multiplayer.png": {
+                      type: "image",
+                    },
+                    "lethal-company.png": {
+                      type: "image",
+                    },
+                    "mage-arena.png": {
+                      type: "image",
+                    },
+                    "miside-zero.png": {
+                      type: "image",
+                    },
+                    "modpack-installer.png": {
+                      type: "image",
+                    },
+                    "multiai.png": {
+                      type: "image",
+                    },
+                    "pairdrop.png": {
+                      type: "image",
+                    },
+                    "panicore.png": {
+                      type: "image",
+                    },
+                    "peak.png": {
+                      type: "image",
+                    },
+                    "peopleplayground.png": {
+                      type: "image",
+                    },
+                    "repo.png": {
+                      type: "image",
+                    },
+                    "schedule1.png": {
+                      type: "image",
+                    },
+                    "stormlauncher.png": {
+                      type: "image",
+                    },
+                    "stormlibraryv2.png": {
+                      type: "image",
+                    },
+                    "stormpanel-app.png": {
+                      type: "image",
+                    },
+                    "stormstore.png": {
+                      type: "image",
+                    },
+                    "the-shooter.png": {
+                      type: "image",
+                    },
+                    "theforest.png": {
+                      type: "image",
+                    },
+                    "theplanetcrafter.png": {
+                      type: "image",
+                    },
+                    "ultrakill.png": {
+                      type: "image",
+                    },
+                  },
+                },
+                "2048x2048": {
+                  type: "folder",
+                  children: {
+                    "BalatroGame.png": {
+                      type: "image",
+                    },
+                    "FNAF1.png": {
+                      type: "image",
+                    },
+                    "FNAF2.png": {
+                      type: "image",
+                    },
+                    "FNAF3.png": {
+                      type: "image",
+                    },
+                    "FNAF4.png": {
+                      type: "image",
+                    },
+                    "ScamLine.png": {
+                      type: "image",
+                    },
+                    "ambidextro.png": {
+                      type: "image",
+                    },
+                    "backseat-drivers.png": {
+                      type: "image",
+                    },
+                    "buckshot_roulette.png": {
+                      type: "image",
+                    },
+                    "clase-web.png": {
+                      type: "image",
+                    },
+                    "content-warning.png": {
+                      type: "image",
+                    },
+                    "doom.png": {
+                      type: "image",
+                    },
+                    "fastfood.png": {
+                      type: "image",
+                    },
+                    "fusion-arena.png": {
+                      type: "image",
+                    },
+                    "golfit.png": {
+                      type: "image",
+                    },
+                    "hollow-knight-silksong.png": {
+                      type: "image",
+                    },
+                    "hytale.png": {
+                      type: "image",
+                    },
+                    "karts-multiplayer.png": {
+                      type: "image",
+                    },
+                    "lethal-company.png": {
+                      type: "image",
+                    },
+                    "mage-arena.png": {
+                      type: "image",
+                    },
+                    "miside-zero.png": {
+                      type: "image",
+                    },
+                    "modpack-installer.png": {
+                      type: "image",
+                    },
+                    "multiai.png": {
+                      type: "image",
+                    },
+                    "pairdrop.png": {
+                      type: "image",
+                    },
+                    "panicore.png": {
+                      type: "image",
+                    },
+                    "peak.png": {
+                      type: "image",
+                    },
+                    "peopleplayground.png": {
+                      type: "image",
+                    },
+                    "repo.png": {
+                      type: "image",
+                    },
+                    "schedule1.png": {
+                      type: "image",
+                    },
+                    "stormlauncher.png": {
+                      type: "image",
+                    },
+                    "stormlibraryv2.png": {
+                      type: "image",
+                    },
+                    "stormpanel-app.png": {
+                      type: "image",
+                    },
+                    "stormstore.png": {
+                      type: "image",
+                    },
+                    "the-shooter.png": {
+                      type: "image",
+                    },
+                    "theforest.png": {
+                      type: "image",
+                    },
+                    "theplanetcrafter.png": {
+                      type: "image",
+                    },
+                    "ultrakill.png": {
+                      type: "image",
+                    },
+                  },
+                },
+                "256x256": {
+                  type: "folder",
+                  children: {
+                    "BalatroGame.png": {
+                      type: "image",
+                    },
+                    "FNAF1.png": {
+                      type: "image",
+                    },
+                    "FNAF2.png": {
+                      type: "image",
+                    },
+                    "FNAF3.png": {
+                      type: "image",
+                    },
+                    "FNAF4.png": {
+                      type: "image",
+                    },
+                    "ScamLine.png": {
+                      type: "image",
+                    },
+                    "ambidextro.png": {
+                      type: "image",
+                    },
+                    "backseat-drivers.png": {
+                      type: "image",
+                    },
+                    "buckshot_roulette.png": {
+                      type: "image",
+                    },
+                    "clase-web.png": {
+                      type: "image",
+                    },
+                    "content-warning.png": {
+                      type: "image",
+                    },
+                    "doom.png": {
+                      type: "image",
+                    },
+                    "fastfood.png": {
+                      type: "image",
+                    },
+                    "fusion-arena.png": {
+                      type: "image",
+                    },
+                    "golfit.png": {
+                      type: "image",
+                    },
+                    "hollow-knight-silksong.png": {
+                      type: "image",
+                    },
+                    "hytale.png": {
+                      type: "image",
+                    },
+                    "karts-multiplayer.png": {
+                      type: "image",
+                    },
+                    "lethal-company.png": {
+                      type: "image",
+                    },
+                    "mage-arena.png": {
+                      type: "image",
+                    },
+                    "miside-zero.png": {
+                      type: "image",
+                    },
+                    "modpack-installer.png": {
+                      type: "image",
+                    },
+                    "multiai.png": {
+                      type: "image",
+                    },
+                    "pairdrop.png": {
+                      type: "image",
+                    },
+                    "panicore.png": {
+                      type: "image",
+                    },
+                    "peak.png": {
+                      type: "image",
+                    },
+                    "peopleplayground.png": {
+                      type: "image",
+                    },
+                    "repo.png": {
+                      type: "image",
+                    },
+                    "schedule1.png": {
+                      type: "image",
+                    },
+                    "stormlauncher.png": {
+                      type: "image",
+                    },
+                    "stormlibraryv2.png": {
+                      type: "image",
+                    },
+                    "stormpanel-app.png": {
+                      type: "image",
+                    },
+                    "stormstore.png": {
+                      type: "image",
+                    },
+                    "the-shooter.png": {
+                      type: "image",
+                    },
+                    "theforest.png": {
+                      type: "image",
+                    },
+                    "theplanetcrafter.png": {
+                      type: "image",
+                    },
+                    "ultrakill.png": {
+                      type: "image",
+                    },
+                  },
+                },
+                "4096x4096": {
+                  type: "folder",
+                  children: {
+                    "BalatroGame.png": {
+                      type: "image",
+                    },
+                    "FNAF1.png": {
+                      type: "image",
+                    },
+                    "FNAF2.png": {
+                      type: "image",
+                    },
+                    "FNAF3.png": {
+                      type: "image",
+                    },
+                    "FNAF4.png": {
+                      type: "image",
+                    },
+                    "ScamLine.png": {
+                      type: "image",
+                    },
+                    "ambidextro.png": {
+                      type: "image",
+                    },
+                    "backseat-drivers.png": {
+                      type: "image",
+                    },
+                    "buckshot_roulette.png": {
+                      type: "image",
+                    },
+                    "clase-web.png": {
+                      type: "image",
+                    },
+                    "content-warning.png": {
+                      type: "image",
+                    },
+                    "doom.png": {
+                      type: "image",
+                    },
+                    "fastfood.png": {
+                      type: "image",
+                    },
+                    "fusion-arena.png": {
+                      type: "image",
+                    },
+                    "golfit.png": {
+                      type: "image",
+                    },
+                    "hollow-knight-silksong.png": {
+                      type: "image",
+                    },
+                    "hytale.png": {
+                      type: "image",
+                    },
+                    "karts-multiplayer.png": {
+                      type: "image",
+                    },
+                    "lethal-company.png": {
+                      type: "image",
+                    },
+                    "mage-arena.png": {
+                      type: "image",
+                    },
+                    "miside-zero.png": {
+                      type: "image",
+                    },
+                    "modpack-installer.png": {
+                      type: "image",
+                    },
+                    "multiai.png": {
+                      type: "image",
+                    },
+                    "pairdrop.png": {
+                      type: "image",
+                    },
+                    "panicore.png": {
+                      type: "image",
+                    },
+                    "peak.png": {
+                      type: "image",
+                    },
+                    "peopleplayground.png": {
+                      type: "image",
+                    },
+                    "repo.png": {
+                      type: "image",
+                    },
+                    "schedule1.png": {
+                      type: "image",
+                    },
+                    "stormlauncher.png": {
+                      type: "image",
+                    },
+                    "stormlibraryv2.png": {
+                      type: "image",
+                    },
+                    "stormpanel-app.png": {
+                      type: "image",
+                    },
+                    "stormstore.png": {
+                      type: "image",
+                    },
+                    "the-shooter.png": {
+                      type: "image",
+                    },
+                    "theforest.png": {
+                      type: "image",
+                    },
+                    "theplanetcrafter.png": {
+                      type: "image",
+                    },
+                    "ultrakill.png": {
+                      type: "image",
+                    },
+                  },
+                },
+                "512x512": {
+                  type: "folder",
+                  children: {
+                    "BalatroGame.png": {
+                      type: "image",
+                    },
+                    "FNAF1.png": {
+                      type: "image",
+                    },
+                    "FNAF2.png": {
+                      type: "image",
+                    },
+                    "FNAF3.png": {
+                      type: "image",
+                    },
+                    "FNAF4.png": {
+                      type: "image",
+                    },
+                    "ScamLine.png": {
+                      type: "image",
+                    },
+                    "ambidextro.png": {
+                      type: "image",
+                    },
+                    "backseat-drivers.png": {
+                      type: "image",
+                    },
+                    "buckshot_roulette.png": {
+                      type: "image",
+                    },
+                    "clase-web.png": {
+                      type: "image",
+                    },
+                    "content-warning.png": {
+                      type: "image",
+                    },
+                    "doom.png": {
+                      type: "image",
+                    },
+                    "fastfood.png": {
+                      type: "image",
+                    },
+                    "fusion-arena.png": {
+                      type: "image",
+                    },
+                    "golfit.png": {
+                      type: "image",
+                    },
+                    "hollow-knight-silksong.png": {
+                      type: "image",
+                    },
+                    "hytale.png": {
+                      type: "image",
+                    },
+                    "karts-multiplayer.png": {
+                      type: "image",
+                    },
+                    "lethal-company.png": {
+                      type: "image",
+                    },
+                    "mage-arena.png": {
+                      type: "image",
+                    },
+                    "miside-zero.png": {
+                      type: "image",
+                    },
+                    "modpack-installer.png": {
+                      type: "image",
+                    },
+                    "multiai.png": {
+                      type: "image",
+                    },
+                    "pairdrop.png": {
+                      type: "image",
+                    },
+                    "panicore.png": {
+                      type: "image",
+                    },
+                    "peak.png": {
+                      type: "image",
+                    },
+                    "peopleplayground.png": {
+                      type: "image",
+                    },
+                    "repo.png": {
+                      type: "image",
+                    },
+                    "schedule1.png": {
+                      type: "image",
+                    },
+                    "stormlauncher.png": {
+                      type: "image",
+                    },
+                    "stormlibraryv2.png": {
+                      type: "image",
+                    },
+                    "stormpanel-app.png": {
+                      type: "image",
+                    },
+                    "stormstore.png": {
+                      type: "image",
+                    },
+                    "the-shooter.png": {
+                      type: "image",
+                    },
+                    "theforest.png": {
+                      type: "image",
+                    },
+                    "theplanetcrafter.png": {
+                      type: "image",
+                    },
+                    "ultrakill.png": {
+                      type: "image",
+                    },
+                  },
+                },
+              },
+            },
+            "apps-to-make": {
+              type: "folder",
+              children: {},
+            },
+            extraFiles: {
+              type: "folder",
+              children: {
+                "aspnetcore-runtime-8.0.23-win-x64.exe": {
+                  type: "default",
+                },
+              },
+            },
+            fonts: {
+              type: "folder",
+              children: {
+                Quantico: {
+                  type: "folder",
+                  children: {
+                    "OFL.txt": {
+                      type: "default",
+                    },
+                    "Quantico-Bold.ttf": {
+                      type: "font",
+                    },
+                    "Quantico-BoldItalic.ttf": {
+                      type: "font",
+                    },
+                    "Quantico-Italic.ttf": {
+                      type: "font",
+                    },
+                    "Quantico-Regular.ttf": {
+                      type: "font",
+                    },
+                    zip: {
+                      type: "folder",
+                      children: {
+                        "Quantico.zip": {
+                          type: "default",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            gamepad: {
+              type: "folder",
+              children: {
+                playstation: {
+                  type: "folder",
+                  children: {
+                    "PlayStation_4_Options_button.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_4_Share_button.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_Directional_button.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_Portable_button_Down.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_Portable_button_Left.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_Portable_button_Right.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_Portable_button_Up.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_button_C.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_button_Home.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_button_S.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_button_T.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_button_X.svg": {
+                      type: "image",
+                    },
+                    "PlayStation_button_analog_L.svg": {
+                      type: "image",
+                    },
+                  },
+                },
+                xbox: {
+                  type: "folder",
+                  children: {
+                    "XboxA.svg": {
+                      type: "image",
+                    },
+                    "XboxB.svg": {
+                      type: "image",
+                    },
+                    "XboxX.svg": {
+                      type: "image",
+                    },
+                    "XboxY.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Left_stick.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Logo.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Menu_button.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Portable_button_Down.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Portable_button_Left.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Portable_button_Right.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Portable_button_Up.svg": {
+                      type: "image",
+                    },
+                    "Xbox_Share_button.svg": {
+                      type: "image",
+                    },
+                  },
+                },
+              },
+            },
+            icons: {
+              type: "folder",
+              children: {
+                "big-picture.svg": {
+                  type: "image",
+                },
+                "close-window.svg": {
+                  type: "image",
+                },
+                "controller.svg": {
+                  type: "image",
+                },
+                "curseforge.svg": {
+                  type: "image",
+                },
+                "download.svg": {
+                  type: "image",
+                },
+                "epic-games.svg": {
+                  type: "image",
+                },
+                "github.svg": {
+                  type: "image",
+                },
+                "info.svg": {
+                  type: "image",
+                },
+                "license.svg": {
+                  type: "image",
+                },
+                "loading-new.svg": {
+                  type: "image",
+                },
+                "loading.svg": {
+                  type: "image",
+                },
+                "maximize-window.svg": {
+                  type: "image",
+                },
+                "minimize-window.svg": {
+                  type: "image",
+                },
+                "settings.svg": {
+                  type: "image",
+                },
+                "share.svg": {
+                  type: "image",
+                },
+                "sin-wifi.svg": {
+                  type: "image",
+                },
+                "steam.svg": {
+                  type: "image",
+                },
+                "stormvortex.svg": {
+                  type: "image",
+                },
+                "update-old.svg": {
+                  type: "image",
+                },
+                "update.svg": {
+                  type: "image",
+                },
+                "virus.svg": {
+                  type: "image",
+                },
+                "web.svg": {
+                  type: "image",
+                },
+                "wifi.svg": {
+                  type: "image",
+                },
+                "windowed-window.svg": {
+                  type: "image",
+                },
+              },
+            },
+            "icons-old": {
+              type: "folder",
+              children: {
+                "epic-games.svg": {
+                  type: "image",
+                },
+                "steam.svg": {
+                  type: "image",
+                },
+              },
+            },
+            "imagenes.py": {
+              type: "default",
+            },
+            media: {
+              type: "folder",
+              children: {
+                round: {
+                  type: "folder",
+                  children: {
+                    "stormlibraryv2-1.png": {
+                      type: "image",
+                    },
+                    "stormlibraryv2-2.png": {
+                      type: "image",
+                    },
+                  },
+                },
+                sounds: {
+                  type: "folder",
+                  children: {
+                    "finish.mp3": {
+                      type: "audio",
+                    },
+                    "others.mp3": {
+                      type: "audio",
+                    },
+                  },
+                },
+                stormvortex: {
+                  type: "folder",
+                  children: {
+                    "StormVortex.mp4": {
+                      type: "video",
+                    },
+                  },
+                },
+                trailers: {
+                  type: "folder",
+                  children: {
+                    "ambidextro.mp4": {
+                      type: "video",
+                    },
+                    "backseat-drivers.mp4": {
+                      type: "video",
+                    },
+                    "balatro.mp4": {
+                      type: "video",
+                    },
+                    "buckshot_roulette.mp4": {
+                      type: "video",
+                    },
+                    "content-warning.mp4": {
+                      type: "video",
+                    },
+                    "doom.mp4": {
+                      type: "video",
+                    },
+                    "fastfood.mp4": {
+                      type: "video",
+                    },
+                    "fnaf1.mp4": {
+                      type: "video",
+                    },
+                    "fnaf2.mp4": {
+                      type: "video",
+                    },
+                    "fnaf3.mp4": {
+                      type: "video",
+                    },
+                    "fnaf4.mp4": {
+                      type: "video",
+                    },
+                    "golfit.mp4": {
+                      type: "video",
+                    },
+                    "hollow-knight-silksong.mp4": {
+                      type: "video",
+                    },
+                    "hytale.mp4": {
+                      type: "video",
+                    },
+                    "lethal-company.mp4": {
+                      type: "video",
+                    },
+                    "mage-arena.mp4": {
+                      type: "video",
+                    },
+                    "panicore.mp4": {
+                      type: "video",
+                    },
+                    "peak.mp4": {
+                      type: "video",
+                    },
+                    "peopleplayground.mp4": {
+                      type: "video",
+                    },
+                    "repo.mp4": {
+                      type: "video",
+                    },
+                    "scamline.mp4": {
+                      type: "video",
+                    },
+                    "schedule1.mp4": {
+                      type: "video",
+                    },
+                    "theforest.mp4": {
+                      type: "video",
+                    },
+                    "theplanetcrafter.mp4": {
+                      type: "video",
+                    },
+                    "ultrakill.mp4": {
+                      type: "video",
+                    },
+                  },
+                },
+              },
+            },
+            "run.py.bat": {
+              type: "default",
+            },
+          },
+        },
+      },
     },
-    "debs": {
-        "type": "folder",
-        "children": {
-            "CardinalAI-1.0.3-amd64.deb": {
-                "type": "deb"
-            },
-            "CardinalAI-Local-Setup.deb": {
-                "type": "deb"
-            },
-            "Clase-Web-Setup.deb": {
-                "type": "deb"
-            },
-            "StormPanel-APP-Setup-1.2.8.deb": {
-                "type": "deb"
-            },
-            "StormStore-Linux.deb": {
-                "type": "deb"
-            },
-            "cardinal-ai-dualmodel-app.deb": {
-                "type": "deb"
-            },
-            "data-exporter.deb": {
-                "type": "deb"
-            },
-            "dev-hub_1.0.2_amd64.deb": {
-                "type": "deb"
-            },
-            "fusionarenalauncher_deb.deb": {
-                "type": "deb"
-            },
-            "kartsmultiplayerlauncher_deb.deb": {
-                "type": "deb"
-            },
-            "multiai_1.2.11_amd64.deb": {
-                "type": "deb"
-            },
-            "pairdrop.deb": {
-                "type": "deb"
-            },
-            "whatsapp-web.deb": {
-                "type": "deb"
-            }
-        }
-    }
-};
+    debs: {
+      type: "folder",
+      children: {
+        "CardinalAI-1.0.3-amd64.deb": {
+          type: "deb",
+        },
+        "CardinalAI-Local-Setup.deb": {
+          type: "deb",
+        },
+        "Clase-Web-Setup.deb": {
+          type: "deb",
+        },
+        "StormPanel-APP-Setup-1.2.8.deb": {
+          type: "deb",
+        },
+        "StormStore-Linux.deb": {
+          type: "deb",
+        },
+        "cardinal-ai-dualmodel-app.deb": {
+          type: "deb",
+        },
+        "data-exporter.deb": {
+          type: "deb",
+        },
+        "dev-hub_1.0.2_amd64.deb": {
+          type: "deb",
+        },
+        "fusionarenalauncher_deb.deb": {
+          type: "deb",
+        },
+        "kartsmultiplayerlauncher_deb.deb": {
+          type: "deb",
+        },
+        "multiai_1.2.11_amd64.deb": {
+          type: "deb",
+        },
+        "pairdrop.deb": {
+          type: "deb",
+        },
+        "whatsapp-web.deb": {
+          type: "deb",
+        },
+      },
+    },
+  };
 
   const fileTreeContainer = document.getElementById("file-tree");
   const mediaViewer = document.getElementById("media-viewer");

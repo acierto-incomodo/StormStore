@@ -38,6 +38,11 @@
   font-family: "Roboto", system-ui, sans-serif;
 }
 
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 html,
 body {
   height: 100%;
@@ -51,6 +56,7 @@ body {
   background: transparent;
   color: var(--md-sys-color-on-surface);
   padding-top: 0;
+  user-select: none;
 }
 
 .sidebar {
@@ -219,7 +225,7 @@ main.dashboard-layout {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   background: var(--md-sys-color-surface-container-high);
 }
 
@@ -318,7 +324,8 @@ main.dashboard-layout {
 }
 
 .virus-req-badge img {
-  filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg) brightness(91%) contrast(101%);
+  filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg)
+    brightness(91%) contrast(101%);
 }
 
 /* Badge de Info para hacer clic */

@@ -40,5 +40,7 @@ contextBridge.exposeInMainWorld("api", {
   saveSettings: (settings) => ipcRenderer.send("save-settings", settings),
   launchApp: () => ipcRenderer.send("launch-app"),
   onShowVirusAlert: (callback) => ipcRenderer.on("show-virus-alert", callback),
-  sendVirusAlertResponse: (response) => ipcRenderer.send("virus-alert-response", response),
+  sendVirusAlertResponse: (response) =>
+    ipcRenderer.send("virus-alert-response", response),
+  clearCache: () => ipcRenderer.invoke("clear-cache"),
 });

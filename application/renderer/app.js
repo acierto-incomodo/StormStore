@@ -29,6 +29,7 @@ function showToast(message, duration = 3000) {
     toast.className = "toast-notification";
     document.body.appendChild(toast);
   }
+  playSound("toast.mp3");
   toast.textContent = message;
   toast.classList.add("show");
   setTimeout(() => {
@@ -226,7 +227,10 @@ function renderApps(category) {
         openBtn.className = "md-btn md-btn-filled";
         openBtn.style.flex = "1";
         openBtn.onclick = () =>
-          window.api.openApp(app.executablePath || app.paths[0], app.steam === "si");
+          window.api.openApp(
+            app.executablePath || app.paths[0],
+            app.steam === "si",
+          );
         if (isUninstalling) openBtn.style.display = "none";
         topRow.appendChild(openBtn);
 
@@ -365,7 +369,9 @@ function renderApps(category) {
         locBtn.style.flex = "1";
         locBtn.onclick = () => {
           playSound("others.mp3");
-          window.api.openAppLocation(app.installPath || app.executablePath || app.paths[0]);
+          window.api.openAppLocation(
+            app.installPath || app.executablePath || app.paths[0],
+          );
           showToast("Abriendo ubicación...");
         };
         if (isUninstalling) locBtn.style.display = "none";
@@ -443,7 +449,8 @@ function renderApps(category) {
         const webBtn = document.createElement("button");
         webBtn.className = "md-btn md-btn-tonal";
         webBtn.style.padding = "10px 12px";
-        webBtn.innerHTML = '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
+        webBtn.innerHTML =
+          '<img src="../assets/icons/web.svg" alt="Web" style="width: 20px; height: 20px;">';
         webBtn.onclick = (e) => {
           e.stopPropagation();
           playSound("others.mp3");

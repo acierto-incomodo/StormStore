@@ -73,7 +73,7 @@ function renderApps() {
     icon.className = "app-icon";
     // Fallback si la imagen no carga
     icon.onerror = () => {
-        icon.src = "../assets/icons/not-found.svg";
+      icon.src = "../assets/icons/not-found.svg";
       icon.style.padding = "20px";
       icon.style.background = "#171a21";
     };
@@ -111,7 +111,8 @@ function renderApps() {
     openBtn.textContent = "Jugar";
     openBtn.className = "md-btn md-btn-filled";
     openBtn.style.width = "100%";
-    openBtn.onclick = () => window.api.openApp(app.executablePath || app.paths[0], false);
+    openBtn.onclick = () =>
+      window.api.openApp(app.executablePath || app.paths[0], false);
 
     actions.appendChild(openBtn);
 

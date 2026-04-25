@@ -31,7 +31,8 @@ if (Test-Path $runPyBatPath) {
     finally {
         Pop-Location
     }
-} else {
+}
+else {
     Write-Host "⚠️ No se encontró run.py.bat en: $runPyBatPath" -ForegroundColor Yellow
 }
 
@@ -72,7 +73,8 @@ Write-Host "Copiando contenido de 'application/assets/apps'..."
 if (Test-Path $sourceAssets) {
     Copy-Item -Path (Join-Path $sourceAssets "*") -Destination $destAssetsDir -Recurse
     Write-Host "✅ assets/apps copiado" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "⚠️ Directorio no encontrado: $sourceAssets" -ForegroundColor Yellow
 }
 
@@ -81,7 +83,8 @@ Write-Host "Copiando contenido de 'application/assets/apps-size'..."
 if (Test-Path $sourceAppsSize) {
     Copy-Item -Path (Join-Path $sourceAppsSize "*") -Destination $destAppsSizeDir -Recurse
     Write-Host "✅ assets/apps-size copiado" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "⚠️ Directorio no encontrado: $sourceAppsSize" -ForegroundColor Yellow
 }
 
@@ -90,7 +93,8 @@ Write-Host "Copiando contenido de 'application/assets/media/trailers'..."
 if (Test-Path $sourceTrailers) {
     Copy-Item -Path (Join-Path $sourceTrailers "*") -Destination $destTrailersDir -Recurse
     Write-Host "✅ assets/trailers copiado" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "⚠️ Directorio no encontrado: $sourceTrailers" -ForegroundColor Yellow
 }
 
@@ -102,7 +106,8 @@ if (Test-Path $setupExeSource) {
     if (!(Test-Path $appDistDest)) { New-Item -ItemType Directory -Path $appDistDest -Force | Out-Null }
     Copy-Item -Path $setupExeSource -Destination $appDistDest -Force
     Write-Host "✅ Instalador copiado" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "⚠️ Instalador no encontrado: $setupExeSource" -ForegroundColor Yellow
 }
 

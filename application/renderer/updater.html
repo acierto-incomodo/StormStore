@@ -1,403 +1,492 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Updater</title>
-  <link href="https://fonts.googleapis.com/css2?family=gg+Sans:wght@400;500;600&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #121212;
-      --surface:   #252525;
-      --blurple:   #fdd835;
-      --blurple-dim:#fbc02d;
-      --text:      #e6e1e5;
-      --text-muted:#cac4d0;
-      --white:     #ffffff;
-      --radius:    12px;
-    }
-
-    html, body {
-      width: 100%; height: 100%;
-      background: transparent;
-      font-family: 'Noto Sans', sans-serif;
-      user-select: none;
-      -webkit-app-region: drag; /* Electron: arrastra la ventana */
-    }
-
-    .window {
-      width: 300px;
-      height: 400px;
-      margin: 0 auto;
-      background: var(--bg);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 20px 60px rgba(0,0,0,.6);
-      position: relative;
-    }
-
-    /* ── Cabecera con fondo blurple degradado ── */
-    .header {
-      background: linear-gradient(160deg, var(--blurple) 0%, var(--blurple-dim) 100%);
-      padding: 32px 24px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Círculos decorativos de fondo */
-    .header::before, .header::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      opacity: .12;
-      background: #fff;
-    }
-    .header::before { width: 180px; height: 180px; top: -60px; right: -40px; }
-    .header::after  { width: 100px; height: 100px; bottom: -30px; left: -20px; }
-
-    .logo {
-      width: 60px; height: 60px;
-      z-index: 1;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,.3));
-    }
-
-    .logo path {
-      fill: #000000 !important;
-    }
-
-    .app-name {
-      font-family: 'gg Sans', 'Noto Sans', sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      color: #000000;
-      z-index: 1;
-      letter-spacing: .2px;
-    }
-
-    /* ── Cuerpo ── */
-    .body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 28px 28px 24px;
-      gap: 20px;
-    }
-
-    .status-text {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      text-align: center;
-      min-height: 20px;
-      transition: opacity .3s;
-    }
-
-    /* ── Barra de progreso ── */
-    .progress-wrap {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .progress-track {
-      width: 100%;
-      height: 6px;
-      background: var(--surface);
-      border-radius: 99px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--blurple);
-      border-radius: 99px;
-      transition: width .4s cubic-bezier(.4,0,.2,1);
-      position: relative;
-    }
-
-    /* Brillo deslizante en la barra */
-    .progress-fill::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -60px;
-      width: 60px; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
-      animation: shimmer 1.4s infinite;
-    }
-
-    @keyframes shimmer {
-      0%   { left: -60px; }
-      100% { left: 110%; }
-    }
-
-    .progress-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    /* ── Pasos ── */
-    .steps {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      color: var(--text-muted);
-      transition: color .3s;
-    }
-
-    .step.done   { color: var(--text); }
-    .step.active { color: var(--white); font-weight: 500; }
-
-    .step-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--surface);
-      flex-shrink: 0;
-      transition: background .3s, box-shadow .3s;
-    }
-    .step.done   .step-dot { background: #3ba55d; }
-    .step.active .step-dot {
-      background: var(--blurple);
-      box-shadow: 0 0 0 3px rgba(88,101,242,.3);
-      animation: pulse-dot 1s infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%,100% { box-shadow: 0 0 0 3px rgba(88,101,242,.3); }
-      50%      { box-shadow: 0 0 0 5px rgba(88,101,242,.1); }
-    }
-
-    /* ── Footer ── */
-    .footer {
-      padding: 0 28px 20px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    /* ── Estado completado ── */
-    .done-overlay {
-      position: absolute;
-      inset: 0;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .4s;
-      border-radius: 12px;
-    }
-    .done-overlay.visible { opacity: 1; pointer-events: all; }
-
-    .done-icon {
-      width: 56px; height: 56px;
-      background: #3ba55d;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      animation: pop .4s cubic-bezier(.34,1.56,.64,1) both;
-    }
-    @keyframes pop {
-      from { transform: scale(0); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
-    }
-    .done-icon svg { width: 28px; height: 28px; }
-
-    .done-title {
-      font-family: 'gg Sans', 'Noto Sans', sans-serif;
-      font-size: 16px; font-weight: 600;
-      color: var(--white);
-    }
-    .done-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .launch-btn {
-      margin-top: 8px;
-      padding: 10px 28px;
-      background: var(--blurple);
-      color: #000000;
-      border: none;
-      border-radius: var(--radius);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background .15s, transform .1s;
-      -webkit-app-region: no-drag;
-    }
-    .launch-btn:hover  { background: var(--blurple-dim); }
-    .launch-btn:active { transform: scale(.97); }
-  </style>
-</head>
-<body>
-
-<div class="window">
-
-  <!-- HEADER -->
-  <div class="header">
-    <!-- Logo SVG de StormStore -->
-    <svg class="logo" viewBox="0 0 127.14 96.36" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#fff" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-    </svg>
-    <div class="app-name">StormStore</div>
-  </div>
-
-  <!-- BODY -->
-  <div class="body">
-    <div class="status-text" id="statusText">Checking for updates…</div>
-
-    <div class="progress-wrap">
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <div class="progress-meta">
-        <span id="progressLabel">0%</span>
-        <span id="versionLabel">v0.0.309 → v0.0.310</span>
-      </div>
-    </div>
-
-    <div class="steps" id="steps">
-      <div class="step" id="step-0">
-        <div class="step-dot"></div>
-        <span>Checking for updates</span>
-      </div>
-      <div class="step" id="step-1">
-        <div class="step-dot"></div>
-        <span>Downloading update</span>
-      </div>
-      <div class="step" id="step-2">
-        <div class="step-dot"></div>
-        <span>Installing update</span>
-      </div>
-      <div class="step" id="step-3">
-        <div class="step-dot"></div>
-        <span>Restarting StormStore</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer" id="footer">Please wait while StormStore updates</div>
-
-  <!-- DONE OVERLAY -->
-  <div class="done-overlay" id="doneOverlay">
-    <div class="done-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"/>
-      </svg>
-    </div>
-    <div class="done-title">Update complete!</div>
-    <div class="done-sub">StormStore is up to date</div>
-    <button class="launch-btn" onclick="launchApp()">Launch StormStore</button>
-  </div>
-
-</div>
-
-<script>
-  const fill    = document.getElementById('progressFill');
-  const label   = document.getElementById('progressLabel');
-  const status  = document.getElementById('statusText');
-  const footer  = document.getElementById('footer');
-  const overlay = document.getElementById('doneOverlay');
-
-  const steps = [
-    { id: 'step-0', text: 'Checking for updates…',  duration: 1200 },
-    { id: 'step-1', text: 'Downloading update…',     duration: 3000 },
-    { id: 'step-2', text: 'Installing update…',      duration: 1800 },
-    { id: 'step-3', text: 'Restarting StormStore…',     duration: 900  },
-  ];
-
-  let progress = 0;
-  let stepIndex = 0;
-  let animFrame;
-
-  // Marca un paso como hecho o activo
-  function setStep(index, state) {
-    const el = document.getElementById(steps[index].id);
-    el.className = 'step ' + state;
-  }
-
-  // Anima la barra suavemente hasta un target
-  function animateTo(target, duration, cb) {
-    const start     = performance.now();
-    const startVal  = progress;
-
-    function frame(now) {
-      const t = Math.min((now - start) / duration, 1);
-      const ease = t < .5 ? 2*t*t : -1+(4-2*t)*t; // easeInOut
-      progress = startVal + (target - startVal) * ease;
-
-      fill.style.width  = progress + '%';
-      label.textContent = Math.round(progress) + '%';
-
-      if (t < 1) {
-        animFrame = requestAnimationFrame(frame);
-      } else {
-        progress = target;
-        fill.style.width  = target + '%';
-        label.textContent = Math.round(target) + '%';
-        if (cb) cb();
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Updater</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=gg+Sans:wght@400;500;600&family=Noto+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    }
-    animFrame = requestAnimationFrame(frame);
-  }
 
-  // Ejecuta los pasos en cadena
-  function runStep(index) {
-    if (index >= steps.length) {
-      showDone(); return;
-    }
+      :root {
+        --bg: #121212;
+        --surface: #252525;
+        --blurple: #fdd835;
+        --blurple-dim: #fbc02d;
+        --text: #e6e1e5;
+        --text-muted: #cac4d0;
+        --white: #ffffff;
+        --radius: 12px;
+      }
 
-    const s = steps[index];
-    setStep(index, 'active');
-    status.textContent = s.text;
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        font-family: "Noto Sans", sans-serif;
+        user-select: none;
+        -webkit-app-region: drag; /* Electron: arrastra la ventana */
+      }
 
-    const targetPct = ((index + 1) / steps.length) * 100;
+      .window {
+        width: 300px;
+        height: 400px;
+        margin: 0 auto;
+        background: var(--bg);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        position: relative;
+      }
 
-    animateTo(targetPct, s.duration, () => {
-      setStep(index, 'done');
-      stepIndex = index + 1;
-      setTimeout(() => runStep(stepIndex), 300);
-    });
-  }
+      /* ── Cabecera con fondo blurple degradado ── */
+      .header {
+        background: linear-gradient(
+          160deg,
+          var(--blurple) 0%,
+          var(--blurple-dim) 100%
+        );
+        padding: 32px 24px 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        position: relative;
+        overflow: hidden;
+      }
 
-  function showDone() {
-    status.textContent = '';
-    footer.textContent = '';
-    overlay.classList.add('visible');
-  }
+      /* Círculos decorativos de fondo */
+      .header::before,
+      .header::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.12;
+        background: #fff;
+      }
+      .header::before {
+        width: 180px;
+        height: 180px;
+        top: -60px;
+        right: -40px;
+      }
+      .header::after {
+        width: 100px;
+        height: 100px;
+        bottom: -30px;
+        left: -20px;
+      }
 
-  function launchApp() {
-    window.api.launchApp();
-  }
+      .logo {
+        width: 60px;
+        height: 60px;
+        z-index: 1;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+      }
 
-  // Arranca con un pequeño delay
-  setTimeout(() => runStep(0), 600);
-</script>
-</body>
+      .logo path {
+        fill: #000000 !important;
+      }
+
+      .app-name {
+        font-family: "gg Sans", "Noto Sans", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: #000000;
+        z-index: 1;
+        letter-spacing: 0.2px;
+      }
+
+      /* ── Cuerpo ── */
+      .body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 28px 28px 24px;
+        gap: 20px;
+      }
+
+      .status-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        text-align: center;
+        min-height: 20px;
+        transition: opacity 0.3s;
+      }
+
+      /* ── Barra de progreso ── */
+      .progress-wrap {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .progress-track {
+        width: 100%;
+        height: 6px;
+        background: var(--surface);
+        border-radius: 99px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: var(--blurple);
+        border-radius: 99px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      /* Brillo deslizante en la barra */
+      .progress-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -60px;
+        width: 60px;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        animation: shimmer 1.4s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -60px;
+        }
+        100% {
+          left: 110%;
+        }
+      }
+
+      .progress-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      /* ── Pasos ── */
+      .steps {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 12px;
+        color: var(--text-muted);
+        transition: color 0.3s;
+      }
+
+      .step.done {
+        color: var(--text);
+      }
+      .step.active {
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      .step-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--surface);
+        flex-shrink: 0;
+        transition:
+          background 0.3s,
+          box-shadow 0.3s;
+      }
+      .step.done .step-dot {
+        background: #3ba55d;
+      }
+      .step.active .step-dot {
+        background: var(--blurple);
+        box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.3);
+        animation: pulse-dot 1s infinite;
+      }
+
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 0 5px rgba(88, 101, 242, 0.1);
+        }
+      }
+
+      /* ── Footer ── */
+      .footer {
+        padding: 0 28px 20px;
+        font-size: 11px;
+        color: var(--text-muted);
+        text-align: center;
+      }
+
+      /* ── Estado completado ── */
+      .done-overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+        border-radius: 12px;
+      }
+      .done-overlay.visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .done-icon {
+        width: 56px;
+        height: 56px;
+        background: #3ba55d;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      @keyframes pop {
+        from {
+          transform: scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .done-icon svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .done-title {
+        font-family: "gg Sans", "Noto Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--white);
+      }
+      .done-sub {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .launch-btn {
+        margin-top: 8px;
+        padding: 10px 28px;
+        background: var(--blurple);
+        color: #000000;
+        border: none;
+        border-radius: var(--radius);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: inherit;
+        transition:
+          background 0.15s,
+          transform 0.1s;
+        -webkit-app-region: no-drag;
+      }
+      .launch-btn:hover {
+        background: var(--blurple-dim);
+      }
+      .launch-btn:active {
+        transform: scale(0.97);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="window">
+      <!-- HEADER -->
+      <div class="header">
+        <!-- Logo SVG de StormStore -->
+        <svg
+          class="logo"
+          viewBox="0 0 127.14 96.36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#fff"
+            d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"
+          />
+        </svg>
+        <div class="app-name">StormStore</div>
+      </div>
+
+      <!-- BODY -->
+      <div class="body">
+        <div class="status-text" id="statusText">Checking for updates…</div>
+
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-meta">
+            <span id="progressLabel">0%</span>
+            <span id="versionLabel">v0.0.309 → v0.0.310</span>
+          </div>
+        </div>
+
+        <div class="steps" id="steps">
+          <div class="step" id="step-0">
+            <div class="step-dot"></div>
+            <span>Checking for updates</span>
+          </div>
+          <div class="step" id="step-1">
+            <div class="step-dot"></div>
+            <span>Downloading update</span>
+          </div>
+          <div class="step" id="step-2">
+            <div class="step-dot"></div>
+            <span>Installing update</span>
+          </div>
+          <div class="step" id="step-3">
+            <div class="step-dot"></div>
+            <span>Restarting StormStore</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer" id="footer">Please wait while StormStore updates</div>
+
+      <!-- DONE OVERLAY -->
+      <div class="done-overlay" id="doneOverlay">
+        <div class="done-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <div class="done-title">Update complete!</div>
+        <div class="done-sub">StormStore is up to date</div>
+        <button class="launch-btn" onclick="launchApp()">
+          Launch StormStore
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const fill = document.getElementById("progressFill");
+      const label = document.getElementById("progressLabel");
+      const status = document.getElementById("statusText");
+      const footer = document.getElementById("footer");
+      const overlay = document.getElementById("doneOverlay");
+
+      const steps = [
+        { id: "step-0", text: "Checking for updates…", duration: 1200 },
+        { id: "step-1", text: "Downloading update…", duration: 3000 },
+        { id: "step-2", text: "Installing update…", duration: 1800 },
+        { id: "step-3", text: "Restarting StormStore…", duration: 900 },
+      ];
+
+      let progress = 0;
+      let stepIndex = 0;
+      let animFrame;
+
+      // Marca un paso como hecho o activo
+      function setStep(index, state) {
+        const el = document.getElementById(steps[index].id);
+        el.className = "step " + state;
+      }
+
+      // Anima la barra suavemente hasta un target
+      function animateTo(target, duration, cb) {
+        const start = performance.now();
+        const startVal = progress;
+
+        function frame(now) {
+          const t = Math.min((now - start) / duration, 1);
+          const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // easeInOut
+          progress = startVal + (target - startVal) * ease;
+
+          fill.style.width = progress + "%";
+          label.textContent = Math.round(progress) + "%";
+
+          if (t < 1) {
+            animFrame = requestAnimationFrame(frame);
+          } else {
+            progress = target;
+            fill.style.width = target + "%";
+            label.textContent = Math.round(target) + "%";
+            if (cb) cb();
+          }
+        }
+        animFrame = requestAnimationFrame(frame);
+      }
+
+      // Ejecuta los pasos en cadena
+      function runStep(index) {
+        if (index >= steps.length) {
+          showDone();
+          return;
+        }
+
+        const s = steps[index];
+        setStep(index, "active");
+        status.textContent = s.text;
+
+        const targetPct = ((index + 1) / steps.length) * 100;
+
+        animateTo(targetPct, s.duration, () => {
+          setStep(index, "done");
+          stepIndex = index + 1;
+          setTimeout(() => runStep(stepIndex), 300);
+        });
+      }
+
+      function showDone() {
+        status.textContent = "";
+        footer.textContent = "";
+        overlay.classList.add("visible");
+      }
+
+      function launchApp() {
+        window.api.launchApp();
+      }
+
+      // Arranca con un pequeño delay
+      setTimeout(() => runStep(0), 600);
+    </script>
+  </body>
 </html>

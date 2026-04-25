@@ -146,6 +146,7 @@
           toast.className = "toast-notification";
           document.body.appendChild(toast);
         }
+        playSound("toast.mp3");
         toast.textContent = message;
         toast.classList.add("show");
         setTimeout(() => {
@@ -166,6 +167,7 @@
 
       // Botón Volver
       document.getElementById("back-btn").addEventListener("click", () => {
+        playSound("back.mp3");
         window.history.back();
       });
 
@@ -326,7 +328,10 @@
           openBtn.style.padding = "12px 24px";
           openBtn.style.flex = "1";
           openBtn.onclick = () =>
-            window.api.openApp(app.executablePath || app.paths[0], app.steam === "si");
+            window.api.openApp(
+              app.executablePath || app.paths[0],
+              app.steam === "si",
+            );
 
           // Botón Ubicación
           const locBtn = document.createElement("button");
@@ -336,7 +341,9 @@
           locBtn.style.flex = "1";
           locBtn.onclick = () => {
             playSound("others.mp3");
-            window.api.openAppLocation(app.installPath || app.executablePath || app.paths[0]);
+            window.api.openAppLocation(
+              app.installPath || app.executablePath || app.paths[0],
+            );
             showToast("Abriendo ubicación...");
           };
 

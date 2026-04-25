@@ -24,18 +24,26 @@ const DiscordRPC = require("discord-rpc");
 let appsData = require("./apps.json");
 let isOffline = true; // Por defecto asumimos offline hasta que la sincronización diga lo contrario
 
-const ICON_SIZES = ["256x256", "512x512", "1024x1024", "2048x2048", "4096x4096"];
+const ICON_SIZES = [
+  "256x256",
+  "512x512",
+  "1024x1024",
+  "2048x2048",
+  "4096x4096",
+];
 let ICONS_CACHE_DIR;
 let APPS_JSON_CACHE;
 const SETTINGS_PATH = path.join(
   app.getPath("appData"),
   "StormGamesStudios",
   "StormStore",
-  "settings.json"
+  "settings.json",
 );
 
-const REMOTE_APPS_URL = "https://acierto-incomodo.github.io/StormStore/assets/apps.json";
-const REMOTE_ICONS_BASE = "https://acierto-incomodo.github.io/StormStore/assets/apps-size/";
+const REMOTE_APPS_URL =
+  "https://acierto-incomodo.github.io/StormStore/assets/apps.json";
+const REMOTE_ICONS_BASE =
+  "https://acierto-incomodo.github.io/StormStore/assets/apps-size/";
 
 // Variables globales
 let mainWindow;
@@ -53,7 +61,12 @@ function loadSettings() {
   } catch (e) {
     console.error("Error leyendo ajustes:", e);
   }
-  return { auto_updates: false, start_with_windows: false, start_minimized: false, show_tray: true };
+  return {
+    auto_updates: false,
+    start_with_windows: false,
+    start_minimized: false,
+    show_tray: true,
+  };
 }
 
 function applySettings(settings) {
@@ -94,10 +107,13 @@ function createTray() {
   const contextMenu = Menu.buildFromTemplate([
     { label: "Abrir StormStore", click: () => mainWindow.show() },
     { type: "separator" },
-    { label: "Salir", click: () => {
+    {
+      label: "Salir",
+      click: () => {
         app.isQuiting = true;
         app.quit();
-    }}
+      },
+    },
   ]);
   tray.setToolTip("StormStore");
   tray.setContextMenu(contextMenu);
@@ -280,9 +296,19 @@ function createWindow() {
 
   mainWindow = win;
 
-  const vortexFlags = ["--StormVortex", "--stormvortex", "--vortex", "--bigpicture", "--Vortex", "--BigPicture", "--Bigpicture"];
+  const vortexFlags = [
+    "--StormVortex",
+    "--stormvortex",
+    "--vortex",
+    "--bigpicture",
+    "--Vortex",
+    "--BigPicture",
+    "--Bigpicture",
+  ];
   const settings = loadSettings();
-  const startInBigPicture = process.argv.some(arg => vortexFlags.includes(arg));
+  const startInBigPicture = process.argv.some((arg) =>
+    vortexFlags.includes(arg),
+  );
 
   const shouldShow = !settings.start_minimized || startInBigPicture;
 
@@ -296,7 +322,10 @@ function createWindow() {
   if (shouldShow) {
     if (startInBigPicture) {
       win.setFullScreen(true);
-    } else if (settings.start_minimized || process.argv.includes("--start-minimized")) {
+    } else if (
+      settings.start_minimized ||
+      process.argv.includes("--start-minimized")
+    ) {
       win.minimize();
     } else {
       win.maximize();
@@ -439,10 +468,10 @@ async function runApp(exePath, requiresSteam) {
 
 async function showVirusWarning(appName) {
   if (!mainWindow) return true;
-  
+
   return new Promise((resolve) => {
     mainWindow.webContents.send("show-virus-alert", appName);
-    
+
     ipcMain.once("virus-alert-response", (event, response) => {
       resolve(response);
     });
@@ -477,11 +506,17 @@ async function handleProtocolUrl(url) {
         );
         installAppLogic(appItem)
           .then(() => {
-            mainWindow.webContents.send("show-toast", `Instalación de '${appItem.name}' completada.`);
+            mainWindow.webContents.send(
+              "show-toast",
+              `Instalación de '${appItem.name}' completada.`,
+            );
           })
           .catch((err) => {
             console.error(err);
-            mainWindow.webContents.send("show-toast", `Error instalando '${appItem.name}'.`);
+            mainWindow.webContents.send(
+              "show-toast",
+              `Error instalando '${appItem.name}'.`,
+            );
           });
       }
     } else {
@@ -531,7 +566,7 @@ async function syncRemoteData() {
   }
 
   // Asegurar que existan las subcarpetas para cada tamaño
-  ICON_SIZES.forEach(size => {
+  ICON_SIZES.forEach((size) => {
     const dir = path.join(ICONS_CACHE_DIR, size);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   });
@@ -558,28 +593,37 @@ async function syncRemoteData() {
     appsData = data;
     isOffline = false; // Sincronización exitosa = Estamos online
     fs.writeFileSync(APPS_JSON_CACHE, JSON.stringify(appsData, null, 2));
-    
+
     // Notificar al frontend que los datos han sido actualizados
     if (mainWindow && !mainWindow.isDestroyed()) {
-      mainWindow.webContents.send("show-toast", "Catálogo de aplicaciones sincronizado.");
+      mainWindow.webContents.send(
+        "show-toast",
+        "Catálogo de aplicaciones sincronizado.",
+      );
     }
 
     // DESCARGA DE ICONOS: Siempre verificamos si faltan en la caché local
     for (const item of appsData) {
       const fileName = path.basename(item.icon);
       const prioritySize = "1024x1024";
-      
+
       // 1. Descargar prioridad (1024x1024) primero y esperar (await) para asegurar disponibilidad inmediata
       const priorityPath = path.join(ICONS_CACHE_DIR, prioritySize, fileName);
       if (!fs.existsSync(priorityPath)) {
-        await downloadFile(`${REMOTE_ICONS_BASE}${prioritySize}/${fileName}`, priorityPath).catch(() => {});
+        await downloadFile(
+          `${REMOTE_ICONS_BASE}${prioritySize}/${fileName}`,
+          priorityPath,
+        ).catch(() => {});
       }
 
       // 2. Descargar el resto de tamaños en segundo plano para optimizar
-      ICON_SIZES.filter(s => s !== prioritySize).forEach(size => {
+      ICON_SIZES.filter((s) => s !== prioritySize).forEach((size) => {
         const localPath = path.join(ICONS_CACHE_DIR, size, fileName);
         if (!fs.existsSync(localPath)) {
-          downloadFile(`${REMOTE_ICONS_BASE}${size}/${fileName}`, localPath).catch(() => {});
+          downloadFile(
+            `${REMOTE_ICONS_BASE}${size}/${fileName}`,
+            localPath,
+          ).catch(() => {});
         }
       });
     }
@@ -607,8 +651,12 @@ ipcMain.handle("get-apps", () => {
       iconUrl = `storm-asset://1024x1024/${fileName}`;
     } else if (isOffline) {
       // Si estamos offline y no hay 1024, buscamos cualquier otro tamaño disponible en caché
-      const availableSize = ICON_SIZES.find(s => fs.existsSync(path.join(ICONS_CACHE_DIR, s, fileName)));
-      iconUrl = availableSize ? `storm-asset://${availableSize}/${fileName}` : appItem.icon;
+      const availableSize = ICON_SIZES.find((s) =>
+        fs.existsSync(path.join(ICONS_CACHE_DIR, s, fileName)),
+      );
+      iconUrl = availableSize
+        ? `storm-asset://${availableSize}/${fileName}`
+        : appItem.icon;
     } else {
       // En modo online sin caché de 1024, pedimos la de 1024 remota por defecto
       iconUrl = `${REMOTE_ICONS_BASE}1024x1024/${fileName}`;
@@ -1084,6 +1132,28 @@ ipcMain.on("set-discord-activity", (event, activity) => {
 ipcMain.handle("get-settings", () => loadSettings());
 ipcMain.on("save-settings", (event, settings) => saveSettings(settings));
 
+ipcMain.handle("clear-cache", async () => {
+  try {
+    const cacheDir = path.join(
+      app.getPath("appData"),
+      "StormGamesStudios",
+      "StormStore",
+      "StormStoreCache",
+    );
+
+    if (fs.existsSync(cacheDir)) {
+      fs.rmSync(cacheDir, { recursive: true, force: true });
+    }
+
+    // Reiniciar la sincronización para descargar todo de nuevo desde el servidor
+    await syncRemoteData();
+    return true;
+  } catch (err) {
+    console.error("Error al limpiar caché:", err);
+    return false;
+  }
+});
+
 // =====================================
 // FIN MANEJO DE ACTUALIZACIONES
 // =====================================
@@ -1131,7 +1201,8 @@ if (!gotLock) {
           iconPath: path.join(__dirname, "assets/app.ico"),
           iconIndex: 0,
           title: "Iniciar en segundo plano",
-          description: "Abre la aplicación minimizada en la bandeja del sistema",
+          description:
+            "Abre la aplicación minimizada en la bandeja del sistema",
         },
       ]);
     }
@@ -1140,7 +1211,7 @@ if (!gotLock) {
       app.getPath("appData"),
       "StormGamesStudios",
       "StormStore",
-      "StormStoreCache"
+      "StormStoreCache",
     );
     ICONS_CACHE_DIR = path.join(CACHE_DIR, "icons");
     APPS_JSON_CACHE = path.join(CACHE_DIR, "apps.json");

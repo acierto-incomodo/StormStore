@@ -1,167 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ajustes - StormStore</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .settings-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajustes - StormStore</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .settings-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
 
-    .setting-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px;
-      background: var(--md-sys-color-surface-container);
-      border-radius: var(--md-sys-shape-corner-large);
-      transition: background 0.2s;
-    }
+      .setting-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px;
+        background: var(--md-sys-color-surface-container);
+        border-radius: var(--md-sys-shape-corner-large);
+        transition: background 0.2s;
+      }
 
-    .setting-item:hover {
-      background: var(--md-sys-color-surface-container-high);
-    }
+      .setting-item:hover {
+        background: var(--md-sys-color-surface-container-high);
+      }
 
-    .setting-info h3 {
-      margin: 0 0 8px 0;
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--md-sys-color-on-surface);
-    }
+      .setting-info h3 {
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--md-sys-color-on-surface);
+      }
 
-    .setting-info p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--md-sys-color-on-surface-variant);
-      line-height: 1.5;
-    }
+      .setting-info p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--md-sys-color-on-surface-variant);
+        line-height: 1.5;
+      }
 
-    /* Switch Toggle personalizado estilo MD3 */
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 52px;
-      height: 32px;
-      flex-shrink: 0;
-    }
+      /* Switch Toggle personalizado estilo MD3 */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 52px;
+        height: 32px;
+        flex-shrink: 0;
+      }
 
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
 
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: var(--md-sys-color-outline);
-      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 32px;
-    }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--md-sys-color-outline);
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 32px;
+      }
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 24px;
-      width: 24px;
-      left: 4px;
-      bottom: 4px;
-      background-color: #fff;
-      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 50%;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 24px;
+        width: 24px;
+        left: 4px;
+        bottom: 4px;
+        background-color: #fff;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
 
-    input:checked + .slider {
-      background-color: var(--md-sys-color-primary);
-    }
+      input:checked + .slider {
+        background-color: var(--md-sys-color-primary);
+      }
 
-    input:checked + .slider:before {
-      transform: translateX(20px);
-      background-color: var(--md-sys-color-on-primary);
-    }
+      input:checked + .slider:before {
+        transform: translateX(20px);
+        background-color: var(--md-sys-color-on-primary);
+      }
 
       #save-settings-btn {
         align-self: flex-end;
         margin-top: 20px;
         min-width: 160px;
       }
-  </style>
-</head>
-<body>
-  <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="brand-container">
-        <h2>StormStore</h2>
-        <p class="version" id="app-version"></p>
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand-container">
+          <h2>StormStore</h2>
+          <p class="version" id="app-version"></p>
+        </div>
+
+        <button id="back-btn" class="back-button">← Volver</button>
+
+        <ul id="categories"></ul>
       </div>
 
-      <button id="back-btn" class="back-button">← Volver</button>
+      <div class="sidebar-footer">
+        <p class="studio">StormGamesStudios</p>
 
-      <ul id="categories"></ul>
-    </div>
-
-    <div class="sidebar-footer">
-      <p class="studio">StormGamesStudios</p>
-
-      <div class="footer-icons">
-        <button data-link="https://github.com/acierto-incomodo">
-          <img src="../assets/icons/github.svg" alt="GitHub" />
-        </button>
-        <button data-link="https://stormgamesstudios.vercel.app/">
-          <img src="../assets/icons/web.svg" alt="Web" style="filter: invert(1)" />
-        </button>
-        <button data-link="https://www.curseforge.com/members/creper1125463">
-          <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
-        </button>
-        <button id="open-updates">
-          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
-        </button>
-        <button id="open-licenses">
-          <img src="../assets/icons/license.svg" alt="Licencias" />
-        </button>
-        <button id="open-info">
-          <img src="../assets/icons/info.svg" alt="Información" />
-        </button>
-        <!--
+        <div class="footer-icons">
+          <button data-link="https://github.com/acierto-incomodo">
+            <img src="../assets/icons/github.svg" alt="GitHub" />
+          </button>
+          <button data-link="https://stormgamesstudios.vercel.app/">
+            <img
+              src="../assets/icons/web.svg"
+              alt="Web"
+              style="filter: invert(1)"
+            />
+          </button>
+          <button data-link="https://www.curseforge.com/members/creper1125463">
+            <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
+          </button>
+          <button id="open-updates">
+            <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+          </button>
+          <button id="open-licenses">
+            <img src="../assets/icons/license.svg" alt="Licencias" />
+          </button>
+          <button id="open-info">
+            <img src="../assets/icons/info.svg" alt="Información" />
+          </button>
+          <!--
         <button id="open-settings">
           <img src="../assets/icons/settings.svg" alt="Ajustes" />
         </button>
-        -->
+        --></div>
       </div>
-    </div>
-  </aside>
+    </aside>
 
-  <main class="dashboard-layout">
-    <header class="main-header">
-      <h1>Ajustes</h1>
-      <div class="window-controls">
-        <button class="control-btn" id="open-big-picture" title="StormVortex">
-          <img src="../assets/icons/stormvortex.svg" alt="StormVortex" style="width: 20px; height: 20px" />
-        </button>
-        <button class="control-btn" id="open-settings-header" title="Ajustes">
-          <img
-            src="../assets/icons/settings.svg"
-            alt="Ajustes"
-            style="width: 20px; height: 20px"
-          />
-        </button>
-        <button class="control-btn" id="min-btn">─</button>
-        <button class="control-btn" id="max-btn">◻</button>
-        <button class="control-btn close" id="close-btn">✕</button>
-      </div>
-    </header>
-  
-    <div class="settings-container">
-      <!--
+    <main class="dashboard-layout">
+      <header class="main-header">
+        <h1>Ajustes</h1>
+        <div class="window-controls">
+          <button class="control-btn" id="open-big-picture" title="StormVortex">
+            <img
+              src="../assets/icons/stormvortex.svg"
+              alt="StormVortex"
+              style="width: 20px; height: 20px"
+            />
+          </button>
+          <button class="control-btn" id="open-settings-header" title="Ajustes">
+            <img
+              src="../assets/icons/settings.svg"
+              alt="Ajustes"
+              style="width: 20px; height: 20px"
+            />
+          </button>
+          <button class="control-btn" id="min-btn">─</button>
+          <button class="control-btn" id="max-btn">◻</button>
+          <button class="control-btn close" id="close-btn">✕</button>
+        </div>
+      </header>
+
+      <div class="settings-container">
+        <!--
       <div class="setting-item">
         <div class="setting-info">
           <h3>Actualizaciones automáticas</h3>
@@ -174,181 +184,252 @@
       </div>
       -->
 
-      <div class="setting-item">
-        <div class="setting-info">
-          <h3>Iniciar con Windows</h3>
-          <p>Abrir la aplicación automáticamente al encender el equipo.</p>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Iniciar con Windows</h3>
+            <p>Abrir la aplicación automáticamente al encender el equipo.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="start_with_windows" />
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="switch">
-          <input type="checkbox" id="start_with_windows">
-          <span class="slider"></span>
-        </label>
-      </div>
 
-      <div class="setting-item">
-        <div class="setting-info">
-          <h3>Icono en la bandeja</h3>
-          <p>Mantener la aplicación abierta en la bandeja del sistema al cerrar o minimizar.</p>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Icono en la bandeja</h3>
+            <p>
+              Mantener la aplicación abierta en la bandeja del sistema al cerrar
+              o minimizar.
+            </p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="show_tray" />
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="switch">
-          <input type="checkbox" id="show_tray">
-          <span class="slider"></span>
-        </label>
-      </div>
 
-      <div class="setting-item">
-        <div class="setting-info">
-          <h3>Iniciar minimizado</h3>
-          <p>La aplicación se iniciará oculta en la bandeja del sistema.</p>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Iniciar minimizado</h3>
+            <p>La aplicación se iniciará oculta en la bandeja del sistema.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="start_minimized" />
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="switch">
-          <input type="checkbox" id="start_minimized">
-          <span class="slider"></span>
-        </label>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <h3>Limpiar Caché</h3>
+            <p>
+              Elimina todos los iconos e información descargada. La aplicación
+              los volverá a descargar automáticamente desde el servidor.
+            </p>
+          </div>
+          <button id="clear-cache-btn" class="md-btn md-btn-danger">
+            Limpiar Caché
+          </button>
+        </div>
+
+        <button id="save-settings-btn" class="md-btn md-btn-filled">
+          Guardar Ajustes
+        </button>
       </div>
+    </main>
 
-      <button id="save-settings-btn" class="md-btn md-btn-filled">Guardar Ajustes</button>
-    </div>
-  </main>
+    <script>
+      let hasUnsavedChanges = false;
 
-  <script>
-    let hasUnsavedChanges = false;
-
-    // Cargar versión
-    window.api.getAppVersion().then((v) => {
-      document.getElementById("app-version").textContent = "v" + v;
-    });
-
-    function showToast(message, duration = 3000) {
-      let toast = document.getElementById("toast-notification");
-      if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "toast-notification";
-        toast.className = "toast-notification";
-        document.body.appendChild(toast);
-      }
-      toast.textContent = message;
-      toast.classList.add("show");
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, duration);
-    }
-
-    window.api.onShowToast((_event, message, duration) => {
-      showToast(message, duration);
-    });
-
-    function confirmNavigation(target) {
-      if (hasUnsavedChanges) {
-        if (!confirm("Tienes cambios sin guardar. ¿Deseas salir de todas formas?")) {
-          return;
-        }
-      }
-      if (typeof target === 'function') target();
-      else window.location.href = target;
-    }
-
-    // Navegación
-    document.getElementById("back-btn").addEventListener("click", (e) => {
-      e.preventDefault();
-      confirmNavigation(() => window.history.back());
-    });
-
-    document.querySelectorAll(".footer-icons button[data-link]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        window.open(btn.getAttribute("data-link"));
+      // Cargar versión
+      window.api.getAppVersion().then((v) => {
+        document.getElementById("app-version").textContent = "v" + v;
       });
-    });
 
-    document.getElementById("open-updates")?.addEventListener("click", () => {
-      e.preventDefault();
-      confirmNavigation("updates.html");
-    });
-    document.getElementById("open-licenses")?.addEventListener("click", () => {
-      e.preventDefault();
-      confirmNavigation("licencias.html");
-    });
-    document.getElementById("open-big-picture")?.addEventListener("click", () => {
-      e.preventDefault();
-      confirmNavigation(() => window.api.openBigPicture());
-    });
-    document.getElementById("open-info")?.addEventListener("click", () => {
-      e.preventDefault();
-      confirmNavigation("info.html");
-    });
-    document.getElementById("open-settings-header")?.addEventListener("click", () => {
-      e.preventDefault();
-      confirmNavigation("settings.html");
-    });
+      function playSound(soundFile) {
+        new Audio(`../assets/media/sounds/${soundFile}`).play();
+      }
 
-    // Controles de ventana
-    document.getElementById("min-btn")?.addEventListener("click", () => window.api.minimizeWindow());
-    document.getElementById("close-btn")?.addEventListener("click", () => {
-      if (hasUnsavedChanges) {
-        if (confirm("Tienes cambios sin guardar en los ajustes. ¿Cerrar de todas formas?")) {
+      function showToast(message, duration = 3000) {
+        let toast = document.getElementById("toast-notification");
+        if (!toast) {
+          toast = document.createElement("div");
+          toast.id = "toast-notification";
+          toast.className = "toast-notification";
+          document.body.appendChild(toast);
+        }
+        playSound("toast.mp3");
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, duration);
+      }
+
+      window.api.onShowToast((_event, message, duration) => {
+        showToast(message, duration);
+      });
+
+      function confirmNavigation(target) {
+        if (hasUnsavedChanges) {
+          if (
+            !confirm(
+              "Tienes cambios sin guardar. ¿Deseas salir de todas formas?",
+            )
+          ) {
+            return;
+          }
+        }
+        if (typeof target === "function") target();
+        else window.location.href = target;
+      }
+
+      // Navegación
+      document.getElementById("back-btn").addEventListener("click", (e) => {
+        e.preventDefault();
+        confirmNavigation(() => window.history.back());
+      });
+
+      document
+        .querySelectorAll(".footer-icons button[data-link]")
+        .forEach((btn) => {
+          btn.addEventListener("click", () => {
+            window.open(btn.getAttribute("data-link"));
+          });
+        });
+
+      document.getElementById("open-updates")?.addEventListener("click", () => {
+        e.preventDefault();
+        confirmNavigation("updates.html");
+      });
+      document
+        .getElementById("open-licenses")
+        ?.addEventListener("click", () => {
+          e.preventDefault();
+          confirmNavigation("licencias.html");
+        });
+      document
+        .getElementById("open-big-picture")
+        ?.addEventListener("click", () => {
+          e.preventDefault();
+          confirmNavigation(() => window.api.openBigPicture());
+        });
+      document.getElementById("open-info")?.addEventListener("click", () => {
+        e.preventDefault();
+        confirmNavigation("info.html");
+      });
+      document
+        .getElementById("open-settings-header")
+        ?.addEventListener("click", () => {
+          e.preventDefault();
+          confirmNavigation("settings.html");
+        });
+
+      // Controles de ventana
+      document
+        .getElementById("min-btn")
+        ?.addEventListener("click", () => window.api.minimizeWindow());
+      document.getElementById("close-btn")?.addEventListener("click", () => {
+        if (hasUnsavedChanges) {
+          if (
+            confirm(
+              "Tienes cambios sin guardar en los ajustes. ¿Cerrar de todas formas?",
+            )
+          ) {
+            window.api.closeWindow();
+          }
+        } else {
           window.api.closeWindow();
         }
-      } else {
-        window.api.closeWindow();
-      }
-    });
-
-    const maxBtn = document.getElementById("max-btn");
-    if (maxBtn) {
-      maxBtn.addEventListener("click", () => window.api.maximizeWindow());
-      window.api.isMaximized().then((isMax) => {
-        if (isMax) maxBtn.textContent = "❐";
       });
-      window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
-      window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
-    }
 
-    const controls = {
-      auto_updates: document.getElementById('auto_updates'),
-      start_with_windows: document.getElementById('start_with_windows'),
-      start_minimized: document.getElementById('start_minimized'),
-      show_tray: document.getElementById('show_tray')
-    };
-
-    // Carga inicial de ajustes
-    async function loadSettings() {
-      try {
-        const settings = await window.api.getSettings();
-
-        Object.keys(controls).forEach(key => {
-          if (settings.hasOwnProperty(key)) {
-            controls[key].checked = settings[key];
-          }
+      const maxBtn = document.getElementById("max-btn");
+      if (maxBtn) {
+        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+        window.api.isMaximized().then((isMax) => {
+          if (isMax) maxBtn.textContent = "❐";
         });
-        hasUnsavedChanges = false;
-      } catch (err) {
-        console.error("No se pudo cargar settings.json:", err);
+        window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+        window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
       }
-    }
 
-    // Guardar ajustes
-    function saveSettings() {
-      const settings = {
-        auto_updates: controls.auto_updates ? controls.auto_updates.checked : false,
-        start_with_windows: controls.start_with_windows ? controls.start_with_windows.checked : false,
-        start_minimized: controls.start_minimized ? controls.start_minimized.checked : false,
-        show_tray: controls.show_tray ? controls.show_tray.checked : false
+      const controls = {
+        auto_updates: document.getElementById("auto_updates"),
+        start_with_windows: document.getElementById("start_with_windows"),
+        start_minimized: document.getElementById("start_minimized"),
+        show_tray: document.getElementById("show_tray"),
       };
 
-      window.api.saveSettings(settings);
-      hasUnsavedChanges = false;
-      showToast("Ajustes guardados correctamente");
-    }
+      // Carga inicial de ajustes
+      async function loadSettings() {
+        try {
+          const settings = await window.api.getSettings();
 
-    Object.values(controls).forEach(input => {
-      input.addEventListener('change', () => {
-        hasUnsavedChanges = true;
+          Object.keys(controls).forEach((key) => {
+            if (settings.hasOwnProperty(key)) {
+              controls[key].checked = settings[key];
+            }
+          });
+          hasUnsavedChanges = false;
+        } catch (err) {
+          console.error("No se pudo cargar settings.json:", err);
+        }
+      }
+
+      // Guardar ajustes
+      function saveSettings() {
+        const settings = {
+          auto_updates: controls.auto_updates
+            ? controls.auto_updates.checked
+            : false,
+          start_with_windows: controls.start_with_windows
+            ? controls.start_with_windows.checked
+            : false,
+          start_minimized: controls.start_minimized
+            ? controls.start_minimized.checked
+            : false,
+          show_tray: controls.show_tray ? controls.show_tray.checked : false,
+        };
+
+        window.api.saveSettings(settings);
+        hasUnsavedChanges = false;
+        showToast("Ajustes guardados correctamente");
+      }
+
+      Object.values(controls).forEach((input) => {
+        input.addEventListener("change", () => {
+          hasUnsavedChanges = true;
+        });
       });
-    });
 
-    document.getElementById('save-settings-btn').addEventListener('click', saveSettings);
+      document
+        .getElementById("save-settings-btn")
+        .addEventListener("click", saveSettings);
 
-    window.addEventListener('DOMContentLoaded', loadSettings);
-  </script>
-</body>
+      document
+        .getElementById("clear-cache-btn")
+        .addEventListener("click", async () => {
+          if (
+            confirm(
+              "¿Estás seguro de que quieres limpiar la caché? Esto eliminará todos los iconos descargados y se volverán a solicitar al servidor.",
+            )
+          ) {
+            const btn = document.getElementById("clear-cache-btn");
+            btn.disabled = true;
+            btn.textContent = "Limpiando...";
+            const success = await window.api.clearCache();
+            showToast(
+              success
+                ? "Caché limpiada con éxito"
+                : "Hubo un error al limpiar la caché",
+            );
+            btn.disabled = false;
+            btn.textContent = "Limpiar Caché";
+          }
+        });
+
+      window.addEventListener("DOMContentLoaded", loadSettings);
+    </script>
+  </body>
 </html>

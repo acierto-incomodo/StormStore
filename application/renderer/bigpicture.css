@@ -13,6 +13,11 @@
   font-family: "Roboto", sans-serif;
 }
 
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -24,6 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   cursor: none;
+  user-select: none;
 }
 
 #background {
@@ -199,7 +205,8 @@ body {
 }
 
 .bp-req-badge.virus-req img {
-  filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg) brightness(91%) contrast(101%);
+  filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg)
+    brightness(91%) contrast(101%);
 }
 
 /* Show text when card is selected */
@@ -323,7 +330,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s;
 }
 .intro-overlay.hidden {
   opacity: 0;

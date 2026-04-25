@@ -177,6 +177,10 @@
         state: "Sistema",
       });
 
+      function playSound(soundFile) {
+        new Audio(`../assets/media/sounds/${soundFile}`).play();
+      }
+
       function showToast(message, duration = 3000) {
         let toast = document.getElementById("toast-notification");
         if (!toast) {
@@ -185,6 +189,7 @@
           toast.className = "toast-notification";
           document.body.appendChild(toast);
         }
+        playSound("toast.mp3");
         toast.textContent = message;
         toast.classList.add("show");
         setTimeout(() => {
@@ -192,7 +197,9 @@
         }, duration);
       }
 
-      window.api.onShowToast((_event, message, duration) => showToast(message, duration));
+      window.api.onShowToast((_event, message, duration) =>
+        showToast(message, duration),
+      );
 
       // Esperar a que el DOM esté completamente cargado
       document.addEventListener("DOMContentLoaded", function () {
@@ -346,11 +353,13 @@
         window.api.onUpdateAvailable((_, info) => {
           resetCheckUI();
           showUpdateAvailable(info);
+          showToast("Actualización disponible!");
         });
 
         window.api.onUpdateNotAvailable(() => {
           showNoUpdate();
           resetCheckUI();
+          showToast("No hay actualizaciones disponibles.");
         });
 
         window.api.onDownloadProgress((_, progressObj) => {
@@ -370,6 +379,8 @@
           document.getElementById("download-progress").style.display = "none";
           document.getElementById("update-info-section").style.display = "none";
 
+          showToast("Actualización descargada, se instalará pronto.");
+
           const readySection = document.getElementById("update-ready-section");
           readySection.style.display = "block";
           readySection.querySelector("h2").textContent =
@@ -386,6 +397,7 @@
         window.api.onUpdateError((_, message) => {
           resetCheckUI();
           showError(`Error: ${message}`);
+          showToast(`Error de actualización: ${message}`);
         });
 
         // Controles de ventana

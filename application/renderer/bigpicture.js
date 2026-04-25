@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       toast.className = "toast-notification";
       document.body.appendChild(toast);
     }
+    playSound("toast.mp3");
     toast.textContent = message;
     toast.classList.add("show");
     setTimeout(() => {
@@ -16,6 +17,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   window.api.onShowToast((_event, message, duration) => {
     showToast(message, duration);
   });
+
+  function playSound(soundFile) {
+    new Audio(`../assets/media/sounds/${soundFile}`).play();
+  }
 
   // DOM Elements
   const gridContainer = document.getElementById("grid-container");
@@ -55,7 +60,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   function finishIntro() {
     if (!introOverlay || introOverlay.classList.contains("hidden")) return;
     introOverlay.classList.add("hidden");
-    setTimeout(() => { introOverlay.style.display = "none"; }, 800);
+    setTimeout(() => {
+      introOverlay.style.display = "none";
+    }, 800);
   }
 
   // Icon Mapping
@@ -261,6 +268,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     newIndex = Math.max(0, Math.min(newIndex, gridItems.length - 1));
     currentGridIndex = newIndex;
     const selectedCard = gridItems[currentGridIndex];
+    if (scroll) playSound("move.mp3");
     selectedCard.classList.add("selected");
     const game = games[currentGridIndex];
     gameTitle.textContent = game.name;
@@ -307,7 +315,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   function launchGame() {
     const game = games[currentGridIndex];
     if (game) {
-      window.api.openApp(game.executablePath || game.paths[0], game.steam === "si");
+      window.api.openApp(
+        game.executablePath || game.paths[0],
+        game.steam === "si",
+      );
     }
   }
 
@@ -331,6 +342,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function openMenu() {
     if (isMenuOpen) return;
     isMenuOpen = true;
+    playSound("select.mp3");
     menuOverlay.classList.add("active");
     const modalActions = menuBackButton.parentElement;
 
@@ -372,6 +384,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function closeMenu() {
     if (!isMenuOpen) return;
     isMenuOpen = false;
+    playSound("back.mp3");
     menuOverlay.classList.remove("active");
     // Restore footer for grid view
     updateFooter([
@@ -386,6 +399,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (newIndex < 0) newIndex = menuItems.length - 1;
     if (newIndex >= menuItems.length) newIndex = 0;
     menuCurrentIndex = newIndex;
+    playSound("move.mp3");
     menuItems[menuCurrentIndex]?.classList.add("selected");
   }
 
