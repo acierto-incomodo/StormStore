@@ -186,17 +186,16 @@ body {
 }
 
 /* If the icon for WiFi is right after Steam's, push it down */
-.bp-req-badge.steam-req + .bp-req-badge.wifi-req {
-  top: 46px; /* 10px (top) + 32px (height) + 4px (gap) */
-}
-
-.bp-req-badge.steam-req + .bp-req-badge.virus-req,
-.bp-req-badge.wifi-req + .bp-req-badge.virus-req {
+.bp-req-badge + .bp-req-badge {
   top: 46px;
 }
 
-.bp-req-badge.steam-req + .bp-req-badge.wifi-req + .bp-req-badge.virus-req {
+.bp-req-badge + .bp-req-badge + .bp-req-badge {
   top: 82px;
+}
+
+.bp-req-badge + .bp-req-badge + .bp-req-badge + .bp-req-badge {
+  top: 118px;
 }
 
 .bp-req-badge.virus-req img {

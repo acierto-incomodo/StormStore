@@ -133,6 +133,20 @@ function renderApps(category) {
       imgContainer.appendChild(icon);
 
       // --- Badges de Requisitos ---
+      if (app.verified === "true") {
+        const verifiedBadge = document.createElement("div");
+        verifiedBadge.className = "req-badge verified-req-badge";
+
+        const verifiedIcon = document.createElement("img");
+        verifiedIcon.src = "../assets/icons/verified.svg";
+
+        const verifiedText = document.createElement("span");
+        verifiedText.textContent = "Verificado";
+
+        verifiedBadge.append(verifiedIcon, verifiedText);
+        imgContainer.appendChild(verifiedBadge);
+      }
+
       if (app.steam === "si") {
         const steamBadge = document.createElement("div");
         steamBadge.className = "req-badge steam-req-badge";

@@ -534,6 +534,15 @@
           return p;
         };
 
+        if (app.verified === "true") {
+          requirementsContainer.appendChild(
+            createRequirement(
+              "Esta aplicación está verificada por StormGamesStudios.",
+              "../assets/icons/verified.svg",
+            ),
+          );
+        }
+
         if (app.steam === "si") {
           requirementsContainer.appendChild(
             createRequirement(

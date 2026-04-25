@@ -185,6 +185,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.dataset.id = game.id;
 
       // --- Badges de Requisitos ---
+      if (game.verified === "true") {
+        const verifiedBadge = document.createElement("div");
+        verifiedBadge.className = "bp-req-badge verified-req";
+
+        const verifiedIcon = document.createElement("img");
+        verifiedIcon.src = "../assets/icons/verified.svg";
+
+        const verifiedText = document.createElement("span");
+        verifiedText.textContent = "Verificado";
+
+        verifiedBadge.append(verifiedIcon, verifiedText);
+        card.appendChild(verifiedBadge);
+      }
+
       if (game.steam === "si") {
         const steamBadge = document.createElement("div");
         steamBadge.className = "bp-req-badge steam-req";
