@@ -11,7 +11,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "ambidextro",
@@ -27,7 +28,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "backseat-drivers",
@@ -43,7 +45,8 @@
     "steam": "si",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "balatro",
@@ -59,7 +62,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "buckshot_roulette",
@@ -75,7 +79,8 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "content-warning",
@@ -91,7 +96,8 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "doom",
@@ -107,7 +113,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "fastfood",
@@ -123,7 +130,8 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "fnaf1",
@@ -139,7 +147,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "fnaf2",
@@ -155,7 +164,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "fnaf3",
@@ -171,7 +181,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "fnaf4",
@@ -187,7 +198,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "fusion-arena",
@@ -203,7 +215,8 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "golfit",
@@ -219,7 +232,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "hollow-knight-silksong",
@@ -235,7 +249,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "hytale",
@@ -251,7 +266,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "karts-multiplayer",
@@ -267,7 +283,8 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "lethal-company",
@@ -284,7 +301,8 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "mage-arena",
@@ -300,7 +318,8 @@
     "steam": "si",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "miside-zero",
@@ -316,7 +335,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "modpack-installer",
@@ -332,7 +352,8 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "multiai",
@@ -346,7 +367,8 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "pairdrop",
@@ -360,7 +382,8 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "panicore",
@@ -376,7 +399,8 @@
     "steam": "si",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "alert"
+    "virus-alert": "alert",
+    "verified": "false"
   },
   {
     "id": "peak",
@@ -392,7 +416,8 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "peopleplayground",
@@ -408,7 +433,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "repo",
@@ -424,7 +450,8 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "scamline",
@@ -440,7 +467,8 @@
     "steam": "si",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "schedule1",
@@ -456,7 +484,8 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "stormlauncher",
@@ -470,7 +499,8 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "stormlibraryv2",
@@ -486,7 +516,8 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "stormpanel-app",
@@ -502,7 +533,8 @@
     "steam": "no",
     "wifi": "si",
     "share-compatibility": "si",
-    "virus-alert": "none"
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "theforest",
@@ -518,6 +550,7 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
-    "virus-alert": "alert"
+    "virus-alert": "alert",
+    "verified": "false"
   }
 ]

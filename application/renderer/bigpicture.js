@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     games.forEach((game, index) => {
       const card = document.createElement("div");
       card.className = "game-card";
-      card.style.backgroundImage = `url('${game.icon}')`;
+      card.style.backgroundImage = `url('${game.icon}'), url('../assets/icons/not-found.svg')`;
       card.dataset.index = index;
       card.dataset.id = game.id;
 
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     selectedCard.classList.add("selected");
     const game = games[currentGridIndex];
     gameTitle.textContent = game.name;
-    background.style.backgroundImage = `url('${game.icon}')`;
+    background.style.backgroundImage = `url('${game.icon}'), url('../assets/icons/not-found.svg')`;
     if (scroll) {
       selectedCard.scrollIntoView({ behavior: "smooth", block: "center" });
     }

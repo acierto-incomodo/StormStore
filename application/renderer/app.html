@@ -277,6 +277,9 @@
         const img = document.createElement("img");
         img.src = app.icon;
         img.className = "app-icon";
+        img.onerror = () => {
+          img.src = "../assets/icons/not-found.svg";
+        };
         img.style.width = "100%";
         img.style.height = "100%";
         img.style.borderRadius = "16px";

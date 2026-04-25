@@ -73,7 +73,7 @@ function renderApps() {
     icon.className = "app-icon";
     // Fallback si la imagen no carga
     icon.onerror = () => {
-      icon.src = "../assets/icons/steam.svg";
+        icon.src = "../assets/icons/not-found.svg";
       icon.style.padding = "20px";
       icon.style.background = "#171a21";
     };

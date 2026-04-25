@@ -130,6 +130,9 @@ function renderApps(category) {
       const icon = document.createElement("img");
       icon.src = app.icon;
       icon.className = "app-icon";
+      icon.onerror = () => {
+        icon.src = "../assets/icons/not-found.svg";
+      };
       imgContainer.appendChild(icon);
 
       // --- Badges de Requisitos ---

@@ -72,7 +72,7 @@ function renderApps() {
     icon.src = app.icon;
     icon.className = "app-icon";
     icon.onerror = () => {
-      icon.src = "../assets/icons/epic-games.svg";
+      icon.src = "../assets/icons/not-found.svg";
       icon.style.padding = "20px";
       icon.style.background = "#2a2a2a";
     };
