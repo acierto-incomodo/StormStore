@@ -211,7 +211,7 @@ function createAppCard(app, index) {
 
     if (isUninstalling) {
       uninstallBtn.disabled = true;
-      uninstallBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Trabajando...</span>`;
+      uninstallBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Eliminando...</span>`;
     } else {
       const hasUninstaller = app.uninstall && app.uninstallExists;
       uninstallBtn.textContent = hasUninstaller ? "Desinstalar" : "Eliminar";
@@ -220,14 +220,22 @@ function createAppCard(app, index) {
         if (!hasUninstaller && !confirm("¿Eliminar carpeta de la aplicación?")) return;
         
         uninstallingApps.add(app.id);
+        playSound("others.mp3");
+        showToast(hasUninstaller ? `Desinstalando ${app.name}…` : `Eliminando archivos de ${app.name}…`);
         renderApps(currentCategory);
         
         try {
           if (hasUninstaller) await window.api.uninstallApp(app.uninstall);
           else await window.api.deleteAppFolder(app.paths[0]);
           playSound("finish.mp3");
-        } catch (error) { console.error(error); }
-        finally { uninstallingApps.delete(app.id); await load(); }
+        } catch (error) { 
+          if (!error.message.includes("INSTALL_CANCELLED")) console.error(error); 
+        }
+        finally { 
+          uninstallingApps.delete(app.id); 
+          renderApps(currentCategory); // Actualizar UI inmediatamente
+          await load(); 
+        }
       };
     }
     topRow.appendChild(uninstallBtn);
@@ -283,12 +291,20 @@ function createAppCard(app, index) {
       installBtn.textContent = "Instalar";
       installBtn.onclick = async () => {
         installingApps.add(app.id);
+        playSound("others.mp3");
+        showToast(`Iniciando descarga e instalación de ${app.name}…`);
         renderApps(currentCategory);
         try {
           await window.api.installApp(app);
           playSound("finish.mp3");
-        } catch (e) { console.error(e); }
-        finally { installingApps.delete(app.id); await load(); }
+        } catch (e) { 
+          if (!e.message.includes("INSTALL_CANCELLED")) console.error(e); 
+        }
+        finally { 
+          installingApps.delete(app.id); 
+          renderApps(currentCategory); // Actualizar UI inmediatamente
+          await load(); 
+        }
       };
     }
     installRow.appendChild(installBtn);

@@ -101,8 +101,9 @@ body {
 
 #grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, 220px);
   gap: 30px;
+  justify-content: center;
   padding: 20px 50px;
   overflow-y: auto;
   align-content: start;

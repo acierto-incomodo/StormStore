@@ -468,16 +468,17 @@
           installBtn.onclick = async () => {
             isInstalling = true;
             playSound("others.mp3");
-            showToast("Iniciando instalación...");
+            showToast(`Iniciando descarga e instalación de ${app.name}…`);
             renderDetails(app);
             try {
               await window.api.installApp(app);
               playSound("finish.mp3");
             } catch (e) {
-              console.error(e);
+              if (!e.message.includes("INSTALL_CANCELLED")) console.error(e);
             }
             isInstalling = false;
-            loadApp();
+            renderDetails(app); // Forzar re-renderizado inmediato del botón
+            await loadApp();
           };
           actionsDiv.appendChild(installBtn);
 

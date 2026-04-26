@@ -947,6 +947,14 @@ async function installAppLogic(appData) {
                 // ▶ Ejecutar instalador
                 exec(`"${filePath}"`, (err) => {
                   if (err) {
+                    if (mainWindow) mainWindow.setProgressBar(-1);
+
+                    // Código 2 = Cancelado en Inno Setup. 1 = Error genérico/Cancelado en otros.
+                    if (err.code === 2 || err.code === 1) {
+                      if (mainWindow) mainWindow.webContents.send("show-toast", "Instalación cancelada.");
+                      return reject(new Error("INSTALL_CANCELLED"));
+                    }
+
                     console.error("Error ejecutando instalador:", err);
                     if (mainWindow) {
                       mainWindow.setProgressBar(1, { mode: "error" });
@@ -1068,9 +1076,18 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
       throw new Error("Desinstalador no encontrado");
     }
 
-    exec(`"${resolved}"`);
+    await new Promise((resolve, reject) => {
+      exec(`"${resolved}"`, (err) => {
+        if (err) return reject(err);
+        resolve(true);
+      });
+    });
     return true;
   } catch (err) {
+    if (err.code === 2 || err.code === 1) {
+      if (mainWindow) mainWindow.webContents.send("show-toast", "Desinstalación cancelada.");
+      return false;
+    }
     console.error("Error al desinstalar:", err.message);
     return false;
   }
