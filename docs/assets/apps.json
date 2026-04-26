@@ -490,7 +490,7 @@
   {
     "id": "sideeffects",
     "name": "Side Effects",
-    "description": "Schedule I es un juego indie en desarrollo centrado en construir y gestionar un negocio ilegal desde cero. Combina simulación, estrategia y mundo abierto, permitiendo expandirte, evitar a la policía y tomar decisiones que afectan tu progreso. Destaca por su enfoque crudo y libertad para jugar a tu manera.",
+    "description": "Side Effects es un juego indie de estrategia y terror en el que los jugadores participan en una especie de “ruleta médica”: en cada turno deben tomar pastillas con efectos desconocidos que pueden ser beneficiosos, perjudiciales o incluso mortales al instante, con el objetivo de sobrevivir más tiempo que su rival; además, se pueden usar objetos y tácticas para engañar al oponente y aumentar las probabilidades de ganar, creando una experiencia tensa basada en el riesgo, la gestión de recursos y el faroleo psicológico.",
     "category": "Juegos",
     "icon": "../assets/apps/sideeffects.png",
     "paths": [
@@ -568,6 +568,23 @@
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
+    "id": "theplanetcrafter",
+    "name": "The Planet Crafter",
+    "description": "The Planet Crafter es un juego de supervivencia y exploración en el que el jugador es enviado a un planeta hostil con la misión de terraformarlo, es decir, convertirlo en un entorno habitable; para lograrlo debe recolectar recursos, construir máquinas y bases, y aumentar progresivamente parámetros como el oxígeno, la presión y la temperatura, haciendo que el planeta evolucione visual y jugablemente mientras se desbloquean nuevas tecnologías y zonas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/theplanetcrafter.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/TheForest_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
     "verified": "false"
   }
 ]
