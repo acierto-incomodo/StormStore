@@ -596,7 +596,7 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/ThePlanetCrafter_Launcher_Installer.exe",
+    "download": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/ThePlanetCrafterGame_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/unins000.exe",
     "steam": "si",
     "wifi": "no",
