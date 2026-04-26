@@ -77,9 +77,11 @@ async function load(force = false) {
       force ? new Promise((r) => setTimeout(r, 1000)) : Promise.resolve(),
     ]);
 
-    // Solo actualizamos si forzamos (botón) o si los datos han cambiado (ej. instalación detectada en disco)
-    const hasChanged =
-      force || JSON.stringify(newApps) !== JSON.stringify(allApps);
+    // Comprobación inteligente de cambios: Ignoramos el campo 'icon' para evitar
+    // que la descarga de imágenes en segundo plano dispare la animación de la UI constantemente.
+    const stripIcons = (apps) => apps.map(({ icon, ...rest }) => ({ ...rest }));
+    const structuralChange = JSON.stringify(stripIcons(newApps)) !== JSON.stringify(stripIcons(allApps));
+    const hasChanged = force || structuralChange;
 
     if (hasChanged) {
       allApps = newApps;
@@ -87,6 +89,9 @@ async function load(force = false) {
       if (searchInput && searchInput.value !== currentSearch)
         searchInput.value = currentSearch;
       renderApps(currentCategory);
+    } else {
+      // Actualizamos los datos internamente pero sin re-renderizar la UI (evita el flash/animación)
+      allApps = newApps;
     }
   } finally {
     if (force && refreshBtn) {

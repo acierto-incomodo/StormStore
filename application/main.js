@@ -556,30 +556,40 @@ async function handleProtocolUrl(url) {
 }
 
 async function downloadFile(url, dest) {
+  const tempDest = dest + ".tmp";
   return new Promise((resolve, reject) => {
     const download = (downloadUrl) => {
-      const file = fs.createWriteStream(dest);
+      const file = fs.createWriteStream(tempDest);
       https
         .get(downloadUrl, (res) => {
           if (res.statusCode === 301 || res.statusCode === 302) {
             file.close();
-            fs.unlink(dest, () => {});
+            fs.unlink(tempDest, () => {});
             return download(res.headers.location);
           }
           if (res.statusCode !== 200) {
             file.close();
-            fs.unlink(dest, () => {});
+            fs.unlink(tempDest, () => {});
             return reject(new Error(`Status ${res.statusCode}`));
           }
           res.pipe(file);
           file.on("finish", () => {
-            file.close();
-            resolve();
+            file.close(() => {
+              // Renombrado atómico: Solo movemos el archivo al destino final cuando está completo
+              fs.rename(tempDest, dest, (err) => {
+                if (err) {
+                  fs.unlink(tempDest, () => {});
+                  reject(err);
+                } else {
+                  resolve();
+                }
+              });
+            });
           });
         })
         .on("error", (err) => {
           file.close();
-          fs.unlink(dest, () => {});
+          fs.unlink(tempDest, () => {});
           reject(err);
         });
     };

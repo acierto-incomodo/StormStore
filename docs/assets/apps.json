@@ -496,7 +496,7 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/SideEffects/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/ScheduleI_Launcher_Installer.exe",
+    "download": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/SideEffects_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/unins000.exe",
     "steam": "si",
     "wifi": "no",
@@ -554,6 +554,23 @@
     "verified": "true"
   },
   {
+    "id": "supermarketsecuritysimulator",
+    "name": "Supermarket Security Simulator",
+    "description": "Supermarket Security Simulator es un juego de simulación en el que trabajas como guardia de seguridad en un supermercado, encargado de vigilar a los clientes, detectar robos y mantener el orden dentro de la tienda; a lo largo de la partida debes observar comportamientos sospechosos, revisar cámaras, intervenir cuando alguien intenta robar y tomar decisiones rápidas que afectan al desarrollo del día, combinando gestión, atención al detalle y situaciones impredecibles.",
+    "category": "Juegos",
+    "icon": "../assets/apps/supermarketsecuritysimulator.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/SupermarketSecuritySimulatorGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/SupermarketSecuritySimulatorGame/releases/latest/download/SupermarketSecuritySimulatorGame_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SupermarketSecuritySimulatorGame/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "theforest",
     "name": "The Forest",
     "description": "Juego de supervivencia en el que debes luchar por quedarte con vida en un entorno hostil.",
@@ -579,9 +596,26 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/installer_updater.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/TheForest_Launcher_Installer.exe",
+    "download": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/ThePlanetCrafter_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/unins000.exe",
     "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "ultrakill",
+    "name": "ULTRAKILL",
+    "description": "ULTRAKILL es un frenético juego de disparos en primera persona inspirado en los clásicos arcade, donde controlas a una máquina sedienta de sangre que desciende por el infierno combatiendo hordas de enemigos; destaca por su combate extremadamente rápido, sistema de puntuación basado en estilo y combos, y mecánicas que premian la agresividad y la creatividad al usar armas y movimientos para encadenar ataques y recuperar vida.",
+    "category": "Juegos",
+    "icon": "../assets/apps/ultrakill.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/ULTRAKILL_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/unins000.exe",
+    "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "none",
