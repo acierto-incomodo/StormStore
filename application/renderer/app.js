@@ -67,6 +67,11 @@ async function load(force = false) {
     renderSkeletons();
   }
   try {
+    // Si es una carga forzada (clic en el botón), sincronizamos con el servidor primero
+    if (force) {
+      await window.api.syncRemoteData();
+    }
+
     const [newApps] = await Promise.all([
       window.api.getApps(),
       force ? new Promise((r) => setTimeout(r, 1000)) : Promise.resolve(),

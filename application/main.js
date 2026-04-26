@@ -1156,6 +1156,11 @@ ipcMain.on("set-discord-activity", (event, activity) => {
   setActivity();
 });
 
+ipcMain.handle("sync-remote-data", async () => {
+  await syncRemoteData();
+  return true;
+});
+
 ipcMain.handle("get-settings", () => loadSettings());
 ipcMain.on("save-settings", (event, settings) => saveSettings(settings));
 
