@@ -117,6 +117,23 @@
     "verified": "false"
   },
   {
+    "id": "drivebeyondhorizons",
+    "name": "Drive Beyond Horizons",
+    "description": "Drive Beyond Horizons es un juego de conducción y exploración en mundo abierto donde recorres vastos paisajes generados de forma procedural, gestionando tu vehículo mientras viajas largas distancias, descubres ubicaciones y enfrentas los desafíos del entorno; el progreso se basa en mejorar el coche, administrar recursos y sobrevivir a las condiciones del viaje, ofreciendo una experiencia relajada pero centrada en la aventura y la libertad.",
+    "category": ["Juegos"],
+    "icon": "../assets/apps/drivebeyondhorizons.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/drive-beyond-horizons-game/releases/latest/download/DriveBeyondHorizons_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "fastfood",
     "name": "Fast Food Simulator",
     "description": "Fast Food Simulator es un juego de simulación donde gestionas tu propio restaurante de comida rápida. Tienes que tomar pedidos, cocinar, servir y mantener el local funcionando. Puedes jugar solo o con amigos, y el objetivo es trabajar rápido, organizarte bien y hacer crecer tu negocio mientras manejas el caos del restaurante.",
@@ -217,6 +234,23 @@
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "true"
+  },
+  {
+    "id": "gmod",
+    "name": "Garry's Mod",
+    "description": "Garry's Mod es un juego sandbox basado en el motor de Half-Life 2 donde no hay un objetivo fijo, sino que puedes experimentar libremente con físicas, objetos y personajes para crear todo tipo de situaciones; permite construir, programar, hacer machinimas o jugar modos creados por la comunidad como roleplay o minijuegos, lo que lo convierte en una plataforma muy flexible centrada en la creatividad y el multijugador.",
+    "category": "Juegos",
+    "icon": "../assets/apps/gmod.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/garrys-mod-game/releases/latest/download/GarrysMod_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "golfit",
@@ -354,6 +388,23 @@
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "true"
+  },
+  {
+    "id": "motortown",
+    "name": "Motor Town",
+    "description": "Motor Town: Behind The Wheel es un juego de conducción de mundo abierto en el que puedes trabajar en distintos oficios relacionados con vehículos, como taxi, reparto o transporte de carga, ganando dinero mientras conduces por una ciudad dinámica con tráfico y ciclo día-noche; combina simulación accesible con libertad total para explorar, mejorar vehículos y elegir cómo progresar dentro de su economía abierta.",
+    "category": "Juegos",
+    "icon": "../assets/apps/motortown.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MotorTown/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/motor-town-game/releases/latest/download/MotorTown_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MotorTown/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "multiai",
