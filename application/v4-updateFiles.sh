@@ -29,7 +29,6 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 SOURCE_JSON="$SCRIPT_DIR/apps.json"
-SOURCE_FILES_JSON="$SCRIPT_DIR/files.apps.json"
 SOURCE_ASSETS="$SCRIPT_DIR/assets/apps"
 SOURCE_APPS_SIZE="$SCRIPT_DIR/assets/apps-size"
 SOURCE_TRAILERS="$SCRIPT_DIR/assets/media/trailers"
@@ -108,11 +107,9 @@ print_info "Limpiando directorio de trailers: $DEST_TRAILERS_DIR"
 rm -rf "$DEST_TRAILERS_DIR"
 mkdir -p "$DEST_TRAILERS_DIR"
 
-# 2. Copiar apps.json y files.apps.json
+# 2. Copiar apps.json
 print_info "Copiando 'application/apps.json'..."
 cp "$SOURCE_JSON" "$DEST_DIR/"
-print_info "Copiando 'application/files.apps.json'..."
-cp "$SOURCE_FILES_JSON" "$DEST_DIR/"
 
 # 3. Copiar la carpeta assets/apps
 print_info "Copiando contenido de 'application/assets/apps'..."
@@ -144,7 +141,6 @@ fi
 print_success "Archivos de documentación actualizados en 'docs/assets'"
 print_info "Contenido copiado:"
 echo "  - apps.json"
-echo "  - files.apps.json"
 echo "  - assets/apps/"
 echo "  - assets/apps-size/"
 echo "  - assets/trailers/"

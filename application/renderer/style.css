@@ -591,7 +591,8 @@ body.offline .requires-wifi button {
 
 /* Los iconos de la cabecera usan SVGs negros, necesitan un filtro para verse blancos */
 #open-big-picture img,
-#open-settings-header img {
+#open-settings-header img,
+#open-downloads img {
   filter: invert(1);
 }
 
@@ -643,6 +644,21 @@ body.offline .requires-wifi button {
   width: 16px;
   height: 16px;
   animation: spin 1s linear infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.downloading-active img {
+  animation: bounce 1s ease-in-out infinite;
+  filter: invert(1) drop-shadow(0 0 5px var(--md-sys-color-primary)) !important;
 }
 
 /* =====================================
@@ -1362,10 +1378,17 @@ body.offline .requires-wifi button {
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
   animation: skeleton-shimmer 1.5s infinite;
 }
 
 @keyframes skeleton-shimmer {
-  100% { transform: translateX(100%); }
+  100% {
+    transform: translateX(100%);
+  }
 }

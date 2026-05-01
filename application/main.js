@@ -20,9 +20,12 @@ const { autoUpdater } = require("electron-updater");
 const SteamPath = require("steam-path");
 const gameScanner = require("@equal-games/game-scanner");
 const DiscordRPC = require("discord-rpc");
+const DownloadManager = require("./download-manager");
 
 let appsData = require("./apps.json");
+let filesAppsData = require("./files.apps.json");
 let isOffline = true; // Por defecto asumimos offline hasta que la sincronización diga lo contrario
+let fileAppsStatus = new Map(); // Mapa para guardar el estado de versiones (id -> {updateAvailable})
 
 const ICON_SIZES = [
   "256x256",
@@ -42,6 +45,8 @@ const SETTINGS_PATH = path.join(
 
 const REMOTE_APPS_URL =
   "https://acierto-incomodo.github.io/StormStore/assets/apps.json";
+const REMOTE_FILES_APPS_URL =
+  "https://acierto-incomodo.github.io/StormStore/assets/files.apps.json";
 const REMOTE_ICONS_BASE =
   "https://acierto-incomodo.github.io/StormStore/assets/apps-size/";
 
@@ -49,6 +54,13 @@ const REMOTE_ICONS_BASE =
 let mainWindow;
 let updateInfo = null;
 let tray = null;
+let downloadManager = null;
+const DOWNLOADS_TEMP_DIR = path.join(
+  app.getPath("appData"),
+  "StormGamesStudios",
+  "StormStore",
+  "temp_downloads",
+);
 
 // =====================================
 // GESTIÓN DE AJUSTES
@@ -105,29 +117,51 @@ function createTray() {
   if (tray) return;
   tray = new Tray(path.join(__dirname, "assets/app.ico"));
   const contextMenu = Menu.buildFromTemplate([
-    { label: "Abrir StormStore", click: () => {
-      mainWindow.show();
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
-    }},
-    { label: "Modo StormVortex", click: () => {
-      mainWindow.show();
-      mainWindow.setFullScreen(true);
-      mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
-      setActivity();
-      mainWindow.focus();
-    }},
-    { label: "Buscar actualizaciones", click: () => {
-      mainWindow.show();
-      mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
-      autoUpdater.checkForUpdates();
-    }},
+    {
+      label: "Abrir StormStore",
+      click: () => {
+        mainWindow.show();
+        if (mainWindow.isMinimized()) mainWindow.restore();
+        mainWindow.focus();
+      },
+    },
+    {
+      label: "Descargas",
+      click: () => {
+        mainWindow.show();
+        mainWindow.loadFile(
+          path.join(__dirname, "renderer/program-updates.html"),
+        );
+        mainWindow.focus();
+      },
+    },
+    {
+      label: "Modo StormVortex",
+      click: () => {
+        mainWindow.show();
+        mainWindow.setFullScreen(true);
+        mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
+        setActivity();
+        mainWindow.focus();
+      },
+    },
+    {
+      label: "Buscar actualizaciones",
+      click: () => {
+        mainWindow.show();
+        mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
+        autoUpdater.checkForUpdates();
+      },
+    },
     { type: "separator" },
-    { label: "Reiniciar StormStore", click: () => {
-      app.isQuiting = true;
-      app.relaunch();
-      app.exit(0);
-    }},
+    {
+      label: "Reiniciar StormStore",
+      click: () => {
+        app.isQuiting = true;
+        app.relaunch();
+        app.exit(0);
+      },
+    },
     { type: "separator" },
     {
       label: "Salir",
@@ -338,7 +372,9 @@ function createWindow() {
   const startInBigPicture = process.argv.some((arg) =>
     vortexFlags.includes(arg),
   );
-  const isSilentStart = (settings.start_minimized || process.argv.includes("--start-minimized")) && !startInBigPicture;
+  const isSilentStart =
+    (settings.start_minimized || process.argv.includes("--start-minimized")) &&
+    !startInBigPicture;
 
   win.loadFile(
     path.join(
@@ -352,7 +388,7 @@ function createWindow() {
       win.setFullScreen(true);
       win.show();
     } else if (isSilentStart) {
-      // Si es inicio silencioso, no llamamos a win.show(). 
+      // Si es inicio silencioso, no llamamos a win.show().
       // La ventana permanece oculta y solo el icono de la bandeja será visible.
       console.log("StormStore: Iniciando en modo silencioso (solo bandeja).");
     } else {
@@ -511,10 +547,19 @@ async function handleProtocolUrl(url) {
   if (url.startsWith(prefix)) {
     const id = url.substring(prefix.length).replace(/\/$/, "");
     const appItem = appsData.find((a) => a.id === id);
+    const fileApp = filesAppsData.find((f) => f.id === id);
 
     if (appItem && appItem["virus-alert"] === "alert") {
       const proceed = await showVirusWarning(appItem.name);
       if (!proceed) return;
+    }
+
+    // Prioridad: Ejecutar desde el nuevo sistema si está disponible y el archivo existe
+    if (fileApp && fileApp.executablePath) {
+      if (findExecutable(fileApp.executablePath) !== null) {
+        runApp(fileApp.executablePath, appItem?.steam === "si");
+        return;
+      }
     }
 
     if (appItem) {
@@ -597,6 +642,36 @@ async function downloadFile(url, dest) {
   });
 }
 
+// Función auxiliar para obtener el checksum remoto siguiendo redirecciones
+async function getRemoteChecksum(url) {
+  return new Promise((resolve) => {
+    const protocol = url.startsWith("https") ? https : http;
+    const request = (targetUrl) => {
+      protocol
+        .get(targetUrl, (res) => {
+          // Seguir redirecciones (301, 302, etc)
+          if (
+            [301, 302, 307, 308].includes(res.statusCode) &&
+            res.headers.location
+          ) {
+            return request(res.headers.location);
+          }
+          if (res.statusCode !== 200) return resolve(null);
+
+          let data = "";
+          res.on("data", (chunk) => (data += chunk));
+          res.on("end", () => {
+            // Si el archivo tiene varias líneas, nos quedamos con la primera (el hash)
+            if (data.includes("\n")) data = data.split("\n")[0];
+            resolve(data.trim());
+          });
+        })
+        .on("error", () => resolve(null));
+    };
+    request(url);
+  });
+}
+
 async function syncRemoteData() {
   if (!fs.existsSync(ICONS_CACHE_DIR)) {
     fs.mkdirSync(ICONS_CACHE_DIR, { recursive: true });
@@ -631,6 +706,28 @@ async function syncRemoteData() {
     isOffline = false; // Sincronización exitosa = Estamos online
     fs.writeFileSync(APPS_JSON_CACHE, JSON.stringify(appsData, null, 2));
 
+    // Descargar files.apps.json
+    const filesData = await new Promise((resolve, reject) => {
+      const req = https.get(REMOTE_FILES_APPS_URL, (res) => {
+        if (res.statusCode !== 200)
+          return reject(new Error("Error fetching files.apps.json"));
+        let body = "";
+        res.on("data", (chunk) => (body += chunk));
+        res.on("end", () => {
+          try {
+            resolve(JSON.parse(body));
+          } catch (e) {
+            reject(e);
+          }
+        });
+      });
+      req.on("error", reject);
+      req.end();
+    });
+
+    filesAppsData = filesData;
+    fs.writeFileSync(FILES_APPS_JSON_CACHE, JSON.stringify(filesAppsData, null, 2));
+
     // Notificar al frontend que los datos han sido actualizados
     if (mainWindow && !mainWindow.isDestroyed()) {
       mainWindow.webContents.send(
@@ -664,11 +761,32 @@ async function syncRemoteData() {
         }
       });
     }
+
+    // 3. Verificación de versiones para apps en files.apps.json
+    for (const fApp of filesAppsData) {
+      const remote = await getRemoteChecksum(fApp.checksumUrl);
+      const localDir = resolveWindowsPath(
+        fApp.checksumPath || fApp.extractPath,
+      );
+      const localFile = path.join(localDir, fApp.checksumFile);
+      let local = null;
+      if (fs.existsSync(localFile)) {
+        local = fs.readFileSync(localFile, "utf8").trim();
+      }
+      fileAppsStatus.set(fApp.id, {
+        local,
+        remote,
+        updateAvailable: local !== null && remote !== null && local !== remote,
+      });
+    }
   } catch (err) {
     console.error("Sync failed, using cache:", err.message);
     isOffline = true; // Fallo en la red = Modo offline
     if (fs.existsSync(APPS_JSON_CACHE)) {
       appsData = JSON.parse(fs.readFileSync(APPS_JSON_CACHE, "utf8"));
+    }
+    if (fs.existsSync(FILES_APPS_JSON_CACHE)) {
+      filesAppsData = JSON.parse(fs.readFileSync(FILES_APPS_JSON_CACHE, "utf8"));
     }
   }
 }
@@ -699,11 +817,23 @@ ipcMain.handle("get-apps", () => {
       iconUrl = `${REMOTE_ICONS_BASE}1024x1024/${fileName}`;
     }
 
+    // Prioridad absoluta: Verificar instalación vía files.apps.json
+    const fileApp = filesAppsData.find((f) => f.id === appItem.id);
     let executablePath = null;
-    for (const p of appItem.paths) {
-      if (findExecutable(p) !== null) {
-        executablePath = p;
-        break;
+
+    if (fileApp && fileApp.executablePath) {
+      if (findExecutable(fileApp.executablePath) !== null) {
+        executablePath = fileApp.executablePath;
+      }
+    }
+
+    // Fallback: Si no se encontró en el sistema nuevo, buscar en paths legacy de apps.json
+    if (!executablePath) {
+      for (const p of appItem.paths) {
+        if (findExecutable(p) !== null) {
+          executablePath = p;
+          break;
+        }
       }
     }
 
@@ -713,10 +843,14 @@ ipcMain.handle("get-apps", () => {
       uninstallExists = fs.existsSync(resolvedUninstall);
     }
 
+    const status = fileAppsStatus.get(appItem.id);
+    const updateAvailable = status ? status.updateAvailable : false;
+
     return {
       ...appItem,
       icon: iconUrl,
       installed: executablePath !== null,
+      updateAvailable,
       executablePath,
       uninstallExists,
     };
@@ -902,104 +1036,109 @@ ipcMain.handle("get-epic-games", async () => {
 });
 
 async function installAppLogic(appData) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      const downloadDir = getDownloadDir();
-      const filePath = path.join(downloadDir, `${appData.id}.exe`);
+      // 1. Prioridad absoluta: Buscar si el ID existe en files.apps.json
+      const fileApp = filesAppsData.find((f) => f.id === appData.id);
 
-      function download(url) {
-        const file = fs.createWriteStream(filePath);
+      if (!fileApp) {
+        // 2. Fallback: Solo si no coincide el ID, usamos el método legacy (apps.json)
+        console.log(
+          `App ${appData.id} no encontrado en files.apps.json. Usando método legacy.`,
+        );
+        return await legacyInstallApp(appData, resolve, reject);
+      }
 
-        https
-          .get(url, (res) => {
-            // 🔁 Redirecciones (GitHub)
-            if (res.statusCode === 302 || res.statusCode === 301) {
-              file.close();
-              fs.unlinkSync(filePath);
-              return download(res.headers.location);
-            }
+      // Si hay coincidencia, usamos el nuevo sistema de descargas
+      if (!downloadManager) {
+        downloadManager = new DownloadManager(mainWindow, ipcMain);
+      }
 
-            if (res.statusCode !== 200) {
-              file.close();
-              fs.unlinkSync(filePath);
-              if (mainWindow) {
-                mainWindow.setProgressBar(1, { mode: "error" });
-                mainWindow.flashFrame(true);
-                setTimeout(() => {
-                  if (mainWindow) {
-                    mainWindow.setProgressBar(-1);
-                    mainWindow.flashFrame(false);
-                  }
-                }, 3000);
-              }
-              return reject(new Error("Error descargando el archivo"));
-            }
+      if (mainWindow) mainWindow.setProgressBar(0, { mode: "normal" });
 
-            const totalLength = parseInt(res.headers["content-length"], 10);
-            let downloaded = 0;
+      // REDIRECCIÓN: Llevar al usuario a la página de progreso
+      if (mainWindow) {
+        mainWindow.loadFile(
+          path.join(__dirname, "renderer/program-updates.html"),
+        );
+        // Nota: El proceso sigue en background aunque la página cambie
+      }
 
+      // Crear directorio temporal
+      const tempDir = path.join(DOWNLOADS_TEMP_DIR, appData.id);
+      // Limpiar rastro de descargas anteriores si existen
+      if (fs.existsSync(tempDir)) {
+        fs.rmSync(tempDir, { recursive: true, force: true });
+      }
+      fs.mkdirSync(tempDir, { recursive: true });
+
+      try {
+        // Resolver variables de entorno en la ruta de extracción
+        const resolvedFileApp = {
+          ...fileApp,
+          extractPath: resolveWindowsPath(fileApp.extractPath),
+          checksumPath: fileApp.checksumPath
+            ? resolveWindowsPath(fileApp.checksumPath)
+            : undefined,
+        };
+        await downloadManager.startDownload(
+          appData.id,
+          resolvedFileApp,
+          tempDir,
+        );
+
+        if (mainWindow) {
+          mainWindow.setProgressBar(1, { mode: "normal" });
+          mainWindow.webContents.send(
+            "show-toast",
+            `${appData.name} instalado correctamente`,
+          );
+          setTimeout(() => {
+            if (mainWindow) mainWindow.setProgressBar(-1);
+          }, 3000);
+        }
+
+        resolve(true);
+      } catch (err) {
+        console.error("Error en descarga:", err);
+        if (mainWindow) {
+          mainWindow.setProgressBar(1, { mode: "error" });
+          mainWindow.flashFrame(true);
+          setTimeout(() => {
             if (mainWindow) {
-              mainWindow.setProgressBar(0, { mode: "normal" });
+              mainWindow.setProgressBar(-1);
+              mainWindow.flashFrame(false);
             }
+          }, 3000);
+        }
+        reject(err);
+      }
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
 
-            res.on("data", (chunk) => {
-              downloaded += chunk.length;
-              if (mainWindow && !isNaN(totalLength) && totalLength > 0) {
-                mainWindow.setProgressBar(downloaded / totalLength);
-              }
-            });
+async function legacyInstallApp(appData, resolve, reject) {
+  try {
+    const downloadDir = getDownloadDir();
+    const filePath = path.join(downloadDir, `${appData.id}.exe`);
 
-            res.pipe(file);
+    function download(url) {
+      const file = fs.createWriteStream(filePath);
 
-            file.on("finish", () => {
-              file.close(() => {
-                if (mainWindow) mainWindow.setProgressBar(2); // Indeterminate during install
-                // ▶ Ejecutar instalador
-                exec(`"${filePath}"`, (err) => {
-                  if (err) {
-                    if (mainWindow) mainWindow.setProgressBar(-1);
+      https
+        .get(url, (res) => {
+          // 🔁 Redirecciones (GitHub)
+          if (res.statusCode === 302 || res.statusCode === 301) {
+            file.close();
+            fs.unlinkSync(filePath);
+            return download(res.headers.location);
+          }
 
-                    // Código 2 = Cancelado en Inno Setup. 1 = Error genérico/Cancelado en otros.
-                    if (err.code === 2 || err.code === 1) {
-                      if (mainWindow) mainWindow.webContents.send("show-toast", "Instalación cancelada.");
-                      return reject(new Error("INSTALL_CANCELLED"));
-                    }
-
-                    console.error("Error ejecutando instalador:", err);
-                    if (mainWindow) {
-                      mainWindow.setProgressBar(1, { mode: "error" });
-                      mainWindow.flashFrame(true);
-                      setTimeout(() => {
-                        if (mainWindow) {
-                          mainWindow.setProgressBar(-1);
-                          mainWindow.flashFrame(false);
-                        }
-                      }, 3000);
-                    }
-                    return reject(err);
-                  }
-
-                  // 🧹 Borrar instalador después de 10s
-                  setTimeout(() => {
-                    if (fs.existsSync(filePath)) {
-                      fs.unlinkSync(filePath);
-                    }
-                  }, 10000);
-
-                  if (mainWindow) {
-                    mainWindow.setProgressBar(1, { mode: "normal" });
-                    setTimeout(() => {
-                      if (mainWindow) mainWindow.setProgressBar(-1);
-                    }, 3000);
-                  }
-
-                  resolve(true);
-                });
-              });
-            });
-          })
-          .on("error", (err) => {
-            if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+          if (res.statusCode !== 200) {
+            file.close();
+            fs.unlinkSync(filePath);
             if (mainWindow) {
               mainWindow.setProgressBar(1, { mode: "error" });
               mainWindow.flashFrame(true);
@@ -1010,15 +1149,96 @@ async function installAppLogic(appData) {
                 }
               }, 3000);
             }
-            reject(err);
-          });
-      }
+            return reject(new Error("Error descargando el archivo"));
+          }
 
-      download(appData.download);
-    } catch (err) {
-      reject(err);
+          const totalLength = parseInt(res.headers["content-length"], 10);
+          let downloaded = 0;
+
+          if (mainWindow) {
+            mainWindow.setProgressBar(0, { mode: "normal" });
+          }
+
+          res.on("data", (chunk) => {
+            downloaded += chunk.length;
+            if (mainWindow && !isNaN(totalLength) && totalLength > 0) {
+              mainWindow.setProgressBar(downloaded / totalLength);
+            }
+          });
+
+          res.pipe(file);
+
+          file.on("finish", () => {
+            file.close(() => {
+              if (mainWindow) mainWindow.setProgressBar(2); // Indeterminate during install
+              // ▶ Ejecutar instalador
+              exec(`"${filePath}"`, (err) => {
+                if (err) {
+                  if (mainWindow) mainWindow.setProgressBar(-1);
+
+                  // Código 2 = Cancelado en Inno Setup. 1 = Error genérico/Cancelado en otros.
+                  if (err.code === 2 || err.code === 1) {
+                    if (mainWindow)
+                      mainWindow.webContents.send(
+                        "show-toast",
+                        "Instalación cancelada.",
+                      );
+                    return reject(new Error("INSTALL_CANCELLED"));
+                  }
+
+                  console.error("Error ejecutando instalador:", err);
+                  if (mainWindow) {
+                    mainWindow.setProgressBar(1, { mode: "error" });
+                    mainWindow.flashFrame(true);
+                    setTimeout(() => {
+                      if (mainWindow) {
+                        mainWindow.setProgressBar(-1);
+                        mainWindow.flashFrame(false);
+                      }
+                    }, 3000);
+                  }
+                  return reject(err);
+                }
+
+                // 🧹 Borrar instalador después de 10s
+                setTimeout(() => {
+                  if (fs.existsSync(filePath)) {
+                    fs.unlinkSync(filePath);
+                  }
+                }, 10000);
+
+                if (mainWindow) {
+                  mainWindow.setProgressBar(1, { mode: "normal" });
+                  setTimeout(() => {
+                    if (mainWindow) mainWindow.setProgressBar(-1);
+                  }, 3000);
+                }
+
+                resolve(true);
+              });
+            });
+          });
+        })
+        .on("error", (err) => {
+          if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+          if (mainWindow) {
+            mainWindow.setProgressBar(1, { mode: "error" });
+            mainWindow.flashFrame(true);
+            setTimeout(() => {
+              if (mainWindow) {
+                mainWindow.setProgressBar(-1);
+                mainWindow.flashFrame(false);
+              }
+            }, 3000);
+          }
+          reject(err);
+        });
     }
-  });
+
+    download(appData.download);
+  } catch (err) {
+    reject(err);
+  }
 }
 
 ipcMain.handle("install-app", async (_, appData) => {
@@ -1030,7 +1250,13 @@ ipcMain.handle("install-app", async (_, appData) => {
 });
 
 ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
-  const appItem = appsData.find((a) => a.paths.includes(exePath));
+  // Buscar el metadato de la app (virus alert, etc) buscando la ruta en ambos sistemas
+  const appItem = appsData.find((a) => {
+    if (a.paths.includes(exePath)) return true;
+    const fileApp = filesAppsData.find((f) => f.id === a.id);
+    return fileApp && fileApp.executablePath === exePath;
+  });
+
   if (appItem && appItem["virus-alert"] === "alert") {
     const proceed = await showVirusWarning(appItem.name);
     if (!proceed) return false;
@@ -1095,7 +1321,8 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
     return true;
   } catch (err) {
     if (err.code === 2 || err.code === 1) {
-      if (mainWindow) mainWindow.webContents.send("show-toast", "Desinstalación cancelada.");
+      if (mainWindow)
+        mainWindow.webContents.send("show-toast", "Desinstalación cancelada.");
       return false;
     }
     console.error("Error al desinstalar:", err.message);
@@ -1126,6 +1353,101 @@ ipcMain.handle("open-main-view", () => {
 // -----------------------------
 ipcMain.handle("get-app-version", () => {
   return app.getVersion();
+});
+
+// =====================================
+// MANEJO DE DESCARGAS DE ARCHIVOS
+// =====================================
+ipcMain.handle("get-file-apps", () => {
+  return filesAppsData;
+});
+
+ipcMain.handle("start-file-download", async (_, fileAppId) => {
+  try {
+    if (!downloadManager) {
+      downloadManager = new DownloadManager(mainWindow, ipcMain);
+    }
+
+    // Intentar buscar en el sistema nuevo
+    const fileApp = filesAppsData.find((f) => f.id === fileAppId);
+
+    if (!fileApp) {
+      // Fallback: Si se solicita desde el centro de descargas pero no está en files.apps.json,
+      // intentamos buscarlo en appsData para no romper el flujo.
+      const appItem = appsData.find((a) => a.id === fileAppId);
+      if (appItem) {
+        installAppLogic(appItem).catch(console.error);
+        return { success: true, message: "Iniciando instalación legacy" };
+      }
+      throw new Error(`Aplicación no encontrada: ${fileAppId}`);
+    }
+
+    const tempDir = path.join(DOWNLOADS_TEMP_DIR, fileAppId);
+    // Limpiar rastro de descargas anteriores si existen
+    if (fs.existsSync(tempDir)) {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+    fs.mkdirSync(tempDir, { recursive: true });
+
+    const resolvedFileApp = {
+      ...fileApp,
+      extractPath: resolveWindowsPath(fileApp.extractPath),
+      checksumPath: fileApp.checksumPath
+        ? resolveWindowsPath(fileApp.checksumPath)
+        : undefined,
+    };
+    downloadManager
+      .startDownload(fileAppId, resolvedFileApp, tempDir)
+      .catch((err) => {
+        console.error("Error en descarga:", err);
+      });
+
+    return { success: true, message: "Descarga iniciada" };
+  } catch (error) {
+    console.error(`Error iniciando descarga: ${error.message}`);
+    return { success: false, error: error.message };
+  }
+});
+
+ipcMain.handle("pause-download", (_, downloadId) => {
+  if (downloadManager) {
+    downloadManager.pauseDownload(downloadId);
+    return true;
+  }
+  return false;
+});
+
+ipcMain.handle("cancel-download", async (_, downloadId) => {
+  if (downloadManager) {
+    await downloadManager.cancelDownload(downloadId);
+    return true;
+  }
+  return false;
+});
+
+ipcMain.handle("get-download-status", (_, downloadId) => {
+  if (downloadManager) {
+    return downloadManager.getDownloadStatus(downloadId);
+  }
+  return null;
+});
+
+ipcMain.handle("get-all-downloads", () => {
+  if (downloadManager) {
+    return downloadManager.getAllDownloads();
+  }
+  return [];
+});
+
+ipcMain.handle("open-folder", async (_, path) => {
+  shell.openPath(path);
+});
+
+ipcMain.handle("retry-download", async (_, id) => {
+  const config = filesAppsData.find(app => app.id === id);
+  if (config && downloadManager) {
+    downloadManager.startDownload(id, config, tempDir);
+  }
 });
 
 // =====================================
@@ -1190,6 +1512,10 @@ ipcMain.handle("sync-remote-data", async () => {
 
 ipcMain.handle("get-settings", () => loadSettings());
 ipcMain.on("save-settings", (event, settings) => saveSettings(settings));
+
+ipcMain.on("show-toast", (event, message, duration) => {
+  mainWindow?.webContents.send("show-toast", message, duration);
+});
 
 ipcMain.handle("clear-cache", async () => {
   try {
@@ -1274,6 +1600,7 @@ if (!gotLock) {
     );
     ICONS_CACHE_DIR = path.join(CACHE_DIR, "icons");
     APPS_JSON_CACHE = path.join(CACHE_DIR, "apps.json");
+    FILES_APPS_JSON_CACHE = path.join(CACHE_DIR, "files.apps.json");
 
     if (fs.existsSync(APPS_JSON_CACHE)) {
       try {
@@ -1290,6 +1617,11 @@ if (!gotLock) {
     });
 
     syncRemoteData();
+
+    // Limpiar carpeta de descargas temporales al iniciar para un inicio limpio
+    if (fs.existsSync(DOWNLOADS_TEMP_DIR)) {
+      fs.rmSync(DOWNLOADS_TEMP_DIR, { recursive: true, force: true });
+    }
 
     // Permisos para WebHID
     session.defaultSession.setDevicePermissionHandler((details) => {

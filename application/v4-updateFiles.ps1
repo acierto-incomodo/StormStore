@@ -9,7 +9,6 @@ $destAppsSizeDir = Join-Path $rootDir "docs/assets/apps-size"
 $destTrailersDir = Join-Path $rootDir "docs/assets/trailers"
 
 $sourceJson = Join-Path $scriptDir "apps.json"
-$sourceFilesJson = Join-Path $scriptDir "files.apps.json"
 $sourceAssets = Join-Path $scriptDir "assets/apps"
 $sourceAppsSize = Join-Path $scriptDir "assets/apps-size"
 $sourceTrailers = Join-Path $scriptDir "assets/media/trailers"
@@ -65,11 +64,9 @@ if (Test-Path $destTrailersDir) {
 }
 New-Item -Path $destTrailersDir -ItemType Directory -Force | Out-Null
 
-# 2. Copiar apps.json y files.apps.json
+# 2. Copiar apps.json
 Write-Host "`nCopiando 'application/apps.json'..."
 Copy-Item -Path $sourceJson -Destination $destDir
-Write-Host "Copiando 'application/files.apps.json'..."
-Copy-Item -Path $sourceFilesJson -Destination $destDir
 
 # 3. Copiar la carpeta assets/apps
 Write-Host "Copiando contenido de 'application/assets/apps'..."

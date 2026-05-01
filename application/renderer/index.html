@@ -152,6 +152,13 @@
           />
         </div>
         <div class="window-controls">
+          <button class="control-btn" id="open-downloads" title="Descargas">
+            <img
+              src="../assets/icons/download.svg"
+              alt="Descargas"
+              style="width: 20px; height: 20px; filter: invert(1)"
+            />
+          </button>
           <button class="control-btn" id="open-big-picture" title="StormVortex">
             <img
               src="../assets/icons/stormvortex.svg"
@@ -229,6 +236,11 @@
       document.getElementById("open-updates").addEventListener("click", () => {
         window.location.href = "updates.html";
       });
+      document
+        .getElementById("open-downloads")
+        ?.addEventListener("click", () => {
+          window.location.href = "program-updates.html";
+        });
 
       // Abrir la página de licencias en la misma ventana
       document.getElementById("open-licenses").addEventListener("click", () => {

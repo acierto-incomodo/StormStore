@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Descargas - StormStore</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .downloads-container {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      .download-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 15px;
+        animation: slideUpFade 0.3s ease-out;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .card-id {
+        font-size: 0.8rem;
+        color: #888;
+      }
+
+      .file-list-section {
+        margin: 15px 0;
+      }
+
+      .file-list-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #ccc;
+        margin-bottom: 8px;
+      }
+
+      .file-item {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 6px;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+        color: #bbb;
+      }
+
+      .file-item .icon {
+        margin-right: 10px;
+        color: #2196f3;
+      }
+
+      .config-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 15px 0;
+        font-size: 0.9rem;
+      }
+
+      .info-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .info-label {
+        color: #999;
+        font-size: 0.8rem;
+        margin-bottom: 3px;
+      }
+
+      .info-value {
+        color: #ddd;
+        word-break: break-all;
+        font-family: monospace;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .md-btn {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(33, 150, 243, 0.2);
+        color: #2196f3;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+      }
+
+      .md-btn:hover {
+        background: rgba(33, 150, 243, 0.3);
+      }
+
+      .md-btn.secondary {
+        background: rgba(76, 175, 80, 0.2);
+        color: #4caf50;
+      }
+
+      .md-btn.secondary:hover {
+        background: rgba(76, 175, 80, 0.3);
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #999;
+      }
+
+      .empty-state-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .merge-badge {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: rgba(255, 152, 0, 0.2);
+        color: #ffc107;
+        margin-left: 10px;
+      }
+
+      .card-subtitle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      @keyframes slideUpFade {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand-container">
+          <img src="../assets/app.png" alt="StormStore" class="brand-logo" />
+          <span>StormStore</span>
+        </div>
+
+        <button id="back-btn" class="back-button">← Volver</button>
+
+        <ul id="categories"></ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <p class="studio">StormGamesStudios</p>
+
+        <div class="footer-icons">
+          <button id="open-updates" title="Actualizaciones">🔄</button>
+          <button id="open-licenses" title="Licencias">📄</button>
+          <button id="open-bigpicture" title="StormVortex">🎮</button>
+          <button id="open-info" title="Información">ℹ️</button>
+          <button id="open-settings" title="Ajustes">⚙️</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="dashboard-layout">
+      <div class="main-header">
+        <h1>Centro de Descargas</h1>
+        <div class="window-controls">
+          <button id="min-btn" class="window-btn">−</button>
+          <button id="max-btn" class="window-btn">□</button>
+          <button id="close-btn" class="window-btn">✕</button>
+        </div>
+      </div>
+
+      <div class="updates-container downloads-container">
+        <div id="downloads-list"></div>
+      </div>
+    </main>
+
+    <script>
+      let fileApps = [];
+      let activeDownloads = new Set();
+
+      // Cargar configuraciones de descarga
+      async function loadFileApps() {
+        try {
+          fileApps = await window.api.getFileApps();
+          renderDownloads();
+        } catch (error) {
+          console.error("Error cargando descargas:", error);
+        }
+      }
+
+      // Renderizar lista de descargas
+      function renderDownloads() {
+        const list = document.getElementById("downloads-list");
+
+        if (fileApps.length === 0) {
+          list.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">📥</div>
+              <h2>Sin descargas disponibles</h2>
+              <p>No hay configuraciones de descarga disponibles</p>
+            </div>
+          `;
+          return;
+        }
+
+        list.innerHTML = fileApps
+          .map(
+            (app) => `
+            <div class="download-card" id="card-${app.id}">
+              <div class="card-header">
+                <div>
+                  <div class="card-subtitle">
+                    <span class="card-title">${app.name}</span>
+                    ${app.merge ? '<span class="merge-badge">MÚLTIPLES PARTES</span>' : ""}
+                  </div>
+                  <div class="card-id">${app.id}</div>
+                </div>
+              </div>
+
+              <div class="file-list-section">
+                <div class="file-list-label">📦 Archivos a descargar (${app.files.length}):</div>
+                ${app.files.map((f) => `<div class="file-item"><span class="icon">📄</span> ${f}</div>`).join("")}
+              </div>
+
+              <div class="config-info">
+                <div class="info-item">
+                  <span class="info-label">Ubicación de extracción:</span>
+                  <span class="info-value">${app.extractPath}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">URL base:</span>
+                  <span class="info-value">${app.downloadUrl}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Archivo de checksum:</span>
+                  <span class="info-value">${app.checksumFile}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Estado:</span>
+                  <span class="info-value" id="status-${app.id}">Listo</span>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button
+                  class="md-btn secondary"
+                  id="btn-${app.id}"
+                  onclick="startDownload('${app.id}')"
+                >
+                  📥 Descargar e Instalar
+                </button>
+              </div>
+            </div>
+          `,
+          )
+          .join("");
+      }
+
+      // Iniciar descarga
+      async function startDownload(appId) {
+        if (activeDownloads.has(appId)) {
+          alert("Esta descarga ya está en progreso");
+          return;
+        }
+
+        activeDownloads.add(appId);
+
+        // Deshabilitar botón
+        const btn = document.getElementById(`btn-${appId}`);
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = "⏳ Iniciando...";
+        }
+
+        try {
+          const result = await window.api.startFileDownload(appId);
+
+          if (result.success) {
+            // Redirigir a la página de progreso
+            window.location.href = "program-updates.html";
+          } else {
+            alert(`Error: ${result.error}`);
+            if (btn) {
+              btn.disabled = false;
+              btn.textContent = "📥 Descargar e Instalar";
+            }
+            activeDownloads.delete(appId);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert(`Error iniciando descarga: ${error.message}`);
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = "📥 Descargar e Instalar";
+          }
+          activeDownloads.delete(appId);
+        }
+      }
+
+      // Inicializar
+      document.getElementById("back-btn").addEventListener("click", () => {
+        window.history.back();
+      });
+
+      document.getElementById("open-updates")?.addEventListener("click", () => {
+        window.location.href = "updates.html";
+      });
+      document
+        .getElementById("open-licenses")
+        ?.addEventListener("click", () => {
+          window.location.href = "licencias.html";
+        });
+      document
+        .getElementById("open-bigpicture")
+        ?.addEventListener("click", () => {
+          window.api.openBigPicture();
+        });
+      document.getElementById("open-info")?.addEventListener("click", () => {
+        window.location.href = "info.html";
+      });
+      document
+        .getElementById("open-settings")
+        ?.addEventListener("click", () => {
+          window.location.href = "settings.html";
+        });
+
+      document
+        .getElementById("min-btn")
+        ?.addEventListener("click", () => window.api.minimizeWindow());
+      document
+        .getElementById("close-btn")
+        ?.addEventListener("click", () => window.api.closeWindow());
+
+      const maxBtn = document.getElementById("max-btn");
+      if (maxBtn) {
+        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+        window.api.isMaximized().then((isMax) => {
+          maxBtn.textContent = isMax ? "🗗" : "□";
+        });
+        window.api.onWindowMaximized(() => {
+          maxBtn.textContent = "🗗";
+        });
+        window.api.onWindowUnmaximized(() => {
+          maxBtn.textContent = "□";
+        });
+      }
+
+      // Cargar versión
+      window.api.getAppVersion().then((v) => {
+        const versionEl = document.getElementById("app-version");
+        if (versionEl) versionEl.textContent = "v" + v;
+      });
+
+      // Cargar descargas al iniciar
+      loadFileApps();
+
+      // Recargar cada 30 segundos
+      setInterval(loadFileApps, 30000);
+    </script>
+    <script src="gamepad-global.js"></script>
+  </body>
+</html>

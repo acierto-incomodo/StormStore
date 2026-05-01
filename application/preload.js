@@ -44,4 +44,31 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.send("virus-alert-response", response),
   clearCache: () => ipcRenderer.invoke("clear-cache"),
   syncRemoteData: () => ipcRenderer.invoke("sync-remote-data"),
+
+  // Descargas de archivos
+  getFileApps: () => ipcRenderer.invoke("get-file-apps"),
+  startFileDownload: (fileAppId) =>
+    ipcRenderer.invoke("start-file-download", fileAppId),
+  pauseDownload: (downloadId) =>
+    ipcRenderer.invoke("pause-download", downloadId),
+  cancelDownload: (downloadId) =>
+    ipcRenderer.invoke("cancel-download", downloadId),
+  getDownloadStatus: (downloadId) =>
+    ipcRenderer.invoke("get-download-status", downloadId),
+  getAllDownloads: () => ipcRenderer.invoke("get-all-downloads"),
+  onDownloadStart: (callback) => ipcRenderer.on("download-start", callback),
+  onDownloadProgress: (callback) =>
+    ipcRenderer.on("download-progress", callback),
+  onDownloadComplete: (callback) =>
+    ipcRenderer.on("download-complete", callback),
+  onDownloadError: (callback) => ipcRenderer.on("download-error", callback),
+  onDownloadCancelled: (callback) => ipcRenderer.on("download-cancelled", callback),
+  onMergingStart: (callback) => ipcRenderer.on("merging-start", callback),
+  onExtractingStart: (callback) => ipcRenderer.on("extracting-start", callback),
+  onVerifyingStart: (callback) => ipcRenderer.on("verifying-start", callback),
+  onWindowUnmaximized: (callback) =>
+    ipcRenderer.on("window-unmaximized", callback),
+  openFolder: (path) => ipcRenderer.invoke("open-folder", path),
+  retryDownload: (id) => ipcRenderer.invoke("retry-download", id),
+  showToast: (message, duration) => ipcRenderer.send("show-toast", message, duration),
 });
