@@ -1,0 +1,482 @@
+[
+  {
+    "id": "ultrakill",
+    "name": "ULTRAKILL",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game/Build/Build/ULTRAKILL.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/"
+  },
+  {
+    "id": "gmod",
+    "name": "Garry's Mod",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game/Build/Build/gmod.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/garrys-mod-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/garrys-mod-game/releases/latest/download/"
+  },
+  {
+    "id": "ambidextro",
+    "name": "Ambidextro",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game/Build/Build/Ambidextro.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/"
+  },
+  {
+    "id": "backseat-drivers",
+    "name": "Backseat Drivers",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/game/Build/Build/BackseatDrivers.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/backseat_drivers/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/backseat_drivers/releases/latest/download/"
+  },
+  {
+    "id": "balatro",
+    "name": "Balatro",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/game/Build/Build/Balatro.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/BalatroGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/BalatroGame/releases/latest/download/"
+  },
+  {
+    "id": "buckshot_roulette",
+    "name": "Buckshot Roulette",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/game/Build/Build/BuckshotRoulette.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/buckshot_roulette/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/buckshot_roulette/releases/latest/download/"
+  },
+  {
+    "id": "content-warning",
+    "name": "Content Warning",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/game/Build/Build/ContentWarning.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/content_warning/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/content_warning/releases/latest/download/"
+  },
+  {
+    "id": "doom",
+    "name": "DOOM Classic",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/DOOM/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/DOOM/game/Build/Build/DOOM.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/DOOM/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/DOOM/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/DOOM/releases/latest/download/"
+  },
+  {
+    "id": "drivebeyondhorizons",
+    "name": "Drive Beyond Horizons",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004",
+      "Build.zip.005",
+      "Build.zip.006",
+      "Build.zip.007",
+      "Build.zip.008"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/game/Build/Build/DriveBeyondHorizons.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/drive-beyond-horizons-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/drive-beyond-horizons-game/releases/latest/download/"
+  },
+  {
+    "id": "fastfood",
+    "name": "Fast Food Simulator",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/game/Build/Build/FastFood.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/fastfood/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/fastfood/releases/latest/download/"
+  },
+  {
+    "id": "fnaf1",
+    "name": "Five Nights at Freddy's 1",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game/Build/Build/FNAF1.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/fnaf_1/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/fnaf_1/releases/latest/download/"
+  },
+  {
+    "id": "fnaf2",
+    "name": "Five Nights at Freddy's 2",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game/Build/Build/FNAF2.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/fnaf_2/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/fnaf_2/releases/latest/download/"
+  },
+  {
+    "id": "fnaf3",
+    "name": "Five Nights at Freddy's 3",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game/Build/Build/FNAF3.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/fnaf_3/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/fnaf_3/releases/latest/download/"
+  },
+  {
+    "id": "fnaf4",
+    "name": "Five Nights at Freddy's 4",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/game/Build/Build/launcher.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/"
+  },
+  {
+    "id": "golfit",
+    "name": "Golf It!",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/game/Build/Build/GolfIt.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GolfItGame/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GolfItGame/releases/latest/download/"
+  },
+  {
+    "id": "hollow-knight-silksong",
+    "name": "Hollow Knight: Silksong",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/game/Build/Build/Silksong.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/"
+  },
+  {
+    "id": "hytale",
+    "name": "Hytale",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/game/Build/Build/Hytale.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/hytale/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/hytale/releases/latest/download/"
+  },
+  {
+    "id": "lethal-company",
+    "name": "Lethal Company",
+    "files": [
+      "Build.zip.001"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/game/Build/Build/LethalCompany.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/LethalCompany-Launcher/releases/latest/download/"
+  },
+  {
+    "id": "mage-arena",
+    "name": "Mage Arena",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/game/Build/Build/MageArena.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/"
+  },
+  {
+    "id": "miside-zero",
+    "name": "MiSide Zero",
+    "files": [
+      "Build.zip.001"
+  ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/game/Build/Build/MiSideZero.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/miside-zero/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/miside-zero/releases/latest/download/"
+  },
+  {
+    "id": "motortown",
+    "name": "Motor Town",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MotorTown/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MotorTown/game/Build/Build/MotorTown.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MotorTown/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/motor-town-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/motor-town-game/releases/latest/download/"
+  },
+  {
+    "id": "panicore",
+    "name": "Panicore",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004",
+      "Build.zip.005",
+      "Build.zip.006",
+      "Build.zip.007",
+      "Build.zip.008",
+      "Build.zip.009",
+      "Build.zip.010",
+      "Build.zip.011",
+      "Build.zip.012"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Panicore/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Panicore/game/Build/Build/Panicore.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Panicore/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/panicore/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/panicore/releases/latest/download/"
+  },
+  {
+    "id": "peak",
+    "name": "PEAK",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PEAK/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/PEAK/game/Build/Build/PEAK.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/PEAK/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/peak/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/peak/releases/latest/download/"
+  },
+  {
+    "id": "peopleplayground",
+    "name": "People Playground",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game/Build/Build/PeoplePlayground.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/PeoplePlaygroundGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/PeoplePlaygroundGame/releases/latest/download/"
+  },
+  {
+    "id": "repo",
+    "name": "R.E.P.O.",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game/Build/Build/REPO.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/"
+  },
+  {
+    "id": "scamline",
+    "name": "Scam Line",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/game/Build/Build/ScamLine.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ScamLine/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ScamLine/releases/latest/download/"
+  },
+  {
+    "id": "schedule1",
+    "name": "Schedule I",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game/Build/Build/ScheduleI.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ScheduleIGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ScheduleIGame/releases/latest/download/"
+  },
+  {
+    "id": "sideeffects",
+    "name": "Side Effects",
+    "files": [
+      "Build.zip.001"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/game/Build/Build/SideEffects.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/"
+  },
+  {
+    "id": "supermarketsecuritysimulator",
+    "name": "Supermarket Security Simulator",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004",
+      "Build.zip.005",
+      "Build.zip.006"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SupermarketSecuritySimulatorGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/SupermarketSecuritySimulatorGame/game/Build/Build/SupermarketSecuritySimulator.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SupermarketSecuritySimulatorGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/SupermarketSecuritySimulatorGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/SupermarketSecuritySimulatorGame/releases/latest/download/"
+  },
+  {
+    "id": "theforest",
+    "name": "The Forest",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/game/Build/Build/TheForest.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/TheForestGame/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/TheForestGame/releases/latest/download/"
+  },
+  {
+    "id": "theplanetcrafter",
+    "name": "The Planet Crafter",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/game/Build/Build/ThePlanetCrafter.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/"
+  }
+]
