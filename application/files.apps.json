@@ -405,7 +405,7 @@
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game/Build/Build/ScheduleI.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game/Build/Build/Schedule I.exe",
     "checksumFile": "version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/ScheduleIGame/releases/latest/download/version.txt",
