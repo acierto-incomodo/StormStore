@@ -469,13 +469,7 @@ window.api.onShowToast((_event, message, duration) => {
 });
 
 // Inicializar
-const isInitialSessionLoad = !window.sessionStorage.getItem("stormstoreIndexLoaded");
-if (isInitialSessionLoad) {
-  window.sessionStorage.setItem("stormstoreIndexLoaded", "true");
-  load(true); // Carga forzada solo al iniciar el programa
-} else {
-  load(false); // Al volver a index.html, solo refrescamos localmente
-}
+load(true); // Al entrar a index.html siempre cargamos como si fuera el inicio del programa
 
 if (refreshBtn) {
   refreshBtn.addEventListener("click", () => load(true));
@@ -483,7 +477,7 @@ if (refreshBtn) {
 
 window.addEventListener("pageshow", (event) => {
   if (event.persisted) {
-    load(false);
+    load(true);
   }
 });
 
