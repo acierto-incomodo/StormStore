@@ -64,12 +64,29 @@ async function load(force = false) {
   if (force && refreshBtn) {
     refreshBtn.disabled = true;
     refreshBtn.classList.add("spinning");
-    renderSkeletons();
   }
+
+  const showSkeleton = allApps.length === 0;
+  if (showSkeleton) {
+    renderSkeletons();
+  } else {
+    renderCategories();
+    renderApps(currentCategory);
+  }
+
   try {
-    // Si es una carga forzada (clic en el botón), sincronizamos con el servidor primero
+    // Si es una carga forzada (clic en el botón), sincronizamos con el servidor en segundo plano.
+    // No bloqueamos la UI ni dejamos el botón girando demasiado tiempo.
     if (force) {
-      await window.api.syncRemoteData();
+      window.api
+        .syncRemoteData()
+        .then(() => {
+          load(false);
+        })
+        .catch((syncError) => {
+          console.warn("syncRemoteData failed, using local cache:", syncError);
+          showToast("No se pudo actualizar. Cargando catálogo local…", 4000);
+        });
     }
 
     // Sincronizar descargas activas desde el backend
@@ -80,10 +97,7 @@ async function load(force = false) {
         installingApps.add(d.id);
     });
 
-    const [newApps] = await Promise.all([
-      window.api.getApps(),
-      force ? new Promise((r) => setTimeout(r, 1000)) : Promise.resolve(),
-    ]);
+    const newApps = await window.api.getApps();
 
     // Comprobación inteligente de cambios: Ignoramos el campo 'icon' para evitar
     // que la descarga de imágenes en segundo plano dispare la animación de la UI constantemente.
@@ -102,6 +116,22 @@ async function load(force = false) {
     } else {
       // Actualizamos los datos internamente pero sin re-renderizar la UI (evita el flash/animación)
       allApps = newApps;
+    }
+  } catch (error) {
+    console.error("Error loading apps:", error);
+    // Si hay error, intentar renderizar con datos anteriores o mostrar mensaje
+    if (allApps.length > 0) {
+      renderCategories();
+      renderApps(currentCategory);
+    } else {
+      // Mostrar mensaje de error
+      appsContainer.innerHTML = `
+        <div style="text-align: center; padding: 50px; color: #fff;">
+          <h2>Error al cargar aplicaciones</h2>
+          <p>Revisa tu conexión a internet e intenta de nuevo.</p>
+          <button class="md-btn md-btn-filled" onclick="load(true)">Reintentar</button>
+        </div>
+      `;
     }
   } finally {
     if (force && refreshBtn) {
@@ -439,12 +469,23 @@ window.api.onShowToast((_event, message, duration) => {
 });
 
 // Inicializar
-load(true); // Carga inicial forzada
-setInterval(() => load(false), 3000); // Comprobación silenciosa cada 3s
+const isInitialSessionLoad = !window.sessionStorage.getItem("stormstoreIndexLoaded");
+if (isInitialSessionLoad) {
+  window.sessionStorage.setItem("stormstoreIndexLoaded", "true");
+  load(true); // Carga forzada solo al iniciar el programa
+} else {
+  load(false); // Al volver a index.html, solo refrescamos localmente
+}
 
 if (refreshBtn) {
   refreshBtn.addEventListener("click", () => load(true));
 }
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    load(false);
+  }
+});
 
 // Filtrado desde la barra de búsqueda
 if (searchInput) {

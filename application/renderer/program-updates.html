@@ -381,6 +381,10 @@
       }
 
       function toggleNavigationLock(lock) {
+        const footerButtons = Array.from(
+          document.querySelectorAll(".sidebar-footer button")
+        );
+
         const elementsToHide = [
           document.getElementById("back-btn"),
           document.querySelector(".footer-icons"),
@@ -389,6 +393,7 @@
           document.getElementById("min-btn"),
           document.getElementById("max-btn"),
           document.getElementById("close-btn"),
+          ...footerButtons,
         ];
 
         elementsToHide.forEach((el) => {
@@ -602,7 +607,7 @@
 
       // Botones de navegación
       document.getElementById("back-btn").addEventListener("click", () => {
-        window.history.back();
+        window.location.href = "index.html";
       });
 
       // Cargar versión
