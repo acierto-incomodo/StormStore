@@ -8,6 +8,7 @@ const refreshBtn = document.getElementById("refresh-btn");
 let allApps = [];
 let currentCategory = "Todas";
 let currentSearch = "";
+let hasRenderedApps = false;
 const installingApps = new Set();
 const uninstallingApps = new Set();
 
@@ -66,7 +67,7 @@ async function load(force = false) {
     refreshBtn.classList.add("spinning");
   }
 
-  const showSkeleton = allApps.length === 0;
+  const showSkeleton = !hasRenderedApps;
   if (showSkeleton) {
     renderSkeletons();
   } else {
@@ -105,17 +106,18 @@ async function load(force = false) {
     const structuralChange =
       JSON.stringify(stripIcons(newApps)) !==
       JSON.stringify(stripIcons(allApps));
-    const hasChanged = force || structuralChange;
+    const shouldRender = force || !hasRenderedApps || structuralChange;
 
-    if (hasChanged) {
+    if (shouldRender) {
       allApps = newApps;
       renderCategories();
       if (searchInput && searchInput.value !== currentSearch)
         searchInput.value = currentSearch;
       renderApps(currentCategory);
+      hasRenderedApps = true;
     } else {
-      // Actualizamos los datos internamente pero sin re-renderizar la UI (evita el flash/animación)
       allApps = newApps;
+      renderApps(currentCategory);
     }
   } catch (error) {
     console.error("Error loading apps:", error);
