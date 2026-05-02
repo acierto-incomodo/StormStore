@@ -1,36 +1,5 @@
 [
   {
-    "id": "ultrakill",
-    "name": "ULTRAKILL",
-    "files": ["Build.zip.001", "Build.zip.002"],
-    "merge": true,
-    "mergedName": "Build.zip",
-    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game/Build/Build/ULTRAKILL.exe",
-    "checksumFile": "version.txt",
-    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game",
-    "checksumUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/version.txt",
-    "downloadUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/"
-  },
-  {
-    "id": "gmod",
-    "name": "Garry's Mod",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003",
-      "Build.zip.004"
-    ],
-    "merge": true,
-    "mergedName": "Build.zip",
-    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game/Build/Build/gmod.exe",
-    "checksumFile": "version.txt",
-    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game",
-    "checksumUrl": "https://github.com/acierto-incomodo/garrys-mod-game/releases/latest/download/version.txt",
-    "downloadUrl": "https://github.com/acierto-incomodo/garrys-mod-game/releases/latest/download/"
-  },
-  {
     "id": "ambidextro",
     "name": "Ambidextro",
     "files": ["Build.zip"],
@@ -154,7 +123,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game/Build/Build/FNAF1.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game/Build/Build/FiveNightsatFreddys.exe",
     "checksumFile": "Version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game",
     "checksumUrl": "https://github.com/acierto-incomodo/fnaf_1/releases/latest/download/Version.txt",
@@ -167,7 +136,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game/Build/Build/FNAF2.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game/Build/Build/FiveNightsatFreddys2.exe",
     "checksumFile": "Version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game",
     "checksumUrl": "https://github.com/acierto-incomodo/fnaf_2/releases/latest/download/Version.txt",
@@ -180,7 +149,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game/Build/Build/FNAF3.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game/Build/Build/FiveNightsatFreddys3.exe",
     "checksumFile": "Version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game",
     "checksumUrl": "https://github.com/acierto-incomodo/fnaf_3/releases/latest/download/Version.txt",
@@ -198,6 +167,24 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/game",
     "checksumUrl": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/Version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/"
+  },
+  {
+    "id": "gmod",
+    "name": "Garry's Mod",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game/Build/Build/gmod.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/GarrysMod/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/garrys-mod-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/garrys-mod-game/releases/latest/download/"
   },
   {
     "id": "golfit",
@@ -383,6 +370,21 @@
     "downloadUrl": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/"
   },
   {
+    "id": "rv-there-yet",
+    "name": "RV There Yet?",
+    "files": [
+      "Build.zip.001"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/game/Build/Build/Ride.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/"
+  },
+  {
     "id": "scamline",
     "name": "Scam Line",
     "files": ["Build.zip"],
@@ -425,6 +427,45 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/game",
     "checksumUrl": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/"
+  },
+  {
+    "id": "space-engineers",
+    "name": "Space Engineers",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004",
+      "Build.zip.005",
+      "Build.zip.006",
+      "Build.zip.007",
+      "Build.zip.008",
+      "Build.zip.009"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SpaceEngineers/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/SpaceEngineers/game/Build/Build/Bin64/SpaceEngineers.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SpaceEngineers/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/space-engineers-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/space-engineers-game/releases/latest/download/"
+  },
+  {
+    "id": "subnautica",
+    "name": "Subnautica",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Subnautica/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Subnautica/game/Build/Build/Subnautica.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Subnautica/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/subnautica-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/subnautica-game/releases/latest/download/"
   },
   {
     "id": "supermarketsecuritysimulator",
@@ -478,5 +519,18 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/"
+  },
+  {
+    "id": "ultrakill",
+    "name": "ULTRAKILL",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game/Build/Build/ULTRAKILL.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/"
   }
 ]
