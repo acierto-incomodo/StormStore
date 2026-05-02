@@ -2,7 +2,10 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
   getApps: () => ipcRenderer.invoke("get-apps"),
+  getFilesApps: () => ipcRenderer.invoke("get-files-apps"),
+  checkChecksum: (id) => ipcRenderer.invoke("check-checksum", id),
   installApp: (app) => ipcRenderer.invoke("install-app", app),
+  installProgramById: (id) => ipcRenderer.invoke("install-program-by-id", id),
   getSteamGames: () => ipcRenderer.invoke("get-steam-games"),
   getEpicGames: () => ipcRenderer.invoke("get-epic-games"),
   openApp: (path, requiresSteam) =>
@@ -24,6 +27,9 @@ contextBridge.exposeInMainWorld("api", {
   onUpdateDownloaded: (callback) =>
     ipcRenderer.on("update-downloaded", callback),
   onUpdateError: (callback) => ipcRenderer.on("update-error", callback),
+  onInstallProgress: (callback) => ipcRenderer.on("install-progress", callback),
+  onInstallComplete: (callback) => ipcRenderer.on("install-complete", callback),
+  onInstallError: (callback) => ipcRenderer.on("install-error", callback),
   onShowToast: (callback) => ipcRenderer.on("show-toast", callback),
   openBigPicture: () => ipcRenderer.invoke("open-big-picture"),
   openMainView: () => ipcRenderer.invoke("open-main-view"),
@@ -43,32 +49,6 @@ contextBridge.exposeInMainWorld("api", {
   sendVirusAlertResponse: (response) =>
     ipcRenderer.send("virus-alert-response", response),
   clearCache: () => ipcRenderer.invoke("clear-cache"),
+  setProgressBar: (value) => ipcRenderer.send("set-progress-bar", value),
   syncRemoteData: () => ipcRenderer.invoke("sync-remote-data"),
-
-  // Descargas de archivos
-  getFileApps: () => ipcRenderer.invoke("get-file-apps"),
-  startFileDownload: (fileAppId) =>
-    ipcRenderer.invoke("start-file-download", fileAppId),
-  pauseDownload: (downloadId) =>
-    ipcRenderer.invoke("pause-download", downloadId),
-  cancelDownload: (downloadId) =>
-    ipcRenderer.invoke("cancel-download", downloadId),
-  getDownloadStatus: (downloadId) =>
-    ipcRenderer.invoke("get-download-status", downloadId),
-  getAllDownloads: () => ipcRenderer.invoke("get-all-downloads"),
-  onDownloadStart: (callback) => ipcRenderer.on("download-start", callback),
-  onDownloadProgress: (callback) =>
-    ipcRenderer.on("download-progress", callback),
-  onDownloadComplete: (callback) =>
-    ipcRenderer.on("download-complete", callback),
-  onDownloadError: (callback) => ipcRenderer.on("download-error", callback),
-  onDownloadCancelled: (callback) => ipcRenderer.on("download-cancelled", callback),
-  onMergingStart: (callback) => ipcRenderer.on("merging-start", callback),
-  onExtractingStart: (callback) => ipcRenderer.on("extracting-start", callback),
-  onVerifyingStart: (callback) => ipcRenderer.on("verifying-start", callback),
-  onWindowUnmaximized: (callback) =>
-    ipcRenderer.on("window-unmaximized", callback),
-  openFolder: (path) => ipcRenderer.invoke("open-folder", path),
-  retryDownload: (id) => ipcRenderer.invoke("retry-download", id),
-  showToast: (message, duration) => ipcRenderer.send("show-toast", message, duration),
 });

@@ -8,7 +8,6 @@ const refreshBtn = document.getElementById("refresh-btn");
 let allApps = [];
 let currentCategory = "Todas";
 let currentSearch = "";
-let hasRenderedApps = false;
 const installingApps = new Set();
 const uninstallingApps = new Set();
 
@@ -65,76 +64,75 @@ async function load(force = false) {
   if (force && refreshBtn) {
     refreshBtn.disabled = true;
     refreshBtn.classList.add("spinning");
-  }
-
-  const showSkeleton = !hasRenderedApps;
-  if (showSkeleton) {
     renderSkeletons();
-  } else {
+  }
+  try {
+    // Si es una carga forzada (clic en el botón), sincronizamos con el servidor primero
+    if (force) {
+      await window.api.syncRemoteData();
+    }
+
+      const syncPromise = force ? new Promise((r) => setTimeout(r, 1000)) : Promise.resolve();
+      const [newApps, filesApps] = await Promise.all([
+        window.api.getApps(),
+        window.api.getFilesApps(),
+        syncPromise,
+      ]);
+
+      const fileAppsById = new Map((filesApps || []).map((fileApp) => [fileApp.id, fileApp]));
+      const mergedApps = newApps.map((app) => ({
+        ...app,
+        fileApp: fileAppsById.get(app.id),
+      }));
+
+      // Check for updates on installed fileApps
+      const checksumChecks = mergedApps
+        .filter(app => app.fileApp && app.installed)
+        .map(async app => {
+          try {
+            const result = await window.api.checkChecksum(app.id);
+            app.updateAvailable = result.needsUpdate;
+          } catch (e) {
+            console.error('Error checking checksum for', app.id, e);
+            app.updateAvailable = false;
+          }
+        });
+      await Promise.all(checksumChecks);
+
+      // Show/hide update all button
+      const hasUpdates = mergedApps.some(app => app.updateAvailable);
+      const updateAllBtn = document.getElementById('update-all-btn');
+      if (updateAllBtn) {
+        updateAllBtn.style.display = hasUpdates ? 'block' : 'none';
+        updateAllBtn.onclick = () => {
+          const ids = mergedApps.filter(app => app.updateAvailable).map(app => app.id).join(',');
+          window.location.href = `program-updates.html?batch=true&ids=${ids}`;
+        };
+      }
+
+      // Comprobación inteligente de cambios: Ignoramos el campo 'icon' para evitar
+      // que la descarga de imágenes en segundo plano dispare la animación de la UI constantemente.
+      const stripIcons = (apps) => apps.map(({ icon, ...rest }) => ({ ...rest }));
+      const structuralChange = JSON.stringify(stripIcons(mergedApps)) !== JSON.stringify(stripIcons(allApps));
+      const hasChanged = force || structuralChange;
+
+      if (hasChanged) {
+        allApps = mergedApps;
+        renderCategories();
+        if (searchInput && searchInput.value !== currentSearch)
+          searchInput.value = currentSearch;
+        renderApps(currentCategory);
+      } else {
+        // Actualizamos los datos internamente pero sin re-renderizar la UI (evita el flash/animación)
+        allApps = mergedApps;
+      }
+  } catch (err) {
+    console.error("Error loading apps:", err);
+    showToast("Error cargando aplicaciones. Intenta recargar.");
+    // Forzar renderizado vacío para quitar skeletons
+    allApps = [];
     renderCategories();
     renderApps(currentCategory);
-  }
-
-  try {
-    // Si es una carga forzada (clic en el botón), sincronizamos con el servidor en segundo plano.
-    // No bloqueamos la UI ni dejamos el botón girando demasiado tiempo.
-    if (force) {
-      window.api
-        .syncRemoteData()
-        .then(() => {
-          load(false);
-        })
-        .catch((syncError) => {
-          console.warn("syncRemoteData failed, using local cache:", syncError);
-          showToast("No se pudo actualizar. Cargando catálogo local…", 4000);
-        });
-    }
-
-    // Sincronizar descargas activas desde el backend
-    const activeDownloads = await window.api.getAllDownloads();
-    installingApps.clear();
-    activeDownloads.forEach((d) => {
-      if (d.status !== "completed" && d.status !== "error")
-        installingApps.add(d.id);
-    });
-
-    const newApps = await window.api.getApps();
-
-    // Comprobación inteligente de cambios: Ignoramos el campo 'icon' para evitar
-    // que la descarga de imágenes en segundo plano dispare la animación de la UI constantemente.
-    const stripIcons = (apps) => apps.map(({ icon, ...rest }) => ({ ...rest }));
-    const structuralChange =
-      JSON.stringify(stripIcons(newApps)) !==
-      JSON.stringify(stripIcons(allApps));
-    const shouldRender = force || !hasRenderedApps || structuralChange;
-
-    if (shouldRender) {
-      allApps = newApps;
-      renderCategories();
-      if (searchInput && searchInput.value !== currentSearch)
-        searchInput.value = currentSearch;
-      renderApps(currentCategory);
-      hasRenderedApps = true;
-    } else {
-      allApps = newApps;
-      renderApps(currentCategory);
-    }
-  } catch (error) {
-    console.error("Error loading apps:", error);
-    // Si hay error, intentar renderizar con datos anteriores o mostrar mensaje
-    if (allApps.length > 0) {
-      renderCategories();
-      renderApps(currentCategory);
-    } else {
-      // Mostrar mensaje de error
-      appsContainer.innerHTML = `
-        <div style="text-align: center; padding: 50px; color: #fff;">
-          <h2>Error al cargar aplicaciones</h2>
-          <p>Revisa tu conexión a internet e intenta de nuevo.</p>
-          <button class="md-btn md-btn-filled" onclick="load(true)">Reintentar</button>
-        </div>
-      `;
-    }
   } finally {
     if (force && refreshBtn) {
       refreshBtn.disabled = false;
@@ -183,16 +181,10 @@ function renderApps(category) {
         const desc = (a.description || "").toLowerCase();
         return name.includes(q) || desc.includes(q);
       })
-      .forEach((app, index) =>
-        appsContainer.appendChild(createAppCard(app, index)),
-      );
+      .forEach((app, index) => appsContainer.appendChild(createAppCard(app, index)));
   };
 
-  if (
-    category &&
-    category !== currentCategory &&
-    document.startViewTransition
-  ) {
+  if (category && category !== currentCategory && document.startViewTransition) {
     document.startViewTransition(updateDOM);
   } else {
     updateDOM();
@@ -219,26 +211,10 @@ function createAppCard(app, index) {
   imgContainer.appendChild(icon);
 
   // Badges
-  if (app.verified === "true")
-    imgContainer.appendChild(
-      createBadge(
-        "Verificado",
-        "../assets/icons/verified.svg",
-        "verified-req-badge",
-      ),
-    );
-  if (app.steam === "si")
-    imgContainer.appendChild(
-      createBadge("Steam", "../assets/icons/steam.svg", "steam-req-badge"),
-    );
-  if (app.wifi === "si")
-    imgContainer.appendChild(
-      createBadge("WiFi", "../assets/icons/wifi.svg", "wifi-req-badge"),
-    );
-  if (app["virus-alert"] === "alert")
-    imgContainer.appendChild(
-      createBadge("Virus", "../assets/icons/virus.svg", "virus-req-badge"),
-    );
+  if (app.verified === "true") imgContainer.appendChild(createBadge("Verificado", "../assets/icons/verified.svg", "verified-req-badge"));
+  if (app.steam === "si") imgContainer.appendChild(createBadge("Steam", "../assets/icons/steam.svg", "steam-req-badge"));
+  if (app.wifi === "si") imgContainer.appendChild(createBadge("WiFi", "../assets/icons/wifi.svg", "wifi-req-badge"));
+  if (app["virus-alert"] === "alert") imgContainer.appendChild(createBadge("Virus", "../assets/icons/virus.svg", "virus-req-badge"));
 
   const sinWifi = document.createElement("img");
   sinWifi.src = "../assets/icons/sin-wifi.svg";
@@ -261,51 +237,18 @@ function createAppCard(app, index) {
 
   if (app.installed) {
     const isUninstalling = uninstallingApps.has(app.id);
-    const isInstalling = installingApps.has(app.id);
     const topRow = document.createElement("div");
     topRow.style.display = "flex";
     topRow.style.gap = "8px";
     topRow.style.width = "100%";
 
     const openBtn = document.createElement("button");
-    // PRIORIDAD: Si hay actualización disponible, mostrar botón Actualizar
     openBtn.textContent = app.updateAvailable ? "Actualizar" : "Abrir";
-    openBtn.className = app.updateAvailable
-      ? "md-btn md-btn-filled highlight-update"
-      : "md-btn md-btn-filled";
+    openBtn.className = "md-btn md-btn-filled";
     openBtn.style.flex = "1";
-
-    if (app.updateAvailable) {
-      if (isInstalling) {
-        openBtn.disabled = true;
-        openBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Actualizando...</span>`;
-      } else {
-        openBtn.onclick = async (e) => {
-          e.stopPropagation();
-          installingApps.add(app.id);
-          playSound("others.mp3");
-          showToast(`Actualizando ${app.name}…`);
-          renderApps(currentCategory);
-          try {
-            await window.api.installApp(app);
-            playSound("finish.mp3");
-          } catch (e) {
-            console.error(e);
-          } finally {
-            installingApps.delete(app.id);
-            renderApps(currentCategory);
-            await load();
-          }
-        };
-      }
-    } else {
-      openBtn.onclick = () =>
-        window.api.openApp(
-          app.executablePath || app.paths[0],
-          app.steam === "si",
-        );
-    }
-
+    openBtn.onclick = app.updateAvailable 
+      ? () => window.location.href = `program-updates.html?id=${app.id}`
+      : () => window.api.openApp(app.fileApp?.executablePath || app.executablePath || app.paths[0], app.steam === "si");
     if (isUninstalling) openBtn.style.display = "none";
     topRow.appendChild(openBtn);
 
@@ -321,29 +264,24 @@ function createAppCard(app, index) {
       uninstallBtn.textContent = hasUninstaller ? "Desinstalar" : "Eliminar";
       uninstallBtn.onclick = async (e) => {
         e.stopPropagation();
-        if (!hasUninstaller && !confirm("¿Eliminar carpeta de la aplicación?"))
-          return;
-
+        if (!hasUninstaller && !confirm("¿Eliminar carpeta de la aplicación?")) return;
+        
         uninstallingApps.add(app.id);
         playSound("others.mp3");
-        showToast(
-          hasUninstaller
-            ? `Desinstalando ${app.name}…`
-            : `Eliminando archivos de ${app.name}…`,
-        );
+        showToast(hasUninstaller ? `Desinstalando ${app.name}…` : `Eliminando archivos de ${app.name}…`);
         renderApps(currentCategory);
-
+        
         try {
           if (hasUninstaller) await window.api.uninstallApp(app.uninstall);
           else await window.api.deleteAppFolder(app.paths[0]);
           playSound("finish.mp3");
-        } catch (error) {
-          if (!error.message.includes("INSTALL_CANCELLED"))
-            console.error(error);
-        } finally {
-          uninstallingApps.delete(app.id);
+        } catch (error) { 
+          if (!error.message.includes("INSTALL_CANCELLED")) console.error(error); 
+        }
+        finally { 
+          uninstallingApps.delete(app.id); 
           renderApps(currentCategory); // Actualizar UI inmediatamente
-          await load();
+          await load(); 
         }
       };
     }
@@ -359,18 +297,14 @@ function createAppCard(app, index) {
     if (app["share-compatibility"] === "si") {
       const shareBtn = createIconButton("../assets/icons/share.svg", () => {
         playSound("others.mp3");
-        navigator.clipboard.writeText(
-          `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
-        );
+        navigator.clipboard.writeText(`Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`);
         showToast("Enlace copiado");
       });
       if (isUninstalling) shareBtn.style.display = "none";
       middleRow.appendChild(shareBtn);
     }
 
-    const webBtn = createIconButton("../assets/icons/web.svg", () =>
-      window.open(`https://stormstore.vercel.app/app/${app.id}`),
-    );
+    const webBtn = createIconButton("../assets/icons/web.svg", () => window.open(`https://stormstore.vercel.app/app/${app.id}`));
     if (isUninstalling) webBtn.style.display = "none";
     middleRow.appendChild(webBtn);
     actions.appendChild(middleRow);
@@ -381,9 +315,7 @@ function createAppCard(app, index) {
     locBtn.style.width = "100%";
     locBtn.onclick = () => {
       playSound("others.mp3");
-      window.api.openAppLocation(
-        app.installPath || app.executablePath || app.paths[0],
-      );
+      window.api.openAppLocation(app.fileApp?.executablePath || app.installPath || app.executablePath || app.paths[0]);
       showToast("Abriendo ubicación...");
     };
     if (isUninstalling) locBtn.style.display = "none";
@@ -405,6 +337,12 @@ function createAppCard(app, index) {
     } else {
       installBtn.textContent = "Instalar";
       installBtn.onclick = async () => {
+        if (app.fileApp) {
+          showToast(`Abriendo gestor de descargas para ${app.name}…`);
+          window.location.href = `program-updates.html?id=${encodeURIComponent(app.id)}`;
+          return;
+        }
+
         installingApps.add(app.id);
         playSound("others.mp3");
         showToast(`Iniciando descarga e instalación de ${app.name}…`);
@@ -412,32 +350,25 @@ function createAppCard(app, index) {
         try {
           await window.api.installApp(app);
           playSound("finish.mp3");
-        } catch (e) {
-          if (!e.message.includes("INSTALL_CANCELLED")) console.error(e);
-        } finally {
-          installingApps.delete(app.id);
+        } catch (e) { 
+          if (!e.message.includes("INSTALL_CANCELLED")) console.error(e); 
+        }
+        finally { 
+          installingApps.delete(app.id); 
           renderApps(currentCategory); // Actualizar UI inmediatamente
-          await load();
+          await load(); 
         }
       };
     }
     installRow.appendChild(installBtn);
 
     if (app["share-compatibility"] === "si") {
-      installRow.appendChild(
-        createIconButton("../assets/icons/share.svg", () => {
-          navigator.clipboard.writeText(
-            `https://stormstore.vercel.app/app/${app.id}/run`,
-          );
-          showToast("Enlace copiado");
-        }),
-      );
+      installRow.appendChild(createIconButton("../assets/icons/share.svg", () => {
+        navigator.clipboard.writeText(`https://stormstore.vercel.app/app/${app.id}/run`);
+        showToast("Enlace copiado");
+      }));
     }
-    installRow.appendChild(
-      createIconButton("../assets/icons/web.svg", () =>
-        window.open(`https://stormstore.vercel.app/app/${app.id}`),
-      ),
-    );
+    installRow.appendChild(createIconButton("../assets/icons/web.svg", () => window.open(`https://stormstore.vercel.app/app/${app.id}`)));
     actions.appendChild(installRow);
   }
 
@@ -459,10 +390,7 @@ function createIconButton(iconSrc, onClick) {
   btn.style.flex = "1";
   btn.style.padding = "10px 12px";
   btn.innerHTML = `<img src="${iconSrc}" style="width: 20px; height: 20px; filter: invert(1);">`;
-  btn.onclick = (e) => {
-    e.stopPropagation();
-    onClick();
-  };
+  btn.onclick = (e) => { e.stopPropagation(); onClick(); };
   return btn;
 }
 
@@ -471,17 +399,12 @@ window.api.onShowToast((_event, message, duration) => {
 });
 
 // Inicializar
-load(true); // Al entrar a index.html siempre cargamos como si fuera el inicio del programa
+load(true); // Carga inicial forzada
+setInterval(() => load(false), 3000); // Comprobación silenciosa cada 3s
 
 if (refreshBtn) {
   refreshBtn.addEventListener("click", () => load(true));
 }
-
-window.addEventListener("pageshow", (event) => {
-  if (event.persisted) {
-    load(true);
-  }
-});
 
 // Filtrado desde la barra de búsqueda
 if (searchInput) {

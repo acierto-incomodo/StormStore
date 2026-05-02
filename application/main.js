@@ -17,15 +17,15 @@ const https = require("https");
 const { pathToFileURL } = require("url");
 const { spawn, exec } = require("child_process");
 const { autoUpdater } = require("electron-updater");
+const extractZip = require("extract-zip");
 const SteamPath = require("steam-path");
 const gameScanner = require("@equal-games/game-scanner");
 const DiscordRPC = require("discord-rpc");
-const DownloadManager = require("./download-manager");
 
-let appsData = require("./apps.json");
-let filesAppsData = require("./files.apps.json");
+let appsData;
+let filesAppsData = [];
 let isOffline = true; // Por defecto asumimos offline hasta que la sincronización diga lo contrario
-let fileAppsStatus = new Map(); // Mapa para guardar el estado de versiones (id -> {updateAvailable})
+let FILES_APPS_JSON_CACHE;
 
 const ICON_SIZES = [
   "256x256",
@@ -43,6 +43,15 @@ const SETTINGS_PATH = path.join(
   "settings.json",
 );
 
+// Cargar datos locales iniciales
+try {
+  const appsPath = path.join(app.getAppPath(), "apps.json");
+  appsData = JSON.parse(fs.readFileSync(appsPath, "utf8"));
+} catch (err) {
+  console.error("Error loading apps.json:", err);
+  appsData = [];
+}
+
 const REMOTE_APPS_URL =
   "https://acierto-incomodo.github.io/StormStore/assets/apps.json";
 const REMOTE_FILES_APPS_URL =
@@ -54,13 +63,6 @@ const REMOTE_ICONS_BASE =
 let mainWindow;
 let updateInfo = null;
 let tray = null;
-let downloadManager = null;
-const DOWNLOADS_TEMP_DIR = path.join(
-  app.getPath("appData"),
-  "StormGamesStudios",
-  "StormStore",
-  "temp_downloads",
-);
 
 // =====================================
 // GESTIÓN DE AJUSTES
@@ -117,51 +119,29 @@ function createTray() {
   if (tray) return;
   tray = new Tray(path.join(__dirname, "assets/app.ico"));
   const contextMenu = Menu.buildFromTemplate([
-    {
-      label: "Abrir StormStore",
-      click: () => {
-        mainWindow.show();
-        if (mainWindow.isMinimized()) mainWindow.restore();
-        mainWindow.focus();
-      },
-    },
-    {
-      label: "Descargas",
-      click: () => {
-        mainWindow.show();
-        mainWindow.loadFile(
-          path.join(__dirname, "renderer/program-updates.html"),
-        );
-        mainWindow.focus();
-      },
-    },
-    {
-      label: "Modo StormVortex",
-      click: () => {
-        mainWindow.show();
-        mainWindow.setFullScreen(true);
-        mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
-        setActivity();
-        mainWindow.focus();
-      },
-    },
-    {
-      label: "Buscar actualizaciones",
-      click: () => {
-        mainWindow.show();
-        mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
-        autoUpdater.checkForUpdates();
-      },
-    },
+    { label: "Abrir StormStore", click: () => {
+      mainWindow.show();
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }},
+    { label: "Modo StormVortex", click: () => {
+      mainWindow.show();
+      mainWindow.setFullScreen(true);
+      mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
+      setActivity();
+      mainWindow.focus();
+    }},
+    { label: "Buscar actualizaciones", click: () => {
+      mainWindow.show();
+      mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
+      autoUpdater.checkForUpdates();
+    }},
     { type: "separator" },
-    {
-      label: "Reiniciar StormStore",
-      click: () => {
-        app.isQuiting = true;
-        app.relaunch();
-        app.exit(0);
-      },
-    },
+    { label: "Reiniciar StormStore", click: () => {
+      app.isQuiting = true;
+      app.relaunch();
+      app.exit(0);
+    }},
     { type: "separator" },
     {
       label: "Salir",
@@ -372,9 +352,7 @@ function createWindow() {
   const startInBigPicture = process.argv.some((arg) =>
     vortexFlags.includes(arg),
   );
-  const isSilentStart =
-    (settings.start_minimized || process.argv.includes("--start-minimized")) &&
-    !startInBigPicture;
+  const isSilentStart = (settings.start_minimized || process.argv.includes("--start-minimized")) && !startInBigPicture;
 
   win.loadFile(
     path.join(
@@ -388,7 +366,7 @@ function createWindow() {
       win.setFullScreen(true);
       win.show();
     } else if (isSilentStart) {
-      // Si es inicio silencioso, no llamamos a win.show().
+      // Si es inicio silencioso, no llamamos a win.show(). 
       // La ventana permanece oculta y solo el icono de la bandeja será visible.
       console.log("StormStore: Iniciando en modo silencioso (solo bandeja).");
     } else {
@@ -547,19 +525,10 @@ async function handleProtocolUrl(url) {
   if (url.startsWith(prefix)) {
     const id = url.substring(prefix.length).replace(/\/$/, "");
     const appItem = appsData.find((a) => a.id === id);
-    const fileApp = filesAppsData.find((f) => f.id === id);
 
     if (appItem && appItem["virus-alert"] === "alert") {
       const proceed = await showVirusWarning(appItem.name);
       if (!proceed) return;
-    }
-
-    // Prioridad: Ejecutar desde el nuevo sistema si está disponible y el archivo existe
-    if (fileApp && fileApp.executablePath) {
-      if (findExecutable(fileApp.executablePath) !== null) {
-        runApp(fileApp.executablePath, appItem?.steam === "si");
-        return;
-      }
     }
 
     if (appItem) {
@@ -642,34 +611,344 @@ async function downloadFile(url, dest) {
   });
 }
 
-// Función auxiliar para obtener el checksum remoto siguiendo redirecciones
-async function getRemoteChecksum(url) {
-  return new Promise((resolve) => {
-    const protocol = url.startsWith("https") ? https : http;
-    const request = (targetUrl) => {
-      protocol
-        .get(targetUrl, (res) => {
-          // Seguir redirecciones (301, 302, etc)
-          if (
-            [301, 302, 307, 308].includes(res.statusCode) &&
-            res.headers.location
-          ) {
-            return request(res.headers.location);
-          }
-          if (res.statusCode !== 200) return resolve(null);
+function resolveUrlPath(downloadUrl, fileName) {
+  const normalized = downloadUrl.replace(/\/+$/g, "");
+  return `${normalized.replace(/\\/g, '/')}/${encodeURIComponent(fileName)}`;
+}
 
-          let data = "";
-          res.on("data", (chunk) => (data += chunk));
-          res.on("end", () => {
-            // Si el archivo tiene varias líneas, nos quedamos con la primera (el hash)
-            if (data.includes("\n")) data = data.split("\n")[0];
-            resolve(data.trim());
+function sendInstallProgress(progress) {
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send("install-progress", progress);
+  }
+}
+
+async function downloadFileWithProgress(url, dest, onProgress) {
+  const tempDest = dest + ".tmp";
+  if (!fs.existsSync(path.dirname(dest))) {
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+  }
+
+  return new Promise((resolve, reject) => {
+    const download = (downloadUrl) => {
+      const file = fs.createWriteStream(tempDest);
+      let totalBytes = 0;
+      let downloadedBytes = 0;
+      let lastTs = Date.now();
+      let lastBytes = 0;
+
+      https
+        .get(downloadUrl, (res) => {
+          if (res.statusCode === 301 || res.statusCode === 302) {
+            file.close();
+            fs.unlink(tempDest, () => {});
+            return download(res.headers.location);
+          }
+          if (res.statusCode !== 200) {
+            file.close();
+            fs.unlink(tempDest, () => {});
+            return reject(new Error(`Status ${res.statusCode}`));
+          }
+
+          totalBytes = parseInt(res.headers["content-length"], 10) || 0;
+
+          res.on("data", (chunk) => {
+            downloadedBytes += chunk.length;
+            const now = Date.now();
+            const elapsed = Math.max(1, now - lastTs);
+            const speed = ((downloadedBytes - lastBytes) / elapsed) * 1000;
+            lastTs = now;
+            lastBytes = downloadedBytes;
+            if (typeof onProgress === "function") {
+              onProgress({
+                downloaded: downloadedBytes,
+                total: totalBytes,
+                percent: totalBytes ? downloadedBytes / totalBytes : 0,
+                speed,
+              });
+            }
+          });
+
+          res.pipe(file);
+          file.on("finish", () => {
+            file.close(() => {
+              fs.rename(tempDest, dest, (err) => {
+                if (err) {
+                  fs.unlink(tempDest, () => {});
+                  reject(err);
+                } else {
+                  resolve({ downloaded: downloadedBytes, total: totalBytes });
+                }
+              });
+            });
           });
         })
-        .on("error", () => resolve(null));
+        .on("error", (err) => {
+          file.close();
+          fs.unlink(tempDest, () => {});
+          reject(err);
+        });
+    };
+    download(url);
+  });
+}
+
+async function fetchRemoteText(url) {
+  return new Promise((resolve, reject) => {
+    const request = (remoteUrl) => {
+      https
+        .get(remoteUrl, (res) => {
+          if (res.statusCode === 301 || res.statusCode === 302) {
+            return request(res.headers.location);
+          }
+          if (res.statusCode !== 200) {
+            return reject(new Error(`Status ${res.statusCode}`));
+          }
+          let body = "";
+          res.on("data", (chunk) => (body += chunk));
+          res.on("end", () => resolve(body));
+        })
+        .on("error", reject);
     };
     request(url);
   });
+}
+
+async function hashFile(filePath) {
+  return new Promise((resolve, reject) => {
+    const hash = crypto.createHash("sha256");
+    const stream = fs.createReadStream(filePath);
+    stream.on("error", reject);
+    stream.on("data", (chunk) => hash.update(chunk));
+    stream.on("end", () => resolve(hash.digest("hex")));
+  });
+}
+
+async function mergeFiles(partPaths, destPath) {
+  return new Promise((resolve, reject) => {
+    const writeStream = fs.createWriteStream(destPath);
+    let index = 0;
+
+    const pipeNext = () => {
+      if (index >= partPaths.length) {
+        writeStream.end();
+        return resolve();
+      }
+      const currentPath = partPaths[index++];
+      const readStream = fs.createReadStream(currentPath);
+      readStream.on("error", reject);
+      readStream.on("end", pipeNext);
+      readStream.pipe(writeStream, { end: false });
+    };
+
+    writeStream.on("error", reject);
+    pipeNext();
+  });
+}
+
+async function loadFilesAppsData() {
+  try {
+    if (FILES_APPS_JSON_CACHE && fs.existsSync(FILES_APPS_JSON_CACHE)) {
+      const cached = JSON.parse(fs.readFileSync(FILES_APPS_JSON_CACHE, "utf8"));
+      filesAppsData = Array.isArray(cached) ? cached : [];
+      return;
+    }
+  } catch (err) {
+    console.error("Error leyendo cache de files.apps.json:", err);
+  }
+
+  try {
+    const localPath = path.join(app.getAppPath(), "files.apps.json");
+    const localData = JSON.parse(fs.readFileSync(localPath, "utf8"));
+    filesAppsData = Array.isArray(localData) ? localData : [];
+  } catch (err) {
+    console.error("Error leyendo files.apps.json local:", err);
+    filesAppsData = [];
+  }
+}
+
+function getCachedFilesApp(id) {
+  return filesAppsData.find((item) => item.id === id);
+}
+
+function getCachedApp(id) {
+  return appsData.find((item) => item.id === id);
+}
+
+async function installFilesAppLogic(fileApp) {
+  const downloadDir = getDownloadDir();
+  const tempFolder = path.join(downloadDir, fileApp.id);
+  if (!fs.existsSync(tempFolder)) {
+    fs.mkdirSync(tempFolder, { recursive: true });
+  }
+
+  const filesToDownload = Array.isArray(fileApp.files) ? fileApp.files : [];
+  const downloadBase = fileApp.downloadUrl || "";
+  const filePaths = [];
+  let totalExpected = 0;
+  let totalDownloaded = 0;
+  let lastTotalBytes = 0;
+
+  sendInstallProgress({
+    id: fileApp.id,
+    phase: "prepare",
+    message: "Preparando descarga...",
+  });
+
+  for (let index = 0; index < filesToDownload.length; index++) {
+    const fileName = filesToDownload[index];
+    const downloadUrl = resolveUrlPath(downloadBase, fileName);
+    const partDest = path.join(tempFolder, fileName);
+    filePaths.push(partDest);
+
+    const fileProgress = await downloadFileWithProgress(
+      downloadUrl,
+      partDest,
+      ({ downloaded, total, speed }) => {
+        totalDownloaded = lastTotalBytes + downloaded;
+        const overallPercent = totalExpected ? totalDownloaded / totalExpected : 0;
+        if (mainWindow) {
+          mainWindow.setProgressBar(totalExpected ? totalDownloaded / totalExpected : 2);
+        }
+        sendInstallProgress({
+          id: fileApp.id,
+          phase: "download",
+          fileName,
+          currentPart: index + 1,
+          parts: filesToDownload.length,
+          downloaded: totalDownloaded,
+          total: totalExpected || totalDownloaded,
+          speed,
+          percent: overallPercent || (total ? downloaded / total : 0),
+          message: `Descargando ${fileName}`,
+        });
+      },
+    );
+
+    if (fileProgress.total) {
+      totalExpected += fileProgress.total;
+    }
+    lastTotalBytes = totalDownloaded;
+  }
+
+  const zipFileName = fileApp.mergedName || filesToDownload[0];
+  const zipFilePath = path.join(tempFolder, zipFileName);
+
+  if (fileApp.merge) {
+    sendInstallProgress({
+      id: fileApp.id,
+      phase: "merge",
+      message: "Unificando partes...",
+      percent: 0,
+    });
+    await mergeFiles(filePaths, zipFilePath);
+    filePaths.forEach((part) => {
+      if (part !== zipFilePath && fs.existsSync(part)) {
+        fs.unlinkSync(part);
+      }
+    });
+  }
+
+  const finalZipPath = fileApp.merge ? zipFilePath : filePaths[0];
+  const extractPath = resolveWindowsPath(fileApp.extractPath || path.dirname(finalZipPath));
+  if (!fs.existsSync(extractPath)) {
+    fs.mkdirSync(extractPath, { recursive: true });
+  }
+
+  sendInstallProgress({
+    id: fileApp.id,
+    phase: "extract",
+    message: "Extrayendo archivos...",
+    percent: 0,
+  });
+
+  await extractZip(finalZipPath, { dir: extractPath });
+
+  if (fileApp.checksumUrl && fileApp.checksumFile) {
+    try {
+      const checksumText = await fetchRemoteText(fileApp.checksumUrl);
+      const checksumDir = resolveWindowsPath(fileApp.checksumPath || fileApp.extractPath);
+      if (!fs.existsSync(checksumDir)) {
+        fs.mkdirSync(checksumDir, { recursive: true });
+      }
+      const checksumDest = path.join(checksumDir, fileApp.checksumFile);
+      fs.writeFileSync(checksumDest, checksumText.trim());
+      sendInstallProgress({
+        id: fileApp.id,
+        phase: "checksum",
+        message: "Guardando checksum...",
+        percent: 0.95,
+      });
+    } catch (err) {
+      console.warn("No se pudo descargar checksum:", err.message);
+    }
+  }
+
+  try {
+    if (fs.existsSync(tempFolder)) {
+      fs.rmSync(tempFolder, { recursive: true, force: true });
+    }
+  } catch (err) {
+    console.warn("No se pudieron limpiar archivos temporales:", err.message);
+  }
+
+  sendInstallProgress({
+    id: fileApp.id,
+    phase: "complete",
+    message: "Instalación completa.",
+    percent: 1,
+  });
+
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send("install-complete", true, fileApp.id);
+  }
+
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send("install-complete", {
+      id: fileApp.id,
+      message: "Instalación completa.",
+    });
+  }
+
+  try {
+    if (mainWindow) mainWindow.setProgressBar(-1);
+  } catch {}
+
+  return true;
+}
+
+async function getFilesAppsData() {
+  return filesAppsData;
+}
+
+async function syncFilesAppsData() {
+  try {
+    const data = await new Promise((resolve, reject) => {
+      const request = https.get(REMOTE_FILES_APPS_URL, (res) => {
+        if (res.statusCode !== 200)
+          return reject(new Error("Error fetching files.apps.json"));
+        let body = "";
+        res.on("data", (chunk) => (body += chunk));
+        res.on("end", () => {
+          try {
+            resolve(JSON.parse(body));
+          } catch (e) {
+            reject(e);
+          }
+        });
+      });
+      request.on("error", reject);
+      request.end();
+    });
+
+    filesAppsData = Array.isArray(data) ? data : [];
+    if (FILES_APPS_JSON_CACHE) {
+      fs.writeFileSync(FILES_APPS_JSON_CACHE, JSON.stringify(filesAppsData, null, 2));
+    }
+    return true;
+  } catch (err) {
+    console.error("Sync files.apps.json failed:", err.message);
+    return false;
+  }
 }
 
 async function syncRemoteData() {
@@ -706,27 +985,10 @@ async function syncRemoteData() {
     isOffline = false; // Sincronización exitosa = Estamos online
     fs.writeFileSync(APPS_JSON_CACHE, JSON.stringify(appsData, null, 2));
 
-    // Descargar files.apps.json
-    const filesData = await new Promise((resolve, reject) => {
-      const req = https.get(REMOTE_FILES_APPS_URL, (res) => {
-        if (res.statusCode !== 200)
-          return reject(new Error("Error fetching files.apps.json"));
-        let body = "";
-        res.on("data", (chunk) => (body += chunk));
-        res.on("end", () => {
-          try {
-            resolve(JSON.parse(body));
-          } catch (e) {
-            reject(e);
-          }
-        });
-      });
-      req.on("error", reject);
-      req.end();
+    await syncFilesAppsData().catch((err) => {
+      console.warn("No se pudo sincronizar files.apps.json:", err.message);
+      loadFilesAppsData();
     });
-
-    filesAppsData = filesData;
-    fs.writeFileSync(FILES_APPS_JSON_CACHE, JSON.stringify(filesAppsData, null, 2));
 
     // Notificar al frontend que los datos han sido actualizados
     if (mainWindow && !mainWindow.isDestroyed()) {
@@ -761,32 +1023,11 @@ async function syncRemoteData() {
         }
       });
     }
-
-    // 3. Verificación de versiones para apps en files.apps.json
-    for (const fApp of filesAppsData) {
-      const remote = await getRemoteChecksum(fApp.checksumUrl);
-      const localDir = resolveWindowsPath(
-        fApp.checksumPath || fApp.extractPath,
-      );
-      const localFile = path.join(localDir, fApp.checksumFile);
-      let local = null;
-      if (fs.existsSync(localFile)) {
-        local = fs.readFileSync(localFile, "utf8").trim();
-      }
-      fileAppsStatus.set(fApp.id, {
-        local,
-        remote,
-        updateAvailable: local !== null && remote !== null && local !== remote,
-      });
-    }
   } catch (err) {
     console.error("Sync failed, using cache:", err.message);
     isOffline = true; // Fallo en la red = Modo offline
     if (fs.existsSync(APPS_JSON_CACHE)) {
       appsData = JSON.parse(fs.readFileSync(APPS_JSON_CACHE, "utf8"));
-    }
-    if (fs.existsSync(FILES_APPS_JSON_CACHE)) {
-      filesAppsData = JSON.parse(fs.readFileSync(FILES_APPS_JSON_CACHE, "utf8"));
     }
   }
 }
@@ -794,7 +1035,8 @@ async function syncRemoteData() {
 // -----------------------------
 // IPC
 // -----------------------------
-ipcMain.handle("get-apps", () => {
+ipcMain.handle("get-apps", async () => {
+  await loadFilesAppsData();
   return appsData.map((appItem) => {
     const fileName = path.basename(appItem.icon);
     const local1024 = path.join(ICONS_CACHE_DIR, "1024x1024", fileName);
@@ -817,17 +1059,15 @@ ipcMain.handle("get-apps", () => {
       iconUrl = `${REMOTE_ICONS_BASE}1024x1024/${fileName}`;
     }
 
-    // Prioridad absoluta: Verificar instalación vía files.apps.json
-    const fileApp = filesAppsData.find((f) => f.id === appItem.id);
+    const fileApp = filesAppsData.find((item) => item.id === appItem.id);
     let executablePath = null;
-
-    if (fileApp && fileApp.executablePath) {
-      if (findExecutable(fileApp.executablePath) !== null) {
+    if (fileApp?.executablePath) {
+      const resolvedFileAppExe = findExecutable(fileApp.executablePath);
+      if (resolvedFileAppExe !== null) {
         executablePath = fileApp.executablePath;
       }
     }
 
-    // Fallback: Si no se encontró en el sistema nuevo, buscar en paths legacy de apps.json
     if (!executablePath) {
       for (const p of appItem.paths) {
         if (findExecutable(p) !== null) {
@@ -843,18 +1083,38 @@ ipcMain.handle("get-apps", () => {
       uninstallExists = fs.existsSync(resolvedUninstall);
     }
 
-    const status = fileAppsStatus.get(appItem.id);
-    const updateAvailable = status ? status.updateAvailable : false;
-
     return {
       ...appItem,
       icon: iconUrl,
       installed: executablePath !== null,
-      updateAvailable,
       executablePath,
       uninstallExists,
+      fileApp,
     };
   });
+});
+
+ipcMain.handle("get-files-apps", async () => {
+  await loadFilesAppsData();
+  return filesAppsData;
+});
+
+ipcMain.handle("check-checksum", async (event, id) => {
+  const app = filesAppsData.find(a => a.id === id);
+  if (!app) return { needsUpdate: false };
+
+  const checksumDir = resolveWindowsPath(app.checksumPath || app.extractPath);
+  const localPath = path.join(checksumDir, app.checksumFile);
+  if (!fs.existsSync(localPath)) return { needsUpdate: true }; // Si no existe local, probablemente necesita instalar
+
+  try {
+    const localChecksum = fs.readFileSync(localPath, 'utf8').trim();
+    const onlineChecksum = await fetchRemoteText(app.checksumUrl);
+    return { needsUpdate: localChecksum !== onlineChecksum.trim() };
+  } catch (e) {
+    console.error('Error checking checksum for', id, e);
+    return { needsUpdate: false }; // En caso de error, asumir no necesita update
+  }
 });
 
 ipcMain.handle("get-steam-games", async () => {
@@ -1036,71 +1296,50 @@ ipcMain.handle("get-epic-games", async () => {
 });
 
 async function installAppLogic(appData) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      // 1. Prioridad absoluta: Buscar si el ID existe en files.apps.json
-      const fileApp = filesAppsData.find((f) => f.id === appData.id);
+  const downloadUrl = appData.download || appData.downloadUrl;
+  if (!downloadUrl) {
+    throw new Error("No se encontró URL de descarga para esta aplicación");
+  }
 
-      if (!fileApp) {
-        // 2. Fallback: Solo si no coincide el ID, usamos el método legacy (apps.json)
-        console.log(
-          `App ${appData.id} no encontrado en files.apps.json. Usando método legacy.`,
-        );
-        return await legacyInstallApp(appData, resolve, reject);
+  const downloadDir = getDownloadDir();
+  const filePath = path.join(downloadDir, `${appData.id}.exe`);
+
+  await downloadFileWithProgress(downloadUrl, filePath, ({ downloaded, total, percent, speed }) => {
+    if (mainWindow) {
+      if (!isNaN(total) && total > 0) {
+        mainWindow.setProgressBar(downloaded / total);
+      } else {
+        mainWindow.setProgressBar(2);
       }
+    }
 
-      // Si hay coincidencia, usamos el nuevo sistema de descargas
-      if (!downloadManager) {
-        downloadManager = new DownloadManager(mainWindow, ipcMain);
-      }
+    sendInstallProgress({
+      id: appData.id,
+      phase: "download",
+      fileName: path.basename(filePath),
+      downloaded,
+      total,
+      percent,
+      speed,
+      message: `Descargando ${path.basename(filePath)}`,
+    });
+  });
 
-      if (mainWindow) mainWindow.setProgressBar(0, { mode: "normal" });
+  if (mainWindow) mainWindow.setProgressBar(2);
 
-      // REDIRECCIÓN: Llevar al usuario a la página de progreso
-      if (mainWindow) {
-        mainWindow.loadFile(
-          path.join(__dirname, "renderer/program-updates.html"),
-        );
-        // Nota: El proceso sigue en background aunque la página cambie
-      }
+  return new Promise((resolve, reject) => {
+    exec(`"${filePath}"`, (err) => {
+      if (err) {
+        if (mainWindow) mainWindow.setProgressBar(-1);
 
-      // Crear directorio temporal
-      const tempDir = path.join(DOWNLOADS_TEMP_DIR, appData.id);
-      // Limpiar rastro de descargas anteriores si existen
-      if (fs.existsSync(tempDir)) {
-        fs.rmSync(tempDir, { recursive: true, force: true });
-      }
-      fs.mkdirSync(tempDir, { recursive: true });
-
-      try {
-        // Resolver variables de entorno en la ruta de extracción
-        const resolvedFileApp = {
-          ...fileApp,
-          extractPath: resolveWindowsPath(fileApp.extractPath),
-          checksumPath: fileApp.checksumPath
-            ? resolveWindowsPath(fileApp.checksumPath)
-            : undefined,
-        };
-        await downloadManager.startDownload(
-          appData.id,
-          resolvedFileApp,
-          tempDir,
-        );
-
-        if (mainWindow) {
-          mainWindow.setProgressBar(1, { mode: "normal" });
-          mainWindow.webContents.send(
-            "show-toast",
-            `${appData.name} instalado correctamente`,
-          );
-          setTimeout(() => {
-            if (mainWindow) mainWindow.setProgressBar(-1);
-          }, 3000);
+        if (err.code === 2 || err.code === 1) {
+          if (mainWindow) {
+            mainWindow.webContents.send("show-toast", "Instalación cancelada.");
+          }
+          return reject(new Error("INSTALL_CANCELLED"));
         }
 
-        resolve(true);
-      } catch (err) {
-        console.error("Error en descarga:", err);
+        console.error("Error ejecutando instalador:", err);
         if (mainWindow) {
           mainWindow.setProgressBar(1, { mode: "error" });
           mainWindow.flashFrame(true);
@@ -1111,134 +1350,31 @@ async function installAppLogic(appData) {
             }
           }, 3000);
         }
-        reject(err);
+        return reject(err);
       }
-    } catch (err) {
-      reject(err);
-    }
-  });
-}
 
-async function legacyInstallApp(appData, resolve, reject) {
-  try {
-    const downloadDir = getDownloadDir();
-    const filePath = path.join(downloadDir, `${appData.id}.exe`);
+      setTimeout(() => {
+        if (fs.existsSync(filePath)) {
+          fs.unlinkSync(filePath);
+        }
+      }, 10000);
 
-    function download(url) {
-      const file = fs.createWriteStream(filePath);
+      if (mainWindow) {
+        mainWindow.setProgressBar(1, { mode: "normal" });
+        setTimeout(() => {
+          if (mainWindow) mainWindow.setProgressBar(-1);
+        }, 3000);
+      }
 
-      https
-        .get(url, (res) => {
-          // 🔁 Redirecciones (GitHub)
-          if (res.statusCode === 302 || res.statusCode === 301) {
-            file.close();
-            fs.unlinkSync(filePath);
-            return download(res.headers.location);
-          }
-
-          if (res.statusCode !== 200) {
-            file.close();
-            fs.unlinkSync(filePath);
-            if (mainWindow) {
-              mainWindow.setProgressBar(1, { mode: "error" });
-              mainWindow.flashFrame(true);
-              setTimeout(() => {
-                if (mainWindow) {
-                  mainWindow.setProgressBar(-1);
-                  mainWindow.flashFrame(false);
-                }
-              }, 3000);
-            }
-            return reject(new Error("Error descargando el archivo"));
-          }
-
-          const totalLength = parseInt(res.headers["content-length"], 10);
-          let downloaded = 0;
-
-          if (mainWindow) {
-            mainWindow.setProgressBar(0, { mode: "normal" });
-          }
-
-          res.on("data", (chunk) => {
-            downloaded += chunk.length;
-            if (mainWindow && !isNaN(totalLength) && totalLength > 0) {
-              mainWindow.setProgressBar(downloaded / totalLength);
-            }
-          });
-
-          res.pipe(file);
-
-          file.on("finish", () => {
-            file.close(() => {
-              if (mainWindow) mainWindow.setProgressBar(2); // Indeterminate during install
-              // ▶ Ejecutar instalador
-              exec(`"${filePath}"`, (err) => {
-                if (err) {
-                  if (mainWindow) mainWindow.setProgressBar(-1);
-
-                  // Código 2 = Cancelado en Inno Setup. 1 = Error genérico/Cancelado en otros.
-                  if (err.code === 2 || err.code === 1) {
-                    if (mainWindow)
-                      mainWindow.webContents.send(
-                        "show-toast",
-                        "Instalación cancelada.",
-                      );
-                    return reject(new Error("INSTALL_CANCELLED"));
-                  }
-
-                  console.error("Error ejecutando instalador:", err);
-                  if (mainWindow) {
-                    mainWindow.setProgressBar(1, { mode: "error" });
-                    mainWindow.flashFrame(true);
-                    setTimeout(() => {
-                      if (mainWindow) {
-                        mainWindow.setProgressBar(-1);
-                        mainWindow.flashFrame(false);
-                      }
-                    }, 3000);
-                  }
-                  return reject(err);
-                }
-
-                // 🧹 Borrar instalador después de 10s
-                setTimeout(() => {
-                  if (fs.existsSync(filePath)) {
-                    fs.unlinkSync(filePath);
-                  }
-                }, 10000);
-
-                if (mainWindow) {
-                  mainWindow.setProgressBar(1, { mode: "normal" });
-                  setTimeout(() => {
-                    if (mainWindow) mainWindow.setProgressBar(-1);
-                  }, 3000);
-                }
-
-                resolve(true);
-              });
-            });
-          });
-        })
-        .on("error", (err) => {
-          if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-          if (mainWindow) {
-            mainWindow.setProgressBar(1, { mode: "error" });
-            mainWindow.flashFrame(true);
-            setTimeout(() => {
-              if (mainWindow) {
-                mainWindow.setProgressBar(-1);
-                mainWindow.flashFrame(false);
-              }
-            }, 3000);
-          }
-          reject(err);
+      if (mainWindow && !mainWindow.isDestroyed()) {
+        mainWindow.webContents.send("install-complete", {
+          id: appData.id,
+          message: "Instalación completada",
         });
-    }
-
-    download(appData.download);
-  } catch (err) {
-    reject(err);
-  }
+      }
+      resolve(true);
+    });
+  });
 }
 
 ipcMain.handle("install-app", async (_, appData) => {
@@ -1246,17 +1382,55 @@ ipcMain.handle("install-app", async (_, appData) => {
     const proceed = await showVirusWarning(appData.name);
     if (!proceed) return false;
   }
-  return await installAppLogic(appData);
+
+  try {
+    const filesEntry = getCachedFilesApp(appData.id);
+    if (filesEntry) {
+      return await installFilesAppLogic(filesEntry);
+    }
+
+    return await installAppLogic(appData);
+  } catch (err) {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.webContents.send("install-error", {
+        id: appData.id,
+        message: err.message || "Error de instalación",
+      });
+    }
+    throw err;
+  }
+});
+
+ipcMain.handle("install-program-by-id", async (_, id) => {
+  try {
+    const filesEntry = getCachedFilesApp(id);
+    if (filesEntry) {
+      return await installFilesAppLogic(filesEntry);
+    }
+
+    const appItem = getCachedApp(id);
+    if (appItem) {
+      if (appItem["virus-alert"] === "alert") {
+        const proceed = await showVirusWarning(appItem.name);
+        if (!proceed) return false;
+      }
+      return await installAppLogic(appItem);
+    }
+
+    throw new Error("Programa no encontrado");
+  } catch (err) {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.webContents.send("install-error", {
+        id,
+        message: err.message || "Error de instalación",
+      });
+    }
+    throw err;
+  }
 });
 
 ipcMain.handle("open-app", async (_, exePath, requiresSteam) => {
-  // Buscar el metadato de la app (virus alert, etc) buscando la ruta en ambos sistemas
-  const appItem = appsData.find((a) => {
-    if (a.paths.includes(exePath)) return true;
-    const fileApp = filesAppsData.find((f) => f.id === a.id);
-    return fileApp && fileApp.executablePath === exePath;
-  });
-
+  const appItem = appsData.find((a) => a.paths.includes(exePath));
   if (appItem && appItem["virus-alert"] === "alert") {
     const proceed = await showVirusWarning(appItem.name);
     if (!proceed) return false;
@@ -1321,8 +1495,7 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
     return true;
   } catch (err) {
     if (err.code === 2 || err.code === 1) {
-      if (mainWindow)
-        mainWindow.webContents.send("show-toast", "Desinstalación cancelada.");
+      if (mainWindow) mainWindow.webContents.send("show-toast", "Desinstalación cancelada.");
       return false;
     }
     console.error("Error al desinstalar:", err.message);
@@ -1353,101 +1526,6 @@ ipcMain.handle("open-main-view", () => {
 // -----------------------------
 ipcMain.handle("get-app-version", () => {
   return app.getVersion();
-});
-
-// =====================================
-// MANEJO DE DESCARGAS DE ARCHIVOS
-// =====================================
-ipcMain.handle("get-file-apps", () => {
-  return filesAppsData;
-});
-
-ipcMain.handle("start-file-download", async (_, fileAppId) => {
-  try {
-    if (!downloadManager) {
-      downloadManager = new DownloadManager(mainWindow, ipcMain);
-    }
-
-    // Intentar buscar en el sistema nuevo
-    const fileApp = filesAppsData.find((f) => f.id === fileAppId);
-
-    if (!fileApp) {
-      // Fallback: Si se solicita desde el centro de descargas pero no está en files.apps.json,
-      // intentamos buscarlo en appsData para no romper el flujo.
-      const appItem = appsData.find((a) => a.id === fileAppId);
-      if (appItem) {
-        installAppLogic(appItem).catch(console.error);
-        return { success: true, message: "Iniciando instalación legacy" };
-      }
-      throw new Error(`Aplicación no encontrada: ${fileAppId}`);
-    }
-
-    const tempDir = path.join(DOWNLOADS_TEMP_DIR, fileAppId);
-    // Limpiar rastro de descargas anteriores si existen
-    if (fs.existsSync(tempDir)) {
-      fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-    fs.mkdirSync(tempDir, { recursive: true });
-
-    const resolvedFileApp = {
-      ...fileApp,
-      extractPath: resolveWindowsPath(fileApp.extractPath),
-      checksumPath: fileApp.checksumPath
-        ? resolveWindowsPath(fileApp.checksumPath)
-        : undefined,
-    };
-    downloadManager
-      .startDownload(fileAppId, resolvedFileApp, tempDir)
-      .catch((err) => {
-        console.error("Error en descarga:", err);
-      });
-
-    return { success: true, message: "Descarga iniciada" };
-  } catch (error) {
-    console.error(`Error iniciando descarga: ${error.message}`);
-    return { success: false, error: error.message };
-  }
-});
-
-ipcMain.handle("pause-download", (_, downloadId) => {
-  if (downloadManager) {
-    downloadManager.pauseDownload(downloadId);
-    return true;
-  }
-  return false;
-});
-
-ipcMain.handle("cancel-download", async (_, downloadId) => {
-  if (downloadManager) {
-    await downloadManager.cancelDownload(downloadId);
-    return true;
-  }
-  return false;
-});
-
-ipcMain.handle("get-download-status", (_, downloadId) => {
-  if (downloadManager) {
-    return downloadManager.getDownloadStatus(downloadId);
-  }
-  return null;
-});
-
-ipcMain.handle("get-all-downloads", () => {
-  if (downloadManager) {
-    return downloadManager.getAllDownloads();
-  }
-  return [];
-});
-
-ipcMain.handle("open-folder", async (_, path) => {
-  shell.openPath(path);
-});
-
-ipcMain.handle("retry-download", async (_, id) => {
-  const config = filesAppsData.find(app => app.id === id);
-  if (config && downloadManager) {
-    downloadManager.startDownload(id, config, tempDir);
-  }
 });
 
 // =====================================
@@ -1512,10 +1590,6 @@ ipcMain.handle("sync-remote-data", async () => {
 
 ipcMain.handle("get-settings", () => loadSettings());
 ipcMain.on("save-settings", (event, settings) => saveSettings(settings));
-
-ipcMain.on("show-toast", (event, message, duration) => {
-  mainWindow?.webContents.send("show-toast", message, duration);
-});
 
 ipcMain.handle("clear-cache", async () => {
   try {
@@ -1608,6 +1682,8 @@ if (!gotLock) {
       } catch (e) {}
     }
 
+    loadFilesAppsData();
+
     // Manejador del protocolo storm-asset://
     protocol.handle("storm-asset", (request) => {
       // La URL ahora incluye el tamaño, ej: storm-asset://1024x1024/icono.png
@@ -1617,11 +1693,6 @@ if (!gotLock) {
     });
 
     syncRemoteData();
-
-    // Limpiar carpeta de descargas temporales al iniciar para un inicio limpio
-    if (fs.existsSync(DOWNLOADS_TEMP_DIR)) {
-      fs.rmSync(DOWNLOADS_TEMP_DIR, { recursive: true, force: true });
-    }
 
     // Permisos para WebHID
     session.defaultSession.setDevicePermissionHandler((details) => {

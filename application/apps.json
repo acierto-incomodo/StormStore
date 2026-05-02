@@ -376,7 +376,7 @@
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
-    "category": ["Utilidades", "Juegos", "Aplicaciones"],
+    "category": ["Juegos", "Aplicaciones"],
     "icon": "../assets/apps/modpack-installer.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/Modpack Installer/Modpack Installer.exe"
@@ -505,6 +505,23 @@
     "verified": "false"
   },
   {
+    "id": "rv-there-yet",
+    "name": "RV There Yet?",
+    "description": "RV There Yet? es un juego de conducción y aventura centrado en viajar por carretera con una autocaravana, donde el objetivo es recorrer largas distancias gestionando el vehículo, el combustible y las necesidades del viaje mientras exploras distintos lugares; combina una experiencia relajada de road trip con elementos de supervivencia ligera y descubrimiento.",
+    "category": "Juegos",
+    "icon": "../assets/apps/rv-there-yet.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/RVThereYet_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "scamline",
     "name": "Scam Line",
     "description": "Scam Line es un juego multijugador de engaño social para 4–8 personas en el que todos compiten en desafíos psicológicos y de comunicación para ser el último en pie. En cada partida, los jugadores están en habitaciones separadas y solo pueden hablar mediante un teléfono móvil antiguo dentro del juego. Debes negociar, formar alianzas o engañar a los demás para avanzar en distintos mini‑retos, como identificar quién es distinto o jugar al Dilema del Prisionero. La clave está en leer a los otros jugadores y usar la comunicación limitada a tu favor: puedes cooperar o mentir, pero al final solo uno puede ganar.",
@@ -556,10 +573,27 @@
     "verified": "false"
   },
   {
+    "id": "space-engineers",
+    "name": "Space Engineers",
+    "description": "Space Engineers es un juego sandbox de construcción y supervivencia en el espacio donde diseñas, ensamblas y gestionas naves, estaciones espaciales y estructuras en planetas o en órbita; utiliza un sistema de física realista que obliga a cuidar energía, oxígeno, gravedad y propulsión, y te permite jugar en modo creativo o supervivencia mientras exploras, automatizas sistemas y construyes ingeniería espacial compleja.",
+    "category": "Juegos",
+    "icon": "../assets/apps/space-engineers.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/SpaceEngineers/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/space-engineers-game/releases/latest/download/SpaceEngineers_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SpaceEngineers/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
-    "category": ["Juegos", "Utilidades", "Aplicaciones"],
+    "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormlauncher.png",
     "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
@@ -603,6 +637,23 @@
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "true"
+  },
+  {
+    "id": "subnautica",
+    "name": "Subnautica",
+    "description": "Subnautica es un juego de supervivencia y exploración ambientado en un planeta oceánico alienígena, donde tras estrellarte debes recolectar recursos, fabricar herramientas, construir bases y sumergirte cada vez más profundo mientras gestionas oxígeno, hambre y peligros; a medida que avanzas descubres criaturas, ecosistemas y una historia misteriosa que impulsa la progresión.",
+    "category": "Juegos",
+    "icon": "../assets/apps/subnautica.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Subnautica/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/subnautica-game/releases/latest/download/Subnautica_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Subnautica/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "supermarketsecuritysimulator",
@@ -671,5 +722,22 @@
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "false"
+  },
+  {
+    "id": "youtube-downloader",
+    "name": "YouTube Downloader",
+    "description": "Una herramienta para descargar videos de YouTube.",
+    "category": ["Utilidades", "Aplicaciones"],
+    "icon": "../assets/apps/youtube-downloader.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/YoutubeDownloader/YoutubeDownloader/YoutubeDownloader.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/youtube-downloader/releases/latest/download/YouTubeDownloader_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/YoutubeDownloader/unins000.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "true"
   }
 ]

@@ -69,13 +69,6 @@
       <div class="main-header">
         <h1 id="header-title">Cargando...</h1>
         <div class="window-controls">
-          <button class="control-btn" id="open-downloads" title="Descargas">
-            <img
-              src="../assets/icons/download.svg"
-              alt="Descargas"
-              style="width: 20px; height: 20px; filter: invert(1)"
-            />
-          </button>
           <button class="control-btn" id="open-big-picture" title="StormVortex">
             <img
               src="../assets/icons/stormvortex.svg"
@@ -191,16 +184,6 @@
         window.location.href = "updates.html";
       });
       document
-        .getElementById("open-downloads")
-        ?.addEventListener("click", () => {
-          window.location.href = "program-updates.html";
-        });
-      document
-        .getElementById("open-downloads")
-        ?.addEventListener("click", () => {
-          window.location.href = "program-updates.html";
-        });
-      document
         .getElementById("open-licenses")
         ?.addEventListener("click", () => {
           window.location.href = "licencias.html";
@@ -238,14 +221,6 @@
 
       // Cargar datos
       async function loadApp() {
-        // Verificar si esta app se está instalando actualmente
-        const activeDownloads = await window.api.getAllDownloads();
-        const isRunning = activeDownloads.some(
-          (d) =>
-            d.id === appId && d.status !== "completed" && d.status !== "error",
-        );
-        if (isRunning) isInstalling = true;
-
         const apps = await window.api.getApps();
         let app = apps.find((a) => a.id === appId);
 
@@ -348,37 +323,15 @@
         if (app.installed) {
           // Botón Abrir
           const openBtn = document.createElement("button");
-          openBtn.textContent = app.updateAvailable ? "Actualizar" : "Abrir";
+          openBtn.textContent = "Abrir";
           openBtn.className = "md-btn md-btn-filled";
           openBtn.style.padding = "12px 24px";
           openBtn.style.flex = "1";
-
-          if (app.updateAvailable) {
-            openBtn.disabled = isInstalling;
-            openBtn.textContent = isInstalling
-              ? "Actualizando..."
-              : "Actualizar ahora";
-            openBtn.onclick = async () => {
-              isInstalling = true;
-              playSound("others.mp3");
-              showToast(`Actualizando ${app.name}…`);
-              renderDetails(app);
-              try {
-                await window.api.installApp(app);
-                playSound("finish.mp3");
-              } catch (e) {
-                console.error(e);
-              }
-              isInstalling = false;
-              loadApp();
-            };
-          } else {
-            openBtn.onclick = () =>
-              window.api.openApp(
-                app.executablePath || app.paths[0],
-                app.steam === "si",
-              );
-          }
+          openBtn.onclick = () =>
+            window.api.openApp(
+              app.executablePath || app.paths[0],
+              app.steam === "si",
+            );
 
           // Botón Ubicación
           const locBtn = document.createElement("button");

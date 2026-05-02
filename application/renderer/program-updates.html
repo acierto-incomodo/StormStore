@@ -3,219 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestor de Descargas - StormStore</title>
+    <title>Gestor de descargas - StormStore</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="../assets/app.png" />
     <style>
-      .download-container {
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 20px;
-      }
-
-      .download-item {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-        animation: slideUpFade 0.3s ease-out;
-      }
-
-      .download-header {
+      .progress-card {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
+        flex-direction: column;
+        gap: 16px;
       }
-
-      .download-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #fff;
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
       }
-
-      .download-status {
-        padding: 5px 12px;
-        border-radius: 6px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-      }
-
-      .status-downloading {
-        background: rgba(33, 150, 243, 0.2);
-        color: #21f0f3;
-      }
-
-      .status-merging {
-        background: rgba(255, 152, 0, 0.2);
-        color: #ffc107;
-      }
-
-      .status-extracting {
-        background: rgba(76, 175, 80, 0.2);
-        color: #81c784;
-      }
-
-      .status-verifying {
-        background: rgba(156, 39, 176, 0.2);
-        color: #ba68c8;
-      }
-
-      .status-completed {
-        background: rgba(76, 175, 80, 0.2);
-        color: #4caf50;
-      }
-
-      .status-error {
-        background: rgba(244, 67, 54, 0.2);
-        color: #ef5350;
-      }
-
-      .progress-section {
-        margin-bottom: 15px;
-      }
-
-      .progress-label {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.9rem;
-        color: #ccc;
-        margin-bottom: 8px;
-      }
-
-      .progress-bar {
-        width: 100%;
-        height: 8px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        overflow: hidden;
-      }
-
-      .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #2196f3, #21f0f3);
-        border-radius: 4px;
-        transition: width 0.3s ease;
-        box-shadow: 0 0 10px rgba(33, 240, 243, 0.5);
-      }
-
-      .file-list {
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .file-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 0;
-        font-size: 0.9rem;
-        color: #bbb;
-      }
-
-      .file-name {
-        flex: 1;
-        word-break: break-all;
-      }
-
-      .file-size {
-        margin-left: 20px;
-        color: #999;
-        font-size: 0.85rem;
-      }
-
-      .file-status-icon {
-        margin-left: 10px;
-        font-size: 1.2rem;
-      }
-
       .info-row {
         display: flex;
         justify-content: space-between;
-        font-size: 0.85rem;
-        color: #999;
-        margin: 8px 0;
+        gap: 8px;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 16px;
       }
-
-      .info-label {
-        font-weight: 600;
-        color: #bbb;
+      .progress-section {
+        margin-top: 12px;
       }
-
-      .button-group {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
+      #program-select {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        color: #fff;
       }
-
-      .md-btn {
-        flex: 1;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        background: rgba(33, 150, 243, 0.2);
-        color: #2196f3;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        text-transform: uppercase;
+      .progress-bar {
+        width: 100%;
+        height: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #fdd835, #ffffff);
+        transition: width 150ms ease;
+      }
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
         font-size: 0.9rem;
       }
-
-      .md-btn:hover {
-        background: rgba(33, 150, 243, 0.3);
-      }
-
-      .md-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      .md-btn.danger {
-        background: rgba(244, 67, 54, 0.2);
-        color: #ef5350;
-      }
-
-      .md-btn.danger:hover {
-        background: rgba(244, 67, 54, 0.3);
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 60px 20px;
-        color: #999;
-      }
-
-      .empty-state-icon {
-        font-size: 3rem;
-        margin-bottom: 20px;
-      }
-
-      .empty-state h2 {
-        color: #bbb;
-        margin-bottom: 10px;
-      }
-
-      #download-list {
-        min-height: 400px;
-      }
-
-      .speed-info {
-        display: flex;
+      .status-line {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 8px;
+        align-items: center;
         justify-content: space-between;
-        font-size: 0.8rem;
-        color: #999;
-        margin-top: 8px;
       }
-
-      .time-remaining {
-        color: #21f0f3;
+      .status-line strong {
+        color: #fdd835;
+      }
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .button-group button {
+        min-width: 180px;
+      }
+      .progress-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
       }
     </style>
   </head>
-
   <body>
     <aside class="sidebar">
       <div class="sidebar-top">
@@ -224,7 +92,9 @@
           <p class="version" id="app-version"></p>
         </div>
 
-        <button id="back-btn" class="back-button">← Volver</button>
+        <button id="back-to-apps" class="back-button">
+          ← Volver a aplicaciones
+        </button>
 
         <ul id="categories"></ul>
       </div>
@@ -233,21 +103,11 @@
         <p class="studio">StormGamesStudios</p>
 
         <div class="footer-icons">
-          <button data-link="https://github.com/acierto-incomodo">
-            <img src="../assets/icons/github.svg" alt="GitHub" />
-          </button>
-          <button data-link="https://stormgamesstudios.vercel.app/">
-            <img
-              src="../assets/icons/web.svg"
-              alt="Web"
-              style="filter: invert(1)"
-            />
-          </button>
-          <button data-link="https://www.curseforge.com/members/creper1125463">
-            <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
-          </button>
           <button id="open-updates">
             <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+          </button>
+          <button id="open-program-updates">
+            <img src="../assets/icons/download.svg" alt="Descargas" />
           </button>
           <button id="open-licenses">
             <img src="../assets/icons/license.svg" alt="Licencias" />
@@ -261,15 +121,8 @@
 
     <main class="dashboard-layout">
       <div class="main-header">
-        <h1>Descargas</h1>
+        <h1>Gestor de descargas</h1>
         <div class="window-controls">
-          <button class="control-btn" id="open-downloads" title="Descargas">
-            <img
-              src="../assets/icons/download.svg"
-              alt="Descargas"
-              style="width: 20px; height: 20px; filter: invert(1)"
-            />
-          </button>
           <button class="control-btn" id="open-big-picture" title="StormVortex">
             <img
               src="../assets/icons/stormvortex.svg"
@@ -290,383 +143,34 @@
         </div>
       </div>
 
-      <div class="updates-container download-container">
-        <div id="download-list" class="download-list">
-          <div class="empty-state">
-            <div class="empty-state-icon">📥</div>
-            <h2>Sin descargas en progreso</h2>
-            <p>Las descargas aparecerán aquí</p>
+      <div class="updates-container">
+        <div class="update-section progress-card">
+          <h2 id="title-text">Descargando...</h2>
+          <p id="status-text">Iniciando descarga...</p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+
+          <div class="progress-meta">
+            <div class="info-row">
+              <span>Descargado</span>
+              <strong id="downloaded-text">0 B</strong>
+            </div>
+            <div class="info-row">
+              <span>Total</span>
+              <strong id="total-text">-</strong>
+            </div>
+            <div class="info-row">
+              <span>Velocidad</span>
+              <strong id="speed-text">0 B/s</strong>
+            </div>
           </div>
         </div>
       </div>
+
+      <footer id="bp-footer-prompts"></footer>
     </main>
 
-    <script>
-      // Estado de descargas
-      let downloads = new Map();
-
-      // Eventos del backend
-      window.api.onDownloadStart((_event, id, filename, isUpdate) => {
-        addDownload(id, filename, isUpdate);
-        // Activar animación en el botón del header
-        checkActiveDownloads();
-        document
-          .querySelectorAll("#open-downloads")
-          .forEach((btn) => btn.classList.add("downloading-active"));
-      });
-
-      window.api.onDownloadProgress((_event, id, progress) => {
-        updateDownloadProgress(id, progress);
-      });
-
-      window.api.onDownloadComplete((_event, id) => {
-        updateDownloadStatus(id, "completed");
-        // Desactivar animación si no hay más descargas
-        document
-          .querySelectorAll("#open-downloads")
-          .forEach((btn) => btn.classList.remove("downloading-active"));
-        checkActiveDownloads();
-      });
-
-      window.api.onDownloadError((_event, id, error) => {
-        updateDownloadStatus(id, "error", error);
-        checkActiveDownloads();
-      });
-
-      window.api.onDownloadCancelled((_event, id) => {
-        window.location.href = "index.html";
-        window.api.showToast("Se ha cancelado la descarga", 3000);
-      });
-
-      window.api.onMergingStart((_event, id) => {
-        updateDownloadStatus(id, "merging");
-        checkActiveDownloads();
-      });
-
-      window.api.onExtractingStart((_event, id) => {
-        updateDownloadStatus(id, "extracting");
-        checkActiveDownloads();
-      });
-
-      window.api.onVerifyingStart((_event, id) => {
-        updateDownloadStatus(id, "verifying");
-        checkActiveDownloads();
-      });
-
-      function checkActiveDownloads() {
-        const all = Array.from(downloads.values());
-        // Consideramos "activo" si está en cualquier fase que no sea completado, error o cancelado
-        const isAnyBusy = all.some(
-          (d) =>
-            d.status === "downloading" ||
-            d.status === "merging" ||
-            d.status === "extracting" ||
-            d.status === "verifying",
-        );
-
-        // Bloquear/Desbloquear navegación
-        toggleNavigationLock(isAnyBusy);
-
-        const isAnyDownloading = all.some(
-          (d) =>
-            d.status === "downloading" ||
-            d.status === "merging" ||
-            d.status === "extracting",
-        );
-        if (!isAnyDownloading) {
-          document
-            .querySelectorAll("#open-downloads")
-            .forEach((btn) => btn.classList.remove("downloading-active"));
-        }
-      }
-
-      function toggleNavigationLock(lock) {
-        const footerButtons = Array.from(
-          document.querySelectorAll(".sidebar-footer button")
-        );
-
-        const elementsToHide = [
-          document.getElementById("back-btn"),
-          document.querySelector(".footer-icons"),
-          document.getElementById("open-big-picture"),
-          document.getElementById("open-settings-header"),
-          document.getElementById("min-btn"),
-          document.getElementById("max-btn"),
-          document.getElementById("close-btn"),
-          ...footerButtons,
-        ];
-
-        elementsToHide.forEach((el) => {
-          if (el) {
-            el.style.opacity = lock ? "0.5" : "1";
-            if (el.tagName === "BUTTON") {
-              el.disabled = lock;
-            }
-          }
-        });
-      }
-
-      // RECUPERAR DESCARGAS ACTIVAS AL CARGAR
-      window.addEventListener("DOMContentLoaded", async () => {
-        const activeDownloads = await window.api.getAllDownloads();
-        if (activeDownloads && activeDownloads.length > 0) {
-          document
-            .querySelectorAll("#open-downloads")
-            .forEach((btn) => btn.classList.add("downloading-active"));
-          activeDownloads.forEach((d) => {
-            addDownload(d.id, d.config.name, d.isUpdate, d.config.extractPath);
-
-            updateDownloadStatus(d.id, d.status);
-            updateDownloadProgress(d.id, {
-              percent: d.progress,
-              speed: d.speed,
-              timeRemaining: d.timeRemaining,
-              downloadedSize: d.downloaded,
-              totalSize: d.total,
-            });
-          });
-        }
-        // Verificar estado inicial al cargar la página
-        checkActiveDownloads();
-      });
-
-      function addDownload(id, filename, isUpdate, extractPath = "-") {
-        const list = document.getElementById("download-list");
-
-        // Limpiar estado vacío
-        if (list.querySelector(".empty-state")) {
-          list.innerHTML = "";
-        }
-
-        const actionText = isUpdate ? "Actualizando" : "Instalando";
-
-        const download = {
-          id,
-          filename,
-          status: "downloading",
-          progress: 0,
-          files: [],
-          speed: 0,
-          timeRemaining: 0,
-        };
-
-        downloads.set(id, download);
-
-        const html = `
-          <div class="download-item" id="download-${id}">
-            <div class="download-header">
-              <div class="download-title">${actionText}: ${filename}</div>
-              <div class="download-status status-downloading">Descargando</div>
-            </div>
-
-            <div class="progress-section">
-              <div class="progress-label">
-                <span>Progreso</span>
-                <span id="progress-percent-${id}">0%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill-${id}" style="width: 0%"></div>
-              </div>
-              <div class="speed-info">
-                <span id="speed-${id}">Velocidad: 0 MB/s</span>
-                <span id="time-${id}" class="time-remaining">Tiempo: Calculando...</span>
-              </div>
-            </div>
-
-            <div class="info-row">
-              <span class="info-label">Descargado:</span>
-              <span id="downloaded-${id}">0 MB / 0 MB</span>
-            </div>
-
-            <div class="info-row">
-              <span class="info-label">Ubicación:</span>
-              <span id="location-${id}" style="word-break: break-all">${extractPath}</span>
-            </div>
-
-            <div class="file-list" id="files-${id}"></div>
-
-            <div class="button-group">
-              <button class="md-btn danger" id="cancel-${id}" onclick="window.api.cancelDownload('${id}')">
-                Cancelar
-              </button>
-            </div>
-          </div>
-        `;
-
-        list.insertAdjacentHTML("beforeend", html);
-      }
-
-      function updateDownloadProgress(id, progress) {
-        if (!downloads.has(id)) return;
-
-        const download = downloads.get(id);
-        download.progress = progress.percent;
-        download.speed = progress.speed;
-        download.timeRemaining = progress.timeRemaining;
-        download.downloadedSize = progress.downloadedSize;
-        download.totalSize = progress.totalSize;
-
-        // Actualizar barra de progreso
-        const fill = document.getElementById(`progress-fill-${id}`);
-        if (fill) fill.style.width = progress.percent + "%";
-
-        // Actualizar porcentaje
-        const percent = document.getElementById(`progress-percent-${id}`);
-        if (percent) percent.textContent = Math.round(progress.percent) + "%";
-
-        // Actualizar velocidad
-        const speedEl = document.getElementById(`speed-${id}`);
-        if (speedEl) {
-          const speedMB = (progress.speed / (1024 * 1024)).toFixed(2);
-          speedEl.textContent = `Velocidad: ${speedMB} MB/s`;
-        }
-
-        // Actualizar tiempo restante
-        const timeEl = document.getElementById(`time-${id}`);
-        if (timeEl) {
-          const minutes = Math.floor(progress.timeRemaining / 60);
-          const seconds = Math.floor(progress.timeRemaining % 60);
-          timeEl.textContent = `Tiempo: ${minutes}m ${seconds}s`;
-        }
-
-        // Actualizar tamaño descargado
-        const sizeEl = document.getElementById(`downloaded-${id}`);
-        if (sizeEl) {
-          const downloadedMB = (
-            progress.downloadedSize /
-            (1024 * 1024)
-          ).toFixed(2);
-          const totalMB = (progress.totalSize / (1024 * 1024)).toFixed(2);
-          sizeEl.textContent = `${downloadedMB} MB / ${totalMB} MB`;
-        }
-      }
-
-      function updateDownloadStatus(id, status, error = null) {
-        if (!downloads.has(id)) return;
-
-        const download = downloads.get(id);
-        download.status = status;
-
-        const item = document.getElementById(`download-${id}`);
-        if (!item) return;
-
-        // Actualizar botón según status
-        const cancelBtn = document.getElementById(`cancel-${id}`);
-        if (cancelBtn) {
-          if (status === "completed") {
-            cancelBtn.textContent = "Abrir carpeta";
-            cancelBtn.className = "md-btn";
-            cancelBtn.onclick = () => window.api.openFolder(downloads.get(id).extractPath);
-            cancelBtn.disabled = false;
-            cancelBtn.style.opacity = "1";
-            cancelBtn.style.display = "block";
-          } else if (status === "error" || status === "cancelled") {
-            cancelBtn.textContent = "Reintentar";
-            cancelBtn.className = "md-btn";
-            cancelBtn.onclick = () => window.api.retryDownload(id);
-            cancelBtn.disabled = false;
-            cancelBtn.style.opacity = "1";
-            cancelBtn.style.display = "block";
-          } else if (status === "downloading") {
-            cancelBtn.textContent = "Cancelar";
-            cancelBtn.className = "md-btn danger";
-            cancelBtn.onclick = () => window.api.cancelDownload(id);
-            cancelBtn.disabled = false;
-            cancelBtn.style.opacity = "1";
-            cancelBtn.style.display = "block";
-          } else {
-            // merging, extracting, verifying
-            cancelBtn.disabled = true;
-            cancelBtn.style.opacity = "0.5";
-            cancelBtn.textContent = "Procesando...";
-          }
-        }
-
-        const statusEl = item.querySelector(".download-status");
-        if (statusEl) {
-          statusEl.className = `download-status status-${status}`;
-        const statusTexts = {
-            downloading: "Descargando",
-            merging: "Combinando archivos",
-            extracting: "Descomprimiendo",
-            verifying: "Verificando",
-            completed: "Completado",
-            error: "Error",
-            cancelled: "Cancelado",
-          };
-          statusEl.textContent = statusTexts[status] || status;
-        }
-
-        if (status === "error" && error) {
-          const fileList = item.querySelector(".file-list");
-          if (fileList) {
-            fileList.innerHTML = `<div style="color: #ef5350; padding: 10px 0;">⚠️ Error: ${error}</div>`;
-          }
-        }
-      }
-
-      // Botones de navegación
-      document.getElementById("back-btn").addEventListener("click", () => {
-        window.location.href = "index.html";
-      });
-
-      // Cargar versión
-      window.api.getAppVersion().then((v) => {
-        const versionEl = document.getElementById("app-version");
-        if (versionEl) versionEl.textContent = "v" + v;
-      });
-
-      // Footer links
-      document.getElementById("open-updates")?.addEventListener("click", () => {
-        window.location.href = "updates.html";
-      });
-      document
-        .getElementById("open-licenses")
-        ?.addEventListener("click", () => {
-          window.location.href = "licencias.html";
-        });
-      document
-        .getElementById("open-big-picture")
-        ?.addEventListener("click", () => {
-          window.api.openBigPicture();
-        });
-      document.getElementById("open-info")?.addEventListener("click", () => {
-        window.location.href = "info.html";
-      });
-      document
-        .getElementById("open-settings-header")
-        ?.addEventListener("click", () => {
-          window.location.href = "settings.html";
-        });
-
-      // Footer links (Social)
-      document
-        .querySelectorAll(".sidebar-footer button[data-link]")
-        .forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const url = btn.getAttribute("data-link");
-            window.open(url);
-          });
-        });
-
-      // Controles de ventana
-      document
-        .getElementById("min-btn")
-        ?.addEventListener("click", () => window.api.minimizeWindow());
-      document
-        .getElementById("close-btn")
-        ?.addEventListener("click", () => window.api.closeWindow());
-
-      const maxBtn = document.getElementById("max-btn");
-      if (maxBtn) {
-        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
-        window.api.isMaximized().then((isMax) => {
-          maxBtn.textContent = isMax ? "❐" : "◻";
-        });
-        window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
-        window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
-      }
-    </script>
-    <script src="gamepad-global.js"></script>
+    <script src="program-updates.js"></script>
   </body>
 </html>
