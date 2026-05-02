@@ -1,14 +1,17 @@
+# StormStore v2.0.0
 
-# StormStore v1.5.2
 ## Cambios:
+
 ### Nuevo:
-- Se ha mejorado el soporte en diferentes dispositivos.
-- Se ha optimizado el sistema de descargas.
-- Mejoras visuales.
+- Nuevo sistema de descargas para los videojuegos.
+- Sistema de descargas unificado.
+- Cambios en el sistema de actualizaciones.
+- Mejoras en las actualizaciones
 
 ### Corrección de Errores:
-- Se han corregido varios errores en el sonido.
 - Se ha corregido el error de renderizado de los iconos de los programas y videojuegos.
+- Mejor estabilidad del programa.
+- Mejor funcionamiento en secciones extras.
 
 ---
 
