@@ -852,6 +852,23 @@ async function installFilesAppLogic(fileApp) {
   const extractPath = resolveWindowsPath(fileApp.extractPath || path.dirname(finalZipPath));
   if (!fs.existsSync(extractPath)) {
     fs.mkdirSync(extractPath, { recursive: true });
+  } else {
+    // Eliminar archivos antiguos antes de extraer los nuevos
+    try {
+      const files = fs.readdirSync(extractPath);
+      for (const file of files) {
+        const filePath = path.join(extractPath, file);
+        const stat = fs.statSync(filePath);
+        if (stat.isDirectory()) {
+          fs.rmSync(filePath, { recursive: true, force: true });
+        } else {
+          fs.unlinkSync(filePath);
+        }
+      }
+      console.log(`Archivos antiguos eliminados de: ${extractPath}`);
+    } catch (err) {
+      console.warn(`No se pudieron eliminar archivos antiguos en ${extractPath}:`, err.message);
+    }
   }
 
   sendInstallProgress({

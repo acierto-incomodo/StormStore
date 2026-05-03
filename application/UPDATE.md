@@ -1,19 +1,14 @@
-# StormStore v2.0.0
+# StormStore v2.0.1
 
 ## Cambios:
 
 ### Nuevo:
-- Nuevo sistema de descargas para los videojuegos.
-- Sistema de descargas unificado.
-- Cambios en el sistema de actualizaciones.
-- Mejoras en las actualizaciones
+- Se eliminan todos los datos antiguos antes de actualizar el programa/videojuego.
 
 ### Corrección de Errores:
-- Se ha corregido el error de renderizado de los iconos de los programas y videojuegos.
-- Mejor estabilidad del programa.
-- Mejor funcionamiento en secciones extras.
+- Se ha corregido varios errores en la funcinalidad.
 
 ---
 
 El equipo de StormGamesStudios.
-**Full Changelog**: https://github.com/acierto-incomodo/StormStore/compare/v1.5.1...v1.5.2
+**Full Changelog**: https://github.com/acierto-incomodo/StormStore/compare/v2.0.0...v2.0.1
