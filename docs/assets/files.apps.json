@@ -205,6 +205,21 @@
     "downloadUrl": "https://github.com/acierto-incomodo/GolfItGame/releases/latest/download/"
   },
   {
+    "id": "hollow-knight",
+    "name": "Hollow Knight",
+    "files": [
+      "Build.zip.001"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnight/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnight/game/Build/Build/hollow_knight.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnight/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/hollow-knight-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/hollow-knight-game/releases/latest/download/"
+  },
+  {
     "id": "hollow-knight-silksong",
     "name": "Hollow Knight: Silksong",
     "files": [
@@ -235,6 +250,22 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/hytale/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/hytale/releases/latest/download/"
+  },
+  {
+    "id": "left4dead",
+    "name": "Left 4 Dead",
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/left4dead/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/left4dead/game/Build/Build/left4dead.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/left4dead/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/left4dead-game/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/left4dead-game/releases/latest/download/"
   },
   {
     "id": "lethal-company",

@@ -270,6 +270,23 @@
     "verified": "false"
   },
   {
+    "id": "hollow-knight",
+    "name": "Hollow Knight",
+    "description": "Hollow Knight es un juego de acción y exploración tipo metroidvania ambientado en un mundo subterráneo oscuro y misterioso, donde controlas a un pequeño caballero que recorre ruinas, combate enemigos desafiantes y desbloquea nuevas habilidades para acceder a zonas antes inaccesibles; destaca por su combate preciso, su atmósfera melancólica y una narrativa sutil que se descubre explorando.",
+    "category": "Juegos",
+    "icon": "../assets/apps/hollow-knight.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/HollowKnight/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/hollow-knight-game/releases/latest/download/HollowKnight_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnight/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "hollow-knight-silksong",
     "name": "Hollow Knight: Silksong",
     "description": "Secuela de Hollow Knight en la que controlas a Hornet, explorando un reino nuevo lleno de enemigos, habilidades y secretos. Es un juego de acción y aventura tipo metroidvania, con combate preciso y mundos extensos por descubrir.",
@@ -319,6 +336,23 @@
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "true"
+  },
+  {
+    "id": "left4dead",
+    "name": "Left 4 Dead",
+    "description": "Left 4 Dead es un juego de disparos en primera persona centrado en el cooperativo, donde cuatro supervivientes deben abrirse paso a través de escenarios infestados de zombis mientras colaboran para sobrevivir; destaca por su ritmo intenso, enemigos especiales que obligan a trabajar en equipo y un sistema dinámico que adapta la dificultad y los eventos para hacer cada partida diferente.",
+    "category": "Juegos",
+    "icon": "../assets/apps/left4dead.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/left4dead/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/left4dead/releases/latest/download/Left4Dead_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/left4dead/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
   },
   {
     "id": "lethal-company",
