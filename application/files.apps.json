@@ -102,11 +102,7 @@
   {
     "id": "fastfood",
     "name": "Fast Food Simulator",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/game/Build",
@@ -207,9 +203,7 @@
   {
     "id": "hollow-knight",
     "name": "Hollow Knight",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnight/game/Build",
@@ -222,10 +216,7 @@
   {
     "id": "hollow-knight-silksong",
     "name": "Hollow Knight: Silksong",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/game/Build",
@@ -238,10 +229,7 @@
   {
     "id": "hytale",
     "name": "Hytale",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/game/Build",
@@ -254,10 +242,7 @@
   {
     "id": "left4dead",
     "name": "Left 4 Dead",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/left4dead/game/Build",
@@ -270,9 +255,7 @@
   {
     "id": "lethal-company",
     "name": "Lethal Company",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/game/Build",
@@ -296,11 +279,22 @@
     "downloadUrl": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/"
   },
   {
+    "id": "miside",
+    "name": "MiSide",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MiSide/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MiSide/game/Build/Build/MiSideFull.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MiSide/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/miside/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/miside/releases/latest/download/"
+  },
+  {
     "id": "miside-zero",
     "name": "MiSide Zero",
-    "files": [
-      "Build.zip.001"
-  ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/game/Build",
@@ -313,10 +307,7 @@
   {
     "id": "motortown",
     "name": "Motor Town",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MotorTown/game/Build",
@@ -355,10 +346,7 @@
   {
     "id": "peak",
     "name": "PEAK",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PEAK/game/Build",
@@ -371,10 +359,7 @@
   {
     "id": "peopleplayground",
     "name": "People Playground",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game/Build",
@@ -387,10 +372,7 @@
   {
     "id": "repo",
     "name": "R.E.P.O.",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game/Build",
@@ -403,9 +385,7 @@
   {
     "id": "rv-there-yet",
     "name": "RV There Yet?",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/game/Build",
@@ -431,10 +411,7 @@
   {
     "id": "schedule1",
     "name": "Schedule I",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game/Build",
@@ -447,9 +424,7 @@
   {
     "id": "sideeffects",
     "name": "Side Effects",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/game/Build",
@@ -483,12 +458,24 @@
     "downloadUrl": "https://github.com/acierto-incomodo/space-engineers-game/releases/latest/download/"
   },
   {
+    "id": "stardewvalley",
+    "name": "Stardew Valley",
+    "files": [
+      "Build.zip.001"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/StardewValley/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/StardewValley/game/Build/Build/Stardew Valley.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/StardewValley/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/StardewValleyGame/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/StardewValleyGame/releases/latest/download/"
+  },
+  {
     "id": "subnautica",
     "name": "Subnautica",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Subnautica/game/Build",
@@ -521,11 +508,7 @@
   {
     "id": "theforest",
     "name": "The Forest",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/game/Build",
@@ -538,10 +521,7 @@
   {
     "id": "theplanetcrafter",
     "name": "The Planet Crafter",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/game/Build",

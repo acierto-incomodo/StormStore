@@ -390,6 +390,23 @@
     "verified": "false"
   },
   {
+    "id": "miside",
+    "name": "MiSide",
+    "description": "MiSide es un juego indie de terror psicológico que comienza como una experiencia aparentemente tranquila de vida cotidiana, pero poco a poco se vuelve inquietante y perturbadora a medida que la realidad se distorsiona; el jugador interactúa con una chica dentro de un entorno tipo simulador, tomando decisiones y explorando detalles que revelan una historia oscura centrada en la obsesión, el control y la pérdida de la normalidad.",
+    "category": "Juegos",
+    "icon": "../assets/apps/miside.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MiSide/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/miside/releases/latest/download/MiSide_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MiSide/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "miside-zero",
     "name": "MiSide Zero",
     "description": "La demo de MiSide Zero es una pequeña versión jugable de un proyecto hecho por fans que sirve como precuela del juego original MiSide. En ella te pones en la piel de Zero, un personaje rubio que explora el mundo de MiSide aproximadamente un año antes de los eventos principales.",
@@ -617,6 +634,23 @@
     ],
     "download": "https://github.com/acierto-incomodo/space-engineers-game/releases/latest/download/SpaceEngineers_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SpaceEngineers/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
+    "id": "stardewvalley",
+    "name": "Stardew Valley",
+    "description": "Stardew Valley es un juego de agricultura y rol en el que los jugadores heredan una granja en decadencia y deben restaurarla, cultivar cultivos, criar animales, minar, pescar y socializar con los habitantes del pueblo.",
+    "category": "Juegos",
+    "icon": "../assets/apps/stardewvalley.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/StardewValley/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/StardewValleyGame/releases/latest/download/StardewValley_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/StardewValley/unins000.exe",
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
