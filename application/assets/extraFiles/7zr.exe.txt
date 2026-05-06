@@ -1,0 +1,5 @@
+1) Descargar de https://www.7-zip.org/download.html el "7-Zip Extra: standalone console version, 7z DLL, Plugin for Far Manager".
+2) Extraer archivos.
+3) Renombrar 7za.exe a 7zr.exe.
+4) Agregar el nuevo 7zr.exe.
+5) Hacer lo mismo con 7za.dll y agregarlo tambien.

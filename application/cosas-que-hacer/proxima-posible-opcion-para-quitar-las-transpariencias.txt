@@ -1,0 +1,8 @@
+en el main.js en la ventana (queda bonito):
+backgroundColor: "#121212",
+titleBarStyle: "hidden",
+titleBarOverlay: {
+    color: "#121212",
+    symbolColor: "#ffffff",
+    height: 40,
+},

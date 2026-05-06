@@ -11,13 +11,13 @@ const {
   Tray,
   Menu,
 } = require("electron");
+const crypto = require("crypto");
 const path = require("path");
 const fs = require("fs");
 const https = require("https");
 const { pathToFileURL } = require("url");
 const { spawn, exec } = require("child_process");
 const { autoUpdater } = require("electron-updater");
-const extractZip = require("extract-zip");
 const SteamPath = require("steam-path");
 const gameScanner = require("@equal-games/game-scanner");
 const DiscordRPC = require("discord-rpc");
@@ -119,29 +119,41 @@ function createTray() {
   if (tray) return;
   tray = new Tray(path.join(__dirname, "assets/app.ico"));
   const contextMenu = Menu.buildFromTemplate([
-    { label: "Abrir StormStore", click: () => {
-      mainWindow.show();
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
-    }},
-    { label: "Modo StormVortex", click: () => {
-      mainWindow.show();
-      mainWindow.setFullScreen(true);
-      mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
-      setActivity();
-      mainWindow.focus();
-    }},
-    { label: "Buscar actualizaciones", click: () => {
-      mainWindow.show();
-      mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
-      autoUpdater.checkForUpdates();
-    }},
+    {
+      label: "Abrir StormStore",
+      click: () => {
+        mainWindow.show();
+        if (mainWindow.isMinimized()) mainWindow.restore();
+        mainWindow.focus();
+      },
+    },
+    {
+      label: "Modo StormVortex",
+      click: () => {
+        mainWindow.show();
+        mainWindow.setFullScreen(true);
+        mainWindow.loadFile(path.join(__dirname, "renderer/bigpicture.html"));
+        setActivity();
+        mainWindow.focus();
+      },
+    },
+    {
+      label: "Buscar actualizaciones",
+      click: () => {
+        mainWindow.show();
+        mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
+        autoUpdater.checkForUpdates();
+      },
+    },
     { type: "separator" },
-    { label: "Reiniciar StormStore", click: () => {
-      app.isQuiting = true;
-      app.relaunch();
-      app.exit(0);
-    }},
+    {
+      label: "Reiniciar StormStore",
+      click: () => {
+        app.isQuiting = true;
+        app.relaunch();
+        app.exit(0);
+      },
+    },
     { type: "separator" },
     {
       label: "Salir",
@@ -326,7 +338,12 @@ function createWindow() {
     minWidth: 1226,
     minHeight: 750,
     backgroundColor: "#00000000",
-    frame: false,
+    titleBarStyle: "hidden",
+    titleBarOverlay: {
+      color: "#121212",
+      symbolColor: "#ffffff",
+      height: 40,
+    },
     show: false,
     backgroundMaterial: "mica",
     autoHideMenuBar: true,
@@ -352,7 +369,9 @@ function createWindow() {
   const startInBigPicture = process.argv.some((arg) =>
     vortexFlags.includes(arg),
   );
-  const isSilentStart = (settings.start_minimized || process.argv.includes("--start-minimized")) && !startInBigPicture;
+  const isSilentStart =
+    (settings.start_minimized || process.argv.includes("--start-minimized")) &&
+    !startInBigPicture;
 
   win.loadFile(
     path.join(
@@ -366,7 +385,7 @@ function createWindow() {
       win.setFullScreen(true);
       win.show();
     } else if (isSilentStart) {
-      // Si es inicio silencioso, no llamamos a win.show(). 
+      // Si es inicio silencioso, no llamamos a win.show().
       // La ventana permanece oculta y solo el icono de la bandeja será visible.
       console.log("StormStore: Iniciando en modo silencioso (solo bandeja).");
     } else {
@@ -403,6 +422,24 @@ function createWindow() {
 // -----------------------------
 function resolveWindowsPath(p) {
   return path.normalize(p.replace(/%appdata%/gi, app.getPath("appData")));
+}
+
+function clearDirectory(folderPath) {
+  if (!folderPath) return;
+  try {
+    const resolved = resolveWindowsPath(folderPath);
+    if (!resolved || resolved === path.parse(resolved).root) {
+      console.warn("Skipping delete of invalid or root path:", resolved);
+      return;
+    }
+    if (fs.existsSync(resolved)) {
+      fs.rmSync(resolved, { recursive: true, force: true });
+    }
+    fs.mkdirSync(resolved, { recursive: true });
+  } catch (err) {
+    console.error("Error clearing directory:", err);
+    throw err;
+  }
 }
 
 function findExecutable(p) {
@@ -613,7 +650,7 @@ async function downloadFile(url, dest) {
 
 function resolveUrlPath(downloadUrl, fileName) {
   const normalized = downloadUrl.replace(/\/+$/g, "");
-  return `${normalized.replace(/\\/g, '/')}/${encodeURIComponent(fileName)}`;
+  return `${normalized.replace(/\\/g, "/")}/${encodeURIComponent(fileName)}`;
 }
 
 function sendInstallProgress(progress) {
@@ -622,14 +659,19 @@ function sendInstallProgress(progress) {
   }
 }
 
-async function downloadFileWithProgress(url, dest, onProgress) {
+async function downloadFileWithProgress(
+  url,
+  dest,
+  onProgress,
+  validate = true,
+) {
   const tempDest = dest + ".tmp";
   if (!fs.existsSync(path.dirname(dest))) {
     fs.mkdirSync(path.dirname(dest), { recursive: true });
   }
 
   return new Promise((resolve, reject) => {
-    const download = (downloadUrl) => {
+    const download = (downloadUrl, retryCount = 0) => {
       const file = fs.createWriteStream(tempDest);
       let totalBytes = 0;
       let downloadedBytes = 0;
@@ -641,11 +683,20 @@ async function downloadFileWithProgress(url, dest, onProgress) {
           if (res.statusCode === 301 || res.statusCode === 302) {
             file.close();
             fs.unlink(tempDest, () => {});
-            return download(res.headers.location);
+            return download(res.headers.location, retryCount);
           }
           if (res.statusCode !== 200) {
             file.close();
             fs.unlink(tempDest, () => {});
+            if (retryCount < 2) {
+              console.warn(
+                `Download failed with status ${res.statusCode}, retrying (${retryCount + 1}/2)...`,
+              );
+              return setTimeout(
+                () => download(downloadUrl, retryCount + 1),
+                2000,
+              );
+            }
             return reject(new Error(`Status ${res.statusCode}`));
           }
 
@@ -676,7 +727,52 @@ async function downloadFileWithProgress(url, dest, onProgress) {
                   fs.unlink(tempDest, () => {});
                   reject(err);
                 } else {
-                  resolve({ downloaded: downloadedBytes, total: totalBytes });
+                  // Log downloaded file info before validation
+                  const stats = fs.statSync(dest);
+                  const buffer = Buffer.alloc(Math.min(stats.size, 16)); // Read first 16 bytes
+                  fs.readSync(
+                    fs.openSync(dest, "r"),
+                    buffer,
+                    0,
+                    buffer.length,
+                    0,
+                  );
+                  console.log(
+                    `[Download Debug] File: ${dest}, Size: ${stats.size} bytes, First 16 bytes (hex): ${buffer.toString("hex")}`,
+                  );
+
+                  if (!validate) {
+                    return resolve({
+                      downloaded: downloadedBytes,
+                      total: totalBytes,
+                    });
+                  }
+
+                  validateZipFile(dest)
+                    .then(() =>
+                      resolve({
+                        downloaded: downloadedBytes,
+                        total: totalBytes,
+                      }),
+                    )
+                    .catch((validationErr) => {
+                      console.warn(
+                        `Downloaded file is invalid: ${validationErr.message}. Retrying...`,
+                      );
+                      fs.unlink(dest, () => {});
+                      if (retryCount < 2) {
+                        setTimeout(
+                          () => download(downloadUrl, retryCount + 1),
+                          2000,
+                        );
+                      } else {
+                        reject(
+                          new Error(
+                            `Invalid ZIP after ${retryCount + 1} retries: ${validationErr.message}`,
+                          ),
+                        );
+                      }
+                    });
                 }
               });
             });
@@ -685,10 +781,61 @@ async function downloadFileWithProgress(url, dest, onProgress) {
         .on("error", (err) => {
           file.close();
           fs.unlink(tempDest, () => {});
+          if (retryCount < 2) {
+            console.warn(
+              `Download error: ${err.message}. Retrying (${retryCount + 1}/2)...`,
+            );
+            return setTimeout(
+              () => download(downloadUrl, retryCount + 1),
+              2000,
+            );
+          }
           reject(err);
         });
     };
     download(url);
+  });
+}
+
+function validateZipFile(filePath) {
+  return new Promise((resolve, reject) => {
+    try {
+      const stats = fs.statSync(filePath);
+      if (stats.size < 100) {
+        return reject(
+          new Error(
+            `El archivo descargado es demasiado pequeño (${stats.size} bytes). Posible descarga fallida.`,
+          ),
+        );
+      }
+
+      const zipBuffer = Buffer.alloc(4);
+      const fd = fs.openSync(filePath, "r");
+      fs.readSync(fd, zipBuffer, 0, 4, 0);
+      fs.closeSync(fd);
+
+      const zipMagic = zipBuffer.toString("hex");
+      // PK (ZIP), 7z, RAR, o 7z Split Volume (332af6cb)
+      const validMagics = [
+        "504b0304",
+        "504b0506",
+        "504b0708",
+        "377abcaf",
+        "52617221",
+        "332af6cb",
+      ];
+      if (!validMagics.includes(zipMagic)) {
+        return reject(
+          new Error(
+            `Formato de archivo no reconocido o corrupto (Magic: ${zipMagic}).`,
+          ),
+        );
+      }
+
+      resolve();
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
@@ -770,29 +917,89 @@ function getCachedFilesApp(id) {
   return filesAppsData.find((item) => item.id === id);
 }
 
+function get7zipPath() {
+  const isPackaged = app.isPackaged;
+  if (isPackaged) {
+    const paths = [
+      path.join(process.resourcesPath, "assets", "extraFiles", "7zr.exe"),
+      path.join(process.resourcesPath, "extraFiles", "7zr.exe"),
+    ];
+    for (const p of paths) {
+      if (fs.existsSync(p)) return p;
+    }
+    return paths[0];
+  }
+  return path.join(__dirname, "assets", "extraFiles", "7zr.exe");
+}
+
 function getCachedApp(id) {
   return appsData.find((item) => item.id === id);
 }
 
+function clearDownloadDir() {
+  const dir = path.join(
+    app.getPath("appData"),
+    "StormGamesStudios",
+    "StormStore",
+    "downloads",
+  );
+  try {
+    if (fs.existsSync(dir)) {
+      // En Windows, rmSync puede fallar con EPERM si el sistema aún bloquea algún archivo.
+      // maxRetries ayuda a mitigar esto reintentando mientras se liberan los handles.
+      fs.rmSync(dir, {
+        recursive: true,
+        force: true,
+        maxRetries: 5,
+        retryDelay: 150,
+      });
+    }
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  } catch (err) {
+    console.error("Error clearing downloads directory:", err);
+  }
+}
+
 async function installFilesAppLogic(fileApp) {
+  clearDownloadDir();
   const downloadDir = getDownloadDir();
   const tempFolder = path.join(downloadDir, fileApp.id);
-  if (!fs.existsSync(tempFolder)) {
-    fs.mkdirSync(tempFolder, { recursive: true });
+  if (fs.existsSync(tempFolder)) {
+    fs.rmSync(tempFolder, {
+      recursive: true,
+      force: true,
+      maxRetries: 5,
+      retryDelay: 150,
+    });
   }
+  fs.mkdirSync(tempFolder, { recursive: true });
 
   const filesToDownload = Array.isArray(fileApp.files) ? fileApp.files : [];
   const downloadBase = fileApp.downloadUrl || "";
   const filePaths = [];
-  let totalExpected = 0;
+  let totalOverallSize = 0;
   let totalDownloaded = 0;
   let lastTotalBytes = 0;
 
-  sendInstallProgress({
-    id: fileApp.id,
-    phase: "prepare",
-    message: "Preparando descarga...",
-  });
+  const resolvedInstallPath = fileApp.extractPath
+    ? resolveWindowsPath(fileApp.extractPath)
+    : null;
+
+  if (resolvedInstallPath) {
+    sendInstallProgress({
+      id: fileApp.id,
+      phase: "prepare",
+      message: "Eliminando archivos previos...",
+      percent: 0,
+    });
+    clearDirectory(fileApp.extractPath);
+  } else {
+    sendInstallProgress({
+      id: fileApp.id,
+      phase: "prepare",
+      message: "Preparando descarga...",
+    });
+  }
 
   for (let index = 0; index < filesToDownload.length; index++) {
     const fileName = filesToDownload[index];
@@ -800,14 +1007,23 @@ async function installFilesAppLogic(fileApp) {
     const partDest = path.join(tempFolder, fileName);
     filePaths.push(partDest);
 
+    // Solo validamos si es el primer archivo (index 0) de un conjunto o un archivo único.
+    // Las partes .002, .003, etc., no tienen cabeceras válidas por sí mismas.
+    const shouldValidate = index === 0;
+
     const fileProgress = await downloadFileWithProgress(
       downloadUrl,
       partDest,
       ({ downloaded, total, speed }) => {
         totalDownloaded = lastTotalBytes + downloaded;
-        const overallPercent = totalExpected ? totalDownloaded / totalExpected : 0;
+        const totalEstimate = Math.max(
+          totalOverallSize,
+          lastTotalBytes + (total || 0),
+        );
+        const percent = totalEstimate > 0 ? totalDownloaded / totalEstimate : 0;
+
         if (mainWindow) {
-          mainWindow.setProgressBar(totalExpected ? totalDownloaded / totalExpected : 2);
+          mainWindow.setProgressBar(percent > 0 ? percent : 2);
         }
         sendInstallProgress({
           id: fileApp.id,
@@ -816,24 +1032,34 @@ async function installFilesAppLogic(fileApp) {
           currentPart: index + 1,
           parts: filesToDownload.length,
           downloaded: totalDownloaded,
-          total: totalExpected || totalDownloaded,
+          total: totalEstimate,
           speed,
-          percent: overallPercent || (total ? downloaded / total : 0),
+          percent: percent,
           message: `Descargando ${fileName}`,
         });
       },
+      shouldValidate,
     );
 
     if (fileProgress.total) {
-      totalExpected += fileProgress.total;
+      totalOverallSize += fileProgress.total;
     }
     lastTotalBytes = totalDownloaded;
   }
 
-  const zipFileName = fileApp.mergedName || filesToDownload[0];
-  const zipFilePath = path.join(tempFolder, zipFileName);
+  if (!filesToDownload.length) {
+    throw new Error("No hay archivos configurados para descargar.");
+  }
 
-  if (fileApp.merge) {
+  let finalZipPath = filePaths[0];
+  // Detectar si es un archivo dividido (.001, .002...) para dejar que 7zip lo una solo
+  const isSplitArchive =
+    filePaths.length > 1 && filePaths[0].toLowerCase().endsWith(".001");
+
+  if (fileApp.merge && filePaths.length > 1 && !isSplitArchive) {
+    const zipFileName = fileApp.mergedName || filesToDownload[0];
+    const zipFilePath = path.join(tempFolder, zipFileName);
+
     sendInstallProgress({
       id: fileApp.id,
       phase: "merge",
@@ -846,29 +1072,37 @@ async function installFilesAppLogic(fileApp) {
         fs.unlinkSync(part);
       }
     });
+    finalZipPath = zipFilePath;
   }
 
-  const finalZipPath = fileApp.merge ? zipFilePath : filePaths[0];
-  const extractPath = resolveWindowsPath(fileApp.extractPath || path.dirname(finalZipPath));
+  if (!finalZipPath || !fs.existsSync(finalZipPath)) {
+    throw new Error(`Archivo de instalación no encontrado: ${finalZipPath}`);
+  }
+
+  sendInstallProgress({
+    id: fileApp.id,
+    phase: "validate",
+    message: "Validando archivo descargado...",
+    percent: 0.95,
+  });
+
+  try {
+    await validateZipFile(finalZipPath);
+  } catch (validationErr) {
+    throw new Error(
+      `Archivo ZIP corrupto o inválido: ${validationErr.message}`,
+    );
+  }
+
+  const extractPath = resolveWindowsPath(
+    fileApp.extractPath || path.dirname(finalZipPath),
+  );
+  const isTempExtraction = extractPath === tempFolder;
   if (!fs.existsSync(extractPath)) {
     fs.mkdirSync(extractPath, { recursive: true });
-  } else {
-    // Eliminar archivos antiguos antes de extraer los nuevos
-    try {
-      const files = fs.readdirSync(extractPath);
-      for (const file of files) {
-        const filePath = path.join(extractPath, file);
-        const stat = fs.statSync(filePath);
-        if (stat.isDirectory()) {
-          fs.rmSync(filePath, { recursive: true, force: true });
-        } else {
-          fs.unlinkSync(filePath);
-        }
-      }
-      console.log(`Archivos antiguos eliminados de: ${extractPath}`);
-    } catch (err) {
-      console.warn(`No se pudieron eliminar archivos antiguos en ${extractPath}:`, err.message);
-    }
+  } else if (!resolvedInstallPath && !isTempExtraction) {
+    fs.rmSync(extractPath, { recursive: true, force: true });
+    fs.mkdirSync(extractPath, { recursive: true });
   }
 
   sendInstallProgress({
@@ -878,12 +1112,56 @@ async function installFilesAppLogic(fileApp) {
     percent: 0,
   });
 
-  await extractZip(finalZipPath, { dir: extractPath });
+  const sevenZipPath = get7zipPath();
+  if (!fs.existsSync(sevenZipPath)) {
+    throw new Error(
+      `No se encontró el ejecutable de extracción en: ${sevenZipPath}`,
+    );
+  }
+
+  const normalizedExtractPath = extractPath.replace(/[\\/]+$/, "");
+  const sevenZipArgs = [
+    "x",
+    finalZipPath,
+    `-o${normalizedExtractPath}`,
+    "-y",
+    "-aoa",
+  ];
+
+  console.log(`[7-Zip Debug] 7-Zip Path: ${sevenZipPath}`);
+  console.log(`[7-Zip Debug] Archive Path: ${finalZipPath}`);
+  console.log(`[7-Zip Debug] Extraction Path: ${extractPath}`);
+  console.log(
+    `[7-Zip Debug] Full Command: ${sevenZipPath} ${sevenZipArgs.join(" ")}`,
+  );
+
+  await new Promise((resolve, reject) => {
+    let stderrData = "";
+    let stdoutData = "";
+    const _7z = spawn(sevenZipPath, sevenZipArgs);
+
+    _7z.stdout.on("data", (data) => {
+      stdoutData += data.toString();
+      console.log(`[7-Zip stdout] ${data}`);
+    });
+    _7z.stderr.on("data", (data) => {
+      stderrData += data.toString();
+      console.error(`[7-Zip stderr] ${data}`);
+    });
+    _7z.on("error", reject);
+    _7z.on("close", (code) => {
+      if (code === 0) return resolve();
+      const errorMessage = `7zip falló con código ${code}. stdout: ${stdoutData.trim()} stderr: ${stderrData.trim()}`;
+      reject(new Error(errorMessage));
+    });
+  });
 
   if (fileApp.checksumUrl && fileApp.checksumFile) {
     try {
       const checksumText = await fetchRemoteText(fileApp.checksumUrl);
-      const checksumDir = resolveWindowsPath(fileApp.checksumPath || fileApp.extractPath);
+      const checksumDir = resolveWindowsPath(
+        fileApp.checksumPath || fileApp.extractPath,
+      );
       if (!fs.existsSync(checksumDir)) {
         fs.mkdirSync(checksumDir, { recursive: true });
       }
@@ -900,13 +1178,10 @@ async function installFilesAppLogic(fileApp) {
     }
   }
 
-  try {
-    if (fs.existsSync(tempFolder)) {
-      fs.rmSync(tempFolder, { recursive: true, force: true });
-    }
-  } catch (err) {
-    console.warn("No se pudieron limpiar archivos temporales:", err.message);
-  }
+  // Añadir un pequeño retraso antes de limpiar para asegurar que los procesos soltaron los archivos
+  setTimeout(() => {
+    clearDownloadDir();
+  }, 2000);
 
   sendInstallProgress({
     id: fileApp.id,
@@ -916,14 +1191,15 @@ async function installFilesAppLogic(fileApp) {
   });
 
   if (mainWindow && !mainWindow.isDestroyed()) {
-    mainWindow.webContents.send("install-complete", true, fileApp.id);
-  }
-
-  if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.webContents.send("install-complete", {
       id: fileApp.id,
+      success: true,
       message: "Instalación completa.",
     });
+    mainWindow.webContents.send(
+      "show-toast",
+      `¡${fileApp.name} se ha instalado correctamente!`,
+    );
   }
 
   try {
@@ -959,7 +1235,10 @@ async function syncFilesAppsData() {
 
     filesAppsData = Array.isArray(data) ? data : [];
     if (FILES_APPS_JSON_CACHE) {
-      fs.writeFileSync(FILES_APPS_JSON_CACHE, JSON.stringify(filesAppsData, null, 2));
+      fs.writeFileSync(
+        FILES_APPS_JSON_CACHE,
+        JSON.stringify(filesAppsData, null, 2),
+      );
     }
     return true;
   } catch (err) {
@@ -1117,7 +1396,7 @@ ipcMain.handle("get-files-apps", async () => {
 });
 
 ipcMain.handle("check-checksum", async (event, id) => {
-  const app = filesAppsData.find(a => a.id === id);
+  const app = filesAppsData.find((a) => a.id === id);
   if (!app) return { needsUpdate: false };
 
   const checksumDir = resolveWindowsPath(app.checksumPath || app.extractPath);
@@ -1125,11 +1404,11 @@ ipcMain.handle("check-checksum", async (event, id) => {
   if (!fs.existsSync(localPath)) return { needsUpdate: true }; // Si no existe local, probablemente necesita instalar
 
   try {
-    const localChecksum = fs.readFileSync(localPath, 'utf8').trim();
+    const localChecksum = fs.readFileSync(localPath, "utf8").trim();
     const onlineChecksum = await fetchRemoteText(app.checksumUrl);
     return { needsUpdate: localChecksum !== onlineChecksum.trim() };
   } catch (e) {
-    console.error('Error checking checksum for', id, e);
+    console.error("Error checking checksum for", id, e);
     return { needsUpdate: false }; // En caso de error, asumir no necesita update
   }
 });
@@ -1313,6 +1592,7 @@ ipcMain.handle("get-epic-games", async () => {
 });
 
 async function installAppLogic(appData) {
+  clearDownloadDir();
   const downloadUrl = appData.download || appData.downloadUrl;
   if (!downloadUrl) {
     throw new Error("No se encontró URL de descarga para esta aplicación");
@@ -1321,26 +1601,31 @@ async function installAppLogic(appData) {
   const downloadDir = getDownloadDir();
   const filePath = path.join(downloadDir, `${appData.id}.exe`);
 
-  await downloadFileWithProgress(downloadUrl, filePath, ({ downloaded, total, percent, speed }) => {
-    if (mainWindow) {
-      if (!isNaN(total) && total > 0) {
-        mainWindow.setProgressBar(downloaded / total);
-      } else {
-        mainWindow.setProgressBar(2);
+  await downloadFileWithProgress(
+    downloadUrl,
+    filePath,
+    ({ downloaded, total, percent, speed }) => {
+      if (mainWindow) {
+        if (!isNaN(total) && total > 0) {
+          mainWindow.setProgressBar(downloaded / total);
+        } else {
+          mainWindow.setProgressBar(2);
+        }
       }
-    }
 
-    sendInstallProgress({
-      id: appData.id,
-      phase: "download",
-      fileName: path.basename(filePath),
-      downloaded,
-      total,
-      percent,
-      speed,
-      message: `Descargando ${path.basename(filePath)}`,
-    });
-  });
+      sendInstallProgress({
+        id: appData.id,
+        phase: "download",
+        fileName: path.basename(filePath),
+        downloaded,
+        total,
+        percent,
+        speed,
+        message: `Descargando ${path.basename(filePath)}`,
+        appName: appData.name || appData.id,
+      });
+    },
+  );
 
   if (mainWindow) mainWindow.setProgressBar(2);
 
@@ -1371,9 +1656,7 @@ async function installAppLogic(appData) {
       }
 
       setTimeout(() => {
-        if (fs.existsSync(filePath)) {
-          fs.unlinkSync(filePath);
-        }
+        clearDownloadDir();
       }, 10000);
 
       if (mainWindow) {
@@ -1387,6 +1670,7 @@ async function installAppLogic(appData) {
         mainWindow.webContents.send("install-complete", {
           id: appData.id,
           message: "Instalación completada",
+          appName: appData.name || appData.id,
         });
       }
       resolve(true);
@@ -1412,6 +1696,7 @@ ipcMain.handle("install-app", async (_, appData) => {
       mainWindow.webContents.send("install-error", {
         id: appData.id,
         message: err.message || "Error de instalación",
+        appName: appData.name || appData.id,
       });
     }
     throw err;
@@ -1440,6 +1725,7 @@ ipcMain.handle("install-program-by-id", async (_, id) => {
       mainWindow.webContents.send("install-error", {
         id,
         message: err.message || "Error de instalación",
+        appName: appItem ? appItem.name : id,
       });
     }
     throw err;
@@ -1512,7 +1798,8 @@ ipcMain.handle("uninstall-app", async (_, uninstallPath) => {
     return true;
   } catch (err) {
     if (err.code === 2 || err.code === 1) {
-      if (mainWindow) mainWindow.webContents.send("show-toast", "Desinstalación cancelada.");
+      if (mainWindow)
+        mainWindow.webContents.send("show-toast", "Desinstalación cancelada.");
       return false;
     }
     console.error("Error al desinstalar:", err.message);
@@ -1700,6 +1987,7 @@ if (!gotLock) {
     }
 
     loadFilesAppsData();
+    clearDownloadDir();
 
     // Manejador del protocolo storm-asset://
     protocol.handle("storm-asset", (request) => {

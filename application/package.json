@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -43,7 +43,8 @@
       "differentialPackage": true
     },
     "extraResources": [
-      "assets/extraFiles/7zr.exe"
+      "assets/extraFiles/7zr.exe",
+      "assets/extraFiles/7zr.dll"
     ],
     "files": [
       "package.json",
@@ -54,7 +55,8 @@
       "renderer/**/*",
       "assets/**/*",
       "settings.json",
-      "!assets/extraFiles/**/*",
+      "cosas-que-hacer/**/*",
+      "!assets/extraFiles/aspnetcore-runtime-8.0.23-win-x64.exe",
       "!assets/media/trailers/**/*",
       "!assets/apps-4096x4096/**/*",
       "!assets/apps-new-quality/**/*",
@@ -75,15 +77,43 @@
     ]
   },
   "devDependencies": {
-    "electron": "^41.3.0",
+    "electron": "^42.0.0",
     "electron-builder": "^26.8.1"
   },
   "dependencies": {
     "@equal-games/game-scanner": "^1.1.4",
+    "@fluentui/react": "^8.125.5",
     "@material/web": "^2.4.1",
+    "@mechanikadesign/custom-electron-titlebar": "^3.2.5",
+    "@ryuziii/discord-rpc": "^1.0.1-rc.1",
+    "@trodi/electron-splashscreen": "^1.0.2",
+    "@vibe/core": "^4.2.0",
+    "axios": "^1.16.0",
+    "create-desktop-shortcuts": "^1.11.1",
+    "crypto": "^1.0.1",
+    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.20",
     "discord-rpc": "^4.0.1",
+    "electron-debug": "^4.1.0",
+    "electron-dl": "^4.0.0",
+    "electron-dl-manager": "^4.2.3",
+    "electron-progressbar": "^2.2.1",
+    "electron-store": "^11.0.2",
     "electron-updater": "^6.8.3",
+    "electron-util": "^1.0.0",
+    "execa": "^9.6.1",
     "extract-zip": "^2.0.1",
-    "steam-path": "^1.0.2"
+    "find-process": "^2.1.1",
+    "fs-extra": "^11.3.4",
+    "get-installed-apps": "^1.1.1",
+    "got": "^15.0.4",
+    "lucide": "^1.14.0",
+    "lucide-react": "^1.14.0",
+    "motion": "^12.38.0",
+    "regedit": "^5.1.4",
+    "remixicon": "^4.9.1",
+    "steam-path": "^1.0.2",
+    "systeminformation": "^5.31.5",
+    "unzipper": "^0.12.3"
   }
 }

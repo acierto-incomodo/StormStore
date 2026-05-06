@@ -1,0 +1,11 @@
+// Ejemplo rápido de lógica manual
+const splash = new BrowserWindow({ width: 500, height: 300, frame: false, transparent: true });
+splash.loadFile('splash.html');
+
+const main = new BrowserWindow({ show: false });
+main.loadFile('index.html');
+
+main.once('ready-to-show', () => {
+  splash.close();
+  main.show();
+});

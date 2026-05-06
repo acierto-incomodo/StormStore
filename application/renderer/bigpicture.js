@@ -98,7 +98,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       icon: "../assets/icons/steam.svg",
       getGames: () => allSteamGames,
     },
-    // { id: 'epic', name: 'Epic Games', icon: '../assets/icons/epic-games.svg', getGames: () => allEpicGames },
+    {
+      id: "epic",
+      name: "Epic Games",
+      icon: "../assets/icons/epic-games.svg",
+      getGames: () => allEpicGames,
+    },
   ];
 
   function detectControllerType(gp) {

@@ -72,60 +72,69 @@ async function load(force = false) {
       await window.api.syncRemoteData();
     }
 
-      const syncPromise = force ? new Promise((r) => setTimeout(r, 1000)) : Promise.resolve();
-      const [newApps, filesApps] = await Promise.all([
-        window.api.getApps(),
-        window.api.getFilesApps(),
-        syncPromise,
-      ]);
+    const syncPromise = force
+      ? new Promise((r) => setTimeout(r, 1000))
+      : Promise.resolve();
+    const [newApps, filesApps] = await Promise.all([
+      window.api.getApps(),
+      window.api.getFilesApps(),
+      syncPromise,
+    ]);
 
-      const fileAppsById = new Map((filesApps || []).map((fileApp) => [fileApp.id, fileApp]));
-      const mergedApps = newApps.map((app) => ({
-        ...app,
-        fileApp: fileAppsById.get(app.id),
-      }));
+    const fileAppsById = new Map(
+      (filesApps || []).map((fileApp) => [fileApp.id, fileApp]),
+    );
+    const mergedApps = newApps.map((app) => ({
+      ...app,
+      fileApp: fileAppsById.get(app.id),
+    }));
 
-      // Check for updates on installed fileApps
-      const checksumChecks = mergedApps
-        .filter(app => app.fileApp && app.installed)
-        .map(async app => {
-          try {
-            const result = await window.api.checkChecksum(app.id);
-            app.updateAvailable = result.needsUpdate;
-          } catch (e) {
-            console.error('Error checking checksum for', app.id, e);
-            app.updateAvailable = false;
-          }
-        });
-      await Promise.all(checksumChecks);
+    // Check for updates on installed fileApps
+    const checksumChecks = mergedApps
+      .filter((app) => app.fileApp && app.installed)
+      .map(async (app) => {
+        try {
+          const result = await window.api.checkChecksum(app.id);
+          app.updateAvailable = result.needsUpdate;
+        } catch (e) {
+          console.error("Error checking checksum for", app.id, e);
+          app.updateAvailable = false;
+        }
+      });
+    await Promise.all(checksumChecks);
 
-      // Show/hide update all button
-      const hasUpdates = mergedApps.some(app => app.updateAvailable);
-      const updateAllBtn = document.getElementById('update-all-btn');
-      if (updateAllBtn) {
-        updateAllBtn.style.display = hasUpdates ? 'block' : 'none';
-        updateAllBtn.onclick = () => {
-          const ids = mergedApps.filter(app => app.updateAvailable).map(app => app.id).join(',');
-          window.location.href = `program-updates.html?batch=true&ids=${ids}`;
-        };
-      }
+    // Show/hide update all button
+    const hasUpdates = mergedApps.some((app) => app.updateAvailable);
+    const updateAllBtn = document.getElementById("update-all-btn");
+    if (updateAllBtn) {
+      updateAllBtn.style.display = hasUpdates ? "block" : "none";
+      updateAllBtn.onclick = () => {
+        const ids = mergedApps
+          .filter((app) => app.updateAvailable)
+          .map((app) => app.id)
+          .join(",");
+        window.location.href = `program-updates.html?batch=true&ids=${ids}`;
+      };
+    }
 
-      // Comprobación inteligente de cambios: Ignoramos el campo 'icon' para evitar
-      // que la descarga de imágenes en segundo plano dispare la animación de la UI constantemente.
-      const stripIcons = (apps) => apps.map(({ icon, ...rest }) => ({ ...rest }));
-      const structuralChange = JSON.stringify(stripIcons(mergedApps)) !== JSON.stringify(stripIcons(allApps));
-      const hasChanged = force || structuralChange;
+    // Comprobación inteligente de cambios: Ignoramos el campo 'icon' para evitar
+    // que la descarga de imágenes en segundo plano dispare la animación de la UI constantemente.
+    const stripIcons = (apps) => apps.map(({ icon, ...rest }) => ({ ...rest }));
+    const structuralChange =
+      JSON.stringify(stripIcons(mergedApps)) !==
+      JSON.stringify(stripIcons(allApps));
+    const hasChanged = force || structuralChange;
 
-      if (hasChanged) {
-        allApps = mergedApps;
-        renderCategories();
-        if (searchInput && searchInput.value !== currentSearch)
-          searchInput.value = currentSearch;
-        renderApps(currentCategory);
-      } else {
-        // Actualizamos los datos internamente pero sin re-renderizar la UI (evita el flash/animación)
-        allApps = mergedApps;
-      }
+    if (hasChanged) {
+      allApps = mergedApps;
+      renderCategories();
+      if (searchInput && searchInput.value !== currentSearch)
+        searchInput.value = currentSearch;
+      renderApps(currentCategory);
+    } else {
+      // Actualizamos los datos internamente pero sin re-renderizar la UI (evita el flash/animación)
+      allApps = mergedApps;
+    }
   } catch (err) {
     console.error("Error loading apps:", err);
     showToast("Error cargando aplicaciones. Intenta recargar.");
@@ -181,10 +190,16 @@ function renderApps(category) {
         const desc = (a.description || "").toLowerCase();
         return name.includes(q) || desc.includes(q);
       })
-      .forEach((app, index) => appsContainer.appendChild(createAppCard(app, index)));
+      .forEach((app, index) =>
+        appsContainer.appendChild(createAppCard(app, index)),
+      );
   };
 
-  if (category && category !== currentCategory && document.startViewTransition) {
+  if (
+    category &&
+    category !== currentCategory &&
+    document.startViewTransition
+  ) {
     document.startViewTransition(updateDOM);
   } else {
     updateDOM();
@@ -211,10 +226,26 @@ function createAppCard(app, index) {
   imgContainer.appendChild(icon);
 
   // Badges
-  if (app.verified === "true") imgContainer.appendChild(createBadge("Verificado", "../assets/icons/verified.svg", "verified-req-badge"));
-  if (app.steam === "si") imgContainer.appendChild(createBadge("Steam", "../assets/icons/steam.svg", "steam-req-badge"));
-  if (app.wifi === "si") imgContainer.appendChild(createBadge("WiFi", "../assets/icons/wifi.svg", "wifi-req-badge"));
-  if (app["virus-alert"] === "alert") imgContainer.appendChild(createBadge("Virus", "../assets/icons/virus.svg", "virus-req-badge"));
+  if (app.verified === "true")
+    imgContainer.appendChild(
+      createBadge(
+        "Verificado",
+        "../assets/icons/verified.svg",
+        "verified-req-badge",
+      ),
+    );
+  if (app.steam === "si")
+    imgContainer.appendChild(
+      createBadge("Steam", "../assets/icons/steam.svg", "steam-req-badge"),
+    );
+  if (app.wifi === "si")
+    imgContainer.appendChild(
+      createBadge("WiFi", "../assets/icons/wifi.svg", "wifi-req-badge"),
+    );
+  if (app["virus-alert"] === "alert")
+    imgContainer.appendChild(
+      createBadge("Virus", "../assets/icons/virus.svg", "virus-req-badge"),
+    );
 
   const sinWifi = document.createElement("img");
   sinWifi.src = "../assets/icons/sin-wifi.svg";
@@ -246,9 +277,13 @@ function createAppCard(app, index) {
     openBtn.textContent = app.updateAvailable ? "Actualizar" : "Abrir";
     openBtn.className = "md-btn md-btn-filled";
     openBtn.style.flex = "1";
-    openBtn.onclick = app.updateAvailable 
-      ? () => window.location.href = `program-updates.html?id=${app.id}`
-      : () => window.api.openApp(app.fileApp?.executablePath || app.executablePath || app.paths[0], app.steam === "si");
+    openBtn.onclick = app.updateAvailable
+      ? () => (window.location.href = `program-updates.html?id=${app.id}`)
+      : () =>
+          window.api.openApp(
+            app.fileApp?.executablePath || app.executablePath || app.paths[0],
+            app.steam === "si",
+          );
     if (isUninstalling) openBtn.style.display = "none";
     topRow.appendChild(openBtn);
 
@@ -264,24 +299,32 @@ function createAppCard(app, index) {
       uninstallBtn.textContent = hasUninstaller ? "Desinstalar" : "Eliminar";
       uninstallBtn.onclick = async (e) => {
         e.stopPropagation();
-        if (!hasUninstaller && !confirm("¿Eliminar carpeta de la aplicación?")) return;
-        
+        if (
+          !hasUninstaller &&
+          !confirm("¿Quieres eliminar la carpeta de la aplicación?")
+        )
+          return;
+
         uninstallingApps.add(app.id);
         playSound("others.mp3");
-        showToast(hasUninstaller ? `Desinstalando ${app.name}…` : `Eliminando archivos de ${app.name}…`);
+        showToast(
+          hasUninstaller
+            ? `Desinstalando ${app.name}…`
+            : `Eliminando archivos de ${app.name}…`,
+        );
         renderApps(currentCategory);
-        
+
         try {
           if (hasUninstaller) await window.api.uninstallApp(app.uninstall);
           else await window.api.deleteAppFolder(app.paths[0]);
           playSound("finish.mp3");
-        } catch (error) { 
-          if (!error.message.includes("INSTALL_CANCELLED")) console.error(error); 
-        }
-        finally { 
-          uninstallingApps.delete(app.id); 
+        } catch (error) {
+          if (!error.message.includes("INSTALL_CANCELLED"))
+            console.error(error);
+        } finally {
+          uninstallingApps.delete(app.id);
           renderApps(currentCategory); // Actualizar UI inmediatamente
-          await load(); 
+          await load();
         }
       };
     }
@@ -297,14 +340,18 @@ function createAppCard(app, index) {
     if (app["share-compatibility"] === "si") {
       const shareBtn = createIconButton("../assets/icons/share.svg", () => {
         playSound("others.mp3");
-        navigator.clipboard.writeText(`Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`);
+        navigator.clipboard.writeText(
+          `Juega conmigo a https://stormstore.vercel.app/app/${app.id}/run`,
+        );
         showToast("Enlace copiado");
       });
       if (isUninstalling) shareBtn.style.display = "none";
       middleRow.appendChild(shareBtn);
     }
 
-    const webBtn = createIconButton("../assets/icons/web.svg", () => window.open(`https://stormstore.vercel.app/app/${app.id}`));
+    const webBtn = createIconButton("../assets/icons/web.svg", () =>
+      window.open(`https://stormstore.vercel.app/app/${app.id}`),
+    );
     if (isUninstalling) webBtn.style.display = "none";
     middleRow.appendChild(webBtn);
     actions.appendChild(middleRow);
@@ -315,7 +362,12 @@ function createAppCard(app, index) {
     locBtn.style.width = "100%";
     locBtn.onclick = () => {
       playSound("others.mp3");
-      window.api.openAppLocation(app.fileApp?.executablePath || app.installPath || app.executablePath || app.paths[0]);
+      window.api.openAppLocation(
+        app.fileApp?.executablePath ||
+          app.installPath ||
+          app.executablePath ||
+          app.paths[0],
+      );
       showToast("Abriendo ubicación...");
     };
     if (isUninstalling) locBtn.style.display = "none";
@@ -350,25 +402,32 @@ function createAppCard(app, index) {
         try {
           await window.api.installApp(app);
           playSound("finish.mp3");
-        } catch (e) { 
-          if (!e.message.includes("INSTALL_CANCELLED")) console.error(e); 
-        }
-        finally { 
-          installingApps.delete(app.id); 
+        } catch (e) {
+          if (!e.message.includes("INSTALL_CANCELLED")) console.error(e);
+        } finally {
+          installingApps.delete(app.id);
           renderApps(currentCategory); // Actualizar UI inmediatamente
-          await load(); 
+          await load();
         }
       };
     }
     installRow.appendChild(installBtn);
 
     if (app["share-compatibility"] === "si") {
-      installRow.appendChild(createIconButton("../assets/icons/share.svg", () => {
-        navigator.clipboard.writeText(`https://stormstore.vercel.app/app/${app.id}/run`);
-        showToast("Enlace copiado");
-      }));
+      installRow.appendChild(
+        createIconButton("../assets/icons/share.svg", () => {
+          navigator.clipboard.writeText(
+            `https://stormstore.vercel.app/app/${app.id}/run`,
+          );
+          showToast("Enlace copiado");
+        }),
+      );
     }
-    installRow.appendChild(createIconButton("../assets/icons/web.svg", () => window.open(`https://stormstore.vercel.app/app/${app.id}`)));
+    installRow.appendChild(
+      createIconButton("../assets/icons/web.svg", () =>
+        window.open(`https://stormstore.vercel.app/app/${app.id}`),
+      ),
+    );
     actions.appendChild(installRow);
   }
 
@@ -390,7 +449,10 @@ function createIconButton(iconSrc, onClick) {
   btn.style.flex = "1";
   btn.style.padding = "10px 12px";
   btn.innerHTML = `<img src="${iconSrc}" style="width: 20px; height: 20px; filter: invert(1);">`;
-  btn.onclick = (e) => { e.stopPropagation(); onClick(); };
+  btn.onclick = (e) => {
+    e.stopPropagation();
+    onClick();
+  };
   return btn;
 }
 
@@ -440,24 +502,3 @@ function updateInternetStatus() {
 
 updateInternetStatus();
 setInterval(updateInternetStatus, 1000);
-
-// Controles de ventana
-document
-  .getElementById("min-btn")
-  ?.addEventListener("click", () => window.api.minimizeWindow());
-document
-  .getElementById("close-btn")
-  ?.addEventListener("click", () => window.api.closeWindow());
-
-const maxBtn = document.getElementById("max-btn");
-if (maxBtn) {
-  maxBtn.addEventListener("click", () => window.api.maximizeWindow());
-
-  // Estado inicial
-  window.api.isMaximized().then((isMax) => {
-    if (isMax) maxBtn.textContent = "❐";
-  });
-
-  window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
-  window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
-}

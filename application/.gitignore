@@ -1,6 +1,8 @@
 /dist
 /node_modules
 /setup/build
-*.exe
+aspnetcore-runtime-8.0.23-win-x64.exe
 *.spec
 package-lock.json
+package-lock.json
+/setup/dist

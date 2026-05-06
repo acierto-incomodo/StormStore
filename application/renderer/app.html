@@ -102,10 +102,25 @@
 
     <div id="delete-confirm-overlay" class="source-modal-overlay">
       <div class="source-modal">
-        <h2>Eliminar aplicación</h2>
-        <p>
+        <div style="text-align: center; margin-bottom: 16px">
+          <img
+            src="../assets/icons/virus.svg"
+            style="
+              width: 64px;
+              height: 64px;
+              filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg)
+                brightness(91%) contrast(101%);
+            "
+            alt="Warning"
+          />
+        </div>
+        <h2 style="color: var(--md-sys-color-error)">¿Eliminar aplicación?</h2>
+        <p
+          id="delete-confirm-text"
+          style="text-align: center; margin-bottom: 24px"
+        >
           ¿Estás seguro de que quieres eliminar completamente esta aplicación?
-          Esta acción borrará la carpeta de instalación.
+          Se borrarán todos los archivos locales.
         </p>
         <div
           style="
@@ -420,6 +435,8 @@
               const overlay = document.getElementById("delete-confirm-overlay");
               const confirmBtn = document.getElementById("confirm-delete-btn");
               const cancelBtn = document.getElementById("cancel-delete-btn");
+              document.getElementById("delete-confirm-text").innerHTML =
+                `¿Estás seguro de que quieres eliminar completamente <strong>${app.name}</strong>?<br><br>Esta acción borrará la carpeta de instalación de forma permanente.`;
 
               overlay.classList.add("active");
 

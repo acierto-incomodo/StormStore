@@ -73,7 +73,11 @@
 
         <ul id="categories"></ul>
 
-        <button id="update-all-btn" class="update-all-btn" style="display: none;">
+        <button
+          id="update-all-btn"
+          class="update-all-btn"
+          style="display: none"
+        >
           <img src="../assets/icons/update.svg" alt="Actualizar" />
           Actualizar Todos
         </button>
@@ -205,13 +209,13 @@
               <small>Juegos de tu biblioteca de Steam</small>
             </div>
           </div>
-          <!-- <div class="source-item" onclick="window.location.href='epic.html'">
-          <img src="../assets/icons/epic-games.svg" alt="Epic Games">
-          <div>
-            <span>Epic Games</span>
-            <small>Juegos de tu biblioteca de Epic</small>
+          <div class="source-item" onclick="window.location.href = 'epic.html'">
+            <img src="../assets/icons/epic-games.svg" alt="Epic Games" />
+            <div>
+              <span>Epic Games</span>
+              <small>Juegos de tu biblioteca de Epic</small>
+            </div>
           </div>
-        </div> -->
         </div>
         <button
           class="md-btn md-btn-tonal"
@@ -300,6 +304,26 @@
           window.api.sendVirusAlertResponse(true);
         };
       });
+
+      // Controles de ventana
+      document
+        .getElementById("min-btn")
+        ?.addEventListener("click", () => window.api.minimizeWindow());
+      document
+        .getElementById("close-btn")
+        ?.addEventListener("click", () => window.api.closeWindow());
+
+      const maxBtn = document.getElementById("max-btn");
+      if (maxBtn) {
+        maxBtn.addEventListener("click", () => window.api.maximizeWindow());
+
+        window.api.isMaximized().then((isMax) => {
+          if (isMax) maxBtn.textContent = "❐";
+        });
+
+        window.api.onWindowMaximized(() => (maxBtn.textContent = "❐"));
+        window.api.onWindowRestored(() => (maxBtn.textContent = "◻"));
+      }
     </script>
   </body>
 </html>
