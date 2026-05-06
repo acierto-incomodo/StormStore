@@ -6,7 +6,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game/Build/Build/Ambidextro.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game/Build/Build/PlayGame.exe",
     "checksumFile": "Version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game",
     "checksumUrl": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/Version.txt",
@@ -460,9 +460,7 @@
   {
     "id": "stardewvalley",
     "name": "Stardew Valley",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/StardewValley/game/Build",
