@@ -454,7 +454,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy-console.bat",
     "checksumFile": "version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game",
     "checksumUrl": "https://github.com/acierto-incomodo/scrcpy/releases/latest/download/version.txt",
