@@ -641,6 +641,23 @@
     "verified": "false"
   },
   {
+    "id": "scrcpy",
+    "name": "SCRCPY",
+    "description": "SCRCPY es una herramienta que permite controlar un dispositivo Android desde el escritorio a través de USB o WiFi.",
+    "category": ["Herramientas", "Utilidades"],
+    "icon": "../assets/apps/scrcpy.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/scrcpy/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/unins000.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "description": "Space Engineers es un juego sandbox de construcción y supervivencia en el espacio donde diseñas, ensamblas y gestionas naves, estaciones espaciales y estructuras en planetas o en órbita; utiliza un sistema de física realista que obliga a cuidar energía, oxígeno, gravedad y propulsión, y te permite jugar en modo creativo o supervivencia mientras exploras, automatizas sistemas y construyes ingeniería espacial compleja.",
@@ -812,7 +829,7 @@
     "id": "youtube-downloader",
     "name": "YouTube Downloader",
     "description": "Una herramienta para descargar videos de YouTube.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": ["Utilidades", "Aplicaciones", "Herramientas"],
     "icon": "../assets/apps/youtube-downloader.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/YoutubeDownloader/YoutubeDownloader/YoutubeDownloader.exe"

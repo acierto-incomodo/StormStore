@@ -448,6 +448,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/side-effects-game/releases/latest/download/"
   },
   {
+    "id": "scrcpy",
+    "name": "SCRCPY",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/scrcpy/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/scrcpy/releases/latest/download/"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "files": [
