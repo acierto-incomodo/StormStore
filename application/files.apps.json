@@ -370,6 +370,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/PeoplePlaygroundGame/releases/latest/download/"
   },
   {
+    "id": "programmer-clicker-game",
+    "name": "Programmer Clicker Game",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build/Build/ProgrammerClickerGame.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/Programmer-Clicker-Game/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/Programmer-Clicker-Game/releases/latest/download/"
+  },
+  {
     "id": "repo",
     "name": "R.E.P.O.",
     "files": ["Build.zip.001", "Build.zip.002"],
