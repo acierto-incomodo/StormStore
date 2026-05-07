@@ -376,7 +376,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build/ProgrammerClickerGame.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build/Programmer Clicker Game.exe",
     "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/Programmer-Clicker-Game/releases/latest/download/GameVersion.txt",

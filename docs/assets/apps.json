@@ -545,7 +545,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/programmer-clicker-game.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build/ProgrammerClickerGame.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build/Programmer Clicker Game.exe"
     ],
     "download": "https://github.com/acierto-incomodo/Programmer-Clicker-Game/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Programmer-Clicker-Game/unins000.exe",
