@@ -655,7 +655,7 @@
     "wifi": "si",
     "share-compatibility": "si",
     "virus-alert": "none",
-    "verified": "false"
+    "verified": "true"
   },
   {
     "id": "space-engineers",
