@@ -363,7 +363,7 @@
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game/Build/Build/PeoplePlayground.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game/Build/Build/PeoplePlaygroundLauncher.exe",
     "checksumFile": "version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/PeoplePlaygroundGame/releases/latest/download/version.txt",
