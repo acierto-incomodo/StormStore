@@ -390,6 +390,23 @@
     "verified": "false"
   },
   {
+    "id": "majotori",
+    "name": "Majotori",
+    "description": "Majotori, creado por Alva Majo, es un juego narrativo en el que respondes preguntas de tipo trivial (cultura general, videojuegos, cine, etc.) para decidir el destino de distintos personajes. Cada personaje tiene un deseo, y una bruja llamada Lariat the witch se lo puede conceder… pero solo si aciertas las preguntas; si fallas, las consecuencias suelen ser negativas o inesperadas. El juego mezcla historia y cuestionario, haciendo que cada decisión afecte directamente al desarrollo y al final de cada personaje, por lo que la clave está en tus conocimientos y en cómo influyen en la narrativa.",
+    "category": "Juegos",
+    "icon": "../assets/apps/majotori.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Majotori/game/Build/Build/Majotori.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/MajotoriGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Majotori/unins000.exe",
+    "steam": "true",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "miside",
     "name": "MiSide",
     "description": "MiSide es un juego indie de terror psicológico que comienza como una experiencia aparentemente tranquila de vida cotidiana, pero poco a poco se vuelve inquietante y perturbadora a medida que la realidad se distorsiona; el jugador interactúa con una chica dentro de un entorno tipo simulador, tomando decisiones y explorando detalles que revelan una historia oscura centrada en la obsesión, el control y la pérdida de la normalidad.",
@@ -556,6 +573,23 @@
     "verified": "true"
   },
   {
+    "id": "pureya",
+    "name": "Pureya",
+    "description": "Pureya, creado por Alva Majo, es un juego arcade que combina muchos minijuegos en uno solo, donde cada pocos segundos cambia automáticamente a uno distinto, obligándote a adaptarte muy rápido. Todos los minijuegos tienen controles muy simples, pero se vuelven cada vez más difíciles con el tiempo. Mientras juegas consigues canicas que luego puedes usar para desbloquear nuevos minijuegos, música y contenido extra. No tiene historia, ya que se centra en la habilidad, los reflejos y la rapidez para reaccionar a cambios constantes.",
+    "category": "Juegos",
+    "icon": "../assets/apps/pureya.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Pureya/game/Build/Build/Pureya.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/PureyaGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Pureya/unins000.exe",
+    "steam": "true",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "repo",
     "name": "R.E.P.O.",
     "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
@@ -624,6 +658,23 @@
     "verified": "false"
   },
   {
+    "id": "shipped",
+    "name": "Shipped",
+    "description": "Shipped, creado por Alva Majo, es un juego indie multijugador en el que controlas un pequeño barco y compites contra otros jugadores en arenas caóticas con el objetivo de ser el último en sobrevivir o ganar según el modo de juego. La gracia principal está en que puedes acelerar pero no frenar, lo que hace que el control sea difícil y provoque situaciones muy divertidas. Durante las partidas puedes disparar cañones, empujar a otros barcos y esquivar obstáculos como islas o rocas, mientras evitas salirte de la pantalla, ya que eso significa perder al instante. El juego incluye varios modos como batalla, carreras o sumo, pero todos giran en torno a la acción rápida y el caos. Está pensado sobre todo para jugar en local con amigos, lo que lo convierte en un party game muy dinámico y entretenido.",
+    "category": "Juegos",
+    "icon": "../assets/apps/shipped.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Shipped/game/Build/Build/Shipped.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ShippedGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Shipped/unins000.exe",
+    "steam": "true",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "sideeffects",
     "name": "Side Effects",
     "description": "Side Effects es un juego indie de estrategia y terror en el que los jugadores participan en una especie de “ruleta médica”: en cada turno deben tomar pastillas con efectos desconocidos que pueden ser beneficiosos, perjudiciales o incluso mortales al instante, con el objetivo de sobrevivir más tiempo que su rival; además, se pueden usar objetos y tácticas para engañar al oponente y aumentar las probabilidades de ganar, creando una experiencia tensa basada en el riesgo, la gestión de recursos y el faroleo psicológico.",
@@ -672,6 +723,23 @@
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
+    "id": "spaceflight-simulator",
+    "name": "Spaceflight Simulator",
+    "description": "Un simulador de vuelo espacial que permite experimentar con la navegación y pilotaje de naves espaciales en entornos realistas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/spaceflight-simulator.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/game/Build/Build/Spaceflight Simulator.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/SpaceflightSimulatorGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/unins000.exe",
+    "steam": "true",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
     "verified": "false"
   },
   {

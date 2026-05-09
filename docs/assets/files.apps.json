@@ -279,6 +279,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/mage_arena/releases/latest/download/"
   },
   {
+    "id": "majotori",
+    "name": "Majotori",
+    "files": ["Build.zip.001"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Majotori/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Majotori/game/Build/Build/Majotori.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Majotori/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/MajotoriGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/MajotoriGame/releases/latest/download/"
+  },
+  {
     "id": "miside",
     "name": "MiSide",
     "files": ["Build.zip.001", "Build.zip.002"],
@@ -383,6 +396,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/Programmer-Clicker-Game/releases/latest/download/"
   },
   {
+    "id": "pureya",
+    "name": "Pureya",
+    "files": ["Build.zip.001"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Pureya/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Pureya/game/Build/Build/Pureya.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Pureya/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/PureyaGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/PureyaGame/releases/latest/download/"
+  },
+  {
     "id": "repo",
     "name": "R.E.P.O.",
     "files": ["Build.zip.001", "Build.zip.002"],
@@ -435,6 +461,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/ScheduleIGame/releases/latest/download/"
   },
   {
+    "id": "shipped",
+    "name": "Shipped",
+    "files": ["Build.zip.001"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Shipped/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Shipped/game/Build/Build/Shipped.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Shipped/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ShippedGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ShippedGame/releases/latest/download/"
+  },
+  {
     "id": "sideeffects",
     "name": "Side Effects",
     "files": ["Build.zip.001"],
@@ -482,6 +521,19 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SpaceEngineers/game",
     "checksumUrl": "https://github.com/acierto-incomodo/space-engineers-game/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/space-engineers-game/releases/latest/download/"
+  },
+  {
+    "id": "spaceflight-simulator",
+    "name": "Spaceflight Simulator",
+    "files": ["Build.zip.001"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/game/Build/Build/Spaceflight Simulator.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/SpaceflightSimulatorGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/SpaceflightSimulatorGame/releases/latest/download/"
   },
   {
     "id": "stardewvalley",
