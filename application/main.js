@@ -102,6 +102,9 @@ function applySettings(settings) {
       tray = null;
     }
   }
+
+  // 3. Actualizaciones automáticas
+  autoUpdater.autoDownload = settings.auto_updates;
 }
 
 function saveSettings(newSettings) {
@@ -261,7 +264,7 @@ protocol.registerSchemesAsPrivileged([
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.autoDownload = false;
+autoUpdater.autoDownload = loadSettings().auto_updates;
 autoUpdater.allowDowngrade = true;
 autoUpdater.checkForUpdates();
 
@@ -1704,18 +1707,20 @@ ipcMain.handle("install-app", async (_, appData) => {
 });
 
 ipcMain.handle("install-program-by-id", async (_, id) => {
+  const appItem = getCachedApp(id);
   try {
+    // SECURITY CHECK: Always check for virus alert if metadata is available
+    if (appItem && appItem["virus-alert"] === "alert") {
+      const proceed = await showVirusWarning(appItem.name);
+      if (!proceed) return false;
+    }
+
     const filesEntry = getCachedFilesApp(id);
     if (filesEntry) {
       return await installFilesAppLogic(filesEntry);
     }
 
-    const appItem = getCachedApp(id);
     if (appItem) {
-      if (appItem["virus-alert"] === "alert") {
-        const proceed = await showVirusWarning(appItem.name);
-        if (!proceed) return false;
-      }
       return await installAppLogic(appItem);
     }
 

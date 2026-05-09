@@ -121,15 +121,15 @@ body {
   background: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
   border: none;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .update-all-btn:hover {
@@ -137,8 +137,9 @@ body {
 }
 
 .update-all-btn img {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  transform: translateY(2.5px);
 }
 
 main {

@@ -18,6 +18,66 @@ document.addEventListener("DOMContentLoaded", async () => {
   const isBatch = params.get("batch") === "true";
   const batchIds = isBatch ? params.get("ids").split(",") : [];
   let currentBatchIndex = 0;
+  let queueNames = {};
+
+  const playSound = (soundFile) => {
+    new Audio(`../assets/media/sounds/${soundFile}`).play();
+  };
+
+  const showVirusConfirm = async (appName) => {
+    return new Promise((resolve) => {
+      const overlay = document.getElementById("virus-alert-overlay");
+      const text = document.getElementById("virus-alert-text");
+      const cancelBtn = document.getElementById("virus-cancel-btn");
+      const continueBtn = document.getElementById("virus-continue-btn");
+
+      playSound("error.mp3");
+      text.innerHTML = `La aplicación <strong>${appName}</strong> ha sido marcada con una alerta de seguridad.<br><br>Es posible que sea un virus. ¿Deseas continuar?`;
+      overlay.classList.add("active");
+
+      const cleanup = () => {
+        overlay.classList.remove("active");
+        cancelBtn.onclick = null;
+        continueBtn.onclick = null;
+      };
+
+      cancelBtn.onclick = () => {
+        playSound("back.mp3");
+        cleanup();
+        resolve(false);
+      };
+      continueBtn.onclick = () => {
+        cleanup();
+        resolve(true);
+      };
+    });
+  };
+
+  const updateQueueUI = () => {
+    const queueList = document.getElementById("update-queue");
+    if (!queueList) return;
+    queueList.innerHTML = "";
+
+    const idsToRender = isBatch ? batchIds : selectedId ? [selectedId] : [];
+
+    idsToRender.forEach((id, index) => {
+      const li = document.createElement("li");
+      const name = queueNames[id] || id;
+      li.textContent = name;
+      li.style.padding = "6px 10px";
+      li.style.borderRadius = "8px";
+
+      if (index === currentBatchIndex) {
+        li.style.background = "rgba(253, 216, 53, 0.15)";
+        li.style.color = "#fdd835";
+        li.style.fontWeight = "bold";
+      } else if (index < currentBatchIndex) {
+        li.style.opacity = "0.4";
+        li.style.textDecoration = "line-through";
+      }
+      queueList.appendChild(li);
+    });
+  };
 
   if (isBatch && batchIds.length > 0) {
     selectedId = batchIds[0];
@@ -99,6 +159,24 @@ document.addEventListener("DOMContentLoaded", async () => {
           : "--";
     speedText.textContent = formatSpeed(progress.speed);
     setStatus(progress.message || "Procesando...");
+  };
+
+  const loadQueueData = async () => {
+    try {
+      const [apps, files] = await Promise.all([
+        window.api.getApps(),
+        window.api.getFilesApps(),
+      ]);
+      const all = [...apps, ...(files || [])];
+      const ids = isBatch ? batchIds : [selectedId];
+      ids.filter(Boolean).forEach((id) => {
+        const found = all.find((a) => a.id === id);
+        if (found) queueNames[id] = found.name;
+      });
+      updateQueueUI();
+    } catch (e) {
+      console.error("Error loading queue names:", e);
+    }
   };
 
   const getFileSize = async (url) => {
@@ -198,8 +276,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.api.setProgressBar(-1);
 
     if (success) {
+      currentBatchIndex++;
+      updateQueueUI();
+
       if (isBatch) {
-        currentBatchIndex++;
         if (currentBatchIndex < batchIds.length) {
           selectedId = batchIds[currentBatchIndex];
           fetchProgramInfo().then(() => {
@@ -217,6 +297,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       disableNavigation(false);
     }
   });
+
+  window.api.onShowVirusAlert(async (_event, appName) => {
+    const result = await showVirusConfirm(appName);
+    window.api.sendVirusAlertResponse(result);
+  });
+
+  const versionElem = document.getElementById("app-version");
+  if (versionElem) {
+    window.api.getAppVersion().then((v) => (versionElem.textContent = "v" + v));
+  }
 
   window.api.setDiscordActivity({
     details: "Descargando programa",
@@ -249,6 +339,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Auto-start installation if ID is provided
   if (selectedId) {
+    await loadQueueData();
     await fetchProgramInfo();
     startInstall();
   } else {

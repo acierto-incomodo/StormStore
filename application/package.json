@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -77,7 +77,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^42.0.0",
+    "electron": "^42.0.1",
     "electron-builder": "^26.8.1"
   },
   "dependencies": {
@@ -104,16 +104,16 @@
     "execa": "^9.6.1",
     "extract-zip": "^2.0.1",
     "find-process": "^2.1.1",
-    "fs-extra": "^11.3.4",
+    "fs-extra": "^11.3.5",
     "get-installed-apps": "^1.1.1",
-    "got": "^15.0.4",
+    "got": "^15.0.5",
     "lucide": "^1.14.0",
     "lucide-react": "^1.14.0",
     "motion": "^12.38.0",
     "regedit": "^5.1.4",
     "remixicon": "^4.9.1",
     "steam-path": "^1.0.2",
-    "systeminformation": "^5.31.5",
+    "systeminformation": "^5.31.6",
     "unzipper": "^0.12.3"
   }
 }

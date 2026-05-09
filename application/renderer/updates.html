@@ -365,6 +365,10 @@
         });
 
         window.api.onDownloadProgress((_, progressObj) => {
+          // Mostrar progreso automáticamente si la descarga ya ha comenzado (para auto-updates)
+          document.getElementById("download-progress").style.display = "block";
+          document.getElementById("download-btn").style.display = "none";
+
           const percent = progressObj.percent.toFixed(1);
           const transferred = (progressObj.transferred / 1024 / 1024).toFixed(
             2,

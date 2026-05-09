@@ -96,6 +96,43 @@
           ← Volver a aplicaciones
         </button>
 
+        <div
+          id="queue-section"
+          style="
+            margin-top: 24px;
+            padding: 0 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+          "
+        >
+          <h3
+            style="
+              font-size: 11px;
+              text-transform: uppercase;
+              color: var(--md-sys-color-primary);
+              margin-bottom: 12px;
+              letter-spacing: 1px;
+              opacity: 0.8;
+            "
+          >
+            Cola de proceso
+          </h3>
+          <ol
+            id="update-queue"
+            style="
+              list-style: decimal inside;
+              color: #fff;
+              font-size: 13px;
+              display: flex;
+              flex-direction: column;
+              gap: 6px;
+              padding: 0;
+            "
+          >
+            <!-- Los programas se inyectarán aquí -->
+          </ol>
+        </div>
+
         <ul id="categories"></ul>
       </div>
 
@@ -170,6 +207,42 @@
 
       <footer id="bp-footer-prompts"></footer>
     </main>
+
+    <!-- Custom Virus Alert Overlay -->
+    <div id="virus-alert-overlay" class="virus-alert-overlay">
+      <div class="virus-alert-card">
+        <img
+          src="../assets/icons/virus.svg"
+          class="virus-alert-icon"
+          style="
+            width: 128px;
+            height: 128px;
+            filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg)
+              brightness(91%) contrast(101%);
+          "
+        />
+        <h2>¡Peligro detectado!</h2>
+        <p id="virus-alert-text">
+          Es posible que este programa sea un virus y es peligroso continuar.
+        </p>
+        <div style="display: flex; gap: 12px; width: 100%; margin-top: 10px">
+          <button
+            id="virus-cancel-btn"
+            class="md-btn md-btn-tonal"
+            style="flex: 1"
+          >
+            Cancelar
+          </button>
+          <button
+            id="virus-continue-btn"
+            class="md-btn md-btn-danger"
+            style="flex: 1"
+          >
+            Continuar bajo mi riesgo
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="program-updates.js"></script>
   </body>

@@ -20,6 +20,8 @@
           src="../assets/icons/virus.svg"
           class="virus-alert-icon"
           style="
+            width: 128px;
+            height: 128px;
             filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg)
               brightness(91%) contrast(101%);
           "
@@ -231,6 +233,47 @@
       </div>
     </div>
 
+    <!-- Custom Delete Confirmation Overlay -->
+    <div id="delete-confirm-overlay" class="source-modal-overlay">
+      <div class="source-modal">
+        <div style="text-align: center; margin-bottom: 16px">
+          <img
+            src="../assets/icons/basura.svg"
+            style="
+              width: 128px;
+              height: 128px;
+              filter: invert(34%) sepia(85%) saturate(2443%) hue-rotate(334deg)
+                brightness(91%) contrast(101%);
+            "
+            alt="Warning"
+          />
+        </div>
+        <h2 style="color: var(--md-sys-color-error)">¿Eliminar aplicación?</h2>
+        <p
+          id="delete-confirm-text"
+          style="text-align: center; margin-bottom: 24px"
+        >
+          ¿Estás seguro de que quieres eliminar completamente esta aplicación?
+          Se borrarán todos los archivos locales.
+        </p>
+        <div
+          style="
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+          "
+        >
+          <button id="cancel-delete-btn" class="md-btn md-btn-tonal">
+            Cancelar
+          </button>
+          <button id="confirm-delete-btn" class="md-btn md-btn-danger">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="app.js"></script>
     <script src="gamepad-global.js"></script>
     <script>
@@ -279,32 +322,6 @@
       }
     </script>
     <script>
-      function playSound(soundFile) {
-        new Audio(`../assets/media/sounds/${soundFile}`).play();
-      }
-
-      // Lógica de la alerta de virus personalizada
-      window.api.onShowVirusAlert((_event, appName) => {
-        const overlay = document.getElementById("virus-alert-overlay");
-        const text = document.getElementById("virus-alert-text");
-        const cancelBtn = document.getElementById("virus-cancel-btn");
-        const continueBtn = document.getElementById("virus-continue-btn");
-
-        playSound("error.mp3");
-        text.innerHTML = `La aplicación <strong>${appName}</strong> ha sido marcada con una alerta de seguridad.<br><br>Es posible que sea un virus. ¿Deseas continuar?`;
-        overlay.classList.add("active");
-
-        cancelBtn.onclick = () => {
-          playSound("back.mp3");
-          overlay.classList.remove("active");
-          window.api.sendVirusAlertResponse(false);
-        };
-        continueBtn.onclick = () => {
-          overlay.classList.remove("active");
-          window.api.sendVirusAlertResponse(true);
-        };
-      });
-
       // Controles de ventana
       document
         .getElementById("min-btn")
