@@ -79,6 +79,7 @@ function loadSettings() {
     auto_updates: false,
     start_with_windows: false,
     start_minimized: false,
+    has_completed_first_launch: false,
     show_tray: true,
   };
 }
@@ -109,10 +110,12 @@ function applySettings(settings) {
 
 function saveSettings(newSettings) {
   try {
+    const currentSettings = loadSettings();
+    const finalSettings = { ...currentSettings, ...newSettings };
     const dir = path.dirname(SETTINGS_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(newSettings, null, 2));
-    applySettings(newSettings);
+    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(finalSettings, null, 2));
+    applySettings(finalSettings);
   } catch (err) {
     console.error("Error guardando ajustes:", err);
   }
@@ -376,12 +379,16 @@ function createWindow() {
     (settings.start_minimized || process.argv.includes("--start-minimized")) &&
     !startInBigPicture;
 
-  win.loadFile(
-    path.join(
-      __dirname,
-      startInBigPicture ? "renderer/bigpicture.html" : "renderer/index.html",
-    ),
-  );
+  const firstLaunch = !settings.has_completed_first_launch;
+  let targetFile = startInBigPicture
+    ? "renderer/bigpicture.html"
+    : "renderer/index.html";
+
+  if (firstLaunch && !startInBigPicture) {
+    targetFile = "renderer/primer-inicio/primer-inicio.html";
+  }
+
+  win.loadFile(path.join(__dirname, targetFile));
 
   win.once("ready-to-show", () => {
     if (startInBigPicture) {
@@ -1628,6 +1635,7 @@ async function installAppLogic(appData) {
         appName: appData.name || appData.id,
       });
     },
+    false, // Desactivar validación de ZIP para instaladores .exe
   );
 
   if (mainWindow) mainWindow.setProgressBar(2);

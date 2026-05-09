@@ -2,5 +2,6 @@
   "auto_updates": true,
   "start_with_windows": false,
   "start_minimized": false,
-  "show_tray": true
+  "show_tray": true,
+  "has_completed_first_launch": false
 }

@@ -475,29 +475,33 @@
           }
         } else {
           // Botón Instalar
-          const installBtn = document.createElement("button");
-          installBtn.textContent = isInstalling ? "Instalando..." : "Instalar";
-          installBtn.className = "md-btn md-btn-filled";
-          installBtn.style.padding = "12px 24px";
-          installBtn.style.fontSize = "16px";
-          installBtn.style.flex = "1";
-          installBtn.disabled = isInstalling;
-          installBtn.onclick = async () => {
-            isInstalling = true;
-            playSound("others.mp3");
-            showToast(`Iniciando descarga e instalación de ${app.name}…`);
-            renderDetails(app);
-            try {
-              await window.api.installApp(app);
-              playSound("finish.mp3");
-            } catch (e) {
-              if (!e.message.includes("INSTALL_CANCELLED")) console.error(e);
-            }
-            isInstalling = false;
-            renderDetails(app); // Forzar re-renderizado inmediato del botón
-            await loadApp();
-          };
-          actionsDiv.appendChild(installBtn);
+          if (!app.fileApp) {
+            const installBtn = document.createElement("button");
+            installBtn.textContent = isInstalling
+              ? "Instalando..."
+              : "Instalar";
+            installBtn.className = "md-btn md-btn-filled";
+            installBtn.style.padding = "12px 24px";
+            installBtn.style.fontSize = "16px";
+            installBtn.style.flex = "1";
+            installBtn.disabled = isInstalling;
+            installBtn.onclick = async () => {
+              isInstalling = true;
+              playSound("others.mp3");
+              showToast(`Iniciando descarga e instalación de ${app.name}…`);
+              renderDetails(app);
+              try {
+                await window.api.installApp(app);
+                playSound("finish.mp3");
+              } catch (e) {
+                if (!e.message.includes("INSTALL_CANCELLED")) console.error(e);
+              }
+              isInstalling = false;
+              renderDetails(app); // Forzar re-renderizado inmediato del botón
+              await loadApp();
+            };
+            actionsDiv.appendChild(installBtn);
+          }
 
           if (app["share-compatibility"] === "si") {
             const shareBtn = document.createElement("button");

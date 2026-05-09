@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenido a StormStore</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="primer-inicio.css" />
+    <link rel="icon" type="image/png" href="../../assets/app.png" />
+  </head>
+  <body>
+    <div class="first-launch-container">
+      <div class="first-launch-card">
+        <!-- Paso 1: Bienvenida -->
+        <div id="step-1" class="step active">
+          <img
+            src="../../assets/app.png"
+            alt="StormStore Logo"
+            class="app-logo"
+          />
+          <h1>Bienvenido a StormStore</h1>
+          <p>
+            Gracias por instalar StormStore. Te guiaremos a través de una
+            configuración rápida para que puedas empezar a disfrutar de tus
+            juegos y aplicaciones.
+          </p>
+          <button id="next-step-btn" class="md-btn md-btn-filled">
+            Empezar
+          </button>
+        </div>
+
+        <!-- Paso 2: Ajustes Generales -->
+        <div id="step-2" class="step">
+          <h2>Configuración General</h2>
+          <p>
+            Controla cómo StormStore se mantiene al día y cómo se inicia en tu
+            sistema.
+          </p>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Actualizaciones automáticas</h3>
+              <p>
+                StormStore buscará e instalará actualizaciones automáticamente
+                al iniciar.
+              </p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="auto_updates" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Iniciar con Windows</h3>
+              <p>Abrir la aplicación automáticamente al encender el equipo.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="start_with_windows" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="navigation-buttons">
+            <button class="md-btn md-btn-tonal prev-btn">Anterior</button>
+            <button class="md-btn md-btn-filled next-btn">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Paso 3: Interfaz y Comportamiento -->
+        <div id="step-3" class="step">
+          <h2>Interfaz y Bandeja</h2>
+          <p>Personaliza cómo interactúa la aplicación con tu barra de tareas.</p>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Icono en la bandeja</h3>
+              <p>Mantiene la app abierta en segundo plano al cerrarla.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="show_tray" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h3>Iniciar minimizado</h3>
+              <p>Arranca StormStore oculto en la bandeja del sistema.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="start_minimized" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="navigation-buttons">
+            <button class="md-btn md-btn-tonal prev-btn">Anterior</button>
+            <button class="md-btn md-btn-filled next-btn">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Paso 4: Descubre StormVortex -->
+        <div id="step-4" class="step">
+          <div style="text-align: center; margin-bottom: 10px">
+            <img src="../../assets/icons/stormvortex.svg" style="width: 64px; height: 64px; filter: invert(1);">
+          </div>
+          <h2>Modo StormVortex</h2>
+          <p>
+            ¿Sabías que StormStore tiene un modo <strong>Big Picture</strong>? 
+            Conéctate un mando y navega por tu biblioteca con una interfaz diseñada para TV y consolas.
+          </p>
+          <div class="info-box">
+            Presiona el botón <strong>Home</strong> de tu mando en cualquier momento para entrar.
+          </div>
+          <div class="navigation-buttons">
+            <button class="md-btn md-btn-tonal prev-btn">Anterior</button>
+            <button class="md-btn md-btn-filled next-btn">Entendido</button>
+          </div>
+        </div>
+
+        <!-- Paso 5: Finalización -->
+        <div id="step-5" class="step">
+          <div class="success-icon">✓</div>
+          <h2>¡Todo listo!</h2>
+          <p>
+            Has completado la configuración inicial. Ya puedes explorar el catálogo 
+            e instalar tus juegos favoritos.
+          </p>
+          <div class="navigation-buttons" style="justify-content: center">
+            <button id="finish-setup-btn" class="md-btn md-btn-filled" style="width: 100%">
+              Comenzar a usar StormStore
+            </button>
+          </div>
+        </div>
+
+        <!-- Indicador de progreso -->
+        <div class="step-indicator">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="primer-inicio.js"></script>
+  </body>
+</html>

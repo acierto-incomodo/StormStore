@@ -221,7 +221,8 @@
           // Soporte para teclado en Big Picture
           document.addEventListener("keydown", (e) => {
             if (e.key === "Escape" || e.key === "Backspace") {
-              window.location.href = "bigpicture.html?openMenu=true";
+              window.location.href =
+                "bigpicture.html?openMenu=true&fromSubpage=true";
               return;
             }
 
@@ -263,7 +264,8 @@
           backBtn.addEventListener("click", function (e) {
             e.preventDefault();
             if (isBigPicture) {
-              window.location.href = "bigpicture.html?openMenu=true";
+              window.location.href =
+                "bigpicture.html?openMenu=true&fromSubpage=true";
             } else {
               window.location.href = "index.html";
             }

@@ -54,6 +54,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   let menuCurrentIndex = 0;
   let waitingForHomeRelease = true;
   // New state for single button press
+
+  // Check if returning from a subpage to skip intro video
+  let isReturningFromSubpage = false;
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("fromSubpage") === "true") {
+    isReturningFromSubpage = true;
+  }
   let prevButtons = [];
   let firstInputPoll = true;
 
@@ -592,9 +599,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   } else {
     loadAllGames();
     requestAnimationFrame(gamepadLoop);
-    if (introVideo) {
+    // Only play intro video if it's not the first time AND we are not returning from a subpage
+    if (introVideo && !isReturningFromSubpage) {
       introVideo.play().catch(() => finishIntro());
       introVideo.onended = finishIntro;
+    } else {
+      finishIntro(); // Ensure intro is hidden if we skip playing it
     }
   }
 

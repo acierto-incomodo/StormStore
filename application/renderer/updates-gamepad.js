@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         interactiveElements[currentIndex]?.click();
       } else if (isNewPress(1) || isNewPress(16) || isNewPress(9)) {
         // B button, Home, Options
-        window.location.href = "bigpicture.html?openMenu=true";
+        window.location.href = "bigpicture.html?openMenu=true&fromSubpage=true";
       }
 
       // Update previous button state

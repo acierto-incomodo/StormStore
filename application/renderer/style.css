@@ -679,6 +679,68 @@ body.offline .requires-wifi button {
   animation: spin 1s linear infinite;
 }
 
+/* --- FILTROS DE SIDEBAR REFORMADOS --- */
+.sidebar-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  margin-top: 4px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--md-sys-shape-corner-full);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  border: 1px solid transparent;
+}
+
+.sidebar-filter-item:hover {
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+}
+
+.sidebar-filter-item.active {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-filter-item img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  filter: invert(1);
+  transition: opacity 0.2s;
+}
+
+.sidebar-filter-item.active img {
+  opacity: 1;
+}
+
+.sidebar-filter-item input {
+  display: none; /* Checkbox oculto, usamos el estilo del contenedor */
+}
+
+.sidebar-filter-item label {
+  cursor: pointer;
+}
+
+.sidebar-filter-item .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--md-sys-color-outline);
+  margin-left: auto;
+  transition: all 0.2s;
+}
+
+.sidebar-filter-item.active .status-dot {
+  background: var(--md-sys-color-primary);
+  box-shadow: 0 0 8px var(--md-sys-color-primary);
+}
+
 /* =====================================
    SELECTOR DE FUENTE (SOURCE SELECTOR)
    ===================================== */

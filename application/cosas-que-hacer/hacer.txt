@@ -1,3 +1,6 @@
-1) Agregar pagina de cambios de las actualizaciones una vez y que sea automatica con la version del propio programa y con la descripcion de github
-2) Acabar de configurar los sonidos para el modo StormVortex
-3) Iniciar automaticamente un .exe a parte para que actualize el programa al iniciar Windows (Interfaz de ajustes lista)
+1) Agregar pagina de cambios de las actualizaciones una vez y que sea automatica con la version del propio programa y con la descripcion de github.
+2) Acabar de configurar los sonidos para el modo StormVortex.
+3) Iniciar automaticamente un .exe a parte para que actualize el programa al iniciar Windows (Interfaz de ajustes lista).
+4) Pantalla de novedades.
+5) Discord Rich Presence.
+6) Instalaciones multiples.

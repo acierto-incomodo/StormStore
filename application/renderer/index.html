@@ -75,13 +75,31 @@
 
         <ul id="categories"></ul>
 
+        <div class="sidebar-filter-item" id="installed-filter-container">
+          <img src="../assets/icons/download.svg" alt="Instaladas" />
+          <input type="checkbox" id="filter-installed" />
+          <label for="filter-installed">Solo instaladas</label>
+          <span class="status-dot"></span>
+        </div>
+
+        <div
+          class="sidebar-filter-item"
+          id="updates-filter-container"
+          style="display: none"
+        >
+          <img src="../assets/icons/update.svg" alt="Actualizaciones" />
+          <input type="checkbox" id="filter-updates" />
+          <label for="filter-updates">Actualizaciones</label>
+          <span class="status-dot"></span>
+        </div>
+
         <button
           id="update-all-btn"
           class="update-all-btn"
           style="display: none"
         >
           <img src="../assets/icons/update.svg" alt="Actualizar" />
-          Actualizar Todos
+          Actualizar Todas
         </button>
       </div>
 

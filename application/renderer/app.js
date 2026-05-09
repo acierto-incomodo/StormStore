@@ -4,10 +4,14 @@ const title = document.getElementById("current-category");
 const versionElem = document.getElementById("app-version");
 const searchInput = document.getElementById("search");
 const refreshBtn = document.getElementById("refresh-btn");
+const filterInstalled = document.getElementById("filter-installed");
+const filterUpdates = document.getElementById("filter-updates");
 
 let allApps = [];
 let currentCategory = "Todas";
 let currentSearch = "";
+let showOnlyInstalled = false;
+let showOnlyUpdates = false;
 const installingApps = new Set();
 const uninstallingApps = new Set();
 
@@ -117,6 +121,21 @@ async function load(force = false) {
       };
     }
 
+    // Mostrar/ocultar filtro de actualizaciones
+    const updatesFilterContainer = document.getElementById(
+      "updates-filter-container",
+    );
+    if (updatesFilterContainer) {
+      updatesFilterContainer.style.display = hasUpdates ? "flex" : "none";
+      // Si el filtro estaba activo pero ya no hay actualizaciones, lo desactivamos
+      if (!hasUpdates && showOnlyUpdates) {
+        showOnlyUpdates = false;
+        if (filterUpdates) filterUpdates.checked = false;
+        updatesFilterContainer.classList.remove("active");
+        renderApps(currentCategory);
+      }
+    }
+
     // Comprobación inteligente de cambios: Ignoramos el campo 'icon' para evitar
     // que la descarga de imágenes en segundo plano dispare la animación de la UI constantemente.
     const stripIcons = (apps) => apps.map(({ icon, ...rest }) => ({ ...rest }));
@@ -182,6 +201,12 @@ function renderApps(category) {
             if (!a.category.includes(currentCategory)) return false;
           } else if (a.category !== currentCategory) return false;
         }
+
+        // Filtrado por instaladas
+        if (showOnlyInstalled && !a.installed) return false;
+
+        // Filtrado por actualizaciones
+        if (showOnlyUpdates && !a.updateAvailable) return false;
 
         // Filtrado por búsqueda
         if (!currentSearch) return true;
@@ -609,6 +634,43 @@ if (searchInput) {
     currentSearch = e.target.value || "";
     renderApps(currentCategory);
   });
+}
+
+// Filtrado por apps instaladas
+if (filterInstalled) {
+  filterInstalled.addEventListener("change", (e) => {
+    showOnlyInstalled = e.target.checked;
+    filterInstalled
+      .closest(".sidebar-filter-item")
+      .classList.toggle("active", showOnlyInstalled);
+    renderApps(currentCategory);
+  });
+  // Permitir clic en todo el contenedor
+  filterInstalled
+    .closest(".sidebar-filter-item")
+    .addEventListener("click", (e) => {
+      if (e.target !== filterInstalled && e.target.tagName !== "LABEL") {
+        filterInstalled.click();
+      }
+    });
+}
+
+// Filtrado por apps con actualizaciones
+if (filterUpdates) {
+  filterUpdates.addEventListener("change", (e) => {
+    showOnlyUpdates = e.target.checked;
+    filterUpdates
+      .closest(".sidebar-filter-item")
+      .classList.toggle("active", showOnlyUpdates);
+    renderApps(currentCategory);
+  });
+  filterUpdates
+    .closest(".sidebar-filter-item")
+    .addEventListener("click", (e) => {
+      if (e.target !== filterUpdates && e.target.tagName !== "LABEL") {
+        filterUpdates.click();
+      }
+    });
 }
 
 // Footer links

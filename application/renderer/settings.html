@@ -300,29 +300,31 @@
           });
         });
 
-      document.getElementById("open-updates")?.addEventListener("click", () => {
-        e.preventDefault();
-        confirmNavigation("updates.html");
-      });
+      document
+        .getElementById("open-updates")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          confirmNavigation("updates.html");
+        });
       document
         .getElementById("open-licenses")
-        ?.addEventListener("click", () => {
+        ?.addEventListener("click", (e) => {
           e.preventDefault();
           confirmNavigation("licencias.html");
         });
       document
         .getElementById("open-big-picture")
-        ?.addEventListener("click", () => {
+        ?.addEventListener("click", (e) => {
           e.preventDefault();
           confirmNavigation(() => window.api.openBigPicture());
         });
-      document.getElementById("open-info")?.addEventListener("click", () => {
+      document.getElementById("open-info")?.addEventListener("click", (e) => {
         e.preventDefault();
         confirmNavigation("info.html");
       });
       document
         .getElementById("open-settings-header")
-        ?.addEventListener("click", () => {
+        ?.addEventListener("click", (e) => {
           e.preventDefault();
           confirmNavigation("settings.html");
         });
