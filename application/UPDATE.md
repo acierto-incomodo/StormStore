@@ -17,4 +17,4 @@
 
 💙 El equipo de **StormGamesStudios**.
 
-**Registro completo de cambios**: https://github.com/acierto-incomodo/StormStore/compare/v2.0.1...v2.0.2
+**Registro completo de cambios**: https://github.com/acierto-incomodo/StormStore/compare/v2.0.2...v2.0.3
