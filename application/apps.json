@@ -338,6 +338,23 @@
     "verified": "true"
   },
   {
+    "id": "kerbal-space-program",
+    "name": "Kerbal Space Program",
+    "description": "Kerbal Space Program es un juego de simulación espacial en el que diseñas, construyes y lanzas cohetes para explorar el espacio, controlando a unos pequeños astronautas llamados kerbals. El objetivo es completar misiones como poner satélites en órbita, aterrizar en planetas o crear estaciones espaciales, teniendo en cuenta físicas realistas como la gravedad, el combustible y las trayectorias. Se centra en experimentar, aprender de los errores y mejorar tus naves mientras exploras el sistema solar.",
+    "category": "Juegos",
+    "icon": "../assets/apps/kerbal-space-program.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/KerbalSpaceProgramGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "left4dead",
     "name": "Left 4 Dead",
     "description": "Left 4 Dead es un juego de disparos en primera persona centrado en el cooperativo, donde cuatro supervivientes deben abrirse paso a través de escenarios infestados de zombis mientras colaboran para sobrevivir; destaca por su ritmo intenso, enemigos especiales que obligan a trabajar en equipo y un sistema dinámico que adapta la dificultad y los eventos para hacer cada partida diferente.",
@@ -584,6 +601,23 @@
     "download": "https://github.com/acierto-incomodo/PureyaGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Pureya/unins000.exe",
     "steam": "true",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "rendomlife-reborn",
+    "name": "RANDOMLIFE REBORN",
+    "description": "RANDOMLIFE REBORN es un juego en el que vives la vida de un personaje generado de forma aleatoria y tomas decisiones que afectan a su futuro. A lo largo de la partida ocurren eventos impredecibles, tanto buenos como malos, y cada elección cambia el rumbo de la historia. No tiene un objetivo fijo, ya que se centra en experimentar distintas vidas y ver cómo terminan según tus decisiones y la suerte.",
+    "category": "Juegos",
+    "icon": "../assets/apps/rendomlife-reborn.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeRebornGame/unins000.exe",
+    "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "none",
@@ -889,6 +923,23 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/unins000.exe",
     "steam": "no",
     "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "yandere-simulator",
+    "name": "Yandere Simulator",
+    "description": "Yandere Simulator es un juego de supervivencia y romance en el que el jugador asume el rol de un estudiante que debe luchar por sobrevivir en un entorno hostil mientras navega por las complejidades de las relaciones interpersonales.",
+    "category": "Juegos",
+    "icon": "../assets/apps/yandere-simulator.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/YandereSimulatorGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/unins000.exe",
+    "steam": "no",
+    "wifi": "si",
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "false"

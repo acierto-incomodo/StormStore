@@ -240,6 +240,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/hytale/releases/latest/download/"
   },
   {
+    "id": "kerbal-space-program",
+    "name": "Kerbal Space Program",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/game/Build/KSP_x64.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/KerbalSpaceProgramGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/KerbalSpaceProgramGame/releases/latest/download/"
+  },
+  {
     "id": "left4dead",
     "name": "Left 4 Dead",
     "files": ["Build.zip.001", "Build.zip.002"],
@@ -407,6 +420,19 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Pureya/game",
     "checksumUrl": "https://github.com/acierto-incomodo/PureyaGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/PureyaGame/releases/latest/download/"
+  },
+  {
+    "id": "randomlife-reborn",
+    "name": "RANDOMLIFE REBORN",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build/RLRB_UE5",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/"
   },
   {
     "id": "repo",
@@ -619,5 +645,18 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/"
+  },
+  {
+    "id": "yandere-simulator",
+    "name": "Yandere Simulator",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build/YandereSimulatorLauncher.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/YandereSimulatorGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/YandereSimulatorGame/releases/latest/download/"
   }
 ]
