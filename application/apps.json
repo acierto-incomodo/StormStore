@@ -607,11 +607,11 @@
     "verified": "false"
   },
   {
-    "id": "rendomlife-reborn",
+    "id": "randomlife-reborn",
     "name": "RANDOMLIFE REBORN",
     "description": "RANDOMLIFE REBORN es un juego en el que vives la vida de un personaje generado de forma aleatoria y tomas decisiones que afectan a su futuro. A lo largo de la partida ocurren eventos impredecibles, tanto buenos como malos, y cada elección cambia el rumbo de la historia. No tiene un objetivo fijo, ya que se centra en experimentar distintas vidas y ver cómo terminan según tus decisiones y la suerte.",
     "category": "Juegos",
-    "icon": "../assets/apps/rendomlife-reborn.png",
+    "icon": "../assets/apps/randomlife-reborn.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/installer_updater.exe"
     ],
