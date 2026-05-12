@@ -649,14 +649,14 @@
   {
     "id": "yandere-simulator",
     "name": "Yandere Simulator",
-    "files": ["Build.zip"],
+    "files": ["latest.zip"],
     "merge": false,
-    "mergedName": "Build.zip",
+    "mergedName": "latest.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build/Build/PlayGame.exe",
-    "checksumFile": "GameVersion.txt",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build/YandereSimulator.exe",
+    "checksumFile": "version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game",
-    "checksumUrl": "https://github.com/acierto-incomodo/YandereSimulatorGame/releases/latest/download/GameVersion.txt",
-    "downloadUrl": "https://github.com/acierto-incomodo/YandereSimulatorGame/releases/latest/download/"
+    "checksumUrl": "https://www.yanderesimulator.com/version.txt",
+    "downloadUrl": "https://yanderesimulator.com/dl/"
   }
 ]
