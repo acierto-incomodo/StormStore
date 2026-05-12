@@ -344,7 +344,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/kerbal-space-program.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/game/Build/KSP_x64.exe"
     ],
     "download": "https://github.com/acierto-incomodo/KerbalSpaceProgramGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/unins000.exe",
@@ -613,7 +613,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/randomlife-reborn.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build/Build/RLRB_UE5.exe"
     ],
     "download": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeRebornGame/unins000.exe",
@@ -934,7 +934,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/yandere-simulator.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build/YandereSimulatorLauncher.exe"
     ],
     "download": "https://github.com/acierto-incomodo/YandereSimulatorGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/unins000.exe",
