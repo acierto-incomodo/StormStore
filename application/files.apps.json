@@ -428,7 +428,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build/RLRB_UE5",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build/Build/RLRB_UE5",
     "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game",
     "checksumUrl": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/GameVersion.txt",
