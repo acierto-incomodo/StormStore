@@ -934,7 +934,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/yandere-simulator.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build/Build/YandereSimulatorLauncher.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build/Build/PlayGame.exe"
     ],
     "download": "https://github.com/acierto-incomodo/YandereSimulatorGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/unins000.exe",
