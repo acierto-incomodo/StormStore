@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "@equal-games/game-scanner": "^1.1.4",
-    "@fluentui/react": "^8.125.5",
+    "@fluentui/react": "^8.125.6",
     "@material/web": "^2.4.1",
     "@mechanikadesign/custom-electron-titlebar": "^3.2.5",
     "@ryuziii/discord-rpc": "^1.0.1-rc.1",

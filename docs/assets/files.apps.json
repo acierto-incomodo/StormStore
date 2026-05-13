@@ -435,8 +435,21 @@
     "downloadUrl": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/"
   },
   {
+    "id": "repo-no-mods",
+    "name": "R.E.P.O. Latest (No Mods)",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build/Build/REPO.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/"
+  },
+  {
     "id": "repo",
-    "name": "R.E.P.O.",
+    "name": "R.E.P.O. with Mods",
     "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",

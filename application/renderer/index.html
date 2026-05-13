@@ -29,6 +29,10 @@
         <h2>¡Peligro detectado!</h2>
         <p id="virus-alert-text">
           Es posible que este programa sea un virus y es peligroso continuar.
+          <br />
+          Si continua sera bajo su propio riesgo.
+          <br />
+          ¿Desea continuar?
         </p>
         <div style="display: flex; gap: 12px; width: 100%; margin-top: 10px">
           <button
@@ -43,7 +47,7 @@
             class="md-btn md-btn-danger"
             style="flex: 1"
           >
-            Continuar bajo mi riesgo
+            Continuar
           </button>
         </div>
       </div>
@@ -266,7 +270,7 @@
             alt="Warning"
           />
         </div>
-        <h2 style="color: var(--md-sys-color-error)">¿Eliminar aplicación?</h2>
+        <h2 style="color: var(--md-sys-color-error); text-align: center">¿Eliminar aplicación?</h2>
         <p
           id="delete-confirm-text"
           style="text-align: center; margin-bottom: 24px"
@@ -274,18 +278,19 @@
           ¿Estás seguro de que quieres eliminar completamente esta aplicación?
           Se borrarán todos los archivos locales.
         </p>
-        <div
-          style="
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 20px;
-          "
-        >
-          <button id="cancel-delete-btn" class="md-btn md-btn-tonal">
+        <div style="display: flex; gap: 12px; width: 100%; margin-top: 10px">
+          <button
+            id="cancel-delete-btn"
+            class="md-btn md-btn-tonal"
+            style="flex: 1"
+          >
             Cancelar
           </button>
-          <button id="confirm-delete-btn" class="md-btn md-btn-danger">
+          <button
+            id="confirm-delete-btn"
+            class="md-btn md-btn-danger"
+            style="flex: 1"
+          >
             Eliminar
           </button>
         </div>

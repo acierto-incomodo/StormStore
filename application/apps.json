@@ -624,8 +624,25 @@
     "verified": "false"
   },
   {
+    "id": "repo-no-mods",
+    "name": "R.E.P.O. Latest (No Mods)",
+    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/repo.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build/Build/REPO.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "repo",
-    "name": "R.E.P.O.",
+    "name": "R.E.P.O. with Mods",
     "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
     "category": "Juegos",
     "icon": "../assets/apps/REPO-new.png",
