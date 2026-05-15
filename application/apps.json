@@ -521,7 +521,7 @@
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "none",
-    "verified": "true"
+    "verified": "false"
   },
   {
     "id": "pairdrop",
