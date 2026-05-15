@@ -344,6 +344,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/motor-town-game/releases/latest/download/"
   },
   {
+    "id": "mydockfinder",
+    "name": "MyDockFinder",
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/Customization/MyDockFinder/Build",
+    "executablePath": "%appdata%/StormGamesStudios/Customization/MyDockFinder/Build/_Launcher.exe",
+    "checksumFile": "AppVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/Customization/MyDockFinder",
+    "checksumUrl": "https://github.com/acierto-incomodo/MyDockFinderCustomization/releases/latest/download/AppVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/MyDockFinderCustomization/releases/latest/download/"
+  },
+  {
     "id": "panicore",
     "name": "Panicore",
     "files": [

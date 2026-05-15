@@ -507,6 +507,23 @@
     "verified": "true"
   },
   {
+    "id": "mydockfinder",
+    "name": "MyDockFinder",
+    "description": "MyDockFinder es un programa para Windows que permite transformar el aspecto del escritorio para que se parezca al de macOS, principalmente añadiendo una barra tipo “dock” donde puedes colocar aplicaciones, juegos o carpetas con animaciones suaves al estilo de Apple. También incluye un explorador de archivos con diseño similar al Finder de macOS y varias opciones de personalización para cambiar tamaños, posiciones y efectos visuales. Su principal objetivo es mejorar la estética y la comodidad al acceder a programas, aunque no modifica el sistema en sí, solo su apariencia, y puede consumir algunos recursos dependiendo del equipo.",
+    "category": ["Utilidades", "Herramientas", "Personalización", "Aplicaciones"],
+    "icon": "../assets/apps/mydockfinder.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Customization/MyDockFinder/Build/_Launcher.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/MyDockFinderCustomization/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Customization/MyDockFinder/Uninstall MyDockFinder.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "true"
+  },
+  {
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
