@@ -468,9 +468,9 @@
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game/Build",
     "executablePath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game/Build/Build/REPO.exe",
-    "checksumFile": "version.txt",
+    "checksumFile": "Version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game",
-    "checksumUrl": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/version.txt",
+    "checksumUrl": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/Version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/"
   },
   {
