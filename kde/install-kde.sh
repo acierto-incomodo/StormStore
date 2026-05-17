@@ -41,7 +41,8 @@ flatpak \
 htop \
 neofetch \
 snapd \
-wakeonlan
+wakeonlan \
+dos2unix
 
 systemctl enable --now snapd
 
