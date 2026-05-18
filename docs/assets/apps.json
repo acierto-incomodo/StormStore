@@ -236,6 +236,23 @@
     "verified": "true"
   },
   {
+    "id": "gamble-with-your-friends",
+    "name": "Gamble With Your Friends",
+    "description": "Gamble With Your Friends es un juego multijugador en el que tú y tus amigos compartís una misma cuenta de dinero y una gran deuda, y tenéis que apostar dentro de un casino para intentar ganar suficiente dinero antes de que se acabe el tiempo. Durante la partida participáis en distintos juegos de azar, compráis objetos para mejorar vuestras probabilidades y tomáis decisiones arriesgadas que pueden beneficiar o arruinar a todo el equipo. El objetivo es ir avanzando por un casino lleno de niveles mientras intentáis cumplir una cuota de dinero en cada ronda, en partidas rápidas y caóticas donde la cooperación y la suerte son clave.",
+    "category": "Juegos",
+    "icon": "../assets/apps/gamble-with-your-friends.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Gamble With Your Friends/game/Build/Build/unsteam_loader64.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GambleWithYourFriendsGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Gamble With Your Friends/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "gmod",
     "name": "Garry's Mod",
     "description": "Garry's Mod es un juego sandbox basado en el motor de Half-Life 2 donde no hay un objetivo fijo, sino que puedes experimentar libremente con físicas, objetos y personajes para crear todo tipo de situaciones; permite construir, programar, hacer machinimas o jugar modos creados por la comunidad como roleplay o minijuegos, lo que lo convierte en una plataforma muy flexible centrada en la creatividad y el multijugador.",

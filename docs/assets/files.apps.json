@@ -165,6 +165,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/"
   },
   {
+    "id": "gamble-with-your-friends",
+    "name": "Gamble With Your Friends",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Gamble With Your Friends/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Gamble With Your Friends/game/Build/Build/unsteam_loader64.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Gamble With Your Friends/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GambleWithYourFriendsGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GambleWithYourFriendsGame/releases/latest/download/"
+  },
+  {
     "id": "gmod",
     "name": "Garry's Mod",
     "files": [
