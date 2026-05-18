@@ -107,6 +107,18 @@ async function load(force = false) {
       });
     await Promise.all(checksumChecks);
 
+    const versionChecks = mergedApps
+      .filter((app) => app.fileApp && app.installed)
+      .map(async (app) => {
+        try {
+          app.installedVersion = await window.api.getInstalledFileAppVersion(app.id);
+        } catch (e) {
+          console.error("Error reading installed version for", app.id, e);
+          app.installedVersion = null;
+        }
+      });
+    await Promise.all(versionChecks);
+
     // Show/hide update all button
     const hasUpdates = mergedApps.some((app) => app.updateAvailable);
     const updateAllBtn = document.getElementById("update-all-btn");
@@ -321,6 +333,13 @@ function createAppCard(app, index) {
   const name = document.createElement("h3");
   name.textContent = app.name;
 
+  let installedVersionElement = null;
+  if (app.installedVersion) {
+    installedVersionElement = document.createElement("p");
+    installedVersionElement.className = "version installed-version";
+    installedVersionElement.textContent = `Versión instalada: ${app.installedVersion}`;
+  }
+
   const desc = document.createElement("p");
   desc.textContent = app.description;
 
@@ -511,7 +530,9 @@ function createAppCard(app, index) {
     actions.appendChild(installRow);
   }
 
-  card.append(imgContainer, name, desc, actions);
+  card.append(imgContainer, name);
+  if (installedVersionElement) card.append(installedVersionElement);
+  card.append(desc, actions);
   return card;
 }
 

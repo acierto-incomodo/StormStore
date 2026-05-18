@@ -198,6 +198,17 @@
 
         <div class="setting-item">
           <div class="setting-info">
+            <h3>Iniciar maximizado</h3>
+            <p>La aplicación se abrirá maximizada al iniciar si está activado.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="start_maximized" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
             <h3>Icono en la bandeja</h3>
             <p>
               Mantener la aplicación abierta en la bandeja del sistema al cerrar
@@ -362,6 +373,7 @@
       const controls = {
         auto_updates: document.getElementById("auto_updates"),
         start_with_windows: document.getElementById("start_with_windows"),
+        start_maximized: document.getElementById("start_maximized"),
         start_minimized: document.getElementById("start_minimized"),
         show_tray: document.getElementById("show_tray"),
       };
@@ -391,6 +403,9 @@
           start_with_windows: controls.start_with_windows
             ? controls.start_with_windows.checked
             : false,
+          start_maximized: controls.start_maximized
+            ? controls.start_maximized.checked
+            : true,
           start_minimized: controls.start_minimized
             ? controls.start_minimized.checked
             : false,

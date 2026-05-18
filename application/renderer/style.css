@@ -167,7 +167,7 @@ main {
 main.dashboard-layout {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
   padding: 0;
 }
 
@@ -451,7 +451,7 @@ body.offline .requires-wifi button {
 
 .card p {
   overflow-y: auto;
-  margin: 0;
+  margin: 10px 0 0 0;
   font-size: 14px;
   color: var(--md-sys-color-on-surface-variant);
   line-height: 1.4;
@@ -540,9 +540,16 @@ body.offline .requires-wifi button {
   transform: scale(0.96);
 }
 
-.version {
+.card .version {
   font-size: 12px;
+  margin-top: 0;
   color: var(--md-sys-color-on-surface-variant);
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 0;
+  padding-right: 0;
+  overflow: visible;
 }
 
 .sidebar-top {

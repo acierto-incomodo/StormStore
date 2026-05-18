@@ -12,6 +12,8 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.invoke("open-app", path, requiresSteam),
   openAppLocation: (path) => ipcRenderer.invoke("open-app-location", path),
   getAppVersion: () => ipcRenderer.invoke("get-app-version"),
+  getInstalledFileAppVersion: (id) =>
+    ipcRenderer.invoke("get-installed-fileapp-version", id),
   uninstallApp: (path) => ipcRenderer.invoke("uninstall-app", path),
   deleteAppFolder: (path) => ipcRenderer.invoke("delete-app-folder", path),
   checkTrailerExists: (id) => ipcRenderer.invoke("check-trailer-exists", id),

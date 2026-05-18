@@ -79,6 +79,7 @@ function loadSettings() {
     auto_updates: false,
     start_with_windows: false,
     start_minimized: false,
+    start_maximized: true,
     has_completed_first_launch: false,
     show_tray: true,
   };
@@ -281,6 +282,13 @@ autoUpdater.on("update-available", (info) => {
   updateInfo = info;
   if (mainWindow) {
     mainWindow.setProgressBar(-1);
+    if (!mainWindow.isVisible()) {
+      mainWindow.show();
+    }
+    if (mainWindow.isMinimized()) {
+      mainWindow.restore();
+    }
+    mainWindow.focus();
     // Forzar la redirección a la página de actualizaciones
     mainWindow.loadFile(path.join(__dirname, "renderer/updates.html"));
     // Una vez que la página se carga, le enviamos la información de la actualización
@@ -375,20 +383,26 @@ function createWindow() {
   const startInBigPicture = process.argv.some((arg) =>
     vortexFlags.includes(arg),
   );
+  const updatePending = !!updateInfo;
   const isSilentStart =
     (settings.start_minimized || process.argv.includes("--start-minimized")) &&
-    !startInBigPicture;
+    !startInBigPicture &&
+    !updatePending;
 
   const firstLaunch = !settings.has_completed_first_launch;
   let targetFile = startInBigPicture
     ? "renderer/bigpicture.html"
     : "renderer/index.html";
 
-  if (firstLaunch && !startInBigPicture) {
+  if (updatePending && !startInBigPicture) {
+    targetFile = "renderer/updates.html";
+  } else if (firstLaunch && !startInBigPicture) {
     targetFile = "renderer/primer-inicio/primer-inicio.html";
   }
 
   win.loadFile(path.join(__dirname, targetFile));
+
+  const startMaximized = settings.start_maximized !== false;
 
   win.once("ready-to-show", () => {
     if (startInBigPicture) {
@@ -398,11 +412,19 @@ function createWindow() {
       // Si es inicio silencioso, no llamamos a win.show().
       // La ventana permanece oculta y solo el icono de la bandeja será visible.
       console.log("StormStore: Iniciando en modo silencioso (solo bandeja).");
-    } else {
+    } else if (startMaximized) {
       win.maximize();
+      win.show();
+    } else {
       win.show();
     }
   });
+
+  if (updatePending) {
+    win.webContents.once("did-finish-load", () => {
+      win.webContents.send("update-available", updateInfo);
+    });
+  }
 
   win.on("close", (event) => {
     const currentSettings = loadSettings();
@@ -1403,6 +1425,27 @@ ipcMain.handle("get-apps", async () => {
 ipcMain.handle("get-files-apps", async () => {
   await loadFilesAppsData();
   return filesAppsData;
+});
+
+ipcMain.handle("get-installed-fileapp-version", async (event, id) => {
+  await loadFilesAppsData();
+  const fileApp = filesAppsData.find((item) => item.id === id);
+  if (!fileApp) return null;
+
+  const checksumDir = resolveWindowsPath(
+    fileApp.checksumPath || fileApp.extractPath || "",
+  );
+  const versionFile = fileApp.checksumFile || "Version.txt";
+  const versionPath = path.join(checksumDir, versionFile);
+
+  if (!fs.existsSync(versionPath)) return null;
+  try {
+    const raw = fs.readFileSync(versionPath, "utf8");
+    return raw.split(/\r?\n/)[0].trim();
+  } catch (err) {
+    console.error("Error leyendo versión instalada para", id, err);
+    return null;
+  }
 });
 
 ipcMain.handle("check-checksum", async (event, id) => {

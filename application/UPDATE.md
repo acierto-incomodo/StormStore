@@ -1,32 +1,35 @@
-# 🚀 StormStore v2.1.1 - Bug Fix Update
+# 🚀 StormStore v2.1.2 - Interfaz y Ajustes Inteligentes
 
 ## 📝 Registro de Cambios
 
-¡Nueva actualización centrada en estabilidad! Esta versión corrige errores visuales, pequeños fallos del sistema y mejora la experiencia general de uso de StormStore.
+Esta actualización introduce mejoras críticas en la visualización de la interfaz, nuevos controles de usuario para el inicio del sistema y una lógica de actualización más inteligente para asegurar que nunca te pierdas las novedades importantes.
 
-### 🐞 Correcciones Visuales
--   **Interfaz pulida**: Se han corregido desajustes en márgenes, alineaciones y espaciados en varias pantallas.
--   **Iconos mejorados**: Solucionados problemas donde algunos iconos no se mostraban correctamente o aparecían pixelados.
--   **Modo oscuro refinado**: Ajustes en contrastes y colores para mejorar la legibilidad en ciertas secciones.
+### 🎨 Mejoras Visuales y de Interfaz
+-   **Nueva Visualización de Versión**: ¡Nueva función! Ahora puedes ver la versión que tienes instalada directamente en la tarjeta de cada aplicación. Hemos diseñado esta sección para que aparezca perfectamente centrada y elegante.
+-   **Adiós a los recortes**: Se solucionó un problema visual donde el texto de la versión se cortaba o mostraba barras de desplazamiento innecesarias cuando la descripción de la app era muy larga.
+-   **Jerarquía mejorada**: Se ajustaron los márgenes para que la descripción de las aplicaciones tenga un espaciado más limpio y legible.
 
-### ⚙️ Correcciones del Sistema
--   **Errores de navegación**: Arreglado un fallo donde algunas rutas no cargaban correctamente al cambiar de sección.
--   **Carga de apps**: Solucionado un bug que provocaba que algunas aplicaciones no aparecieran en la biblioteca tras instalarse.
--   **Filtros de biblioteca**: Corrección de un problema donde los filtros podían quedarse “bloqueados” al cambiar de vista.
+### ⚙️ Nuevos Ajustes y Experiencia Inicial
+-   **Modo de Ventana**: Se ha añadido el ajuste **"Iniciar maximizado"**. Ahora puedes elegir si prefieres que la aplicación se abra ocupando toda la pantalla o en modo ventana por defecto.
+-   **Configuración Inicial**: Se ha agregado a la pantalla de bienvenida el ajuste de **"Iniciar maximizado"**.
+-   **Panel de Ajustes**: El control de maximizado ya está integrado en la sección de configuración general.
 
-### 🔧 Estabilidad y Rendimiento
--   **Menos cierres inesperados**: Se han corregido varios casos que podían causar problemas en segundo plano.
--   **Optimización ligera**: Mejora del rendimiento general en la carga inicial de la aplicación.
--   **Gestión de memoria**: Ajustes internos para reducir el consumo en vistas con muchas aplicaciones.
-    
+### 🧠 Lógica de Actualización Inteligente
+-   **Gestión de Ventanas en Actualizaciones**: Independientemente de si tienes configurado el inicio maximizado o en ventana, StormStore detectará si hay una **actualización crítica del sistema** y mostrará la ventana automáticamente para que no te pierdas las mejoras de seguridad y rendimiento.
 
-### 🛠️ Ajustes Técnicos
--   **Electron refinado**: Pequeñas mejoras internas sobre la base de Electron v42 para mayor estabilidad.
--   **Logs mejorados**: Se han añadido registros más claros para facilitar la detección de errores futuros.
--   **Sistema de UI**: Correcciones en componentes reutilizables para evitar comportamientos inconsistentes.
+### 🔧 Mejoras Técnicas y Dependencias
+-   **Actualización de Componentes**: Se han actualizado las dependencias de NodeJS para garantizar la máxima estabilidad y seguridad del sistema:
+    -   **Electron**: ^42.0.1 → ^42.1.0
+    -   **Lucide & Lucide React**: ^1.14.0 → ^1.16.0
+    -   **Date-fns**: ^4.1.0 → ^4.2.0
+    -   **Axios**: ^1.16.0 → ^1.16.1
+    -   **@vibe/core**: ^4.2.0 → ^4.2.1
+
+### 🏗️ En Preparación
+-   **Pestaña de Novedades**: Estamos trabajando en una nueva sección dedicada a mostrarte las últimas noticias y cambios de forma visual y atractiva directamente en la aplicación.
 
 ----------
 
 💙 El equipo de **StormGamesStudios**.
 
-**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v2.1.0...v2.1.1](https://github.com/acierto-incomodo/StormStore/compare/v2.1.0...v2.1.1)
+**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v2.1.1...v2.1.2](https://github.com/acierto-incomodo/StormStore/compare/v2.1.1...v2.1.2)

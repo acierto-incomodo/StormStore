@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const startWithWindowsCheckbox = document.getElementById("start_with_windows");
   const showTrayCheckbox = document.getElementById("show_tray");
   const startMinimizedCheckbox = document.getElementById("start_minimized");
+  const startMaximizedCheckbox = document.getElementById("start_maximized");
 
   let currentStep = 1;
 
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       start_with_windows: startWithWindowsCheckbox.checked,
       show_tray: showTrayCheckbox.checked,
       start_minimized: startMinimizedCheckbox.checked,
+      start_maximized: startMaximizedCheckbox.checked,
       has_completed_first_launch: true, // Marcar como completado
     };
 
@@ -60,5 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     startWithWindowsCheckbox.checked = settings.start_with_windows === true;
     showTrayCheckbox.checked = settings.show_tray !== false;
     startMinimizedCheckbox.checked = settings.start_minimized === true;
+    startMaximizedCheckbox.checked = settings.start_maximized !== false;
   });
 });

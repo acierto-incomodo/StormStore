@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -77,7 +77,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^42.0.1",
+    "electron": "^42.1.0",
     "electron-builder": "^26.8.1"
   },
   "dependencies": {
@@ -87,11 +87,11 @@
     "@mechanikadesign/custom-electron-titlebar": "^3.2.5",
     "@ryuziii/discord-rpc": "^1.0.1-rc.1",
     "@trodi/electron-splashscreen": "^1.0.2",
-    "@vibe/core": "^4.2.0",
-    "axios": "^1.16.0",
+    "@vibe/core": "^4.2.1",
+    "axios": "^1.16.1",
     "create-desktop-shortcuts": "^1.11.1",
     "crypto": "^1.0.1",
-    "date-fns": "^4.1.0",
+    "date-fns": "^4.2.0",
     "dayjs": "^1.11.20",
     "discord-rpc": "^4.0.1",
     "electron-debug": "^4.1.0",
@@ -107,8 +107,8 @@
     "fs-extra": "^11.3.5",
     "get-installed-apps": "^1.1.1",
     "got": "^15.0.5",
-    "lucide": "^1.14.0",
-    "lucide-react": "^1.14.0",
+    "lucide": "^1.16.0",
+    "lucide-react": "^1.16.0",
     "motion": "^12.38.0",
     "regedit": "^5.1.4",
     "remixicon": "^4.9.1",
