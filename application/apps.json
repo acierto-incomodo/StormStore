@@ -338,6 +338,23 @@
     "verified": "false"
   },
   {
+    "id": "iamfish",
+    "name": "I Am Fish",
+    "description": "I Am Fish es un juego de aventura en el que juegas como un pez en un mundo subacuático lleno de secretos y desafíos. Explora océanos, descubre criaturas misteriosas y resuelve acertijos para avanzar en tu historia.",
+    "category": "Juegos",
+    "icon": "../assets/apps/iamfish.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/IAmFish/game/Build/Build/IAmFish.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/IAmFishGame/releases/latest/download/IAmFish_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/IAmFish/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "karts-multiplayer",
     "name": "Karts Multiplayer",
     "description": "Un juego divertido para jugar con amigos. Corre con karts en diferentes pistas, recoge potenciadores y lanza objetos a tus oponentes para ganar la carrera. ¡Compite en línea y demuestra quién es el mejor piloto de karts!",
@@ -475,6 +492,23 @@
     "verified": "false"
   },
   {
+    "id": "misery",
+    "name": "MISERY",
+    "description": "Gamble With Your Friends es un juego multijugador en el que tú y tus amigos compartís una misma cuenta de dinero y una gran deuda, y tenéis que apostar dentro de un casino para intentar ganar suficiente dinero antes de que se acabe el tiempo. Durante la partida participáis en distintos juegos de azar, compráis objetos para mejorar vuestras probabilidades y tomáis decisiones arriesgadas que pueden beneficiar o arruinar a todo el equipo. El objetivo es ir avanzando por un casino lleno de niveles mientras intentáis cumplir una cuota de dinero en cada ronda, en partidas rápidas y caóticas donde la cooperación y la suerte son clave.",
+    "category": "Juegos",
+    "icon": "../assets/apps/misery.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MISERY/game/Build/Build/MISERY.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/MISERY-Game/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MISERY/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
@@ -527,7 +561,12 @@
     "id": "mydockfinder",
     "name": "MyDockFinder",
     "description": "MyDockFinder es un programa para Windows que permite transformar el aspecto del escritorio para que se parezca al de macOS, principalmente añadiendo una barra tipo “dock” donde puedes colocar aplicaciones, juegos o carpetas con animaciones suaves al estilo de Apple. También incluye un explorador de archivos con diseño similar al Finder de macOS y varias opciones de personalización para cambiar tamaños, posiciones y efectos visuales. Su principal objetivo es mejorar la estética y la comodidad al acceder a programas, aunque no modifica el sistema en sí, solo su apariencia, y puede consumir algunos recursos dependiendo del equipo.",
-    "category": ["Utilidades", "Herramientas", "Personalización", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Herramientas",
+      "Personalización",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/mydockfinder.png",
     "paths": [
       "%appdata%/StormGamesStudios/Customization/MyDockFinder/Build/_Launcher.exe"

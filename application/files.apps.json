@@ -253,6 +253,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/hytale/releases/latest/download/"
   },
   {
+    "id": "iamfish",
+    "name": "I Am Fish",
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/IAmFish/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/IAmFish/game/Build/Build/IAmFish.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/IAmFish/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/IAmFishGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/IAmFishGame/releases/latest/download/"
+  },
+  {
     "id": "kerbal-space-program",
     "name": "Kerbal Space Program",
     "files": ["Build.zip.001", "Build.zip.002"],
@@ -342,6 +355,19 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/game",
     "checksumUrl": "https://github.com/acierto-incomodo/miside-zero/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/miside-zero/releases/latest/download/"
+  },
+  {
+    "id": "misery",
+    "name": "MISERY",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MISERY/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MISERY/game/Build/Build/MISERY.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MISERY/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/MISERY-Game/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/MISERY-Game/releases/latest/download/"
   },
   {
     "id": "motortown",
