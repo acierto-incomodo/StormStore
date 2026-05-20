@@ -280,7 +280,7 @@
     ],
     "download": "https://github.com/acierto-incomodo/GolfItGame/releases/latest/download/GolfIt_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/unins000.exe",
-    "steam": "no",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "none",
