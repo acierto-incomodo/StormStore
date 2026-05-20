@@ -207,7 +207,7 @@
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/game/Build/Build/unsteam_loader64.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/game/Build/Build/GolfItLauncher.exe",
     "checksumFile": "Version.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/GolfItGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/GolfItGame/releases/latest/download/Version.txt",
