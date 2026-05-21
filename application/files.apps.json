@@ -22,8 +22,8 @@
     "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/game/Build/Build/BetGame.exe",
     "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/game",
-    "checksumUrl": "https://github.com/acierto-incomodo/BackroomsEscapeTogether/releases/latest/download/GameVersion.txt",
-    "downloadUrl": "https://github.com/acierto-incomodo/BackroomsEscapeTogether/releases/latest/download/"
+    "checksumUrl": "https://github.com/acierto-incomodo/BackroomsEscapeTogetherGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/BackroomsEscapeTogetherGame/releases/latest/download/"
   },
   {
     "id": "backseat-drivers",
