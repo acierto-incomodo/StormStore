@@ -42,7 +42,7 @@
     ],
     "download": "https://github.com/acierto-incomodo/BackroomsEscapeTogetherGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/unins000.exe",
-    "steam": "no",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "alert",
