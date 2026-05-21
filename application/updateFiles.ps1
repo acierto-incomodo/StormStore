@@ -4,13 +4,11 @@
 $scriptDir = $PSScriptRoot
 $rootDir = Resolve-Path -Path (Join-Path $scriptDir "..")
 $destDir = Join-Path $rootDir "docs/assets"
-$destAssetsDir = Join-Path $rootDir "docs/assets/apps"
 $destAppsSizeDir = Join-Path $rootDir "docs/assets/apps-size"
 $destTrailersDir = Join-Path $rootDir "docs/assets/trailers"
 
 $sourceJson = Join-Path $scriptDir "apps.json"
 $sourceFilesJson = Join-Path $scriptDir "files.apps.json"
-$sourceAssets = Join-Path $scriptDir "assets/apps"
 $sourceAppsSize = Join-Path $scriptDir "assets/apps-size"
 $sourceTrailers = Join-Path $scriptDir "assets/media/trailers"
 
@@ -44,13 +42,6 @@ if (Test-Path $destDir) {
 }
 New-Item -Path $destDir -ItemType Directory -Force | Out-Null
 
-# Limpiar directorio de assets
-Write-Host "Limpiando directorio de assets: $destAssetsDir"
-if (Test-Path $destAssetsDir) {
-    Remove-Item -Path $destAssetsDir -Recurse -Force
-}
-New-Item -Path $destAssetsDir -ItemType Directory -Force | Out-Null
-
 # Limpiar directorio de apps-size
 Write-Host "Limpiando directorio de apps-size: $destAppsSizeDir"
 if (Test-Path $destAppsSizeDir) {
@@ -71,17 +62,7 @@ Copy-Item -Path $sourceJson -Destination $destDir
 Write-Host "Copiando 'application/files.apps.json'..."
 Copy-Item -Path $sourceFilesJson -Destination $destDir
 
-# 3. Copiar la carpeta assets/apps
-Write-Host "Copiando contenido de 'application/assets/apps'..."
-if (Test-Path $sourceAssets) {
-    Copy-Item -Path (Join-Path $sourceAssets "*") -Destination $destAssetsDir -Recurse
-    Write-Host "✅ assets/apps copiado" -ForegroundColor Green
-}
-else {
-    Write-Host "⚠️ Directorio no encontrado: $sourceAssets" -ForegroundColor Yellow
-}
-
-# 4. Copiar la carpeta assets/apps-size
+# 3. Copiar la carpeta assets/apps-size
 Write-Host "Copiando contenido de 'application/assets/apps-size'..."
 if (Test-Path $sourceAppsSize) {
     Copy-Item -Path (Join-Path $sourceAppsSize "*") -Destination $destAppsSizeDir -Recurse
@@ -91,7 +72,7 @@ else {
     Write-Host "⚠️ Directorio no encontrado: $sourceAppsSize" -ForegroundColor Yellow
 }
 
-# 5. Copiar la carpeta assets/media/trailers
+# 4. Copiar la carpeta assets/media/trailers
 Write-Host "Copiando contenido de 'application/assets/media/trailers'..."
 if (Test-Path $sourceTrailers) {
     Copy-Item -Path (Join-Path $sourceTrailers "*") -Destination $destTrailersDir -Recurse
@@ -101,7 +82,7 @@ else {
     Write-Host "⚠️ Directorio no encontrado: $sourceTrailers" -ForegroundColor Yellow
 }
 
-# 6. Copiar el instalador generado en setup a la carpeta dist principal
+# 5. Copiar el instalador generado en setup a la carpeta dist principal
 Write-Host "`nCopiando 'StormStore-Setup.exe' a 'application/dist'..."
 $setupExeSource = Join-Path $scriptDir "setup\dist\StormStore-Setup.exe"
 $appDistDest = Join-Path $scriptDir "dist"
