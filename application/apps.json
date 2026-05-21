@@ -32,6 +32,23 @@
     "verified": "false"
   },
   {
+    "id": "backrooms-escape-together",
+    "name": "Backrooms: Escape Together",
+    "description": "Backrooms: Escape Together es un juego de terror y supervivencia cooperativo en el que tú y otros jugadores quedáis atrapados en las “Backrooms”, un laberinto infinito de salas amarillas vacías y pasillos idénticos. El objetivo es explorar estos niveles, encontrar recursos y herramientas, y buscar una forma de escapar mientras evitáis entidades hostiles que patrullan el lugar. La tensión viene de la exploración, la oscuridad, la sensación de estar perdido y el peligro constante, ya que cada partida puede llevarte a zonas distintas y más peligrosas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/backrooms-escape-together.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/game/Build/Build/BetGame.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/BackroomsEscapeTogetherGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "backseat-drivers",
     "name": "Backseat Drivers",
     "description": "Juego competitivo de carreras donde los jugadores se empujan, chocan y usan ítems contra sus oponentes mientras compiten por llegar primero a la meta.",
@@ -346,7 +363,7 @@
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/IAmFish/game/Build/Build/IAmFish.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/IAmFishGame/releases/latest/download/IAmFish_Launcher_Installer.exe",
+    "download": "https://github.com/acierto-incomodo/IAmFishGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/IAmFish/unins000.exe",
     "steam": "no",
     "wifi": "no",

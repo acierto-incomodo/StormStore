@@ -13,6 +13,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/"
   },
   {
+    "id": "backrooms-escape-together",
+    "name": "Backrooms: Escape Together",
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003", "Build.zip.004", "Build.zip.005", "Build.zip.006"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/game/Build/Build/BetGame.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/BackroomsEscapeTogether/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/BackroomsEscapeTogether/releases/latest/download/"
+  },
+  {
     "id": "backseat-drivers",
     "name": "Backseat Drivers",
     "files": ["Build.zip"],
