@@ -31,8 +31,8 @@ const ICON_SIZES = [
   "256x256",
   "512x512",
   "1024x1024",
-  "2048x2048",
-  "4096x4096",
+  // "2048x2048",
+  // "4096x4096",
 ];
 let ICONS_CACHE_DIR;
 let APPS_JSON_CACHE;

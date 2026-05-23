@@ -372,6 +372,23 @@
     "verified": "false"
   },
   {
+    "id": "iracing-arcade",
+    "name": "iRacing Arcade",
+    "description": "iRacing Arcade es un juego de conducción pensado para ofrecer una experiencia más accesible y rápida basada en el simulador de carreras iRacing. Conduces distintos coches en circuitos reales, pero con controles simplificados y ayudas que facilitan el manejo, por lo que no necesitas conocimientos avanzados de simulación. Se centra en carreras directas y dinámicas, manteniendo parte del realismo del original pero adaptado a un estilo más arcade, donde la prioridad es divertirse compitiendo sin complicaciones.",
+    "category": "Juegos",
+    "icon": "../assets/apps/iracing-arcade.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/game/Build/Build/iracing-arcade.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/iRacingArcadeGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "karts-multiplayer",
     "name": "Karts Multiplayer",
     "description": "Un juego divertido para jugar con amigos. Corre con karts en diferentes pistas, recoge potenciadores y lanza objetos a tus oponentes para ganar la carrera. ¡Compite en línea y demuestra quién es el mejor piloto de karts!",
@@ -850,6 +867,40 @@
     "verified": "true"
   },
   {
+    "id": "slime-rancher",
+    "name": "Slime Rancher",
+    "description": "Slime Rancher es un juego de simulación y gestión en el que los jugadores cultivan y crían slime en un mundo abierto, recolectando recursos y construyendo instalaciones para maximizar su producción.",
+    "category": "Juegos",
+    "icon": "../assets/apps/slime-rancher.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher/game/Build/Build/SlimeRancher.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/SlimeRancherGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "slime-rancher-2",
+    "name": "Slime Rancher 2",
+    "description": "Slime Rancher 2 es un juego de simulación y gestión en el que los jugadores cultivan y crían slime en un mundo abierto, recolectando recursos y construyendo instalaciones para maximizar su producción.",
+    "category": "Juegos",
+    "icon": "../assets/apps/slime-rancher-2.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/game/Build/Build/SlimeRancher2.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/SlimeRancher2Game/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "description": "Space Engineers es un juego sandbox de construcción y supervivencia en el espacio donde diseñas, ensamblas y gestionas naves, estaciones espaciales y estructuras en planetas o en órbita; utiliza un sistema de física realista que obliga a cuidar energía, oxígeno, gravedad y propulsión, y te permite jugar en modo creativo o supervivencia mientras exploras, automatizas sistemas y construyes ingeniería espacial compleja.",
@@ -1028,6 +1079,28 @@
     ],
     "download": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/ULTRAKILL_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "wallpaper-engine",
+    "name": "Wallpaper Engine",
+    "description": "Wallpaper Engine es una aplicación que permite usar fondos de pantalla animados e interactivos en el escritorio del ordenador. En lugar de imágenes estáticas, puedes tener fondos en movimiento, con efectos visuales, música o incluso elementos que reaccionan al ratón o al sonido del sistema. También permite crear tus propios wallpapers o descargar los de otros usuarios, y configurarlos para que no consuman recursos cuando estás jugando o usando otras aplicaciones.",
+    "category": [
+      "Utilidades",
+      "Herramientas",
+      "Personalización",
+      "Aplicaciones"
+    ],
+    "icon": "../assets/apps/wallpaper-engine.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Customization/WallpaperEngine/Build/PlayGame.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/WallpaperEnginePersonalizacion/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Customization/WallpaperEngine/Uninstall WallpaperEngine.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",

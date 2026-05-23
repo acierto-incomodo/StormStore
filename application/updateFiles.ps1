@@ -9,7 +9,8 @@ $destTrailersDir = Join-Path $rootDir "docs/assets/trailers"
 
 $sourceJson = Join-Path $scriptDir "apps.json"
 $sourceFilesJson = Join-Path $scriptDir "files.apps.json"
-$sourceAppsSize = Join-Path $scriptDir "assets/apps-size"
+$sourceAppsSizeBase = Join-Path $scriptDir "assets/apps-size"
+$appSizeSubfolders = @("256x256", "512x512", "1024x1024")
 $sourceTrailers = Join-Path $scriptDir "assets/media/trailers"
 
 Write-Host "--- Actualizando archivos de documentación ---"
@@ -63,13 +64,18 @@ Write-Host "Copiando 'application/files.apps.json'..."
 Copy-Item -Path $sourceFilesJson -Destination $destDir
 
 # 3. Copiar la carpeta assets/apps-size
-Write-Host "Copiando contenido de 'application/assets/apps-size'..."
-if (Test-Path $sourceAppsSize) {
-    Copy-Item -Path (Join-Path $sourceAppsSize "*") -Destination $destAppsSizeDir -Recurse
-    Write-Host "✅ assets/apps-size copiado" -ForegroundColor Green
-}
-else {
-    Write-Host "⚠️ Directorio no encontrado: $sourceAppsSize" -ForegroundColor Yellow
+Write-Host "Copiando subcarpetas de 'application/assets/apps-size'..."
+foreach ($subfolder in $appSizeSubfolders) {
+    $src = Join-Path $sourceAppsSizeBase $subfolder
+    $dest = Join-Path $destAppsSizeDir $subfolder
+    if (Test-Path $src) {
+        if (!(Test-Path $dest)) { New-Item -ItemType Directory -Path $dest -Force | Out-Null }
+        Copy-Item -Path (Join-Path $src "*") -Destination $dest -Recurse
+        Write-Host "✅ assets/apps-size/$subfolder copiado" -ForegroundColor Green
+    }
+    else {
+        Write-Host "⚠️ Subcarpeta no encontrada: $src" -ForegroundColor Yellow
+    }
 }
 
 # 4. Copiar la carpeta assets/media/trailers

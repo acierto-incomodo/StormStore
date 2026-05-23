@@ -279,6 +279,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/IAmFishGame/releases/latest/download/"
   },
   {
+    "id": "iracing-arcade",
+    "name": "iRacing Arcade",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/game/Build/Build/iracing-arcade.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/iRacingArcadeGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/iRacingArcadeGame/releases/latest/download/"
+  },
+  {
     "id": "kerbal-space-program",
     "name": "Kerbal Space Program",
     "files": ["Build.zip.001", "Build.zip.002"],
@@ -604,6 +617,32 @@
     "downloadUrl": "https://github.com/acierto-incomodo/scrcpy/releases/latest/download/"
   },
   {
+    "id": "slime-rancher",
+    "name": "Slime Rancher",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher/game/Build/Build/SlimeRancher.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/SlimeRancherGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/SlimeRancherGame/releases/latest/download/"
+  },
+  {
+    "id": "slime-rancher-2",
+    "name": "Slime Rancher 2",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/game/Build/Build/SlimeRancher2.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/SlimeRancher2Game/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/SlimeRancher2Game/releases/latest/download/"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "files": [
@@ -723,6 +762,19 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/"
+  },
+  {
+    "id": "wallpaper-engine",
+    "name": "Wallpaper Engine",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/Customization/WallpaperEngine/Build",
+    "executablePath": "%appdata%/StormGamesStudios/Customization/WallpaperEngine/Build/PlayGame.exe",
+    "checksumFile": "AppVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/Customization/WallpaperEngine",
+    "checksumUrl": "https://github.com/acierto-incomodo/WallpaperEnginePersonalizacion/releases/latest/download/AppVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/WallpaperEnginePersonalizacion/releases/latest/download/"
   },
   {
     "id": "yandere-simulator",

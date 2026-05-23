@@ -30,7 +30,8 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 SOURCE_JSON="$SCRIPT_DIR/apps.json"
 SOURCE_FILES_JSON="$SCRIPT_DIR/files.apps.json"
-SOURCE_APPS_SIZE="$SCRIPT_DIR/assets/apps-size"
+SOURCE_APPS_SIZE_BASE="$SCRIPT_DIR/assets/apps-size"
+APP_SIZE_SUBFOLDERS=("256x256" "512x512" "1024x1024")
 SOURCE_TRAILERS="$SCRIPT_DIR/assets/media/trailers"
 DEST_DIR="$ROOT_DIR/docs/assets"
 DEST_APPS_SIZE_DIR="$ROOT_DIR/docs/assets/apps-size"
@@ -109,13 +110,18 @@ print_info "Copiando 'application/files.apps.json'..."
 cp "$SOURCE_FILES_JSON" "$DEST_DIR/"
 
 # 3. Copiar la carpeta assets/apps-size
-print_info "Copiando contenido de 'application/assets/apps-size'..."
-if [ -d "$SOURCE_APPS_SIZE" ]; then
-    cp -r "$SOURCE_APPS_SIZE/." "$DEST_APPS_SIZE_DIR/"
-    print_success "apps-size copiados correctamente"
-else
-    print_error "Directorio no encontrado: $SOURCE_APPS_SIZE"
-fi
+print_info "Copiando subcarpetas de 'application/assets/apps-size'..."
+for SUB in "${APP_SIZE_SUBFOLDERS[@]}"; do
+    SRC="$SOURCE_APPS_SIZE_BASE/$SUB"
+    DEST="$DEST_APPS_SIZE_DIR/$SUB"
+    if [ -d "$SRC" ]; then
+        mkdir -p "$DEST"
+        cp -r "$SRC/." "$DEST/"
+        print_success "Subcarpeta $SUB copiada correctamente"
+    else
+        print_error "Subcarpeta no encontrada: $SUB"
+    fi
+done
 
 # 4. Copiar la carpeta assets/media/trailers
 print_info "Copiando contenido de 'application/assets/media/trailers'..."
