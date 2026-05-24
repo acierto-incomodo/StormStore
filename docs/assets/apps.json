@@ -901,6 +901,23 @@
     "verified": "false"
   },
   {
+    "id": "mr-president",
+    "name": "Mr.President!",
+    "description": "Mr.President! es un juego en el que controlas a un guardaespaldas cuya misión es proteger al presidente de intentos de asesinato. La jugabilidad se basa en reaccionar rápidamente y lanzarte físicamente para interceptar balas, explosiones u otros peligros antes de que alcancen al presidente. Tiene un enfoque humorístico y exagerado, con físicas caóticas y situaciones absurdas, donde el objetivo es sacrificarte si hace falta para mantenerlo con vida.",
+    "category": "Juegos",
+    "icon": "../assets/apps/mr-president.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MrPresident/game/Build/Build/Mr.Prez.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/MrPresidentGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MrPresident/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "description": "Space Engineers es un juego sandbox de construcción y supervivencia en el espacio donde diseñas, ensamblas y gestionas naves, estaciones espaciales y estructuras en planetas o en órbita; utiliza un sistema de física realista que obliga a cuidar energía, oxígeno, gravedad y propulsión, y te permite jugar en modo creativo o supervivencia mientras exploras, automatizas sistemas y construyes ingeniería espacial compleja.",

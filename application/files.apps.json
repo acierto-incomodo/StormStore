@@ -643,6 +643,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/SlimeRancher2Game/releases/latest/download/"
   },
   {
+    "id": "mr-president",
+    "name": "Mr.President!",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MrPresident/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MrPresident/game/Build/Build/Mr.Prez.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MrPresident/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/MrPresidentGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/MrPresidentGame/releases/latest/download/"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "files": [
