@@ -3,9 +3,15 @@
     "id": "stormstore",
     "name": "StormStore",
     "description": "La aplicación principal de StormGamesStudios para gestionar tus juegos favoritos.",
-    "category": ["Tiendas", "Utilidades", "Aplicaciones"],
+    "category": [
+      "Tiendas",
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/stormstore.png",
-    "paths": ["%appdata%/StormGamesStudios/StormStore/StormStore.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/StormStore/StormStore.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/latest/download/StormStore-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
     "steam": "no",
@@ -100,6 +106,23 @@
     "verified": "false"
   },
   {
+    "id": "car-for-sale-simulator",
+    "name": "Car For Sale Simulator 2023",
+    "description": "Car For Sale Simulator 2023 es un juego de simulación en el que gestionas tu propio negocio de compra y venta de coches. Empiezas con poco dinero comprando vehículos de segunda mano, negociando precios con vendedores, reparándolos y mejorándolos para luego venderlos y obtener beneficio. A medida que avanzas puedes ampliar tu negocio, comprar mejores coches y optimizar tus ganancias, centrándote en saber cuándo comprar barato y vender caro.",
+    "category": "Juegos",
+    "icon": "../assets/apps/car-for-sale-simulator.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/game/Build/Build/Car For Sale Simulator 2023.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/CarForSaleSimulatorGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "content-warning",
     "name": "Content Warning",
     "description": "Juego cooperativo en el que tú y tus amigos grabáis vídeos en lugares aterradores para convertiros en estrellas virales mientras intentáis sobrevivir a criaturas y resolver situaciones tensas.",
@@ -117,10 +140,29 @@
     "verified": "false"
   },
   {
+    "id": "cuphead",
+    "name": "Cuphead",
+    "description": "Cuphead es un juego de plataformas y disparos en 2D con un estilo de animación inspirado en los cartoons de los años 30. El juego se centra en desafíos difíciles y combates con jefes, donde los jugadores controlan a Cuphead y Mugman mientras enfrentan a diversos enemigos y jefes en entornos coloridos y detallados.",
+    "category": "Juegos",
+    "icon": "../assets/apps/cuphead.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Cuphead/game/Build/Build/Cuphead.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/CupheadGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Cuphead/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "doom",
     "name": "DOOM Classic",
     "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",
-    "category": ["Juegos"],
+    "category": [
+      "Juegos"
+    ],
     "icon": "../assets/apps/doom.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
@@ -137,7 +179,9 @@
     "id": "drivebeyondhorizons",
     "name": "Drive Beyond Horizons",
     "description": "Drive Beyond Horizons es un juego de conducción y exploración en mundo abierto donde recorres vastos paisajes generados de forma procedural, gestionando tu vehículo mientras viajas largas distancias, descubres ubicaciones y enfrentas los desafíos del entorno; el progreso se basa en mejorar el coche, administrar recursos y sobrevivir a las condiciones del viaje, ofreciendo una experiencia relajada pero centrada en la aventura y la libertad.",
-    "category": ["Juegos"],
+    "category": [
+      "Juegos"
+    ],
     "icon": "../assets/apps/drivebeyondhorizons.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/installer_updater.exe"
@@ -492,6 +536,23 @@
     "verified": "false"
   },
   {
+    "id": "misery",
+    "name": "MISERY",
+    "description": "Gamble With Your Friends es un juego multijugador en el que tú y tus amigos compartís una misma cuenta de dinero y una gran deuda, y tenéis que apostar dentro de un casino para intentar ganar suficiente dinero antes de que se acabe el tiempo. Durante la partida participáis en distintos juegos de azar, compráis objetos para mejorar vuestras probabilidades y tomáis decisiones arriesgadas que pueden beneficiar o arruinar a todo el equipo. El objetivo es ir avanzando por un casino lleno de niveles mientras intentáis cumplir una cuota de dinero en cada ronda, en partidas rápidas y caóticas donde la cooperación y la suerte son clave.",
+    "category": "Juegos",
+    "icon": "../assets/apps/misery.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MISERY/game/Build/Build/MISERY.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/MISERY-Game/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MISERY/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "miside",
     "name": "MiSide",
     "description": "MiSide es un juego indie de terror psicológico que comienza como una experiencia aparentemente tranquila de vida cotidiana, pero poco a poco se vuelve inquietante y perturbadora a medida que la realidad se distorsiona; el jugador interactúa con una chica dentro de un entorno tipo simulador, tomando decisiones y explorando detalles que revelan una historia oscura centrada en la obsesión, el control y la pérdida de la normalidad.",
@@ -526,27 +587,13 @@
     "verified": "false"
   },
   {
-    "id": "misery",
-    "name": "MISERY",
-    "description": "Gamble With Your Friends es un juego multijugador en el que tú y tus amigos compartís una misma cuenta de dinero y una gran deuda, y tenéis que apostar dentro de un casino para intentar ganar suficiente dinero antes de que se acabe el tiempo. Durante la partida participáis en distintos juegos de azar, compráis objetos para mejorar vuestras probabilidades y tomáis decisiones arriesgadas que pueden beneficiar o arruinar a todo el equipo. El objetivo es ir avanzando por un casino lleno de niveles mientras intentáis cumplir una cuota de dinero en cada ronda, en partidas rápidas y caóticas donde la cooperación y la suerte son clave.",
-    "category": "Juegos",
-    "icon": "../assets/apps/misery.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/MISERY/game/Build/Build/MISERY.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/MISERY-Game/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MISERY/unins000.exe",
-    "steam": "si",
-    "wifi": "no",
-    "share-compatibility": "si",
-    "virus-alert": "none",
-    "verified": "false"
-  },
-  {
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
-    "category": ["Juegos", "Aplicaciones"],
+    "category": [
+      "Juegos",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/modpack-installer.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/Modpack Installer/Modpack Installer.exe"
@@ -577,12 +624,35 @@
     "verified": "false"
   },
   {
+    "id": "mr-president",
+    "name": "Mr.President!",
+    "description": "Mr.President! es un juego en el que controlas a un guardaespaldas cuya misión es proteger al presidente de intentos de asesinato. La jugabilidad se basa en reaccionar rápidamente y lanzarte físicamente para interceptar balas, explosiones u otros peligros antes de que alcancen al presidente. Tiene un enfoque humorístico y exagerado, con físicas caóticas y situaciones absurdas, donde el objetivo es sacrificarte si hace falta para mantenerlo con vida.",
+    "category": "Juegos",
+    "icon": "../assets/apps/mr-president.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MrPresident/game/Build/Build/Mr.Prez.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/MrPresidentGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MrPresident/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
-    "category": ["Inteligencia Artificial", "Utilidades", "Aplicaciones"],
+    "category": [
+      "Inteligencia Artificial",
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/multiai.png",
-    "paths": ["%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
     "steam": "no",
@@ -617,9 +687,14 @@
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/pairdrop.png",
-    "paths": ["%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe",
     "steam": "no",
@@ -697,6 +772,23 @@
     "verified": "true"
   },
   {
+    "id": "project-zomboid",
+    "name": "Project Zomboid",
+    "description": "Project Zomboid es un juego de supervivencia en 2D en el que los jugadores deben sobrevivir en un mundo post-apocalíptico lleno de zombis. El juego se centra en la gestión de recursos, la construcción de refugios y la lucha por la supervivencia en un entorno hostil.",
+    "category": "Juegos",
+    "icon": "../assets/apps/project-zomboid.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/game/Build/Build/ProjectZomboid64.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ProjectZomboidGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "pureya",
     "name": "Pureya",
     "description": "Pureya, creado por Alva Majo, es un juego arcade que combina muchos minijuegos en uno solo, donde cada pocos segundos cambia automáticamente a uno distinto, obligándote a adaptarte muy rápido. Todos los minijuegos tienen controles muy simples, pero se vuelven cada vez más difíciles con el tiempo. Mientras juegas consigues canicas que luego puedes usar para desbloquear nuevos minijuegos, música y contenido extra. No tiene historia, ya que se centra en la habilidad, los reflejos y la rapidez para reaccionar a cambios constantes.",
@@ -731,23 +823,6 @@
     "verified": "false"
   },
   {
-    "id": "repo-no-mods",
-    "name": "R.E.P.O. Latest (No Mods)",
-    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
-    "category": "Juegos",
-    "icon": "../assets/apps/repo.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build/Build/REPO.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/unins000.exe",
-    "steam": "si",
-    "wifi": "no",
-    "share-compatibility": "si",
-    "virus-alert": "none",
-    "verified": "false"
-  },
-  {
     "id": "repo",
     "name": "R.E.P.O. with Mods",
     "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
@@ -758,6 +833,23 @@
     ],
     "download": "https://github.com/acierto-incomodo/repo-game/releases/latest/download/REPO_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "repo-no-mods",
+    "name": "R.E.P.O. Latest (No Mods)",
+    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/repo.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build/Build/REPO.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/unins000.exe",
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
@@ -785,7 +877,9 @@
     "id": "scamline",
     "name": "Scam Line",
     "description": "Scam Line es un juego multijugador de engaño social para 4–8 personas en el que todos compiten en desafíos psicológicos y de comunicación para ser el último en pie. En cada partida, los jugadores están en habitaciones separadas y solo pueden hablar mediante un teléfono móvil antiguo dentro del juego. Debes negociar, formar alianzas o engañar a los demás para avanzar en distintos mini‑retos, como identificar quién es distinto o jugar al Dilema del Prisionero. La clave está en leer a los otros jugadores y usar la comunicación limitada a tu favor: puedes cooperar o mentir, pero al final solo uno puede ganar.",
-    "category": ["Juegos"],
+    "category": [
+      "Juegos"
+    ],
     "icon": "../assets/apps/ScamLine.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ScamLine/installer_updater.exe"
@@ -814,6 +908,26 @@
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "false"
+  },
+  {
+    "id": "scrcpy",
+    "name": "SCRCPY",
+    "description": "SCRCPY es una herramienta que permite controlar un dispositivo Android desde el escritorio a través de USB o WiFi.",
+    "category": [
+      "Herramientas",
+      "Utilidades"
+    ],
+    "icon": "../assets/apps/scrcpy.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/scrcpy/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/unins000.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "shipped",
@@ -850,23 +964,6 @@
     "verified": "false"
   },
   {
-    "id": "scrcpy",
-    "name": "SCRCPY",
-    "description": "SCRCPY es una herramienta que permite controlar un dispositivo Android desde el escritorio a través de USB o WiFi.",
-    "category": ["Herramientas", "Utilidades"],
-    "icon": "../assets/apps/scrcpy.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/scrcpy/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/unins000.exe",
-    "steam": "no",
-    "wifi": "si",
-    "share-compatibility": "si",
-    "virus-alert": "none",
-    "verified": "true"
-  },
-  {
     "id": "slime-rancher",
     "name": "Slime Rancher",
     "description": "Slime Rancher es un juego de simulación y gestión en el que los jugadores cultivan y crían slime en un mundo abierto, recolectando recursos y construyendo instalaciones para maximizar su producción.",
@@ -894,23 +991,6 @@
     ],
     "download": "https://github.com/acierto-incomodo/SlimeRancher2Game/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/unins000.exe",
-    "steam": "no",
-    "wifi": "no",
-    "share-compatibility": "si",
-    "virus-alert": "none",
-    "verified": "false"
-  },
-  {
-    "id": "mr-president",
-    "name": "Mr.President!",
-    "description": "Mr.President! es un juego en el que controlas a un guardaespaldas cuya misión es proteger al presidente de intentos de asesinato. La jugabilidad se basa en reaccionar rápidamente y lanzarte físicamente para interceptar balas, explosiones u otros peligros antes de que alcancen al presidente. Tiene un enfoque humorístico y exagerado, con físicas caóticas y situaciones absurdas, donde el objetivo es sacrificarte si hace falta para mantenerlo con vida.",
-    "category": "Juegos",
-    "icon": "../assets/apps/mr-president.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/MrPresident/game/Build/Build/Mr.Prez.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/MrPresidentGame/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MrPresident/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
@@ -972,9 +1052,14 @@
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/stormlauncher.png",
-    "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"],
+    "paths": [
+      "%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe",
     "steam": "no",
@@ -987,7 +1072,12 @@
     "id": "stormlibraryv2",
     "name": "StormLibraryV2",
     "description": "Lanzador de juegos",
-    "category": ["Utilidades", "Aplicaciones", "Tiendas", "Juegos"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones",
+      "Tiendas",
+      "Juegos"
+    ],
     "icon": "../assets/apps/stormlibraryv2.png",
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
@@ -1004,7 +1094,10 @@
     "id": "stormpanel-app",
     "name": "StormPanel APP",
     "description": "StormPanel APP es una aplicación de panel de control para StormGamesStudios.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/stormpanel-app.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormPanel APP/StormPanel APP.exe"
@@ -1145,7 +1238,11 @@
     "id": "youtube-downloader",
     "name": "YouTube Downloader",
     "description": "Una herramienta para descargar videos de YouTube.",
-    "category": ["Utilidades", "Aplicaciones", "Herramientas"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones",
+      "Herramientas"
+    ],
     "icon": "../assets/apps/youtube-downloader.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/YoutubeDownloader/YoutubeDownloader/YoutubeDownloader.exe"
