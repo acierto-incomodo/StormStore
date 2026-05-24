@@ -918,6 +918,57 @@
     "verified": "false"
   },
   {
+    "id": "project-zomboid",
+    "name": "Project Zomboid",
+    "description": "Project Zomboid es un juego de supervivencia en 2D en el que los jugadores deben sobrevivir en un mundo post-apocalíptico lleno de zombis. El juego se centra en la gestión de recursos, la construcción de refugios y la lucha por la supervivencia en un entorno hostil.",
+    "category": "Juegos",
+    "icon": "../assets/apps/project-zomboid.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/game/Build/Build/ProjectZomboid64.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ProjectZomboidGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
+    "id": "cuphead",
+    "name": "Cuphead",
+    "description": "Cuphead es un juego de plataformas y disparos en 2D con un estilo de animación inspirado en los cartoons de los años 30. El juego se centra en desafíos difíciles y combates con jefes, donde los jugadores controlan a Cuphead y Mugman mientras enfrentan a diversos enemigos y jefes en entornos coloridos y detallados.",
+    "category": "Juegos",
+    "icon": "../assets/apps/cuphead.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Cuphead/game/Build/Build/Cuphead.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/CupheadGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Cuphead/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "car-for-sale-simulator",
+    "name": "Car For Sale Simulator 2023",
+    "description": "Car For Sale Simulator 2023 es un juego de simulación en el que gestionas tu propio negocio de compra y venta de coches. Empiezas con poco dinero comprando vehículos de segunda mano, negociando precios con vendedores, reparándolos y mejorándolos para luego venderlos y obtener beneficio. A medida que avanzas puedes ampliar tu negocio, comprar mejores coches y optimizar tus ganancias, centrándote en saber cuándo comprar barato y vender caro.",
+    "category": "Juegos",
+    "icon": "../assets/apps/car-for-sale-simulator.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/game/Build/Build/Car For Sale Simulator 2023.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/CarForSaleSimulatorGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "description": "Space Engineers es un juego sandbox de construcción y supervivencia en el espacio donde diseñas, ensamblas y gestionas naves, estaciones espaciales y estructuras en planetas o en órbita; utiliza un sistema de física realista que obliga a cuidar energía, oxígeno, gravedad y propulsión, y te permite jugar en modo creativo o supervivencia mientras exploras, automatizas sistemas y construyes ingeniería espacial compleja.",

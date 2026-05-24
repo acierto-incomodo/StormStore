@@ -656,6 +656,45 @@
     "downloadUrl": "https://github.com/acierto-incomodo/MrPresidentGame/releases/latest/download/"
   },
   {
+    "id": "project-zomboid",
+    "name": "Project Zomboid",
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/game/Build/Build/ProjectZomboid64.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ProjectZomboidGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ProjectZomboidGame/releases/latest/download/"
+  },
+  {
+    "id": "cuphead",
+    "name": "Cuphead",
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Cuphead/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Cuphead/game/Build/Build/Cuphead.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Cuphead/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/CupheadGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/CupheadGame/releases/latest/download/"
+  },
+  {
+    "id": "car-for-sale-simulator",
+    "name": "Car For Sale Simulator 2023",
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/game/Build/Build/Car For Sale Simulator 2023.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/CarForSaleSimulatorGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/CarForSaleSimulatorGame/releases/latest/download/"
+  },
+  {
     "id": "space-engineers",
     "name": "Space Engineers",
     "files": [
