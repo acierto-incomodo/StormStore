@@ -243,6 +243,21 @@
     "downloadUrl": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/"
   },
   {
+    "id": "free-download-manager",
+    "name": "Free Download Manager",
+    "files": [
+      "Build.zip"
+    ],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/Programs/FreeDownloadManager",
+    "executablePath": "%appdata%/StormGamesStudios/Programs/FreeDownloadManager/fdm.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/Programs/FreeDownloadManager",
+    "checksumUrl": "https://github.com/acierto-incomodo/FreeDownloadManager/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/FreeDownloadManager/releases/latest/download/"
+  },
+  {
     "id": "gamble-with-your-friends",
     "name": "Gamble With Your Friends",
     "files": [
@@ -695,6 +710,21 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game",
     "checksumUrl": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/"
+  },
+  {
+    "id": "rufus",
+    "name": "Rufus",
+    "files": [
+      "Build.zip"
+    ],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/Programs/Rufus",
+    "executablePath": "%appdata%/StormGamesStudios/Programs/Rufus/rufus.exe",
+    "checksumFile": "version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/Programs/Rufus",
+    "checksumUrl": "https://github.com/acierto-incomodo/Rufus/releases/latest/download/version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/Rufus/releases/latest/download/"
   },
   {
     "id": "rv-there-yet",
