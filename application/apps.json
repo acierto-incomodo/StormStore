@@ -280,6 +280,28 @@
     "verified": "false"
   },
   {
+    "id": "free-download-manager",
+    "name": "Free Download Manager",
+    "description": "Free Download Manager es una herramienta que te permite descargar archivos de internet de forma rápida y eficiente, con funciones como la descarga paralela, la reanudación de descargas interrumpidas y la gestión de descargas.",
+    "category": [
+      "Utilidades",
+      "Herramientas",
+      "Personalización",
+      "Aplicaciones"
+    ],
+    "icon": "../assets/apps/free-download-manager.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/FreeDownloadManager/fdm.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/FreeDownloadManager/Uninstall FreeDownloadManager.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "fusion-arena",
     "name": "Fusion Arena",
     "description": "Fusion Arena es un juego multijugador en primera persona de tipo deathmatch, ambientado en un entorno tipo almacén. Los jugadores compiten entre sí disparando con varias armas (pistola, rifle automático y escopeta), recogiendo armas o recargas y salud en puntos repartidos por el mapa. Cada vez que un jugador muere, reaparece tras poco tiempo; al final de la partida, gana quien tenga más bajas.",
@@ -857,15 +879,32 @@
     "verified": "false"
   },
   {
+    "id": "rufus",
+    "name": "Rufus",
+    "description": "Rufus es una herramienta gratuita para crear discos de arranque de USB para Windows.",
+    "category": "Utilidades",
+    "icon": "../assets/apps/rufus.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/Rufus/rufus.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/Rufus/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "true"
+  },
+  {
     "id": "rv-there-yet",
     "name": "RV There Yet?",
     "description": "RV There Yet? es un juego de conducción y aventura centrado en viajar por carretera con una autocaravana, donde el objetivo es recorrer largas distancias gestionando el vehículo, el combustible y las necesidades del viaje mientras exploras distintos lugares; combina una experiencia relajada de road trip con elementos de supervivencia ligera y descubrimiento.",
     "category": "Juegos",
     "icon": "../assets/apps/rv-there-yet.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/installer_updater.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/game/Build/Build/Ride.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/RVThereYet_Launcher_Installer.exe",
+    "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/unins000.exe",
     "steam": "si",
     "wifi": "si",
