@@ -675,7 +675,7 @@
     "paths": [
       "%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-Setup.exe",
+    "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-x64.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
     "steam": "no",
     "wifi": "si",
