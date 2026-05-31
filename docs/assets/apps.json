@@ -1293,5 +1293,22 @@
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "true"
+  },
+  {
+    "id": "zort",
+    "name": "ZORT",
+    "description": "ZORT es un juego de acción y aventuras en el que el jugador asume el rol de un explorador que debe navegar por un mundo lleno de peligros y secretos. La jugabilidad se basa en la resolución de acertijos, la exploración y el combate contra enemigos hostiles.",
+    "category": "Juegos",
+    "icon": "../assets/apps/zort.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/ZortGame/game/Build/Build/Zort.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ZortGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ZortGame/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
   }
 ]
