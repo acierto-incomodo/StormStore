@@ -270,6 +270,57 @@
     "verified": "false"
   },
   {
+    "id": "fnaf-into-the-pit",
+    "name": "Five Nights at Freddy's: Into the Pit",
+    "description": "Five Nights at Freddy’s: Into the Pit es un juego de terror y aventura en 2D en el que controlas a un niño que descubre un misterioso pozo de bolas capaz de transportarlo al pasado. A partir de ahí, se ve envuelto en una historia oscura relacionada con una pizzería y unos sucesos peligrosos. El juego combina exploración, resolución de puzles y momentos de sigilo, donde debes evitar a una criatura que te persigue mientras intentas avanzar y descubrir la verdad detrás de lo que está ocurriendo.",
+    "category": "Juegos",
+    "icon": "../assets/apps/fnaf-into-the-pit.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/Five Nights at Freddy's Into the Pit.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/FNAFIntoThePitGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "fnaf-sister-location",
+    "name": "Five Nights at Freddy's: Sister Location",
+    "description": "Five Nights at Freddy’s: Sister Location es un juego de terror en el que trabajas como técnico nocturno en unas instalaciones ocultas llenas de animatrónicos. En lugar de quedarte quieto vigilando cámaras, tienes que moverte por distintas zonas y completar tareas de mantenimiento mientras evitas a estas máquinas, que son inteligentes y peligrosas. Cada noche presenta situaciones diferentes, con mecánicas propias y más interacción, creando una experiencia más dinámica donde el objetivo es sobrevivir y descubrir qué está ocurriendo en el lugar.",
+    "category": "Juegos",
+    "icon": "../assets/apps/fnaf-sister-location.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/FNAF-Sister-Location/SisterLocation.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/FNAFSisterLocationGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Sister-Location/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "fnaf-with-los-pinguinos",
+    "name": "Five Nights With Los Pinguinos",
+    "description": "Five Nights With Los Pinguinos es un juego de terror tipo *Five Nights at Freddy’s* en el que trabajas vigilando un lugar durante la noche mientras unos personajes llamados “los pingüinos” se vuelven hostiles. Debes controlar cámaras, gestionar recursos como la energía y cerrar puertas en el momento adecuado para evitar que te atrapen. El objetivo es sobrevivir varias noches, con una dificultad que aumenta poco a poco y una atmósfera tensa basada en sustos y en la vigilancia constante.",
+    "category": "Juegos",
+    "icon": "../assets/apps/fnaf-with-los-pinguinos.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/Five Night With Los Penguinos.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/FNAFWithLosPinguinos/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "free-download-manager",
     "name": "Free Download Manager",
     "description": "Free Download Manager es una herramienta que te permite descargar archivos de internet de forma rápida y eficiente, con funciones como la descarga paralela, la reanudación de descargas interrumpidas y la gestión de descargas.",
@@ -1057,6 +1108,21 @@
     "verified": "false"
   },
   {
+    "id": "stormbrowser",
+    "name": "StormBrowser",
+    "description": "StormBrowser es un navegador web personalizado por StormGamesStudios.",
+    "category": ["Utilidades", "Aplicaciones"],
+    "icon": "../assets/apps/stormbrowser.png",
+    "paths": ["%appdata%/StormGamesStudios/Programs/StormBrowser/StormBrowser.exe"],
+    "download": "https://github.com/acierto-incomodo/StormBrowser/releases/latest/download/StormBrowser-Setup.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/StormBrowser/Uninstall StormBrowser.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "true"
+  },
+  {
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
@@ -1185,6 +1251,23 @@
     "download": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/ULTRAKILL_Launcher_Installer.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/unins000.exe",
     "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "universe-sandbox",
+    "name": "Universe Sandbox",
+    "description": "Universe Sandbox es un simulador de física espacial que permite a los usuarios crear y manipular cuerpos celestes, simular colisiones y estudiar fenómenos astronómicos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/universe-sandbox.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/UniverseSandbox/game/Build/Build/Universe Sandbox x64.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/UniverseSandboxGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/UniverseSandbox/unins000.exe",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "none",

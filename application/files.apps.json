@@ -211,6 +211,45 @@
     "downloadUrl": "https://github.com/acierto-incomodo/fnaf_4/releases/latest/download/"
   },
   {
+    "id": "fnaf-into-the-pit",
+    "name": "Five Nights at Freddy's: Into the Pit",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/game/Build/Build/Five Nights at Freddy's Into the Pit.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/FNAFIntoThePitGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/FNAFIntoThePitGame/releases/latest/download/"
+  },
+  {
+    "id": "fnaf-sister-location",
+    "name": "Five Nights at Freddy's: Sister Location",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Sister-Location/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Sister-Location/game/Build/Build/SisterLocation.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Sister-Location/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/FNAFSisterLocationGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/FNAFSisterLocationGame/releases/latest/download/"
+  },
+  {
+    "id": "fnaf-with-los-pinguinos",
+    "name": "Five Nights With Los Pinguinos",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/Five Night With Los Penguinos.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/FNAFWithLosPinguinos/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/FNAFWithLosPinguinos/releases/latest/download/"
+  },
+  {
     "id": "free-download-manager",
     "name": "Free Download Manager",
     "files": ["Build.zip"],
@@ -847,6 +886,19 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/UltraKillGame/releases/latest/download/"
+  },
+  {
+    "id": "universe-sandbox",
+    "name": "Universe Sandbox",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/UniverseSandbox/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/UniverseSandbox/game/Build/Build/Universe Sandbox x64.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/UniverseSandbox/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/UniverseSandboxGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/UniverseSandboxGame/releases/latest/download/"
   },
   {
     "id": "wallpaper-engine",
