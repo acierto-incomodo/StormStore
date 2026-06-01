@@ -243,7 +243,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/Five Night With Los Penguinos.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/game/Build/Build/Five Night With Los Penguinos.exe",
     "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/game",
     "checksumUrl": "https://github.com/acierto-incomodo/FNAFWithLosPinguinos/releases/latest/download/GameVersion.txt",

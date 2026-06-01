@@ -310,7 +310,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/fnaf-with-los-pinguinos.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/Five Night With Los Penguinos.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/Five-Nights-With-Los-Pinguinos/game/Build/Build/Five Night With Los Penguinos.exe"
     ],
     "download": "https://github.com/acierto-incomodo/FNAFWithLosPinguinos/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/unins000.exe",
