@@ -2,9 +2,7 @@
   {
     "id": "ambidextro",
     "name": "Ambidextro",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Ambidextro/game/Build",
@@ -37,9 +35,7 @@
   {
     "id": "backseat-drivers",
     "name": "Backseat Drivers",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/BackseatDriversLauncher/game/Build",
@@ -52,9 +48,7 @@
   {
     "id": "balatro",
     "name": "Balatro",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/BalatroGame/game/Build",
@@ -67,9 +61,7 @@
   {
     "id": "buckshot_roulette",
     "name": "Buckshot Roulette",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/BuckshotRoulette/game/Build",
@@ -82,11 +74,7 @@
   {
     "id": "car-for-sale-simulator",
     "name": "Car For Sale Simulator 2023",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/game/Build",
@@ -99,9 +87,7 @@
   {
     "id": "content-warning",
     "name": "Content Warning",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ContentWarning/game/Build",
@@ -114,11 +100,7 @@
   {
     "id": "cuphead",
     "name": "Cuphead",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Cuphead/game/Build",
@@ -131,9 +113,7 @@
   {
     "id": "doom",
     "name": "DOOM Classic",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/DOOM/game/Build",
@@ -168,11 +148,7 @@
   {
     "id": "fastfood",
     "name": "Fast Food Simulator",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FastFoodGame/game/Build",
@@ -185,9 +161,7 @@
   {
     "id": "fnaf1",
     "name": "Five Nights at Freddy's 1",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF1/game/Build",
@@ -200,9 +174,7 @@
   {
     "id": "fnaf2",
     "name": "Five Nights at Freddy's 2",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF2/game/Build",
@@ -215,9 +187,7 @@
   {
     "id": "fnaf3",
     "name": "Five Nights at Freddy's 3",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF3/game/Build",
@@ -230,9 +200,7 @@
   {
     "id": "fnaf4",
     "name": "Five Nights at Freddy's 4",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/FNAF4/game/Build",
@@ -245,9 +213,7 @@
   {
     "id": "free-download-manager",
     "name": "Free Download Manager",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/Programs/FreeDownloadManager",
@@ -260,9 +226,7 @@
   {
     "id": "gamble-with-your-friends",
     "name": "Gamble With Your Friends",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Gamble With Your Friends/game/Build",
@@ -311,9 +275,7 @@
   {
     "id": "hollow-knight",
     "name": "Hollow Knight",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnight/game/Build",
@@ -326,10 +288,7 @@
   {
     "id": "hollow-knight-silksong",
     "name": "Hollow Knight: Silksong",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/game/Build",
@@ -342,10 +301,7 @@
   {
     "id": "hytale",
     "name": "Hytale",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/HytaleGame/game/Build",
@@ -358,11 +314,7 @@
   {
     "id": "iamfish",
     "name": "I Am Fish",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/IAmFish/game/Build",
@@ -375,10 +327,7 @@
   {
     "id": "iracing-arcade",
     "name": "iRacing Arcade",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/game/Build",
@@ -391,10 +340,7 @@
   {
     "id": "kerbal-space-program",
     "name": "Kerbal Space Program",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/KerbalSpaceProgram/game/Build",
@@ -407,10 +353,7 @@
   {
     "id": "left4dead",
     "name": "Left 4 Dead",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/left4dead/game/Build",
@@ -423,9 +366,7 @@
   {
     "id": "lethal-company",
     "name": "Lethal Company",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/LethalCompany_Launcher/game/Build",
@@ -438,9 +379,7 @@
   {
     "id": "mage-arena",
     "name": "Mage Arena",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MageArenaLauncher/game/Build",
@@ -453,9 +392,7 @@
   {
     "id": "majotori",
     "name": "Majotori",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Majotori/game/Build",
@@ -468,10 +405,7 @@
   {
     "id": "misery",
     "name": "MISERY",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MISERY/game/Build",
@@ -484,10 +418,7 @@
   {
     "id": "miside",
     "name": "MiSide",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MiSide/game/Build",
@@ -500,9 +431,7 @@
   {
     "id": "miside-zero",
     "name": "MiSide Zero",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/game/Build",
@@ -515,10 +444,7 @@
   {
     "id": "motortown",
     "name": "Motor Town",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MotorTown/game/Build",
@@ -531,9 +457,7 @@
   {
     "id": "mr-president",
     "name": "Mr.President!",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MrPresident/game/Build",
@@ -546,11 +470,7 @@
   {
     "id": "mydockfinder",
     "name": "MyDockFinder",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/Customization/MyDockFinder/Build",
@@ -589,10 +509,7 @@
   {
     "id": "peak",
     "name": "PEAK",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PEAK/game/Build",
@@ -605,10 +522,7 @@
   {
     "id": "peopleplayground",
     "name": "People Playground",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PeoplePlaygroundGame/game/Build",
@@ -621,9 +535,7 @@
   {
     "id": "programmer-clicker-game",
     "name": "Programmer Clicker Game",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build",
@@ -636,11 +548,7 @@
   {
     "id": "project-zomboid",
     "name": "Project Zomboid",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/game/Build",
@@ -653,9 +561,7 @@
   {
     "id": "pureya",
     "name": "Pureya",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Pureya/game/Build",
@@ -668,9 +574,7 @@
   {
     "id": "randomlife-reborn",
     "name": "RANDOMLIFE REBORN",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build",
@@ -683,10 +587,7 @@
   {
     "id": "repo",
     "name": "R.E.P.O. with Mods",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game/game/Build",
@@ -699,9 +600,7 @@
   {
     "id": "repo-no-mods",
     "name": "R.E.P.O. Latest (No Mods)",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build",
@@ -714,9 +613,7 @@
   {
     "id": "rufus",
     "name": "Rufus",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/Programs/Rufus",
@@ -729,9 +626,7 @@
   {
     "id": "rv-there-yet",
     "name": "RV There Yet?",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/game/Build",
@@ -744,9 +639,7 @@
   {
     "id": "scamline",
     "name": "Scam Line",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ScamLine/game/Build",
@@ -759,10 +652,7 @@
   {
     "id": "schedule1",
     "name": "Schedule I",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ScheduleIGame/game/Build",
@@ -775,9 +665,7 @@
   {
     "id": "scrcpy",
     "name": "SCRCPY",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build",
@@ -790,9 +678,7 @@
   {
     "id": "shipped",
     "name": "Shipped",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Shipped/game/Build",
@@ -805,9 +691,7 @@
   {
     "id": "sideeffects",
     "name": "Side Effects",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SideEffects/game/Build",
@@ -820,10 +704,7 @@
   {
     "id": "slime-rancher",
     "name": "Slime Rancher",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher/game/Build",
@@ -836,10 +717,7 @@
   {
     "id": "slime-rancher-2",
     "name": "Slime Rancher 2",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/game/Build",
@@ -875,9 +753,7 @@
   {
     "id": "spaceflight-simulator",
     "name": "Spaceflight Simulator",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/game/Build",
@@ -890,9 +766,7 @@
   {
     "id": "stardewvalley",
     "name": "Stardew Valley",
-    "files": [
-      "Build.zip.001"
-    ],
+    "files": ["Build.zip.001"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/StardewValley/game/Build",
@@ -905,10 +779,7 @@
   {
     "id": "subnautica",
     "name": "Subnautica",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Subnautica/game/Build",
@@ -941,11 +812,7 @@
   {
     "id": "theforest",
     "name": "The Forest",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002",
-      "Build.zip.003"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/TheForestGame/game/Build",
@@ -958,10 +825,7 @@
   {
     "id": "theplanetcrafter",
     "name": "The Planet Crafter",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ThePlanetCrafterGame/game/Build",
@@ -974,10 +838,7 @@
   {
     "id": "ultrakill",
     "name": "ULTRAKILL",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/UltraKillGame/game/Build",
@@ -990,9 +851,7 @@
   {
     "id": "wallpaper-engine",
     "name": "Wallpaper Engine",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/Customization/WallpaperEngine/Build",
@@ -1005,9 +864,7 @@
   {
     "id": "yandere-simulator",
     "name": "Yandere Simulator",
-    "files": [
-      "latest.zip"
-    ],
+    "files": ["latest.zip"],
     "merge": false,
     "mergedName": "latest.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build",
@@ -1016,14 +873,11 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game",
     "checksumUrl": "https://www.yanderesimulator.com/version.txt",
     "downloadUrl": "https://yanderesimulator.com/dl/"
-  }
+  },
   {
     "id": "zort",
     "name": "ZORT",
-    "files": [
-      "Build.zip.001",
-      "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ZortGame/game/Build",
@@ -1032,5 +886,5 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ZortGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/ZortGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/ZortGame/releases/latest/download/"
-  },
+  }
 ]
