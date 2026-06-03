@@ -1114,7 +1114,7 @@
     "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormbrowser.png",
     "paths": ["%appdata%/StormGamesStudios/Programs/StormBrowser/StormBrowser.exe"],
-    "download": "https://github.com/acierto-incomodo/StormBrowser/releases/latest/download/StormBrowser-Setup.exe",
+    "download": "https://github.com/acierto-incomodo/StormBrowser-v3/releases/latest/download/StormBrowser-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/StormBrowser/Uninstall StormBrowser.exe",
     "steam": "no",
     "wifi": "si",
