@@ -117,6 +117,23 @@
     "verified": "false"
   },
   {
+    "id": "chained-in-the-backrooms",
+    "name": "Chained in the Backrooms",
+    "description": "Chained in the Backrooms es un juego de terror cooperativo en el que tú y otros jugadores estáis unidos por una cadena mientras exploráis las Backrooms, un laberinto infinito lleno de pasillos y salas inquietantes. El objetivo es avanzar por distintos niveles resolviendo puzles y encontrando la salida, pero la dificultad está en que debéis moveros coordinados, ya que la cadena limita vuestros movimientos. Además, hay entidades peligrosas que os persiguen, por lo que la comunicación y el trabajo en equipo son clave para sobrevivir y escapar.",
+    "category": "Juegos",
+    "icon": "../assets/apps/chained-in-the-backrooms.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Chained in the Backrooms/game/Build/Build/Chained in the Backrooms.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ChainedInTheBackroomsGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Chained in the Backrooms/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "content-warning",
     "name": "Content Warning",
     "description": "Juego cooperativo en el que tú y tus amigos grabáis vídeos en lugares aterradores para convertiros en estrellas virales mientras intentáis sobrevivir a criaturas y resolver situaciones tensas.",

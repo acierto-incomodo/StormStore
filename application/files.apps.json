@@ -86,6 +86,21 @@
     "downloadUrl": "https://github.com/acierto-incomodo/CarForSaleSimulatorGame/releases/latest/download/"
   },
   {
+    "id": "chained-in-the-backrooms",
+    "name": "Chained in the Backrooms",
+    "files": [
+      "Build.zip"
+    ],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Chained in the Backrooms/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Chained in the Backrooms/game/Build/Build/Chained in the Backrooms.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Chained in the Backrooms/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ChainedInTheBackroomsGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ChainedInTheBackroomsGame/releases/latest/download/"
+  },
+  {
     "id": "content-warning",
     "name": "Content Warning",
     "files": ["Build.zip"],
