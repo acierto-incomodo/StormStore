@@ -27,7 +27,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -61,7 +61,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Backrooms Escape Together/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "alert",
     "verified": "false"
   },
@@ -129,7 +129,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/CarForSaleSimulator/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -146,7 +146,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Chained in the Backrooms/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "alert",
     "verified": "false"
   },
@@ -180,7 +180,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Cuphead/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -316,7 +316,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -333,7 +333,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Sister-Location/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -350,7 +350,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/FNAF-Into-the-Pit/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -372,7 +372,7 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/FreeDownloadManager/Uninstall FreeDownloadManager.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -406,7 +406,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Gamble With Your Friends/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "alert",
     "verified": "false"
   },
@@ -491,7 +491,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Human Fall Flat/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -525,7 +525,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/IAmFish/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -542,7 +542,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -645,7 +645,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Majotori/unins000.exe",
     "steam": "true",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -662,7 +662,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MISERY/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -784,7 +784,7 @@
     "uninstall": "%appdata%/StormGamesStudios/Customization/MyDockFinder/Uninstall MyDockFinder.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -855,6 +855,23 @@
     "verified": "false"
   },
   {
+    "id": "plague-inc-evolved",
+    "name": "Plague Inc: Evolved",
+    "description": "Plague Inc: Evolved es un juego de estrategia en el que creas y evolucionas una enfermedad con el objetivo de infectar y eliminar a toda la humanidad. Empiezas eligiendo el tipo de patógeno (virus, bacteria, hongo, etc.) y lo haces evolucionar añadiendo síntomas, formas de transmisión y resistencias para que se propague por países y climas diferentes. Mientras tanto, la humanidad intenta investigar una cura y frenar el brote, por lo que tienes que adaptar tu estrategia para expandirte antes de que consigan detenerte.",
+    "category": "Juegos",
+    "icon": "../assets/apps/plague-inc-evolved.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Plague Inc Evolved/game/Build/Build/PlayGame.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/PlagueIncEvolvedGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Plague Inc Evolved/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "programmer-clicker-game",
     "name": "Programmer Clicker Game",
     "description": "Un juego de clics donde puedes mejorar tu habilidad de programación haciendo clics y desbloqueando nuevas funciones.",
@@ -867,7 +884,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Programmer-Clicker-Game/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "true"
   },
@@ -884,7 +901,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ProjectZomboid/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "alert",
     "verified": "false"
   },
@@ -901,7 +918,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Pureya/unins000.exe",
     "steam": "true",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -918,7 +935,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeRebornGame/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -952,7 +969,41 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "retro-rewind",
+    "name": "Retro Rewind",
+    "description": "Retro Rewind es un juego de carreras arcade con estética retro en el que compites en circuitos inspirados en estilos clásicos, con coches de apariencia antigua y un enfoque muy rápido y sencillo. La jugabilidad se basa en derrapes, velocidad y reflejos, con pistas llenas de curvas y obstáculos donde el objetivo es llegar primero a la meta. Destaca por su estilo visual nostálgico y por partidas cortas y dinámicas centradas en la diversión directa más que en la simulación realista.",
+    "category": "Juegos",
+    "icon": "../assets/apps/retro-rewind.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Retro Rewind/game/Build/Build/RetroRewind.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/RetroRewindGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Retro Rewind/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "robobeat",
+    "name": "ROBOBEAT",
+    "description": "ROBOBEAT es un juego de acción en primera persona donde disparas, te mueves y atacas siguiendo el ritmo de la música. Todo está sincronizado con el beat, así que tus golpes, saltos y disparos son más efectivos si los haces al compás de la canción. El objetivo es avanzar por niveles generados de forma dinámica, derrotando enemigos mientras encadenas movimientos y acciones rítmicas para maximizar el daño y el ritmo de combate.",
+    "category": "Juegos",
+    "icon": "../assets/apps/robobeat.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/Build/RetroRewind.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ROBOBEATGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -967,7 +1018,7 @@
     "uninstall": "%appdata%/StormGamesStudios/Programs/Rufus/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "true"
   },
@@ -984,7 +1035,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RVThereYet/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1035,7 +1086,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/scrcpy/unins000.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "true"
   },
@@ -1052,7 +1103,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Shipped/unins000.exe",
     "steam": "true",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1086,7 +1137,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1103,7 +1154,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SlimeRancher2/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1137,7 +1188,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/unins000.exe",
     "steam": "true",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1303,7 +1354,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheoTown/unins000.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1337,7 +1388,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/UniverseSandbox/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1359,7 +1410,7 @@
     "uninstall": "%appdata%/StormGamesStudios/Customization/WallpaperEngine/Uninstall WallpaperEngine.exe",
     "steam": "no",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1376,7 +1427,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/We Gotta Go/unins000.exe",
     "steam": "si",
     "wifi": "si",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1393,7 +1444,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/unins000.exe",
     "steam": "no",
     "wifi": "si",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1427,7 +1478,7 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ZortGame/unins000.exe",
     "steam": "si",
     "wifi": "no",
-    "share-compatibility": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   }
