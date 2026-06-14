@@ -1,4 +1,18 @@
-[
+[  
+  {
+    "id": "a-bumpy-ride",
+    "name": "A Bumpy Ride",
+    "files": [
+      "Build.zip"
+    ],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game/Build/Build/ABumpyRide.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game",
+    "downloadUrl": "https://github.com/acierto-incomodo/ABumpyRideGame/releases/latest/download/"
+  },
   {
     "id": "ambidextro",
     "name": "Ambidextro",
@@ -352,6 +366,21 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/game",
     "checksumUrl": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/Version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/hollow_knight_silksong/releases/latest/download/"
+  },
+  {
+    "id": "human-fall-flat",
+    "name": "Human: Fall Flat",
+    "files": [
+      "Build.zip.001", "Build.zip.002"
+    ],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Human Fall Flat/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Human Fall Flat/game/Build/Build/Human.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Human Fall Flat/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/HumanFallFlatGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/HumanFallFlatGame/releases/latest/download/"
   },
   {
     "id": "hytale",
@@ -891,6 +920,21 @@
     "downloadUrl": "https://github.com/acierto-incomodo/ThePlanetCrafterGame/releases/latest/download/"
   },
   {
+    "id": "theotown",
+    "name": "TheoTown",
+    "files": [
+      "Build.zip"
+    ],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/TheoTown/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/TheoTown/game/Build/Build/TheoTown.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/TheoTown/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/TheoTownGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/TheoTownGame/releases/latest/download/"
+  },
+  {
     "id": "ultrakill",
     "name": "ULTRAKILL",
     "files": ["Build.zip.001", "Build.zip.002"],
@@ -928,6 +972,21 @@
     "checksumPath": "%appdata%/StormGamesStudios/Customization/WallpaperEngine",
     "checksumUrl": "https://github.com/acierto-incomodo/WallpaperEnginePersonalizacion/releases/latest/download/AppVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/WallpaperEnginePersonalizacion/releases/latest/download/"
+  },
+  {
+    "id": "we-gotta-go",
+    "name": "We Gotta Go",
+    "files": [
+      "Build.zip"
+    ],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/We Gotta Go/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/We Gotta Go/game/Build/Build/Pluto.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/We Gotta Go/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/WeGottaGoGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/WeGottaGoGame/releases/latest/download/"
   },
   {
     "id": "yandere-simulator",

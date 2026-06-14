@@ -15,6 +15,23 @@
     "verified": "true"
   },
   {
+    "id": "a-bumpy-ride",
+    "name": "A Bumpy Ride",
+    "description": "Human: Fall Flat es un juego de plataformas y puzles en el que controlas a un personaje con físicas muy “blandas” y descontroladas. Debes explorar distintos escenarios abiertos, resolver puzles usando objetos del entorno y aprovechar la física para avanzar. El movimiento es torpe a propósito, lo que crea situaciones graciosas y caóticas, especialmente en multijugador, donde puedes cooperar (o estorbar) a otros jugadores mientras intentáis completar los niveles.",
+    "category": "Juegos",
+    "icon": "../assets/apps/human-fall-flat.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game/Build/Build/ABumpyRide.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ABumpyRideGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "ambidextro",
     "name": "Ambidextro",
     "description": "Juego de acción/táctica donde controlas a personajes que luchan usando dos armas al mismo tiempo. El enfoque está en combos, precisión y velocidad para derrotar a enemigos en combates dinámicos.",
@@ -457,6 +474,23 @@
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/HollowKnightSilksong/unins000.exe",
     "steam": "no",
     "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "human-fall-flat",
+    "name": "Human: Fall Flat",
+    "description": "Human: Fall Flat es un juego de plataformas y puzles en el que controlas a un personaje con físicas muy “blandas” y descontroladas. Debes explorar distintos escenarios abiertos, resolver puzles usando objetos del entorno y aprovechar la física para avanzar. El movimiento es torpe a propósito, lo que crea situaciones graciosas y caóticas, especialmente en multijugador, donde puedes cooperar (o estorbar) a otros jugadores mientras intentáis completar los niveles.",
+    "category": "Juegos",
+    "icon": "../assets/apps/human-fall-flat.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Human Fall Flat/game/Build/Build/Human.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/HumanFallFlatGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Human Fall Flat/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "false"
@@ -1257,6 +1291,23 @@
     "verified": "false"
   },
   {
+    "id": "theotown",
+    "name": "TheoTown",
+    "description": "TheoTown es un juego de simulación y construcción de ciudades en el que actúas como alcalde y diseñas tu propia ciudad desde cero. Colocas zonas residenciales, comerciales e industriales, construyes carreteras y servicios como electricidad, agua, policía o bomberos, y gestionas la economía para que la ciudad crezca. A medida que avanzas, desbloqueas nuevos edificios y debes resolver problemas como tráfico, contaminación o falta de recursos, con el objetivo de crear una ciudad grande y funcional.",
+    "category": "Juegos",
+    "icon": "../assets/apps/theotown.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/TheoTown/game/Build/Build/TheoTown.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/TheoTownGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheoTown/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "ultrakill",
     "name": "ULTRAKILL",
     "description": "ULTRAKILL es un frenético juego de disparos en primera persona inspirado en los clásicos arcade, donde controlas a una máquina sedienta de sangre que desciende por el infierno combatiendo hordas de enemigos; destaca por su combate extremadamente rápido, sistema de puntuación basado en estilo y combos, y mecánicas que premian la agresividad y la creatividad al usar armas y movimientos para encadenar ataques y recuperar vida.",
@@ -1308,6 +1359,23 @@
     "uninstall": "%appdata%/StormGamesStudios/Customization/WallpaperEngine/Uninstall WallpaperEngine.exe",
     "steam": "no",
     "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "we-gotta-go",
+    "name": "We Gotta Go",
+    "description": "We Gotta Go es un juego cooperativo caótico en el que tú y otros jugadores debéis escapar de situaciones peligrosas antes de que sea demasiado tarde. Cada partida os pone en escenarios llenos de obstáculos, trampas y eventos inesperados, donde tenéis que correr, reaccionar rápido y ayudaros entre vosotros para sobrevivir. El juego se centra en el trabajo en equipo, la coordinación y el humor, con físicas algo descontroladas y momentos impredecibles que hacen que cada intento sea diferente.",
+    "category": "Juegos",
+    "icon": "../assets/apps/we-gotta-go.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/We Gotta Go/game/Build/Build/Pluto.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/WeGottaGoGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/We Gotta Go/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
     "share-compatibility": "si",
     "virus-alert": "none",
     "verified": "false"
