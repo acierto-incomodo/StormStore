@@ -617,6 +617,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/PeoplePlaygroundGame/releases/latest/download/"
   },
   {
+    "id": "plague-inc-evolved",
+    "name": "Plague Inc: Evolved",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Plague Inc Evolved/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Plague Inc Evolved/game/Build/PlayGame.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Plague Inc Evolved/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/PlagueIncEvolvedGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/PlagueIncEvolvedGame/releases/latest/download/"
+  },
+  {
     "id": "programmer-clicker-game",
     "name": "Programmer Clicker Game",
     "files": ["Build.zip"],
@@ -693,6 +706,32 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game",
     "checksumUrl": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/"
+  },
+  {
+    "id": "retro-rewind",
+    "name": "Retro Rewind",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Retro Rewind/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Retro Rewind/game/Build/RetroRewind.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Retro Rewind/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/RetroRewindGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/RetroRewindGame/releases/latest/download/"
+  },
+  {
+    "id": "robobeat",
+    "name": "ROBOBEAT",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/PlayGame.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ROBOBEATGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ROBOBEATGame/releases/latest/download/"
   },
   {
     "id": "rufus",
