@@ -21,6 +21,7 @@ const { autoUpdater } = require("electron-updater");
 const SteamPath = require("steam-path");
 const gameScanner = require("@equal-games/game-scanner");
 const DiscordRPC = require("discord-rpc");
+const si = require("systeminformation");
 
 let appsData;
 let filesAppsData = [];
@@ -82,6 +83,7 @@ function loadSettings() {
     start_maximized: true,
     has_completed_first_launch: false,
     show_tray: true,
+    debug_mode: false,
   };
 }
 
@@ -1950,6 +1952,27 @@ ipcMain.handle("sync-remote-data", async () => {
 
 ipcMain.handle("get-settings", () => loadSettings());
 ipcMain.on("save-settings", (event, settings) => saveSettings(settings));
+ipcMain.handle("get-system-information", async () => {
+  const fetchSection = async (fn) => {
+    try {
+      return { status: "ok", data: await fn() };
+    } catch (err) {
+      return { status: "error", error: err?.message || String(err) };
+    }
+  };
+
+  return {
+    system: await fetchSection(() => si.system()),
+    osInfo: await fetchSection(() => si.osInfo()),
+    cpu: await fetchSection(() => si.cpu()),
+    mem: await fetchSection(() => si.mem()),
+    diskLayout: await fetchSection(() => si.diskLayout()),
+    fsSize: await fetchSection(() => si.fsSize()),
+    networkInterfaces: await fetchSection(() => si.networkInterfaces()),
+    battery: await fetchSection(() => si.battery()),
+    graphics: await fetchSection(() => si.graphics()),
+  };
+});
 
 ipcMain.handle("clear-cache", async () => {
   try {

@@ -46,6 +46,7 @@ contextBridge.exposeInMainWorld("api", {
     ipcRenderer.send("set-discord-activity", activity),
   getSettings: () => ipcRenderer.invoke("get-settings"),
   saveSettings: (settings) => ipcRenderer.send("save-settings", settings),
+  getSystemInformation: () => ipcRenderer.invoke("get-system-information"),
   launchApp: () => ipcRenderer.send("launch-app"),
   onShowVirusAlert: (callback) => ipcRenderer.on("show-virus-alert", callback),
   sendVirusAlertResponse: (response) =>

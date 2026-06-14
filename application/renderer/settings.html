@@ -234,6 +234,20 @@
 
         <div class="setting-item">
           <div class="setting-info">
+            <h3>Modo Debug</h3>
+            <p>
+              Activa opciones de depuración avanzadas y muestra controles
+              adicionales en la aplicación.
+            </p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="debug_mode" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
             <h3>Limpiar Caché</h3>
             <p>
               Elimina todos los iconos e información descargada. La aplicación
@@ -245,9 +259,14 @@
           </button>
         </div>
 
-        <button id="save-settings-btn" class="md-btn md-btn-filled">
-          Guardar Ajustes
-        </button>
+        <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; width: 100%;">
+          <button id="open-system-info-btn" class="md-btn md-btn-outlined" type="button" style="display: none;">
+            Información del sistema
+          </button>
+          <button id="save-settings-btn" class="md-btn md-btn-filled" type="button">
+            Guardar Ajustes
+          </button>
+        </div>
       </div>
     </main>
 
@@ -376,7 +395,14 @@
         start_maximized: document.getElementById("start_maximized"),
         start_minimized: document.getElementById("start_minimized"),
         show_tray: document.getElementById("show_tray"),
+        debug_mode: document.getElementById("debug_mode"),
       };
+
+      function updateSystemInfoButtonVisibility() {
+        const button = document.getElementById("open-system-info-btn");
+        if (!button) return;
+        button.style.display = controls.debug_mode && controls.debug_mode.checked ? "inline-flex" : "none";
+      }
 
       // Carga inicial de ajustes
       async function loadSettings() {
@@ -388,6 +414,7 @@
               controls[key].checked = settings[key];
             }
           });
+          updateSystemInfoButtonVisibility();
           hasUnsavedChanges = false;
         } catch (err) {
           console.error("No se pudo cargar settings.json:", err);
@@ -410,6 +437,7 @@
             ? controls.start_minimized.checked
             : false,
           show_tray: controls.show_tray ? controls.show_tray.checked : false,
+          debug_mode: controls.debug_mode ? controls.debug_mode.checked : false,
         };
 
         window.api.saveSettings(settings);
@@ -420,8 +448,18 @@
       Object.values(controls).forEach((input) => {
         input.addEventListener("change", () => {
           hasUnsavedChanges = true;
+          if (input === controls.debug_mode) {
+            updateSystemInfoButtonVisibility();
+          }
         });
       });
+
+      document
+        .getElementById("open-system-info-btn")
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          confirmNavigation("system-information.html");
+        });
 
       document
         .getElementById("save-settings-btn")
