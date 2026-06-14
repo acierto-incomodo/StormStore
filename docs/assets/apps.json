@@ -17,9 +17,9 @@
   {
     "id": "a-bumpy-ride",
     "name": "A Bumpy Ride",
-    "description": "Human: Fall Flat es un juego de plataformas y puzles en el que controlas a un personaje con físicas muy “blandas” y descontroladas. Debes explorar distintos escenarios abiertos, resolver puzles usando objetos del entorno y aprovechar la física para avanzar. El movimiento es torpe a propósito, lo que crea situaciones graciosas y caóticas, especialmente en multijugador, donde puedes cooperar (o estorbar) a otros jugadores mientras intentáis completar los niveles.",
+    "description": "A Bumpy Ride es un juego de simulación y exploración en el que conduces un pequeño tren por un mundo abierto con estética estilo 19th century. Tu objetivo es recoger pasajeros y mercancías, llevarlos a sus destinos y gestionar tu ruta mientras exploras el mapa, desbloqueas nuevas zonas y mejoras tu tren con distintos vagones, mejoras y personalizaciones.",
     "category": "Juegos",
-    "icon": "../assets/apps/human-fall-flat.png",
+    "icon": "../assets/apps/a-bumpy-ride.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game/Build/Build/ABumpyRide.exe"
     ],
