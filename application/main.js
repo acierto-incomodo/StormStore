@@ -955,15 +955,15 @@ function get7zipPath() {
   const isPackaged = app.isPackaged;
   if (isPackaged) {
     const paths = [
-      path.join(process.resourcesPath, "assets", "extraFiles", "7zr.exe"),
-      path.join(process.resourcesPath, "extraFiles", "7zr.exe"),
+      path.join(process.resourcesPath, "assets", "extraFiles", "7za.exe"),
+      path.join(process.resourcesPath, "extraFiles", "7za.exe"),
     ];
     for (const p of paths) {
       if (fs.existsSync(p)) return p;
     }
     return paths[0];
   }
-  return path.join(__dirname, "assets", "extraFiles", "7zr.exe");
+  return path.join(__dirname, "assets", "extraFiles", "7za.exe");
 }
 
 function getCachedApp(id) {

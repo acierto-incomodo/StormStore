@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -43,8 +43,9 @@
       "differentialPackage": true
     },
     "extraResources": [
-      "assets/extraFiles/7zr.exe",
-      "assets/extraFiles/7zr.dll"
+      "assets/extraFiles/7za.exe",
+      "assets/extraFiles/7za.dll",
+      "assets/extraFiles/7zxa.dll"
     ],
     "files": [
       "package.json",

@@ -1,4 +1,4 @@
-# 🚀 StormStore v2.1.4 - Interfaz y Ajustes Inteligentes
+# 🚀 StormStore v2.1.5 - Interfaz y Ajustes Inteligentes
 
 ## 📝 Registro de Cambios
 
