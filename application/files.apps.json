@@ -487,6 +487,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/MajotoriGame/releases/latest/download/"
   },
   {
+    "id": "meccha-chameleon",
+    "name": "MECCHA CHAMELEON",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game/Build/Build/PenguinHotel.exe",
+    "checksumFile": "Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/meccha-chameleon/releases/latest/download/Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/meccha-chameleon/releases/latest/download/"
+  },
+  {
     "id": "misery",
     "name": "MISERY",
     "files": ["Build.zip.001", "Build.zip.002"],

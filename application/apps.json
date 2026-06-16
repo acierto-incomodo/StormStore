@@ -650,6 +650,23 @@
     "verified": "false"
   },
   {
+    "id": "meccha-chameleon",
+    "name": "MECCHA CHAMELEON",
+    "description": "Majotori, creado por Alva Majo, es un juego narrativo en el que respondes preguntas de tipo trivial (cultura general, videojuegos, cine, etc.) para decidir el destino de distintos personajes. Cada personaje tiene un deseo, y una bruja llamada Lariat the witch se lo puede conceder… pero solo si aciertas las preguntas; si fallas, las consecuencias suelen ser negativas o inesperadas. El juego mezcla historia y cuestionario, haciendo que cada decisión afecte directamente al desarrollo y al final de cada personaje, por lo que la clave está en tus conocimientos y en cómo influyen en la narrativa.",
+    "category": "Juegos",
+    "icon": "../assets/apps/meccha-chameleon.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game/Build/Build/PenguinHotel.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/meccha-chameleon/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/unins000.exe",
+    "steam": "true",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "misery",
     "name": "MISERY",
     "description": "Gamble With Your Friends es un juego multijugador en el que tú y tus amigos compartís una misma cuenta de dinero y una gran deuda, y tenéis que apostar dentro de un casino para intentar ganar suficiente dinero antes de que se acabe el tiempo. Durante la partida participáis en distintos juegos de azar, compráis objetos para mejorar vuestras probabilidades y tomáis decisiones arriesgadas que pueden beneficiar o arruinar a todo el equipo. El objetivo es ir avanzando por un casino lleno de niveles mientras intentáis cumplir una cuota de dinero en cada ronda, en partidas rápidas y caóticas donde la cooperación y la suerte son clave.",
