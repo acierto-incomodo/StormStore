@@ -494,9 +494,9 @@
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game/Build",
     "executablePath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game/Build/Build/PenguinHotel.exe",
-    "checksumFile": "Version.txt",
+    "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game",
-    "checksumUrl": "https://github.com/acierto-incomodo/meccha-chameleon/releases/latest/download/Version.txt",
+    "checksumUrl": "https://github.com/acierto-incomodo/meccha-chameleon/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/meccha-chameleon/releases/latest/download/"
   },
   {
