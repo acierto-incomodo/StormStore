@@ -1195,7 +1195,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/robobeat.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/Build/RetroRewind.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/Build/ROBOBEAT.exe"
     ],
     "download": "https://github.com/acierto-incomodo/ROBOBEATGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/unins000.exe",
