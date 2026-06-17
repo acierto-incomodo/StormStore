@@ -29,7 +29,7 @@ let isOffline = true; // Por defecto asumimos offline hasta que la sincronizaci√
 let FILES_APPS_JSON_CACHE;
 
 const ICON_SIZES = [
-  "256x256",
+  // "256x256",
   "512x512",
   "1024x1024",
   // "2048x2048",

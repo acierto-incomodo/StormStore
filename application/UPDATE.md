@@ -37,6 +37,6 @@ Esta actualización introduce mejoras críticas en la visualización de la inter
 
 ----------
 
-💛 El equipo de **StormGamesStudios**.
+💙 El equipo de **StormGamesStudios**.
 
 **Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v2.1.3...v2.1.4](https://github.com/acierto-incomodo/StormStore/compare/v2.1.3...v2.1.4)

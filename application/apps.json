@@ -3,9 +3,15 @@
     "id": "stormstore",
     "name": "StormStore",
     "description": "La aplicación principal de StormGamesStudios para gestionar tus juegos favoritos.",
-    "category": ["Tiendas", "Utilidades", "Aplicaciones"],
+    "category": [
+      "Tiendas",
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/stormstore.png",
-    "paths": ["%appdata%/StormGamesStudios/StormStore/StormStore.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/StormStore/StormStore.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/latest/download/StormStore-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
     "steam": "no",
@@ -100,6 +106,23 @@
     "verified": "false"
   },
   {
+    "id": "bridge-constructor-portal",
+    "name": "Bridge Constructor Portal",
+    "description": "Bridge Constructor Portal es un juego de puzles en el que tienes que construir puentes, rampas y estructuras para que vehículos puedan llegar al final de cada nivel, usando físicas realistas. La particularidad es que combina esta mecánica con elementos del universo de Portal, como portales, geles de impulso y plataformas de salto, lo que hace que tengas que pensar de forma creativa para resolver cada desafío. El objetivo es guiar los vehículos de forma segura a través de pruebas cada vez más complicadas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/bridge-constructor-portal.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Bridge Constructor Portal/game/Build/Build/Bridge_Constructor_Portal.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Bridge Constructor Portal/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "buckshot_roulette",
     "name": "Buckshot Roulette",
     "description": "Juego de terror/estrategia inspirado en la ruleta rusa donde te enfrentas a un “dealer” en rondas usando una escopeta cargada parcialmente. Debes decidir cuándo disparar y cuándo usar objetos únicos para sobrevivir mientras la IA te desafía.",
@@ -151,6 +174,23 @@
     "verified": "false"
   },
   {
+    "id": "colony-survival",
+    "name": "Colony Survival",
+    "description": "Colony Survival es un juego de construcción y supervivencia en el que creas y gestionas una colonia en un mundo de vóxeles. Empiezas colocando edificios básicos y asignando trabajos a los colonos para que recojan recursos, cultiven comida y construyan estructuras. A medida que la colonia crece, debes defenderla de ataques enemigos nocturnos mientras amplías tu base y automatizas la producción. El objetivo es hacer que tu colonia sobreviva y se expanda cada vez más.",
+    "category": "Juegos",
+    "icon": "../assets/apps/colony-survival.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Colony Survival/game/Build/Build/unsteam_loader.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Colony Survival/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "content-warning",
     "name": "Content Warning",
     "description": "Juego cooperativo en el que tú y tus amigos grabáis vídeos en lugares aterradores para convertiros en estrellas virales mientras intentáis sobrevivir a criaturas y resolver situaciones tensas.",
@@ -164,6 +204,23 @@
     "steam": "si",
     "wifi": "no",
     "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "cookie-clicker",
+    "name": "Cookie Clicker",
+    "description": "Cookie Clicker es un juego incremental en el que empiezas produciendo galletas haciendo clic en una galleta gigante. Con las galletas que consigues puedes comprar mejoras y edificios como abuelas, fábricas o granjas que generan galletas automáticamente. A medida que avanzas, la producción crece de forma exponencial y desbloqueas nuevas mecánicas, mejoras y sistemas que aumentan cada vez más la cantidad de galletas que produces, con el objetivo de generar la mayor cantidad posible sin un final fijo.",
+    "category": "Juegos",
+    "icon": "../assets/apps/cookie-clicker.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Cookie Clicker/game/Build/Build/Cookie Clicker.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Cookie Clicker/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -188,7 +245,9 @@
     "id": "doom",
     "name": "DOOM Classic",
     "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",
-    "category": ["Juegos"],
+    "category": [
+      "Juegos"
+    ],
     "icon": "../assets/apps/doom.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
@@ -205,7 +264,9 @@
     "id": "drivebeyondhorizons",
     "name": "Drive Beyond Horizons",
     "description": "Drive Beyond Horizons es un juego de conducción y exploración en mundo abierto donde recorres vastos paisajes generados de forma procedural, gestionando tu vehículo mientras viajas largas distancias, descubres ubicaciones y enfrentas los desafíos del entorno; el progreso se basa en mejorar el coche, administrar recursos y sobrevivir a las condiciones del viaje, ofreciendo una experiencia relajada pero centrada en la aventura y la libertad.",
-    "category": ["Juegos"],
+    "category": [
+      "Juegos"
+    ],
     "icon": "../assets/apps/drivebeyondhorizons.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/installer_updater.exe"
@@ -428,6 +489,23 @@
     "verified": "false"
   },
   {
+    "id": "geometry-dash",
+    "name": "Geometry Dash",
+    "description": "Geometry Dash es un juego de plataformas rítmico en el que controlas un icono que avanza automáticamente y tienes que saltar, volar y esquivar obstáculos al ritmo de la música. El objetivo es llegar al final de cada nivel sin chocar, ya que un solo error te hace empezar desde el principio. El juego destaca por su dificultad, su sincronización con la música electrónica y la gran variedad de niveles, tanto oficiales como creados por la comunidad.",
+    "category": "Juegos",
+    "icon": "../assets/apps/geometry-dash.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Geometry Dash/game/Build/Build/GeometryDash.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Geometry Dash/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "golfit",
     "name": "Golf It!",
     "description": "Golf It! es un juego de minigolf divertido donde puedes jugar solo o con amigos. Tiene mapas variados y un editor para crear tus propios niveles. Lo más destacado es el multijugador online y los mapas de la comunidad, que hacen cada partida diferente y caótica. Ideal para partidas rápidas y entretenidas.",
@@ -616,6 +694,44 @@
     "verified": "false"
   },
   {
+    "id": "level-devil",
+    "name": "Level Devil",
+    "description": "Level Devil es un juego de plataformas en el que avanzas por niveles que parecen normales al principio, pero que están llenos de trampas ocultas y cambios inesperados. El objetivo es llegar al final de cada nivel, pero el juego constantemente te engaña con su diseño, haciendo que el suelo desaparezca, aparezcan obstáculos de repente o cambie la lógica del escenario. Se centra en la sorpresa, la frustración intencional y el aprendizaje a base de ensayo y error.",
+    "category": "Juegos",
+    "icon": "../assets/apps/level-devil.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Level Devil/game/Build/Build/Level Devil.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Level Devil/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "lossless-scaling",
+    "name": "Lossless Scaling",
+    "description": "Lossless Scaling es una aplicación para PC que permite mejorar el rendimiento y la fluidez de los juegos escalando la imagen y generando fotogramas adicionales. Sirve para jugar a juegos en baja resolución y hacer que se vean más nítidos en pantallas grandes sin perder calidad, además de poder activar técnicas como el “frame generation” para aumentar los FPS. Es especialmente útil en juegos que no tienen opciones de escalado o tecnologías modernas integradas, ayudando a que se vean y funcionen mejor en ordenadores con menos potencia.",
+    "category": [
+      "Herramientas",
+      "Inteligencia Artificial",
+      "Utilidades"
+    ],
+    "icon": "../assets/apps/lossless-scaling.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/Lossless Scaling/game/Build/Build/LosslessScaling.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/Lossless Scaling/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "mage-arena",
     "name": "Mage Arena",
     "description": "Arena de combate mágico en la que controlas a un mago y luchas contra otros jugadores o enemigos, usando hechizos, estrategias y habilidades especiales para sobrevivir y ganar el duelo.",
@@ -643,7 +759,7 @@
     ],
     "download": "https://github.com/acierto-incomodo/MajotoriGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Majotori/unins000.exe",
-    "steam": "true",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
@@ -660,7 +776,7 @@
     ],
     "download": "https://github.com/acierto-incomodo/meccha-chameleon/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/unins000.exe",
-    "steam": "true",
+    "steam": "si",
     "wifi": "si",
     "share-compatibility": "no",
     "virus-alert": "none",
@@ -721,7 +837,10 @@
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
-    "category": ["Juegos", "Aplicaciones"],
+    "category": [
+      "Juegos",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/modpack-installer.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/Modpack Installer/Modpack Installer.exe"
@@ -772,9 +891,15 @@
     "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
-    "category": ["Inteligencia Artificial", "Utilidades", "Aplicaciones"],
+    "category": [
+      "Inteligencia Artificial",
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/multiai.png",
-    "paths": ["%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-x64.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
     "steam": "no",
@@ -809,9 +934,14 @@
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/pairdrop.png",
-    "paths": ["%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe",
     "steam": "no",
@@ -835,6 +965,23 @@
     "wifi": "si",
     "share-compatibility": "si",
     "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
+    "id": "papers-please",
+    "name": "Papers, Please",
+    "description": "Papers, Please es un juego de simulación en el que trabajas como inspector de inmigración en la frontera de un país ficticio. Tu tarea consiste en revisar documentos de las personas que intentan entrar, comprobando que todo esté correcto y detectando errores o falsificaciones. A medida que avanzas, las normas se vuelven más complejas y debes tomar decisiones difíciles, ya que algunas afectan a la vida de las personas y a la seguridad de tu propia familia. El juego combina gestión, atención al detalle y decisiones morales.",
+    "category": "Juegos",
+    "icon": "../assets/apps/papers-please.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Papers Please/game/Build/Build/PapersPlease.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Papers Please/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
     "verified": "false"
   },
   {
@@ -933,24 +1080,24 @@
     ],
     "download": "https://github.com/acierto-incomodo/PureyaGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Pureya/unins000.exe",
-    "steam": "true",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
   {
-    "id": "randomlife-reborn",
-    "name": "RANDOMLIFE REBORN",
-    "description": "RANDOMLIFE REBORN es un juego en el que vives la vida de un personaje generado de forma aleatoria y tomas decisiones que afectan a su futuro. A lo largo de la partida ocurren eventos impredecibles, tanto buenos como malos, y cada elección cambia el rumbo de la historia. No tiene un objetivo fijo, ya que se centra en experimentar distintas vidas y ver cómo terminan según tus decisiones y la suerte.",
+    "id": "repo-no-mods",
+    "name": "R.E.P.O. Latest (No Mods)",
+    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
     "category": "Juegos",
-    "icon": "../assets/apps/randomlife-reborn.png",
+    "icon": "../assets/apps/repo.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build/Build/RLRB_UE5.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build/Build/REPO.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeRebornGame/unins000.exe",
-    "steam": "no",
+    "download": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/unins000.exe",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
@@ -974,17 +1121,17 @@
     "verified": "false"
   },
   {
-    "id": "repo-no-mods",
-    "name": "R.E.P.O. Latest (No Mods)",
-    "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
+    "id": "randomlife-reborn",
+    "name": "RANDOMLIFE REBORN",
+    "description": "RANDOMLIFE REBORN es un juego en el que vives la vida de un personaje generado de forma aleatoria y tomas decisiones que afectan a su futuro. A lo largo de la partida ocurren eventos impredecibles, tanto buenos como malos, y cada elección cambia el rumbo de la historia. No tiene un objetivo fijo, ya que se centra en experimentar distintas vidas y ver cómo terminan según tus decisiones y la suerte.",
     "category": "Juegos",
-    "icon": "../assets/apps/repo.png",
+    "icon": "../assets/apps/randomlife-reborn.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/game/Build/Build/REPO.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build/Build/RLRB_UE5.exe"
     ],
-    "download": "https://github.com/acierto-incomodo/repo-game-no-mods/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/repo-game-no-mods/unins000.exe",
-    "steam": "si",
+    "download": "https://github.com/acierto-incomodo/RandomlifeRebornGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/RandomlifeRebornGame/unins000.exe",
+    "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
@@ -1001,6 +1148,40 @@
     ],
     "download": "https://github.com/acierto-incomodo/RetroRewindGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Retro Rewind/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "rimworld",
+    "name": "RimWorld",
+    "description": "RimWorld es un juego de simulación y gestión en el que controlas a un grupo de colonos que han aterrizado en un planeta desconocido. Tu objetivo es ayudarles a sobrevivir construyendo una base, gestionando recursos como comida y energía, y atendiendo sus necesidades físicas y mentales. Cada personaje tiene habilidades, personalidad y problemas propios, y el juego genera eventos aleatorios como ataques, enfermedades o conflictos internos. No tiene una historia fija, ya que crea historias únicas según lo que ocurre en tu colonia y las decisiones que tomas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/rimworld.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Rimworld/game/Build/Build/Game.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Rimworld/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "pc-tycoon-2",
+    "name": "RimWorld",
+    "description": "RimWorld es un juego de simulación y gestión en el que controlas a un grupo de colonos que han aterrizado en un planeta desconocido. Tu objetivo es ayudarles a sobrevivir construyendo una base, gestionando recursos como comida y energía, y atendiendo sus necesidades físicas y mentales. Cada personaje tiene habilidades, personalidad y problemas propios, y el juego genera eventos aleatorios como ataques, enfermedades o conflictos internos. No tiene una historia fija, ya que crea historias únicas según lo que ocurre en tu colonia y las decisiones que tomas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/rimworld.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Rimworld/game/Build/Build/Game.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Rimworld/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
@@ -1030,7 +1211,9 @@
     "description": "Rufus es una herramienta gratuita para crear discos de arranque de USB para Windows.",
     "category": "Utilidades",
     "icon": "../assets/apps/rufus.png",
-    "paths": ["%appdata%/StormGamesStudios/Programs/Rufus/rufus.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/Rufus/rufus.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/Rufus/unins000.exe",
     "steam": "no",
@@ -1057,10 +1240,29 @@
     "verified": "false"
   },
   {
+    "id": "sandbox",
+    "name": "Sandbox",
+    "description": "Sandbox es un juego de construcción y exploración en el que los jugadores pueden crear y destruir bloques en un entorno 2D.",
+    "category": "Juegos",
+    "icon": "../assets/apps/sandbox.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Sandbox/game/Build/Build/Game.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Sandbox/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "scamline",
     "name": "Scam Line",
     "description": "Scam Line es un juego multijugador de engaño social para 4–8 personas en el que todos compiten en desafíos psicológicos y de comunicación para ser el último en pie. En cada partida, los jugadores están en habitaciones separadas y solo pueden hablar mediante un teléfono móvil antiguo dentro del juego. Debes negociar, formar alianzas o engañar a los demás para avanzar en distintos mini‑retos, como identificar quién es distinto o jugar al Dilema del Prisionero. La clave está en leer a los otros jugadores y usar la comunicación limitada a tu favor: puedes cooperar o mentir, pero al final solo uno puede ganar.",
-    "category": ["Juegos"],
+    "category": [
+      "Juegos"
+    ],
     "icon": "../assets/apps/ScamLine.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ScamLine/installer_updater.exe"
@@ -1094,7 +1296,10 @@
     "id": "scrcpy",
     "name": "SCRCPY",
     "description": "SCRCPY es una herramienta que permite controlar un dispositivo Android desde el escritorio a través de USB o WiFi.",
-    "category": ["Herramientas", "Utilidades"],
+    "category": [
+      "Herramientas",
+      "Utilidades"
+    ],
     "icon": "../assets/apps/scrcpy.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe"
@@ -1118,7 +1323,7 @@
     ],
     "download": "https://github.com/acierto-incomodo/ShippedGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Shipped/unins000.exe",
-    "steam": "true",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
@@ -1203,7 +1408,7 @@
     ],
     "download": "https://github.com/acierto-incomodo/SpaceflightSimulatorGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SpaceflightSimulator/unins000.exe",
-    "steam": "true",
+    "steam": "si",
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
@@ -1230,9 +1435,14 @@
     "id": "stormbrowser",
     "name": "StormBrowser",
     "description": "StormBrowser es un navegador web personalizado por StormGamesStudios.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/stormbrowser.png",
-    "paths": ["%appdata%/StormGamesStudios/Programs/StormBrowser/StormBrowser.exe"],
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/StormBrowser/StormBrowser.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/StormBrowser-V3/releases/download/v1.2.1/StormBrowser-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/StormBrowser/Uninstall StormBrowser.exe",
     "steam": "no",
@@ -1245,9 +1455,14 @@
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/stormlauncher.png",
-    "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"],
+    "paths": [
+      "%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"
+    ],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe",
     "steam": "no",
@@ -1260,7 +1475,12 @@
     "id": "stormlibraryv2",
     "name": "StormLibraryV2",
     "description": "Lanzador de juegos",
-    "category": ["Utilidades", "Aplicaciones", "Tiendas", "Juegos"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones",
+      "Tiendas",
+      "Juegos"
+    ],
     "icon": "../assets/apps/stormlibraryv2.png",
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
@@ -1277,7 +1497,10 @@
     "id": "stormpanel-app",
     "name": "StormPanel APP",
     "description": "StormPanel APP es una aplicación de panel de control para StormGamesStudios.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones"
+    ],
     "icon": "../assets/apps/stormpanel-app.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormPanel APP/StormPanel APP.exe"
@@ -1321,6 +1544,23 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "the-baby-in-yellow",
+    "name": "The Baby in Yellow",
+    "description": "The Baby in Yellow es un juego de terror en el que trabajas como niñera y debes cuidar a un bebé aparentemente normal durante la noche. A medida que avanzas cumpliendo tareas simples como darle de comer o acostarlo, empiezan a ocurrir sucesos extraños y paranormales, ya que el bebé tiene comportamientos inquietantes y habilidades sobrenaturales. El juego se centra en la tensión, los sustos y una atmósfera cada vez más perturbadora mientras intentas completar tus tareas y entender qué está pasando.",
+    "category": "Juegos",
+    "icon": "../assets/apps/the-baby-in-yellow.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/The Baby in Yellow/game/Build/Build/Game.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/The Baby in Yellow/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1449,6 +1689,23 @@
     "verified": "false"
   },
   {
+    "id": "worldbox",
+    "name": "WorldBox",
+    "description": "WorldBox es un juego de simulación tipo “dios” en el que puedes crear y destruir mundos a tu antojo. Generas terrenos, colocas criaturas como humanos, orcos o animales, y observas cómo evolucionan por su cuenta formando civilizaciones, guerras y alianzas. También puedes intervenir directamente usando poderes como desastres naturales, magia o explosiones para cambiar el curso del mundo. No tiene un objetivo fijo, ya que se centra en experimentar y ver cómo se desarrollan las sociedades según tus decisiones.",
+    "category": "Juegos",
+    "icon": "../assets/apps/worldbox.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/WorldBox/game/Build/Build/worldbox.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/WorldBox/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "yandere-simulator",
     "name": "Yandere Simulator",
     "description": "Yandere Simulator es un juego de supervivencia y romance en el que el jugador asume el rol de un estudiante que debe luchar por sobrevivir en un entorno hostil mientras navega por las complejidades de las relaciones interpersonales.",
@@ -1469,7 +1726,11 @@
     "id": "youtube-downloader",
     "name": "YouTube Downloader",
     "description": "Una herramienta para descargar videos de YouTube.",
-    "category": ["Utilidades", "Aplicaciones", "Herramientas"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones",
+      "Herramientas"
+    ],
     "icon": "../assets/apps/youtube-downloader.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/YoutubeDownloader/YoutubeDownloader/YoutubeDownloader.exe"

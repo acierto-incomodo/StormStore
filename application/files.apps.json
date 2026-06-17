@@ -1041,6 +1041,186 @@
     "downloadUrl": "https://github.com/acierto-incomodo/WeGottaGoGame/releases/latest/download/"
   },
   {
+    "id": "bridge-constructor-portal",
+    "name": "Bridge Constructor Portal",
+    "files": [
+      "BridgeConstructorPortal.zip"
+    ],
+    "merge": false,
+    "mergedName": "BridgeConstructorPortal.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Bridge Constructor Portal/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Bridge Constructor Portal/game/Build/Build/Bridge_Constructor_Portal.exe",
+    "checksumFile": "BridgeConstructorPortalVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Bridge Constructor Portal/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/BridgeConstructorPortalVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "colony-survival",
+    "name": "Colony Survival",
+    "files": [
+      "ColonySurvival.zip"
+    ],
+    "merge": false,
+    "mergedName": "ColonySurvival.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Colony Survival/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Colony Survival/game/Build/Build/unsteam_loader.exe",
+    "checksumFile": "ColonySurvivalVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Colony Survival/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/ColonySurvivalVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "cookie-clicker",
+    "name": "Cookie Clicker",
+    "files": [
+      "CookieClicker.zip"
+    ],
+    "merge": false,
+    "mergedName": "CookieClicker.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Cookie Clicker/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Cookie Clicker/game/Build/Build/Cookie Clicker.exe",
+    "checksumFile": "CookieClickerVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Cookie Clicker/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/CookieClickerVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "geometry-dash",
+    "name": "Geometry Dash",
+    "files": [
+      "GeometryDash.zip"
+    ],
+    "merge": false,
+    "mergedName": "GeometryDash.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Geometry Dash/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Geometry Dash/game/Build/Build/GeometryDash.exe",
+    "checksumFile": "GeometryDashVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Geometry Dash/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/GeometryDashVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "level-devil",
+    "name": "Level Devil",
+    "files": [
+      "LevelDevil.zip"
+    ],
+    "merge": false,
+    "mergedName": "LevelDevil.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Level Devil/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Level Devil/game/Build/Build/Level Devil.exe",
+    "checksumFile": "LevelDevilVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Level Devil/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/LevelDevilVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "lossless-scaling",
+    "name": "Lossless Scaling",
+    "files": [
+      "LosslessScaling.zip"
+    ],
+    "merge": false,
+    "mergedName": "LosslessScaling.zip",
+    "extractPath": "%appdata%/StormGamesStudios/Programs/Lossless Scaling/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/Programs/Lossless Scaling/game/Build/Build/LosslessScaling.exe",
+    "checksumFile": "LosslessScalingVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/Programs/Lossless Scaling/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/LosslessScalingVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "papers-please",
+    "name": "Papers, Please",
+    "files": [
+      "PapersPlease.zip"
+    ],
+    "merge": false,
+    "mergedName": "PapersPlease.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Papers Please/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Papers Please/game/Build/Build/PapersPlease.exe",
+    "checksumFile": "PapersPleaseVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Papers Please/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/PapersPleaseVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "pc-tycoon-2",
+    "name": "PC Tycoon 2",
+    "files": [
+      "PCTycoon2.zip"
+    ],
+    "merge": false,
+    "mergedName": "PCTycoon2.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/game/Build/Build/PC Tycoon 2.exe",
+    "checksumFile": "PCTycoon2Version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/PCTycoon2Version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "rimworld",
+    "name": "RimWorld",
+    "files": [
+      "Rimworld.zip"
+    ],
+    "merge": false,
+    "mergedName": "Rimworld.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RimWorld/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/RimWorld/game/Build/Build/RimWorldWin64.exe",
+    "checksumFile": "RimworldVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/RimWorld/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/RimworldVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "sandbox",
+    "name": "Sandbox",
+    "files": [
+      "Sandbox.zip"
+    ],
+    "merge": false,
+    "mergedName": "Sandbox.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Sandbox/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Sandbox/game/Build/Build/Plsandboxuto.exe",
+    "checksumFile": "SandboxVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Sandbox/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/SandboxVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "the-baby-in-yellow",
+    "name": "The Baby In Yellow",
+    "files": [
+      "BuTheBabyInYellowild.zip"
+    ],
+    "merge": false,
+    "mergedName": "TheBabyInYellow",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/The Baby In Yellow/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/The Baby In Yellow/game/Build/Build/Game.exe",
+    "checksumFile": "TheBabyInYellowVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/The Baby In Yellow/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/TheBabyInYellowVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "worldbox",
+    "name": "WorldBox",
+    "files": [
+      "Worldbox.zip"
+    ],
+    "merge": false,
+    "mergedName": "Worldbox.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/WorldBox/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/WorldBox/game/Build/Build/worldbox.exe",
+    "checksumFile": "WorldboxVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/WorldBox/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/WorldboxVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
     "id": "yandere-simulator",
     "name": "Yandere Simulator",
     "files": ["latest.zip"],

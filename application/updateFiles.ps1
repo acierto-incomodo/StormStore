@@ -10,7 +10,7 @@ $destTrailersDir = Join-Path $rootDir "docs/assets/trailers"
 $sourceJson = Join-Path $scriptDir "apps.json"
 $sourceFilesJson = Join-Path $scriptDir "files.apps.json"
 $sourceAppsSizeBase = Join-Path $scriptDir "assets/apps-size"
-$appSizeSubfolders = @("256x256", "512x512", "1024x1024")
+$appSizeSubfolders = @("512x512", "1024x1024")
 $sourceTrailers = Join-Path $scriptDir "assets/media/trailers"
 
 Write-Host "--- Actualizando archivos de documentación ---"
