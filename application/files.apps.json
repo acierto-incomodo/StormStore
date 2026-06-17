@@ -740,7 +740,7 @@
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build",
-    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/ROBOBEAT.exe",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/Build/PlayGame.exe",
     "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game",
     "checksumUrl": "https://github.com/acierto-incomodo/ROBOBEATGame/releases/latest/download/GameVersion.txt",

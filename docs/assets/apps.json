@@ -985,6 +985,23 @@
     "verified": "false"
   },
   {
+    "id": "pc-tycoon-2",
+    "name": "PC Tycoon 2",
+    "description": "PC Tycoon 2 es un juego de simulación en el que gestionas una empresa de tecnología dedicada a crear y vender ordenadores. Empiezas diseñando PCs básicos con componentes sencillos y, a medida que ganas dinero, puedes investigar nuevas tecnologías, mejorar piezas como procesadores o tarjetas gráficas y producir equipos más potentes. También debes gestionar precios, marketing y producción para competir en el mercado y hacer crecer tu empresa hasta convertirla en un gran imperio tecnológico.",
+    "category": "Juegos",
+    "icon": "../assets/apps/pc-tycoon-2.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/game/Build/Build/Game.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "peak",
     "name": "PEAK",
     "description": "Juego cooperativo de terror multijugador en el que hasta 6 jugadores exploran lugares siniestros para recuperar objetos valiosos, evitando criaturas peligrosas y usando la física del juego para transportar ítems sin romperlos. El enfoque está en el trabajo en equipo, los sustos y los momentos absurdos entre amigos.",
@@ -1155,23 +1172,6 @@
     "verified": "false"
   },
   {
-    "id": "pc-tycoon-2",
-    "name": "PC Tycoon 2",
-    "description": "PC Tycoon 2 es un juego de simulación en el que gestionas una empresa de tecnología dedicada a crear y vender ordenadores. Empiezas diseñando PCs básicos con componentes sencillos y, a medida que ganas dinero, puedes investigar nuevas tecnologías, mejorar piezas como procesadores o tarjetas gráficas y producir equipos más potentes. También debes gestionar precios, marketing y producción para competir en el mercado y hacer crecer tu empresa hasta convertirla en un gran imperio tecnológico.",
-    "category": "Juegos",
-    "icon": "../assets/apps/pc-tycoon-2.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/game/Build/Build/Game.exe"
-    ],
-    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/unins000.exe",
-    "steam": "no",
-    "wifi": "no",
-    "share-compatibility": "no",
-    "virus-alert": "none",
-    "verified": "false"
-  },
-  {
     "id": "rimworld",
     "name": "RimWorld",
     "description": "RimWorld es un juego de simulación y gestión en el que controlas a un grupo de colonos que han aterrizado en un planeta desconocido. Tu objetivo es ayudarles a sobrevivir construyendo una base, gestionando recursos como comida y energía, y atendiendo sus necesidades físicas y mentales. Cada personaje tiene habilidades, personalidad y problemas propios, y el juego genera eventos aleatorios como ataques, enfermedades o conflictos internos. No tiene una historia fija, ya que crea historias únicas según lo que ocurre en tu colonia y las decisiones que tomas.",
@@ -1195,7 +1195,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/robobeat.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/Build/ROBOBEAT.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/game/Build/Build/PlayGame.exe"
     ],
     "download": "https://github.com/acierto-incomodo/ROBOBEATGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/ROBOBEAT/unins000.exe",
