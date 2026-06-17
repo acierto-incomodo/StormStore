@@ -1155,16 +1155,16 @@
     "verified": "false"
   },
   {
-    "id": "rimworld",
-    "name": "RimWorld",
-    "description": "RimWorld es un juego de simulación y gestión en el que controlas a un grupo de colonos que han aterrizado en un planeta desconocido. Tu objetivo es ayudarles a sobrevivir construyendo una base, gestionando recursos como comida y energía, y atendiendo sus necesidades físicas y mentales. Cada personaje tiene habilidades, personalidad y problemas propios, y el juego genera eventos aleatorios como ataques, enfermedades o conflictos internos. No tiene una historia fija, ya que crea historias únicas según lo que ocurre en tu colonia y las decisiones que tomas.",
+    "id": "pc-tycoon-2",
+    "name": "PC Tycoon 2",
+    "description": "PC Tycoon 2 es un juego de simulación en el que gestionas una empresa de tecnología dedicada a crear y vender ordenadores. Empiezas diseñando PCs básicos con componentes sencillos y, a medida que ganas dinero, puedes investigar nuevas tecnologías, mejorar piezas como procesadores o tarjetas gráficas y producir equipos más potentes. También debes gestionar precios, marketing y producción para competir en el mercado y hacer crecer tu empresa hasta convertirla en un gran imperio tecnológico.",
     "category": "Juegos",
-    "icon": "../assets/apps/rimworld.png",
+    "icon": "../assets/apps/pc-tycoon-2.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/Rimworld/game/Build/Build/Game.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/game/Build/Build/Game.exe"
     ],
     "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Rimworld/unins000.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
@@ -1172,7 +1172,7 @@
     "verified": "false"
   },
   {
-    "id": "pc-tycoon-2",
+    "id": "rimworld",
     "name": "RimWorld",
     "description": "RimWorld es un juego de simulación y gestión en el que controlas a un grupo de colonos que han aterrizado en un planeta desconocido. Tu objetivo es ayudarles a sobrevivir construyendo una base, gestionando recursos como comida y energía, y atendiendo sus necesidades físicas y mentales. Cada personaje tiene habilidades, personalidad y problemas propios, y el juego genera eventos aleatorios como ataques, enfermedades o conflictos internos. No tiene una historia fija, ya que crea historias únicas según lo que ocurre en tu colonia y las decisiones que tomas.",
     "category": "Juegos",
