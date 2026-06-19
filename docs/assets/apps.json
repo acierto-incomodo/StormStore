@@ -140,6 +140,23 @@
     "verified": "false"
   },
   {
+    "id": "burglin-gnomes",
+    "name": "Burglin’ Gnomes",
+    "description": "Burglin’ Gnomes es un juego cooperativo en el que tú y otros jugadores controláis a pequeños gnomos ladrones que se infiltran en casas para robar objetos de valor. Debéis moveros con cuidado, evitar ser detectados y coordinaros para llevar el botín hasta la salida sin que os atrapen. El juego se basa en el sigilo, la cooperación y situaciones caóticas, donde cada partida puede salir bien… o convertirse en un desastre divertido.",
+    "category": "Juegos",
+    "icon": "../assets/apps/burglin-gnomes.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Burglin Gnomes/game/Build/Build/Gnomium.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/BurglinGnomesGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Burglin Gnomes/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
+    "share-compatibility": "no",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "car-for-sale-simulator",
     "name": "Car For Sale Simulator 2023",
     "description": "Car For Sale Simulator 2023 es un juego de simulación en el que gestionas tu propio negocio de compra y venta de coches. Empiezas con poco dinero comprando vehículos de segunda mano, negociando precios con vendedores, reparándolos y mejorándolos para luego venderlos y obtener beneficio. A medida que avanzas puedes ampliar tu negocio, comprar mejores coches y optimizar tus ganancias, centrándote en saber cuándo comprar barato y vender caro.",

@@ -27,6 +27,19 @@
     "downloadUrl": "https://github.com/acierto-incomodo/ambidextro/releases/latest/download/"
   },
   {
+    "id": "burglin-gnomes",
+    "name": "Burglin’ Gnomes",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Burglin Gnomes/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Burglin Gnomes/game/Build/Build/Gnomium.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Burglin Gnomes/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/burglin-gnomes/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/burglin-gnomes/releases/latest/download/"
+  },
+  {
     "id": "backrooms-escape-together",
     "name": "Backrooms: Escape Together",
     "files": [
