@@ -36,8 +36,8 @@
     "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Burglin Gnomes/game/Build/Build/Gnomium.exe",
     "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Burglin Gnomes/game",
-    "checksumUrl": "https://github.com/acierto-incomodo/burglin-gnomes/releases/latest/download/GameVersion.txt",
-    "downloadUrl": "https://github.com/acierto-incomodo/burglin-gnomes/releases/latest/download/"
+    "checksumUrl": "https://github.com/acierto-incomodo/BurglinGnomesGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/BurglinGnomesGame/releases/latest/download/"
   },
   {
     "id": "backrooms-escape-together",
