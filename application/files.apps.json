@@ -11,6 +11,7 @@
     "executablePath": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game/Build/Build/ABumpyRide.exe",
     "checksumFile": "GameVersion.txt",
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ABumpyRideGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/ABumpyRideGame/releases/latest/download/"
   },
   {
