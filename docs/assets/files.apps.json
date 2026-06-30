@@ -503,7 +503,7 @@
   {
     "id": "meccha-chameleon",
     "name": "MECCHA CHAMELEON",
-    "files": ["Build.zip.001", "Build.zip.002"],
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003", "Build.zip.004", "Build.zip.005"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game/Build",
