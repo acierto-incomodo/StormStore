@@ -96,25 +96,14 @@ function loadSettings() {
   try {
     if (fs.existsSync(SETTINGS_PATH)) {
       const savedSettings = JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
-      const mergedSettings = { ...DEFAULT_SETTINGS, ...savedSettings };
-
-      if (mergedSettings.auto_updates === false) {
-        mergedSettings.auto_updates = true;
-        try {
-          fs.writeFileSync(SETTINGS_PATH, JSON.stringify(mergedSettings, null, 2));
-        } catch (writeErr) {
-          console.error("Error guardando ajustes corregidos:", writeErr);
-        }
-      }
-
-      return mergedSettings;
+      return { ...DEFAULT_SETTINGS, ...savedSettings, auto_updates: true };
     }
   } catch (e) {
     console.error("Error leyendo ajustes:", e);
   }
 
   ensureSettingsFile();
-  return { ...DEFAULT_SETTINGS };
+  return { ...DEFAULT_SETTINGS, auto_updates: true };
 }
 
 function applySettings(settings) {
@@ -138,7 +127,7 @@ function applySettings(settings) {
   }
 
   // 3. Actualizaciones automáticas
-  autoUpdater.autoDownload = settings.auto_updates;
+  autoUpdater.autoDownload = true;
 }
 
 function saveSettings(newSettings) {
@@ -148,6 +137,7 @@ function saveSettings(newSettings) {
       ...DEFAULT_SETTINGS,
       ...currentSettings,
       ...newSettings,
+      auto_updates: true,
     };
     const dir = path.dirname(SETTINGS_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
@@ -306,7 +296,7 @@ protocol.registerSchemesAsPrivileged([
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.autoDownload = loadSettings().auto_updates;
+autoUpdater.autoDownload = true;
 autoUpdater.allowDowngrade = true;
 autoUpdater.checkForUpdates();
 
