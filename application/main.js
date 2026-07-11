@@ -45,7 +45,7 @@ const SETTINGS_PATH = path.join(
 );
 
 const DEFAULT_SETTINGS = Object.freeze({
-  auto_updates: false,
+  auto_updates: true,
   start_with_windows: false,
   start_minimized: false,
   start_maximized: true,
@@ -96,7 +96,18 @@ function loadSettings() {
   try {
     if (fs.existsSync(SETTINGS_PATH)) {
       const savedSettings = JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
-      return { ...DEFAULT_SETTINGS, ...savedSettings };
+      const mergedSettings = { ...DEFAULT_SETTINGS, ...savedSettings };
+
+      if (mergedSettings.auto_updates === false) {
+        mergedSettings.auto_updates = true;
+        try {
+          fs.writeFileSync(SETTINGS_PATH, JSON.stringify(mergedSettings, null, 2));
+        } catch (writeErr) {
+          console.error("Error guardando ajustes corregidos:", writeErr);
+        }
+      }
+
+      return mergedSettings;
     }
   } catch (e) {
     console.error("Error leyendo ajustes:", e);
