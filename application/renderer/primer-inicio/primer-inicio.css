@@ -36,8 +36,20 @@ body {
   margin: 0 auto 20px;
 }
 
+.first-launch-card .main-header {
+  display: block;
+  background: transparent;
+  padding: 0;
+  border-bottom: none;
+  height: auto;
+  margin: 0;
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface);
+  -webkit-app-region: no-drag;
+}
+
 .first-launch-card h1 {
-  color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-surface);
   font-size: 28px;
   margin-bottom: 10px;
 }

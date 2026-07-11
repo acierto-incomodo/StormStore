@@ -1,0 +1,2 @@
+1) quitar que aparezca en cada actualizacion.
+2) migracion de archivos de configuraciones a versiones nuevas.

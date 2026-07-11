@@ -107,7 +107,9 @@
           <p class="version" id="app-version"></p>
         </div>
 
-        <button id="back-btn" class="back-button">← Volver</button>
+        <button id="back-to-apps" class="back-button">
+          ← Volver a aplicaciones
+        </button>
 
         <ul id="categories"></ul>
       </div>
@@ -116,19 +118,6 @@
         <p class="studio">StormGamesStudios</p>
 
         <div class="footer-icons">
-          <button data-link="https://github.com/acierto-incomodo">
-            <img src="../assets/icons/github.svg" alt="GitHub" />
-          </button>
-          <button data-link="https://stormgamesstudios.vercel.app/">
-            <img
-              src="../assets/icons/web.svg"
-              alt="Web"
-              style="filter: invert(1)"
-            />
-          </button>
-          <button data-link="https://www.curseforge.com/members/creper1125463">
-            <img src="../assets/icons/curseforge.svg" alt="CurseForge" />
-          </button>
           <button id="open-updates">
             <img src="../assets/icons/update.svg" alt="Actualizaciones" />
           </button>
@@ -137,6 +126,13 @@
           </button>
           <button id="open-info">
             <img src="../assets/icons/info.svg" alt="Información" />
+          </button>
+          <button
+            id="open-support"
+            type="button"
+            onclick="window.location.href='soporte/soporte.html'"
+          >
+            <img src="../assets/icons/letter-svgrepo-com.svg" alt="Soporte" />
           </button>
           <!--
         <button id="open-settings">
@@ -171,6 +167,7 @@
       </header>
 
       <div class="settings-container">
+        <!--
         <div class="setting-item">
           <div class="setting-info">
             <h3>Actualizaciones automáticas</h3>
@@ -184,6 +181,7 @@
             <span class="slider"></span>
           </label>
         </div>
+        -->
 
         <div class="setting-item">
           <div class="setting-info">
@@ -358,6 +356,13 @@
           e.preventDefault();
           confirmNavigation("settings.html");
         });
+
+      // Botón volver
+        document
+          .getElementById("back-to-apps")
+          .addEventListener("click", () => {
+            window.location.href = "index.html";
+          });
 
       document.getElementById("open-settings-header")?.classList.add("active");
 

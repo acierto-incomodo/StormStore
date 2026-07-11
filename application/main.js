@@ -44,6 +44,16 @@ const SETTINGS_PATH = path.join(
   "settings.json",
 );
 
+const DEFAULT_SETTINGS = Object.freeze({
+  auto_updates: false,
+  start_with_windows: false,
+  start_minimized: false,
+  start_maximized: true,
+  has_completed_first_launch: false,
+  show_tray: true,
+  debug_mode: false,
+});
+
 // Cargar datos locales iniciales
 try {
   const appsPath = path.join(app.getAppPath(), "apps.json");
@@ -68,23 +78,32 @@ let tray = null;
 // =====================================
 // GESTIÓN DE AJUSTES
 // =====================================
+function ensureSettingsFile() {
+  if (fs.existsSync(SETTINGS_PATH)) {
+    return true;
+  }
+
+  const dir = path.dirname(SETTINGS_PATH);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  fs.writeFileSync(SETTINGS_PATH, JSON.stringify({ ...DEFAULT_SETTINGS }, null, 2));
+  return false;
+}
+
 function loadSettings() {
   try {
     if (fs.existsSync(SETTINGS_PATH)) {
-      return JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
+      const savedSettings = JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
+      return { ...DEFAULT_SETTINGS, ...savedSettings };
     }
   } catch (e) {
     console.error("Error leyendo ajustes:", e);
   }
-  return {
-    auto_updates: false,
-    start_with_windows: false,
-    start_minimized: false,
-    start_maximized: true,
-    has_completed_first_launch: false,
-    show_tray: true,
-    debug_mode: false,
-  };
+
+  ensureSettingsFile();
+  return { ...DEFAULT_SETTINGS };
 }
 
 function applySettings(settings) {
@@ -114,13 +133,19 @@ function applySettings(settings) {
 function saveSettings(newSettings) {
   try {
     const currentSettings = loadSettings();
-    const finalSettings = { ...currentSettings, ...newSettings };
+    const finalSettings = {
+      ...DEFAULT_SETTINGS,
+      ...currentSettings,
+      ...newSettings,
+    };
     const dir = path.dirname(SETTINGS_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(SETTINGS_PATH, JSON.stringify(finalSettings, null, 2));
     applySettings(finalSettings);
+    return finalSettings;
   } catch (err) {
     console.error("Error guardando ajustes:", err);
+    return null;
   }
 }
 
@@ -381,6 +406,10 @@ function createWindow() {
     "--BigPicture",
     "--Bigpicture",
   ];
+  const settingsFileExists = fs.existsSync(SETTINGS_PATH);
+  if (!settingsFileExists) {
+    ensureSettingsFile();
+  }
   const settings = loadSettings();
   const startInBigPicture = process.argv.some((arg) =>
     vortexFlags.includes(arg),
@@ -391,7 +420,7 @@ function createWindow() {
     !startInBigPicture &&
     !updatePending;
 
-  const firstLaunch = !settings.has_completed_first_launch;
+  const firstLaunch = settings.has_completed_first_launch === false;
   let targetFile = startInBigPicture
     ? "renderer/bigpicture.html"
     : "renderer/index.html";

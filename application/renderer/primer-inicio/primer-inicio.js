@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentStep = 1;
 
+  const getCheckboxValue = (checkbox, fallback = false) => {
+    if (!checkbox) return fallback;
+    return checkbox.checked;
+  };
+
   function showStep(stepNumber) {
     steps.forEach((s, i) => {
       s.classList.toggle("active", i === stepNumber - 1);
@@ -23,45 +28,67 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Navegación genérica
-  document.querySelectorAll(".next-btn").forEach(btn => {
+  document.querySelectorAll(".next-btn").forEach((btn) => {
     btn.onclick = () => showStep(currentStep + 1);
   });
-  document.querySelectorAll(".prev-btn").forEach(btn => {
+  document.querySelectorAll(".prev-btn").forEach((btn) => {
     btn.onclick = () => showStep(currentStep - 1);
   });
-  nextStepBtn.onclick = () => showStep(2);
 
-  finishSetupBtn.addEventListener("click", async () => {
-    const settings = {
-      auto_updates: autoUpdatesCheckbox.checked,
-      start_with_windows: startWithWindowsCheckbox.checked,
-      show_tray: showTrayCheckbox.checked,
-      start_minimized: startMinimizedCheckbox.checked,
-      start_maximized: startMaximizedCheckbox.checked,
-      has_completed_first_launch: true, // Marcar como completado
+  if (nextStepBtn) {
+    nextStepBtn.onclick = () => {
+      window.api.saveSettings({
+        auto_updates: false,
+        start_with_windows: false,
+        show_tray: true,
+        start_minimized: false,
+        start_maximized: true,
+        has_completed_first_launch: false,
+      });
+      showStep(2);
     };
+  }
 
-    try {
-      await window.api.saveSettings(settings);
-      // Redirigir a la vista principal de la aplicación
-      window.location.href = "../index.html";
-    } catch (error) {
-      console.error("Error al guardar la configuración inicial:", error);
-      // Opcional: mostrar un toast o mensaje de error al usuario
-      if (window.api.showToast) {
-        window.api.showToast(
-          "Error al guardar la configuración. Inténtalo de nuevo.",
-        );
+  if (finishSetupBtn) {
+    finishSetupBtn.addEventListener("click", async () => {
+      const settings = {
+        auto_updates: getCheckboxValue(autoUpdatesCheckbox, false),
+        start_with_windows: getCheckboxValue(startWithWindowsCheckbox, false),
+        show_tray: getCheckboxValue(showTrayCheckbox, true),
+        start_minimized: getCheckboxValue(startMinimizedCheckbox, false),
+        start_maximized: getCheckboxValue(startMaximizedCheckbox, true),
+        has_completed_first_launch: true,
+      };
+
+      try {
+        await window.api.saveSettings(settings);
+        window.location.href = "../index.html";
+      } catch (error) {
+        console.error("Error al guardar la configuración inicial:", error);
+        if (window.api.showToast) {
+          window.api.showToast(
+            "Error al guardar la configuración. Inténtalo de nuevo.",
+          );
+        }
       }
-    }
-  });
+    });
+  }
 
-  // Cargar ajustes por defecto (o los que ya existan si se ha iniciado antes)
   window.api.getSettings().then((settings) => {
-    autoUpdatesCheckbox.checked = settings.auto_updates !== false; // Default a true
-    startWithWindowsCheckbox.checked = settings.start_with_windows === true;
-    showTrayCheckbox.checked = settings.show_tray !== false;
-    startMinimizedCheckbox.checked = settings.start_minimized === true;
-    startMaximizedCheckbox.checked = settings.start_maximized !== false;
+    if (autoUpdatesCheckbox) {
+      autoUpdatesCheckbox.checked = settings.auto_updates !== false;
+    }
+    if (startWithWindowsCheckbox) {
+      startWithWindowsCheckbox.checked = settings.start_with_windows === true;
+    }
+    if (showTrayCheckbox) {
+      showTrayCheckbox.checked = settings.show_tray !== false;
+    }
+    if (startMinimizedCheckbox) {
+      startMinimizedCheckbox.checked = settings.start_minimized === true;
+    }
+    if (startMaximizedCheckbox) {
+      startMaximizedCheckbox.checked = settings.start_maximized !== false;
+    }
   });
 });

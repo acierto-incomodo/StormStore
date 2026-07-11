@@ -200,8 +200,14 @@ main.dashboard-layout {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   margin: 0;
+
+  transition: transform 0.3s ease; /* animación suave */
+}
+
+.search-wrapper:hover {
+  transform: translate(-50%, -50%) scale(1.1); /* se expande */
 }
 
 #search {
@@ -482,14 +488,21 @@ body.offline .requires-wifi button {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.1px;
+
   transition:
-    transform 0.15s ease,
-    background 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
     box-shadow 0.2s ease;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+/* ejemplo de cambio de color */
+.md-btn:hover {
+  background-color: var(--md-sys-color-primary-hover);
 }
 
 /* Filled Button (Primary) */
@@ -506,8 +519,8 @@ body.offline .requires-wifi button {
 
 /* Tonal Button (Secondary/Location) */
 .md-btn-tonal {
-  background: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
+  background: var(--md-sys-color-primary);
+  color: black;
 }
 
 .md-btn-tonal:hover {
@@ -832,7 +845,7 @@ body.offline .requires-wifi button {
 
 .source-modal {
   background: var(--md-sys-color-surface-container-high);
-  border: 2px solid var(--md-sys-color-error);
+  border: 2px solid var(--md-sys-color-primary);
   border-radius: var(--md-sys-shape-corner-large);
   padding: 40px;
   width: 480px;
@@ -843,7 +856,7 @@ body.offline .requires-wifi button {
   display: flex;
   flex-direction: column;
   background: var(--md-sys-color-surface-container-high);
-  border: 2px solid var(--md-sys-color-error);
+  border: 2px solid var(--md-sys-color-primary);
   border-radius: var(--md-sys-shape-corner-large);
   animation: slideUpFade 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -897,7 +910,7 @@ body.offline .requires-wifi button {
 
 .source-item:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: translateX(5px);
+  transform: translateX(15px);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
