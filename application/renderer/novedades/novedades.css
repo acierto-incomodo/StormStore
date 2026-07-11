@@ -1,1 +1,147 @@
-En proceso de construcción.
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.releases-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 24px 20px 32px;
+  overflow-y: auto;
+}
+
+.releases-card {
+  width: min(1180px, 100%);
+  max-width: 1180px;
+  padding: 32px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.releases-card .app-logo {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 16px;
+}
+
+.releases-card h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: var(--md-sys-color-primary);
+}
+
+.releases-card p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.releases-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0 16px;
+  text-align: left;
+}
+
+.releases-toolbar h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.releases-toolbar p {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.status {
+  padding: 8px 0 16px;
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: left;
+}
+
+.releases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+}
+
+.release-item {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.release-item h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.release-meta {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.release-body {
+  line-height: 1.6;
+  color: var(--md-sys-color-on-surface);
+}
+
+.release-body p,
+.release-body ul {
+  margin: 0 0 10px;
+}
+
+.release-body ul {
+  padding-left: 20px;
+}
+
+.release-body code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.92em;
+}
+
+.release-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+}
+
+.release-link:hover {
+  text-decoration: underline;
+}
+
+.window-control-icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 720px) {
+  .releases-layout {
+    padding: 16px;
+  }
+
+  .releases-card {
+    padding: 16px;
+  }
+
+  .releases-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
