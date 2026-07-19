@@ -50,9 +50,36 @@ const DEFAULT_SETTINGS = Object.freeze({
   start_minimized: false,
   start_maximized: true,
   has_completed_first_launch: false,
-  show_tray: true,
+  show_tray: false,
   debug_mode: false,
 });
+
+// Flags de compilación: cambiar aquí antes de generar el ejecutable.
+const ENABLE_SETTINGS_PAGE = false;
+const ENABLE_FIRST_LAUNCH_PAGE = false;
+
+function shouldShowErrorPage(targetUrl = "") {
+  try {
+    const parsedUrl = new URL(targetUrl);
+    if (parsedUrl.protocol !== "file:") return false;
+
+    const normalizedPath = decodeURIComponent(parsedUrl.pathname)
+      .replace(/\\/g, "/")
+      .toLowerCase();
+
+    if (normalizedPath.endsWith("/renderer/primer-inicio/primer-inicio.html")) {
+      return !ENABLE_FIRST_LAUNCH_PAGE;
+    }
+
+    if (normalizedPath.endsWith("/renderer/settings.html")) {
+      return !ENABLE_SETTINGS_PAGE;
+    }
+  } catch (error) {
+    console.warn("No se pudo analizar la URL de navegación:", error);
+  }
+
+  return false;
+}
 
 // Cargar datos locales iniciales
 try {
@@ -96,14 +123,14 @@ function loadSettings() {
   try {
     if (fs.existsSync(SETTINGS_PATH)) {
       const savedSettings = JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
-      return { ...DEFAULT_SETTINGS, ...savedSettings, auto_updates: true };
+      return { ...DEFAULT_SETTINGS, ...savedSettings };
     }
   } catch (e) {
     console.error("Error leyendo ajustes:", e);
   }
 
   ensureSettingsFile();
-  return { ...DEFAULT_SETTINGS, auto_updates: true };
+  return { ...DEFAULT_SETTINGS };
 }
 
 function applySettings(settings) {
@@ -127,7 +154,7 @@ function applySettings(settings) {
   }
 
   // 3. Actualizaciones automáticas
-  autoUpdater.autoDownload = true;
+  autoUpdater.autoDownload = settings.auto_updates;
 }
 
 function saveSettings(newSettings) {
@@ -137,7 +164,6 @@ function saveSettings(newSettings) {
       ...DEFAULT_SETTINGS,
       ...currentSettings,
       ...newSettings,
-      auto_updates: true,
     };
     const dir = path.dirname(SETTINGS_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
@@ -296,7 +322,7 @@ protocol.registerSchemesAsPrivileged([
 // =====================================
 // CONFIGURACIÓN DE ACTUALIZACIONES
 // =====================================
-autoUpdater.autoDownload = true;
+autoUpdater.autoDownload = loadSettings().auto_updates;
 autoUpdater.allowDowngrade = true;
 autoUpdater.checkForUpdates();
 
@@ -398,6 +424,13 @@ function createWindow() {
 
   mainWindow = win;
 
+  win.webContents.on("will-navigate", (event, navigationUrl) => {
+    if (shouldShowErrorPage(navigationUrl)) {
+      event.preventDefault();
+      win.loadFile(path.join(__dirname, "renderer/error.html"));
+    }
+  });
+
   const vortexFlags = [
     "--StormVortex",
     "--stormvortex",
@@ -428,8 +461,14 @@ function createWindow() {
 
   if (updatePending && !startInBigPicture) {
     targetFile = "renderer/updates.html";
-  } else if (firstLaunch && !startInBigPicture) {
-    targetFile = "renderer/primer-inicio/primer-inicio.html";
+  } else if (!startInBigPicture && firstLaunch) {
+    targetFile = ENABLE_FIRST_LAUNCH_PAGE
+      ? "renderer/primer-inicio/primer-inicio.html"
+      : "renderer/error.html";
+  } else if (!startInBigPicture && process.argv.includes("--open-settings")) {
+    targetFile = ENABLE_SETTINGS_PAGE
+      ? "renderer/settings.html"
+      : "renderer/error.html";
   }
 
   win.loadFile(path.join(__dirname, targetFile));
@@ -1982,6 +2021,27 @@ ipcMain.handle("sync-remote-data", async () => {
 
 ipcMain.handle("get-settings", () => loadSettings());
 ipcMain.on("save-settings", (event, settings) => saveSettings(settings));
+ipcMain.handle("ensure-settings-file", (event, opts = {}) => {
+  const existed = fs.existsSync(SETTINGS_PATH);
+  ensureSettingsFile();
+  const created = !existed;
+
+  let updated = false;
+  if (opts && opts.setFirstLaunchTrue) {
+    try {
+      const current = JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
+      if (current.has_completed_first_launch !== true) {
+        current.has_completed_first_launch = true;
+        fs.writeFileSync(SETTINGS_PATH, JSON.stringify(current, null, 2));
+        updated = true;
+      }
+    } catch (e) {
+      console.error("No se pudo actualizar settings.json:", e);
+    }
+  }
+
+  return { created, updated };
+});
 ipcMain.handle("get-system-information", async () => {
   const fetchSection = async (fn) => {
     try {
