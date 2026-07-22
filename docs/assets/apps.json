@@ -259,6 +259,25 @@
     "verified": "false"
   },
   {
+    "id": "ddlc",
+    "name": "Doki Doki Literature Club!",
+    "description": "Doki Doki Literature Club! es un juego que empieza como una novela visual de citas en la que te unes a un club de literatura escolar y pasas tiempo con distintas chicas, escribiendo poemas y tomando decisiones que afectan a la historia. Sin embargo, poco a poco el juego rompe esa apariencia inocente y se convierte en una experiencia psicológica inquietante, donde ocurren cosas inesperadas y perturbadoras que cambian completamente el tono y la forma de jugar.",
+    "category": [
+      "Juegos"
+    ],
+    "icon": "../assets/apps/ddlc.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/DDLC/Doki Doki Literature Club Plus.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/DDLCGame/releases/latest/download/DDLC_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DDLC/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "doom",
     "name": "DOOM Classic",
     "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",
@@ -676,6 +695,23 @@
     "verified": "false"
   },
   {
+    "id": "kill-it-with-fire",
+    "name": "Kill It With Fire",
+    "description": "Kill It With Fire es un juego de disparos en primera persona con un enfoque en la acción intensa y los combates cuerpo a cuerpo. Los jugadores controlan a un personaje que debe enfrentarse a hordas de enemigos mientras explora entornos llenos de peligros y secretos. Se destaca por su ritmo acelerado, mecánicas de combate satisfactorias y una narrativa que evoluciona a medida que se avanza en el juego.",
+    "category": "Juegos",
+    "icon": "../assets/apps/kill-it-with-fire.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Kill It With Fire/game/Build/Build/Kani.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/KillItWithFireGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Kill It With Fire/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "left4dead",
     "name": "Left 4 Dead",
     "description": "Left 4 Dead es un juego de disparos en primera persona centrado en el cooperativo, donde cuatro supervivientes deben abrirse paso a través de escenarios infestados de zombis mientras colaboran para sobrevivir; destaca por su ritmo intenso, enemigos especiales que obligan a trabajar en equipo y un sistema dinámico que adapta la dificultad y los eventos para hacer cada partida diferente.",
@@ -721,6 +757,23 @@
     ],
     "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Level Devil/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "librarian-tidy-up-the-arcane-library",
+    "name": "Librarian Tidy Up the Arcane Library",
+    "description": "Librarian: Tidy Up the Arcane Library es un juego de gestión y organización en el que debes mantener orden en una biblioteca mágica llena de libros antiguos y criaturas misteriosas. El objetivo es clasificar y almacenar los libros correctamente mientras evitas los peligros de la biblioteca.",
+    "category": "Juegos",
+    "icon": "../assets/apps/librarian-tidy-up-the-arcane-library.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Librarian Tidy Up the Arcane Library/game/Build/Build/Librarian.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Librarian Tidy Up the Arcane Library/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
@@ -1063,6 +1116,23 @@
     ],
     "download": "https://github.com/acierto-incomodo/PlagueIncEvolvedGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Plague Inc Evolved/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "portal",
+    "name": "Portal",
+    "description": "Portal es un juego de puzzle en el que los jugadores utilizan un dispositivo llamado Portal para crear túneles entre superficies, permitiendo así moverse a través de espacios que normalmente serían inaccesibles. El juego se centra en la resolución de acertijos complejos que requieren pensar en 3D y usar la física del mundo para alcanzar objetivos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/portal.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Portal/game/Build/Build/Launcher.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/PortalGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Portal/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
@@ -1544,6 +1614,23 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "superhot",
+    "name": "SUPERHOT",
+    "description": "SUPERHOT es un juego de acción en el que el tiempo se mueve solo cuando tú te mueves, creando una experiencia de combate única y desafiante.",
+    "category": "Juegos",
+    "icon": "../assets/apps/superhot.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/SUPERHOT/game/Build/Build/SH.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/SUPERHOTGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/SUPERHOT/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },

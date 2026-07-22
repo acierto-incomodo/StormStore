@@ -3,7 +3,7 @@
   "start_with_windows": false,
   "start_minimized": false,
   "start_maximized": true,
-  "show_tray": true,
+  "show_tray": false,
   "has_completed_first_launch": false,
   "debug_mode": false
 }

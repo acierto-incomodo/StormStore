@@ -1272,5 +1272,57 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/DDLC/game",
     "checksumUrl": "https://github.com/acierto-incomodo/DDLCGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/DDLCGame/releases/latest/download/"
+  },
+  {
+    "id": "librarian-tidy-up-the-arcane-library",
+    "name": "Librarian Tidy Up the Arcane Library",
+    "files": ["LibrarianTidyUpTheArcaneLibrary.zip"],
+    "merge": false,
+    "mergedName": "LibrarianTidyUpTheArcaneLibrary.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Librarian Tidy Up the Arcane Library/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Librarian Tidy Up the Arcane Library/game/Build/Build/Librarian.exe",
+    "checksumFile": "LibrarianTidyUpTheArcaneLibraryVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Librarian Tidy Up the Arcane Library/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/LibrarianTidyUpTheArcaneLibraryVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "kill-it-with-fire",
+    "name": "Kill It With Fire",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "KillItWithFire.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Kill It With Fire/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Kill It With Fire/game/Build/Build/Kani.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Kill It With Fire/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/KillItWithFireGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/KillItWithFireGame/releases/latest/download/"
+  },
+  {
+    "id": "portal",
+    "name": "Portal",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Portal.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Portal/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Portal/game/Build/Build/Launcher.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Portal/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/PortalGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/PortalGame/releases/latest/download/"
+  },
+  {
+    "id": "superhot",
+    "name": "SUPERHOT",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/SUPERHOT/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/SUPERHOT/game/Build/Build/SH.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SUPERHOT/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/SUPERHOTGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/SUPERHOTGame/releases/latest/download/"
   }
 ]
