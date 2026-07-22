@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "2.1.11",
+  "version": "2.1.12",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -74,11 +74,12 @@
       "!hacer",
       "!apps.json.*",
       "!assets/apps/**/*",
-      "!assets/apps-size/**/*"
+      "!assets/apps-size/**/*",
+      "!stormmodules-sgs-1.0.0.tgz"
     ]
   },
   "devDependencies": {
-    "electron": "^43.1.1",
+    "electron": "^43.2.0",
     "electron-builder": "^26.15.3"
   },
   "dependencies": {
@@ -102,7 +103,8 @@
     "motion": "^12.42.2",
     "regedit": "^5.1.4",
     "steam-path": "^1.0.2",
-    "systeminformation": "^5.32.0"
+    "stormmodules-sgs": "file:stormmodules-sgs-1.0.0.tgz",
+    "systeminformation": "^5.33.0"
   },
   "allowScripts": {
     "electron-winstaller@5.4.0": true

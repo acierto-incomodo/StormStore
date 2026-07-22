@@ -60,6 +60,12 @@
         color: #9ca3af;
         font-size: 0.9rem;
       }
+
+      .countdown {
+        margin-top: 8px;
+        color: #fbbf24;
+        font-weight: 600;
+      }
     </style>
   </head>
   <body>
@@ -67,9 +73,24 @@
       <h1>Página no disponible</h1>
       <p>Esta vista está desactivada en esta compilación.</p>
       <a class="button" href="index.html">Ir al inicio</a>
+      <div id="countdown" class="countdown">Redirigiendo en 3 segundos...</div>
       <div id="status" class="status"></div>
     </div>
     <script>
+      const countdownEl = document.getElementById("countdown");
+      let remaining = 3;
+
+      const timer = setInterval(() => {
+        remaining -= 1;
+        if (remaining > 0) {
+          countdownEl.textContent = `Redirigiendo en ${remaining} segundo${remaining === 1 ? "" : "s"}...`;
+        } else {
+          clearInterval(timer);
+          countdownEl.textContent = "Redirigiendo ahora...";
+          window.location.href = "index.html";
+        }
+      }, 1000);
+
       // Intentar crear settings.json si no existe cuando el usuario llega aquí
       (async () => {
         try {
