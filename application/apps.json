@@ -259,6 +259,25 @@
     "verified": "false"
   },
   {
+    "id": "ddlc",
+    "name": "Doki Doki Literature Club!",
+    "description": "Doki Doki Literature Club! es un juego que empieza como una novela visual de citas en la que te unes a un club de literatura escolar y pasas tiempo con distintas chicas, escribiendo poemas y tomando decisiones que afectan a la historia. Sin embargo, poco a poco el juego rompe esa apariencia inocente y se convierte en una experiencia psicológica inquietante, donde ocurren cosas inesperadas y perturbadoras que cambian completamente el tono y la forma de jugar.",
+    "category": [
+      "Juegos"
+    ],
+    "icon": "../assets/apps/ddlc.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/DDLC/Doki Doki Literature Club Plus.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/DDLCGame/releases/latest/download/DDLC_Launcher_Installer.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/DDLC/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "doom",
     "name": "DOOM Classic",
     "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",

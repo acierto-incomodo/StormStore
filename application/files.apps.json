@@ -1259,5 +1259,18 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/ZortGame/game",
     "checksumUrl": "https://github.com/acierto-incomodo/ZortGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/ZortGame/releases/latest/download/"
+  },
+  {
+    "id": "ddlc",
+    "name": "Doki Doki Literature Club!",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/DDLC/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/DDLC/game/Build/Build/DDLC.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/DDLC/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/DDLCGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/DDLCGame/releases/latest/download/"
   }
 ]
