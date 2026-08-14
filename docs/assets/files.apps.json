@@ -1324,5 +1324,18 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/SUPERHOT/game",
     "checksumUrl": "https://github.com/acierto-incomodo/SUPERHOTGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/SUPERHOTGame/releases/latest/download/"
+  },
+  {
+    "id": "machine-party",
+    "name": "Machine Party",
+    "files": ["Build.zip"],
+    "merge": false,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Machine Party/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Machine Party/game/Build/Build/Machine Party.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Machine Party/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/MachinePartyGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/MachinePartyGame/releases/latest/download/"
   }
 ]

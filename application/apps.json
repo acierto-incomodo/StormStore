@@ -802,6 +802,23 @@
     "verified": "false"
   },
   {
+    "id": "machine-party",
+    "name": "Machine Party",
+    "description": "Machine Party es un juego de fiesta multijugador en el que entre 2 y 4 jugadores compiten en una serie de minijuegos peligrosos y violentos. Cada prueba pone a los jugadores en situaciones de alto riesgo, donde perder puede tener consecuencias letales. El objetivo es superar los diferentes desafíos y sobrevivir, mientras intentas sabotear a tus amigos y evitar que ellos te hagan lo mismo. Combina humor, terror y caos en partidas pensadas para jugar con amigos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/machine-party.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Machine Party/installer_updater.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/MachinePartyGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Machine Party/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "mage-arena",
     "name": "Mage Arena",
     "description": "Arena de combate mágico en la que controlas a un mago y luchas contra otros jugadores o enemigos, usando hechizos, estrategias y habilidades especiales para sobrevivir y ganar el duelo.",
