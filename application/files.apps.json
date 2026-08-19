@@ -1337,5 +1337,44 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Machine Party/game",
     "checksumUrl": "https://github.com/acierto-incomodo/MachinePartyGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/MachinePartyGame/releases/latest/download/"
+  },
+  {
+    "id": "transformers-the-game",
+    "name": "Transformers: The Game",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Transformers The Game/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Transformers The Game/game/Build/Build/Transformers.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Transformers The Game/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/TransformersTheGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/TransformersTheGame/releases/latest/download/"
+  },
+  {
+    "id": "grain-rot",
+    "name": "Grain Rot",
+    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Grain Rot/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Grain Rot/game/Build/Build/Helden.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Grain Rot/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GrainRotGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GrainRotGame/releases/latest/download/"
+  },
+  {
+    "id": "big-walk",
+    "name": "Big Walk",
+    "files": ["Build.zip.001", "Build.zip.002"],
+    "merge": true,
+    "mergedName": "Build.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Big Walk/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Big Walk/game/Build/Build/Big Walk.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Big Walk/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/BigWalkGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/BigWalkGame/releases/latest/download/"
   }
 ]

@@ -106,6 +106,23 @@
     "verified": "false"
   },
   {
+    "id": "big-walk",
+    "name": "Big Walk",
+    "description": "Big Walk es un juego de aventura cooperativo en el que tú y tus amigos exploráis un enorme mundo abierto mientras resolvéis puzles, superáis desafíos y descubrís secretos. La comunicación y el trabajo en equipo son fundamentales, ya que podéis utilizar objetos, gestos y el chat de proximidad para ayudaros cuando las situaciones lo requieran. También podéis simplemente pasear, explorar el mundo y pasar el rato juntos sin necesidad de seguir siempre un objetivo concreto. Se puede jugar de 2 a 12 jugadores y está diseñado principalmente para disfrutar de la aventura y de las situaciones que surgen al jugar con amigos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/big-walk.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Big Walk/game/Build/Build/Big Walk.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/BigWalkGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Big Walk/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "alert",
+    "verified": "false"
+  },
+  {
     "id": "bridge-constructor-portal",
     "name": "Bridge Constructor Portal",
     "description": "Bridge Constructor Portal es un juego de puzles en el que tienes que construir puentes, rampas y estructuras para que vehículos puedan llegar al final de cada nivel, usando físicas realistas. La particularidad es que combina esta mecánica con elementos del universo de Portal, como portales, geles de impulso y plataformas de salto, lo que hace que tengas que pensar de forma creativa para resolver cada desafío. El objetivo es guiar los vehículos de forma segura a través de pruebas cada vez más complicadas.",
@@ -559,6 +576,23 @@
     "verified": "false"
   },
   {
+    "id": "grain-rot",
+    "name": "Grain Rot",
+    "description": "GRAIN ROT es un juego de terror cooperativo de extracción en el que tú y tus amigos exploráis unas ruinas subterráneas cambiantes en un mundo devastado. Controláis unas chispas vivientes que utilizan cuerpos de madera frágiles como recipientes, los cuales pueden romperse, incendiarse o quedar corrompidos. Debéis adentraros en las ruinas para conseguir recursos y botín mientras combatís o escapáis de criaturas corruptas, y conseguir regresar con vida para utilizar lo obtenido en mejorar vuestro puesto avanzado.",
+    "category": "Juegos",
+    "icon": "../assets/apps/grain-rot.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Grain Rot/Helden.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GrainRotGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Grain Rot/unins000.exe",
+    "steam": "si",
+    "wifi": "no",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "hollow-knight",
     "name": "Hollow Knight",
     "description": "Hollow Knight es un juego de acción y exploración tipo metroidvania ambientado en un mundo subterráneo oscuro y misterioso, donde controlas a un pequeño caballero que recorre ruinas, combate enemigos desafiantes y desbloquea nuevas habilidades para acceder a zonas antes inaccesibles; destaca por su combate preciso, su atmósfera melancólica y una narrativa sutil que se descubre explorando.",
@@ -872,7 +906,7 @@
   {
     "id": "misery",
     "name": "MISERY",
-    "description": "Gamble With Your Friends es un juego multijugador en el que tú y tus amigos compartís una misma cuenta de dinero y una gran deuda, y tenéis que apostar dentro de un casino para intentar ganar suficiente dinero antes de que se acabe el tiempo. Durante la partida participáis en distintos juegos de azar, compráis objetos para mejorar vuestras probabilidades y tomáis decisiones arriesgadas que pueden beneficiar o arruinar a todo el equipo. El objetivo es ir avanzando por un casino lleno de niveles mientras intentáis cumplir una cuota de dinero en cada ronda, en partidas rápidas y caóticas donde la cooperación y la suerte son clave.",
+    "description": "MISERY es un juego de supervivencia y terror cooperativo en el que tú y otros jugadores exploráis una zona devastada por un desastre nuclear. Debéis buscar recursos, construir y mejorar vuestro refugio y fabricar herramientas para sobrevivir, mientras os enfrentáis a la radiación, anomalías, criaturas y otros peligros. El objetivo es explorar el mundo, conseguir suministros y manteneros con vida en un entorno hostil y peligroso.",
     "category": "Juegos",
     "icon": "../assets/apps/misery.png",
     "paths": [
@@ -1730,6 +1764,23 @@
     ],
     "download": "https://github.com/acierto-incomodo/TheoTownGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/TheoTown/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "transformers-the-game",
+    "name": "Transformers: The Game",
+    "description": "Transformers: The Game es un juego de acción y aventura basado en la película de *Transformers* de 2007. Puedes jugar como los **Autobots** para proteger la Tierra o como los **Decepticons** para conquistarla y destruirla. Durante las misiones controlas a distintos Transformers, pudiendo cambiar entre su forma de robot y vehículo para combatir, desplazarte por las ciudades y completar objetivos. También puedes destruir gran parte del entorno y utilizar objetos como armas, mientras revives diferentes acontecimientos de la película desde ambos bandos.",
+    "category": "Juegos",
+    "icon": "../assets/apps/transformers-the-game.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Transformers The Game/game/Build/Build/Transformers.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/TransformersTheGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Transformers The Game/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
