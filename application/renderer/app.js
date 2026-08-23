@@ -79,11 +79,17 @@ async function load(force = false) {
     const syncPromise = force
       ? new Promise((r) => setTimeout(r, 1000))
       : Promise.resolve();
-    const [newApps, filesApps] = await Promise.all([
+    const [newApps, filesApps, installStatus] = await Promise.all([
       window.api.getApps(),
       window.api.getFilesApps(),
+      window.api.getInstallStatus(),
       syncPromise,
     ]);
+
+    const installingIds = new Set([
+      installStatus?.active,
+      ...(installStatus?.queued || []),
+    ].filter(Boolean));
 
     const fileAppsById = new Map(
       (filesApps || []).map((fileApp) => [fileApp.id, fileApp]),
@@ -91,6 +97,7 @@ async function load(force = false) {
     const mergedApps = newApps.map((app) => ({
       ...app,
       fileApp: fileAppsById.get(app.id),
+      installing: installingIds.has(app.id),
     }));
 
     // Check for updates on installed fileApps
@@ -256,6 +263,20 @@ function createAppCard(app, index) {
   imgContainer.style.cursor = "pointer";
   imgContainer.onclick = () => (window.location.href = `app.html?id=${app.id}`);
 
+  const statusLabel = document.createElement("span");
+  statusLabel.className = "status-badge";
+  if (app.updateAvailable) {
+    statusLabel.classList.add("status-update");
+    statusLabel.textContent = "Actualizar";
+  } else if (app.installed) {
+    statusLabel.classList.add("status-installed");
+    statusLabel.textContent = "Instalada";
+  } else if (app.new === true || app.isNew === true || app.badge === "Nueva") {
+    statusLabel.classList.add("status-new");
+    statusLabel.textContent = "Nueva";
+  }
+  if (statusLabel.textContent) imgContainer.appendChild(statusLabel);
+
   const icon = document.createElement("img");
   icon.src = app.icon;
   icon.className = "app-icon";
@@ -346,7 +367,14 @@ function createAppCard(app, index) {
   const actions = document.createElement("div");
   actions.className = "card-actions";
 
-  if (app.installed) {
+    if (app.installing) {
+      const loadingBtn = document.createElement("button");
+      loadingBtn.className = "md-btn md-btn-filled";
+      loadingBtn.style.width = "100%";
+      loadingBtn.disabled = true;
+      loadingBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Instalando...</span>`;
+      actions.appendChild(loadingBtn);
+    } else if (app.installed) {
     const isUninstalling = uninstallingApps.has(app.id);
     const hasUninstaller = app.uninstall && app.uninstallExists;
     const isGame =
@@ -493,36 +521,25 @@ function createAppCard(app, index) {
     installBtn.className = "md-btn md-btn-filled";
     installBtn.style.flex = "1";
 
-    if (installingApps.has(app.id)) {
+    if (app.installing || installingApps.has(app.id)) {
       installBtn.disabled = true;
       installBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Instalando...</span>`;
     } else {
       installBtn.textContent = "Instalar";
       installBtn.onclick = async () => {
+        installBtn.disabled = true;
+        installBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Instalando...</span>`;
         if (app.fileApp) {
-          if (app["virus-alert"] === "alert") {
-            const confirmed = await showVirusConfirm(app.name);
-            if (!confirmed) return;
-          }
-          showToast(`Abriendo gestor de descargas para ${app.name}…`);
-          window.location.href = `program-updates.html?id=${encodeURIComponent(app.id)}`;
+          showToast(`Añadiendo ${app.name} a la cola…`);
+          await window.api.enqueueInstall(app);
+          window.location.href = `program-updates.html?id=${encodeURIComponent(app.id)}&queued=true`;
           return;
         }
 
-        installingApps.add(app.id);
         playSound("others.mp3");
-        showToast(`Iniciando descarga e instalación de ${app.name}…`);
-        renderApps(currentCategory);
-        try {
-          await window.api.installApp(app);
-          playSound("finish.mp3");
-        } catch (e) {
-          if (!e.message.includes("INSTALL_CANCELLED")) console.error(e);
-        } finally {
-          installingApps.delete(app.id);
-          renderApps(currentCategory); // Actualizar UI inmediatamente
-          await load();
-        }
+        showToast(`Añadiendo ${app.name} a la cola…`);
+        await window.api.enqueueInstall(app);
+        window.location.href = `program-updates.html?id=${encodeURIComponent(app.id)}&queued=true`;
       };
     }
     installRow.appendChild(installBtn);

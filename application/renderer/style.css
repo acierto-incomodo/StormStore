@@ -281,6 +281,7 @@ main.dashboard-layout {
 .card {
   background: var(--md-sys-color-surface-container);
   border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -300,7 +301,7 @@ main.dashboard-layout {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
   background: var(--md-sys-color-surface-container-high);
 }
 
@@ -312,14 +313,46 @@ main.dashboard-layout {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: var(--md-sys-shape-corner-medium);
-  margin-bottom: 8px;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
 }
 
 /* Contenedor de imagen para overlays */
 .img-container {
   position: relative;
   width: 100%;
+  padding: 8px;
+  background: var(--md-sys-color-surface-container-high);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+}
+
+.status-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  padding: 6px 10px;
+  border-radius: var(--md-sys-shape-corner-full);
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.status-installed {
+  background: #d5e8d4;
+}
+
+.status-update {
+  background: var(--md-sys-color-primary);
+}
+
+.status-new {
+  background: #b9dced;
 }
 
 /* Badge de Requisito (Steam, Wifi) */

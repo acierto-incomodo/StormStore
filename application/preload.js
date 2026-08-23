@@ -5,6 +5,8 @@ contextBridge.exposeInMainWorld("api", {
   getFilesApps: () => ipcRenderer.invoke("get-files-apps"),
   checkChecksum: (id) => ipcRenderer.invoke("check-checksum", id),
   installApp: (app) => ipcRenderer.invoke("install-app", app),
+  enqueueInstall: (app) => ipcRenderer.invoke("enqueue-install", app),
+  getInstallStatus: () => ipcRenderer.invoke("get-install-status"),
   installProgramById: (id) => ipcRenderer.invoke("install-program-by-id", id),
   getSteamGames: () => ipcRenderer.invoke("get-steam-games"),
   getEpicGames: () => ipcRenderer.invoke("get-epic-games"),

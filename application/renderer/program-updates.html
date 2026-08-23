@@ -218,6 +218,29 @@
       <footer id="bp-footer-prompts"></footer>
     </main>
 
+    <div id="access-blocked-overlay" class="virus-alert-overlay">
+      <div class="virus-alert-card access-blocked-card">
+        <img
+          src="../assets/icons/folder-error-svgrepo-com.svg"
+          class="virus-alert-icon"
+          alt="Acceso bloqueado"
+          style="width: 112px; height: 112px; filter: invert(72%) sepia(88%) saturate(760%) hue-rotate(358deg) brightness(101%) contrast(101%)"
+        />
+        <h2>Acceso temporalmente bloqueado</h2>
+        <p id="access-blocked-text">
+          Windows mantiene abierta una carpeta del juego. Cierra el juego o cualquier ventana que la esté usando y vuelve a intentarlo.
+        </p>
+        <div style="display: flex; gap: 12px; width: 100%; margin-top: 10px">
+          <button id="access-blocked-cancel-btn" class="md-btn md-btn-tonal" style="flex: 1">
+            Cancelar
+          </button>
+          <button id="access-blocked-retry-btn" class="md-btn md-btn-filled" style="flex: 1">
+            Reintentar
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Custom Virus Alert Overlay -->
     <div id="virus-alert-overlay" class="virus-alert-overlay">
       <div class="virus-alert-card">

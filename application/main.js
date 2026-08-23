@@ -27,6 +27,9 @@ let appsData;
 let filesAppsData = [];
 let isOffline = true; // Por defecto asumimos offline hasta que la sincronización diga lo contrario
 let FILES_APPS_JSON_CACHE;
+const installQueue = [];
+let isProcessingInstallQueue = false;
+let activeInstallId = null;
 
 const ICON_SIZES = [
   // "256x256",
@@ -610,6 +613,32 @@ function getDownloadDir() {
   return dir;
 }
 
+function createDownloadSession(id) {
+  const downloadDir = getDownloadDir();
+  const safeId = String(id).replace(/[^a-z0-9._-]/gi, "_");
+  const sessionDir = path.join(
+    downloadDir,
+    `${safeId}-${Date.now()}-${crypto.randomUUID()}`,
+  );
+  fs.mkdirSync(sessionDir, { recursive: true });
+  return sessionDir;
+}
+
+function clearDownloadSession(sessionDir) {
+  try {
+    if (sessionDir && fs.existsSync(sessionDir)) {
+      fs.rmSync(sessionDir, {
+        recursive: true,
+        force: true,
+        maxRetries: 5,
+        retryDelay: 150,
+      });
+    }
+  } catch (err) {
+    console.warn("No se pudo limpiar la carpeta temporal de descarga:", err.message);
+  }
+}
+
 async function runApp(exePath, requiresSteam) {
   try {
     if (
@@ -760,6 +789,53 @@ function sendInstallProgress(progress) {
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.webContents.send("install-progress", progress);
   }
+}
+
+function enqueueInstall(job) {
+  installQueue.push(job);
+  processInstallQueue();
+  return installQueue.length;
+}
+
+async function processInstallQueue() {
+  if (isProcessingInstallQueue) return;
+  isProcessingInstallQueue = true;
+
+  while (installQueue.length > 0) {
+    const job = installQueue.shift();
+    const appItem = job.appData || getCachedApp(job.id);
+    const id = job.id || appItem?.id;
+    activeInstallId = id;
+
+    try {
+      if (appItem && appItem["virus-alert"] === "alert") {
+        const proceed = await showVirusWarning(appItem.name);
+        if (!proceed) continue;
+      }
+
+      const filesEntry = getCachedFilesApp(id);
+      if (filesEntry) {
+        await installFilesAppLogic(filesEntry);
+      } else if (appItem) {
+        await installAppLogic(appItem);
+      } else {
+        throw new Error("Programa no encontrado");
+      }
+    } catch (err) {
+      if (mainWindow && !mainWindow.isDestroyed()) {
+        mainWindow.webContents.send("install-error", {
+          id,
+          message: err.message || "Error de instalación",
+          appName: appItem?.name || id,
+          code: err.code,
+          path: err.path,
+        });
+      }
+    }
+  }
+
+  activeInstallId = null;
+  isProcessingInstallQueue = false;
 }
 
 async function downloadFileWithProgress(
@@ -1064,18 +1140,7 @@ function clearDownloadDir() {
 }
 
 async function installFilesAppLogic(fileApp) {
-  clearDownloadDir();
-  const downloadDir = getDownloadDir();
-  const tempFolder = path.join(downloadDir, fileApp.id);
-  if (fs.existsSync(tempFolder)) {
-    fs.rmSync(tempFolder, {
-      recursive: true,
-      force: true,
-      maxRetries: 5,
-      retryDelay: 150,
-    });
-  }
-  fs.mkdirSync(tempFolder, { recursive: true });
+  const tempFolder = createDownloadSession(fileApp.id);
 
   const filesToDownload = Array.isArray(fileApp.files) ? fileApp.files : [];
   const downloadBase = fileApp.downloadUrl || "";
@@ -1283,7 +1348,7 @@ async function installFilesAppLogic(fileApp) {
 
   // Añadir un pequeño retraso antes de limpiar para asegurar que los procesos soltaron los archivos
   setTimeout(() => {
-    clearDownloadDir();
+    clearDownloadSession(tempFolder);
   }, 2000);
 
   sendInstallProgress({
@@ -1716,14 +1781,13 @@ ipcMain.handle("get-epic-games", async () => {
 });
 
 async function installAppLogic(appData) {
-  clearDownloadDir();
   const downloadUrl = appData.download || appData.downloadUrl;
   if (!downloadUrl) {
     throw new Error("No se encontró URL de descarga para esta aplicación");
   }
 
-  const downloadDir = getDownloadDir();
-  const filePath = path.join(downloadDir, `${appData.id}.exe`);
+  const sessionDir = createDownloadSession(appData.id);
+  const filePath = path.join(sessionDir, `${appData.id}.exe`);
 
   await downloadFileWithProgress(
     downloadUrl,
@@ -1781,7 +1845,7 @@ async function installAppLogic(appData) {
       }
 
       setTimeout(() => {
-        clearDownloadDir();
+        clearDownloadSession(sessionDir);
       }, 10000);
 
       if (mainWindow) {
@@ -1822,11 +1886,46 @@ ipcMain.handle("install-app", async (_, appData) => {
         id: appData.id,
         message: err.message || "Error de instalación",
         appName: appData.name || appData.id,
+        code: err.code,
+        path: err.path,
       });
     }
     throw err;
   }
 });
+
+ipcMain.handle("enqueue-install", async (_, appData) => {
+  if (!appData?.id) throw new Error("Programa no válido");
+
+  const alreadyActive = activeInstallId === appData.id;
+  const existingIndex = installQueue.findIndex(
+    (job) => (job.id || job.appData?.id) === appData.id,
+  );
+  if (alreadyActive || existingIndex !== -1) {
+    return {
+      queued: true,
+      duplicate: true,
+      position: alreadyActive ? 1 : existingIndex + 2,
+    };
+  }
+
+  enqueueInstall({ id: appData.id, appData });
+  const queuePosition = installQueue.length + (isProcessingInstallQueue ? 2 : 1);
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send(
+      "show-toast",
+      queuePosition > 1
+        ? `${appData.name || appData.id} añadido a la cola (#${queuePosition})`
+        : `${appData.name || appData.id} añadido a la cola`,
+    );
+  }
+  return { queued: true, position: queuePosition };
+});
+
+ipcMain.handle("get-install-status", () => ({
+  active: activeInstallId,
+  queued: installQueue.map((job) => job.id || job.appData?.id).filter(Boolean),
+}));
 
 ipcMain.handle("install-program-by-id", async (_, id) => {
   const appItem = getCachedApp(id);
@@ -1853,6 +1952,8 @@ ipcMain.handle("install-program-by-id", async (_, id) => {
         id,
         message: err.message || "Error de instalación",
         appName: appItem ? appItem.name : id,
+        code: err.code,
+        path: err.path,
       });
     }
     throw err;
