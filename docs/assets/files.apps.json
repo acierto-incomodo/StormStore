@@ -1367,7 +1367,7 @@
   {
     "id": "big-walk",
     "name": "Big Walk",
-    "files": ["Build.zip.001", "Build.zip.002"],
+    "files": ["Build2.zip.001", "Build2.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Big Walk/game/Build",
