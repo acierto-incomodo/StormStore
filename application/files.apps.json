@@ -1,10 +1,8 @@
-[  
+[
   {
     "id": "a-bumpy-ride",
     "name": "A Bumpy Ride",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/A Bumpy Ride/game/Build",
@@ -116,9 +114,7 @@
   {
     "id": "chained-in-the-backrooms",
     "name": "Chained in the Backrooms",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Chained in the Backrooms/game/Build",
@@ -384,9 +380,7 @@
   {
     "id": "human-fall-flat",
     "name": "Human: Fall Flat",
-    "files": [
-      "Build.zip.001", "Build.zip.002"
-    ],
+    "files": ["Build.zip.001", "Build.zip.002"],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Human Fall Flat/game/Build",
@@ -503,7 +497,13 @@
   {
     "id": "meccha-chameleon",
     "name": "MECCHA CHAMELEON",
-    "files": ["Build.zip.001", "Build.zip.002", "Build.zip.003", "Build.zip.004", "Build.zip.005"],
+    "files": [
+      "Build.zip.001",
+      "Build.zip.002",
+      "Build.zip.003",
+      "Build.zip.004",
+      "Build.zip.005"
+    ],
     "merge": true,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/MECCHA CHAMELEON/game/Build",
@@ -988,9 +988,7 @@
   {
     "id": "theotown",
     "name": "TheoTown",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/TheoTown/game/Build",
@@ -1042,9 +1040,7 @@
   {
     "id": "we-gotta-go",
     "name": "We Gotta Go",
-    "files": [
-      "Build.zip"
-    ],
+    "files": ["Build.zip"],
     "merge": false,
     "mergedName": "Build.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/We Gotta Go/game/Build",
@@ -1057,9 +1053,7 @@
   {
     "id": "bridge-constructor-portal",
     "name": "Bridge Constructor Portal",
-    "files": [
-      "BridgeConstructorPortal.zip"
-    ],
+    "files": ["BridgeConstructorPortal.zip"],
     "merge": false,
     "mergedName": "BridgeConstructorPortal.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Bridge Constructor Portal/game/Build",
@@ -1072,9 +1066,7 @@
   {
     "id": "colony-survival",
     "name": "Colony Survival",
-    "files": [
-      "ColonySurvival.zip"
-    ],
+    "files": ["ColonySurvival.zip"],
     "merge": false,
     "mergedName": "ColonySurvival.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Colony Survival/game/Build",
@@ -1087,9 +1079,7 @@
   {
     "id": "cookie-clicker",
     "name": "Cookie Clicker",
-    "files": [
-      "CookieClicker.zip"
-    ],
+    "files": ["CookieClicker.zip"],
     "merge": false,
     "mergedName": "CookieClicker.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Cookie Clicker/game/Build",
@@ -1102,9 +1092,7 @@
   {
     "id": "geometry-dash",
     "name": "Geometry Dash",
-    "files": [
-      "GeometryDash.zip"
-    ],
+    "files": ["GeometryDash.zip"],
     "merge": false,
     "mergedName": "GeometryDash.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Geometry Dash/game/Build",
@@ -1117,9 +1105,7 @@
   {
     "id": "level-devil",
     "name": "Level Devil",
-    "files": [
-      "LevelDevil.zip"
-    ],
+    "files": ["LevelDevil.zip"],
     "merge": false,
     "mergedName": "LevelDevil.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Level Devil/game/Build",
@@ -1132,9 +1118,7 @@
   {
     "id": "lossless-scaling",
     "name": "Lossless Scaling",
-    "files": [
-      "LosslessScaling.zip"
-    ],
+    "files": ["LosslessScaling.zip"],
     "merge": false,
     "mergedName": "LosslessScaling.zip",
     "extractPath": "%appdata%/StormGamesStudios/Programs/Lossless Scaling/game/Build",
@@ -1147,9 +1131,7 @@
   {
     "id": "papers-please",
     "name": "Papers, Please",
-    "files": [
-      "PapersPlease.zip"
-    ],
+    "files": ["PapersPlease.zip"],
     "merge": false,
     "mergedName": "PapersPlease.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Papers Please/game/Build",
@@ -1162,9 +1144,7 @@
   {
     "id": "pc-tycoon-2",
     "name": "PC Tycoon 2",
-    "files": [
-      "PCTycoon2.zip"
-    ],
+    "files": ["PCTycoon2.zip"],
     "merge": false,
     "mergedName": "PCTycoon2.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/PC Tycoon 2/game/Build",
@@ -1177,9 +1157,7 @@
   {
     "id": "rimworld",
     "name": "RimWorld",
-    "files": [
-      "Rimworld.zip"
-    ],
+    "files": ["Rimworld.zip"],
     "merge": false,
     "mergedName": "Rimworld.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/RimWorld/game/Build",
@@ -1192,9 +1170,7 @@
   {
     "id": "sandbox",
     "name": "Sandbox",
-    "files": [
-      "Sandbox.zip"
-    ],
+    "files": ["Sandbox.zip"],
     "merge": false,
     "mergedName": "Sandbox.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Sandbox/game/Build",
@@ -1207,9 +1183,7 @@
   {
     "id": "the-baby-in-yellow",
     "name": "The Baby In Yellow",
-    "files": [
-      "BuTheBabyInYellowild.zip"
-    ],
+    "files": ["BuTheBabyInYellowild.zip"],
     "merge": false,
     "mergedName": "TheBabyInYellow",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/The Baby In Yellow/game/Build",
@@ -1222,9 +1196,7 @@
   {
     "id": "worldbox",
     "name": "WorldBox",
-    "files": [
-      "Worldbox.zip"
-    ],
+    "files": ["Worldbox.zip"],
     "merge": false,
     "mergedName": "Worldbox.zip",
     "extractPath": "%appdata%/StormGamesStudios/NewGameDir/WorldBox/game/Build",

@@ -3,15 +3,9 @@
     "id": "stormstore",
     "name": "StormStore",
     "description": "La aplicación principal de StormGamesStudios para gestionar tus juegos favoritos.",
-    "category": [
-      "Tiendas",
-      "Utilidades",
-      "Aplicaciones"
-    ],
+    "category": ["Tiendas", "Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormstore.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/StormStore/StormStore.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/StormStore/StormStore.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/latest/download/StormStore-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/StormStore/Uninstall StormStore.exe",
     "steam": "no",
@@ -279,9 +273,7 @@
     "id": "ddlc",
     "name": "Doki Doki Literature Club!",
     "description": "Doki Doki Literature Club! es un juego que empieza como una novela visual de citas en la que te unes a un club de literatura escolar y pasas tiempo con distintas chicas, escribiendo poemas y tomando decisiones que afectan a la historia. Sin embargo, poco a poco el juego rompe esa apariencia inocente y se convierte en una experiencia psicológica inquietante, donde ocurren cosas inesperadas y perturbadoras que cambian completamente el tono y la forma de jugar.",
-    "category": [
-      "Juegos"
-    ],
+    "category": ["Juegos"],
     "icon": "../assets/apps/ddlc.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DDLC/Doki Doki Literature Club Plus.exe"
@@ -298,9 +290,7 @@
     "id": "doom",
     "name": "DOOM Classic",
     "description": "Juego de disparos en primera persona pionero donde controlas al “Doomguy” luchando contra hordas de demonios y monstruos en niveles llenos de acción rápida, armas potentes y enemigos agresivos.",
-    "category": [
-      "Juegos"
-    ],
+    "category": ["Juegos"],
     "icon": "../assets/apps/doom.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DOOM/installer_updater.exe"
@@ -317,9 +307,7 @@
     "id": "drivebeyondhorizons",
     "name": "Drive Beyond Horizons",
     "description": "Drive Beyond Horizons es un juego de conducción y exploración en mundo abierto donde recorres vastos paisajes generados de forma procedural, gestionando tu vehículo mientras viajas largas distancias, descubres ubicaciones y enfrentas los desafíos del entorno; el progreso se basa en mejorar el coche, administrar recursos y sobrevivir a las condiciones del viaje, ofreciendo una experiencia relajada pero centrada en la aventura y la libertad.",
-    "category": [
-      "Juegos"
-    ],
+    "category": ["Juegos"],
     "icon": "../assets/apps/drivebeyondhorizons.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/DriveBeyondHorizons/installer_updater.exe"
@@ -581,9 +569,7 @@
     "description": "GRAIN ROT es un juego de terror cooperativo de extracción en el que tú y tus amigos exploráis unas ruinas subterráneas cambiantes en un mundo devastado. Controláis unas chispas vivientes que utilizan cuerpos de madera frágiles como recipientes, los cuales pueden romperse, incendiarse o quedar corrompidos. Debéis adentraros en las ruinas para conseguir recursos y botín mientras combatís o escapáis de criaturas corruptas, y conseguir regresar con vida para utilizar lo obtenido en mejorar vuestro puesto avanzado.",
     "category": "Juegos",
     "icon": "../assets/apps/grain-rot.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/Grain Rot/Helden.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/NewGameDir/Grain Rot/Helden.exe"],
     "download": "https://github.com/acierto-incomodo/GrainRotGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Grain Rot/unins000.exe",
     "steam": "si",
@@ -818,11 +804,7 @@
     "id": "lossless-scaling",
     "name": "Lossless Scaling",
     "description": "Lossless Scaling es una aplicación para PC que permite mejorar el rendimiento y la fluidez de los juegos escalando la imagen y generando fotogramas adicionales. Sirve para jugar a juegos en baja resolución y hacer que se vean más nítidos en pantallas grandes sin perder calidad, además de poder activar técnicas como el “frame generation” para aumentar los FPS. Es especialmente útil en juegos que no tienen opciones de escalado o tecnologías modernas integradas, ayudando a que se vean y funcionen mejor en ordenadores con menos potencia.",
-    "category": [
-      "Herramientas",
-      "Inteligencia Artificial",
-      "Utilidades"
-    ],
+    "category": ["Herramientas", "Inteligencia Artificial", "Utilidades"],
     "icon": "../assets/apps/lossless-scaling.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/Lossless Scaling/game/Build/Build/LosslessScaling.exe"
@@ -958,10 +940,7 @@
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
-    "category": [
-      "Juegos",
-      "Aplicaciones"
-    ],
+    "category": ["Juegos", "Aplicaciones"],
     "icon": "../assets/apps/modpack-installer.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/Modpack Installer/Modpack Installer.exe"
@@ -1012,15 +991,9 @@
     "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
-    "category": [
-      "Inteligencia Artificial",
-      "Utilidades",
-      "Aplicaciones"
-    ],
+    "category": ["Inteligencia Artificial", "Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/multiai.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"],
     "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-x64.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/MultiAI/Uninstall MultiAI.exe",
     "steam": "no",
@@ -1055,14 +1028,9 @@
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
-    "category": [
-      "Utilidades",
-      "Aplicaciones"
-    ],
+    "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/pairdrop.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/PairDrop/Uninstall PairDrop APP.exe",
     "steam": "no",
@@ -1349,9 +1317,7 @@
     "description": "Rufus es una herramienta gratuita para crear discos de arranque de USB para Windows.",
     "category": "Utilidades",
     "icon": "../assets/apps/rufus.png",
-    "paths": [
-      "%appdata%/StormGamesStudios/Programs/Rufus/rufus.exe"
-    ],
+    "paths": ["%appdata%/StormGamesStudios/Programs/Rufus/rufus.exe"],
     "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/Programs/Rufus/unins000.exe",
     "steam": "no",
@@ -1398,9 +1364,7 @@
     "id": "scamline",
     "name": "Scam Line",
     "description": "Scam Line es un juego multijugador de engaño social para 4–8 personas en el que todos compiten en desafíos psicológicos y de comunicación para ser el último en pie. En cada partida, los jugadores están en habitaciones separadas y solo pueden hablar mediante un teléfono móvil antiguo dentro del juego. Debes negociar, formar alianzas o engañar a los demás para avanzar en distintos mini‑retos, como identificar quién es distinto o jugar al Dilema del Prisionero. La clave está en leer a los otros jugadores y usar la comunicación limitada a tu favor: puedes cooperar o mentir, pero al final solo uno puede ganar.",
-    "category": [
-      "Juegos"
-    ],
+    "category": ["Juegos"],
     "icon": "../assets/apps/ScamLine.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ScamLine/installer_updater.exe"
@@ -1434,10 +1398,7 @@
     "id": "scrcpy",
     "name": "SCRCPY",
     "description": "SCRCPY es una herramienta que permite controlar un dispositivo Android desde el escritorio a través de USB o WiFi.",
-    "category": [
-      "Herramientas",
-      "Utilidades"
-    ],
+    "category": ["Herramientas", "Utilidades"],
     "icon": "../assets/apps/scrcpy.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe"
@@ -1573,10 +1534,7 @@
     "id": "stormbrowser",
     "name": "StormBrowser",
     "description": "StormBrowser es un navegador web personalizado por StormGamesStudios.",
-    "category": [
-      "Utilidades",
-      "Aplicaciones"
-    ],
+    "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormbrowser.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormBrowser/StormBrowser.exe"
@@ -1593,14 +1551,9 @@
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
-    "category": [
-      "Utilidades",
-      "Aplicaciones"
-    ],
+    "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormlauncher.png",
-    "paths": [
-      "%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"
-    ],
+    "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
     "uninstall": "%appdata%/StormLauncher_HMCL-Edition/unins000.exe",
     "steam": "no",
@@ -1613,12 +1566,7 @@
     "id": "stormlibraryv2",
     "name": "StormLibraryV2",
     "description": "Lanzador de juegos",
-    "category": [
-      "Utilidades",
-      "Aplicaciones",
-      "Tiendas",
-      "Juegos"
-    ],
+    "category": ["Utilidades", "Aplicaciones", "Tiendas", "Juegos"],
     "icon": "../assets/apps/stormlibraryv2.png",
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
@@ -1635,10 +1583,7 @@
     "id": "stormpanel-app",
     "name": "StormPanel APP",
     "description": "StormPanel APP es una aplicación de panel de control para StormGamesStudios.",
-    "category": [
-      "Utilidades",
-      "Aplicaciones"
-    ],
+    "category": ["Utilidades", "Aplicaciones"],
     "icon": "../assets/apps/stormpanel-app.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormPanel APP/StormPanel APP.exe"
@@ -1861,6 +1806,26 @@
     "verified": "false"
   },
   {
+    "id": "windhawk",
+    "name": "Windhawk",
+    "description": "Windhawk es un complemento para Windows que te permite personalizar y modificar el comportamiento del sistema operativo. Con él, puedes aplicar temas, cambiar el estilo de la interfaz, deshabilitar efectos visuales y mucho más.",
+    "category": [
+      "Herramientas",
+      "Utilidades",
+      "Personalización",
+      "Aplicaciones"
+    ],
+    "icon": "../assets/apps/windhawk.png",
+    "paths": ["C:\\Program Files\\Windhawk\\windhawk.exe"],
+    "download": "https://ramensoftware.com/downloads/windhawk_setup.exe",
+    "uninstall": "C:\\Program Files\\Windhawk\\uninstall.exe",
+    "steam": "no",
+    "wifi": "si",
+    "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "true"
+  },
+  {
     "id": "worldbox",
     "name": "WorldBox",
     "description": "WorldBox es un juego de simulación tipo “dios” en el que puedes crear y destruir mundos a tu antojo. Generas terrenos, colocas criaturas como humanos, orcos o animales, y observas cómo evolucionan por su cuenta formando civilizaciones, guerras y alianzas. También puedes intervenir directamente usando poderes como desastres naturales, magia o explosiones para cambiar el curso del mundo. No tiene un objetivo fijo, ya que se centra en experimentar y ver cómo se desarrollan las sociedades según tus decisiones.",
@@ -1898,11 +1863,7 @@
     "id": "youtube-downloader",
     "name": "YouTube Downloader",
     "description": "Una herramienta para descargar videos de YouTube.",
-    "category": [
-      "Utilidades",
-      "Aplicaciones",
-      "Herramientas"
-    ],
+    "category": ["Utilidades", "Aplicaciones", "Herramientas"],
     "icon": "../assets/apps/youtube-downloader.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/YoutubeDownloader/YoutubeDownloader/YoutubeDownloader.exe"
