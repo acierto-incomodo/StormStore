@@ -1348,5 +1348,31 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Big Walk/game",
     "checksumUrl": "https://github.com/acierto-incomodo/BigWalkGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/BigWalkGame/releases/latest/download/"
+  },
+  {
+    "id": "BOMBANANA",
+    "name": "BOMBANANA!",
+    "files": ["BOMBANANA.zip"],
+    "merge": false,
+    "mergedName": "BOMBANANA.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/game/Build/Build/BOMBANANA.exe",
+    "checksumFile": "BOMBANANA_version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/BOMBANANA_version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "How_to_Fish",
+    "name": "How to Fish",
+    "files": ["How_to_Fish.zip"],
+    "merge": false,
+    "mergedName": "How_to_Fish.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/How to Fish/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/How to Fish/game/Build/Build/How to Fish.exe",
+    "checksumFile": "How_to_Fish_version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/How to Fish/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/How_to_Fish_version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
   }
 ]

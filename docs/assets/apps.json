@@ -117,6 +117,23 @@
     "verified": "false"
   },
   {
+    "id": "BOMBANANA",
+    "name": "BOMBANANA!",
+    "description": "BOMBANANA! es un juego cooperativo para exactamente tres jugadores en el que tres monos deben trabajar juntos para desactivar bombas antes de que se acabe el tiempo. Cada jugador tiene un papel diferente: uno no puede ver, otro no puede hablar y otro no puede oír, por lo que ninguno tiene toda la información necesaria. Debéis comunicaros como podáis, resolver los distintos rompecabezas y coordinaros para conseguir desactivar las bombas. Incluye una campaña de 30 niveles, un modo infinito y un modo personalizado con diferentes dificultades y peligros.",
+    "category": "Juegos",
+    "icon": "../assets/apps/BOMBANANA.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/game/Build/Build/BOMBANANA.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "bridge-constructor-portal",
     "name": "Bridge Constructor Portal",
     "description": "Bridge Constructor Portal es un juego de puzles en el que tienes que construir puentes, rampas y estructuras para que vehículos puedan llegar al final de cada nivel, usando físicas realistas. La particularidad es que combina esta mecánica con elementos del universo de Portal, como portales, geles de impulso y plataformas de salto, lo que hace que tengas que pensar de forma creativa para resolver cada desafío. El objetivo es guiar los vehículos de forma segura a través de pruebas cada vez más complicadas.",
@@ -609,6 +626,23 @@
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "How_to_Fish",
+    "name": "How to Fish",
+    "description": "How to Fish es un simulador de pesca basado en físicas con un toque de aventura y humor. Puedes jugar solo o con amigos, navegar entre islas, pescar criaturas, vender tus capturas, conseguir mejor equipamiento y completar misiones para avanzar. A medida que progresas aparecen nuevas islas, criaturas más peligrosas y jefes que tendrás que superar para continuar tu camino de vuelta a casa.",
+    "category": "Juegos",
+    "icon": "../assets/apps/How_to_Fish.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/How to Fish/game/Build/Build/How to Fish.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/How to Fish/unins000.exe",
+    "steam": "si",
+    "wifi": "si",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
