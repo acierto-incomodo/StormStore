@@ -123,7 +123,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/BOMBANANA.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/game/Build/Build/BOMBANANA.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/game/Build/BOMBANANA/BOMBANANA.exe"
     ],
     "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/BOMBANANA/unins000.exe",
@@ -636,7 +636,7 @@
     "category": "Juegos",
     "icon": "../assets/apps/How_to_Fish.png",
     "paths": [
-      "%appdata%/StormGamesStudios/NewGameDir/How to Fish/game/Build/Build/How to Fish.exe"
+      "%appdata%/StormGamesStudios/NewGameDir/How to Fish/game/Build/How_to_Fish/How to Fish.exe"
     ],
     "download": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/How to Fish/unins000.exe",
