@@ -12,4 +12,3 @@ application/.env
 /application/setup/build/StormStore-Setup
 /application/setup/build
 *.spec
-*.exe
