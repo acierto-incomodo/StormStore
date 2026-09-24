@@ -32,8 +32,10 @@ SOURCE_JSON="$SCRIPT_DIR/apps.json"
 SOURCE_FILES_JSON="$SCRIPT_DIR/files.apps.json"
 SOURCE_APPS_SIZE_BASE="$SCRIPT_DIR/assets/apps-size"
 APP_SIZE_SUBFOLDERS=("512x512" "1024x1024")
+SOURCE_TRAILERS="$SCRIPT_DIR/assets/media/trailers"
 DEST_DIR="$ROOT_DIR/docs/assets"
 DEST_APPS_SIZE_DIR="$ROOT_DIR/docs/assets/apps-size"
+DEST_TRAILERS_DIR="$ROOT_DIR/docs/assets/trailers"
 
 print_header "Actualizando archivos para la documentación"
 
@@ -97,6 +99,10 @@ print_info "Limpiando directorio de apps-size: $DEST_APPS_SIZE_DIR"
 rm -rf "$DEST_APPS_SIZE_DIR"
 mkdir -p "$DEST_APPS_SIZE_DIR"
 
+print_info "Limpiando directorio de trailers: $DEST_TRAILERS_DIR"
+rm -rf "$DEST_TRAILERS_DIR"
+mkdir -p "$DEST_TRAILERS_DIR"
+
 # 2. Copiar apps.json y files.apps.json
 print_info "Copiando 'application/apps.json'..."
 cp "$SOURCE_JSON" "$DEST_DIR/"
@@ -117,8 +123,18 @@ for SUB in "${APP_SIZE_SUBFOLDERS[@]}"; do
     fi
 done
 
+# 4. Copiar la carpeta assets/media/trailers
+print_info "Copiando contenido de 'application/assets/media/trailers'..."
+if [ -d "$SOURCE_TRAILERS" ]; then
+    cp -r "$SOURCE_TRAILERS/." "$DEST_TRAILERS_DIR/"
+    print_success "trailers copiados correctamente"
+else
+    print_error "Directorio no encontrado: $SOURCE_TRAILERS"
+fi
+
 print_success "Archivos de documentación actualizados en 'docs/assets'"
 print_info "Contenido copiado:"
 echo "  - apps.json"
 echo "  - files.apps.json"
 echo "  - assets/apps-size/"
+echo "  - assets/trailers/"

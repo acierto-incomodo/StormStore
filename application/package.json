@@ -1,6 +1,6 @@
 {
   "name": "stormstore",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Tienda de aplicaciones de StormGamesStudios",
   "author": "StormGamesStudios",
   "main": "main.js",
@@ -79,31 +79,31 @@
     ]
   },
   "devDependencies": {
-    "electron": "^43.2.0",
+    "electron": "^44.4.5",
     "electron-builder": "^26.15.3"
   },
   "dependencies": {
     "@equal-games/game-scanner": "^1.1.4",
     "@fluentui/react": "^8.125.7",
     "@material/web": "^2.5.0",
-    "@vibe/core": "^4.5.3",
-    "axios": "^1.18.1",
-    "create-desktop-shortcuts": "^1.11.1",
+    "@vibe/core": "^4.5.32",
+    "axios": "^1.20.0",
+    "create-desktop-shortcuts": "^1.12.0",
     "crypto": "^1.0.1",
     "discord-rpc": "^4.0.1",
-    "electron-debug": "^4.1.0",
+    "electron-debug": "^5.0.0",
     "electron-progressbar": "^2.2.1",
     "electron-store": "^11.0.2",
     "electron-updater": "^6.8.9",
     "electron-util": "^1.0.0",
-    "execa": "^10.0.0",
+    "execa": "^10.0.1",
     "find-process": "^2.1.1",
-    "fs-extra": "^11.3.6",
+    "fs-extra": "^11.4.1",
     "get-installed-apps": "^1.1.1",
-    "motion": "^12.42.2",
+    "motion": "^13.4.2",
     "regedit": "^5.1.4",
     "steam-path": "^1.0.2",
-    "systeminformation": "^5.33.0"
+    "systeminformation": "^5.33.13"
   },
   "allowScripts": {
     "electron-winstaller@5.4.0": true
