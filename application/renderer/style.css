@@ -61,16 +61,18 @@ body {
 }
 
 .sidebar {
-  width: 260px;
+  width: 300px;
   background: #121212;
   padding: 20px;
-  height: 100vh;
+  height: (100% - 10px);
   position: sticky;
   top: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   border-right: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 20px;
+  border-radius: 10px;
 }
 
 .sidebar ul {
@@ -184,6 +186,7 @@ main.dashboard-layout {
   -webkit-app-region: drag; /* Permite arrastrar desde la cabecera */
   height: 60px;
   position: relative;
+  border-bottom-left-radius: 10px;
 }
 
 /* Los elementos interactivos dentro del header no deben arrastrar la ventana */

@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const requestedProgramId = params.get("id");
   const wasAlreadyQueued = params.get("queued") === "true";
-  const isQueueMonitor = !requestedProgramId || wasAlreadyQueued;
+  const isQueueMonitor =
+    params.get("batch") !== "true" &&
+    (!requestedProgramId || wasAlreadyQueued);
 
   let selectedId = requestedProgramId;
   let isInstalling = false;

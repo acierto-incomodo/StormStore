@@ -1,15 +1,13 @@
-# StormStore v3.0.1
+# StormStore v3.0.2
 
 ## Registro de cambios
 
 ### Actualizaciones
-- Cambio del repositorio del proveedor de los trailers.
-- Actualización de componentes de NodeJS y NPM.
-- Actualización a la ultima versión de 7-zip.
+- Reparado el sistema de actualizaciones. Ahora vuelve a funcionar el botón de actualizar todo.
 
 
 ----------
 
 💛 El equipo de **StormGamesStudios**.
 
-**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.0.0...v3.0.1](https://github.com/acierto-incomodo/StormStore/compare/v3.0.0...v3.0.1)
+**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.0.1...v3.0.2](https://github.com/acierto-incomodo/StormStore/compare/v3.0.1...v3.0.2)
