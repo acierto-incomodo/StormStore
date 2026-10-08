@@ -321,11 +321,6 @@
       }
 
       // Navegación
-      document.getElementById("back-btn").addEventListener("click", (e) => {
-        e.preventDefault();
-        confirmNavigation(() => window.history.back());
-      });
-
       document
         .querySelectorAll(".footer-icons button[data-link]")
         .forEach((btn) => {
@@ -363,13 +358,9 @@
           confirmNavigation("settings.html");
         });
 
-      // Botón volver
-        document
-          .getElementById("back-to-apps")
-          .addEventListener(
-            "click",
-            () => (window.location.href = "index.html"),
-          );
+      document.getElementById("back-to-apps").addEventListener("click", () => {
+        confirmNavigation("index.html");
+      });
 
       document.getElementById("open-settings-header")?.classList.add("active");
 
@@ -422,7 +413,7 @@
           const settings = await window.api.getSettings();
 
           Object.keys(controls).forEach((key) => {
-            if (settings.hasOwnProperty(key)) {
+            if (controls[key] && Object.hasOwn(settings, key)) {
               controls[key].checked = settings[key];
             }
           });
@@ -434,30 +425,26 @@
       }
 
       // Guardar ajustes
-      function saveSettings() {
-        const settings = {
-          auto_updates: controls.auto_updates
-            ? controls.auto_updates.checked
-            : false,
-          start_with_windows: controls.start_with_windows
-            ? controls.start_with_windows.checked
-            : false,
-          start_maximized: controls.start_maximized
-            ? controls.start_maximized.checked
-            : true,
-          start_minimized: controls.start_minimized
-            ? controls.start_minimized.checked
-            : false,
-          show_tray: controls.show_tray ? controls.show_tray.checked : false,
-          debug_mode: controls.debug_mode ? controls.debug_mode.checked : false,
-        };
+      async function saveSettings() {
+        const settings = {};
+        Object.entries(controls).forEach(([key, input]) => {
+          if (input) settings[key] = input.checked;
+        });
 
-        window.api.saveSettings(settings);
-        hasUnsavedChanges = false;
-        showToast("Ajustes guardados correctamente");
+        try {
+          const savedSettings = await window.api.saveSettings(settings);
+          if (!savedSettings) {
+            throw new Error("El proceso principal no pudo guardar los ajustes.");
+          }
+          hasUnsavedChanges = false;
+          showToast("Ajustes guardados correctamente");
+        } catch (err) {
+          console.error("No se pudieron guardar los ajustes:", err);
+          showToast("No se pudieron guardar los ajustes");
+        }
       }
 
-      Object.values(controls).forEach((input) => {
+      Object.values(controls).filter(Boolean).forEach((input) => {
         input.addEventListener("change", () => {
           hasUnsavedChanges = true;
           if (input === controls.debug_mode) {

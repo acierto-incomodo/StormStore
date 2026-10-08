@@ -529,16 +529,26 @@ function createAppCard(app, index) {
       installBtn.onclick = async () => {
         installBtn.disabled = true;
         installBtn.innerHTML = `<span class="button-loading"><img src="../assets/icons/loading-new.svg"> Instalando...</span>`;
-        if (app.fileApp) {
-          showToast(`Añadiendo ${app.name} a la cola…`);
-          await window.api.enqueueInstall(app);
-          window.location.href = `program-updates.html?id=${encodeURIComponent(app.id)}&queued=true`;
+        if (!app.fileApp) {
+          playSound("others.mp3");
+        }
+
+        showToast(`Añadiendo ${app.name} a la cola…`);
+        try {
+          const result = await window.api.enqueueInstall(app);
+          if (result?.cancelled) {
+            installBtn.disabled = false;
+            installBtn.textContent = "Instalar";
+            return;
+          }
+        } catch (error) {
+          console.error("Error al añadir la instalación a la cola:", error);
+          installBtn.disabled = false;
+          installBtn.textContent = "Instalar";
+          showToast(`No se pudo iniciar la instalación de ${app.name}.`);
           return;
         }
 
-        playSound("others.mp3");
-        showToast(`Añadiendo ${app.name} a la cola…`);
-        await window.api.enqueueInstall(app);
         window.location.href = `program-updates.html?id=${encodeURIComponent(app.id)}&queued=true`;
       };
     }

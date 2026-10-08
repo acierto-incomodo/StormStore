@@ -1,13 +1,14 @@
-# StormStore v3.0.2
+# StormStore v3.1.0
 
 ## Registro de cambios
 
-### Actualizaciones
-- Reparado el sistema de actualizaciones. Ahora vuelve a funcionar el botón de actualizar todo.
+### Correcciones
+- Reparado el sistema de ajustes. Ya se puede volver a entrar a los ajustes sin problemas y realizar cambios.
+- Corregido el error de permanencia de "Descargando..." en algunos juegos, ahora se instalaran/actualizaran de forma correcta.
 
 
 ----------
 
 💛 El equipo de **StormGamesStudios**.
 
-**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.0.1...v3.0.2](https://github.com/acierto-incomodo/StormStore/compare/v3.0.1...v3.0.2)
+**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.1.0...v3.0.3](https://github.com/acierto-incomodo/StormStore/compare/v3.1.0...v3.0.3)

@@ -58,7 +58,7 @@ const DEFAULT_SETTINGS = Object.freeze({
 });
 
 // Flags de compilación: cambiar aquí antes de generar el ejecutable.
-const ENABLE_SETTINGS_PAGE = false;
+const ENABLE_SETTINGS_PAGE = true;
 const ENABLE_FIRST_LAUNCH_PAGE = false;
 
 function shouldShowErrorPage(targetUrl = "") {
@@ -677,14 +677,13 @@ async function runApp(exePath, requiresSteam) {
 }
 
 async function showVirusWarning(appName) {
-  if (!mainWindow) return true;
+  if (!mainWindow || mainWindow.isDestroyed()) return true;
 
   return new Promise((resolve) => {
+    ipcMain.once("virus-alert-response", (_event, response) =>
+      resolve(response),
+    );
     mainWindow.webContents.send("show-virus-alert", appName);
-
-    ipcMain.once("virus-alert-response", (event, response) => {
-      resolve(response);
-    });
   });
 }
 
@@ -694,11 +693,6 @@ async function handleProtocolUrl(url) {
   if (url.startsWith(prefix)) {
     const id = url.substring(prefix.length).replace(/\/$/, "");
     const appItem = appsData.find((a) => a.id === id);
-
-    if (appItem && appItem["virus-alert"] === "alert") {
-      const proceed = await showVirusWarning(appItem.name);
-      if (!proceed) return;
-    }
 
     if (appItem) {
       if (appItem["virus-alert"] === "alert") {
@@ -808,7 +802,11 @@ async function processInstallQueue() {
     activeInstallId = id;
 
     try {
-      if (appItem && appItem["virus-alert"] === "alert") {
+      if (
+        appItem &&
+        appItem["virus-alert"] === "alert" &&
+        !job.virusAlertConfirmed
+      ) {
         const proceed = await showVirusWarning(appItem.name);
         if (!proceed) continue;
       }
@@ -1897,6 +1895,7 @@ ipcMain.handle("install-app", async (_, appData) => {
 ipcMain.handle("enqueue-install", async (_, appData) => {
   if (!appData?.id) throw new Error("Programa no válido");
 
+  const appItem = getCachedApp(appData.id) || appData;
   const alreadyActive = activeInstallId === appData.id;
   const existingIndex = installQueue.findIndex(
     (job) => (job.id || job.appData?.id) === appData.id,
@@ -1909,14 +1908,24 @@ ipcMain.handle("enqueue-install", async (_, appData) => {
     };
   }
 
-  enqueueInstall({ id: appData.id, appData });
+  const needsVirusConfirmation = appItem["virus-alert"] === "alert";
+  if (needsVirusConfirmation) {
+    const proceed = await showVirusWarning(appItem.name || appItem.id);
+    if (!proceed) return { queued: false, cancelled: true };
+  }
+
+  enqueueInstall({
+    id: appData.id,
+    appData: appItem,
+    virusAlertConfirmed: needsVirusConfirmation,
+  });
   const queuePosition = installQueue.length + (isProcessingInstallQueue ? 2 : 1);
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.webContents.send(
       "show-toast",
       queuePosition > 1
-        ? `${appData.name || appData.id} añadido a la cola (#${queuePosition})`
-        : `${appData.name || appData.id} añadido a la cola`,
+        ? `${appItem.name || appData.id} añadido a la cola (#${queuePosition})`
+        : `${appItem.name || appData.id} añadido a la cola`,
     );
   }
   return { queued: true, position: queuePosition };
@@ -2121,7 +2130,7 @@ ipcMain.handle("sync-remote-data", async () => {
 });
 
 ipcMain.handle("get-settings", () => loadSettings());
-ipcMain.on("save-settings", (event, settings) => saveSettings(settings));
+ipcMain.handle("save-settings", (event, settings) => saveSettings(settings));
 ipcMain.handle("ensure-settings-file", (event, opts = {}) => {
   const existed = fs.existsSync(SETTINGS_PATH);
   ensureSettingsFile();
