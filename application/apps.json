@@ -493,7 +493,7 @@
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
-    "verified": "false"
+    "verified": "true"
   },
   {
     "id": "fusion-arena",
@@ -708,6 +708,23 @@
     ],
     "download": "https://github.com/acierto-incomodo/iRacingArcadeGame/releases/latest/download/NoCompatibleToInstall.exe",
     "uninstall": "%appdata%/StormGamesStudios/NewGameDir/iRacing Arcade/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "IronNest_HeavyTurretSimulator",
+    "name": "Iron Nest - Heavy Turret Simulator",
+    "description": "Iron Nest - Heavy Turret Simulator es un simulador de combate centrado en el manejo de torretas pesadas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/IronNest_HeavyTurretSimulator.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Iron Nest - Heavy Turret Simulator/game/Build/Build/Iron Nest Heavy Turret Simulator.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/IronNestGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Iron Nest - Heavy Turret Simulator/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
@@ -968,7 +985,7 @@
     "wifi": "no",
     "share-compatibility": "si",
     "virus-alert": "none",
-    "verified": "false"
+    "verified": "true"
   },
   {
     "id": "modpack-installer",
@@ -1292,7 +1309,7 @@
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
-    "verified": "false"
+    "verified": "true"
   },
   {
     "id": "retro-rewind",
@@ -1344,6 +1361,23 @@
     "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
+  },
+  {
+    "id": "ResourceHacker",
+    "name": "Resource Hacker",
+    "description": "Resource Hacker es una utilidad para ver, modificar, añadir y extraer recursos de archivos ejecutables y bibliotecas de Windows.",
+    "category": ["Utilidades", "Aplicaciones", "Herramientas"],
+    "icon": "../assets/apps/ResourceHacker.png",
+    "paths": [
+      "C:\\Program Files (x86)\\Resource Hacker\\ResourceHacker.exe"
+    ],
+    "download": "https://www.angusj.com/resourcehacker/reshacker_setup.exe",
+    "uninstall": "C:\\Program Files (x86)\\Resource Hacker\\unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "rufus",
@@ -1408,6 +1442,23 @@
     "steam": "si",
     "wifi": "si",
     "share-compatibility": "si",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
+    "id": "ScarletSkips",
+    "name": "Scarlet Skips",
+    "description": "Scarlet Skips es un juego de plataformas.",
+    "category": "Juegos",
+    "icon": "../assets/apps/ScarletSkips.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Scarlet Skips/game/Build/Build/ScarletSkips.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/ScarletSkipsGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Scarlet Skips/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
   },
@@ -1891,7 +1942,7 @@
     "wifi": "si",
     "share-compatibility": "no",
     "virus-alert": "none",
-    "verified": "false"
+    "verified": "true"
   },
   {
     "id": "youtube-downloader",

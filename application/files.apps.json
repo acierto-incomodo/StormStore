@@ -1374,5 +1374,31 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/How to Fish/game",
     "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/How_to_Fish_version.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
+  },
+  {
+    "id": "ScarletSkips",
+    "name": "Scarlet Skips",
+    "files": ["ScarletSkips.zip"],
+    "merge": false,
+    "mergedName": "ScarletSkips.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Scarlet Skips/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Scarlet Skips/game/Build/Build/ScarletSkips.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Scarlet Skips/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/ScarletSkipsGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/ScarletSkipsGame/releases/latest/download/"
+  },
+  {
+    "id": "IronNest_HeavyTurretSimulator",
+    "name": "Iron Nest - Heavy Turret Simulator",
+    "files": ["IronNest_HeavyTurretSimulator.zip"],
+    "merge": false,
+    "mergedName": "IronNest_HeavyTurretSimulator.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Iron Nest - Heavy Turret Simulator/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Iron Nest - Heavy Turret Simulator/game/Build/Build/Iron Nest Heavy Turret Simulator.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Iron Nest - Heavy Turret Simulator/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/IronNestGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/IronNestGame/releases/latest/download/"
   }
 ]
