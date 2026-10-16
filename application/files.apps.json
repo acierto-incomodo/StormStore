@@ -1400,5 +1400,31 @@
     "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Iron Nest - Heavy Turret Simulator/game",
     "checksumUrl": "https://github.com/acierto-incomodo/IronNestGame/releases/latest/download/GameVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/IronNestGame/releases/latest/download/"
+  },
+  {
+    "id": "BerryBuryBerry",
+    "name": "Berry Bury Berry",
+    "files": ["BerryBerryBerry.zip"],
+    "merge": false,
+    "mergedName": "BerryBerryBerry.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/Berry Bury Berry/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/Berry Bury Berry/game/Build/Build/BerryBerryBerryBerryBerryBerryBerryBerryBerry.exe",
+    "checksumFile": "GameVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/Berry Bury Berry/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/BerryBerryBerryGame/releases/latest/download/GameVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/BerryBerryBerryGame/releases/latest/download/"
+  },
+  {
+    "id": "FLStudio",
+    "name": "FL Studio",
+    "files": ["FLStudio.zip"],
+    "merge": false,
+    "mergedName": "FLStudio.zip",
+    "extractPath": "%appdata%/StormGamesStudios/Programs/FL Studio/Build",
+    "executablePath": "%appdata%/StormGamesStudios/Programs/FL Studio/Build/FLStudioPortable.exe",
+    "checksumFile": "ProgramVersion.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/Programs/FL Studio/",
+    "checksumUrl": "https://github.com/acierto-incomodo/FLStudioProgram/releases/latest/download/ProgramVersion.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/FLStudioProgram/releases/latest/download/"
   }
 ]

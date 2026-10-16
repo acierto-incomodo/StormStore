@@ -100,6 +100,23 @@
     "verified": "false"
   },
   {
+    "id": "BerryBuryBerry",
+    "name": "Berry Bury Berry",
+    "description": "Berry Bury Berry es un juego de acción y recolección donde avanzas superando desafíos y recogiendo recursos para progresar cada vez más.",
+    "category": "Juegos",
+    "icon": "../assets/apps/BerryBuryBerry.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/Berry Bury Berry/game/Build/Build/BerryBerryBerryBerryBerryBerryBerryBerryBerry.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/BerryBerryBerryGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/Berry Bury Berry/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "big-walk",
     "name": "Big Walk",
     "description": "Big Walk es un juego de aventura cooperativo en el que tú y tus amigos exploráis un enorme mundo abierto mientras resolvéis puzles, superáis desafíos y descubrís secretos. La comunicación y el trabajo en equipo son fundamentales, ya que podéis utilizar objetos, gestos y el chat de proximidad para ayudaros cuando las situaciones lo requieran. También podéis simplemente pasear, explorar el mundo y pasar el rato juntos sin necesidad de seguir siempre un objetivo concreto. Se puede jugar de 2 a 12 jugadores y está diseñado principalmente para disfrutar de la aventura y de las situaciones que surgen al jugar con amigos.",
@@ -472,6 +489,27 @@
     "share-compatibility": "no",
     "virus-alert": "none",
     "verified": "false"
+  },
+  {
+    "id": "FLStudio",
+    "name": "FL Studio",
+    "description": "FL Studio es un programa de producción musical y edición de audio para crear ritmos, melodías y mezclas con herramientas avanzadas de composición y masterización.",
+    "category": [
+      "Aplicaciones",
+      "Audio",
+      "Música"
+    ],
+    "icon": "../assets/apps/FLStudio.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/Programs/FL Studio/Build/FLStudioPortable.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/FLStudioProgram/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/FL Studio/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "true"
   },
   {
     "id": "free-download-manager",
