@@ -501,10 +501,10 @@
     ],
     "icon": "../assets/apps/FLStudio.png",
     "paths": [
-      "%appdata%/StormGamesStudios/Programs/FL Studio/Build/FLStudioPortable.exe"
+      "%appdata%/StormGamesStudios/Programs/FL Studio/Build/Build/FLStudioPortable.exe"
     ],
     "download": "https://github.com/acierto-incomodo/FLStudioProgram/releases/latest/download/NoCompatibleToInstall.exe",
-    "uninstall": "%appdata%/StormGamesStudios/Programs/FL Studio/unins000.exe",
+    "uninstall": "%appdata%/StormGamesStudios/Programs/FL Studio/Build/Build/unins000.exe",
     "steam": "no",
     "wifi": "no",
     "share-compatibility": "no",
