@@ -1654,11 +1654,11 @@
     "verified": "false"
   },
   {
-    "id": "stormbrowser",
-    "name": "StormBrowser",
+    "id": "stormbrowserV3",
+    "name": "StormBrowserV3",
     "description": "StormBrowser es un navegador web personalizado por StormGamesStudios.",
     "category": ["Utilidades", "Aplicaciones"],
-    "icon": "../assets/apps/stormbrowser.png",
+    "icon": "../assets/apps/stormbrowserV3.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormBrowser/StormBrowser.exe"
     ],
