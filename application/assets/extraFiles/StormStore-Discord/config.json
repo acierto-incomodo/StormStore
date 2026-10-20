@@ -1,0 +1,28 @@
+{
+    "program": {
+        "path": "Cookie Clicker.exe",
+        "arguments": [],
+        "hidden": true
+    },
+    "discord": {
+        "enabled": true,
+        "reconnect": true,
+        "retry_interval": 10,
+        "client_id": "1474762522048331787",
+        "presence": {
+            "state": "Cookie Clicker",
+            "details": "StormStore",
+            "large_image": "stormbrowser",
+            "large_text": "StormBrowser",
+            "small_image": "browser",
+            "small_text": "Navegador",
+            "buttons": [
+                {
+                    "label": "StormGamesStudios",
+                    "url": "https://stormstore.vercel.app"
+                }
+            ],
+            "start_timestamp": true
+        }
+    }
+}
