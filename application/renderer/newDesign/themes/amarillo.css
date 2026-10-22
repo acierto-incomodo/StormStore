@@ -1,0 +1,15 @@
+/* GLOBAL */
+.nav-link[aria-current="page"] i {
+    color: #fbbf24;
+}
+
+/* CARDS */
+.md-btn-filled,
+.md-btn-tonal {
+  background: #fbbf24;
+  color: #171717;
+}
+
+.status-update {
+  background: #fbbf24;
+}

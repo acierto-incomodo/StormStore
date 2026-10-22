@@ -1,22 +1,37 @@
-# StormStore v3.1.1
+
+# StormStore v3.1.2
+
+  
 
 ## Registro de cambios
 
+  
+
+### Novedades
+
+- Posibilidad de acceder a la nueva interfaz activando el modo "debug" en ajustes.
+
+  
+
 ### Actualizaciones
-- Componentes de NodeJS actualizados: electron ^44.5.1 → ^44.9.1, execa ^10.0.1 → ^10.2.0, electron-store ^11.0.2 → ^12.0.0 y motion ^13.4.6 → ^14.4.0.
-- Actualización de la herramienta 7-zip.
-- Actualización de ASP.NET Core 8.0.23 Runtime x64 → ASP.NET Core 8.0.32 Runtime x64 + ASP.NET Core 8.0.32 Runtime x86.
 
-### Nuevas funciones beta
-- StormStore Discord Rich Presence.
-- Descarga de archivos seguros con contraseña.
+- Cambios y mejoras del nuevo diseño.
 
-### Desarrollo de nuevo diseño
-- Nuevo diseño general de los paneles.
+- Beta abierta a la nueva interfaz.
 
+- Minor Backwards-compatible features: motion ^14.4.0 → ^14.5.0
+
+- Major Potentially breaking API changes: electron ^44.9.1 → ^45.0.0
+
+  
+  
 
 ----------
 
+  
+
 💛 El equipo de **StormGamesStudios**.
 
-**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.1.0...v3.1.1](https://github.com/acierto-incomodo/StormStore/compare/v3.1.0...v3.1.1)
+  
+
+**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.1.1...v3.1.2](https://github.com/acierto-incomodo/StormStore/compare/v3.1.1...v3.1.2)

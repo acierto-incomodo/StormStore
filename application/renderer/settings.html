@@ -267,6 +267,9 @@
           <button id="open-system-info-btn" class="md-btn md-btn-outlined" type="button" style="display: none;">
             Información del sistema
           </button>
+          <button id="open-new-design-btn" class="md-btn md-btn-outlined" type="button" style="display: none;">
+            Nuevo diseño
+          </button>
           <button id="save-settings-btn" class="md-btn md-btn-filled" type="button">
             Guardar Ajustes
           </button>
@@ -402,9 +405,11 @@
       };
 
       function updateSystemInfoButtonVisibility() {
-        const button = document.getElementById("open-system-info-btn");
-        if (!button) return;
-        button.style.display = controls.debug_mode && controls.debug_mode.checked ? "inline-flex" : "none";
+        const display = controls.debug_mode && controls.debug_mode.checked ? "inline-flex" : "none";
+        ["open-system-info-btn", "open-new-design-btn"].forEach((id) => {
+          const button = document.getElementById(id);
+          if (button) button.style.display = display;
+        });
       }
 
       // Carga inicial de ajustes
@@ -458,6 +463,13 @@
         .addEventListener("click", (e) => {
           e.preventDefault();
           confirmNavigation("system-information.html");
+        });
+
+      document
+        .getElementById("open-new-design-btn")
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          confirmNavigation("newDesign/index.html");
         });
 
       document

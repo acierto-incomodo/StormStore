@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microsoft Store - Actualizaciones y descargas</title>
+    <title>StormStore | Aplicaciones</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -34,33 +34,16 @@
     </script>
     <!-- FontAwesome for Windows/Store Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Custom scrollbar for Windows look */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #444;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/cards.css">
 </head>
-<body class="bg-[#191919] text-white h-screen overflow-hidden flex flex-col font-sans select-none">
+<body data-app-filter="applications" data-app-category="Aplicaciones" data-renderer-base="../" data-asset-base="../../assets/" class="bg-[#191919] text-white h-screen overflow-hidden flex flex-col font-sans select-none">
 
     <!-- Top Windows Titlebar Simulation -->
     <header class="h-10 bg-[#1f1f1f] flex items-center justify-between px-3 shrink-0 border-b border-[#2d2d2d]">
         <div class="flex items-center space-x-2">
             <span class="text-xs text-gray-300 font-medium flex items-center gap-2">
-                <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M0 3.449L9.75 2.1v9.451H0V3.449zm10.725-1.493L24 0v11.55H10.725V1.956zM0 13.05h9.75v9.45L0 21.15V13.05zm10.725 0H24V24l-13.275-1.851V13.05z"/>
-                </svg>
+                <img src="../../assets/app.ico" class="w-4 h-4" />
                 StormStore
             </span>
         </div>
@@ -68,7 +51,7 @@
         <!-- Search Bar -->
         <div class="flex-1 max-w-xl mx-8">
             <div class="relative flex items-center">
-                <input type="text" placeholder="Buscar aplicaciones, juegos y mucho más" 
+                <input id="search" type="search" placeholder="Buscar aplicaciones, juegos y mucho más"
                     class="w-full bg-[#2c2c2c] border border-[#3c3c3c] rounded-md py-1.5 pl-4 pr-10 text-xs text-gray-200 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:bg-[#202020] transition-colors">
                 <i class="fa-solid fa-magnifying-glass absolute right-3 text-gray-400 text-xs"></i>
             </div>
@@ -94,22 +77,25 @@
         <aside class="w-16 bg-[#1f1f1f] flex flex-col items-center py-3 shrink-0 justify-between border-r border-[#2d2d2d]">
             <div class="flex flex-col items-center space-y-1 w-full">
                 <!-- Nav Item: Inicio -->
-                <a href="#" class="group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                <a href="index.html" data-page-link="index" class="nav-link group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                    <div class="nav-indicator absolute left-0 top-3 bottom-3 w-1 bg-amber-400 rounded-r"></div>
                     <i class="fa-solid fa-house text-sm"></i>
                     <span class="text-[9px] mt-1">Inicio</span>
                 </a>
                 <!-- Nav Item: Aplicaciones -->
-                <a href="#" class="group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                <a href="aplicaciones.html" data-page-link="aplicaciones" aria-current="page" class="nav-link group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                    <div class="nav-indicator absolute left-0 top-3 bottom-3 w-1 bg-amber-400 rounded-r"></div>
                     <i class="fa-solid fa-window-maximize text-sm"></i>
-                    <span class="text-[9px] mt-1">Aplicaciones</span>
                 </a>
                 <!-- Nav Item: Juegos -->
-                <a href="#" class="group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                <a href="juegos.html" data-page-link="juegos" class="nav-link group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                    <div class="nav-indicator absolute left-0 top-3 bottom-3 w-1 bg-amber-400 rounded-r"></div>
                     <i class="fa-solid fa-gamepad text-sm"></i>
                     <span class="text-[9px] mt-1">Juegos</span>
                 </a>
                 <!-- Nav Item: Temas -->
-                <a href="#" class="group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                <a href="temas.html" data-page-link="temas" class="nav-link group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                    <div class="nav-indicator absolute left-0 top-3 bottom-3 w-1 bg-amber-400 rounded-r"></div>
                     <i class="fa-solid fa-paintbrush text-sm"></i>
                     <span class="text-[9px] mt-1">Temas</span>
                 </a>
@@ -118,81 +104,55 @@
             <!-- Bottom Sidebar Nav -->
             <div class="flex flex-col items-center space-y-1 w-full">
                 <!-- Nav Item: Novedades -->
-                <a href="#" class="group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                <a href="novedades.html" data-page-link="novedades" class="nav-link group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                    <div class="nav-indicator absolute left-0 top-3 bottom-3 w-1 bg-amber-400 rounded-r"></div>
                     <i class="fa-solid fa-bullhorn text-sm"></i>
                     <span class="text-[9px] mt-1">Novedades</span>
                 </a>
-                <!-- Nav Item: Biblioteca (Active) -->
-                <a href="#" class="group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg bg-[#2b2b2b] text-white transition-all">
-                    <!-- Active indicator dot / yellow accent bar -->
-                    <div class="absolute left-0 top-3 bottom-3 w-1 bg-amber-400 rounded-r"></div>
-                    <i class="fa-solid fa-download text-sm text-amber-400"></i>
-                    <span class="text-[9px] mt-1 font-medium">Biblioteca</span>
+                <!-- Nav Item: Biblioteca -->
+                <a href="biblioteca.html" data-page-link="biblioteca" class="nav-link group relative w-12 h-12 flex flex-col items-center justify-center rounded-lg hover:bg-[#2b2b2b] text-gray-400 hover:text-white transition-all">
+                    <div class="nav-indicator absolute left-0 top-3 bottom-3 w-1 bg-amber-400 rounded-r"></div>
+                    <i class="fa-solid fa-download text-sm"></i>
+                    <span class="text-[9px] mt-1">Biblioteca</span>
                 </a>
             </div>
         </aside>
 
         <!-- Main Content Scroll Area -->
-        <main class="flex-1 overflow-y-auto px-10 py-8 bg-[#1e1e1e]">
-            
-            <!-- Header section of page -->
-            <div class="flex items-center justify-between mb-6">
-                <h1 class="text-2xl font-semibold text-white tracking-wide">Actualizaciones y descargas</h1>
-                <button class="bg-amber-400 hover:bg-amber-300 text-black font-medium text-xs px-4 py-2 rounded transition-colors shadow-sm">
-                    Buscar actualizaciones
-                </button>
+        <main class="flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-8 lg:px-10 bg-[#1e1e1e]">
+            <div class="mb-8">
+                <p class="text-xs uppercase tracking-widest text-amber-400 mb-2">Explora</p>
+                <h1 id="current-category" class="text-3xl font-semibold text-white tracking-wide">Aplicaciones</h1>
+                <p class="mt-2 max-w-2xl text-sm text-gray-400">Encuentra herramientas para trabajar, crear y sacar más partido a tu equipo.</p>
             </div>
-
-            <h2 class="text-sm font-semibold text-gray-300 mb-4">Actualizaciones recientes</h2>
-
-            <!-- App List Container -->
-            <div class="space-y-2 pb-12" id="app-list">
-                
-                <!-- Item 1 -->
-                 <!--
-                <div class="flex items-center justify-between bg-[#242424] hover:bg-[#2b2b2b] transition-colors p-3 rounded-lg border border-transparent hover:border-[#333]">
-                    <div class="flex items-center space-x-4 min-w-0">
-                        <div class="w-10 h-10 rounded bg-[#107c10] flex items-center justify-center shrink-0 shadow">
-                            <i class="fa-solid fa-gamepad text-white text-lg"></i>
-                        </div>
-                        <div class="min-w-0">
-                            <h3 class="text-sm font-medium text-white truncate">Game Bar</h3>
-                            <p class="text-xs text-gray-400 truncate">Microsoft Windows</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-12 shrink-0 px-4">
-                        <span class="text-xs text-gray-400 w-44">Componentes de sistema</span>
-                        <span class="text-xs text-gray-400 w-40">Modificado hace unos minutos</span>
-                    </div>
-                    <div class="flex items-center space-x-3 shrink-0">
-                        <button class="bg-[#333] hover:bg-[#3d3d3d] text-white text-xs px-5 py-1.5 rounded transition-colors border border-[#444]">Abrir</button>
-                        <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-[#333] text-gray-400 hover:text-white transition-colors">
-                            <i class="fa-solid fa-ellipsis text-xs"></i>
-                        </button>
-                    </div>
-                </div>
-            -->
-
-            </div>
-
+            <section aria-labelledby="categorias-heading">
+                <h2 id="categorias-heading" class="text-lg font-semibold text-white mb-4">Explora aplicaciones</h2>
+                <ul id="categories" hidden></ul>
+                <div id="apps" class="app-card-grid" aria-live="polite"></div>
+            </section>
         </main>
     </div>
 
-    <!-- Script to simulate basic interactivity -->
-    <script>
-        // Example interactivity for buttons without using alert()
-        document.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const text = btn.innerText.trim();
-                if(text === 'Buscar actualizaciones') {
-                    const originalText = btn.innerText;
-                    btn.innerText = 'Buscando...';
-                    setTimeout(() => {
-                        btn.innerText = originalText;
-                    }, 1500);
-                }
-            });
-        });
-    </script>
+    <div id="delete-confirm-overlay" class="card-modal-overlay">
+        <div class="card-modal">
+            <h2>¿Eliminar aplicación?</h2>
+            <p id="delete-confirm-text"></p>
+            <div class="card-modal-actions">
+                <button id="cancel-delete-btn" class="md-btn md-btn-tonal">Cancelar</button>
+                <button id="confirm-delete-btn" class="md-btn md-btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    <div id="virus-alert-overlay" class="card-modal-overlay">
+        <div class="card-modal">
+            <h2>¡Peligro detectado!</h2>
+            <p id="virus-alert-text"></p>
+            <div class="card-modal-actions">
+                <button id="virus-cancel-btn" class="md-btn md-btn-tonal">Cancelar</button>
+                <button id="virus-continue-btn" class="md-btn md-btn-danger">Continuar</button>
+            </div>
+        </div>
+    </div>
+    <script src="../app.js"></script>
 </body>
 </html>

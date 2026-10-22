@@ -1,0 +1,352 @@
+#apps.app-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.card {
+  min-width: 0;
+  min-height: 450px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+  border: 1px solid #333;
+  border-radius: 0.75rem;
+  background: #242424;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+  animation: card-enter 300ms ease both;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #4a4a4a;
+  background: #2b2b2b;
+}
+
+.img-container {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #3a3a3a;
+  border-radius: 0.75rem;
+  background: #202020;
+}
+
+.card .app-icon {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.card p {
+  min-height: 2.5rem;
+  margin: 0;
+  color: #a3a3a3;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.card .version {
+  min-height: 0;
+  color: #a3a3a3;
+  font-size: 0.7rem;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.card-actions > div {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.md-btn {
+  min-width: 0;
+  padding: 0.55rem 0.65rem;
+  border: 0;
+  border-radius: 0.4rem;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 150ms ease;
+}
+
+.md-btn:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.md-btn:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.md-btn-filled,
+.md-btn-tonal {
+  background: #fbbf24;
+  color: #171717;
+}
+
+.md-btn-blue {
+  background: #42a5f5;
+  color: #111;
+}
+
+.md-btn-danger {
+  background: #cf6679;
+  color: #111;
+}
+
+.status-badge {
+  position: absolute;
+  z-index: 2;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  color: #111;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.status-installed {
+  background: #d5e8d4;
+}
+
+.status-update {
+  background: #fbbf24;
+}
+
+.status-new {
+  background: #b9dced;
+}
+
+.req-badge,
+.action-btn-badge {
+  position: absolute;
+  z-index: 3;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  width: 1.8rem;
+  height: 1.8rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 75%);
+  cursor: default;
+}
+
+.req-badge img,
+.action-btn-badge img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.req-badge span,
+.action-btn-badge span {
+  display: none;
+}
+
+.action-btn-badge {
+  left: auto;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+.wifi-badge,
+.info-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.6rem;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 70%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.card .img-container:hover .info-badge {
+  opacity: 1;
+}
+
+body.offline .requires-wifi .app-icon {
+  filter: brightness(0.3) grayscale(1);
+}
+
+body.offline .requires-wifi .wifi-badge {
+  opacity: 1;
+}
+
+body.offline .requires-wifi button {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.button-loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.button-loading img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.card.skeleton {
+  gap: 0.75rem;
+}
+
+.skeleton-box,
+.skeleton-text {
+  border-radius: 0.5rem;
+  background: linear-gradient(90deg, #292929, #383838, #292929);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.2s linear infinite;
+}
+
+.skeleton-box {
+  aspect-ratio: 1;
+}
+
+.skeleton-text {
+  height: 1rem;
+}
+
+.skeleton-text.body {
+  width: 75%;
+}
+
+.card-modal-overlay {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 70%);
+}
+
+.card-modal-overlay.active {
+  display: flex;
+}
+
+.card-modal {
+  width: min(100%, 26rem);
+  padding: 1.5rem;
+  border: 1px solid #444;
+  border-radius: 0.75rem;
+  background: #242424;
+  text-align: center;
+}
+
+.card-modal h2 {
+  margin: 0 0 0.75rem;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.card-modal p {
+  margin: 0 0 1.25rem;
+  color: #c4c4c4;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.card-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.card-modal-actions button {
+  flex: 1;
+}
+
+.toast-notification {
+  position: fixed;
+  z-index: 30;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #444;
+  border-radius: 0.5rem;
+  background: #242424;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  #apps.app-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  #apps.app-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+
+  .card {
+    min-height: 420px;
+    padding: 0.75rem;
+  }
+}

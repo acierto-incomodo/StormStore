@@ -1,0 +1,39 @@
+/* Custom scrollbar for Windows look */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.nav-link[aria-current="page"] {
+    background: #2b2b2b;
+    color: #fff;
+}
+
+.nav-link[aria-current="page"] .nav-indicator {
+    display: block;
+}
+
+.nav-link[aria-current="page"] i {
+    color: #fbbf24;
+}
+
+.nav-link[aria-current="page"] span:last-child {
+    font-weight: 600;
+}
+
+.nav-indicator {
+    display: none;
+}
