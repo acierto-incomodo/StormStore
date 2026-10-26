@@ -1,0 +1,9 @@
+dependencies:
+- @fluentui/react
+- @material/web
+- @vibe/core
+- electron-debug
+- electron-progressbar
+- electron-debug
+- electron-util
+- motion
