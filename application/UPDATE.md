@@ -29,4 +29,4 @@
 
   
 
-**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.1.1...v3.1.2](https://github.com/acierto-incomodo/StormStore/compare/v3.1.1...v3.1.2)
+**Registro completo de cambios**: [https://github.com/acierto-incomodo/StormStore/compare/v3.1.2...v3.1.3](https://github.com/acierto-incomodo/StormStore/compare/v3.1.2...v3.1.3)
