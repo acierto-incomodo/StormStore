@@ -1426,5 +1426,18 @@
     "checksumPath": "%appdata%/StormGamesStudios/Programs/FL Studio/",
     "checksumUrl": "https://github.com/acierto-incomodo/FLStudioProgram/releases/latest/download/ProgramVersion.txt",
     "downloadUrl": "https://github.com/acierto-incomodo/FLStudioProgram/releases/latest/download/"
+  },
+  {
+    "id": "CRACK",
+    "name": "CRACK",
+    "files": ["CRACK.zip"],
+    "merge": false,
+    "mergedName": "CRACK.zip",
+    "extractPath": "%appdata%/StormGamesStudios/NewGameDir/CRACK/game/Build",
+    "executablePath": "%appdata%/StormGamesStudios/NewGameDir/CRACK/game/Build/CRACK/CRACK.exe",
+    "checksumFile": "CRACK-version.txt",
+    "checksumPath": "%appdata%/StormGamesStudios/NewGameDir/CRACK/game",
+    "checksumUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/CRACK-version.txt",
+    "downloadUrl": "https://github.com/acierto-incomodo/GamePack1/releases/latest/download/"
   }
 ]

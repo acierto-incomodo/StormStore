@@ -287,6 +287,23 @@
     "verified": "false"
   },
   {
+    "id": "CRACK",
+    "name": "CRACK",
+    "description": "CRACK es un juego de acción e infiltración en primera persona con estética retro low-poly, lanzado en octubre de 2026 por 390 Production, en el que encarnas a un detective implacable con la misión de erradicar una red criminal y de narcotráfico a base de tiroteos viscerales, combate táctico, sigilo y entornos destructibles.",
+    "category": "Juegos",
+    "icon": "../assets/apps/CRACK.png",
+    "paths": [
+      "%appdata%/StormGamesStudios/NewGameDir/CRACK/game/Build/Build/CRACK.exe"
+    ],
+    "download": "https://github.com/acierto-incomodo/CRACKGame/releases/latest/download/NoCompatibleToInstall.exe",
+    "uninstall": "%appdata%/StormGamesStudios/NewGameDir/CRACK/unins000.exe",
+    "steam": "no",
+    "wifi": "no",
+    "share-compatibility": "no",
+    "virus-alert": "none",
+    "verified": "false"
+  },
+  {
     "id": "cuphead",
     "name": "Cuphead",
     "description": "Cuphead es un juego de plataformas y disparos en 2D con un estilo de animación inspirado en los cartoons de los años 30. El juego se centra en desafíos difíciles y combates con jefes, donde los jugadores controlan a Cuphead y Mugman mientras enfrentan a diversos enemigos y jefes en entornos coloridos y detallados.",
