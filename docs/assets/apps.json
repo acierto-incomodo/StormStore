@@ -3,7 +3,7 @@
     "id": "stormstore",
     "name": "StormStore",
     "description": "La aplicación principal de StormGamesStudios para gestionar tus juegos favoritos.",
-    "category": ["Tiendas", "Utilidades", "Aplicaciones"],
+    "category": ["Tiendas", "Utilidades", "Aplicaciones", "Verificado"],
     "icon": "../assets/apps/stormstore.png",
     "paths": ["%appdata%/StormGamesStudios/StormStore/StormStore.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/latest/download/StormStore-Setup.exe",
@@ -511,11 +511,7 @@
     "id": "FLStudio",
     "name": "FL Studio",
     "description": "FL Studio es un programa de producción musical y edición de audio para crear ritmos, melodías y mezclas con herramientas avanzadas de composición y masterización.",
-    "category": [
-      "Aplicaciones",
-      "Audio",
-      "Música"
-    ],
+    "category": ["Aplicaciones", "Audio", "Música", "Verificado"],
     "icon": "../assets/apps/FLStudio.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/FL Studio/Build/Build/FLStudioPortable.exe"
@@ -536,7 +532,8 @@
       "Utilidades",
       "Herramientas",
       "Personalización",
-      "Aplicaciones"
+      "Aplicaciones",
+      "Verificado"
     ],
     "icon": "../assets/apps/free-download-manager.png",
     "paths": [
@@ -554,7 +551,7 @@
     "id": "fusion-arena",
     "name": "Fusion Arena",
     "description": "Fusion Arena es un juego multijugador en primera persona de tipo deathmatch, ambientado en un entorno tipo almacén. Los jugadores compiten entre sí disparando con varias armas (pistola, rifle automático y escopeta), recogiendo armas o recargas y salud en puntos repartidos por el mapa. Cada vez que un jugador muere, reaparece tras poco tiempo; al final de la partida, gana quien tenga más bajas.",
-    "category": "Juegos",
+    "category": ["Juegos", "Verificado"],
     "icon": "../assets/apps/fusion-arena.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/TheShooterLauncher_New/installer_updater.exe"
@@ -790,7 +787,7 @@
     "id": "karts-multiplayer",
     "name": "Karts Multiplayer",
     "description": "Un juego divertido para jugar con amigos. Corre con karts en diferentes pistas, recoge potenciadores y lanza objetos a tus oponentes para ganar la carrera. ¡Compite en línea y demuestra quién es el mejor piloto de karts!",
-    "category": "Juegos",
+    "category": ["Juegos", "Verificado"],
     "icon": "../assets/apps/karts-multiplayer.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/KartsMultiplayerLauncher/installer_updater.exe"
@@ -1029,7 +1026,7 @@
     "id": "miside-zero",
     "name": "MiSide Zero",
     "description": "La demo de MiSide Zero es una pequeña versión jugable de un proyecto hecho por fans que sirve como precuela del juego original MiSide. En ella te pones en la piel de Zero, un personaje rubio que explora el mundo de MiSide aproximadamente un año antes de los eventos principales.",
-    "category": "Juegos",
+    "category": ["Juegos", "Verificado"],
     "icon": "../assets/apps/miside-zero.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/MiSideZero/installer_updater.exe"
@@ -1046,7 +1043,7 @@
     "id": "modpack-installer",
     "name": "Modpack Installer",
     "description": "Instalador de modpacks para Minecraft.",
-    "category": ["Juegos", "Aplicaciones"],
+    "category": ["Juegos", "Aplicaciones", "Verificado"],
     "icon": "../assets/apps/modpack-installer.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/Modpack Installer/Modpack Installer.exe"
@@ -1097,7 +1094,12 @@
     "id": "multiai",
     "name": "MultiAI",
     "description": "MultiAI es una herramienta de IA que permite a los usuarios interactuar con múltiples modelos de lenguaje al mismo tiempo.",
-    "category": ["Inteligencia Artificial", "Utilidades", "Aplicaciones"],
+    "category": [
+      "Inteligencia Artificial",
+      "Utilidades",
+      "Aplicaciones",
+      "Verificado"
+    ],
     "icon": "../assets/apps/multiai.png",
     "paths": ["%appdata%/StormGamesStudios/Programs/MultiAI/MultiAI.exe"],
     "download": "https://github.com/acierto-incomodo/MultiAI/releases/latest/download/MultiAI-x64.exe",
@@ -1134,7 +1136,7 @@
     "id": "pairdrop",
     "name": "PairDrop",
     "description": "PairDrop es una herramienta de transferencia de archivos entre dispositivos.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": ["Utilidades", "Aplicaciones", "Verificado"],
     "icon": "../assets/apps/pairdrop.png",
     "paths": ["%appdata%/StormGamesStudios/Programs/PairDrop/PairDrop APP.exe"],
     "download": "https://github.com/acierto-incomodo/PairDrop/releases/latest/download/PairDrop-Setup.exe",
@@ -1268,7 +1270,7 @@
     "id": "programmer-clicker-game",
     "name": "Programmer Clicker Game",
     "description": "Un juego de clics donde puedes mejorar tu habilidad de programación haciendo clics y desbloqueando nuevas funciones.",
-    "category": "Juegos",
+    "category": ["Juegos", "Verificado"],
     "icon": "../assets/apps/programmer-clicker-game.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/ProgrammerClickerGame/game/Build/Programmer Clicker Game.exe"
@@ -1353,7 +1355,7 @@
     "id": "randomlife-reborn",
     "name": "RANDOMLIFE REBORN",
     "description": "RANDOMLIFE REBORN es un juego en el que vives la vida de un personaje generado de forma aleatoria y tomas decisiones que afectan a su futuro. A lo largo de la partida ocurren eventos impredecibles, tanto buenos como malos, y cada elección cambia el rumbo de la historia. No tiene un objetivo fijo, ya que se centra en experimentar distintas vidas y ver cómo terminan según tus decisiones y la suerte.",
-    "category": "Juegos",
+    "category": ["Juegos", "Verificado"],
     "icon": "../assets/apps/randomlife-reborn.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/RandomlifeReborn/game/Build/Build/RLRB_UE5.exe"
@@ -1421,11 +1423,9 @@
     "id": "ResourceHacker",
     "name": "Resource Hacker",
     "description": "Resource Hacker es una utilidad para ver, modificar, añadir y extraer recursos de archivos ejecutables y bibliotecas de Windows.",
-    "category": ["Utilidades", "Aplicaciones", "Herramientas"],
+    "category": ["Utilidades", "Aplicaciones", "Herramientas", "Verificado"],
     "icon": "../assets/apps/ResourceHacker.png",
-    "paths": [
-      "C:\\Program Files (x86)\\Resource Hacker\\ResourceHacker.exe"
-    ],
+    "paths": ["C:\\Program Files (x86)\\Resource Hacker\\ResourceHacker.exe"],
     "download": "https://www.angusj.com/resourcehacker/reshacker_setup.exe",
     "uninstall": "C:\\Program Files (x86)\\Resource Hacker\\unins000.exe",
     "steam": "no",
@@ -1438,7 +1438,7 @@
     "id": "rufus",
     "name": "Rufus",
     "description": "Rufus es una herramienta gratuita para crear discos de arranque de USB para Windows.",
-    "category": "Utilidades",
+    "category": ["Utilidades", "Verificado"],
     "icon": "../assets/apps/rufus.png",
     "paths": ["%appdata%/StormGamesStudios/Programs/Rufus/rufus.exe"],
     "download": "https://github.com/acierto-incomodo/rv-there-yet-game/releases/latest/download/NoCompatibleToInstall.exe",
@@ -1538,7 +1538,7 @@
     "id": "scrcpy",
     "name": "SCRCPY",
     "description": "SCRCPY es una herramienta que permite controlar un dispositivo Android desde el escritorio a través de USB o WiFi.",
-    "category": ["Herramientas", "Utilidades"],
+    "category": ["Herramientas", "Utilidades", "Verificado"],
     "icon": "../assets/apps/scrcpy.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/scrcpy/game/Build/Build/scrcpy.exe"
@@ -1674,7 +1674,7 @@
     "id": "stormbrowserV3",
     "name": "StormBrowserV3",
     "description": "StormBrowser es un navegador web personalizado por StormGamesStudios.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": ["Utilidades", "Aplicaciones", "Verificado"],
     "icon": "../assets/apps/stormbrowserV3.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormBrowser/StormBrowser.exe"
@@ -1691,7 +1691,7 @@
     "id": "stormlauncher",
     "name": "StormLauncher: HMCL Edition",
     "description": "Custom Minecraft Launcher.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": ["Utilidades", "Aplicaciones", "Verificado"],
     "icon": "../assets/apps/stormlauncher.png",
     "paths": ["%appdata%/StormLauncher_HMCL-Edition/HMCL-*.exe"],
     "download": "https://github.com/acierto-incomodo/StormStore/releases/download/StormLauncher_v1/StormLauncher_HMCL-Edition_Installer.exe",
@@ -1706,7 +1706,13 @@
     "id": "stormlibraryv2",
     "name": "StormLibraryV2",
     "description": "Lanzador de juegos",
-    "category": ["Utilidades", "Aplicaciones", "Tiendas", "Juegos"],
+    "category": [
+      "Utilidades",
+      "Aplicaciones",
+      "Tiendas",
+      "Juegos",
+      "Verificado"
+    ],
     "icon": "../assets/apps/stormlibraryv2.png",
     "paths": [
       "%appdata%/StormGamesStudios/StormLibraryV2/installer_updater.exe"
@@ -1723,7 +1729,7 @@
     "id": "stormpanel-app",
     "name": "StormPanel APP",
     "description": "StormPanel APP es una aplicación de panel de control para StormGamesStudios.",
-    "category": ["Utilidades", "Aplicaciones"],
+    "category": ["Utilidades", "Aplicaciones", "Verificado"],
     "icon": "../assets/apps/stormpanel-app.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/StormPanel APP/StormPanel APP.exe"
@@ -1953,7 +1959,8 @@
       "Herramientas",
       "Utilidades",
       "Personalización",
-      "Aplicaciones"
+      "Aplicaciones",
+      "Verificado"
     ],
     "icon": "../assets/apps/windhawk.png",
     "paths": ["C:\\Program Files\\Windhawk\\windhawk.exe"],
@@ -1986,7 +1993,7 @@
     "id": "yandere-simulator",
     "name": "Yandere Simulator",
     "description": "Yandere Simulator es un juego de supervivencia y romance en el que el jugador asume el rol de un estudiante que debe luchar por sobrevivir en un entorno hostil mientras navega por las complejidades de las relaciones interpersonales.",
-    "category": "Juegos",
+    "category": ["Juegos", "Verificado"],
     "icon": "../assets/apps/yandere-simulator.png",
     "paths": [
       "%appdata%/StormGamesStudios/NewGameDir/YandereSimulator/game/Build/YandereSimulator.exe"
@@ -2003,7 +2010,7 @@
     "id": "youtube-downloader",
     "name": "YouTube Downloader",
     "description": "Una herramienta para descargar videos de YouTube.",
-    "category": ["Utilidades", "Aplicaciones", "Herramientas"],
+    "category": ["Utilidades", "Aplicaciones", "Herramientas", "Verificado"],
     "icon": "../assets/apps/youtube-downloader.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/YoutubeDownloader/YoutubeDownloader/YoutubeDownloader.exe"
