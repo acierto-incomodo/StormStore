@@ -511,7 +511,7 @@
     "id": "FLStudio",
     "name": "FL Studio",
     "description": "FL Studio es un programa de producción musical y edición de audio para crear ritmos, melodías y mezclas con herramientas avanzadas de composición y masterización.",
-    "category": ["Aplicaciones", "Audio", "Música", "Verificado"],
+    "category": ["Aplicaciones", "Audio", "Música"],
     "icon": "../assets/apps/FLStudio.png",
     "paths": [
       "%appdata%/StormGamesStudios/Programs/FL Studio/Build/Build/FLStudioPortable.exe"
@@ -522,7 +522,7 @@
     "wifi": "no",
     "share-compatibility": "no",
     "virus-alert": "none",
-    "verified": "true"
+    "verified": "false"
   },
   {
     "id": "free-download-manager",
