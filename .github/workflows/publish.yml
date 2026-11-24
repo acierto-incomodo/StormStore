@@ -71,11 +71,17 @@ jobs:
         run: |
           cp application/UPDATE.md release/UPDATE.md
 
+      - name: Read package version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./application/package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: MultiAI ${{ github.ref_name }}
+          name: v${{ steps.version.outputs.version }}
           body_path: UPDATE.md
           files: |
             release/windows/*
